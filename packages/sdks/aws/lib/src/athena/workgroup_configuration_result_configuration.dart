@@ -19,7 +19,7 @@ class WorkgroupConfigurationResultConfiguration {
   /// [encryptionConfiguration] Configuration block with encryption settings. See Encryption Configuration below.
   /// [expectedBucketOwner] AWS account ID that you expect to be the owner of the Amazon S3 bucket.
   /// [outputLocation] Location in Amazon S3 where your query results are stored, such as `s3://path/to/query/bucket/`. For more information, see [Queries and Query Result Files](https://docs.aws.amazon.com/athena/latest/ug/querying.html).
-  WorkgroupConfigurationResultConfiguration({
+  const WorkgroupConfigurationResultConfiguration({
     this.aclConfiguration,
     this.encryptionConfiguration,
     this.expectedBucketOwner,

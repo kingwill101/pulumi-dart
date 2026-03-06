@@ -14,7 +14,7 @@ class GetHybridMonitorSlsTasksTaskMatchExpress {
   /// [function] The method that is used to match the instance name.
   /// [name] The name of the instance.
   /// [value] The keyword that corresponds to the instance name.
-  GetHybridMonitorSlsTasksTaskMatchExpress({
+  const GetHybridMonitorSlsTasksTaskMatchExpress({
     required this.function,
     required this.name,
     required this.value,

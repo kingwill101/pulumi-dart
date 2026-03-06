@@ -8,7 +8,7 @@ class DomainFeaturesHyperVIpi {
 
   /// Creates a new [DomainFeaturesHyperVIpi].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVIpi({
+  const DomainFeaturesHyperVIpi({
     this.state,
   });
 

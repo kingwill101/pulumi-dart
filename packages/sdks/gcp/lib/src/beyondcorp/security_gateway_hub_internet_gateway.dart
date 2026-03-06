@@ -9,7 +9,7 @@ class SecurityGatewayHubInternetGateway {
 
   /// Creates a new [SecurityGatewayHubInternetGateway].
   /// [assignedIps] (Output)
-  SecurityGatewayHubInternetGateway({
+  const SecurityGatewayHubInternetGateway({
     this.assignedIps,
   });
 

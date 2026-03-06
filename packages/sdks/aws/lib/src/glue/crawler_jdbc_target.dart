@@ -17,7 +17,7 @@ class CrawlerJdbcTarget {
   /// [enableAdditionalMetadatas] Specify a value of `RAWTYPES` or `COMMENTS` to enable additional metadata intable responses. `RAWTYPES` provides the native-level datatype. `COMMENTS` provides comments associated with a column or table in the database.
   /// [exclusions] A list of glob patterns used to exclude from the crawl.
   /// [path] The path of the JDBC target.
-  CrawlerJdbcTarget({
+  const CrawlerJdbcTarget({
     required this.connectionName,
     this.enableAdditionalMetadatas,
     this.exclusions,

@@ -52,7 +52,7 @@ class WorkspaceArgs {
   /// [tags] Resource tags.
   /// [workspaceCapping] The daily volume cap for ingestion.
   /// [workspaceName] The name of the workspace.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.defaultDataCollectionRuleResourceId,
     this.features,
     this.forceCmkForQuery,

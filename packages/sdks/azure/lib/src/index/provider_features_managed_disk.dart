@@ -7,7 +7,7 @@ class ProviderFeaturesManagedDisk {
 
   /// Creates a new [ProviderFeaturesManagedDisk].
   /// [expandWithoutDowntime] Optional.
-  ProviderFeaturesManagedDisk({
+  const ProviderFeaturesManagedDisk({
     this.expandWithoutDowntime,
   });
 

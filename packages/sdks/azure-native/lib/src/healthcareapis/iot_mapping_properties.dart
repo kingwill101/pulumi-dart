@@ -9,7 +9,7 @@ class IotMappingProperties {
 
   /// Creates a new [IotMappingProperties].
   /// [content] The mapping.
-  IotMappingProperties({
+  const IotMappingProperties({
     this.content,
   });
 

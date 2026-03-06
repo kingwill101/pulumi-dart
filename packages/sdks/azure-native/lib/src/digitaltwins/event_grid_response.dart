@@ -38,7 +38,7 @@ class EventGridResponse {
   /// [identity] Managed identity properties for the endpoint.
   /// [provisioningState] The provisioning state.
   /// [topicEndpoint] EventGrid Topic Endpoint.
-  EventGridResponse({
+  const EventGridResponse({
     required this.accessKey1,
     this.accessKey2,
     this.authenticationType,

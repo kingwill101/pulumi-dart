@@ -9,7 +9,7 @@ class GcfsConfigContainerV1beta1 {
 
   /// Creates a new [GcfsConfigContainerV1beta1].
   /// [enabled] Whether to use GCFS.
-  GcfsConfigContainerV1beta1({
+  const GcfsConfigContainerV1beta1({
     this.enabled,
   });
 

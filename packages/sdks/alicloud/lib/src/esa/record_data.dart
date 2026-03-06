@@ -55,7 +55,7 @@ class RecordData {
   /// [usage] The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
   /// [value] Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
   /// [weight] The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
-  RecordData({
+  const RecordData({
     this.algorithm,
     this.certificate,
     this.fingerprint,

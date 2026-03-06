@@ -63,7 +63,7 @@ class RestAPIArgs {
   /// [staticRoutesBucket] Bucket to use for placing resources for static resources.  If not provided a default one will
   /// [swaggerString] A Swagger specification already in string form to use to initialize the APIGateway.  Note
   /// [tags] 'Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present,
-  RestAPIArgs({
+  const RestAPIArgs({
     this.apiKeySource,
     this.binaryMediaTypes,
     this.description,

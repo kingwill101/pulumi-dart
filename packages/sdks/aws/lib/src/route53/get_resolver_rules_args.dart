@@ -29,7 +29,7 @@ class GetResolverRulesArgs {
   /// [resolverEndpointId] ID of the outbound resolver endpoint for the desired resolver rules.
   /// [ruleType] Rule type of the desired resolver rules. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
   /// [shareStatus] Whether the desired resolver rules are shared and, if so, whether the current account is sharing the rules with another account, or another account is sharing the rules with the current account. Valid values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
-  GetResolverRulesArgs({
+  const GetResolverRulesArgs({
     this.nameRegex,
     this.ownerId,
     this.region,

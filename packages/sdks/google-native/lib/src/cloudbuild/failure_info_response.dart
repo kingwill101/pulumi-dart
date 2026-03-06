@@ -12,7 +12,7 @@ class FailureInfoResponse {
   /// Creates a new [FailureInfoResponse].
   /// [detail] Explains the failure issue in more detail using hard-coded text.
   /// [type] The name of the failure.
-  FailureInfoResponse({
+  const FailureInfoResponse({
     required this.detail,
     required this.type,
   });

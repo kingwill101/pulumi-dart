@@ -8,7 +8,7 @@ class DomainDevicesControllerNvme {
 
   /// Creates a new [DomainDevicesControllerNvme].
   /// [serial] Sets the serial number for the NVMe controller device.
-  DomainDevicesControllerNvme({
+  const DomainDevicesControllerNvme({
     this.serial,
   });
 

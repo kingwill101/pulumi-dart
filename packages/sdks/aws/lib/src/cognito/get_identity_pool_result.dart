@@ -41,7 +41,7 @@ class GetIdentityPoolResult {
   /// [samlProviderArns] An array of Amazon Resource Names (ARNs) of the SAML provider for your identity.
   /// [supportedLoginProviders] Key-Value pairs mapping provider names to provider app IDs.
   /// [tags] A map of tags to assigned to the Identity Pool.
-  GetIdentityPoolResult({
+  const GetIdentityPoolResult({
     required this.allowClassicFlow,
     required this.allowUnauthenticatedIdentities,
     required this.arn,

@@ -24,7 +24,7 @@ class GetStudyResult {
   /// [name] The name of a study. The study's globally unique identifier. Format: `projects/{project}/locations/{location}/studies/{study}`
   /// [state] The detailed state of a Study.
   /// [studySpec] Configuration of the Study.
-  GetStudyResult({
+  const GetStudyResult({
     required this.createTime,
     required this.displayName,
     required this.inactiveReason,

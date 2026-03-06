@@ -22,7 +22,7 @@ class RegionalParameterVersionArgs {
   /// [parameter] Parameter Manager Regional Parameter resource.
   /// [parameterData] The Regional Parameter data.
   /// [parameterVersionId] Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-  RegionalParameterVersionArgs({
+  const RegionalParameterVersionArgs({
     this.disabled,
     required this.parameter,
     required this.parameterData,

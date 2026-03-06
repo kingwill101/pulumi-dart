@@ -18,7 +18,7 @@ class BucketV2Website {
   /// [indexDocument] Amazon S3 returns this index document when requests are made to the root domain or any of the subfolders.
   /// [redirectAllRequestsTo] Hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
   /// [routingRules] JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
-  BucketV2Website({
+  const BucketV2Website({
     this.errorDocument,
     this.indexDocument,
     this.redirectAllRequestsTo,

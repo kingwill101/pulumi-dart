@@ -35,7 +35,7 @@ class GetPipelineRunResult {
   /// [response] The response of a pipeline run.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetPipelineRunResult({
+  const GetPipelineRunResult({
     required this.azureApiVersion,
     this.forceUpdateTag,
     required this.id,

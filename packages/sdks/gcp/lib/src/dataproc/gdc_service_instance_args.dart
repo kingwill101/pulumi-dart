@@ -38,7 +38,7 @@ class GdcServiceInstanceArgs {
   /// [serviceAccount] Requested service account to associate with ServiceInstance.
   /// [serviceInstanceId] Id of the service instance.
   /// [sparkServiceInstanceConfig] Spark-specific service instance configuration.
-  GdcServiceInstanceArgs({
+  const GdcServiceInstanceArgs({
     this.displayName,
     this.gdceCluster,
     this.labels,

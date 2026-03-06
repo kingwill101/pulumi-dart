@@ -39,7 +39,7 @@ class GetDatabasesDatabase {
   /// [name] The name of the database in the Cloud SQL instance.
   /// [project] The ID of the project in which the instance belongs.
   /// [selfLink] Required.
-  GetDatabasesDatabase({
+  const GetDatabasesDatabase({
     required this.charset,
     required this.collation,
     required this.deletionPolicy,

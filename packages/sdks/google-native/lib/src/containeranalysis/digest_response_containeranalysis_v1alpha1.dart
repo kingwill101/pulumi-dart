@@ -12,7 +12,7 @@ class DigestResponseContaineranalysisV1alpha1 {
   /// Creates a new [DigestResponseContaineranalysisV1alpha1].
   /// [algo] `SHA1`, `SHA512` etc.
   /// [digestBytes] Value of the digest.
-  DigestResponseContaineranalysisV1alpha1({
+  const DigestResponseContaineranalysisV1alpha1({
     required this.algo,
     required this.digestBytes,
   });

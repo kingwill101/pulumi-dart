@@ -14,7 +14,7 @@ class NodePoolAutoConfig {
   /// Creates a new [NodePoolAutoConfig].
   /// [networkTags] The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
   /// [resourceManagerTags] Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
-  NodePoolAutoConfig({
+  const NodePoolAutoConfig({
     this.networkTags,
     this.resourceManagerTags,
   });

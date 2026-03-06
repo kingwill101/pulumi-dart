@@ -18,7 +18,7 @@ class GetCustomApiArgs {
   /// [apiName] API name
   /// [resourceGroupName] The resource group
   /// [subscriptionId] Subscription Id
-  GetCustomApiArgs({
+  const GetCustomApiArgs({
     required this.apiName,
     required this.resourceGroupName,
     this.subscriptionId,

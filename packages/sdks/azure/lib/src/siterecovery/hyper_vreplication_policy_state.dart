@@ -21,7 +21,7 @@ class HyperVReplicationPolicyState {
   /// [recoveryPointRetentionInHours] The duration in hours for which the recovery points need to be stored.
   /// [recoveryVaultId] The id of the vault that should be updated. Changing this forces a new resource to be created.
   /// [replicationIntervalInSeconds] Specifies how frequently data should be synchronized between source and target locations. Possible values are `30` and `300`.
-  HyperVReplicationPolicyState({
+  const HyperVReplicationPolicyState({
     this.applicationConsistentSnapshotFrequencyInHours,
     this.name,
     this.recoveryPointRetentionInHours,

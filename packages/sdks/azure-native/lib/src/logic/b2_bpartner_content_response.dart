@@ -10,7 +10,7 @@ class B2BPartnerContentResponse {
 
   /// Creates a new [B2BPartnerContentResponse].
   /// [businessIdentities] The list of partner business identities.
-  B2BPartnerContentResponse({
+  const B2BPartnerContentResponse({
     this.businessIdentities,
   });
 

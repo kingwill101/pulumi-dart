@@ -30,7 +30,7 @@ class AccessManagementState {
   /// [principalType] The type of the CloudSSO identity. Valid values: `User`, `Group`.
   /// [targetId] The ID of the task object.
   /// [targetType] The type of the task object. Valid values: `RD-Account`.
-  AccessManagementState({
+  const AccessManagementState({
     this.accessConfigurationId,
     this.createTime,
     this.deprovisionStrategy,

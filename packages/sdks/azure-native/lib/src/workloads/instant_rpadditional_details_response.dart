@@ -12,7 +12,7 @@ class InstantRPAdditionalDetailsResponse {
   /// Creates a new [InstantRPAdditionalDetailsResponse].
   /// [azureBackupRGNamePrefix] Azure backup resource group name prefix.
   /// [azureBackupRGNameSuffix] Azure backup resource group name suffix.
-  InstantRPAdditionalDetailsResponse({
+  const InstantRPAdditionalDetailsResponse({
     this.azureBackupRGNamePrefix,
     this.azureBackupRGNameSuffix,
   });

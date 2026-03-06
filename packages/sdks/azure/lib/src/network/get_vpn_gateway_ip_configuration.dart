@@ -14,7 +14,7 @@ class GetVpnGatewayIpConfiguration {
   /// [id] The identifier of the IP configuration for the VPN Gateway.
   /// [privateIpAddress] The private IP address of this IP configuration.
   /// [publicIpAddress] The public IP address of this IP configuration.
-  GetVpnGatewayIpConfiguration({
+  const GetVpnGatewayIpConfiguration({
     required this.id,
     required this.privateIpAddress,
     required this.publicIpAddress,

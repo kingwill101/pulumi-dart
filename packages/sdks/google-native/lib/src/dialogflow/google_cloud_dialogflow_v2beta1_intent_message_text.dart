@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageText {
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageText].
   /// [text] Optional. The collection of the agent's responses.
-  GoogleCloudDialogflowV2beta1IntentMessageText({
+  const GoogleCloudDialogflowV2beta1IntentMessageText({
     this.text,
   });
 

@@ -13,7 +13,7 @@ class CriteriaResponse {
   /// Creates a new [CriteriaResponse].
   /// [regex] The S3 object key for the AllowList.
   /// [s3WordsList] The S3 location for the AllowList.
-  CriteriaResponse({
+  const CriteriaResponse({
     this.regex,
     this.s3WordsList,
   });

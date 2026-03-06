@@ -52,7 +52,7 @@ class ConversationArgs {
   /// [project] Optional.
   /// [startTime] The time at which the conversation started.
   /// [ttl] Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
-  ConversationArgs({
+  const ConversationArgs({
     this.agentId,
     this.callMetadata,
     this.conversationId,

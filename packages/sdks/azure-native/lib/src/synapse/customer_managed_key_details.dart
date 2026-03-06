@@ -14,7 +14,7 @@ class CustomerManagedKeyDetails {
   /// Creates a new [CustomerManagedKeyDetails].
   /// [kekIdentity] Key encryption key
   /// [key] The key object of the workspace
-  CustomerManagedKeyDetails({
+  const CustomerManagedKeyDetails({
     this.kekIdentity,
     this.key,
   });

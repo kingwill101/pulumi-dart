@@ -14,7 +14,7 @@ class AntiBruteForceRuleProtocolType {
   /// [rdp] Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
   /// [sqlServer] Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
   /// [ssh] Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
-  AntiBruteForceRuleProtocolType({
+  const AntiBruteForceRuleProtocolType({
     this.rdp,
     this.sqlServer,
     this.ssh,

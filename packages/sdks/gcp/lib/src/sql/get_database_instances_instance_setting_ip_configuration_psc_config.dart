@@ -18,7 +18,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
   /// [networkAttachmentUri] Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
   /// [pscAutoConnections] A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
   /// [pscEnabled] Whether PSC connectivity is enabled for this instance.
-  GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig({
+  const GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig({
     required this.allowedConsumerProjects,
     required this.networkAttachmentUri,
     required this.pscAutoConnections,

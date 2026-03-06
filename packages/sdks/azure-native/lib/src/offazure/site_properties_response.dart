@@ -23,7 +23,7 @@ class SitePropertiesResponse {
   /// [discoverySolutionId] ARM ID of migration hub solution for SDS.
   /// [serviceEndpoint] Service endpoint.
   /// [servicePrincipalIdentityDetails] Service principal identity details used by agent for communication to the service.
-  SitePropertiesResponse({
+  const SitePropertiesResponse({
     this.agentDetails,
     this.applianceName,
     this.discoverySolutionId,

@@ -26,7 +26,7 @@ class GetRouteDatastreamV1alpha1Result {
   /// [labels] Labels.
   /// [name] The resource's name.
   /// [updateTime] The update time of the resource.
-  GetRouteDatastreamV1alpha1Result({
+  const GetRouteDatastreamV1alpha1Result({
     required this.createTime,
     required this.destinationAddress,
     required this.destinationPort,

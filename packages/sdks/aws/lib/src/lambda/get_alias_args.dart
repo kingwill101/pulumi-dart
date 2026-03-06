@@ -20,7 +20,7 @@ class GetAliasArgs {
   /// [functionName] Name of the aliased Lambda function.
   /// [name] Name of the Lambda alias.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAliasArgs({
+  const GetAliasArgs({
     required this.functionName,
     required this.name,
     this.region,

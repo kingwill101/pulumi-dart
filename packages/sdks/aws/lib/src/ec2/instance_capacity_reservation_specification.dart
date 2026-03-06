@@ -14,7 +14,7 @@ class InstanceCapacityReservationSpecification {
   /// Creates a new [InstanceCapacityReservationSpecification].
   /// [capacityReservationPreference] Indicates the instance's Capacity Reservation preferences. Can be `"open"` or `"none"`. (Default: `"open"`).
   /// [capacityReservationTarget] Information about the target Capacity Reservation. See Capacity Reservation Target below for more details.
-  InstanceCapacityReservationSpecification({
+  const InstanceCapacityReservationSpecification({
     this.capacityReservationPreference,
     this.capacityReservationTarget,
   });

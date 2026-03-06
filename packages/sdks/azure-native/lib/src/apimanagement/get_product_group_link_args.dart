@@ -21,7 +21,7 @@ class GetProductGroupLinkArgs {
   /// [productId] Product identifier. Must be unique in the current API Management service instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetProductGroupLinkArgs({
+  const GetProductGroupLinkArgs({
     required this.groupLinkId,
     required this.productId,
     required this.resourceGroupName,

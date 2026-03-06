@@ -43,7 +43,7 @@ class GetUsersUserGlobalGrant {
   /// [addVpcs] If true, this User may add Virtual Private Clouds (VPCs).
   /// [cancelAccount] If true, this User may cancel the entire Account.
   /// [longviewSubscription] If true, this User may manage the Account’s Longview subscription.
-  GetUsersUserGlobalGrant({
+  const GetUsersUserGlobalGrant({
     required this.accountAccess,
     required this.addDatabases,
     required this.addDomains,

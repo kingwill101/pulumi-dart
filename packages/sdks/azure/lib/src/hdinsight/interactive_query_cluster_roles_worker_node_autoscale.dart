@@ -9,7 +9,7 @@ class InteractiveQueryClusterRolesWorkerNodeAutoscale {
 
   /// Creates a new [InteractiveQueryClusterRolesWorkerNodeAutoscale].
   /// [recurrence] A `recurrence` block as defined below.
-  InteractiveQueryClusterRolesWorkerNodeAutoscale({
+  const InteractiveQueryClusterRolesWorkerNodeAutoscale({
     this.recurrence,
   });
 

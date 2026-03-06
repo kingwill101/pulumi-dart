@@ -24,7 +24,7 @@ class LogCollectionJobSessionResponse {
   /// [startTime] The timestamp when log collection started, in ISO 8601 format.
   /// [status] The status of the log collection session.
   /// [timeCollected] The total time logs were collected for, in ISO 8601 duration format.
-  LogCollectionJobSessionResponse({
+  const LogCollectionJobSessionResponse({
     required this.correlationId,
     required this.endTime,
     required this.logSize,

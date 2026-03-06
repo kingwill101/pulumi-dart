@@ -20,7 +20,7 @@ class GcpUserAccessBindingScopedAccessSetting {
   /// [activeSettings] Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
   /// [dryRunSettings] Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
   /// [scope] Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
-  GcpUserAccessBindingScopedAccessSetting({
+  const GcpUserAccessBindingScopedAccessSetting({
     this.activeSettings,
     this.dryRunSettings,
     this.scope,

@@ -43,7 +43,7 @@ class GetAccountResult {
   /// [secondaryAccessKey] The Batch account secondary access key.
   /// [storageAccountId] The ID of the Storage Account used for this Batch account.
   /// [tags] A map of tags assigned to the Batch account.
-  GetAccountResult({
+  const GetAccountResult({
     required this.accountEndpoint,
     required this.encryptions,
     required this.id,

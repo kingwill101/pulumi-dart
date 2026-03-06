@@ -42,7 +42,7 @@ class GetHostsArgs {
   /// [source] Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
   /// [sourceInstanceId] Specify the newly created ECS instance ID or dedicated cluster host ID.
   /// [sourceInstanceState] The source instance state.
-  GetHostsArgs({
+  const GetHostsArgs({
     this.enableDetails,
     this.hostAddress,
     this.hostName,

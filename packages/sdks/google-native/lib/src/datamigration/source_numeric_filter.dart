@@ -22,7 +22,7 @@ class SourceNumericFilter {
   /// [sourceMaxScaleFilter] Optional. The filter will match columns with scale smaller than or equal to this number.
   /// [sourceMinPrecisionFilter] Optional. The filter will match columns with precision greater than or equal to this number.
   /// [sourceMinScaleFilter] Optional. The filter will match columns with scale greater than or equal to this number.
-  SourceNumericFilter({
+  const SourceNumericFilter({
     required this.numericFilterOption,
     this.sourceMaxPrecisionFilter,
     this.sourceMaxScaleFilter,

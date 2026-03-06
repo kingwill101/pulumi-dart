@@ -11,7 +11,7 @@ class SparkPoolSparkConfig {
   /// Creates a new [SparkPoolSparkConfig].
   /// [content] The contents of a spark configuration.
   /// [filename] The name of the file where the spark configuration `content` will be stored.
-  SparkPoolSparkConfig({
+  const SparkPoolSparkConfig({
     required this.content,
     required this.filename,
   });

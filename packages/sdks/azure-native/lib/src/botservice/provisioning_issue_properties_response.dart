@@ -22,7 +22,7 @@ class ProvisioningIssuePropertiesResponse {
   /// [severity] Provisioning state of Network Security Perimeter configuration propagation
   /// [suggestedAccessRules] Access rules that can be added to the same profile to remediate the issue.
   /// [suggestedResourceIds] ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
-  ProvisioningIssuePropertiesResponse({
+  const ProvisioningIssuePropertiesResponse({
     this.description,
     this.issueType,
     this.severity,

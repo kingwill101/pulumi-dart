@@ -39,7 +39,7 @@ class GetScriptResult {
   /// [scriptUrl] The url to the KQL script blob file. Must not be used together with scriptContent property
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetScriptResult({
+  const GetScriptResult({
     required this.azureApiVersion,
     this.continueOnErrors,
     this.forceUpdateTag,

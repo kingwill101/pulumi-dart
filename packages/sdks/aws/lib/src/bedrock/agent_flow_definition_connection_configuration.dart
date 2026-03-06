@@ -13,7 +13,7 @@ class AgentFlowDefinitionConnectionConfiguration {
   /// Creates a new [AgentFlowDefinitionConnectionConfiguration].
   /// [conditional] The configuration of a connection originating from a Condition node. See Conditional Connection Configuration for more information.
   /// [data] The configuration of a connection originating from a node that isn’t a Condition node. See Data Connection Configuration for more information.
-  AgentFlowDefinitionConnectionConfiguration({
+  const AgentFlowDefinitionConnectionConfiguration({
     this.conditional,
     this.data,
   });

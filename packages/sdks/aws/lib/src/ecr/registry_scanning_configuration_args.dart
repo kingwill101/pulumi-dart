@@ -19,7 +19,7 @@ class RegistryScanningConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] One or multiple blocks specifying scanning rules to determine which repository filters are used and at what frequency scanning will occur. See below for schema.
   /// [scanType] the scanning type to set for the registry. Can be either `ENHANCED` or `BASIC`.
-  RegistryScanningConfigurationArgs({
+  const RegistryScanningConfigurationArgs({
     this.region,
     this.rules,
     required this.scanType,

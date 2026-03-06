@@ -62,7 +62,7 @@ class ClusterConfigDataprocV1beta2 {
   /// [softwareConfig] Optional. The config settings for software inside the cluster.
   /// [tempBucket] Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
   /// [workerConfig] Optional. The Compute Engine config settings for worker instances in a cluster.
-  ClusterConfigDataprocV1beta2({
+  const ClusterConfigDataprocV1beta2({
     this.autoscalingConfig,
     this.configBucket,
     this.encryptionConfig,

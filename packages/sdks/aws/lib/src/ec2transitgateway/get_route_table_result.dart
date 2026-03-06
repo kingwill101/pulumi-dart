@@ -29,7 +29,7 @@ class GetRouteTableResult {
   /// [region] Required.
   /// [tags] Key-value tags for the EC2 Transit Gateway Route Table
   /// [transitGatewayId] EC2 Transit Gateway identifier
-  GetRouteTableResult({
+  const GetRouteTableResult({
     required this.arn,
     required this.defaultAssociationRouteTable,
     required this.defaultPropagationRouteTable,

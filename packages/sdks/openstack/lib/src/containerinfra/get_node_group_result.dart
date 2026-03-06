@@ -50,7 +50,7 @@ class GetNodeGroupResult {
   /// [region] See Argument Reference above.
   /// [role] The role of the node group.
   /// [updatedAt] The time at which the node group was updated.
-  GetNodeGroupResult({
+  const GetNodeGroupResult({
     required this.clusterId,
     required this.createdAt,
     required this.dockerVolumeSize,

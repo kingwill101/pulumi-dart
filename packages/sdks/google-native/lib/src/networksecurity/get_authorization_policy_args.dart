@@ -15,7 +15,7 @@ class GetAuthorizationPolicyArgs {
   /// [authorizationPolicyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAuthorizationPolicyArgs({
+  const GetAuthorizationPolicyArgs({
     required this.authorizationPolicyId,
     required this.location,
     this.project,

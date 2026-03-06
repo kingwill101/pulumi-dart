@@ -24,7 +24,7 @@ class HorizontalPodAutoscalerAutoscalingV2 {
   /// [metadata] metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
   /// [status] status is the current information about the autoscaler.
-  HorizontalPodAutoscalerAutoscalingV2({
+  const HorizontalPodAutoscalerAutoscalingV2({
     this.apiVersion,
     this.kind,
     this.metadata,

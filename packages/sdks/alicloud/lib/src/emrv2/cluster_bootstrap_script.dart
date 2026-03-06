@@ -27,7 +27,7 @@ class ClusterBootstrapScript {
   /// [scriptArgs] The bootstrap script args, e.g. "--a=b".
   /// [scriptName] The bootstrap script name.
   /// [scriptPath] The bootstrap script path, e.g. "oss://bucket/path".
-  ClusterBootstrapScript({
+  const ClusterBootstrapScript({
     required this.executionFailStrategy,
     required this.executionMoment,
     required this.nodeSelector,

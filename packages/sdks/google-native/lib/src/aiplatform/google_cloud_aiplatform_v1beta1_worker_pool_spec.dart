@@ -29,7 +29,7 @@ class GoogleCloudAiplatformV1beta1WorkerPoolSpec {
   /// [nfsMounts] Optional. List of NFS mount spec.
   /// [pythonPackageSpec] The Python packaged task.
   /// [replicaCount] Optional. The number of worker replicas to use for this worker pool.
-  GoogleCloudAiplatformV1beta1WorkerPoolSpec({
+  const GoogleCloudAiplatformV1beta1WorkerPoolSpec({
     this.containerSpec,
     this.diskSpec,
     this.machineSpec,

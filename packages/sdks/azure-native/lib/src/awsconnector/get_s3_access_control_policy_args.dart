@@ -15,7 +15,7 @@ class GetS3AccessControlPolicyArgs {
   /// Creates a new [GetS3AccessControlPolicyArgs].
   /// [name] Name of S3AccessControlPolicy
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetS3AccessControlPolicyArgs({
+  const GetS3AccessControlPolicyArgs({
     required this.name,
     required this.resourceGroupName,
   });

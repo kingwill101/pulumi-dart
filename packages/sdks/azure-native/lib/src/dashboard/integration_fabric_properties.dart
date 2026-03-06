@@ -14,7 +14,7 @@ class IntegrationFabricProperties {
   /// [dataSourceResourceId] The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
   /// [scenarios] A list of integration scenarios covered by this integration fabric
   /// [targetResourceId] The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
-  IntegrationFabricProperties({
+  const IntegrationFabricProperties({
     this.dataSourceResourceId,
     this.scenarios,
     this.targetResourceId,

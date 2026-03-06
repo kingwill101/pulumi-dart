@@ -9,7 +9,7 @@ class AllocationResourceStatusSpecificSKUAllocationResponse {
 
   /// Creates a new [AllocationResourceStatusSpecificSKUAllocationResponse].
   /// [sourceInstanceTemplateId] ID of the instance template used to populate reservation properties.
-  AllocationResourceStatusSpecificSKUAllocationResponse({
+  const AllocationResourceStatusSpecificSKUAllocationResponse({
     required this.sourceInstanceTemplateId,
   });
 

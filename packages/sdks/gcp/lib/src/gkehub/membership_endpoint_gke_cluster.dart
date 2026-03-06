@@ -7,7 +7,7 @@ class MembershipEndpointGkeCluster {
 
   /// Creates a new [MembershipEndpointGkeCluster].
   /// [resourceLink] Required.
-  MembershipEndpointGkeCluster({
+  const MembershipEndpointGkeCluster({
     required this.resourceLink,
   });
 

@@ -12,7 +12,7 @@ class ContainerRegistryResponse {
   /// Creates a new [ContainerRegistryResponse].
   /// [containerRegistryServer] Login server of the container registry.
   /// [identityResourceId] Resource ID of the managed identity.
-  ContainerRegistryResponse({
+  const ContainerRegistryResponse({
     required this.containerRegistryServer,
     required this.identityResourceId,
   });

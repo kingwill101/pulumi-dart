@@ -147,7 +147,7 @@ class InstanceArgs {
   /// [sourceMachineImageEncryptionKey] Source machine image encryption key when creating an instance from a machine image.
   /// [tags] Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
   /// [zone] Optional.
-  InstanceArgs({
+  const InstanceArgs({
     this.advancedMachineFeatures,
     this.canIpForward,
     this.confidentialInstanceConfig,

@@ -19,7 +19,7 @@ class ResponsePolicyRuleLocalDataLocalData {
   /// [rrdatas] As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
   /// [ttl] Number of seconds that this ResourceRecordSet can be cached by
   /// [type] One of valid DNS resource types.
-  ResponsePolicyRuleLocalDataLocalData({
+  const ResponsePolicyRuleLocalDataLocalData({
     required this.name,
     this.rrdatas,
     this.ttl,

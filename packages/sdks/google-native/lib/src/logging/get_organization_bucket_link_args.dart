@@ -17,7 +17,7 @@ class GetOrganizationBucketLinkArgs {
   /// [linkId] Required.
   /// [location] Required.
   /// [organizationId] Required.
-  GetOrganizationBucketLinkArgs({
+  const GetOrganizationBucketLinkArgs({
     required this.bucketId,
     required this.linkId,
     required this.location,

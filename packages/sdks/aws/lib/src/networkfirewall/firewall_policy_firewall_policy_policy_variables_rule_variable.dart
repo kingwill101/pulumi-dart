@@ -12,7 +12,7 @@ class FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable {
   /// Creates a new [FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable].
   /// [ipSet] A configuration block that defines a set of IP addresses. See IP Set below for details.
   /// [key] An alphanumeric string to identify the `ip_set`. Valid values: `HOME_NET`
-  FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable({
+  const FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable({
     required this.ipSet,
     required this.key,
   });

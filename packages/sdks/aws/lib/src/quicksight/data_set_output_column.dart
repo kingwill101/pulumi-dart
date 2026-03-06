@@ -16,7 +16,7 @@ class DataSetOutputColumn {
   /// [description] The description of the column.
   /// [name] Display name for the dataset.
   /// [type] The data type of the column.
-  DataSetOutputColumn({
+  const DataSetOutputColumn({
     this.description,
     this.name,
     this.type,

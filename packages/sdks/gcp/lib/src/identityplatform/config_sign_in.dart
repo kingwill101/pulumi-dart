@@ -29,7 +29,7 @@ class ConfigSignIn {
   /// [email] Configuration options related to authenticating a user by their email address.
   /// [hashConfigs] (Output)
   /// [phoneNumber] Configuration options related to authenticated a user by their phone number.
-  ConfigSignIn({
+  const ConfigSignIn({
     this.allowDuplicateEmails,
     this.anonymous,
     this.email,

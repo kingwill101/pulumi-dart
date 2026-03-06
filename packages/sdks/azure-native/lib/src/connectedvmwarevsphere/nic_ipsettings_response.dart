@@ -31,7 +31,7 @@ class NicIPSettingsResponse {
   /// [primaryWinsServer] Gets or sets the primary server.
   /// [secondaryWinsServer] Gets or sets the secondary server.
   /// [subnetMask] Gets or sets the mask.
-  NicIPSettingsResponse({
+  const NicIPSettingsResponse({
     this.allocationMethod,
     this.dnsServers,
     this.gateway,

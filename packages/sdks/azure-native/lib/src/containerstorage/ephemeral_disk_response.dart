@@ -13,7 +13,7 @@ class EphemeralDiskResponse {
   /// Creates a new [EphemeralDiskResponse].
   /// [disks] Only required if individual disk selection is desired. Path to disk, e.g. &lt;nodename&gt;:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
   /// [replicas] The number of data copies. Default 3.
-  EphemeralDiskResponse({
+  const EphemeralDiskResponse({
     this.disks,
     this.replicas,
   });

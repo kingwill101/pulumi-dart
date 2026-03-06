@@ -11,7 +11,7 @@ class NetworkConnectionMonitorEndpointFilterItem {
   /// Creates a new [NetworkConnectionMonitorEndpointFilterItem].
   /// [address] The address of the filter item.
   /// [type] The type of items included in the filter. Possible values are `AgentAddress`. Defaults to `AgentAddress`.
-  NetworkConnectionMonitorEndpointFilterItem({
+  const NetworkConnectionMonitorEndpointFilterItem({
     this.address,
     this.type,
   });

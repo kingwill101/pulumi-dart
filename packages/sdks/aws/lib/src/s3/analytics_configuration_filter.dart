@@ -11,7 +11,7 @@ class AnalyticsConfigurationFilter {
   /// Creates a new [AnalyticsConfigurationFilter].
   /// [prefix] Object prefix for filtering.
   /// [tags] Set of object tags for filtering.
-  AnalyticsConfigurationFilter({
+  const AnalyticsConfigurationFilter({
     this.prefix,
     this.tags,
   });

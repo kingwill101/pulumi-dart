@@ -70,7 +70,7 @@ class GetWebTestResult {
   /// [validationRules] The collection of validation rule properties
   /// [webTestKind] The kind of web test this is, valid choices are ping, multistep and standard.
   /// [webTestName] User defined name if this WebTest.
-  GetWebTestResult({
+  const GetWebTestResult({
     required this.azureApiVersion,
     this.configuration,
     this.description,

@@ -31,7 +31,7 @@ class GetHanaBackupClientsArgs {
   /// [pageSize] Optional.
   /// [status] The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
   /// [vaultId] The ID of the backup vault.
-  GetHanaBackupClientsArgs({
+  const GetHanaBackupClientsArgs({
     this.clientId,
     this.clusterId,
     this.ids,

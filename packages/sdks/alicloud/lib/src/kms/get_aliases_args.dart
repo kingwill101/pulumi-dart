@@ -18,7 +18,7 @@ class GetAliasesArgs {
   /// [ids] A list of KMS aliases IDs. The value is same as KMS alias_name.
   /// [nameRegex] A regex string to filter the results by the KMS alias name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAliasesArgs({
+  const GetAliasesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

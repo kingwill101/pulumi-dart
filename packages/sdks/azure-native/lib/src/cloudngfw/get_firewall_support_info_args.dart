@@ -18,7 +18,7 @@ class GetFirewallSupportInfoArgs {
   /// [email] email address on behalf of which this API called
   /// [firewallName] Firewall resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFirewallSupportInfoArgs({
+  const GetFirewallSupportInfoArgs({
     this.email,
     required this.firewallName,
     required this.resourceGroupName,

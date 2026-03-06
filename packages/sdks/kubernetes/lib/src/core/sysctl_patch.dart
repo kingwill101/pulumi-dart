@@ -12,7 +12,7 @@ class SysctlPatch {
   /// Creates a new [SysctlPatch].
   /// [name] Name of a property to set
   /// [value] Value of a property to set
-  SysctlPatch({
+  const SysctlPatch({
     this.name,
     this.value,
   });

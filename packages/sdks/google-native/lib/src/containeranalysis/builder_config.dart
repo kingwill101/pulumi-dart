@@ -7,7 +7,7 @@ class BuilderConfig {
 
   /// Creates a new [BuilderConfig].
   /// [id] Optional.
-  BuilderConfig({
+  const BuilderConfig({
     this.id,
   });
 

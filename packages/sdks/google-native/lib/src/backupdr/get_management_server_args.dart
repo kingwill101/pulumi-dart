@@ -15,7 +15,7 @@ class GetManagementServerArgs {
   /// [location] Required.
   /// [managementServerId] Required.
   /// [project] Optional.
-  GetManagementServerArgs({
+  const GetManagementServerArgs({
     required this.location,
     required this.managementServerId,
     this.project,

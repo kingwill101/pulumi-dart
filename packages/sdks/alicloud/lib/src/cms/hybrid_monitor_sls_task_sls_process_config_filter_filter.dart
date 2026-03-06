@@ -13,7 +13,7 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
   /// [operator] The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
   /// [slsKeyName] The name of the key that is used to filter logs imported from Log Service.
   /// [value] Optional.
-  HybridMonitorSlsTaskSlsProcessConfigFilterFilter({
+  const HybridMonitorSlsTaskSlsProcessConfigFilterFilter({
     this.operator,
     this.slsKeyName,
     this.value,

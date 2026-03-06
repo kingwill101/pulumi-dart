@@ -9,7 +9,7 @@ class VirtualGatewaySpecLoggingAccessLog {
 
   /// Creates a new [VirtualGatewaySpecLoggingAccessLog].
   /// [file] File object to send virtual gateway access logs to.
-  VirtualGatewaySpecLoggingAccessLog({
+  const VirtualGatewaySpecLoggingAccessLog({
     this.file,
   });
 

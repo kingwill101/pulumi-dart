@@ -28,7 +28,7 @@ class JobSparksqlConfig {
   /// [queryFileUri] The HCFS URI of the script that contains SQL queries.
   /// [queryLists] The list of SQL queries or statements to execute as part of the job.
   /// [scriptVariables] Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
-  JobSparksqlConfig({
+  const JobSparksqlConfig({
     this.jarFileUris,
     this.loggingConfig,
     this.properties,

@@ -84,7 +84,7 @@ class AzureClusterState {
   /// [uid] Output only. A globally unique identifier for the cluster.
   /// [updateTime] Output only. The time at which this cluster was last updated.
   /// [workloadIdentityConfigs] Output only. Workload Identity settings.
-  AzureClusterState({
+  const AzureClusterState({
     this.annotations,
     this.authorization,
     this.azureRegion,

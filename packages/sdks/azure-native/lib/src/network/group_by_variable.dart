@@ -9,7 +9,7 @@ class GroupByVariable {
 
   /// Creates a new [GroupByVariable].
   /// [variableName] User Session clause variable.
-  GroupByVariable({
+  const GroupByVariable({
     required this.variableName,
   });
 

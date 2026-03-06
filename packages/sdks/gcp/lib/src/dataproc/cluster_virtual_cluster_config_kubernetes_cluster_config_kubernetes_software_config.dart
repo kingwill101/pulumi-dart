@@ -14,7 +14,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
   /// Creates a new [ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig].
   /// [componentVersion] The components that should be installed in this Dataproc cluster. The key must be a string from the
   /// [properties] The properties to set on daemon config files. Property keys are specified in prefix:property format,
-  ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig({
+  const ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig({
     required this.componentVersion,
     this.properties,
   });

@@ -10,7 +10,7 @@ class DefenderCspmDockerHubOffering {
 
   /// Creates a new [DefenderCspmDockerHubOffering].
   /// [offeringType] The type of the security offering.
-  DefenderCspmDockerHubOffering({
+  const DefenderCspmDockerHubOffering({
     required this.offeringType,
   });
 

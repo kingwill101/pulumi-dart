@@ -35,7 +35,7 @@ class GetLocalGatewayRouteTableArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] State of the local gateway route table.
   /// [tags] Mapping of tags, each pair of which must exactly match
-  GetLocalGatewayRouteTableArgs({
+  const GetLocalGatewayRouteTableArgs({
     this.filters,
     this.localGatewayId,
     this.localGatewayRouteTableId,

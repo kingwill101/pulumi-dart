@@ -15,7 +15,7 @@ class GetDefaultRolloutArgs {
   /// Creates a new [GetDefaultRolloutArgs].
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [rolloutName] The rollout name.
-  GetDefaultRolloutArgs({
+  const GetDefaultRolloutArgs({
     required this.providerNamespace,
     required this.rolloutName,
   });

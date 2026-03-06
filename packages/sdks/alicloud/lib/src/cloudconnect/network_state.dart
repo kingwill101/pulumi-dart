@@ -18,7 +18,7 @@ class NetworkState {
   /// [description] The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
   /// [isDefault] Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
   /// [name] The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
-  NetworkState({
+  const NetworkState({
     this.cidrBlock,
     this.description,
     this.isDefault,

@@ -9,7 +9,7 @@ class GroundStationsPropertiesGlobalCommunicationsSite {
 
   /// Creates a new [GroundStationsPropertiesGlobalCommunicationsSite].
   /// [id] Resource ID.
-  GroundStationsPropertiesGlobalCommunicationsSite({
+  const GroundStationsPropertiesGlobalCommunicationsSite({
     required this.id,
   });
 

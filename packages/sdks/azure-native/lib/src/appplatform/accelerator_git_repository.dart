@@ -27,7 +27,7 @@ class AcceleratorGitRepository {
   /// [intervalInSeconds] Interval for checking for updates to Git or image repository.
   /// [subPath] Folder path inside the git repository to consider as the root of the accelerator or fragment.
   /// [url] Git repository URL for the accelerator.
-  AcceleratorGitRepository({
+  const AcceleratorGitRepository({
     required this.authSetting,
     this.branch,
     this.commit,

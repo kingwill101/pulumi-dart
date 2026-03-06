@@ -96,7 +96,7 @@ class FlexTemplateJobArgs {
   /// [subnetwork] The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
   /// [tempLocation] The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
   /// [transformNameMapping] Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
-  FlexTemplateJobArgs({
+  const FlexTemplateJobArgs({
     this.additionalExperiments,
     this.additionalPipelineOptions,
     this.autoscalingAlgorithm,

@@ -42,7 +42,7 @@ class KubernetesNodePoolArgs {
   /// [size] The slug identifier for the type of Droplet to be used as workers in the node pool.
   /// [tags] A list of tag names to be applied to the Kubernetes cluster.
   /// [taints] A list of taints applied to all nodes in the pool.
-  KubernetesNodePoolArgs({
+  const KubernetesNodePoolArgs({
     this.autoScale,
     required this.clusterId,
     this.labels,

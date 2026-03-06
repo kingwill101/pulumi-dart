@@ -46,7 +46,7 @@ class DeploymentType {
   /// [metadata] Standard object metadata.
   /// [spec] Specification of the desired behavior of the Deployment.
   /// [status] Most recently observed status of the Deployment.
-  DeploymentType({
+  const DeploymentType({
     this.apiVersion,
     this.kind,
     this.metadata,

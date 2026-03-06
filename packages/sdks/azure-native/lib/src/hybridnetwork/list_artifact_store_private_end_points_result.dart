@@ -13,7 +13,7 @@ class ListArtifactStorePrivateEndPointsResult {
   /// Creates a new [ListArtifactStorePrivateEndPointsResult].
   /// [nextLink] The URI to get the next set of results.
   /// [value] A list of private endpoints.
-  ListArtifactStorePrivateEndPointsResult({
+  const ListArtifactStorePrivateEndPointsResult({
     required this.nextLink,
     this.value,
   });

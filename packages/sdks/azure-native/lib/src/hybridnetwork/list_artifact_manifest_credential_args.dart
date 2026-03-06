@@ -21,7 +21,7 @@ class ListArtifactManifestCredentialArgs {
   /// [artifactStoreName] The name of the artifact store.
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListArtifactManifestCredentialArgs({
+  const ListArtifactManifestCredentialArgs({
     required this.artifactManifestName,
     required this.artifactStoreName,
     required this.publisherName,

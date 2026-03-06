@@ -32,7 +32,7 @@ class GetTablesArgs {
   /// [regexPattern] Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
   /// [schemas] List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.
   /// [tableTypes] List of PostgreSQL table types which will be queried for table names. Includes all table types by default (including views and temp tables). Use 'BASE TABLE' for normal tables only.
-  GetTablesArgs({
+  const GetTablesArgs({
     required this.database,
     this.likeAllPatterns,
     this.likeAnyPatterns,

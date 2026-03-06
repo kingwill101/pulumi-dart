@@ -30,7 +30,7 @@ class AuthenticationMethodLdapProperties {
   /// [serverPort] Port of the LDAP server.
   /// [serviceUserDistinguishedName] Distinguished name of the look up user account, who can look up user details on authentication.
   /// [serviceUserPassword] Password of the look up user.
-  AuthenticationMethodLdapProperties({
+  const AuthenticationMethodLdapProperties({
     this.connectionTimeoutInMs,
     this.searchBaseDistinguishedName,
     this.searchFilterTemplate,

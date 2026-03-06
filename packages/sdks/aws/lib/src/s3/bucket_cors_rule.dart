@@ -20,7 +20,7 @@ class BucketCorsRule {
   /// [allowedOrigins] One or more origins you want customers to be able to access the bucket from.
   /// [exposeHeaders] One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript `XMLHttpRequest` object).
   /// [maxAgeSeconds] Specifies time in seconds that browser can cache the response for a preflight request.
-  BucketCorsRule({
+  const BucketCorsRule({
     this.allowedHeaders,
     required this.allowedMethods,
     required this.allowedOrigins,

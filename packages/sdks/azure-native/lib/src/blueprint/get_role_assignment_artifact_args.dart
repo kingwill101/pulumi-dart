@@ -18,7 +18,7 @@ class GetRoleAssignmentArtifactArgs {
   /// [artifactName] Name of the blueprint artifact.
   /// [blueprintName] Name of the blueprint definition.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
-  GetRoleAssignmentArtifactArgs({
+  const GetRoleAssignmentArtifactArgs({
     required this.artifactName,
     required this.blueprintName,
     required this.resourceScope,

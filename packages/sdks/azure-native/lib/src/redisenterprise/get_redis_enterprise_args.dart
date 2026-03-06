@@ -15,7 +15,7 @@ class GetRedisEnterpriseArgs {
   /// Creates a new [GetRedisEnterpriseArgs].
   /// [clusterName] The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRedisEnterpriseArgs({
+  const GetRedisEnterpriseArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

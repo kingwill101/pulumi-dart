@@ -52,7 +52,7 @@ class CatalogTableStorageDescriptor {
   /// [skewedInfo] Configuration block with information about values that appear very frequently in a column (skewed values). See `skewed_info` below.
   /// [sortColumns] Configuration block for the sort order of each bucket in the table. See `sort_columns` below.
   /// [storedAsSubDirectories] Whether the table data is stored in subdirectories.
-  CatalogTableStorageDescriptor({
+  const CatalogTableStorageDescriptor({
     this.additionalLocations,
     this.bucketColumns,
     this.columns,

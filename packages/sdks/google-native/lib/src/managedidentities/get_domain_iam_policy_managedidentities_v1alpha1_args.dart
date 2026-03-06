@@ -15,7 +15,7 @@ class GetDomainIamPolicyManagedidentitiesV1alpha1Args {
   /// [domainId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDomainIamPolicyManagedidentitiesV1alpha1Args({
+  const GetDomainIamPolicyManagedidentitiesV1alpha1Args({
     required this.domainId,
     this.optionsRequestedPolicyVersion,
     this.project,

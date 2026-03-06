@@ -13,7 +13,7 @@ class EventEndpointRoutingConfigFailoverConfig {
   /// Creates a new [EventEndpointRoutingConfigFailoverConfig].
   /// [primary] Parameters used for the primary Region. Documented below.
   /// [secondary] Parameters used for the secondary Region, the Region that events are routed to when failover is triggered or event replication is enabled. Documented below.
-  EventEndpointRoutingConfigFailoverConfig({
+  const EventEndpointRoutingConfigFailoverConfig({
     required this.primary,
     required this.secondary,
   });

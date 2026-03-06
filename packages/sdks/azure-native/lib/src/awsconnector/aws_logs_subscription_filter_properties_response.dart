@@ -24,7 +24,7 @@ class AwsLogsSubscriptionFilterPropertiesResponse {
   /// [filterPattern] The filtering expressions that restrict what gets delivered to the destination AWS resource. For more information about the filter pattern syntax, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
   /// [logGroupName] The log group to associate with the subscription filter. All log events that are uploaded to this log group are filtered and delivered to the specified AWS resource if the filter pattern matches the log events.
   /// [roleArn] The ARN of an IAM role that grants CWL permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.
-  AwsLogsSubscriptionFilterPropertiesResponse({
+  const AwsLogsSubscriptionFilterPropertiesResponse({
     this.destinationArn,
     this.distribution,
     this.filterName,

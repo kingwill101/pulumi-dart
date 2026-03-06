@@ -12,7 +12,7 @@ class TagFilterResponse {
   /// Creates a new [TagFilterResponse].
   /// [key] The tag key.
   /// [value] The tag value.
-  TagFilterResponse({
+  const TagFilterResponse({
     this.key,
     this.value,
   });

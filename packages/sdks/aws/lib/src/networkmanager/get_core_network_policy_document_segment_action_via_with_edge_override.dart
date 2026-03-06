@@ -14,7 +14,7 @@ class GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride {
   /// [edgeSets] A list of a list of strings. The list of edges associated with the network function group.
   /// [useEdge] The preferred edge to use.
   /// [useEdgeLocation] The preferred edge to use.
-  GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride({
+  const GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride({
     this.edgeSets,
     this.useEdge,
     this.useEdgeLocation,

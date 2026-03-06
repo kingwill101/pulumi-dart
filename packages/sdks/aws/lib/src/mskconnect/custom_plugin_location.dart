@@ -9,7 +9,7 @@ class CustomPluginLocation {
 
   /// Creates a new [CustomPluginLocation].
   /// [s3] Information of the plugin file stored in Amazon S3. See `s3` Block for details..
-  CustomPluginLocation({
+  const CustomPluginLocation({
     required this.s3,
   });
 

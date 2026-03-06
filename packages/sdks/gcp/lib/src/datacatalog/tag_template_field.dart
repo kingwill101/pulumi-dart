@@ -31,7 +31,7 @@ class TagTemplateField {
   /// [name] (Output)
   /// [order] The order of this field with respect to other fields in this tag template.
   /// [type] The type of value this tag field can contain.
-  TagTemplateField({
+  const TagTemplateField({
     this.description,
     this.displayName,
     required this.fieldId,

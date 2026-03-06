@@ -18,7 +18,7 @@ class GroupAssociationArgs {
   /// [canaryArn] ARN of the canary.
   /// [groupName] Name of the group that the canary will be associated with.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GroupAssociationArgs({
+  const GroupAssociationArgs({
     required this.canaryArn,
     required this.groupName,
     this.region,

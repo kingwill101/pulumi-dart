@@ -9,7 +9,7 @@ class ServiceConfig {
 
   /// Creates a new [ServiceConfig].
   /// [domain] Optional. Domain name of the service. Example: console.cloud.google
-  ServiceConfig({
+  const ServiceConfig({
     this.domain,
   });
 

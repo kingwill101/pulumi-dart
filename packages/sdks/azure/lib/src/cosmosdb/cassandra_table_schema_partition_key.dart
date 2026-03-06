@@ -8,7 +8,7 @@ class CassandraTableSchemaPartitionKey {
 
   /// Creates a new [CassandraTableSchemaPartitionKey].
   /// [name] Name of the column to partition by.
-  CassandraTableSchemaPartitionKey({
+  const CassandraTableSchemaPartitionKey({
     required this.name,
   });
 

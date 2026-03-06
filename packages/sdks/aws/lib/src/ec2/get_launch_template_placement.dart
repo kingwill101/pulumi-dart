@@ -23,7 +23,7 @@ class GetLaunchTemplatePlacement {
   /// [partitionNumber] Required.
   /// [spreadDomain] Required.
   /// [tenancy] Required.
-  GetLaunchTemplatePlacement({
+  const GetLaunchTemplatePlacement({
     required this.affinity,
     required this.availabilityZone,
     required this.groupId,

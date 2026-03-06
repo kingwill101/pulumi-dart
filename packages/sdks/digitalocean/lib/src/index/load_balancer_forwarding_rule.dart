@@ -26,7 +26,7 @@ class LoadBalancerForwardingRule {
   /// [targetPort] An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
   /// [targetProtocol] The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
   /// [tlsPassthrough] A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
-  LoadBalancerForwardingRule({
+  const LoadBalancerForwardingRule({
     this.certificateId,
     this.certificateName,
     required this.entryPort,

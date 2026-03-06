@@ -18,7 +18,7 @@ class VpnGatewayAttachmentArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcId] The ID of the VPC.
   /// [vpnGatewayId] The ID of the Virtual Private Gateway.
-  VpnGatewayAttachmentArgs({
+  const VpnGatewayAttachmentArgs({
     this.region,
     required this.vpcId,
     required this.vpnGatewayId,

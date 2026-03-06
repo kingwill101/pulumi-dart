@@ -11,7 +11,7 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu {
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu].
   /// [max] The maximum amount of memory per vCPU, in GiB. To specify no maximum limit, omit this parameter.
   /// [min] The minimum amount of memory per vCPU, in GiB. To specify no minimum limit, omit this parameter.
-  FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu({
+  const FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu({
     this.max,
     this.min,
   });

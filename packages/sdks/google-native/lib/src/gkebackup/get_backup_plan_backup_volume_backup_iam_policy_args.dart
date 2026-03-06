@@ -21,7 +21,7 @@ class GetBackupPlanBackupVolumeBackupIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [volumeBackupId] Required.
-  GetBackupPlanBackupVolumeBackupIamPolicyArgs({
+  const GetBackupPlanBackupVolumeBackupIamPolicyArgs({
     required this.backupId,
     required this.backupPlanId,
     required this.location,

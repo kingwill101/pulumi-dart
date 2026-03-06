@@ -31,7 +31,7 @@ class GetApplicationScalingRulesRule {
   /// [scalingRuleName] The name of the scaling rule.
   /// [scalingRuleTimers] Timing elastic expansion.
   /// [scalingRuleType] Flexible strategy type.
-  GetApplicationScalingRulesRule({
+  const GetApplicationScalingRulesRule({
     required this.appId,
     required this.createTime,
     required this.id,

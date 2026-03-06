@@ -15,7 +15,7 @@ class Capability {
   /// [description] Description of Capability
   /// [name] Name of Capability
   /// [state] State of resource
-  Capability({
+  const Capability({
     required this.description,
     required this.name,
     this.state,

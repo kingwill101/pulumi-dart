@@ -13,7 +13,7 @@ class MavenRepositoryConfigArtifactregistryV1beta2 {
   /// Creates a new [MavenRepositoryConfigArtifactregistryV1beta2].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same snapshot versions.
   /// [versionPolicy] Version policy defines the versions that the registry will accept.
-  MavenRepositoryConfigArtifactregistryV1beta2({
+  const MavenRepositoryConfigArtifactregistryV1beta2({
     this.allowSnapshotOverwrites,
     this.versionPolicy,
   });

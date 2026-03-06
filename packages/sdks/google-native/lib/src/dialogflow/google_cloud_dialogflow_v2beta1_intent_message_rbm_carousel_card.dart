@@ -14,7 +14,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard].
   /// [cardContents] The cards in the carousel. A carousel must have at least 2 cards and at most 10.
   /// [cardWidth] The width of the cards in the carousel.
-  GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard({
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard({
     required this.cardContents,
     required this.cardWidth,
   });

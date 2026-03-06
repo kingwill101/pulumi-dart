@@ -38,7 +38,7 @@ class PrometheusRule {
   /// [record] Recorded metrics name.
   /// [resolveConfiguration] Defines the configuration for resolving fired alerts. Only relevant for alerts.
   /// [severity] The severity of the alerts fired by the rule. Must be between 0 and 4.
-  PrometheusRule({
+  const PrometheusRule({
     this.actions,
     this.alert,
     this.annotations,

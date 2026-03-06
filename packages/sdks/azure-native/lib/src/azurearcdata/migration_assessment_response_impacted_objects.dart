@@ -11,7 +11,7 @@ class MigrationAssessmentResponseImpactedObjects {
   /// [impactDetail] Optional.
   /// [name] Optional.
   /// [objectType] Optional.
-  MigrationAssessmentResponseImpactedObjects({
+  const MigrationAssessmentResponseImpactedObjects({
     this.impactDetail,
     this.name,
     this.objectType,

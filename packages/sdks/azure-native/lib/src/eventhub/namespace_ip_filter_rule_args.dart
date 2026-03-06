@@ -27,7 +27,7 @@ class NamespaceIpFilterRuleArgs {
   /// [ipMask] IP Mask
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  NamespaceIpFilterRuleArgs({
+  const NamespaceIpFilterRuleArgs({
     this.action,
     this.filterName,
     this.ipFilterRuleName,

@@ -10,7 +10,7 @@ class DeidentifyOperationMetadata {
 
   /// Creates a new [DeidentifyOperationMetadata].
   /// [fhirOutput] Details about the FHIR store to write the output to.
-  DeidentifyOperationMetadata({
+  const DeidentifyOperationMetadata({
     this.fhirOutput,
   });
 

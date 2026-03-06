@@ -17,7 +17,7 @@ class RegionResizeRequestStatus {
   /// Creates a new [RegionResizeRequestStatus].
   /// [errors] (Output)
   /// [lastAttempts] (Output)
-  RegionResizeRequestStatus({
+  const RegionResizeRequestStatus({
     this.errors,
     this.lastAttempts,
   });

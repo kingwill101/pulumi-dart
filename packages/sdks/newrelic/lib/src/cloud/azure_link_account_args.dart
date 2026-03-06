@@ -27,7 +27,7 @@ class AzureLinkAccountArgs {
   /// [name] The name of the application in New Relic APM.
   /// [subscriptionId] Subscription ID of the Azure cloud account.
   /// [tenantId] Tenant ID of the Azure cloud account.
-  AzureLinkAccountArgs({
+  const AzureLinkAccountArgs({
     this.accountId,
     required this.applicationId,
     required this.clientSecret,

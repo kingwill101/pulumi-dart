@@ -15,7 +15,7 @@ class GetApicategoryArgs {
   /// [apicategoryId] Required.
   /// [organizationId] Required.
   /// [siteId] Required.
-  GetApicategoryArgs({
+  const GetApicategoryArgs({
     required this.apicategoryId,
     required this.organizationId,
     required this.siteId,

@@ -15,7 +15,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType {
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType].
   /// [infoType] Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
   /// [maxFindings] Max findings limit for the given infoType.
-  PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType({
+  const PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType({
     this.infoType,
     this.maxFindings,
   });

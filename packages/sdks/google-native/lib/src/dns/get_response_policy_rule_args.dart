@@ -17,7 +17,7 @@ class GetResponsePolicyRuleArgs {
   /// [project] Optional.
   /// [responsePolicy] Required.
   /// [responsePolicyRule] Required.
-  GetResponsePolicyRuleArgs({
+  const GetResponsePolicyRuleArgs({
     this.clientOperationId,
     this.project,
     required this.responsePolicy,

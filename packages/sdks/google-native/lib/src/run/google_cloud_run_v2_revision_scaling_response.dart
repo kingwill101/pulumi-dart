@@ -12,7 +12,7 @@ class GoogleCloudRunV2RevisionScalingResponse {
   /// Creates a new [GoogleCloudRunV2RevisionScalingResponse].
   /// [maxInstanceCount] Maximum number of serving instances that this resource should have.
   /// [minInstanceCount] Minimum number of serving instances that this resource should have.
-  GoogleCloudRunV2RevisionScalingResponse({
+  const GoogleCloudRunV2RevisionScalingResponse({
     required this.maxInstanceCount,
     required this.minInstanceCount,
   });

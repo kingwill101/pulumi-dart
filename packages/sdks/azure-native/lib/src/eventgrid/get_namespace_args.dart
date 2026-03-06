@@ -15,7 +15,7 @@ class GetNamespaceArgs {
   /// Creates a new [GetNamespaceArgs].
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetNamespaceArgs({
+  const GetNamespaceArgs({
     required this.namespaceName,
     required this.resourceGroupName,
   });

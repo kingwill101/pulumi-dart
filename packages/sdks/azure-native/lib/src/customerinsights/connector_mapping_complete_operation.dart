@@ -13,7 +13,7 @@ class ConnectorMappingCompleteOperation {
   /// Creates a new [ConnectorMappingCompleteOperation].
   /// [completionOperationType] The type of completion operation.
   /// [destinationFolder] The destination folder where files will be moved to once the import is done.
-  ConnectorMappingCompleteOperation({
+  const ConnectorMappingCompleteOperation({
     this.completionOperationType,
     this.destinationFolder,
   });

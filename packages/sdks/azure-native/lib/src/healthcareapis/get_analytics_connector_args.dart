@@ -18,7 +18,7 @@ class GetAnalyticsConnectorArgs {
   /// [analyticsConnectorName] The name of Analytics Connector resource.
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
-  GetAnalyticsConnectorArgs({
+  const GetAnalyticsConnectorArgs({
     required this.analyticsConnectorName,
     required this.resourceGroupName,
     required this.workspaceName,

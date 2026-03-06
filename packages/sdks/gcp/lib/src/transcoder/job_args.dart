@@ -31,7 +31,7 @@ class JobArgs {
   /// [location] The location of the transcoding job resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [templateId] Specify the templateId to use for populating Job.config.
-  JobArgs({
+  const JobArgs({
     this.config,
     this.labels,
     required this.location,

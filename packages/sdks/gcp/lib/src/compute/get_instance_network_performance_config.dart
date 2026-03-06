@@ -8,7 +8,7 @@ class GetInstanceNetworkPerformanceConfig {
 
   /// Creates a new [GetInstanceNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] The egress bandwidth tier for the instance.
-  GetInstanceNetworkPerformanceConfig({
+  const GetInstanceNetworkPerformanceConfig({
     required this.totalEgressBandwidthTier,
   });
 

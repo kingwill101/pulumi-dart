@@ -15,7 +15,7 @@ class PipelineStage {
   /// [description] Description for stage.
   /// [next] Next stage in the pipeline. Not required if output stage.
   /// [type] ARM resource type.
-  PipelineStage({
+  const PipelineStage({
     this.description,
     this.next,
     required this.type,

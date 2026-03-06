@@ -27,7 +27,7 @@ class GetGatewayRouteArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags.
   /// [virtualGatewayName] Name of the virtual gateway in which the route exists.
-  GetGatewayRouteArgs({
+  const GetGatewayRouteArgs({
     required this.meshName,
     this.meshOwner,
     required this.name,

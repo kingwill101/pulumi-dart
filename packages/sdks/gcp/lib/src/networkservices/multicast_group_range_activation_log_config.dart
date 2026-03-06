@@ -8,7 +8,7 @@ class MulticastGroupRangeActivationLogConfig {
 
   /// Creates a new [MulticastGroupRangeActivationLogConfig].
   /// [enabled] Whether to enable logging or not.
-  MulticastGroupRangeActivationLogConfig({
+  const MulticastGroupRangeActivationLogConfig({
     this.enabled,
   });
 

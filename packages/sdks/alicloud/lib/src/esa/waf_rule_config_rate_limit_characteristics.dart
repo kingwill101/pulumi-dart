@@ -10,7 +10,7 @@ class WafRuleConfigRateLimitCharacteristics {
   /// Creates a new [WafRuleConfigRateLimitCharacteristics].
   /// [criterias] Optional.
   /// [logic] Optional.
-  WafRuleConfigRateLimitCharacteristics({
+  const WafRuleConfigRateLimitCharacteristics({
     this.criterias,
     this.logic,
   });

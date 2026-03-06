@@ -12,7 +12,7 @@ class GetLockArgs {
 
   /// Creates a new [GetLockArgs].
   /// [id] The unique ID of the Lock.
-  GetLockArgs({
+  const GetLockArgs({
     required this.id,
   });
 

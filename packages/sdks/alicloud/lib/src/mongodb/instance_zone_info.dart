@@ -22,7 +22,7 @@ class InstanceZoneInfo {
   /// [roleId] The id of the role.
   /// [roleType] The role of the node.
   /// [zoneId] The Zone to launch the DB instance. it supports multiple zone.
-  InstanceZoneInfo({
+  const InstanceZoneInfo({
     this.insName,
     this.nodeType,
     this.roleId,

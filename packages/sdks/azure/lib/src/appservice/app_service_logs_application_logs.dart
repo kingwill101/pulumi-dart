@@ -12,7 +12,7 @@ class AppServiceLogsApplicationLogs {
   /// Creates a new [AppServiceLogsApplicationLogs].
   /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
   /// [fileSystemLevel] Log level for filesystem based logging. Supported values are `Error`, `Information`, `Verbose`, `Warning` and `Off`. Defaults to `Off`.
-  AppServiceLogsApplicationLogs({
+  const AppServiceLogsApplicationLogs({
     this.azureBlobStorage,
     this.fileSystemLevel,
   });

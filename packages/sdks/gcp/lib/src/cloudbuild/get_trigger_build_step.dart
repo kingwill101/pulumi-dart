@@ -113,7 +113,7 @@ class GetTriggerBuildStep {
   /// [timing] Output only. Stores timing information for executing this
   /// [volumes] List of volumes to mount into the build step.
   /// [waitFors] The ID(s) of the step(s) that this build step depends on.
-  GetTriggerBuildStep({
+  const GetTriggerBuildStep({
     required this.allowExitCodes,
     required this.allowFailure,
     required this.args,

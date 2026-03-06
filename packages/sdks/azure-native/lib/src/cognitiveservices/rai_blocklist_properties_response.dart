@@ -9,7 +9,7 @@ class RaiBlocklistPropertiesResponse {
 
   /// Creates a new [RaiBlocklistPropertiesResponse].
   /// [description] Description of the block list.
-  RaiBlocklistPropertiesResponse({
+  const RaiBlocklistPropertiesResponse({
     this.description,
   });
 

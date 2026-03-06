@@ -18,7 +18,7 @@ class MonitoringConfigResponseContainerV1beta1 {
   /// [advancedDatapathObservabilityConfig] Configuration of Advanced Datapath Observability features.
   /// [componentConfig] Monitoring components configuration
   /// [managedPrometheusConfig] Enable Google Cloud Managed Service for Prometheus in the cluster.
-  MonitoringConfigResponseContainerV1beta1({
+  const MonitoringConfigResponseContainerV1beta1({
     required this.advancedDatapathObservabilityConfig,
     required this.componentConfig,
     required this.managedPrometheusConfig,

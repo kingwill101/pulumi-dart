@@ -43,7 +43,7 @@ class FeatureViewAiplatformV1beta1Args {
   /// [runSyncImmediately] Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
   /// [syncConfig] Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// [vectorSearchConfig] Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
-  FeatureViewAiplatformV1beta1Args({
+  const FeatureViewAiplatformV1beta1Args({
     this.bigQuerySource,
     this.etag,
     required this.featureOnlineStoreId,

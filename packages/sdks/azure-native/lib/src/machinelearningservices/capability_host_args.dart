@@ -22,7 +22,7 @@ class CapabilityHostArgs {
   /// [name] CapabilityHost name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  CapabilityHostArgs({
+  const CapabilityHostArgs({
     required this.capabilityHostProperties,
     this.name,
     required this.resourceGroupName,

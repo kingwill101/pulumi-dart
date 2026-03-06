@@ -11,7 +11,7 @@ class ScheduleWeeklyRecurrence {
   /// Creates a new [ScheduleWeeklyRecurrence].
   /// [time] The time when the schedule takes effect.
   /// [weekDays] A list of days that this schedule takes effect . Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
-  ScheduleWeeklyRecurrence({
+  const ScheduleWeeklyRecurrence({
     required this.time,
     this.weekDays,
   });

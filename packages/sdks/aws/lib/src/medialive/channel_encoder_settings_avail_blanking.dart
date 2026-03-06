@@ -12,7 +12,7 @@ class ChannelEncoderSettingsAvailBlanking {
   /// Creates a new [ChannelEncoderSettingsAvailBlanking].
   /// [availBlankingImage] Blanking image to be used. See Avail Blanking Image for more details.
   /// [state] When set to enabled, causes video, audio and captions to be blanked when insertion metadata is added.
-  ChannelEncoderSettingsAvailBlanking({
+  const ChannelEncoderSettingsAvailBlanking({
     this.availBlankingImage,
     this.state,
   });

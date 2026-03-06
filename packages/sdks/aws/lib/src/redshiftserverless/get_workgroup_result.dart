@@ -40,7 +40,7 @@ class GetWorkgroupResult {
   /// [trackName] The name of the track for the workgroup.
   /// [workgroupId] The Redshift Workgroup ID.
   /// [workgroupName] Required.
-  GetWorkgroupResult({
+  const GetWorkgroupResult({
     required this.arn,
     required this.endpoints,
     required this.enhancedVpcRouting,

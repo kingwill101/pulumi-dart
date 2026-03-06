@@ -21,7 +21,7 @@ class Field {
   /// [name] The name of the field. For example, "PID-1" or just "1".
   /// [table] The HL7v2 table this field refers to. For example, PID-15 (Patient's Primary Language) usually refers to table "0296".
   /// [type] The type of this field. A Type with this name must be defined in an Hl7TypesConfig.
-  Field({
+  const Field({
     this.maxOccurs,
     this.minOccurs,
     this.name,

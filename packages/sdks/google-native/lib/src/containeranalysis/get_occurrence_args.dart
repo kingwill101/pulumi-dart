@@ -13,7 +13,7 @@ class GetOccurrenceArgs {
   /// Creates a new [GetOccurrenceArgs].
   /// [occurrenceId] Required.
   /// [project] Optional.
-  GetOccurrenceArgs({
+  const GetOccurrenceArgs({
     required this.occurrenceId,
     this.project,
   });

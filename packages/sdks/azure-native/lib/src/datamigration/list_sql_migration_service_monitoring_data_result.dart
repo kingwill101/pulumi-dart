@@ -13,7 +13,7 @@ class ListSqlMigrationServiceMonitoringDataResult {
   /// Creates a new [ListSqlMigrationServiceMonitoringDataResult].
   /// [name] The name of Integration Runtime.
   /// [nodes] Integration Runtime node monitoring data.
-  ListSqlMigrationServiceMonitoringDataResult({
+  const ListSqlMigrationServiceMonitoringDataResult({
     required this.name,
     required this.nodes,
   });

@@ -22,7 +22,7 @@ class FleetspaceArgs {
   /// [fleetspaceName] Name of the fleetspace.
   /// [properties] A Fleetspace properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  FleetspaceArgs({
+  const FleetspaceArgs({
     required this.fleetName,
     this.fleetspaceName,
     this.properties,

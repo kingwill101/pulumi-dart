@@ -18,7 +18,7 @@ class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap {
   /// [displayTemplate] The template to customize how the field is displayed.
   /// [field] Registered field name. The format is `field.abc`.
   /// [uiComponent] The identifier for this object. Format specified above.
-  WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap({
+  const WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap({
     this.deviceVisibilities,
     this.displayTemplate,
     required this.field,

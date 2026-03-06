@@ -33,7 +33,7 @@ class VpcConnectorState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcConnectorName] Name for the VPC connector.
   /// [vpcConnectorRevision] The revision of VPC connector. It's unique among all the active connectors ("Status": "ACTIVE") that share the same Name.
-  VpcConnectorState({
+  const VpcConnectorState({
     this.arn,
     this.region,
     this.securityGroups,

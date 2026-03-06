@@ -30,7 +30,7 @@ class SandboxCustomImageArgs {
   /// [requirementsFileContent] The requirements file content.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sandboxCustomImageName] The name of the sandbox custom image.
-  SandboxCustomImageArgs({
+  const SandboxCustomImageArgs({
     this.baseImageName,
     required this.clusterName,
     required this.language,

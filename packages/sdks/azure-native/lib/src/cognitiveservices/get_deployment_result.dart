@@ -35,7 +35,7 @@ class GetDeploymentResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDeploymentResult({
+  const GetDeploymentResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

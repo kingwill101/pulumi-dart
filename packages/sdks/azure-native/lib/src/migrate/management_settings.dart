@@ -18,7 +18,7 @@ class ManagementSettings {
   /// [hypervVirtualizationManagementSettings] HyperV Virtualization Management Settings.
   /// [otherManagementCostsSettings] Other Management Costs Settings.
   /// [thirdPartyManagementSettings] Third Party Management Settings.
-  ManagementSettings({
+  const ManagementSettings({
     required this.hypervVirtualizationManagementSettings,
     required this.otherManagementCostsSettings,
     required this.thirdPartyManagementSettings,

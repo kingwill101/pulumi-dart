@@ -18,7 +18,7 @@ class SkuSettingCapacityResponse {
   /// [maximum] The maximum.
   /// [minimum] The minimum.
   /// [scaleType] The scale type.
-  SkuSettingCapacityResponse({
+  const SkuSettingCapacityResponse({
     this.default_,
     this.maximum,
     required this.minimum,

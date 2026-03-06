@@ -9,7 +9,7 @@ class BareMetalAdminClusterOperationsConfigResponse {
 
   /// Creates a new [BareMetalAdminClusterOperationsConfigResponse].
   /// [enableApplicationLogs] Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
-  BareMetalAdminClusterOperationsConfigResponse({
+  const BareMetalAdminClusterOperationsConfigResponse({
     required this.enableApplicationLogs,
   });
 

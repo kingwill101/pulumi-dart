@@ -43,7 +43,7 @@ class CollectionPolicyArgs {
   /// [policyName] The naming rules are as follows:
   /// [productCode] Product code.
   /// [resourceDirectory] Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
-  CollectionPolicyArgs({
+  const CollectionPolicyArgs({
     this.centralizeConfig,
     this.centralizeEnabled,
     required this.dataCode,

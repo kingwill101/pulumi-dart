@@ -31,7 +31,7 @@ class ConditionsResponse {
   /// [monitorService] filter alerts by monitor service
   /// [severity] filter alerts by severity
   /// [targetResourceType] filter alerts by target resource type
-  ConditionsResponse({
+  const ConditionsResponse({
     this.alertContext,
     this.alertRuleId,
     this.alertRuleName,

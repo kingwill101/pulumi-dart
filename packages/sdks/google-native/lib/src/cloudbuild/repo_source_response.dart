@@ -30,7 +30,7 @@ class RepoSourceResponse {
   /// [repoName] Name of the Cloud Source Repository.
   /// [substitutions] Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
   /// [tagName] Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-  RepoSourceResponse({
+  const RepoSourceResponse({
     required this.branchName,
     required this.commitSha,
     required this.dir,

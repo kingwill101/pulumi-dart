@@ -38,7 +38,7 @@ class AnycastEipAddressAttachmentState {
   /// [popLocations] The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
   /// [privateIpAddress] The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
   /// [status] The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
-  AnycastEipAddressAttachmentState({
+  const AnycastEipAddressAttachmentState({
     this.anycastId,
     this.associationMode,
     this.bindInstanceId,

@@ -41,7 +41,7 @@ class AccessEntryState {
   /// [tagsAll] (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
   /// [type] Defaults to STANDARD which provides the standard workflow. EC2_LINUX, EC2_WINDOWS, FARGATE_LINUX types disallow users to input a username or groups, and prevent associations.
   /// [userName] Defaults to principal ARN if user is principal else defaults to assume-role/session-name is role is used.
-  AccessEntryState({
+  const AccessEntryState({
     this.accessEntryArn,
     this.clusterName,
     this.createdAt,

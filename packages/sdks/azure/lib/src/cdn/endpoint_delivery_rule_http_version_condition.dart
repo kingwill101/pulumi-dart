@@ -14,7 +14,7 @@ class EndpointDeliveryRuleHttpVersionCondition {
   /// [matchValues] Valid values are `0.9`, `1.0`, `1.1` and `2.0`.
   /// [negateCondition] Defaults to `false`.
   /// [operator] Valid values are `Equal`. Defaults to `Equal`.
-  EndpointDeliveryRuleHttpVersionCondition({
+  const EndpointDeliveryRuleHttpVersionCondition({
     required this.matchValues,
     this.negateCondition,
     this.operator,

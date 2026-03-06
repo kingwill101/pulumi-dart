@@ -24,7 +24,7 @@ class InfrastructureResourceArgs {
   /// [resourceId] The id of the infrastructure resource.
   /// [resourceType] The type of the infrastructure resource.
   /// [spaceName] The name of the space
-  InfrastructureResourceArgs({
+  const InfrastructureResourceArgs({
     this.infrastructureResourceName,
     required this.resourceGroupName,
     required this.resourceId,

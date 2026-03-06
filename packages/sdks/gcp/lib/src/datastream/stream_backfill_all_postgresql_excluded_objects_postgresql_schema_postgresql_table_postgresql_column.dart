@@ -33,7 +33,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
   /// [precision] (Output)
   /// [primaryKey] Whether or not the column represents a primary key.
   /// [scale] (Output)
-  StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn({
+  const StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn({
     this.column,
     this.dataType,
     this.length,

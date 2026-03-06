@@ -15,7 +15,7 @@ class GetNetworkManagerArgs {
   /// Creates a new [GetNetworkManagerArgs].
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
-  GetNetworkManagerArgs({
+  const GetNetworkManagerArgs({
     required this.networkManagerName,
     required this.resourceGroupName,
   });

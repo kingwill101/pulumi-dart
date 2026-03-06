@@ -13,7 +13,7 @@ class MysqlDatabaseResponse {
   /// Creates a new [MysqlDatabaseResponse].
   /// [database] Database name.
   /// [mysqlTables] Tables in the database.
-  MysqlDatabaseResponse({
+  const MysqlDatabaseResponse({
     required this.database,
     required this.mysqlTables,
   });

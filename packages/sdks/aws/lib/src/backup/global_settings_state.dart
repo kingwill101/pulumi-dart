@@ -9,7 +9,7 @@ class GlobalSettingsState {
 
   /// Creates a new [GlobalSettingsState].
   /// [globalSettings] A list of resources along with the opt-in preferences for the account. For a list of inputs, see [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide.
-  GlobalSettingsState({
+  const GlobalSettingsState({
     this.globalSettings,
   });
 

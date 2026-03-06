@@ -19,7 +19,7 @@ class GetUsersResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [users] Required.
-  GetUsersResult({
+  const GetUsersResult({
     this.filters,
     required this.id,
     this.order,

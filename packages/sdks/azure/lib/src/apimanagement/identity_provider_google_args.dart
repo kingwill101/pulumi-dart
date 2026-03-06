@@ -21,7 +21,7 @@ class IdentityProviderGoogleArgs {
   /// [clientId] Client Id for Google Sign-in.
   /// [clientSecret] Client secret for Google Sign-in.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  IdentityProviderGoogleArgs({
+  const IdentityProviderGoogleArgs({
     required this.apiManagementName,
     required this.clientId,
     required this.clientSecret,

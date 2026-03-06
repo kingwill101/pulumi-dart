@@ -39,7 +39,7 @@ class EventHubConnectionArgs {
   /// [mappingRuleName] The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
   /// [resourceGroupName] The name of the resource group containing the Kusto cluster.
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
-  EventHubConnectionArgs({
+  const EventHubConnectionArgs({
     required this.clusterName,
     required this.consumerGroup,
     this.dataFormat,

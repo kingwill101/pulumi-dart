@@ -15,7 +15,7 @@ class GetRegionInstanceGroupInstance {
   /// [instance] URL to the instance.
   /// [namedPorts] List of named ports in the group, as a list of resources, each containing:
   /// [status] String description of current state of the instance.
-  GetRegionInstanceGroupInstance({
+  const GetRegionInstanceGroupInstance({
     required this.instance,
     required this.namedPorts,
     required this.status,

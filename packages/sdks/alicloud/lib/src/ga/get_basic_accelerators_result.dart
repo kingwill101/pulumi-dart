@@ -34,7 +34,7 @@ class GetBasicAcceleratorsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the Global Accelerator Basic Accelerator instance.
-  GetBasicAcceleratorsResult({
+  const GetBasicAcceleratorsResult({
     this.acceleratorId,
     required this.accelerators,
     this.bandwidthBillingType,

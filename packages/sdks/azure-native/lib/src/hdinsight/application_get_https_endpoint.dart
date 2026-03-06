@@ -21,7 +21,7 @@ class ApplicationGetHttpsEndpoint {
   /// [disableGatewayAuth] The value indicates whether to disable GatewayAuth.
   /// [privateIPAddress] The private ip address of the endpoint.
   /// [subDomainSuffix] The subdomain suffix of the application.
-  ApplicationGetHttpsEndpoint({
+  const ApplicationGetHttpsEndpoint({
     this.accessModes,
     this.destinationPort,
     this.disableGatewayAuth,

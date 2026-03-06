@@ -44,7 +44,7 @@ class RestoreConfigResponse {
   /// [substitutionRules] Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
   /// [transformationRules] Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
   /// [volumeDataRestorePolicy] Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
-  RestoreConfigResponse({
+  const RestoreConfigResponse({
     required this.allNamespaces,
     required this.clusterResourceConflictPolicy,
     required this.clusterResourceRestoreScope,

@@ -10,7 +10,7 @@ class GetNetworkManagedServiceManagedS3BackupAccess {
   /// Creates a new [GetNetworkManagedServiceManagedS3BackupAccess].
   /// [ipv4Addresses] Required.
   /// [status] The status of the network resource.
-  GetNetworkManagedServiceManagedS3BackupAccess({
+  const GetNetworkManagedServiceManagedS3BackupAccess({
     required this.ipv4Addresses,
     required this.status,
   });

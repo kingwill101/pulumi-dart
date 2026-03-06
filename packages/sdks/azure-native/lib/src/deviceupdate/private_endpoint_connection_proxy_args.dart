@@ -25,7 +25,7 @@ class PrivateEndpointConnectionProxyArgs {
   /// [remotePrivateEndpoint] Remote private endpoint details.
   /// [resourceGroupName] The resource group name.
   /// [status] Operation status.
-  PrivateEndpointConnectionProxyArgs({
+  const PrivateEndpointConnectionProxyArgs({
     required this.accountName,
     this.privateEndpointConnectionProxyId,
     this.remotePrivateEndpoint,

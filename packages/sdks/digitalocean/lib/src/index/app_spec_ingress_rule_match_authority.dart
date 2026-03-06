@@ -8,7 +8,7 @@ class AppSpecIngressRuleMatchAuthority {
 
   /// Creates a new [AppSpecIngressRuleMatchAuthority].
   /// [exact] Exact match.
-  AppSpecIngressRuleMatchAuthority({
+  const AppSpecIngressRuleMatchAuthority({
     this.exact,
   });
 

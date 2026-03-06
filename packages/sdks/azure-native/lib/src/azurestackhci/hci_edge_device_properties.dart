@@ -10,7 +10,7 @@ class HciEdgeDeviceProperties {
 
   /// Creates a new [HciEdgeDeviceProperties].
   /// [deviceConfiguration] Device Configuration
-  HciEdgeDeviceProperties({
+  const HciEdgeDeviceProperties({
     this.deviceConfiguration,
   });
 

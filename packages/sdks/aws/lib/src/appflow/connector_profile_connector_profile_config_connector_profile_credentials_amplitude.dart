@@ -10,7 +10,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude].
   /// [apiKey] Required.
   /// [secretKey] The Secret Access Key portion of the credentials.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude({
     required this.apiKey,
     required this.secretKey,
   });

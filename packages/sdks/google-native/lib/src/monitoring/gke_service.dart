@@ -18,7 +18,7 @@ class GkeService {
   /// [location] The location of the parent cluster. This may be a zone or region.
   /// [namespaceName] The name of the parent namespace.
   /// [serviceName] The name of this service.
-  GkeService({
+  const GkeService({
     this.clusterName,
     this.location,
     this.namespaceName,

@@ -11,7 +11,7 @@ class PackagePackageSource {
   /// Creates a new [PackagePackageSource].
   /// [s3BucketName] The name of the Amazon S3 bucket containing the package.
   /// [s3Key] Key (file name) of the package.
-  PackagePackageSource({
+  const PackagePackageSource({
     required this.s3BucketName,
     required this.s3Key,
   });

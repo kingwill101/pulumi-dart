@@ -19,7 +19,7 @@ class FolderArgs {
   /// [bucket] The name of the bucket that contains the folder.
   /// [forceDestroy] If set to true, items within folder if any will be force destroyed.
   /// [name] The name of the folder expressed as a path. Must include
-  FolderArgs({
+  const FolderArgs({
     required this.bucket,
     this.forceDestroy,
     this.name,

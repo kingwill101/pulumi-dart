@@ -14,7 +14,7 @@ class GetClusterMigrationSource {
   /// [hostPort] The host and port of the on-premises instance in host:port format
   /// [referenceId] Place holder for the external source identifier(e.g DMS job name) that created the cluster.
   /// [sourceType] Type of migration source.
-  GetClusterMigrationSource({
+  const GetClusterMigrationSource({
     required this.hostPort,
     required this.referenceId,
     required this.sourceType,

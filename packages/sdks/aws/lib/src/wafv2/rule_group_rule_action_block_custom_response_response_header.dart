@@ -11,7 +11,7 @@ class RuleGroupRuleActionBlockCustomResponseResponseHeader {
   /// Creates a new [RuleGroupRuleActionBlockCustomResponseResponseHeader].
   /// [name] A friendly name of the rule group.
   /// [value] The value of the custom header.
-  RuleGroupRuleActionBlockCustomResponseResponseHeader({
+  const RuleGroupRuleActionBlockCustomResponseResponseHeader({
     required this.name,
     required this.value,
   });

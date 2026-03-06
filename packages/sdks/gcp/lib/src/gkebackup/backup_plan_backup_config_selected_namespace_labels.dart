@@ -10,7 +10,7 @@ class BackupPlanBackupConfigSelectedNamespaceLabels {
 
   /// Creates a new [BackupPlanBackupConfigSelectedNamespaceLabels].
   /// [resourceLabels] A list of Kubernetes Namespace labels.
-  BackupPlanBackupConfigSelectedNamespaceLabels({
+  const BackupPlanBackupConfigSelectedNamespaceLabels({
     required this.resourceLabels,
   });
 

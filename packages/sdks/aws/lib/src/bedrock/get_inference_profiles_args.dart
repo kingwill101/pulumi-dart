@@ -15,7 +15,7 @@ class GetInferenceProfilesArgs {
   /// Creates a new [GetInferenceProfilesArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Filters for inference profiles that match the type you specify. Valid values are: `SYSTEM_DEFINED`, `APPLICATION`.
-  GetInferenceProfilesArgs({
+  const GetInferenceProfilesArgs({
     this.region,
     this.type,
   });

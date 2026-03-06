@@ -16,7 +16,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   /// [provisionedConfiguration] Configurations for a provisioned Amazon Redshift query engine. See `provisioned_configuration` block for details.
   /// [serverlessConfiguration] Configurations for a serverless Amazon Redshift query engine. See `serverless_configuration` block for details.
   /// [type] Type of query engine. Valid values: `SERVERLESS`, `PROVISIONED`.
-  AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration({
+  const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration({
     this.provisionedConfiguration,
     this.serverlessConfiguration,
     required this.type,

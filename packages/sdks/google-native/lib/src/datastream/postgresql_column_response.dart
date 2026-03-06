@@ -30,7 +30,7 @@ class PostgresqlColumnResponse {
   /// [precision] Column precision.
   /// [primaryKey] Whether or not the column represents a primary key.
   /// [scale] Column scale.
-  PostgresqlColumnResponse({
+  const PostgresqlColumnResponse({
     required this.column,
     required this.dataType,
     required this.length,

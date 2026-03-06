@@ -11,7 +11,7 @@ class DatasetEncryptionSpec {
 
   /// Creates a new [DatasetEncryptionSpec].
   /// [kmsKeyName] KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
-  DatasetEncryptionSpec({
+  const DatasetEncryptionSpec({
     this.kmsKeyName,
   });
 

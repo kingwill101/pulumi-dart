@@ -33,7 +33,7 @@ class SfdcInstanceArgs {
   /// [project] Optional.
   /// [serviceAuthority] URL used for API calls after authentication (the login authority is configured within the referenced AuthConfig).
   /// [sfdcOrgId] The SFDC Org Id. This is defined in salesforce.
-  SfdcInstanceArgs({
+  const SfdcInstanceArgs({
     this.authConfigId,
     this.description,
     this.displayName,

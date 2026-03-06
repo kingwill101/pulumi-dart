@@ -17,7 +17,7 @@ class NfsFileShareNfsFileShareDefaults {
   /// [fileMode] The Unix file mode in the string form "nnnn". Defaults to `"0666"`.
   /// [groupId] The default group ID for the file share (unless the files have another group ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
   /// [ownerId] The default owner ID for the file share (unless the files have another owner ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
-  NfsFileShareNfsFileShareDefaults({
+  const NfsFileShareNfsFileShareDefaults({
     this.directoryMode,
     this.fileMode,
     this.groupId,

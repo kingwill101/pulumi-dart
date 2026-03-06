@@ -21,7 +21,7 @@ class GetVirtualMachineRunCommandByVirtualMachineArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runCommandName] The name of the VirtualMachineRunCommand
   /// [vmName] The name of the VirtualMachine
-  GetVirtualMachineRunCommandByVirtualMachineArgs({
+  const GetVirtualMachineRunCommandByVirtualMachineArgs({
     this.expand,
     required this.resourceGroupName,
     required this.runCommandName,

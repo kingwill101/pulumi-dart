@@ -14,7 +14,7 @@ class InteractiveQueryClusterRolesZookeeperNodeScriptAction {
   /// [name] The name of the script action.
   /// [parameters] The parameters for the script provided.
   /// [uri] The URI to the script.
-  InteractiveQueryClusterRolesZookeeperNodeScriptAction({
+  const InteractiveQueryClusterRolesZookeeperNodeScriptAction({
     required this.name,
     this.parameters,
     required this.uri,

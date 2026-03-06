@@ -47,7 +47,7 @@ class ExportRunResponse {
   /// [submittedBy] The identifier for the entity that triggered the export. For on-demand runs it is the user email. For scheduled runs it is 'System'.
   /// [submittedTime] The time when export was queued to be run.
   /// [type] Resource type.
-  ExportRunResponse({
+  const ExportRunResponse({
     this.eTag,
     this.error,
     this.executionType,

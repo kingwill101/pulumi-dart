@@ -15,7 +15,7 @@ class PublicIPAddressProperties {
   /// [ipAddress] IP Address. This is static. If the user specifies, we allocate that otherwise allocate from logical network address space.
   /// [ipAllocationScope] ipAllocationScope: Azure Reference to a particular IP Pool (ALM) or a LogicalNetwork (ALL) for allocating public IP
   /// [publicIPAddressVersion] Whether the public IP is v4 or v6. Defaults to IPv4
-  PublicIPAddressProperties({
+  const PublicIPAddressProperties({
     this.ipAddress,
     this.ipAllocationScope,
     this.publicIPAddressVersion,

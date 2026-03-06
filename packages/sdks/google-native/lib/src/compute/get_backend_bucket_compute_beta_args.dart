@@ -13,7 +13,7 @@ class GetBackendBucketComputeBetaArgs {
   /// Creates a new [GetBackendBucketComputeBetaArgs].
   /// [backendBucket] Required.
   /// [project] Optional.
-  GetBackendBucketComputeBetaArgs({
+  const GetBackendBucketComputeBetaArgs({
     required this.backendBucket,
     this.project,
   });

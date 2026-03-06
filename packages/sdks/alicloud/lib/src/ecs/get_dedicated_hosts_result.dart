@@ -47,7 +47,7 @@ class GetDedicatedHostsResult {
   /// [status] The service status of the dedicated host.
   /// [tags] The tags of the dedicated host.
   /// [zoneId] The zone id of the dedicated host.
-  GetDedicatedHostsResult({
+  const GetDedicatedHostsResult({
     this.dedicatedHostId,
     this.dedicatedHostName,
     this.dedicatedHostType,

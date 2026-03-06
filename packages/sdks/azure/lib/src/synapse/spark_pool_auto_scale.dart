@@ -11,7 +11,7 @@ class SparkPoolAutoScale {
   /// Creates a new [SparkPoolAutoScale].
   /// [maxNodeCount] The maximum number of nodes the Spark Pool can support. Must be between `3` and `200`.
   /// [minNodeCount] The minimum number of nodes the Spark Pool can support. Must be between `3` and `200`.
-  SparkPoolAutoScale({
+  const SparkPoolAutoScale({
     required this.maxNodeCount,
     required this.minNodeCount,
   });

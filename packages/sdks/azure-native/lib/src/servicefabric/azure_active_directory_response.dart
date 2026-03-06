@@ -15,7 +15,7 @@ class AzureActiveDirectoryResponse {
   /// [clientApplication] Azure active directory client application id.
   /// [clusterApplication] Azure active directory cluster application id.
   /// [tenantId] Azure active directory tenant id.
-  AzureActiveDirectoryResponse({
+  const AzureActiveDirectoryResponse({
     this.clientApplication,
     this.clusterApplication,
     this.tenantId,

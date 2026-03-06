@@ -30,7 +30,7 @@ class CertificateArgs {
   /// [resourceGroupName] The name of the resource group in which to create the Batch account. Changing this forces a new resource to be created.
   /// [thumbprint] The thumbprint of the certificate. Changing this forces a new resource to be created.
   /// [thumbprintAlgorithm] The algorithm of the certificate thumbprint. At this time the only supported value is `SHA1`. Changing this forces a new resource to be created.
-  CertificateArgs({
+  const CertificateArgs({
     required this.accountName,
     required this.certificate,
     required this.format,

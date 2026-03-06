@@ -15,7 +15,7 @@ class ListenerRuleAction {
   /// Creates a new [ListenerRuleAction].
   /// [fixedResponse] Describes the rule action that returns a custom HTTP response.
   /// [forward] The forward action. Traffic that matches the rule is forwarded to the specified target groups.
-  ListenerRuleAction({
+  const ListenerRuleAction({
     this.fixedResponse,
     this.forward,
   });

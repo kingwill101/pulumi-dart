@@ -50,7 +50,7 @@ class KeystoresAliasesKeyCertFileCertsInfo {
   /// [subjectAlternativeNames] (Output)
   /// [validFrom] (Output)
   /// [version] (Output)
-  KeystoresAliasesKeyCertFileCertsInfo({
+  const KeystoresAliasesKeyCertFileCertsInfo({
     required this.basicConstraints,
     required this.expiryDate,
     required this.isValid,

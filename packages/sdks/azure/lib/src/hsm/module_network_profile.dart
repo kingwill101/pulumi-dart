@@ -11,7 +11,7 @@ class ModuleNetworkProfile {
   /// Creates a new [ModuleNetworkProfile].
   /// [networkInterfacePrivateIpAddresses] The private IPv4 address of the network interface. Changing this forces a new Dedicated Hardware Security Module to be created.
   /// [subnetId] The ID of the subnet. Changing this forces a new Dedicated Hardware Security Module to be created.
-  ModuleNetworkProfile({
+  const ModuleNetworkProfile({
     required this.networkInterfacePrivateIpAddresses,
     required this.subnetId,
   });

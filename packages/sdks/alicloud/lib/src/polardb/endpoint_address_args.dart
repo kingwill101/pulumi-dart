@@ -24,7 +24,7 @@ class EndpointAddressArgs {
   /// [dbEndpointId] The Id of endpoint that can run database.
   /// [netType] Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
   /// [port] Port of the specified endpoint. Valid values: 3000 to 5999.
-  EndpointAddressArgs({
+  const EndpointAddressArgs({
     this.connectionPrefix,
     required this.dbClusterId,
     required this.dbEndpointId,

@@ -14,7 +14,7 @@ class InstanceSchedulingGracefulShutdown {
   /// Creates a new [InstanceSchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.
   /// [maxDuration] The time allotted for the instance to gracefully shut down.
-  InstanceSchedulingGracefulShutdown({
+  const InstanceSchedulingGracefulShutdown({
     required this.enabled,
     this.maxDuration,
   });

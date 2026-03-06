@@ -54,7 +54,7 @@ class GetLoadBalancerResult {
   /// [subnets] Required.
   /// [tags] Required.
   /// [zoneId] Required.
-  GetLoadBalancerResult({
+  const GetLoadBalancerResult({
     required this.accessLogs,
     required this.arn,
     required this.availabilityZones,

@@ -9,7 +9,7 @@ class OfficeDataConnectorDataTypesTeams {
 
   /// Creates a new [OfficeDataConnectorDataTypesTeams].
   /// [state] Describe whether this data type connection is enabled or not.
-  OfficeDataConnectorDataTypesTeams({
+  const OfficeDataConnectorDataTypesTeams({
     required this.state,
   });
 

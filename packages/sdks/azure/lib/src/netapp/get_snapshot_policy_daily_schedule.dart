@@ -14,7 +14,7 @@ class GetSnapshotPolicyDailySchedule {
   /// [hour] Hour of the day that the snapshots will be created.
   /// [minute] Minute of the hour that the snapshots will be created.
   /// [snapshotsToKeep] How many hourly snapshots to keep.
-  GetSnapshotPolicyDailySchedule({
+  const GetSnapshotPolicyDailySchedule({
     required this.hour,
     required this.minute,
     required this.snapshotsToKeep,

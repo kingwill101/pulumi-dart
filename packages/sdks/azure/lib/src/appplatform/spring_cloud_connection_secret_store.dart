@@ -8,7 +8,7 @@ class SpringCloudConnectionSecretStore {
 
   /// Creates a new [SpringCloudConnectionSecretStore].
   /// [keyVaultId] The key vault id to store secret.
-  SpringCloudConnectionSecretStore({
+  const SpringCloudConnectionSecretStore({
     required this.keyVaultId,
   });
 

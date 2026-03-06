@@ -30,7 +30,7 @@ class GetSubscriptionNetworkManagerConnectionResult {
   /// [networkManagerId] Network Manager Id.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetSubscriptionNetworkManagerConnectionResult({
+  const GetSubscriptionNetworkManagerConnectionResult({
     required this.azureApiVersion,
     this.description,
     required this.etag,

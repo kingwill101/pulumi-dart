@@ -15,7 +15,7 @@ class XmlFilterRuleset {
   /// [defaultNamespace] The default XML namespace used for schema validation.
   /// [reference] Defines the method for referencing the xml schema.
   /// [schema] The inline XSD schema to be used for validation.
-  XmlFilterRuleset({
+  const XmlFilterRuleset({
     this.defaultNamespace,
     this.reference,
     this.schema,

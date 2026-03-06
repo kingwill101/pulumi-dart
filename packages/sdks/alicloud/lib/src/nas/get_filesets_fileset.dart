@@ -29,7 +29,7 @@ class GetFilesetsFileset {
   /// [id] The ID of the Fileset.
   /// [status] The status of the fileset.
   /// [updateTime] The latest update time of Fileset.
-  GetFilesetsFileset({
+  const GetFilesetsFileset({
     required this.createTime,
     required this.description,
     required this.fileSystemId,

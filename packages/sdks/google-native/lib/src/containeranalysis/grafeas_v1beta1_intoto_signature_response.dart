@@ -10,7 +10,7 @@ class GrafeasV1beta1IntotoSignatureResponse {
   /// Creates a new [GrafeasV1beta1IntotoSignatureResponse].
   /// [keyid] Required.
   /// [sig] Required.
-  GrafeasV1beta1IntotoSignatureResponse({
+  const GrafeasV1beta1IntotoSignatureResponse({
     required this.keyid,
     required this.sig,
   });

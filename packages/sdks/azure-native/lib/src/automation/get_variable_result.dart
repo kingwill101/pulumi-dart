@@ -32,7 +32,7 @@ class GetVariableResult {
   /// [name] The name of the resource
   /// [type] The type of the resource.
   /// [value] Gets or sets the value of the variable.
-  GetVariableResult({
+  const GetVariableResult({
     required this.azureApiVersion,
     this.creationTime,
     this.description,

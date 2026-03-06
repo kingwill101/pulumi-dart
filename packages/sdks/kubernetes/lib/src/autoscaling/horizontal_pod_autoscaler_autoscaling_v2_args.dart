@@ -23,7 +23,7 @@ class HorizontalPodAutoscalerAutoscalingV2Args {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
-  HorizontalPodAutoscalerAutoscalingV2Args({
+  const HorizontalPodAutoscalerAutoscalingV2Args({
     this.apiVersion,
     this.kind,
     this.metadata,

@@ -11,7 +11,7 @@ class GetConfidentialLedgerCertificateBasedSecurityPrincipal {
   /// Creates a new [GetConfidentialLedgerCertificateBasedSecurityPrincipal].
   /// [ledgerRoleName] The Ledger Role to grant this Certificate Security Principal.
   /// [pemPublicKey] The public key, in PEM format, of the certificate used by this identity to authenticate with the Confidential Ledger.
-  GetConfidentialLedgerCertificateBasedSecurityPrincipal({
+  const GetConfidentialLedgerCertificateBasedSecurityPrincipal({
     required this.ledgerRoleName,
     required this.pemPublicKey,
   });

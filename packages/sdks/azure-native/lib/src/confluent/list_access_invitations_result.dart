@@ -17,7 +17,7 @@ class ListAccessInvitationsResult {
   /// [data] Data of the invitations list
   /// [kind] Type of response
   /// [metadata] Metadata of the list
-  ListAccessInvitationsResult({
+  const ListAccessInvitationsResult({
     this.data,
     this.kind,
     this.metadata,

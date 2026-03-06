@@ -25,7 +25,7 @@ class GetTriggerGithub {
   /// [owner] Owner of the repository. For example: The owner for
   /// [pullRequests] filter to match changes in pull requests. Specify only one of 'pull_request' or 'push'.
   /// [pushes] filter to match changes in refs, like branches or tags. Specify only one of 'pull_request' or 'push'.
-  GetTriggerGithub({
+  const GetTriggerGithub({
     required this.enterpriseConfigResourceName,
     required this.name,
     required this.owner,

@@ -11,7 +11,7 @@ class GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing {
   /// Creates a new [GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing].
   /// [endpoint] The endpoint of the collector.
   /// [samplingRatePerMillion] Number of samples to be collected per million span.
-  GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing({
+  const GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing({
     required this.endpoint,
     required this.samplingRatePerMillion,
   });

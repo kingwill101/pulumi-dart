@@ -27,7 +27,7 @@ class GatewaySecurityPolicyArgs {
   /// [name] Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
   /// [project] The ID of the project in which the resource belongs.
   /// [tlsInspectionPolicy] Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-  GatewaySecurityPolicyArgs({
+  const GatewaySecurityPolicyArgs({
     this.description,
     this.location,
     this.name,

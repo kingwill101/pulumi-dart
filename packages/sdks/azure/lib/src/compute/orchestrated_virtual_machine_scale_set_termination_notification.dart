@@ -11,7 +11,7 @@ class OrchestratedVirtualMachineScaleSetTerminationNotification {
   /// Creates a new [OrchestratedVirtualMachineScaleSetTerminationNotification].
   /// [enabled] Should the termination notification be enabled on this Virtual Machine Scale Set? Possible values `true` or `false`.
   /// [timeout] Length of time (in minutes, between `5` and `15`) a notification to be sent to the VM on the instance metadata server till the VM gets deleted. The time duration should be specified in `ISO 8601` format. Defaults to `PT5M`.
-  OrchestratedVirtualMachineScaleSetTerminationNotification({
+  const OrchestratedVirtualMachineScaleSetTerminationNotification({
     required this.enabled,
     this.timeout,
   });

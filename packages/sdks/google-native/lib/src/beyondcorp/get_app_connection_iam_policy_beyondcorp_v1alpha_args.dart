@@ -17,7 +17,7 @@ class GetAppConnectionIamPolicyBeyondcorpV1alphaArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAppConnectionIamPolicyBeyondcorpV1alphaArgs({
+  const GetAppConnectionIamPolicyBeyondcorpV1alphaArgs({
     required this.appConnectionId,
     required this.location,
     this.optionsRequestedPolicyVersion,

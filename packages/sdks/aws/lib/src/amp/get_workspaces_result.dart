@@ -21,7 +21,7 @@ class GetWorkspacesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [workspaceIds] List of workspace IDs of the matched Prometheus workspaces.
-  GetWorkspacesResult({
+  const GetWorkspacesResult({
     this.aliasPrefix,
     required this.aliases,
     required this.arns,

@@ -22,7 +22,7 @@ class ConfigurationProfileHCIAssignmentArgs {
   /// [configurationProfileAssignmentName] Name of the configuration profile assignment. Only default is supported.
   /// [properties] Properties of the configuration profile assignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ConfigurationProfileHCIAssignmentArgs({
+  const ConfigurationProfileHCIAssignmentArgs({
     required this.clusterName,
     this.configurationProfileAssignmentName,
     this.properties,

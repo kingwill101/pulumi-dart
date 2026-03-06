@@ -30,7 +30,7 @@ class GetNotificationChannelArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of the notification channel.
   /// [userLabels] User-provided key-value labels to filter by.
-  GetNotificationChannelArgs({
+  const GetNotificationChannelArgs({
     this.displayName,
     this.labels,
     this.project,

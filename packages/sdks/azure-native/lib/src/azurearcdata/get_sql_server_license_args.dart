@@ -15,7 +15,7 @@ class GetSqlServerLicenseArgs {
   /// Creates a new [GetSqlServerLicenseArgs].
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerLicenseName] Name of SQL Server License
-  GetSqlServerLicenseArgs({
+  const GetSqlServerLicenseArgs({
     required this.resourceGroupName,
     required this.sqlServerLicenseName,
   });

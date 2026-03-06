@@ -17,7 +17,7 @@ class GetAccountIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Identity of this Storage Account.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Identity of this Storage Account.
   /// [type] The type of Managed Service Identity that is configured on this Storage Account
-  GetAccountIdentity({
+  const GetAccountIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

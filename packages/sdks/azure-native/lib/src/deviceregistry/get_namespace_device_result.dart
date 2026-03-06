@@ -78,7 +78,7 @@ class GetNamespaceDeviceResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] A unique identifier for the device.
   /// [version] An integer that is incremented each time the resource is modified.
-  GetNamespaceDeviceResult({
+  const GetNamespaceDeviceResult({
     this.attributes,
     required this.azureApiVersion,
     this.discoveredDeviceRef,

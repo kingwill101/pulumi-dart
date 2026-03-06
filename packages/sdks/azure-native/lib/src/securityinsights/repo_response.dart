@@ -18,7 +18,7 @@ class RepoResponse {
   /// [fullName] The name of the repository.
   /// [installationId] The installation id of the repository.
   /// [url] The url to access the repository.
-  RepoResponse({
+  const RepoResponse({
     this.branches,
     this.fullName,
     this.installationId,

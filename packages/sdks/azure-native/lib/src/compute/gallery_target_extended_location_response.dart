@@ -22,7 +22,7 @@ class GalleryTargetExtendedLocationResponse {
   /// [extendedLocationReplicaCount] The number of replicas of the Image Version to be created per extended location. This property is updatable.
   /// [name] The name of the region.
   /// [storageAccountType] Specifies the storage account type to be used to store the image. This property is not updatable.
-  GalleryTargetExtendedLocationResponse({
+  const GalleryTargetExtendedLocationResponse({
     this.encryption,
     this.extendedLocation,
     this.extendedLocationReplicaCount,

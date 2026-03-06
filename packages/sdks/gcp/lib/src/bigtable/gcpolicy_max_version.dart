@@ -11,7 +11,7 @@ class GCPolicyMaxVersion {
 
   /// Creates a new [GCPolicyMaxVersion].
   /// [number] Number of version before applying the GC policy.
-  GCPolicyMaxVersion({
+  const GCPolicyMaxVersion({
     required this.number,
   });
 

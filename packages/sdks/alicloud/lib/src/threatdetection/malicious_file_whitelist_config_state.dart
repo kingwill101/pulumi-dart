@@ -31,7 +31,7 @@ class MaliciousFileWhitelistConfigState {
   /// [source] Business Source:
   /// [targetType] The type of target in effect on behalf of the resource.
   /// [targetValue] Represents the specific value of the target type in effect for the resource.
-  MaliciousFileWhitelistConfigState({
+  const MaliciousFileWhitelistConfigState({
     this.createTime,
     this.eventName,
     this.field,

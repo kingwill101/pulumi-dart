@@ -31,7 +31,7 @@ class GetEnvironmentsResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tags of the environment resource.
-  GetEnvironmentsResult({
+  const GetEnvironmentsResult({
     this.environmentType,
     required this.environments,
     required this.id,

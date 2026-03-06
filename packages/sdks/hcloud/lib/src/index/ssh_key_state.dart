@@ -18,7 +18,7 @@ class SshKeyState {
   /// [labels] User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   /// [name] Name of the SSH Key.
   /// [publicKey] Public key of the SSH Key pair. If this is a file, it can be read using the `file` interpolation function.
-  SshKeyState({
+  const SshKeyState({
     this.fingerprint,
     this.labels,
     this.name,

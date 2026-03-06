@@ -19,7 +19,7 @@ class GetCloneJobArgs {
   /// [migratingVmId] Required.
   /// [project] Optional.
   /// [sourceId] Required.
-  GetCloneJobArgs({
+  const GetCloneJobArgs({
     required this.cloneJobId,
     required this.location,
     required this.migratingVmId,

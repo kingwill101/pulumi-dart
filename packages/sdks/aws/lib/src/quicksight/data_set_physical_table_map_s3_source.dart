@@ -16,7 +16,7 @@ class DataSetPhysicalTableMapS3Source {
   /// [dataSourceArn] ARN of the data source.
   /// [inputColumns] Column schema of the table. See input_columns.
   /// [uploadSettings] Information about the format for the S3 source file or files. See upload_settings.
-  DataSetPhysicalTableMapS3Source({
+  const DataSetPhysicalTableMapS3Source({
     required this.dataSourceArn,
     required this.inputColumns,
     required this.uploadSettings,

@@ -12,7 +12,7 @@ class StepResponse {
   /// Creates a new [StepResponse].
   /// [routine] Name of a routine within the workflow.
   /// [step] Name of a step within the routine.
-  StepResponse({
+  const StepResponse({
     required this.routine,
     required this.step,
   });

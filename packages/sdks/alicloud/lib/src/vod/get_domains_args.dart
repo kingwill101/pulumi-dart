@@ -29,7 +29,7 @@ class GetDomainsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the domain name. The value of this parameter is used as a condition to filter domain names.
   /// [tags] A mapping of tags to assign to the resource.
-  GetDomainsArgs({
+  const GetDomainsArgs({
     this.domainSearchType,
     this.ids,
     this.nameRegex,

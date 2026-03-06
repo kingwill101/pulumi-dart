@@ -9,7 +9,7 @@ class APIServerProfile {
 
   /// Creates a new [APIServerProfile].
   /// [visibility] API server visibility.
-  APIServerProfile({
+  const APIServerProfile({
     this.visibility,
   });
 

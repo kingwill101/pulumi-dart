@@ -13,7 +13,7 @@ class ClusterIdentity {
   /// Creates a new [ClusterIdentity].
   /// [type] The type of identity used for the cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities.
   /// [userAssignedIdentities] The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  ClusterIdentity({
+  const ClusterIdentity({
     this.type,
     this.userAssignedIdentities,
   });

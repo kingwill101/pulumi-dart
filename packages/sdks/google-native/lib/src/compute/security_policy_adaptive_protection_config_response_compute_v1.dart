@@ -10,7 +10,7 @@ class SecurityPolicyAdaptiveProtectionConfigResponseComputeV1 {
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigResponseComputeV1].
   /// [layer7DdosDefenseConfig] If set to true, enables Cloud Armor Machine Learning.
-  SecurityPolicyAdaptiveProtectionConfigResponseComputeV1({
+  const SecurityPolicyAdaptiveProtectionConfigResponseComputeV1({
     required this.layer7DdosDefenseConfig,
   });
 

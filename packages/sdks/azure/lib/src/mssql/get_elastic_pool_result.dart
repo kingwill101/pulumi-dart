@@ -47,7 +47,7 @@ class GetElasticPoolResult {
   /// [skus] A `sku` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneRedundant] Whether or not this elastic pool is zone redundant.
-  GetElasticPoolResult({
+  const GetElasticPoolResult({
     required this.enclaveType,
     required this.id,
     required this.licenseType,

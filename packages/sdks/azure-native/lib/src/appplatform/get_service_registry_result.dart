@@ -25,7 +25,7 @@ class GetServiceRegistryResult {
   /// [properties] Service Registry properties payload
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetServiceRegistryResult({
+  const GetServiceRegistryResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

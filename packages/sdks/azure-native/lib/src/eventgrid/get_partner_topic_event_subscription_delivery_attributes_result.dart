@@ -10,7 +10,7 @@ class GetPartnerTopicEventSubscriptionDeliveryAttributesResult {
 
   /// Creates a new [GetPartnerTopicEventSubscriptionDeliveryAttributesResult].
   /// [value] A collection of DeliveryAttributeMapping
-  GetPartnerTopicEventSubscriptionDeliveryAttributesResult({
+  const GetPartnerTopicEventSubscriptionDeliveryAttributesResult({
     this.value,
   });
 

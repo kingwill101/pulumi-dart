@@ -13,7 +13,7 @@ class ListVMHostResult {
   /// Creates a new [ListVMHostResult].
   /// [nextLink] Link to the next Vm resource Id, if any.
   /// [value] Results of a list operation.
-  ListVMHostResult({
+  const ListVMHostResult({
     this.nextLink,
     this.value,
   });

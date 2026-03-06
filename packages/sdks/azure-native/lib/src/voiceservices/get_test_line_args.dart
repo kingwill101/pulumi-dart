@@ -18,7 +18,7 @@ class GetTestLineArgs {
   /// [communicationsGatewayName] Unique identifier for this deployment
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testLineName] Unique identifier for this test line
-  GetTestLineArgs({
+  const GetTestLineArgs({
     required this.communicationsGatewayName,
     required this.resourceGroupName,
     required this.testLineName,

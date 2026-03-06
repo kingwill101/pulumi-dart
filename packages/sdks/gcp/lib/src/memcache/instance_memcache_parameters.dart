@@ -12,7 +12,7 @@ class InstanceMemcacheParameters {
   /// Creates a new [InstanceMemcacheParameters].
   /// [id] (Output)
   /// [params] User-defined set of parameters to use in the memcache process.
-  InstanceMemcacheParameters({
+  const InstanceMemcacheParameters({
     this.id,
     this.params,
   });

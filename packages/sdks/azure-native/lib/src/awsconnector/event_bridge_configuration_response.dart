@@ -9,7 +9,7 @@ class EventBridgeConfigurationResponse {
 
   /// Creates a new [EventBridgeConfigurationResponse].
   /// [eventBridgeEnabled] Enables delivery of events to Amazon EventBridge.
-  EventBridgeConfigurationResponse({
+  const EventBridgeConfigurationResponse({
     this.eventBridgeEnabled,
   });
 

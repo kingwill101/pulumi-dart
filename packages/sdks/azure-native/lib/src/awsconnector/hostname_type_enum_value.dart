@@ -9,7 +9,7 @@ class HostnameTypeEnumValue {
 
   /// Creates a new [HostnameTypeEnumValue].
   /// [value] Property value
-  HostnameTypeEnumValue({
+  const HostnameTypeEnumValue({
     this.value,
   });
 

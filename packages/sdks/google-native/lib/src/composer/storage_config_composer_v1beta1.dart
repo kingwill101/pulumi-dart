@@ -9,7 +9,7 @@ class StorageConfigComposerV1beta1 {
 
   /// Creates a new [StorageConfigComposerV1beta1].
   /// [bucket] Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
-  StorageConfigComposerV1beta1({
+  const StorageConfigComposerV1beta1({
     this.bucket,
   });
 

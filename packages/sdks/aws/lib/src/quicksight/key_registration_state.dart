@@ -16,7 +16,7 @@ class KeyRegistrationState {
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   /// [keyRegistrations] Registered keys. See key_registration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  KeyRegistrationState({
+  const KeyRegistrationState({
     this.awsAccountId,
     this.keyRegistrations,
     this.region,

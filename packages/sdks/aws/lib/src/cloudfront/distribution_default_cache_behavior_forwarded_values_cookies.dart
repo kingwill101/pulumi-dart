@@ -11,7 +11,7 @@ class DistributionDefaultCacheBehaviorForwardedValuesCookies {
   /// Creates a new [DistributionDefaultCacheBehaviorForwardedValuesCookies].
   /// [forward] Whether you want CloudFront to forward cookies to the origin that is associated with this cache behavior. You can specify `all`, `none` or `whitelist`. If `whitelist`, you must include the subsequent `whitelisted_names`.
   /// [whitelistedNames] If you have specified `whitelist` to `forward`, the whitelisted cookies that you want CloudFront to forward to your origin.
-  DistributionDefaultCacheBehaviorForwardedValuesCookies({
+  const DistributionDefaultCacheBehaviorForwardedValuesCookies({
     required this.forward,
     this.whitelistedNames,
   });

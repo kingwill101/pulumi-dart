@@ -12,7 +12,7 @@ class MixinResponse {
   /// Creates a new [MixinResponse].
   /// [name] The fully qualified name of the interface which is included.
   /// [root] If non-empty specifies a path under which inherited HTTP paths are rooted.
-  MixinResponse({
+  const MixinResponse({
     required this.name,
     required this.root,
   });

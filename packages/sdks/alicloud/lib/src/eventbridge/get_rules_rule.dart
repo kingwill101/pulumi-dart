@@ -27,7 +27,7 @@ class GetRulesRule {
   /// [ruleName] The name of rule.
   /// [status] Rule status, either Enable or Disable.
   /// [targets] The target for rule.
-  GetRulesRule({
+  const GetRulesRule({
     required this.description,
     required this.eventBusName,
     required this.filterPattern,

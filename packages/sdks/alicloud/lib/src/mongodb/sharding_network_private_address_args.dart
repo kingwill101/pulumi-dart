@@ -29,7 +29,7 @@ class ShardingNetworkPrivateAddressArgs {
   /// [dbInstanceId] The ID of the sharded cluster instance.
   /// [nodeId] The ID of the Shard node or ConfigServer node.
   /// [zoneId] The zone ID of the instance.
-  ShardingNetworkPrivateAddressArgs({
+  const ShardingNetworkPrivateAddressArgs({
     this.accountName,
     this.accountPassword,
     required this.dbInstanceId,

@@ -58,7 +58,7 @@ class GetAuthScopeResult {
   /// [userDomainName] The domain name of the user.
   /// [userId] The user ID the of the scope.
   /// [userName] The username of the scope.
-  GetAuthScopeResult({
+  const GetAuthScopeResult({
     required this.domainId,
     required this.domainName,
     required this.id,

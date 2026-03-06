@@ -11,7 +11,7 @@ class EndpointConfigurationShadowProductionVariantCoreDumpConfig {
   /// Creates a new [EndpointConfigurationShadowProductionVariantCoreDumpConfig].
   /// [destinationS3Uri] S3 bucket to send the core dump to.
   /// [kmsKeyId] KMS key that SageMaker AI uses to encrypt the core dump data at rest using S3 server-side encryption.
-  EndpointConfigurationShadowProductionVariantCoreDumpConfig({
+  const EndpointConfigurationShadowProductionVariantCoreDumpConfig({
     required this.destinationS3Uri,
     required this.kmsKeyId,
   });

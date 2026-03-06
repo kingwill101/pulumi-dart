@@ -52,7 +52,7 @@ class GroupState {
   /// [state] Output only. The current lifecycle state of this hub.
   /// [uid] Output only. The Google-generated UUID for the group. This value is unique across all group resources. If a group is deleted and another with the same name is created, the new route table is assigned a different uniqueId.
   /// [updateTime] Output only. The time the hub was last updated.
-  GroupState({
+  const GroupState({
     this.autoAccept,
     this.createTime,
     this.description,

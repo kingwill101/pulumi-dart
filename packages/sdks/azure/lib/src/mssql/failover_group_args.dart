@@ -32,7 +32,7 @@ class FailoverGroupArgs {
   /// [readonlyEndpointFailoverPolicyEnabled] Whether failover is enabled for the readonly endpoint. Defaults to `false`.
   /// [serverId] The ID of the primary SQL Server on which to create the failover group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  FailoverGroupArgs({
+  const FailoverGroupArgs({
     this.databases,
     this.name,
     required this.partnerServers,

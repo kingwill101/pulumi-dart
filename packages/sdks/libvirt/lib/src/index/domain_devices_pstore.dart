@@ -28,7 +28,7 @@ class DomainDevicesPstore {
   /// [path] Specifies the file path for where the persistent store data will be written on the host.
   /// [size] Configures the size of the persistent storage device, determining its capacity for storing logs and states.
   /// [sizeUnit] Sets the unit of measurement for the size of the persistent storage device, indicating its size metric.
-  DomainDevicesPstore({
+  const DomainDevicesPstore({
     this.acpi,
     this.address,
     this.alias,

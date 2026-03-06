@@ -30,7 +30,7 @@ class BrowserApplicationState {
   /// [jsConfig] The JavaScript configuration of the browser application, encoded into a string.
   /// [loaderType] Determines the browser loader configured. Valid values are `SPA`, `PRO`, and `LITE`. The default is `SPA`. Refer to the [browser agent loader documentation](https://docs.newrelic.com/docs/browser/browser-monitoring/installation/install-browser-monitoring-agent/#agent-types) for more information on valid loader types.
   /// [name] The name of the browser application.
-  BrowserApplicationState({
+  const BrowserApplicationState({
     this.accountId,
     this.applicationId,
     this.cookiesEnabled,

@@ -31,7 +31,7 @@ class AppHostingTrafficArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rolloutPolicy] The policy for how builds and rollouts are triggered and rolled out.
   /// [target] Set to manually control the desired traffic for the backend. This will
-  AppHostingTrafficArgs({
+  const AppHostingTrafficArgs({
     required this.backend,
     required this.location,
     this.project,

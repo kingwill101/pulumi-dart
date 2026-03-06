@@ -26,7 +26,7 @@ class GetServiceAdditionalLocation {
   /// [publicIpAddressId] ID of the standard SKU IPv4 Public IP. Available only for Premium SKU deployed in a virtual network.
   /// [publicIpAddresses] Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
   /// [zones] List of the availability zones where API Management is deployed in the additional region exists.
-  GetServiceAdditionalLocation({
+  const GetServiceAdditionalLocation({
     required this.capacity,
     required this.gatewayRegionalUrl,
     required this.location,

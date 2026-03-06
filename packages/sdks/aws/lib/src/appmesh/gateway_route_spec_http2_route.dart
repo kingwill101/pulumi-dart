@@ -13,7 +13,7 @@ class GatewayRouteSpecHttp2Route {
   /// Creates a new [GatewayRouteSpecHttp2Route].
   /// [action] Action to take if a match is determined.
   /// [match] Criteria for determining a request match.
-  GatewayRouteSpecHttp2Route({
+  const GatewayRouteSpecHttp2Route({
     required this.action,
     required this.match,
   });

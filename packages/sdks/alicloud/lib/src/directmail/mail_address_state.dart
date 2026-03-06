@@ -21,7 +21,7 @@ class MailAddressState {
   /// [replyAddress] Return address.
   /// [sendtype] Account type. Valid values: `batch`, `trigger`.
   /// [status] Account Status freeze: 1, normal: 0.
-  MailAddressState({
+  const MailAddressState({
     this.accountName,
     this.password,
     this.replyAddress,

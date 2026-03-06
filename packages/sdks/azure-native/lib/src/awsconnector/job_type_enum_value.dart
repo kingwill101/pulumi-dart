@@ -9,7 +9,7 @@ class JobTypeEnumValue {
 
   /// Creates a new [JobTypeEnumValue].
   /// [value] Property value
-  JobTypeEnumValue({
+  const JobTypeEnumValue({
     this.value,
   });
 

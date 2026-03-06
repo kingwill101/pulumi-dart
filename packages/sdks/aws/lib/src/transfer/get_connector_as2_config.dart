@@ -31,7 +31,7 @@ class GetConnectorAs2Config {
   /// [messageSubject] Subject HTTP header attribute in outbound AS2 messages to the connector.
   /// [partnerProfileId] Unique identifier used by connector for partner profile.
   /// [singingAlgorithm] Required.
-  GetConnectorAs2Config({
+  const GetConnectorAs2Config({
     required this.basicAuthSecretId,
     required this.compression,
     required this.encryptionAlgorithm,

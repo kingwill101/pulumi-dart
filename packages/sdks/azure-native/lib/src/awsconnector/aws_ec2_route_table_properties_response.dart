@@ -16,7 +16,7 @@ class AwsEc2RouteTablePropertiesResponse {
   /// [routeTableId] Property routeTableId
   /// [tags] Any tags assigned to the route table.
   /// [vpcId] The ID of the VPC.
-  AwsEc2RouteTablePropertiesResponse({
+  const AwsEc2RouteTablePropertiesResponse({
     this.routeTableId,
     this.tags,
     this.vpcId,

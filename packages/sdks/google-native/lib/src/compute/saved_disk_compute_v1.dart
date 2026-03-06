@@ -9,7 +9,7 @@ class SavedDiskComputeV1 {
 
   /// Creates a new [SavedDiskComputeV1].
   /// [sourceDisk] Specifies a URL of the disk attached to the source instance.
-  SavedDiskComputeV1({
+  const SavedDiskComputeV1({
     this.sourceDisk,
   });
 

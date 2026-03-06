@@ -37,7 +37,7 @@ class AzureKeyVaultSecretProviderClassArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the Azure Key Vault.
-  AzureKeyVaultSecretProviderClassArgs({
+  const AzureKeyVaultSecretProviderClassArgs({
     this.azureKeyVaultSecretProviderClassName,
     required this.clientId,
     this.extendedLocation,

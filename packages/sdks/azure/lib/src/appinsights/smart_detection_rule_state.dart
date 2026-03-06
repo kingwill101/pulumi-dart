@@ -23,7 +23,7 @@ class SmartDetectionRuleState {
   /// [enabled] Is the Application Insights Smart Detection Rule enabled? Defaults to `true`.
   /// [name] Specifies the name of the Application Insights Smart Detection Rule. Valid values include `Slow page load time`, `Slow server response time`, `Potential memory leak detected`, `Potential security issue detected`, `Long dependency duration`, `Degradation in server response time`, `Degradation in dependency duration`, `Degradation in trace severity ratio`, `Abnormal rise in exception volume`, `Abnormal rise in daily data volume`. Changing this forces a new resource to be created.
   /// [sendEmailsToSubscriptionOwners] Do emails get sent to subscription owners? Defaults to `true`.
-  SmartDetectionRuleState({
+  const SmartDetectionRuleState({
     this.additionalEmailRecipients,
     this.applicationInsightsId,
     this.enabled,

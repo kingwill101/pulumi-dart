@@ -28,7 +28,7 @@ class GetEtlsResult {
   /// [outputFile] Optional.
   /// [project] Target Project name.
   /// [size] Optional.
-  GetEtlsResult({
+  const GetEtlsResult({
     required this.etls,
     required this.id,
     required this.ids,

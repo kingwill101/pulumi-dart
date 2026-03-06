@@ -13,7 +13,7 @@ class IndexConfig {
   /// Creates a new [IndexConfig].
   /// [fieldPath] The LogEntry field path to index.Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation( https://cloud.google.com/logging/docs/view/advanced-queries#indexed-fields) for details.For example: jsonPayload.request.status
   /// [type] The type of data in this index.
-  IndexConfig({
+  const IndexConfig({
     required this.fieldPath,
     required this.type,
   });

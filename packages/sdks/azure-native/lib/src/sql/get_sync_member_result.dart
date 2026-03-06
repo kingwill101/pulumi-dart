@@ -50,7 +50,7 @@ class GetSyncMemberResult {
   /// [type] Resource type.
   /// [usePrivateLinkConnection] Whether to use private link connection.
   /// [userName] User name of the member database in the sync member.
-  GetSyncMemberResult({
+  const GetSyncMemberResult({
     required this.azureApiVersion,
     this.databaseName,
     this.databaseType,

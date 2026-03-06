@@ -19,7 +19,7 @@ class UdpReceiver {
   /// [endpoint] TCP endpoint definition. Example: 0.0.0.0:&lt;port&gt;.
   /// [jsonArrayMapper] Json array mapper - allows this udp receiver to parse a value from a given source field as a json array, match a key to each parsed value and output the key-value map to a given output field.
   /// [readQueueLength] Max read queue length.
-  UdpReceiver({
+  const UdpReceiver({
     this.encoding,
     required this.endpoint,
     this.jsonArrayMapper,

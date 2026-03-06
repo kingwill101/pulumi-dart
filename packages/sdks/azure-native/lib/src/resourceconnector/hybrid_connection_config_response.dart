@@ -18,7 +18,7 @@ class HybridConnectionConfigResponse {
   /// [hybridConnectionName] Name of the connection
   /// [relay] Name of the notification service.
   /// [token] Listener access token
-  HybridConnectionConfigResponse({
+  const HybridConnectionConfigResponse({
     required this.expirationTime,
     required this.hybridConnectionName,
     required this.relay,

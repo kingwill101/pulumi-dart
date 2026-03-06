@@ -43,7 +43,7 @@ class VpnSiteArgs {
   /// [resourceGroupName] The name of the Resource Group where the VPN Site should exist. Changing this forces a new VPN Site to be created.
   /// [tags] A mapping of tags which should be assigned to the VPN Site.
   /// [virtualWanId] The ID of the Virtual Wan where this VPN site resides in. Changing this forces a new VPN Site to be created.
-  VpnSiteArgs({
+  const VpnSiteArgs({
     this.addressCidrs,
     this.deviceModel,
     this.deviceVendor,

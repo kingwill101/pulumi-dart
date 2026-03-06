@@ -9,7 +9,7 @@ class RoleResponseGkehubV1alpha {
 
   /// Creates a new [RoleResponseGkehubV1alpha].
   /// [predefinedRole] predefined_role is the Kubernetes default role to use
-  RoleResponseGkehubV1alpha({
+  const RoleResponseGkehubV1alpha({
     required this.predefinedRole,
   });
 

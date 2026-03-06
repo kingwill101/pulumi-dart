@@ -34,7 +34,7 @@ class InstanceObserverNodeGroup {
   /// [storagePerformanceLevel] Performance levels of cloud disks include the following values:
   /// [storageSize] Storage size, measured in GiB.
   /// [zoneId] Zone ID.
-  InstanceObserverNodeGroup({
+  const InstanceObserverNodeGroup({
     this.cu,
     this.diskNumber,
     this.localStorageInstanceType,

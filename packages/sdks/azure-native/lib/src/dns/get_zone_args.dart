@@ -15,7 +15,7 @@ class GetZoneArgs {
   /// Creates a new [GetZoneArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [zoneName] The name of the DNS zone (without a terminating dot).
-  GetZoneArgs({
+  const GetZoneArgs({
     required this.resourceGroupName,
     required this.zoneName,
   });

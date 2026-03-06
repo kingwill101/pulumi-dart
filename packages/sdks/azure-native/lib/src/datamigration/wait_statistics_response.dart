@@ -15,7 +15,7 @@ class WaitStatisticsResponse {
   /// [waitCount] Total no. of waits
   /// [waitTimeMs] Total wait time in millisecond(s)
   /// [waitType] Type of the Wait
-  WaitStatisticsResponse({
+  const WaitStatisticsResponse({
     this.waitCount,
     this.waitTimeMs,
     this.waitType,

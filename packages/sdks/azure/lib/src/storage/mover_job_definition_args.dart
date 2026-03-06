@@ -36,7 +36,7 @@ class MoverJobDefinitionArgs {
   /// [storageMoverProjectId] Specifies the ID of the Storage Mover Project. Changing this forces a new resource to be created.
   /// [targetName] Specifies the name of the Storage Mover target Endpoint. Changing this forces a new resource to be created.
   /// [targetSubPath] Specifies the sub path to use when writing to the Storage Mover Target Endpoint. Changing this forces a new resource to be created.
-  MoverJobDefinitionArgs({
+  const MoverJobDefinitionArgs({
     this.agentName,
     required this.copyMode,
     this.description,

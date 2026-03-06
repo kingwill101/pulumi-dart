@@ -13,7 +13,7 @@ class LoggerApplicationInsights {
   /// Creates a new [LoggerApplicationInsights].
   /// [connectionString] The connection string of Application Insights.
   /// [instrumentationKey] The instrumentation key used to push data to Application Insights.
-  LoggerApplicationInsights({
+  const LoggerApplicationInsights({
     this.connectionString,
     this.instrumentationKey,
   });

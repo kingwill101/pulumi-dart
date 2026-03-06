@@ -14,7 +14,7 @@ class GetClusterAutomatedBackupConfig {
   /// Creates a new [GetClusterAutomatedBackupConfig].
   /// [fixedFrequencySchedules] Trigger automated backups at a fixed frequency.
   /// [retention] How long to keep automated backups before the backups are deleted.
-  GetClusterAutomatedBackupConfig({
+  const GetClusterAutomatedBackupConfig({
     required this.fixedFrequencySchedules,
     required this.retention,
   });

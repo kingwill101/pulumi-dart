@@ -14,7 +14,7 @@ class ConfigurationProtectedFile {
   /// [content] Specifies the base-64 encoded contents of this config file (Sensitive).
   /// [contentHash] The hash of the contents of this configuration file prefixed by the algorithm used.
   /// [virtualPath] Specifies the path of this config file.
-  ConfigurationProtectedFile({
+  const ConfigurationProtectedFile({
     required this.content,
     this.contentHash,
     required this.virtualPath,

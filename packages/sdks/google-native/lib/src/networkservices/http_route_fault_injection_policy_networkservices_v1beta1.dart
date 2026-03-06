@@ -14,7 +14,7 @@ class HttpRouteFaultInjectionPolicyNetworkservicesV1beta1 {
   /// Creates a new [HttpRouteFaultInjectionPolicyNetworkservicesV1beta1].
   /// [abort] The specification for aborting to client requests.
   /// [delay] The specification for injecting delay to client requests.
-  HttpRouteFaultInjectionPolicyNetworkservicesV1beta1({
+  const HttpRouteFaultInjectionPolicyNetworkservicesV1beta1({
     this.abort,
     this.delay,
   });

@@ -48,7 +48,7 @@ class GetGroupsOperationResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedTimestamp] Time when this group was last updated. Date-Time represented in ISO-8601 format.
-  GetGroupsOperationResult({
+  const GetGroupsOperationResult({
     required this.areAssessmentsRunning,
     required this.assessments,
     required this.azureApiVersion,

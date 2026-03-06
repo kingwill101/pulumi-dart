@@ -15,7 +15,7 @@ class GetTargetPoolComputeV1Args {
   /// [project] Optional.
   /// [region] Required.
   /// [targetPool] Required.
-  GetTargetPoolComputeV1Args({
+  const GetTargetPoolComputeV1Args({
     this.project,
     required this.region,
     required this.targetPool,

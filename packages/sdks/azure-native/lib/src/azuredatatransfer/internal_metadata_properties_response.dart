@@ -13,7 +13,7 @@ class InternalMetadataPropertiesResponse {
   /// Creates a new [InternalMetadataPropertiesResponse].
   /// [operationStatus] Operation status associated with the last patch request
   /// [statusSetBy] User that last set the approved status for this connection
-  InternalMetadataPropertiesResponse({
+  const InternalMetadataPropertiesResponse({
     this.operationStatus,
     required this.statusSetBy,
   });

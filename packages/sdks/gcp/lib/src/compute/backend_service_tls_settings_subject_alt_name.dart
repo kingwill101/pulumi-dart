@@ -11,7 +11,7 @@ class BackendServiceTlsSettingsSubjectAltName {
   /// Creates a new [BackendServiceTlsSettingsSubjectAltName].
   /// [dnsName] The SAN specified as a DNS Name.
   /// [uniformResourceIdentifier] The SAN specified as a URI.
-  BackendServiceTlsSettingsSubjectAltName({
+  const BackendServiceTlsSettingsSubjectAltName({
     this.dnsName,
     this.uniformResourceIdentifier,
   });

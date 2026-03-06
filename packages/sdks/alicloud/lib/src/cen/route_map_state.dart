@@ -96,7 +96,7 @@ class RouteMapState {
   /// [status] (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
   /// [transitRouterRouteTableId] The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
   /// [transmitDirection] The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
-  RouteMapState({
+  const RouteMapState({
     this.asPathMatchMode,
     this.cenId,
     this.cenRegionId,

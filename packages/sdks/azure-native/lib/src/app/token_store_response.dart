@@ -18,7 +18,7 @@ class TokenStoreResponse {
   /// [azureBlobStorage] The configuration settings of the storage of the tokens if blob storage is used.
   /// [enabled] &lt;code&gt;true&lt;/code&gt; to durably store platform-specific security tokens that are obtained during login flows; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [tokenRefreshExtensionHours] The number of hours after session token expiration that a session token can be used to
-  TokenStoreResponse({
+  const TokenStoreResponse({
     this.azureBlobStorage,
     this.enabled,
     this.tokenRefreshExtensionHours,

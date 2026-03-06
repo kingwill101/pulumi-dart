@@ -14,7 +14,7 @@ class DefenseRuleConfigWafBaseConfigRuleDetail {
   /// [ruleAction] Web core protection rule action. Valid values:
   /// [ruleId] The protection rule ID.
   /// [ruleStatus] Protection rule status.
-  DefenseRuleConfigWafBaseConfigRuleDetail({
+  const DefenseRuleConfigWafBaseConfigRuleDetail({
     this.ruleAction,
     this.ruleId,
     this.ruleStatus,

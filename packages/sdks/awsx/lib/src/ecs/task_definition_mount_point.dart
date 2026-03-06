@@ -11,7 +11,7 @@ class TaskDefinitionMountPoint {
   /// [containerPath] Optional.
   /// [readOnly] Optional.
   /// [sourceVolume] Optional.
-  TaskDefinitionMountPoint({
+  const TaskDefinitionMountPoint({
     this.containerPath,
     this.readOnly,
     this.sourceVolume,

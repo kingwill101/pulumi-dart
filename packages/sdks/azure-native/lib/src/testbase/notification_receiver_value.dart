@@ -18,7 +18,7 @@ class NotificationReceiverValue {
   /// [distributionGroupListReceiverValue] The user object receiver value.
   /// [subscriptionReceiverValue] The user object receiver value.
   /// [userObjectReceiverValue] The user object receiver value.
-  NotificationReceiverValue({
+  const NotificationReceiverValue({
     this.distributionGroupListReceiverValue,
     this.subscriptionReceiverValue,
     this.userObjectReceiverValue,

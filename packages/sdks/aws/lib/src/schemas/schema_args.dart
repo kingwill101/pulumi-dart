@@ -30,7 +30,7 @@ class SchemaArgs {
   /// [registryName] The name of the registry in which this schema belongs.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] The type of the schema. Valid values: `OpenApi3` or `JSONSchemaDraft4`.
-  SchemaArgs({
+  const SchemaArgs({
     required this.content,
     this.description,
     this.name,

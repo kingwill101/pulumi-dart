@@ -17,7 +17,7 @@ class GetGenaiAgentsArgs {
   /// [filters] Optional.
   /// [onlyDeployed] Optional.
   /// [sorts] Optional.
-  GetGenaiAgentsArgs({
+  const GetGenaiAgentsArgs({
     this.filters,
     this.onlyDeployed,
     this.sorts,

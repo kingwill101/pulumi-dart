@@ -23,7 +23,7 @@ class PublishingDestinationState {
   /// [detectorId] The detector ID of the GuardDuty.
   /// [kmsKeyArn] The ARN of the KMS key used to encrypt GuardDuty findings. GuardDuty enforces this to be encrypted.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PublishingDestinationState({
+  const PublishingDestinationState({
     this.destinationArn,
     this.destinationType,
     this.detectorId,

@@ -26,7 +26,7 @@ class SqlManagedInstanceSku {
   /// [name] The name of the SKU.
   /// [size] The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
   /// [tier] The pricing tier for the instance.
-  SqlManagedInstanceSku({
+  const SqlManagedInstanceSku({
     this.capacity,
     this.dev,
     this.family,

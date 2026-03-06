@@ -9,7 +9,7 @@ class NetworkInterface {
 
   /// Creates a new [NetworkInterface].
   /// [privateIpAddress] Private Ip address of the interface
-  NetworkInterface({
+  const NetworkInterface({
     this.privateIpAddress,
   });
 

@@ -52,7 +52,7 @@ class GetImagesImage {
   /// [status] Current status of the image
   /// [tags] A set of tags applied to the image
   /// [type] Type of the image.
-  GetImagesImage({
+  const GetImagesImage({
     required this.created,
     required this.description,
     required this.distribution,

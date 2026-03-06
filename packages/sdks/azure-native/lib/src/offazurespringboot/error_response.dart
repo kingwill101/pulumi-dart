@@ -33,7 +33,7 @@ class ErrorResponse {
   /// [severity] The error severity
   /// [summaryMessage] The summarized error message.
   /// [updatedTimeStamp] Time when this error was last updated.
-  ErrorResponse({
+  const ErrorResponse({
     this.code,
     this.id,
     this.message,

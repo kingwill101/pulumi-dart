@@ -11,7 +11,7 @@ class ServiceTemplateContainerPorts {
   /// Creates a new [ServiceTemplateContainerPorts].
   /// [containerPort] Port number the container listens on. This must be a valid TCP port number, 0 &lt; containerPort &lt; 65536.
   /// [name] If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-  ServiceTemplateContainerPorts({
+  const ServiceTemplateContainerPorts({
     this.containerPort,
     this.name,
   });

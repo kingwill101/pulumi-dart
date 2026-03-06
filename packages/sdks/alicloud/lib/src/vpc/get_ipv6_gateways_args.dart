@@ -27,7 +27,7 @@ class GetIpv6GatewaysArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
   /// [vpcId] The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
-  GetIpv6GatewaysArgs({
+  const GetIpv6GatewaysArgs({
     this.ids,
     this.ipv6GatewayName,
     this.nameRegex,

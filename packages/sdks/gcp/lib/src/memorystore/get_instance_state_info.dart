@@ -9,7 +9,7 @@ class GetInstanceStateInfo {
 
   /// Creates a new [GetInstanceStateInfo].
   /// [updateInfos] Represents information about instance with state UPDATING.
-  GetInstanceStateInfo({
+  const GetInstanceStateInfo({
     required this.updateInfos,
   });
 

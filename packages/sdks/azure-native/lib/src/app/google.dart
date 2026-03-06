@@ -21,7 +21,7 @@ class Google {
   /// [login] The configuration settings of the login flow.
   /// [registration] The configuration settings of the app registration for the Google provider.
   /// [validation] The configuration settings of the Azure Active Directory token validation flow.
-  Google({
+  const Google({
     this.enabled,
     this.login,
     this.registration,

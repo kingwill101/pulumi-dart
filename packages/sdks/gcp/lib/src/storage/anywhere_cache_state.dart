@@ -35,7 +35,7 @@ class AnywhereCacheState {
   /// [ttl] The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
   /// [updateTime] The modification time of the cache instance metadata in RFC 3339 format.
   /// [zone] The zone in which the cache instance needs to be created. For example, `us-central1-a.`
-  AnywhereCacheState({
+  const AnywhereCacheState({
     this.admissionPolicy,
     this.anywhereCacheId,
     this.bucket,

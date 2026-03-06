@@ -27,7 +27,7 @@ class CapacityPoolSnapshotArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [snapshotName] The name of the snapshot
   /// [volumeName] The name of the volume
-  CapacityPoolSnapshotArgs({
+  const CapacityPoolSnapshotArgs({
     required this.accountName,
     this.location,
     required this.poolName,

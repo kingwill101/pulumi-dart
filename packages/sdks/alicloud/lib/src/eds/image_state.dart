@@ -18,7 +18,7 @@ class ImageState {
   /// [desktopId] The desktop id of the desktop.
   /// [imageName] The name of the image.
   /// [status] The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
-  ImageState({
+  const ImageState({
     this.description,
     this.desktopId,
     this.imageName,

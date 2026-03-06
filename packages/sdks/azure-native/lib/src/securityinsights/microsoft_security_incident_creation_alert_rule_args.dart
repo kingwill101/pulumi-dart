@@ -46,7 +46,7 @@ class MicrosoftSecurityIncidentCreationAlertRuleArgs {
   /// [ruleId] Alert rule ID
   /// [severitiesFilter] the alerts' severities on which the cases will be generated
   /// [workspaceName] The name of the workspace.
-  MicrosoftSecurityIncidentCreationAlertRuleArgs({
+  const MicrosoftSecurityIncidentCreationAlertRuleArgs({
     this.alertRuleTemplateName,
     this.description,
     required this.displayName,

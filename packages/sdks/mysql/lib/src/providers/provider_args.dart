@@ -25,7 +25,7 @@ class ProviderArgs {
   /// [proxy] Optional.
   /// [tls] Optional.
   /// [username] Optional.
-  ProviderArgs({
+  const ProviderArgs({
     this.authenticationPlugin,
     this.endpoint,
     this.maxConnLifetimeSec,

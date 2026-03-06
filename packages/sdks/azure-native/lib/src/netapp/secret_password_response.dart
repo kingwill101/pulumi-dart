@@ -14,7 +14,7 @@ class SecretPasswordResponse {
   /// Creates a new [SecretPasswordResponse].
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   /// [keyVaultProperties] Properties provided by KeyVault.
-  SecretPasswordResponse({
+  const SecretPasswordResponse({
     this.identity,
     this.keyVaultProperties,
   });

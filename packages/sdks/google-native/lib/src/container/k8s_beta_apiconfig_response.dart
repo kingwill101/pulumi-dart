@@ -9,7 +9,7 @@ class K8sBetaAPIConfigResponse {
 
   /// Creates a new [K8sBetaAPIConfigResponse].
   /// [enabledApis] Enabled k8s beta APIs.
-  K8sBetaAPIConfigResponse({
+  const K8sBetaAPIConfigResponse({
     required this.enabledApis,
   });
 

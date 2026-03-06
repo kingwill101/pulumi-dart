@@ -115,7 +115,7 @@ class GetVirtualNetworkGatewayConnectionResult {
   /// [usePolicyBasedTrafficSelectors] Enable policy-based traffic selectors.
   /// [virtualNetworkGateway1] The reference to virtual network gateway resource.
   /// [virtualNetworkGateway2] The reference to virtual network gateway resource.
-  GetVirtualNetworkGatewayConnectionResult({
+  const GetVirtualNetworkGatewayConnectionResult({
     this.authorizationKey,
     required this.azureApiVersion,
     this.connectionMode,

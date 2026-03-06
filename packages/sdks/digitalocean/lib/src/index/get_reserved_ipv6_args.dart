@@ -12,7 +12,7 @@ class GetReservedIpv6Args {
 
   /// Creates a new [GetReservedIpv6Args].
   /// [ip] The allocated IPv6 address of the specific reserved IPv6 to retrieve.
-  GetReservedIpv6Args({
+  const GetReservedIpv6Args({
     required this.ip,
   });
 

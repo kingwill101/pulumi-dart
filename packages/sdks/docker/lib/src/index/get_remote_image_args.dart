@@ -12,7 +12,7 @@ class GetRemoteImageArgs {
 
   /// Creates a new [GetRemoteImageArgs].
   /// [name] The name of the Docker image, including any tags or SHA256 repo digests.
-  GetRemoteImageArgs({
+  const GetRemoteImageArgs({
     required this.name,
   });
 

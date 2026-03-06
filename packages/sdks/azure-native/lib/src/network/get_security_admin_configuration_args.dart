@@ -18,7 +18,7 @@ class GetSecurityAdminConfigurationArgs {
   /// [configurationName] The name of the network manager Security Configuration.
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
-  GetSecurityAdminConfigurationArgs({
+  const GetSecurityAdminConfigurationArgs({
     required this.configurationName,
     required this.networkManagerName,
     required this.resourceGroupName,

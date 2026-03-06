@@ -12,7 +12,7 @@ class GetJobDefinitionRetryStrategy {
   /// Creates a new [GetJobDefinitionRetryStrategy].
   /// [attempts] The number of times to move a job to the RUNNABLE status.
   /// [evaluateOnExits] Array of up to 5 objects that specify the conditions where jobs are retried or failed.
-  GetJobDefinitionRetryStrategy({
+  const GetJobDefinitionRetryStrategy({
     required this.attempts,
     required this.evaluateOnExits,
   });

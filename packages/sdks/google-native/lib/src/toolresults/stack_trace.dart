@@ -9,7 +9,7 @@ class StackTrace {
 
   /// Creates a new [StackTrace].
   /// [exception] The stack trace message. Required
-  StackTrace({
+  const StackTrace({
     this.exception,
   });
 

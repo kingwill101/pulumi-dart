@@ -48,7 +48,7 @@ class RegionalSecretVersionState {
   /// [secret] Secret Manager regional secret resource.
   /// [secretData] The secret data. Must be no larger than 64KiB.
   /// [version] The version of the Regional Secret.
-  RegionalSecretVersionState({
+  const RegionalSecretVersionState({
     this.createTime,
     this.customerManagedEncryptions,
     this.deletionPolicy,

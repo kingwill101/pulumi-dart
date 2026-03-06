@@ -13,7 +13,7 @@ class CacheEncryptionSettingsResponse {
   /// Creates a new [CacheEncryptionSettingsResponse].
   /// [keyEncryptionKey] Specifies the location of the key encryption key in key vault.
   /// [rotationToLatestKeyVersionEnabled] Specifies whether the service will automatically rotate to the newest version of the key in the key vault.
-  CacheEncryptionSettingsResponse({
+  const CacheEncryptionSettingsResponse({
     this.keyEncryptionKey,
     this.rotationToLatestKeyVersionEnabled,
   });

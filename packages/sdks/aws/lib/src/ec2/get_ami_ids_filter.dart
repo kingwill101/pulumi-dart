@@ -9,7 +9,7 @@ class GetAmiIdsFilter {
   /// Creates a new [GetAmiIdsFilter].
   /// [name] Required.
   /// [values] Required.
-  GetAmiIdsFilter({
+  const GetAmiIdsFilter({
     required this.name,
     required this.values,
   });

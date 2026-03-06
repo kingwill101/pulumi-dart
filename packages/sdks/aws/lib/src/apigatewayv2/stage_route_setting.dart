@@ -25,7 +25,7 @@ class StageRouteSetting {
   /// [routeKey] Route key.
   /// [throttlingBurstLimit] Throttling burst limit for the route.
   /// [throttlingRateLimit] Throttling rate limit for the route.
-  StageRouteSetting({
+  const StageRouteSetting({
     this.dataTraceEnabled,
     this.detailedMetricsEnabled,
     this.loggingLevel,

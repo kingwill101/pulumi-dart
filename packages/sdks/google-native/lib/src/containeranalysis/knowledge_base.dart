@@ -11,7 +11,7 @@ class KnowledgeBase {
   /// Creates a new [KnowledgeBase].
   /// [name] The KB name (generally of the form KB[0-9]+ (e.g., KB123456)).
   /// [url] A link to the KB in the [Windows update catalog] (https://www.catalog.update.microsoft.com/).
-  KnowledgeBase({
+  const KnowledgeBase({
     this.name,
     this.url,
   });

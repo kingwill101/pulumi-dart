@@ -23,7 +23,7 @@ class InstancePublicPortsPortInfo {
   /// [ipv6Cidrs] Set of IPv6 addresses or ranges of IPv6 addresses (in CIDR notation) that are allowed to connect to an instance through the ports, and the protocol.
   /// [protocol] IP protocol name. Valid values: `tcp`, `all`, `udp`, `icmp`, `icmpv6`. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.
   /// [toPort] Last port in a range of open ports on an instance. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.
-  InstancePublicPortsPortInfo({
+  const InstancePublicPortsPortInfo({
     this.cidrListAliases,
     this.cidrs,
     required this.fromPort,

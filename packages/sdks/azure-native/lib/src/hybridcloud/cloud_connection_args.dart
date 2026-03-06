@@ -34,7 +34,7 @@ class CloudConnectionArgs {
   /// [sharedKey] Shared key of the cloud connection.
   /// [tags] Resource tags.
   /// [virtualHub] The virtualHub to which the cloud connection belongs.
-  CloudConnectionArgs({
+  const CloudConnectionArgs({
     this.cloudConnectionName,
     this.cloudConnector,
     this.location,

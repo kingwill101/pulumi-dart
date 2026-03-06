@@ -62,7 +62,7 @@ class GroupMetricRuleArgs {
   /// [silenceTime] The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
   /// [targets] The information about the resource for which alerts are triggered. See `targets` below.
   /// [webhook] The callback URL.
-  GroupMetricRuleArgs({
+  const GroupMetricRuleArgs({
     this.category,
     this.contactGroups,
     this.dimensions,

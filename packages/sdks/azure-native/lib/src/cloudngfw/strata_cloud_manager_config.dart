@@ -9,7 +9,7 @@ class StrataCloudManagerConfig {
 
   /// Creates a new [StrataCloudManagerConfig].
   /// [cloudManagerName] Strata Cloud Manager name which is intended to manage the policy for this firewall.
-  StrataCloudManagerConfig({
+  const StrataCloudManagerConfig({
     required this.cloudManagerName,
   });
 

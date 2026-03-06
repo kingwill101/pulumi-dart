@@ -8,7 +8,7 @@ class GroupAutoAccept {
 
   /// Creates a new [GroupAutoAccept].
   /// [autoAcceptProjects] A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
-  GroupAutoAccept({
+  const GroupAutoAccept({
     required this.autoAcceptProjects,
   });
 

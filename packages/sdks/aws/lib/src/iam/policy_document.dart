@@ -14,7 +14,7 @@ class PolicyDocument {
   /// [id] Optional.
   /// [statement] Required.
   /// [version] Required.
-  PolicyDocument({
+  const PolicyDocument({
     this.id,
     required this.statement,
     required this.version,

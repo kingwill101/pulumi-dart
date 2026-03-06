@@ -8,7 +8,7 @@ class GetVirtualNodeSpecBackendDefault {
 
   /// Creates a new [GetVirtualNodeSpecBackendDefault].
   /// [clientPolicies] Required.
-  GetVirtualNodeSpecBackendDefault({
+  const GetVirtualNodeSpecBackendDefault({
     required this.clientPolicies,
   });
 

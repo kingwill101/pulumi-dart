@@ -25,7 +25,7 @@ class AccountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
   /// [tags] resource tags.
-  AccountArgs({
+  const AccountArgs({
     this.location,
     required this.properties,
     required this.resourceGroupName,

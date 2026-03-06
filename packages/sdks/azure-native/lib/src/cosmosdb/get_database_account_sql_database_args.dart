@@ -18,7 +18,7 @@ class GetDatabaseAccountSqlDatabaseArgs {
   /// [accountName] Cosmos DB database account name.
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] Name of an Azure resource group.
-  GetDatabaseAccountSqlDatabaseArgs({
+  const GetDatabaseAccountSqlDatabaseArgs({
     required this.accountName,
     required this.databaseName,
     required this.resourceGroupName,

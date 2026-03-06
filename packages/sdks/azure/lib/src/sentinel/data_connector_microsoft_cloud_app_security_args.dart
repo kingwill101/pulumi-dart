@@ -28,7 +28,7 @@ class DataConnectorMicrosoftCloudAppSecurityArgs {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this Microsoft Cloud App Security Data Connector resides in. Changing this forces a new Microsoft Cloud App Security Data Connector to be created.
   /// [name] The name which should be used for this Microsoft Cloud App Security Data Connector. Changing this forces a new Microsoft Cloud App Security Data Connector to be created.
   /// [tenantId] The ID of the Tenant that this Microsoft Cloud App Security Data Connector connects to.
-  DataConnectorMicrosoftCloudAppSecurityArgs({
+  const DataConnectorMicrosoftCloudAppSecurityArgs({
     this.alertsEnabled,
     this.discoveryLogsEnabled,
     required this.logAnalyticsWorkspaceId,

@@ -14,7 +14,7 @@ class TopicRuleErrorActionIotAnalytics {
   /// [batchMode] The payload that contains a JSON array of records will be sent to IoT Analytics via a batch call.
   /// [channelName] Name of AWS IOT Analytics channel.
   /// [roleArn] The ARN of the IAM role that grants access.
-  TopicRuleErrorActionIotAnalytics({
+  const TopicRuleErrorActionIotAnalytics({
     this.batchMode,
     required this.channelName,
     required this.roleArn,

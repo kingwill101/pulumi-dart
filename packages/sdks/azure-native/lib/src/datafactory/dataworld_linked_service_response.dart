@@ -34,7 +34,7 @@ class DataworldLinkedServiceResponse {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  DataworldLinkedServiceResponse({
+  const DataworldLinkedServiceResponse({
     this.annotations,
     required this.apiToken,
     this.connectVia,

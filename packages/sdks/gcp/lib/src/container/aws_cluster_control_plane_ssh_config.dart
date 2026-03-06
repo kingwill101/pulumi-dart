@@ -8,7 +8,7 @@ class AwsClusterControlPlaneSshConfig {
 
   /// Creates a new [AwsClusterControlPlaneSshConfig].
   /// [ec2KeyPair] The name of the EC2 key pair used to login into cluster machines.
-  AwsClusterControlPlaneSshConfig({
+  const AwsClusterControlPlaneSshConfig({
     required this.ec2KeyPair,
   });
 

@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpecResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpecResponse].
   /// [useElapsedDuration] True if median automated stopping rule applies on Measurement.elapsed_duration. It means that elapsed_duration field of latest measurement of current Trial is used to compute median objective value for each completed Trials.
-  GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpecResponse({
+  const GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpecResponse({
     required this.useElapsedDuration,
   });
 

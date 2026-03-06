@@ -9,7 +9,7 @@ class BucketBilling {
 
   /// Creates a new [BucketBilling].
   /// [requesterPays] When set to true, Requester Pays is enabled for this bucket.
-  BucketBilling({
+  const BucketBilling({
     this.requesterPays,
   });
 

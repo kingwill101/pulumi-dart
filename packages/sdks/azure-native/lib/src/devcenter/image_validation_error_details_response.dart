@@ -12,7 +12,7 @@ class ImageValidationErrorDetailsResponse {
   /// Creates a new [ImageValidationErrorDetailsResponse].
   /// [code] An identifier for the error.
   /// [message] A message describing the error.
-  ImageValidationErrorDetailsResponse({
+  const ImageValidationErrorDetailsResponse({
     this.code,
     this.message,
   });

@@ -28,7 +28,7 @@ class AlertConditionArgs {
   /// [name] The title of this condition.
   /// [policyId] The ID of the policy where this condition should be used.
   /// [runbookUrl] Runbook URL to display in notifications.
-  AlertConditionArgs({
+  const AlertConditionArgs({
     this.enabled,
     required this.monitorId,
     this.name,

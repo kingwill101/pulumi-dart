@@ -16,7 +16,7 @@ class ScriptStringExecutionParameterResponse {
   /// [name] The parameter name
   /// [type] script execution parameter type
   /// [value] The value for the passed parameter
-  ScriptStringExecutionParameterResponse({
+  const ScriptStringExecutionParameterResponse({
     required this.name,
     required this.type,
     this.value,

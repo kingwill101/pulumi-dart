@@ -24,7 +24,7 @@ class ControlTowerControlArgs {
   /// [parameters] Parameter values which are specified to configure the control when you enable it. See Parameters for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetIdentifier] The ARN of the organizational unit.
-  ControlTowerControlArgs({
+  const ControlTowerControlArgs({
     required this.controlIdentifier,
     this.parameters,
     this.region,

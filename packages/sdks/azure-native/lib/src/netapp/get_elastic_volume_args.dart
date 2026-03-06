@@ -21,7 +21,7 @@ class GetElasticVolumeArgs {
   /// [poolName] The name of the ElasticCapacityPool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] The name of the ElasticVolume
-  GetElasticVolumeArgs({
+  const GetElasticVolumeArgs({
     required this.accountName,
     required this.poolName,
     required this.resourceGroupName,

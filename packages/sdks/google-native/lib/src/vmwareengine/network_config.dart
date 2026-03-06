@@ -12,7 +12,7 @@ class NetworkConfig {
   /// Creates a new [NetworkConfig].
   /// [managementCidr] Management CIDR used by VMware management appliances.
   /// [vmwareEngineNetwork] Optional. The relative resource name of the VMware Engine network attached to the private cloud. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
-  NetworkConfig({
+  const NetworkConfig({
     required this.managementCidr,
     this.vmwareEngineNetwork,
   });

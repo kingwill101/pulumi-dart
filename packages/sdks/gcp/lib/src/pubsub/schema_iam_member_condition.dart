@@ -11,7 +11,7 @@ class SchemaIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  SchemaIamMemberCondition({
+  const SchemaIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

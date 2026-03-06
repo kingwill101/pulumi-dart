@@ -26,7 +26,7 @@ class LinuxPatchSettingsResponse {
   /// [assessmentMode] Specifies the mode of VM Guest Patch Assessment for the IaaS virtual
   /// [automaticByPlatformSettings] Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
   /// [patchMode] Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
-  LinuxPatchSettingsResponse({
+  const LinuxPatchSettingsResponse({
     this.assessmentMode,
     this.automaticByPlatformSettings,
     this.patchMode,

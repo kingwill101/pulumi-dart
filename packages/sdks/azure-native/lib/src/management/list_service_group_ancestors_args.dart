@@ -12,7 +12,7 @@ class ListServiceGroupAncestorsArgs {
 
   /// Creates a new [ListServiceGroupAncestorsArgs].
   /// [serviceGroupName] ServiceGroup Name.
-  ListServiceGroupAncestorsArgs({
+  const ListServiceGroupAncestorsArgs({
     required this.serviceGroupName,
   });
 

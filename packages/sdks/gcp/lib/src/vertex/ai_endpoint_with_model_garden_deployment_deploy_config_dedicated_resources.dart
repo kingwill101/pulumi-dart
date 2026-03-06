@@ -62,7 +62,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
   /// [minReplicaCount] The minimum number of machine replicas that will be always deployed on.
   /// [requiredReplicaCount] Number of required available replicas for the deployment to succeed.
   /// [spot] If true, schedule the deployment workload on [spot
-  AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources({
+  const AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources({
     this.autoscalingMetricSpecs,
     required this.machineSpec,
     this.maxReplicaCount,

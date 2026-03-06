@@ -27,7 +27,7 @@ class GetTablesTable {
   /// [primaryKeys] The property of `TableMeta` which indicates the structure information of a table.
   /// [tableName] The table name of the OTS which could not be changed.
   /// [timeToLive] The retention time of data stored in this table.
-  GetTablesTable({
+  const GetTablesTable({
     required this.definedColumns,
     required this.id,
     required this.instanceName,

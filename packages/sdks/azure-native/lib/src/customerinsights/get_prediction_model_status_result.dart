@@ -38,7 +38,7 @@ class GetPredictionModelStatusResult {
   /// [trainingAccuracy] The training accuracy.
   /// [trainingSetCount] Count of the training set.
   /// [validationSetCount] Count of the validation set.
-  GetPredictionModelStatusResult({
+  const GetPredictionModelStatusResult({
     required this.message,
     required this.modelVersion,
     required this.predictionGuidId,

@@ -12,7 +12,7 @@ class KpiAlias {
   /// Creates a new [KpiAlias].
   /// [aliasName] KPI alias name.
   /// [expression] The expression.
-  KpiAlias({
+  const KpiAlias({
     required this.aliasName,
     required this.expression,
   });

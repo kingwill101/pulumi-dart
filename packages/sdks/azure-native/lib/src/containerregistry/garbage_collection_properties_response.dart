@@ -12,7 +12,7 @@ class GarbageCollectionPropertiesResponse {
   /// Creates a new [GarbageCollectionPropertiesResponse].
   /// [enabled] Indicates whether garbage collection is enabled for the connected registry.
   /// [schedule] The cron expression indicating the schedule that the connected registry will run garbage collection.
-  GarbageCollectionPropertiesResponse({
+  const GarbageCollectionPropertiesResponse({
     this.enabled,
     this.schedule,
   });

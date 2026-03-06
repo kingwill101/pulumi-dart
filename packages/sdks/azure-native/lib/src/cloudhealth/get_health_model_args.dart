@@ -15,7 +15,7 @@ class GetHealthModelArgs {
   /// Creates a new [GetHealthModelArgs].
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetHealthModelArgs({
+  const GetHealthModelArgs({
     required this.healthModelName,
     required this.resourceGroupName,
   });

@@ -21,7 +21,7 @@ class GetRoutingRuleCollectionArgs {
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleCollectionName] The name of the network manager routing Configuration rule collection.
-  GetRoutingRuleCollectionArgs({
+  const GetRoutingRuleCollectionArgs({
     required this.configurationName,
     required this.networkManagerName,
     required this.resourceGroupName,

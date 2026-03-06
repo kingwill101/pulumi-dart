@@ -25,7 +25,7 @@ class FileArgs {
   /// [projectName] Name of the project
   /// [properties] Custom file properties
   /// [serviceName] Name of the service
-  FileArgs({
+  const FileArgs({
     this.fileName,
     required this.groupName,
     required this.projectName,

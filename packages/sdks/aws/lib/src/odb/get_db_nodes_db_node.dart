@@ -76,7 +76,7 @@ class GetDbNodesDbNode {
   /// [totalCpuCoreCount] The total number of CPU cores reserved on the DB node.
   /// [vnic2Id] Required.
   /// [vnicId] The OCID of the VNIC.
-  GetDbNodesDbNode({
+  const GetDbNodesDbNode({
     required this.additionalDetails,
     required this.arn,
     required this.backupIpId,

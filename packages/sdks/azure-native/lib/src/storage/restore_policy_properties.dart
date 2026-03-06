@@ -12,7 +12,7 @@ class RestorePolicyProperties {
   /// Creates a new [RestorePolicyProperties].
   /// [days] how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
   /// [enabled] Blob restore is enabled if set to true.
-  RestorePolicyProperties({
+  const RestorePolicyProperties({
     this.days,
     required this.enabled,
   });

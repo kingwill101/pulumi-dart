@@ -28,7 +28,7 @@ class NeighborGroupArgs {
   /// [neighborGroupName] Name of the Neighbor Group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NeighborGroupArgs({
+  const NeighborGroupArgs({
     this.annotation,
     required this.destination,
     this.location,

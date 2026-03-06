@@ -11,7 +11,7 @@ class TaxonomyIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  TaxonomyIamBindingCondition({
+  const TaxonomyIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

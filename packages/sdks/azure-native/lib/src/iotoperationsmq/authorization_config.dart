@@ -13,7 +13,7 @@ class AuthorizationConfig {
   /// Creates a new [AuthorizationConfig].
   /// [enableCache] Enable caching of the authorization rules.
   /// [rules] Authorization Rules to be used. If no rule is set, but Authorization Resource is used that would mean DenyAll.
-  AuthorizationConfig({
+  const AuthorizationConfig({
     this.enableCache,
     this.rules,
   });

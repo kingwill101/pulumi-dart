@@ -9,7 +9,7 @@ class ConfigConnectorConfigResponse {
 
   /// Creates a new [ConfigConnectorConfigResponse].
   /// [enabled] Whether Cloud Connector is enabled for this cluster.
-  ConfigConnectorConfigResponse({
+  const ConfigConnectorConfigResponse({
     required this.enabled,
   });
 

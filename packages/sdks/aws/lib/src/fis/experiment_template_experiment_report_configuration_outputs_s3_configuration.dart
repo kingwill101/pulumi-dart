@@ -11,7 +11,7 @@ class ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration {
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration].
   /// [bucketName] The name of the destination bucket.
   /// [prefix] The bucket prefix.
-  ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration({
+  const ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration({
     required this.bucketName,
     this.prefix,
   });

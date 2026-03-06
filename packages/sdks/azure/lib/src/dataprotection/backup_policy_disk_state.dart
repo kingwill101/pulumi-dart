@@ -25,7 +25,7 @@ class BackupPolicyDiskState {
   /// [retentionRules] One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy Disk to be created.
   /// [timeZone] Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Disk to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Policy Disk should exist. Changing this forces a new Backup Policy Disk to be created.
-  BackupPolicyDiskState({
+  const BackupPolicyDiskState({
     this.backupRepeatingTimeIntervals,
     this.defaultRetentionDuration,
     this.name,

@@ -11,7 +11,7 @@ class AppSpecWorkerLogDestinationOpenSearchBasicAuth {
   /// Creates a new [AppSpecWorkerLogDestinationOpenSearchBasicAuth].
   /// [password] Password for basic authentication.
   /// [user] user for basic authentication.
-  AppSpecWorkerLogDestinationOpenSearchBasicAuth({
+  const AppSpecWorkerLogDestinationOpenSearchBasicAuth({
     this.password,
     this.user,
   });

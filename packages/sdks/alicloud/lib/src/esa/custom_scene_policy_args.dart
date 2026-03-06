@@ -29,7 +29,7 @@ class CustomScenePolicyArgs {
   /// [siteIds] The IDs of websites associated.
   /// [status] Policy effective status. Valid values: `Disabled`, `Running`.
   /// [template] The name of the policy template. Valid value:
-  CustomScenePolicyArgs({
+  const CustomScenePolicyArgs({
     required this.createTime,
     required this.customScenePolicyName,
     required this.endTime,

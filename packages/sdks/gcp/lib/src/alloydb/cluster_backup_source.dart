@@ -8,7 +8,7 @@ class ClusterBackupSource {
 
   /// Creates a new [ClusterBackupSource].
   /// [backupName] The name of the backup resource.
-  ClusterBackupSource({
+  const ClusterBackupSource({
     this.backupName,
   });
 

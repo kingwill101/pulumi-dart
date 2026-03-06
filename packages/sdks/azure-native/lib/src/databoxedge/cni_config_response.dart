@@ -18,7 +18,7 @@ class CniConfigResponse {
   /// [serviceSubnet] Service subnet
   /// [type] Cni type
   /// [version] Cni version
-  CniConfigResponse({
+  const CniConfigResponse({
     required this.podSubnet,
     required this.serviceSubnet,
     required this.type,

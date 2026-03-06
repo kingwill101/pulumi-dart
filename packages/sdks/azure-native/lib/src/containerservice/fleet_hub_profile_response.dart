@@ -26,7 +26,7 @@ class FleetHubProfileResponse {
   /// [fqdn] The FQDN of the Fleet hub.
   /// [kubernetesVersion] The Kubernetes version of the Fleet hub.
   /// [portalFqdn] The Azure Portal FQDN of the Fleet hub.
-  FleetHubProfileResponse({
+  const FleetHubProfileResponse({
     this.agentProfile,
     this.apiServerAccessProfile,
     this.dnsPrefix,

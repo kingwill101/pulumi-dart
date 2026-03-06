@@ -14,7 +14,7 @@ class NodeGroupShareSettings {
   /// Creates a new [NodeGroupShareSettings].
   /// [projectMaps] A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// [shareType] Node group sharing type.
-  NodeGroupShareSettings({
+  const NodeGroupShareSettings({
     this.projectMaps,
     required this.shareType,
   });

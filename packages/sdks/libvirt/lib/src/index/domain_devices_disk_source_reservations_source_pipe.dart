@@ -12,7 +12,7 @@ class DomainDevicesDiskSourceReservationsSourcePipe {
   /// Creates a new [DomainDevicesDiskSourceReservationsSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainDevicesDiskSourceReservationsSourcePipe({
+  const DomainDevicesDiskSourceReservationsSourcePipe({
     required this.path,
     this.secLabels,
   });

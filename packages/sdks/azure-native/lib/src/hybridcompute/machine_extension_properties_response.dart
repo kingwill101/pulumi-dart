@@ -37,7 +37,7 @@ class MachineExtensionPropertiesResponse {
   /// [settings] Json formatted public settings for the extension.
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  MachineExtensionPropertiesResponse({
+  const MachineExtensionPropertiesResponse({
     this.autoUpgradeMinorVersion,
     this.enableAutomaticUpgrade,
     this.forceUpdateTag,

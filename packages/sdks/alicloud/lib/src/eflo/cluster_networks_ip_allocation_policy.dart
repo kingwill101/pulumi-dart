@@ -17,7 +17,7 @@ class ClusterNetworksIpAllocationPolicy {
   /// [bondPolicy] Bond policy See `bond_policy` below.
   /// [machineTypePolicies] Model Assignment Policy See `machine_type_policy` below.
   /// [nodePolicies] Node allocation policy See `node_policy` below.
-  ClusterNetworksIpAllocationPolicy({
+  const ClusterNetworksIpAllocationPolicy({
     this.bondPolicy,
     this.machineTypePolicies,
     this.nodePolicies,

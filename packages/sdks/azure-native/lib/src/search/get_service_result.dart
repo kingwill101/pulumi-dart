@@ -101,7 +101,7 @@ class GetServiceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [upgradeAvailable] Indicates if the search service has an upgrade available.
-  GetServiceResult({
+  const GetServiceResult({
     this.authOptions,
     required this.azureApiVersion,
     this.computeType,

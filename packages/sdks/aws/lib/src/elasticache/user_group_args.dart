@@ -26,7 +26,7 @@ class UserGroupArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userGroupId] The ID of the user group.
   /// [userIds] The list of user IDs that belong to the user group.
-  UserGroupArgs({
+  const UserGroupArgs({
     required this.engine,
     this.region,
     this.tags,

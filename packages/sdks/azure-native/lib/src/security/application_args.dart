@@ -21,7 +21,7 @@ class ApplicationArgs {
   /// [description] description of the application
   /// [displayName] display name of the application
   /// [sourceResourceType] The application source, what it affects, e.g. Assessments
-  ApplicationArgs({
+  const ApplicationArgs({
     this.applicationId,
     this.description,
     this.displayName,

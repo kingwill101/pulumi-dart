@@ -18,7 +18,7 @@ class DiscoveredDataPoint {
   /// [dataSource] The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
   /// [lastUpdatedOn] UTC timestamp indicating when the data point was added or modified.
   /// [name] The name of the data point.
-  DiscoveredDataPoint({
+  const DiscoveredDataPoint({
     this.dataPointConfiguration,
     required this.dataSource,
     this.lastUpdatedOn,

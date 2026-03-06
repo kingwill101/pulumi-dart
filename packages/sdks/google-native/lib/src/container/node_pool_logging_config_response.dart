@@ -10,7 +10,7 @@ class NodePoolLoggingConfigResponse {
 
   /// Creates a new [NodePoolLoggingConfigResponse].
   /// [variantConfig] Logging variant configuration.
-  NodePoolLoggingConfigResponse({
+  const NodePoolLoggingConfigResponse({
     required this.variantConfig,
   });
 

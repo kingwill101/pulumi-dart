@@ -13,7 +13,7 @@ class RuleDefinitionResponse {
   /// Creates a new [RuleDefinitionResponse].
   /// [actions] Property actions
   /// [matchAttributes] Property matchAttributes
-  RuleDefinitionResponse({
+  const RuleDefinitionResponse({
     this.actions,
     this.matchAttributes,
   });

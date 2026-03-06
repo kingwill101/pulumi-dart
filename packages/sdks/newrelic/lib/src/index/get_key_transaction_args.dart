@@ -20,7 +20,7 @@ class GetKeyTransactionArgs {
   /// [accountId] The account ID you would like to search for key transactions in. Defaults to `account_id` in the `provider{}` (or `NEW_RELIC_ACCOUNT_ID` in your environment) if not specified.
   /// [guid] GUID of the key transaction in New Relic.
   /// [name] The name of the key transaction in New Relic.
-  GetKeyTransactionArgs({
+  const GetKeyTransactionArgs({
     this.accountId,
     this.guid,
     required this.name,

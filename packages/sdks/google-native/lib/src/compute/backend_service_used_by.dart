@@ -7,7 +7,7 @@ class BackendServiceUsedBy {
 
   /// Creates a new [BackendServiceUsedBy].
   /// [reference] Optional.
-  BackendServiceUsedBy({
+  const BackendServiceUsedBy({
     this.reference,
   });
 

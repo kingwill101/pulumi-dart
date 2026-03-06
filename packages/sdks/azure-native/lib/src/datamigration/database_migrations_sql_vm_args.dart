@@ -21,7 +21,7 @@ class DatabaseMigrationsSqlVmArgs {
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [sqlVirtualMachineName] Required.
   /// [targetDbName] The name of the target database.
-  DatabaseMigrationsSqlVmArgs({
+  const DatabaseMigrationsSqlVmArgs({
     this.properties,
     required this.resourceGroupName,
     required this.sqlVirtualMachineName,

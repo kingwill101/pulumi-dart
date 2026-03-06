@@ -25,7 +25,7 @@ class DataSourceConfigurationS3Configuration {
   /// [exclusionPatterns] A list of glob patterns for documents that should not be indexed. If a document that matches an inclusion prefix or inclusion pattern also matches an exclusion pattern, the document is not indexed. Refer to [Exclusion Patterns for more examples](https://docs.aws.amazon.com/kendra/latest/dg/API_S3DataSourceConfiguration.html#Kendra-Type-S3DataSourceConfiguration-ExclusionPatterns).
   /// [inclusionPatterns] A list of glob patterns for documents that should be indexed. If a document that matches an inclusion pattern also matches an exclusion pattern, the document is not indexed. Refer to [Inclusion Patterns for more examples](https://docs.aws.amazon.com/kendra/latest/dg/API_S3DataSourceConfiguration.html#Kendra-Type-S3DataSourceConfiguration-InclusionPatterns).
   /// [inclusionPrefixes] A list of S3 prefixes for the documents that should be included in the index.
-  DataSourceConfigurationS3Configuration({
+  const DataSourceConfigurationS3Configuration({
     this.accessControlListConfiguration,
     required this.bucketName,
     this.documentsMetadataConfiguration,

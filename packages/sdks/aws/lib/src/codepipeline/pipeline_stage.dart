@@ -24,7 +24,7 @@ class PipelineStage {
   /// [name] The name of the stage.
   /// [onFailure] The method to use when a stage has not completed successfully. For example, configuring this field for rollback will roll back a failed stage automatically to the last successful pipeline execution in the stage.
   /// [onSuccess] The method to use when a stage has succeeded. For example, configuring this field for conditions will allow the stage to succeed when the conditions are met.
-  PipelineStage({
+  const PipelineStage({
     required this.actions,
     this.beforeEntry,
     required this.name,

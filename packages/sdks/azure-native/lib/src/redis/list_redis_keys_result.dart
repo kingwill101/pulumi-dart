@@ -11,7 +11,7 @@ class ListRedisKeysResult {
   /// Creates a new [ListRedisKeysResult].
   /// [primaryKey] The current primary key that clients can use to authenticate with Redis cache.
   /// [secondaryKey] The current secondary key that clients can use to authenticate with Redis cache.
-  ListRedisKeysResult({
+  const ListRedisKeysResult({
     required this.primaryKey,
     required this.secondaryKey,
   });

@@ -11,7 +11,7 @@ class FailoverGroupReadWriteEndpointFailoverPolicy {
   /// Creates a new [FailoverGroupReadWriteEndpointFailoverPolicy].
   /// [graceMinutes] The grace period in minutes, before failover with data loss is attempted for the read-write endpoint. Required when `mode` is `Automatic`.
   /// [mode] The failover policy of the read-write endpoint for the failover group. Possible values are `Automatic` or `Manual`.
-  FailoverGroupReadWriteEndpointFailoverPolicy({
+  const FailoverGroupReadWriteEndpointFailoverPolicy({
     this.graceMinutes,
     required this.mode,
   });

@@ -31,7 +31,7 @@ class GetApiDefinitionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [title] API definition title.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApiDefinitionResult({
+  const GetApiDefinitionResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

@@ -12,7 +12,7 @@ class GetMaintenancePoliciesArgs {
 
   /// Creates a new [GetMaintenancePoliciesArgs].
   /// [filters] Optional.
-  GetMaintenancePoliciesArgs({
+  const GetMaintenancePoliciesArgs({
     this.filters,
   });
 

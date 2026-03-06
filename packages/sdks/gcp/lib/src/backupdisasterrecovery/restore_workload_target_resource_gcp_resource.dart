@@ -14,7 +14,7 @@ class RestoreWorkloadTargetResourceGcpResource {
   /// [gcpResourcename] Output only. Name of the Google Cloud resource.
   /// [location] Required. The location for the backup vault.
   /// [type] Output only. Type of the resource.
-  RestoreWorkloadTargetResourceGcpResource({
+  const RestoreWorkloadTargetResourceGcpResource({
     this.gcpResourcename,
     this.location,
     this.type,

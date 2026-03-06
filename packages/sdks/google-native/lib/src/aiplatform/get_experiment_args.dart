@@ -17,7 +17,7 @@ class GetExperimentArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [tensorboardId] Required.
-  GetExperimentArgs({
+  const GetExperimentArgs({
     required this.experimentId,
     required this.location,
     this.project,

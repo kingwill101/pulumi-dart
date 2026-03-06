@@ -26,7 +26,7 @@ class GetScalingConfigurationsResult {
   /// [names] A list of scaling configuration names.
   /// [outputFile] Optional.
   /// [scalingGroupId] ID of the scaling group.
-  GetScalingConfigurationsResult({
+  const GetScalingConfigurationsResult({
     required this.configurations,
     required this.id,
     required this.ids,

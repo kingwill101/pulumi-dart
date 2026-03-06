@@ -128,7 +128,7 @@ class ClusterArgs {
   /// [storageType] The storage type to associate with the DB cluster. Valid values: `standard`, `iopt1`.
   /// [tags] A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcSecurityGroupIds] List of VPC security groups to associate
-  ClusterArgs({
+  const ClusterArgs({
     this.allowMajorVersionUpgrade,
     this.applyImmediately,
     this.availabilityZones,

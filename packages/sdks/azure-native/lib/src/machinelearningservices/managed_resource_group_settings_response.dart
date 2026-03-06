@@ -10,7 +10,7 @@ class ManagedResourceGroupSettingsResponse {
 
   /// Creates a new [ManagedResourceGroupSettingsResponse].
   /// [assignedIdentities] List of assigned identities for the managed resource group
-  ManagedResourceGroupSettingsResponse({
+  const ManagedResourceGroupSettingsResponse({
     this.assignedIdentities,
   });
 

@@ -11,7 +11,7 @@ class ProjectServiceCatalogProvisioningDetailsProvisioningParameter {
   /// Creates a new [ProjectServiceCatalogProvisioningDetailsProvisioningParameter].
   /// [key] The key that identifies a provisioning parameter.
   /// [value] The value of the provisioning parameter.
-  ProjectServiceCatalogProvisioningDetailsProvisioningParameter({
+  const ProjectServiceCatalogProvisioningDetailsProvisioningParameter({
     required this.key,
     this.value,
   });

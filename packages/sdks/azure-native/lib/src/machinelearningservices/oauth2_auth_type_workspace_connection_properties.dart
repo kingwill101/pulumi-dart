@@ -34,7 +34,7 @@ class OAuth2AuthTypeWorkspaceConnectionProperties {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  OAuth2AuthTypeWorkspaceConnectionProperties({
+  const OAuth2AuthTypeWorkspaceConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

@@ -20,7 +20,7 @@ class BuildxBuilderRemote {
   /// [defaultLoad] Automatically load images to the Docker Engine image store. Defaults to `false`
   /// [key] Sets the TLS client key.
   /// [servername] TLS server name used in requests.
-  BuildxBuilderRemote({
+  const BuildxBuilderRemote({
     this.cacert,
     this.cert,
     this.defaultLoad,

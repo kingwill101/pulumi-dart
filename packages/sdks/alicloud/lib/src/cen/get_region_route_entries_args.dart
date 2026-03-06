@@ -17,7 +17,7 @@ class GetRegionRouteEntriesArgs {
   /// [instanceId] ID of the CEN instance.
   /// [outputFile] Optional.
   /// [regionId] ID of the region.
-  GetRegionRouteEntriesArgs({
+  const GetRegionRouteEntriesArgs({
     required this.instanceId,
     this.outputFile,
     required this.regionId,

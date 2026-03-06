@@ -70,7 +70,7 @@ class GdcSparkApplicationArgs {
   /// [sparkRApplicationConfig] Represents the SparkRApplicationConfig.
   /// [sparkSqlApplicationConfig] Represents the SparkRApplicationConfig.
   /// [version] The Dataproc version of this application.
-  GdcSparkApplicationArgs({
+  const GdcSparkApplicationArgs({
     this.annotations,
     this.applicationEnvironment,
     this.dependencyImages,

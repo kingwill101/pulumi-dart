@@ -35,7 +35,7 @@ class GetApplicationResult {
   /// [state] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.applicationId,
     required this.attributes,
     required this.createTime,

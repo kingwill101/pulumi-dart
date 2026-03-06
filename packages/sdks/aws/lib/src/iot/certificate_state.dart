@@ -41,7 +41,7 @@ class CertificateState {
   /// [privateKey] When neither CSR nor certificate is provided, the private key.
   /// [publicKey] When neither CSR nor certificate is provided, the public key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  CertificateState({
+  const CertificateState({
     this.active,
     this.arn,
     this.caCertificateId,

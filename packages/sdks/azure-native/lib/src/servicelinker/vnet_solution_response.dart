@@ -12,7 +12,7 @@ class VNetSolutionResponse {
   /// Creates a new [VNetSolutionResponse].
   /// [deleteOrUpdateBehavior] Indicates whether to clean up previous operation when Linker is updating or deleting
   /// [type] Type of VNet solution.
-  VNetSolutionResponse({
+  const VNetSolutionResponse({
     this.deleteOrUpdateBehavior,
     this.type,
   });

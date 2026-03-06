@@ -42,7 +42,7 @@ class GetScheduleResult {
   /// [time] The target time to trigger the action. The format is HH:MM.
   /// [timeZone] The IANA timezone id at which the schedule should execute.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetScheduleResult({
+  const GetScheduleResult({
     required this.azureApiVersion,
     required this.frequency,
     required this.id,

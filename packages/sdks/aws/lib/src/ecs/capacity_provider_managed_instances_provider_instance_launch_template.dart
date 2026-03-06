@@ -26,7 +26,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplate {
   /// [monitoring] CloudWatch provides two categories of monitoring: basic monitoring and detailed monitoring. By default, your managed instance is configured for basic monitoring. You can optionally enable detailed monitoring to help you more quickly identify and act on operational issues. You can enable or turn off detailed monitoring at launch or when the managed instance is running or stopped. For more information, see [Detailed monitoring for Amazon ECS Managed Instances](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html) in the Amazon ECS Developer Guide. Valid values are `BASIC` and `DETAILED`.
   /// [networkConfiguration] The network configuration for Amazon ECS Managed Instances. This specifies the subnets and security groups that instances use for network connectivity. Detailed below.
   /// [storageConfiguration] The storage configuration for Amazon ECS Managed Instances. This defines the root volume size and type for the instances. Detailed below.
-  CapacityProviderManagedInstancesProviderInstanceLaunchTemplate({
+  const CapacityProviderManagedInstancesProviderInstanceLaunchTemplate({
     this.capacityOptionType,
     required this.ec2InstanceProfileArn,
     this.instanceRequirements,

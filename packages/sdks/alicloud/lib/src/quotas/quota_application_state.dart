@@ -72,7 +72,7 @@ class QuotaApplicationState {
   /// [quotaUnit] The unit of the quota application.
   /// [reason] The reason of the quota application.
   /// [status] Application Status:
-  QuotaApplicationState({
+  const QuotaApplicationState({
     this.approveValue,
     this.auditMode,
     this.auditReason,

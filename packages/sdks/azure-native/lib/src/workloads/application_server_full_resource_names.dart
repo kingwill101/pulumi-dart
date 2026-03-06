@@ -13,7 +13,7 @@ class ApplicationServerFullResourceNames {
   /// Creates a new [ApplicationServerFullResourceNames].
   /// [availabilitySetName] The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
   /// [virtualMachines] The list of virtual machine naming details.
-  ApplicationServerFullResourceNames({
+  const ApplicationServerFullResourceNames({
     this.availabilitySetName,
     this.virtualMachines,
   });

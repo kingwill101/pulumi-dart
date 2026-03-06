@@ -46,7 +46,7 @@ class GetForwardEntriesResult {
   /// [names] A list of Forward Entries names.
   /// [outputFile] Optional.
   /// [status] The status of forward entry.
-  GetForwardEntriesResult({
+  const GetForwardEntriesResult({
     required this.entries,
     this.externalIp,
     this.externalPort,

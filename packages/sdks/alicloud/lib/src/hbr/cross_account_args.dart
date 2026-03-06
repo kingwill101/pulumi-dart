@@ -18,7 +18,7 @@ class CrossAccountArgs {
   /// [alias] Backup account alias
   /// [crossAccountRoleName] The name of RAM role that the backup account authorizes the management account to manage its resources
   /// [crossAccountUserId] The uid of the backup account.
-  CrossAccountArgs({
+  const CrossAccountArgs({
     this.alias,
     required this.crossAccountRoleName,
     required this.crossAccountUserId,

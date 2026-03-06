@@ -10,7 +10,7 @@ class Migration {
 
   /// Creates a new [Migration].
   /// [assessment] Migration assessments related configuration.
-  Migration({
+  const Migration({
     this.assessment,
   });
 

@@ -17,7 +17,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   /// [instanceType] ML compute instance type for the processing job.
   /// [volumeKmsKeyId] AWS KMS key that Amazon SageMaker AI uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the model monitoring job.
   /// [volumeSizeInGb] size of the ML storage volume, in gigabytes, to provision.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResourcesClusterConfig({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResourcesClusterConfig({
     required this.instanceCount,
     required this.instanceType,
     this.volumeKmsKeyId,

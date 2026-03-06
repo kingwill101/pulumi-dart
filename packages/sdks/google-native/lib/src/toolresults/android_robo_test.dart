@@ -21,7 +21,7 @@ class AndroidRoboTest {
   /// [bootstrapRunnerClass] The runner class for the bootstrap. Optional
   /// [maxDepth] The max depth of the traversal stack Robo can explore. Optional
   /// [maxSteps] The max number of steps/actions Robo can execute. Default is no limit (0). Optional
-  AndroidRoboTest({
+  const AndroidRoboTest({
     this.appInitialActivity,
     this.bootstrapPackageId,
     this.bootstrapRunnerClass,

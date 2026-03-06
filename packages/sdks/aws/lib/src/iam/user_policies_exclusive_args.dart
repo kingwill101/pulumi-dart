@@ -15,7 +15,7 @@ class UserPoliciesExclusiveArgs {
   /// Creates a new [UserPoliciesExclusiveArgs].
   /// [policyNames] A list of inline policy names to be assigned to the user. Policies attached to this user but not configured in this argument will be removed.
   /// [userName] IAM user name.
-  UserPoliciesExclusiveArgs({
+  const UserPoliciesExclusiveArgs({
     required this.policyNames,
     required this.userName,
   });

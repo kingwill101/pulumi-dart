@@ -31,7 +31,7 @@ class CloudStorageConfigResponse {
   /// [maxDuration] Optional. The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
   /// [state] An output-only field that indicates whether or not the subscription can receive messages.
   /// [textConfig] Optional. If set, message data will be written to Cloud Storage in text format.
-  CloudStorageConfigResponse({
+  const CloudStorageConfigResponse({
     required this.avroConfig,
     required this.bucket,
     required this.filenamePrefix,

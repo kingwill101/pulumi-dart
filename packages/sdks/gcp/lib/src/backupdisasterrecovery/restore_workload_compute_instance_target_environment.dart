@@ -11,7 +11,7 @@ class RestoreWorkloadComputeInstanceTargetEnvironment {
   /// Creates a new [RestoreWorkloadComputeInstanceTargetEnvironment].
   /// [project] Required. Target project for the Compute Engine instance.
   /// [zone] Required. The zone of the Compute Engine instance.
-  RestoreWorkloadComputeInstanceTargetEnvironment({
+  const RestoreWorkloadComputeInstanceTargetEnvironment({
     required this.project,
     required this.zone,
   });

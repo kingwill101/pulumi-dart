@@ -43,7 +43,7 @@ class RuleNetworksecurityV1beta1Args {
   /// [project] Optional.
   /// [sessionMatcher] CEL expression for matching on session criteria.
   /// [tlsInspectionEnabled] Optional. Flag to enable TLS inspection of traffic matching on , can only be true if the parent GatewaySecurityPolicy references a TLSInspectionConfig.
-  RuleNetworksecurityV1beta1Args({
+  const RuleNetworksecurityV1beta1Args({
     this.applicationMatcher,
     required this.basicProfile,
     this.description,

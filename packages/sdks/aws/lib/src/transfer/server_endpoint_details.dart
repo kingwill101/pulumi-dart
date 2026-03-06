@@ -20,7 +20,7 @@ class ServerEndpointDetails {
   /// [subnetIds] A list of subnet IDs that are required to host your SFTP server endpoint in your VPC. This property can only be used when `endpoint_type` is set to `VPC`.
   /// [vpcEndpointId] The ID of the VPC endpoint. This property can only be used when `endpoint_type` is set to `VPC_ENDPOINT`
   /// [vpcId] The VPC ID of the virtual private cloud in which the SFTP server's endpoint will be hosted. This property can only be used when `endpoint_type` is set to `VPC`.
-  ServerEndpointDetails({
+  const ServerEndpointDetails({
     this.addressAllocationIds,
     this.securityGroupIds,
     this.subnetIds,

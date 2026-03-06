@@ -15,7 +15,7 @@ class TextConfigResponse {
   /// [additionalTransformations] Transformations to apply to the detected data, overridden by `exclude_info_types`.
   /// [excludeInfoTypes] InfoTypes to skip transforming, overriding `additional_transformations`.
   /// [transformations_] The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
-  TextConfigResponse({
+  const TextConfigResponse({
     required this.additionalTransformations,
     required this.excludeInfoTypes,
     required this.transformations_,

@@ -11,7 +11,7 @@ class GetHoursOfOperationConfigEndTime {
   /// Creates a new [GetHoursOfOperationConfigEndTime].
   /// [hours] Hour of opening.
   /// [minutes] Minute of opening.
-  GetHoursOfOperationConfigEndTime({
+  const GetHoursOfOperationConfigEndTime({
     required this.hours,
     required this.minutes,
   });

@@ -8,7 +8,7 @@ class TableClientSideTimestamps {
 
   /// Creates a new [TableClientSideTimestamps].
   /// [status] Shows how to enable client-side timestamps settings for the specified table. Valid values: `ENABLED`.
-  TableClientSideTimestamps({
+  const TableClientSideTimestamps({
     required this.status,
   });
 

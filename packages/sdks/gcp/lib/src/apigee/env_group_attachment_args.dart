@@ -16,7 +16,7 @@ class EnvGroupAttachmentArgs {
   /// Creates a new [EnvGroupAttachmentArgs].
   /// [envgroupId] The Apigee environment group associated with the Apigee environment,
   /// [environment] The resource ID of the environment.
-  EnvGroupAttachmentArgs({
+  const EnvGroupAttachmentArgs({
     required this.envgroupId,
     required this.environment,
   });

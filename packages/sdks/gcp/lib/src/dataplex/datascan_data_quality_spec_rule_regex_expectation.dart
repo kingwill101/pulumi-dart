@@ -8,7 +8,7 @@ class DatascanDataQualitySpecRuleRegexExpectation {
 
   /// Creates a new [DatascanDataQualitySpecRuleRegexExpectation].
   /// [regex] A regular expression the column value is expected to match.
-  DatascanDataQualitySpecRuleRegexExpectation({
+  const DatascanDataQualitySpecRuleRegexExpectation({
     required this.regex,
   });
 

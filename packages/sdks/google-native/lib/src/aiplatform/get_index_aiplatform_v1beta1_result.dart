@@ -48,7 +48,7 @@ class GetIndexAiplatformV1beta1Result {
   /// [metadataSchemaUri] Immutable. Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). Note: The URI given on output will be immutable and probably different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
   /// [name] The resource name of the Index.
   /// [updateTime] Timestamp when this Index was most recently updated. This also includes any update to the contents of the Index. Note that Operations working on this Index may have their Operations.metadata.generic_metadata.update_time a little after the value of this timestamp, yet that does not mean their results are not already reflected in the Index. Result of any successfully completed Operation on the Index is reflected in it.
-  GetIndexAiplatformV1beta1Result({
+  const GetIndexAiplatformV1beta1Result({
     required this.createTime,
     required this.deployedIndexes,
     required this.description,

@@ -12,7 +12,7 @@ class ConfidentialInstanceConfigResponseComputeBeta {
   /// Creates a new [ConfidentialInstanceConfigResponseComputeBeta].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential instance.
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled.
-  ConfidentialInstanceConfigResponseComputeBeta({
+  const ConfidentialInstanceConfigResponseComputeBeta({
     required this.confidentialInstanceType,
     required this.enableConfidentialCompute,
   });

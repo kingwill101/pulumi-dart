@@ -8,7 +8,7 @@ class ApplicationEncryptionConfiguration {
 
   /// Creates a new [ApplicationEncryptionConfiguration].
   /// [kmsKeyId] Identifier of the AWS KMS key that is used to encrypt your data. Amazon Q doesn't support asymmetric keys.
-  ApplicationEncryptionConfiguration({
+  const ApplicationEncryptionConfiguration({
     required this.kmsKeyId,
   });
 

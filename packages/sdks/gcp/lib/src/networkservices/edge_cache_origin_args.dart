@@ -100,7 +100,7 @@ class EdgeCacheOriginArgs {
   /// [protocol] The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
   /// [retryConditions] Specifies one or more retry conditions for the configured origin.
   /// [timeout] The connection and HTTP timeout configuration for this origin.
-  EdgeCacheOriginArgs({
+  const EdgeCacheOriginArgs({
     this.awsV4Authentication,
     this.description,
     this.failoverOrigin,

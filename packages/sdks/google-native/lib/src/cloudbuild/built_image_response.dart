@@ -16,7 +16,7 @@ class BuiltImageResponse {
   /// [digest] Docker Registry 2.0 digest.
   /// [name] Name used to push the container image to Google Container Registry, as presented to `docker push`.
   /// [pushTiming] Stores timing information for pushing the specified image.
-  BuiltImageResponse({
+  const BuiltImageResponse({
     required this.digest,
     required this.name,
     required this.pushTiming,

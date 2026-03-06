@@ -21,7 +21,7 @@ class IdentityServiceAzureADConfigResponseGkehubV1beta {
   /// [encryptedClientSecret] Encrypted AzureAD client secret.
   /// [kubectlRedirectUri] The redirect URL that kubectl uses for authorization.
   /// [tenant] Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
-  IdentityServiceAzureADConfigResponseGkehubV1beta({
+  const IdentityServiceAzureADConfigResponseGkehubV1beta({
     required this.clientId,
     required this.clientSecret,
     required this.encryptedClientSecret,

@@ -10,7 +10,7 @@ class MachinePreferences {
 
   /// Creates a new [MachinePreferences].
   /// [allowedMachineSeries] Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
-  MachinePreferences({
+  const MachinePreferences({
     this.allowedMachineSeries,
   });
 

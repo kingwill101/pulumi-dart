@@ -8,7 +8,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig {
 
   /// Creates a new [ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig].
   /// [cpuCount] The number of CPU's in the VM instance.
-  ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig({
+  const ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig({
     required this.cpuCount,
   });
 

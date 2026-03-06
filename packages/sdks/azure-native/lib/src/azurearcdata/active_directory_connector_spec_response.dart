@@ -14,7 +14,7 @@ class ActiveDirectoryConnectorSpecResponse {
   /// Creates a new [ActiveDirectoryConnectorSpecResponse].
   /// [activeDirectory] null
   /// [dns] null
-  ActiveDirectoryConnectorSpecResponse({
+  const ActiveDirectoryConnectorSpecResponse({
     required this.activeDirectory,
     required this.dns,
   });

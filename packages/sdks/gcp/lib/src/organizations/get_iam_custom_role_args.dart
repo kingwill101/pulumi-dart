@@ -15,7 +15,7 @@ class GetIamCustomRoleArgs {
   /// Creates a new [GetIamCustomRoleArgs].
   /// [orgId] The numeric ID of the organization in which you want to create a custom role.
   /// [roleId] The role id that has been used for this role.
-  GetIamCustomRoleArgs({
+  const GetIamCustomRoleArgs({
     required this.orgId,
     required this.roleId,
   });

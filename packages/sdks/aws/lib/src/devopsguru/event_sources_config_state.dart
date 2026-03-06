@@ -13,7 +13,7 @@ class EventSourcesConfigState {
   /// Creates a new [EventSourcesConfigState].
   /// [eventSources] Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `event_sources` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EventSourcesConfigState({
+  const EventSourcesConfigState({
     this.eventSources,
     this.region,
   });

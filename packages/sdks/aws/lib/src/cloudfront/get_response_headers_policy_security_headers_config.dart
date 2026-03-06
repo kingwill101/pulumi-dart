@@ -29,7 +29,7 @@ class GetResponseHeadersPolicySecurityHeadersConfig {
   /// [referrerPolicies] Value of the Referrer-Policy HTTP response header. Valid Values: `no-referrer` | `no-referrer-when-downgrade` | `origin` | `origin-when-cross-origin` | `same-origin` | `strict-origin` | `strict-origin-when-cross-origin` | `unsafe-url`
   /// [strictTransportSecurities] Settings that determine whether CloudFront includes the Strict-Transport-Security HTTP response header and the header’s value. See Strict Transport Security for more information.
   /// [xssProtections] Settings that determine whether CloudFront includes the X-XSS-Protection HTTP response header and the header’s value. See XSS Protection for more information.
-  GetResponseHeadersPolicySecurityHeadersConfig({
+  const GetResponseHeadersPolicySecurityHeadersConfig({
     required this.contentSecurityPolicies,
     required this.contentTypeOptions,
     required this.frameOptions,

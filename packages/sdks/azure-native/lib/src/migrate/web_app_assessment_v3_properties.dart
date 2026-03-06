@@ -17,7 +17,7 @@ class WebAppAssessmentV3Properties {
   /// [fallbackMachineAssessmentArmId] Gets or sets the machine assessment ARM ID for VM fallback.
   /// [scope] Gets or sets the scope of assessment.
   /// [settings] Gets or sets the settings for the assessment.
-  WebAppAssessmentV3Properties({
+  const WebAppAssessmentV3Properties({
     this.fallbackMachineAssessmentArmId,
     this.scope,
     this.settings,

@@ -15,7 +15,7 @@ class GetGroundStationArgs {
   /// Creates a new [GetGroundStationArgs].
   /// [groundStationName] Ground Station name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGroundStationArgs({
+  const GetGroundStationArgs({
     required this.groundStationName,
     required this.resourceGroupName,
   });

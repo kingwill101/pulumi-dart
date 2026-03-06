@@ -21,7 +21,7 @@ class ServicesAccountArgs {
   /// [name] Specifies the name of this Account. Changing this forces a new Account to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group within which this Account should exist. Changing this forces a new Account to be created.
   /// [tags] A mapping of tags which should be assigned to the Account.
-  ServicesAccountArgs({
+  const ServicesAccountArgs({
     required this.applicationId,
     this.name,
     required this.resourceGroupName,

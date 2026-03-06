@@ -14,7 +14,7 @@ class GetCollationTimeZonesCollationTimeZone {
   /// [description] The code of the instance type.
   /// [standardTimeOffset] The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
   /// [timeZone] The time zone that is available for use in ApsaraDB RDS.
-  GetCollationTimeZonesCollationTimeZone({
+  const GetCollationTimeZonesCollationTimeZone({
     this.description,
     this.standardTimeOffset,
     this.timeZone,

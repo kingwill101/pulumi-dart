@@ -12,7 +12,7 @@ class ExistingBucket {
   /// Creates a new [ExistingBucket].
   /// [arn] Arn of the bucket. Only one of [arn] or [name] can be specified.
   /// [name] Name of the bucket. Only one of [arn] or [name] can be specified.
-  ExistingBucket({
+  const ExistingBucket({
     this.arn,
     this.name,
   });

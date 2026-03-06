@@ -25,7 +25,7 @@ class ScaleRuleResponse {
   /// [http] HTTP requests based scaling.
   /// [name] Scale Rule Name
   /// [tcp] Tcp requests based scaling.
-  ScaleRuleResponse({
+  const ScaleRuleResponse({
     this.azureQueue,
     this.custom,
     this.http,

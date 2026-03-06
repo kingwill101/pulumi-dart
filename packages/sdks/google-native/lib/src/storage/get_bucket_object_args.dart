@@ -29,7 +29,7 @@ class GetBucketObjectArgs {
   /// [projection] Optional.
   /// [softDeleted] Optional.
   /// [userProject] Optional.
-  GetBucketObjectArgs({
+  const GetBucketObjectArgs({
     required this.bucket,
     this.generation,
     this.ifGenerationMatch,

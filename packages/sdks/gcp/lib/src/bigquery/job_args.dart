@@ -52,7 +52,7 @@ class JobArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [query] Configures a query job.
   /// [reservation] The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
-  JobArgs({
+  const JobArgs({
     this.copy,
     this.extract,
     required this.jobId,

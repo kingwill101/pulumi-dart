@@ -10,7 +10,7 @@ class BucketReplicationEncryptionConfiguration {
 
   /// Creates a new [BucketReplicationEncryptionConfiguration].
   /// [replicaKmsKeyId] The CMK ID used in SSE-KMS.
-  BucketReplicationEncryptionConfiguration({
+  const BucketReplicationEncryptionConfiguration({
     required this.replicaKmsKeyId,
   });
 

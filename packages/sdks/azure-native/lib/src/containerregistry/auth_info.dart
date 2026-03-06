@@ -21,7 +21,7 @@ class AuthInfo {
   /// [scope] The scope of the access token.
   /// [token] The access token used to access the source control provider.
   /// [tokenType] The type of Auth token.
-  AuthInfo({
+  const AuthInfo({
     this.expiresIn,
     this.refreshToken,
     this.scope,

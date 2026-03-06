@@ -11,7 +11,7 @@ class NotificationEndpoint {
   /// Creates a new [NotificationEndpoint].
   /// [locations] The locations.
   /// [notificationDestination] The notification destination.
-  NotificationEndpoint({
+  const NotificationEndpoint({
     this.locations,
     this.notificationDestination,
   });

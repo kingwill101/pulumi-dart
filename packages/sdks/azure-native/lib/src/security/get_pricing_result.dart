@@ -52,7 +52,7 @@ class GetPricingResult {
   /// [resourcesCoverageStatus] This field is available for subscription-level only, and reflects the coverage status of the resources under the subscription. Please note: The "pricingTier" field reflects the plan status of the subscription. However, since the plan status can also be defined at the resource level, there might be misalignment between the subscription's plan status and the resource status. This field helps indicate the coverage status of the resources.
   /// [subPlan] The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. Each sub-plan enables a set of security features. When not specified, full plan is applied. For VirtualMachines plan, available sub plans are 'P1' & 'P2', where for resource level only 'P1' sub plan is supported.
   /// [type] Resource type
-  GetPricingResult({
+  const GetPricingResult({
     required this.azureApiVersion,
     required this.deprecated,
     required this.enablementTime,

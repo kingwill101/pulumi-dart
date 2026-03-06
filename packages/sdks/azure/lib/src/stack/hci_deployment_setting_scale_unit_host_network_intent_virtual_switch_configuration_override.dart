@@ -11,7 +11,7 @@ class HciDeploymentSettingScaleUnitHostNetworkIntentVirtualSwitchConfigurationOv
   /// Creates a new [HciDeploymentSettingScaleUnitHostNetworkIntentVirtualSwitchConfigurationOverride].
   /// [enableIov] Specifies the IoV enable status for Virtual Switch. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [loadBalancingAlgorithm] Specifies the load balancing algorithm for Virtual Switch. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitHostNetworkIntentVirtualSwitchConfigurationOverride({
+  const HciDeploymentSettingScaleUnitHostNetworkIntentVirtualSwitchConfigurationOverride({
     this.enableIov,
     this.loadBalancingAlgorithm,
   });

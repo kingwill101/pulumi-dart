@@ -13,7 +13,7 @@ class PrivateEndpointConnectionPropertiesResponse {
   /// [privateEndpoint] Required.
   /// [privateLinkServiceConnectionState] Optional.
   /// [provisioningState] Required.
-  PrivateEndpointConnectionPropertiesResponse({
+  const PrivateEndpointConnectionPropertiesResponse({
     required this.privateEndpoint,
     this.privateLinkServiceConnectionState,
     required this.provisioningState,

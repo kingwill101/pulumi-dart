@@ -9,7 +9,7 @@ class EnvironmentVariableTypeEnumValue {
 
   /// Creates a new [EnvironmentVariableTypeEnumValue].
   /// [value] Property value
-  EnvironmentVariableTypeEnumValue({
+  const EnvironmentVariableTypeEnumValue({
     this.value,
   });
 

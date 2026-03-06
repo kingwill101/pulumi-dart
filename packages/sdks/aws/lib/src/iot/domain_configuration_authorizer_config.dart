@@ -11,7 +11,7 @@ class DomainConfigurationAuthorizerConfig {
   /// Creates a new [DomainConfigurationAuthorizerConfig].
   /// [allowAuthorizerOverride] A Boolean that specifies whether the domain configuration's authorization service can be overridden.
   /// [defaultAuthorizerName] The name of the authorization service for a domain configuration.
-  DomainConfigurationAuthorizerConfig({
+  const DomainConfigurationAuthorizerConfig({
     this.allowAuthorizerOverride,
     this.defaultAuthorizerName,
   });

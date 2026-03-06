@@ -44,7 +44,7 @@ class GetWebAppVnetConnectionResult {
   /// [routes] The routes that this Virtual Network connection uses.
   /// [type] Resource type.
   /// [vnetResourceId] The Virtual Network's resource ID.
-  GetWebAppVnetConnectionResult({
+  const GetWebAppVnetConnectionResult({
     required this.azureApiVersion,
     this.certBlob,
     required this.certThumbprint,

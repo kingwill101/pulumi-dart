@@ -13,7 +13,7 @@ class GetBillingAccountSinkArgs {
   /// Creates a new [GetBillingAccountSinkArgs].
   /// [billingAccountId] Required.
   /// [sinkId] Required.
-  GetBillingAccountSinkArgs({
+  const GetBillingAccountSinkArgs({
     required this.billingAccountId,
     required this.sinkId,
   });

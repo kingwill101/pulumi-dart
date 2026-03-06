@@ -14,7 +14,7 @@ class ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
   /// Creates a new [ClusterNodeConfigGuestAcceleratorGpuSharingConfig].
   /// [gpuSharingStrategy] The type of GPU sharing strategy to enable on the GPU node.
   /// [maxSharedClientsPerGpu] The maximum number of containers that can share a GPU.
-  ClusterNodeConfigGuestAcceleratorGpuSharingConfig({
+  const ClusterNodeConfigGuestAcceleratorGpuSharingConfig({
     required this.gpuSharingStrategy,
     required this.maxSharedClientsPerGpu,
   });

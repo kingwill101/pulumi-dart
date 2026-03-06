@@ -91,7 +91,7 @@ class AzureVmWorkloadSQLDatabaseProtectedItem {
   /// [serverName] Host/Cluster Name for instance or AG
   /// [softDeleteRetentionPeriodInDays] Soft delete retention period in days
   /// [sourceResourceId] ARM ID of the resource to be backed up.
-  AzureVmWorkloadSQLDatabaseProtectedItem({
+  const AzureVmWorkloadSQLDatabaseProtectedItem({
     this.backupSetName,
     this.containerName,
     this.createMode,

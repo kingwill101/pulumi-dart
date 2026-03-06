@@ -11,7 +11,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepos
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource].
   /// [commitSha] The commit SHA to read repository with. If unset, the file will be read at HEAD.
   /// [dataformRepositoryResourceName] The resource name of the Dataform Repository.
-  ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource({
+  const ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource({
     this.commitSha,
     required this.dataformRepositoryResourceName,
   });

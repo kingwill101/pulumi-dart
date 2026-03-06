@@ -21,7 +21,7 @@ class GetOrderableClusterResult {
   /// [nodeType] Required.
   /// [preferredNodeTypes] Optional.
   /// [region] Required.
-  GetOrderableClusterResult({
+  const GetOrderableClusterResult({
     required this.availabilityZones,
     required this.clusterType,
     required this.clusterVersion,

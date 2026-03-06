@@ -9,7 +9,7 @@ class GitHubResourceInfoResponse {
 
   /// Creates a new [GitHubResourceInfoResponse].
   /// [appInstallationId] GitHub application installation id.
-  GitHubResourceInfoResponse({
+  const GitHubResourceInfoResponse({
     this.appInstallationId,
   });
 

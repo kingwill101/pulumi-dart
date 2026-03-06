@@ -12,7 +12,7 @@ class GetRegionArgs {
 
   /// Creates a new [GetRegionArgs].
   /// [slug] A human-readable string that is used as a unique identifier for each region.
-  GetRegionArgs({
+  const GetRegionArgs({
     required this.slug,
   });
 

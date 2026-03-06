@@ -23,7 +23,7 @@ class GetGroupMigrationcenterV1alpha1Result {
   /// [labels] Labels as key value pairs.
   /// [name] The name of the group.
   /// [updateTime] The timestamp when the group was last updated.
-  GetGroupMigrationcenterV1alpha1Result({
+  const GetGroupMigrationcenterV1alpha1Result({
     required this.createTime,
     required this.description,
     required this.displayName,

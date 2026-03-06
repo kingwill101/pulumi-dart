@@ -12,7 +12,7 @@ class CidrRoutingConfig {
   /// Creates a new [CidrRoutingConfig].
   /// [collectionId] &lt;p&gt;The CIDR collection ID.&lt;/p&gt;
   /// [locationName] &lt;p&gt;The CIDR collection location name.&lt;/p&gt;
-  CidrRoutingConfig({
+  const CidrRoutingConfig({
     this.collectionId,
     this.locationName,
   });

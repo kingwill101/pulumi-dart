@@ -28,7 +28,7 @@ class AccessPolicyAssignmentArgs {
   /// [databaseName] The name of the Redis Enterprise database.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [user] The user associated with the access policy.
-  AccessPolicyAssignmentArgs({
+  const AccessPolicyAssignmentArgs({
     this.accessPolicyAssignmentName,
     required this.accessPolicyName,
     required this.clusterName,

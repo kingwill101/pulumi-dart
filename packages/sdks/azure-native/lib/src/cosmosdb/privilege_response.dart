@@ -13,7 +13,7 @@ class PrivilegeResponse {
   /// Creates a new [PrivilegeResponse].
   /// [actions] An array of actions that are allowed.
   /// [resource] An Azure Cosmos DB Mongo DB Resource.
-  PrivilegeResponse({
+  const PrivilegeResponse({
     this.actions,
     this.resource,
   });

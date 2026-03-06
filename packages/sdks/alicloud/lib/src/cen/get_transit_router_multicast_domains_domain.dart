@@ -23,7 +23,7 @@ class GetTransitRouterMulticastDomainsDomain {
   /// [transitRouterMulticastDomainDescription] The description of the Transit Router Multicast Domain.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain.
   /// [transitRouterMulticastDomainName] The name of the Transit Router Multicast Domain.
-  GetTransitRouterMulticastDomainsDomain({
+  const GetTransitRouterMulticastDomainsDomain({
     required this.id,
     required this.status,
     required this.transitRouterId,

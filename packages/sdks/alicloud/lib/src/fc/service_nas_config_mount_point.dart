@@ -11,7 +11,7 @@ class ServiceNasConfigMountPoint {
   /// Creates a new [ServiceNasConfigMountPoint].
   /// [mountDir] The local address where to mount your remote NAS directory.
   /// [serverAddr] The address of the remote NAS directory.
-  ServiceNasConfigMountPoint({
+  const ServiceNasConfigMountPoint({
     required this.mountDir,
     required this.serverAddr,
   });

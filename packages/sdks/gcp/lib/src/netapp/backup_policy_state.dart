@@ -54,7 +54,7 @@ class BackupPolicyState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] The state of the backup policy.
   /// [weeklyBackupLimit] Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
-  BackupPolicyState({
+  const BackupPolicyState({
     this.assignedVolumeCount,
     this.createTime,
     this.dailyBackupLimit,

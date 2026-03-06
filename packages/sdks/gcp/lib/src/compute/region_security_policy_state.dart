@@ -64,7 +64,7 @@ class RegionSecurityPolicyState {
   /// [selfLinkWithPolicyId] Server-defined URL for this resource with the resource id.
   /// [type] The type indicates the intended use of the security policy.
   /// [userDefinedFields] Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
-  RegionSecurityPolicyState({
+  const RegionSecurityPolicyState({
     this.advancedOptionsConfig,
     this.ddosProtectionConfig,
     this.description,

@@ -21,7 +21,7 @@ class GoogleCloudRunV2Volume {
   /// [emptyDir] Ephemeral storage used as a shared volume.
   /// [name] Volume's name.
   /// [secret] Secret represents a secret that should populate this volume.
-  GoogleCloudRunV2Volume({
+  const GoogleCloudRunV2Volume({
     this.cloudSqlInstance,
     this.emptyDir,
     required this.name,

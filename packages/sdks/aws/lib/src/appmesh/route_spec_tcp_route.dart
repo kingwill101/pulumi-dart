@@ -16,7 +16,7 @@ class RouteSpecTcpRoute {
   /// [action] Action to take if a match is determined.
   /// [match] Optional.
   /// [timeout] Types of timeouts.
-  RouteSpecTcpRoute({
+  const RouteSpecTcpRoute({
     required this.action,
     this.match,
     this.timeout,

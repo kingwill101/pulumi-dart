@@ -11,7 +11,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataO
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest].
   /// [authCode] The code provided by the connector when it has been authenticated via the connected app.
   /// [redirectUri] The URL to which the authentication server redirects the browser after authorization has been granted.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest({
     this.authCode,
     this.redirectUri,
   });

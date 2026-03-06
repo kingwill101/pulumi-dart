@@ -33,7 +33,7 @@ class EndpointV3State {
   /// [serviceName] The service name of the endpoint.
   /// [serviceType] The service type of the endpoint.
   /// [url] The endpoint url.
-  EndpointV3State({
+  const EndpointV3State({
     this.endpointRegion,
     this.interface,
     this.name,

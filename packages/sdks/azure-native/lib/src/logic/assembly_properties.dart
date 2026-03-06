@@ -35,7 +35,7 @@ class AssemblyProperties {
   /// [contentType] The content type.
   /// [createdTime] The artifact creation time.
   /// [metadata] Optional.
-  AssemblyProperties({
+  const AssemblyProperties({
     this.assemblyCulture,
     required this.assemblyName,
     this.assemblyPublicKeyToken,

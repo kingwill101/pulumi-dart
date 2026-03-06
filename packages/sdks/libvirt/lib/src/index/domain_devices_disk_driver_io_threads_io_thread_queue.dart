@@ -8,7 +8,7 @@ class DomainDevicesDiskDriverIoThreadsIoThreadQueue {
 
   /// Creates a new [DomainDevicesDiskDriverIoThreadsIoThreadQueue].
   /// [id] Determines the identifier for the I/O queue associated with the thread.
-  DomainDevicesDiskDriverIoThreadsIoThreadQueue({
+  const DomainDevicesDiskDriverIoThreadsIoThreadQueue({
     this.id,
   });
 

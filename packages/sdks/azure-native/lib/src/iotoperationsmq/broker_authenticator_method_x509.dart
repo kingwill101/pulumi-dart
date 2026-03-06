@@ -13,7 +13,7 @@ class BrokerAuthenticatorMethodX509 {
   /// Creates a new [BrokerAuthenticatorMethodX509].
   /// [attributes] K8S Secret name to mount for username and password.
   /// [trustedClientCaCertConfigMap] Trusted client ca cert config map.
-  BrokerAuthenticatorMethodX509({
+  const BrokerAuthenticatorMethodX509({
     this.attributes,
     this.trustedClientCaCertConfigMap,
   });

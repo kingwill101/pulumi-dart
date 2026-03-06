@@ -12,7 +12,7 @@ class UserPoolUserPoolAddOns {
   /// Creates a new [UserPoolUserPoolAddOns].
   /// [advancedSecurityAdditionalFlows] A block to specify the threat protection configuration options for additional authentication types in your user pool, including custom authentication. Detailed below.
   /// [advancedSecurityMode] Mode for advanced security, must be one of `OFF`, `AUDIT` or `ENFORCED`.
-  UserPoolUserPoolAddOns({
+  const UserPoolUserPoolAddOns({
     this.advancedSecurityAdditionalFlows,
     required this.advancedSecurityMode,
   });

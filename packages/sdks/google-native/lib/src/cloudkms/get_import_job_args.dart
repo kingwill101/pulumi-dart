@@ -17,7 +17,7 @@ class GetImportJobArgs {
   /// [keyRingId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetImportJobArgs({
+  const GetImportJobArgs({
     required this.importJobId,
     required this.keyRingId,
     required this.location,

@@ -13,7 +13,7 @@ class PostgresqlSchemaResponse {
   /// Creates a new [PostgresqlSchemaResponse].
   /// [postgresqlTables] Tables in the schema.
   /// [schema] Schema name.
-  PostgresqlSchemaResponse({
+  const PostgresqlSchemaResponse({
     required this.postgresqlTables,
     required this.schema,
   });

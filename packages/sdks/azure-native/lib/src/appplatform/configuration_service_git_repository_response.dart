@@ -45,7 +45,7 @@ class ConfigurationServiceGitRepositoryResponse {
   /// [strictHostKeyChecking] Strict host key checking or not.
   /// [uri] URI of the repository
   /// [username] Username of git repository basic auth.
-  ConfigurationServiceGitRepositoryResponse({
+  const ConfigurationServiceGitRepositoryResponse({
     this.caCertResourceId,
     this.gitImplementation,
     this.hostKey,

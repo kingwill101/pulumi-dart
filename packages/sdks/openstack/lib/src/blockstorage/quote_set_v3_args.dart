@@ -51,7 +51,7 @@ class QuoteSetV3Args {
   /// [snapshots] Quota value for snapshots. Changing this updates the
   /// [volumeTypeQuota] Key/Value pairs for setting quota for
   /// [volumes] Quota value for volumes. Changing this updates the
-  QuoteSetV3Args({
+  const QuoteSetV3Args({
     this.backupGigabytes,
     this.backups,
     this.gigabytes,

@@ -9,7 +9,7 @@ class KalmConfigResponse {
 
   /// Creates a new [KalmConfigResponse].
   /// [enabled] Whether KALM is enabled for this cluster.
-  KalmConfigResponse({
+  const KalmConfigResponse({
     required this.enabled,
   });
 

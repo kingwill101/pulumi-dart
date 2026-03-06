@@ -27,7 +27,7 @@ class GetListenerDefaultActionAuthenticateOidc {
   /// [sessionTimeout] Required.
   /// [tokenEndpoint] Required.
   /// [userInfoEndpoint] Required.
-  GetListenerDefaultActionAuthenticateOidc({
+  const GetListenerDefaultActionAuthenticateOidc({
     required this.authenticationRequestExtraParams,
     required this.authorizationEndpoint,
     required this.clientId,

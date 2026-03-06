@@ -12,7 +12,7 @@ class PrivateSrvNetworkAddressState {
   /// Creates a new [PrivateSrvNetworkAddressState].
   /// [dbInstanceId] The instance ID.
   /// [privateSrvConnectionStringUri] Private network SRV highly available connection address
-  PrivateSrvNetworkAddressState({
+  const PrivateSrvNetworkAddressState({
     this.dbInstanceId,
     this.privateSrvConnectionStringUri,
   });

@@ -21,7 +21,7 @@ class TargetOSInfo {
   /// [osUpdateType] Specifies the OS update type to test against, e.g., 'Security updates' or 'Feature updates'.
   /// [targetOSImageIds] Specifies the ids of the target OSs from Custom Images to be tested.
   /// [targetOSs] Specifies the target OSs to be tested.
-  TargetOSInfo({
+  const TargetOSInfo({
     this.baselineOSs,
     this.insiderChannelIds,
     required this.osUpdateType,

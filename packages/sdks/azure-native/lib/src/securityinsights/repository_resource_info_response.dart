@@ -18,7 +18,7 @@ class RepositoryResourceInfoResponse {
   /// [azureDevOpsResourceInfo] Resources created in Azure DevOps for this source-control.
   /// [gitHubResourceInfo] Resources created in GitHub for this source-control.
   /// [webhook] The webhook object created for the source-control.
-  RepositoryResourceInfoResponse({
+  const RepositoryResourceInfoResponse({
     this.azureDevOpsResourceInfo,
     this.gitHubResourceInfo,
     this.webhook,

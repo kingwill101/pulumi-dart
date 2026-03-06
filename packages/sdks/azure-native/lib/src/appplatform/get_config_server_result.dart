@@ -25,7 +25,7 @@ class GetConfigServerResult {
   /// [properties] Properties of the Config Server resource
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetConfigServerResult({
+  const GetConfigServerResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

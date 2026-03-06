@@ -23,7 +23,7 @@ class RouterRoutesV2Args {
   /// [region] The region in which to obtain the V2 networking client.
   /// [routerId] ID of the router these routing entries belong to.
   /// [routes] A set of routing entries to add to the router.
-  RouterRoutesV2Args({
+  const RouterRoutesV2Args({
     this.region,
     required this.routerId,
     this.routes,

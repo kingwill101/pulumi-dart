@@ -12,7 +12,7 @@ class PublisherAnalyticshubV1beta1 {
   /// Creates a new [PublisherAnalyticshubV1beta1].
   /// [name] Optional. Name of the listing publisher.
   /// [primaryContact] Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.
-  PublisherAnalyticshubV1beta1({
+  const PublisherAnalyticshubV1beta1({
     this.name,
     this.primaryContact,
   });

@@ -33,7 +33,7 @@ class AwsSsmParameterPropertiesResponse {
   /// [tier] The parameter tier.
   /// [type] The type of parameter.
   /// [value] The parameter value.  If type is ``StringList``, the system returns a comma-separated string with no spaces between commas in the ``Value`` field.
-  AwsSsmParameterPropertiesResponse({
+  const AwsSsmParameterPropertiesResponse({
     this.allowedPattern,
     this.dataType,
     this.description,

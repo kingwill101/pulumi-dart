@@ -9,7 +9,7 @@ class InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseCompu
   /// Creates a new [InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseComputeV1].
   /// [max] Required.
   /// [min] Required.
-  InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseComputeV1({
+  const InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseComputeV1({
     required this.max,
     required this.min,
   });

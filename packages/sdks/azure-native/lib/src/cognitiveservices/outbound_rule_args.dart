@@ -25,7 +25,7 @@ class OutboundRuleArgs {
   /// [properties] Outbound Rule for the managed network of a cognitive services account.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] Name of the cognitive services account managed network outbound rule
-  OutboundRuleArgs({
+  const OutboundRuleArgs({
     required this.accountName,
     required this.managedNetworkName,
     required this.properties,

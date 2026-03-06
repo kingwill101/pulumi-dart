@@ -20,7 +20,7 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig {
   /// [domain] Required. The DNS name suffix of the zone being peered
   /// [targetNetwork] Required. The VPC network name in the targetProject
   /// [targetProject] Required. The project id hosting the Cloud DNS managed
-  AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig({
+  const AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig({
     required this.domain,
     required this.targetNetwork,
     required this.targetProject,

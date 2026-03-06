@@ -15,7 +15,7 @@ class IdentityPropertiesResponse {
   /// [principalId] The identity ID.
   /// [tenantId] The tenant ID of resource.
   /// [type] Managed identity type.
-  IdentityPropertiesResponse({
+  const IdentityPropertiesResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

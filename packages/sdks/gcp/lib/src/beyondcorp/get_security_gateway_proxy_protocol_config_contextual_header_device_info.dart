@@ -8,7 +8,7 @@ class GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo {
 
   /// Creates a new [GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo].
   /// [outputType] The output type of the delegated device info. Possible values: ["PROTOBUF", "JSON", "NONE"]
-  GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo({
+  const GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo({
     required this.outputType,
   });
 

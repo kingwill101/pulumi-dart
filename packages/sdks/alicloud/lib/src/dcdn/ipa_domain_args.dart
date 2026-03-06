@@ -25,7 +25,7 @@ class IpaDomainArgs {
   /// [scope] The accelerated region. Valid values: `domestic`, `global`, `overseas`.
   /// [sources] Sources. See `sources` below.
   /// [status] The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
-  IpaDomainArgs({
+  const IpaDomainArgs({
     required this.domainName,
     this.resourceGroupId,
     this.scope,

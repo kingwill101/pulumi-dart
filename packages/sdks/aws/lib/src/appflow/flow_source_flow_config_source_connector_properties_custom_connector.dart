@@ -9,7 +9,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector {
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector].
   /// [customProperties] Optional.
   /// [entityName] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector({
+  const FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector({
     this.customProperties,
     required this.entityName,
   });

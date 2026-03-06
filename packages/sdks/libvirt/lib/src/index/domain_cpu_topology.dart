@@ -20,7 +20,7 @@ class DomainCpuTopology {
   /// [dies] Specifies the number of dies configured for the CPUs within the domain topology.
   /// [sockets] Configures the number of CPU sockets defined in the domain's CPU topology.
   /// [threads] Sets the number of threads associated with each core in the CPU topology.
-  DomainCpuTopology({
+  const DomainCpuTopology({
     this.clusters,
     this.cores,
     this.dies,

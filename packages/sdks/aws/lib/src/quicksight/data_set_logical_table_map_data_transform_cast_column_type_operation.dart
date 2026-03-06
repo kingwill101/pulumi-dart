@@ -14,7 +14,7 @@ class DataSetLogicalTableMapDataTransformCastColumnTypeOperation {
   /// [columnName] Column name.
   /// [format] When casting a column from string to datetime type, you can supply a string in a format supported by Amazon QuickSight to denote the source data format.
   /// [newColumnType] New column data type. Valid values are `STRING`, `INTEGER`, `DECIMAL`, `DATETIME`.
-  DataSetLogicalTableMapDataTransformCastColumnTypeOperation({
+  const DataSetLogicalTableMapDataTransformCastColumnTypeOperation({
     required this.columnName,
     this.format,
     required this.newColumnType,

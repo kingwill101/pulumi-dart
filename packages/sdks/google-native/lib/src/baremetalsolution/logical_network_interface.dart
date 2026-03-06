@@ -22,7 +22,7 @@ class LogicalNetworkInterface {
   /// [ipAddress] IP address in the network
   /// [network] Name of the network
   /// [networkType] Type of network.
-  LogicalNetworkInterface({
+  const LogicalNetworkInterface({
     this.defaultGateway,
     this.id,
     this.ipAddress,

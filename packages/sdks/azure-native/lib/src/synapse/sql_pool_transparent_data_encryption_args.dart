@@ -24,7 +24,7 @@ class SqlPoolTransparentDataEncryptionArgs {
   /// [status] The status of the database transparent data encryption.
   /// [transparentDataEncryptionName] The name of the transparent data encryption configuration.
   /// [workspaceName] The name of the workspace.
-  SqlPoolTransparentDataEncryptionArgs({
+  const SqlPoolTransparentDataEncryptionArgs({
     required this.resourceGroupName,
     required this.sqlPoolName,
     this.status,

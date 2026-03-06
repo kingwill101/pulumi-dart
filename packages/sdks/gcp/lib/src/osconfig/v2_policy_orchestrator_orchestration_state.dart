@@ -16,7 +16,7 @@ class V2PolicyOrchestratorOrchestrationState {
   /// Creates a new [V2PolicyOrchestratorOrchestrationState].
   /// [currentIterationStates] (Output)
   /// [previousIterationState] Describes the state of a single iteration of the orchestrator.
-  V2PolicyOrchestratorOrchestrationState({
+  const V2PolicyOrchestratorOrchestrationState({
     this.currentIterationStates,
     this.previousIterationState,
   });

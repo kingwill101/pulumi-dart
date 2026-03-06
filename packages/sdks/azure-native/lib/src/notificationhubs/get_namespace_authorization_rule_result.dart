@@ -54,7 +54,7 @@ class GetNamespaceAuthorizationRuleResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Optional.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetNamespaceAuthorizationRuleResult({
+  const GetNamespaceAuthorizationRuleResult({
     required this.azureApiVersion,
     required this.claimType,
     required this.claimValue,

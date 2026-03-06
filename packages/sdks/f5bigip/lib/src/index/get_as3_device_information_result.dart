@@ -14,7 +14,7 @@ class GetAs3DeviceInformationResult {
   /// [as3Json] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [tenant] Required.
-  GetAs3DeviceInformationResult({
+  const GetAs3DeviceInformationResult({
     this.applications,
     required this.as3Json,
     required this.id,

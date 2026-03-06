@@ -12,7 +12,7 @@ class SourceResponse {
   /// Creates a new [SourceResponse].
   /// [name] Source name for content indexed by the Indexing API.
   /// [predefinedSource] Predefined content source for Google Apps.
-  SourceResponse({
+  const SourceResponse({
     required this.name,
     required this.predefinedSource,
   });

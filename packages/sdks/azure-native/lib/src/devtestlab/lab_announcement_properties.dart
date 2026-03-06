@@ -21,7 +21,7 @@ class LabAnnouncementProperties {
   /// [expired] Has this announcement expired?
   /// [markdown] The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.
   /// [title] The plain text title for the lab announcement
-  LabAnnouncementProperties({
+  const LabAnnouncementProperties({
     this.enabled,
     this.expirationDate,
     this.expired,

@@ -21,7 +21,7 @@ class GetNodePoolContainerV1beta1Args {
   /// [project] Optional.
   /// [projectId] Required.
   /// [zone] Required.
-  GetNodePoolContainerV1beta1Args({
+  const GetNodePoolContainerV1beta1Args({
     required this.clusterId,
     required this.location,
     required this.nodePoolId,

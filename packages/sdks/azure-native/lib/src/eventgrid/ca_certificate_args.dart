@@ -24,7 +24,7 @@ class CaCertificateArgs {
   /// [encodedCertificate] Base64 encoded PEM (Privacy Enhanced Mail) format certificate data.
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  CaCertificateArgs({
+  const CaCertificateArgs({
     this.caCertificateName,
     this.description,
     this.encodedCertificate,

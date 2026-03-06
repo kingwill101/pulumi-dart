@@ -11,7 +11,7 @@ class GetAlertsAlertConfigurationLabel {
   /// Creates a new [GetAlertsAlertConfigurationLabel].
   /// [key] Field name.
   /// [value] Field value.
-  GetAlertsAlertConfigurationLabel({
+  const GetAlertsAlertConfigurationLabel({
     required this.key,
     required this.value,
   });

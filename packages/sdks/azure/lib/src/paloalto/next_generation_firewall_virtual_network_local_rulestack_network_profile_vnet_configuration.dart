@@ -16,7 +16,7 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfig
   /// [trustedSubnetId] The ID of the Trust subnet.
   /// [untrustedSubnetId] The ID of the UnTrust subnet.
   /// [virtualNetworkId] The ID of the Virtual Network.
-  NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration({
+  const NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration({
     this.ipOfTrustForUserDefinedRoutes,
     this.trustedSubnetId,
     this.untrustedSubnetId,

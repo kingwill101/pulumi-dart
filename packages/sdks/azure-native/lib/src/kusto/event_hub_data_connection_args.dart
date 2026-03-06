@@ -58,7 +58,7 @@ class EventHubDataConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [retrievalStartDate] When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
-  EventHubDataConnectionArgs({
+  const EventHubDataConnectionArgs({
     required this.clusterName,
     this.compression,
     required this.consumerGroup,

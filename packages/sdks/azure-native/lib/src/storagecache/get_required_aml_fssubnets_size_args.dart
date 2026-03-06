@@ -16,7 +16,7 @@ class GetRequiredAmlFSSubnetsSizeArgs {
   /// Creates a new [GetRequiredAmlFSSubnetsSizeArgs].
   /// [sku] SKU for the resource.
   /// [storageCapacityTiB] The size of the AML file system, in TiB.
-  GetRequiredAmlFSSubnetsSizeArgs({
+  const GetRequiredAmlFSSubnetsSizeArgs({
     this.sku,
     this.storageCapacityTiB,
   });

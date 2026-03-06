@@ -47,7 +47,7 @@ class AzureMLUpdateResourceActivityResponse {
   /// [trainedModelName] Name of the Trained Model module in the Web Service experiment to be updated. Type: string (or Expression with resultType string).
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  AzureMLUpdateResourceActivityResponse({
+  const AzureMLUpdateResourceActivityResponse({
     this.dependsOn,
     this.description,
     this.linkedServiceName,

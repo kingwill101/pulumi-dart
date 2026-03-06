@@ -22,7 +22,7 @@ class DeviceRequestAllocationResultPatchResourceK8sIoV1alpha3 {
   /// [driver] Driver specifies the name of the DRA driver whose kubelet plugin should be invoked to process the allocation once the claim is needed on a node.
   /// [pool] This name together with the driver name and the device name field identify which device was allocated (`&lt;driver name&gt;/&lt;pool name&gt;/&lt;device name&gt;`).
   /// [request] Request is the name of the request in the claim which caused this device to be allocated. Multiple devices may have been allocated per request.
-  DeviceRequestAllocationResultPatchResourceK8sIoV1alpha3({
+  const DeviceRequestAllocationResultPatchResourceK8sIoV1alpha3({
     this.device,
     this.driver,
     this.pool,

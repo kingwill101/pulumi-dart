@@ -52,7 +52,7 @@ class NetworkSecurityPerimeterAccessRuleArgs {
   /// [serviceTags] Inbound rules service tag names.
   /// [subscriptions] List of subscription ids
   /// [tags] Resource tags.
-  NetworkSecurityPerimeterAccessRuleArgs({
+  const NetworkSecurityPerimeterAccessRuleArgs({
     this.accessRuleName,
     this.addressPrefixes,
     this.direction,

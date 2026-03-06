@@ -11,7 +11,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom].
   /// [credentialsMap] A map that holds custom authentication credentials.
   /// [customAuthenticationType] The custom authentication type that the connector uses.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom({
     this.credentialsMap,
     required this.customAuthenticationType,
   });

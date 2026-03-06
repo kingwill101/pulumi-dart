@@ -7,7 +7,7 @@ class GradientaiAgentChatbotIdentifier {
 
   /// Creates a new [GradientaiAgentChatbotIdentifier].
   /// [chatbotId] Optional.
-  GradientaiAgentChatbotIdentifier({
+  const GradientaiAgentChatbotIdentifier({
     this.chatbotId,
   });
 

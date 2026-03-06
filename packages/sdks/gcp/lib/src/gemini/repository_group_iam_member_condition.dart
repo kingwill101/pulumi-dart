@@ -11,7 +11,7 @@ class RepositoryGroupIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  RepositoryGroupIamMemberCondition({
+  const RepositoryGroupIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

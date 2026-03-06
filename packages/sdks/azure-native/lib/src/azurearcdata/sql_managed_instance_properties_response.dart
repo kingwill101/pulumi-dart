@@ -41,7 +41,7 @@ class SqlManagedInstancePropertiesResponse {
   /// [licenseType] The license type to apply for this managed instance.
   /// [provisioningState] The provisioning state of the Arc-enabled SQL Managed Instance resource.
   /// [startTime] The instance start time
-  SqlManagedInstancePropertiesResponse({
+  const SqlManagedInstancePropertiesResponse({
     this.admin,
     this.basicLoginInformation,
     this.clusterId,

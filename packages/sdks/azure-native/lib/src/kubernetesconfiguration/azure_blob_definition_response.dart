@@ -35,7 +35,7 @@ class AzureBlobDefinitionResponse {
   /// [syncIntervalInSeconds] The interval at which to re-reconcile the cluster Azure Blob source with the remote.
   /// [timeoutInSeconds] The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.
   /// [url] The URL to sync for the flux configuration Azure Blob storage account.
-  AzureBlobDefinitionResponse({
+  const AzureBlobDefinitionResponse({
     this.accountKey,
     this.containerName,
     this.localAuthRef,

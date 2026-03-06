@@ -18,7 +18,7 @@ class ConnectionProfileSalesforceProfile {
   /// [domain] Domain for the Salesforce Org.
   /// [oauth2ClientCredentials] OAuth credentials to use for Salesforce authentication.
   /// [userCredentials] User credentials to use for Salesforce authentication.
-  ConnectionProfileSalesforceProfile({
+  const ConnectionProfileSalesforceProfile({
     required this.domain,
     this.oauth2ClientCredentials,
     this.userCredentials,

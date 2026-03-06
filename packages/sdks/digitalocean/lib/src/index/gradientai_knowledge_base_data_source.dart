@@ -30,7 +30,7 @@ class GradientaiKnowledgeBaseDataSource {
   /// [updatedAt] Timestamp when the Knowledge Base was updated
   /// [uuid] UUID of the Knowledge Base
   /// [webCrawlerDataSources] Web crawler data source configuration
-  GradientaiKnowledgeBaseDataSource({
+  const GradientaiKnowledgeBaseDataSource({
     this.createdAt,
     this.fileUploadDataSources,
     this.lastIndexingJobs,

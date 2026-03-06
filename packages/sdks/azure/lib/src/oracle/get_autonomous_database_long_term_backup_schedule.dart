@@ -17,7 +17,7 @@ class GetAutonomousDatabaseLongTermBackupSchedule {
   /// [repeatCadence] The frequency for automated long-term backups.
   /// [retentionPeriodInDays] The retention period in days for Autonomous database backup.
   /// [timeOfBackup] The date and time in which the backup would be made.
-  GetAutonomousDatabaseLongTermBackupSchedule({
+  const GetAutonomousDatabaseLongTermBackupSchedule({
     required this.enabled,
     required this.repeatCadence,
     required this.retentionPeriodInDays,

@@ -39,7 +39,7 @@ class GetManagedHsmResult {
   /// [systemData] Metadata pertaining to creation and last modification of the key vault resource.
   /// [tags] Resource tags
   /// [type] The resource type of the managed HSM Pool.
-  GetManagedHsmResult({
+  const GetManagedHsmResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

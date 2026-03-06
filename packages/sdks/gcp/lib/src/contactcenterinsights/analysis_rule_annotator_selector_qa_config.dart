@@ -10,7 +10,7 @@ class AnalysisRuleAnnotatorSelectorQaConfig {
 
   /// Creates a new [AnalysisRuleAnnotatorSelectorQaConfig].
   /// [scorecardList] Container for a list of scorecards.
-  AnalysisRuleAnnotatorSelectorQaConfig({
+  const AnalysisRuleAnnotatorSelectorQaConfig({
     this.scorecardList,
   });
 

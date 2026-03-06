@@ -45,7 +45,7 @@ class DefaultRouteTableRoute {
   /// [transitGatewayId] Identifier of an EC2 Transit Gateway.
   /// [vpcEndpointId] Identifier of a VPC Endpoint. This route must be removed prior to VPC Endpoint deletion.
   /// [vpcPeeringConnectionId] Identifier of a VPC peering connection.
-  DefaultRouteTableRoute({
+  const DefaultRouteTableRoute({
     this.cidrBlock,
     this.coreNetworkArn,
     this.destinationPrefixListId,

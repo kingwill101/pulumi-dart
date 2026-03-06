@@ -17,7 +17,7 @@ class RouteFilterRule {
   /// [communities] The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
   /// [name] The name of the route filter rule.
   /// [ruleType] The rule type of the rule. The only possible value is `Community`.
-  RouteFilterRule({
+  const RouteFilterRule({
     required this.access,
     required this.communities,
     required this.name,

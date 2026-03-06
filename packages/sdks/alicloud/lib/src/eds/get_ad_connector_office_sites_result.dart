@@ -22,7 +22,7 @@ class GetAdConnectorOfficeSitesResult {
   /// [outputFile] Optional.
   /// [sites] Required.
   /// [status] Optional.
-  GetAdConnectorOfficeSitesResult({
+  const GetAdConnectorOfficeSitesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

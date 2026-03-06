@@ -124,7 +124,7 @@ class VolumeState {
   /// [throughputInMibps] Throughput of this volume in Mibps.
   /// [volumePath] A unique file path for the volume. Used when creating mount targets. Changing this forces a new resource to be created.
   /// [zone] Specifies the Availability Zone in which the Volume should be located. Possible values are `1`, `2` and `3`. Changing this forces a new resource to be created. This feature is currently in preview, for more information on how to enable it, please refer to [Manage availability zone volume placement for Azure NetApp Files](https://learn.microsoft.com/en-us/azure/azure-netapp-files/manage-availability-zone-volume-placement#register-the-feature).
-  VolumeState({
+  const VolumeState({
     this.acceptGrowCapacityPoolForShortTermCloneSplit,
     this.accountName,
     this.azureVmwareDataStoreEnabled,

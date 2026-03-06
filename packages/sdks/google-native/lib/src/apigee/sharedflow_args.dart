@@ -26,7 +26,7 @@ class SharedflowArgs {
   /// [extensions] Application specific response metadata. Must be set in the first response for streaming APIs.
   /// [name] Required. The name to give the shared flow
   /// [organizationId] Required.
-  SharedflowArgs({
+  const SharedflowArgs({
     required this.action,
     this.contentType,
     this.data,

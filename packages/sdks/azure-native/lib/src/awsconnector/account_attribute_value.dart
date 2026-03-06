@@ -9,7 +9,7 @@ class AccountAttributeValue {
 
   /// Creates a new [AccountAttributeValue].
   /// [attributeValue] &lt;p&gt;The value of the attribute.&lt;/p&gt;
-  AccountAttributeValue({
+  const AccountAttributeValue({
     this.attributeValue,
   });
 

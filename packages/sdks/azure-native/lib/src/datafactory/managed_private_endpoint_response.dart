@@ -25,7 +25,7 @@ class ManagedPrivateEndpointResponse {
   /// [isReserved] Denotes whether the managed private endpoint is reserved
   /// [privateLinkResourceId] The ARM resource ID of the resource to which the managed private endpoint is created
   /// [provisioningState] The managed private endpoint provisioning state
-  ManagedPrivateEndpointResponse({
+  const ManagedPrivateEndpointResponse({
     this.connectionState,
     this.fqdns,
     this.groupId,

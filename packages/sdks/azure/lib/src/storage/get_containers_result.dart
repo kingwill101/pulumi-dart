@@ -17,7 +17,7 @@ class GetContainersResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [namePrefix] Optional.
   /// [storageAccountId] Required.
-  GetContainersResult({
+  const GetContainersResult({
     required this.containers,
     required this.id,
     this.namePrefix,

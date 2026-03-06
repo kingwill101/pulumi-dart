@@ -30,7 +30,7 @@ class ServerEndpointProvisioningStepStatusResponse {
   /// [progressPercentage] Estimated progress percentage
   /// [startTime] Start time of the provisioning step
   /// [status] Status of the provisioning step
-  ServerEndpointProvisioningStepStatusResponse({
+  const ServerEndpointProvisioningStepStatusResponse({
     required this.additionalInformation,
     required this.endTime,
     required this.errorCode,

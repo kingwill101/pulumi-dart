@@ -24,7 +24,7 @@ class LocalRulestackRuleDestination {
   /// [feeds] Specifies a list of Feeds.
   /// [localRulestackFqdnListIds] Specifies a list of FQDN lists.
   /// [localRulestackPrefixListIds] Specifies a list of Prefix Lists.
-  LocalRulestackRuleDestination({
+  const LocalRulestackRuleDestination({
     this.cidrs,
     this.countries,
     this.feeds,

@@ -35,7 +35,7 @@ class AccessApprovalSettingsEnrolledService {
   /// Creates a new [AccessApprovalSettingsEnrolledService].
   /// [cloudProduct] The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
   /// [enrollmentLevel] The enrollment level of the service.
-  AccessApprovalSettingsEnrolledService({
+  const AccessApprovalSettingsEnrolledService({
     required this.cloudProduct,
     this.enrollmentLevel,
   });

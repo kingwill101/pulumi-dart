@@ -14,7 +14,7 @@ class GetClusterCredentialCertificateAuthority {
   /// [clientCert] The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kube config file for your cluster.
   /// [clientKey] The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kube config file for your cluster.
   /// [clusterCert] The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kube config file for your cluster.
-  GetClusterCredentialCertificateAuthority({
+  const GetClusterCredentialCertificateAuthority({
     required this.clientCert,
     required this.clientKey,
     required this.clusterCert,

@@ -19,7 +19,7 @@ class StandardSqlDataTypeResponse {
   /// [rangeElementType] The type of the range's elements, if type_kind = "RANGE".
   /// [structType] The fields of this struct, in order, if type_kind = "STRUCT".
   /// [typeKind] The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
-  StandardSqlDataTypeResponse({
+  const StandardSqlDataTypeResponse({
     required this.arrayElementType,
     required this.rangeElementType,
     required this.structType,

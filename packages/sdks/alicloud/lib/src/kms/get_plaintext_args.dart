@@ -15,7 +15,7 @@ class GetPlaintextArgs {
   /// Creates a new [GetPlaintextArgs].
   /// [ciphertextBlob] The ciphertext to be decrypted.
   /// [encryptionContext] (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
-  GetPlaintextArgs({
+  const GetPlaintextArgs({
     required this.ciphertextBlob,
     this.encryptionContext,
   });

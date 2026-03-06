@@ -52,7 +52,7 @@ class ApprovalSettings {
   /// [notificationOnApprovalCreation] Notification will be sent on creation of an Approval Request
   /// [notificationOnApprovalDeletion] Notification will be sent on deletion of an Approval Request
   /// [serviceCatalogDeployment] Approval required for deploying service catalog templates (Required or NotRequired).
-  ApprovalSettings({
+  const ApprovalSettings({
     this.connectionCreation,
     this.connectionDeletion,
     this.connectionUpdate,

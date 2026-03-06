@@ -25,7 +25,7 @@ class ImageAccessArgs {
   /// [memberId] The member ID, e.g. the target project ID.
   /// [region] The region in which to obtain the V2 Glance client.
   /// [status] The member proposal status. Optional if admin wants to
-  ImageAccessArgs({
+  const ImageAccessArgs({
     required this.imageId,
     required this.memberId,
     this.region,

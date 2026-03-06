@@ -26,7 +26,7 @@ class GetLoadBalancerHealthcheck {
   /// [protocol] the protocol used for health checks sent to the backend droplets
   /// [responseTimeoutSeconds] the number of seconds to wait for a response until marking a health check as failed
   /// [unhealthyThreshold] The number of times a health check must fail for a backend droplet to be marked 'unhealthy' and be removed from the pool
-  GetLoadBalancerHealthcheck({
+  const GetLoadBalancerHealthcheck({
     required this.checkIntervalSeconds,
     required this.healthyThreshold,
     required this.path,

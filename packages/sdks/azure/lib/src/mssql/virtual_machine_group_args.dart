@@ -31,7 +31,7 @@ class VirtualMachineGroupArgs {
   /// [sqlImageSku] The sku type of the marketplace image cluster to be used by the SQL Virtual Machine Group. Possible values are `Developer` and `Enterprise`.
   /// [tags] A mapping of tags which should be assigned to the Microsoft SQL Virtual Machine Group.
   /// [wsfcDomainProfile] A `wsfc_domain_profile` block as defined below.
-  VirtualMachineGroupArgs({
+  const VirtualMachineGroupArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

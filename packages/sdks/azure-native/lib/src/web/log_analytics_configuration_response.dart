@@ -7,7 +7,7 @@ class LogAnalyticsConfigurationResponse {
 
   /// Creates a new [LogAnalyticsConfigurationResponse].
   /// [customerId] Optional.
-  LogAnalyticsConfigurationResponse({
+  const LogAnalyticsConfigurationResponse({
     this.customerId,
   });
 

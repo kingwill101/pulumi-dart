@@ -11,7 +11,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAccel
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount].
   /// [max] Maximum.
   /// [min] Minimum.
-  GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount({
+  const GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount({
     required this.max,
     required this.min,
   });

@@ -10,7 +10,7 @@ class GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader {
   /// Creates a new [GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader].
   /// [name] Managed rule group name.
   /// [value] Required.
-  GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader({
+  const GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader({
     required this.name,
     required this.value,
   });

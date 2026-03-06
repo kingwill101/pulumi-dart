@@ -39,7 +39,7 @@ class GetConnectivityTestsConnectivityTestDestination {
   /// [projectId] Project ID where the endpoint is located.
   /// [redisCluster] A Redis Cluster URI.
   /// [redisInstance] A Redis Instance URI.
-  GetConnectivityTestsConnectivityTestDestination({
+  const GetConnectivityTestsConnectivityTestDestination({
     required this.cloudSqlInstance,
     required this.forwardingRule,
     required this.fqdn,

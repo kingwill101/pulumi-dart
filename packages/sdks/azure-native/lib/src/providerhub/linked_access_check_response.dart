@@ -20,7 +20,7 @@ class LinkedAccessCheckResponse {
   /// [linkedActionVerb] The linked action verb.
   /// [linkedProperty] The linked property.
   /// [linkedType] The linked type.
-  LinkedAccessCheckResponse({
+  const LinkedAccessCheckResponse({
     this.actionName,
     this.linkedAction,
     this.linkedActionVerb,

@@ -40,7 +40,7 @@ class TemplateTemplateMetadata {
   /// [logSanitizeOperations] If true, log sanitize operations.
   /// [logTemplateOperations] If true, log template crud operations.
   /// [multiLanguageDetection] Metadata to enable multi language detection via template.
-  TemplateTemplateMetadata({
+  const TemplateTemplateMetadata({
     this.customLlmResponseSafetyErrorCode,
     this.customLlmResponseSafetyErrorMessage,
     this.customPromptSafetyErrorCode,

@@ -14,7 +14,7 @@ class CloudServiceVaultSecretGroupResponse {
   /// Creates a new [CloudServiceVaultSecretGroupResponse].
   /// [sourceVault] The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
   /// [vaultCertificates] The list of key vault references in SourceVault which contain certificates.
-  CloudServiceVaultSecretGroupResponse({
+  const CloudServiceVaultSecretGroupResponse({
     this.sourceVault,
     this.vaultCertificates,
   });

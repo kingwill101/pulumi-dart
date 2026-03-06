@@ -9,7 +9,7 @@ class RunAsCredentialAssociationProperty {
 
   /// Creates a new [RunAsCredentialAssociationProperty].
   /// [name] Gets or sets the name of the credential.
-  RunAsCredentialAssociationProperty({
+  const RunAsCredentialAssociationProperty({
     this.name,
   });
 

@@ -71,7 +71,7 @@ class AccountState {
   /// [storageAccountId] Specifies the storage account to use for the Batch account. If not specified, Azure Batch will manage the storage.
   /// [storageAccountNodeIdentity] Specifies the user assigned identity for the storage account.
   /// [tags] A mapping of tags to assign to the resource.
-  AccountState({
+  const AccountState({
     this.accountEndpoint,
     this.allowedAuthenticationModes,
     this.encryption,

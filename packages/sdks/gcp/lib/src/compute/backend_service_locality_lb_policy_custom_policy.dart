@@ -18,7 +18,7 @@ class BackendServiceLocalityLbPolicyCustomPolicy {
   /// Creates a new [BackendServiceLocalityLbPolicyCustomPolicy].
   /// [data] An optional, arbitrary JSON object with configuration data, understood
   /// [name] Identifies the custom policy.
-  BackendServiceLocalityLbPolicyCustomPolicy({
+  const BackendServiceLocalityLbPolicyCustomPolicy({
     this.data,
     required this.name,
   });

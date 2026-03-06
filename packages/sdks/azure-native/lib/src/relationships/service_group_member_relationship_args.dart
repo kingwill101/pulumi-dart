@@ -19,7 +19,7 @@ class ServiceGroupMemberRelationshipArgs {
   /// [name] Name of ServiceGroupMember relationship.
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  ServiceGroupMemberRelationshipArgs({
+  const ServiceGroupMemberRelationshipArgs({
     this.name,
     this.properties,
     required this.resourceUri,

@@ -8,7 +8,7 @@ class DashboardDashboardPublishOptionsAdHocFilteringOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsAdHocFilteringOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
-  DashboardDashboardPublishOptionsAdHocFilteringOption({
+  const DashboardDashboardPublishOptionsAdHocFilteringOption({
     this.availabilityStatus,
   });
 

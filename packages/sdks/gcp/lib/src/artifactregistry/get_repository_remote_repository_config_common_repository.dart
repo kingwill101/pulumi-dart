@@ -11,7 +11,7 @@ class GetRepositoryRemoteRepositoryConfigCommonRepository {
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfigCommonRepository].
   /// [uri] One of:
-  GetRepositoryRemoteRepositoryConfigCommonRepository({
+  const GetRepositoryRemoteRepositoryConfigCommonRepository({
     required this.uri,
   });
 

@@ -17,7 +17,7 @@ class LinuxVirtualMachineScaleSetGalleryApplication {
   /// [order] Specifies the order in which the packages have to be installed. Possible values are between `0` and `2147483647`. Defaults to `0`. Changing this forces a new resource to be created.
   /// [tag] Specifies a passthrough value for more generic context. This field can be any valid `string` value. Changing this forces a new resource to be created.
   /// [versionId] Specifies the Gallery Application Version resource ID. Changing this forces a new resource to be created.
-  LinuxVirtualMachineScaleSetGalleryApplication({
+  const LinuxVirtualMachineScaleSetGalleryApplication({
     this.configurationBlobUri,
     this.order,
     this.tag,

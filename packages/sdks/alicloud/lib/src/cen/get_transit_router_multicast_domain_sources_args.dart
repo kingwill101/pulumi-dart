@@ -18,7 +18,7 @@ class GetTransitRouterMulticastDomainSourcesArgs {
   /// [ids] A list of the multicast domain IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast source belongs.
-  GetTransitRouterMulticastDomainSourcesArgs({
+  const GetTransitRouterMulticastDomainSourcesArgs({
     this.ids,
     this.outputFile,
     required this.transitRouterMulticastDomainId,

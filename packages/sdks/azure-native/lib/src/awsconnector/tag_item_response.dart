@@ -12,7 +12,7 @@ class TagItemResponse {
   /// Creates a new [TagItemResponse].
   /// [key] Property key
   /// [value] Property value
-  TagItemResponse({
+  const TagItemResponse({
     this.key,
     this.value,
   });

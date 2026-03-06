@@ -11,7 +11,7 @@ class CaCertificateValidity {
   /// Creates a new [CaCertificateValidity].
   /// [notAfter] The certificate is not valid after this date.
   /// [notBefore] The certificate is not valid before this date.
-  CaCertificateValidity({
+  const CaCertificateValidity({
     this.notAfter,
     this.notBefore,
   });

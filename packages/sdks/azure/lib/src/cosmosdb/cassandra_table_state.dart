@@ -33,7 +33,7 @@ class CassandraTableState {
   /// [name] Specifies the name of the Cosmos DB Cassandra Table. Changing this forces a new resource to be created.
   /// [schema] A `schema` block as defined below.
   /// [throughput] The throughput of Cassandra KeySpace (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
-  CassandraTableState({
+  const CassandraTableState({
     this.analyticalStorageTtl,
     this.autoscaleSettings,
     this.cassandraKeyspaceId,

@@ -22,7 +22,7 @@ class ActionRequestArgs {
   /// [requestType] Required.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  ActionRequestArgs({
+  const ActionRequestArgs({
     this.actionRequestName,
     this.preReleaseAccessRequestSpec,
     required this.requestType,

@@ -12,7 +12,7 @@ class InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence {
   /// Creates a new [InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence].
   /// [schedules] A list of `schedule` blocks as defined below.
   /// [timezone] The time zone for the autoscale schedule times.
-  InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence({
+  const InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence({
     required this.schedules,
     required this.timezone,
   });

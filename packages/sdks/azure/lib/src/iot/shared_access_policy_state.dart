@@ -43,7 +43,7 @@ class SharedAccessPolicyState {
   /// [secondaryConnectionString] The secondary connection string of the Shared Access Policy.
   /// [secondaryKey] The secondary key used to create the authentication token.
   /// [serviceConnect] Adds `ServiceConnect` permission to this Shared Access Account. It allows sending and receiving on the cloud-side endpoints.
-  SharedAccessPolicyState({
+  const SharedAccessPolicyState({
     this.deviceConnect,
     this.iothubName,
     this.name,

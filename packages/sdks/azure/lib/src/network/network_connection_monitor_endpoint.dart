@@ -30,7 +30,7 @@ class NetworkConnectionMonitorEndpoint {
   /// [name] The name of the endpoint for the Network Connection Monitor .
   /// [targetResourceId] The resource ID which is used as the endpoint by the Network Connection Monitor.
   /// [targetResourceType] The endpoint type of the Network Connection Monitor. Possible values are `AzureArcVM`, `AzureSubnet`, `AzureVM`, `AzureVNet`, `ExternalAddress`, `MMAWorkspaceMachine` and `MMAWorkspaceNetwork`.
-  NetworkConnectionMonitorEndpoint({
+  const NetworkConnectionMonitorEndpoint({
     this.address,
     this.coverageLevel,
     this.excludedIpAddresses,

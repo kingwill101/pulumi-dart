@@ -11,7 +11,7 @@ class ContactsRotationRecurrenceDailySetting {
   /// Creates a new [ContactsRotationRecurrenceDailySetting].
   /// [hourOfDay] (Required) The hour of the day.
   /// [minuteOfHour] (Required) The minutes of the hour.
-  ContactsRotationRecurrenceDailySetting({
+  const ContactsRotationRecurrenceDailySetting({
     required this.hourOfDay,
     required this.minuteOfHour,
   });

@@ -26,7 +26,7 @@ class GetPatchBaselinesResult {
   /// [operationSystem] Optional.
   /// [outputFile] Optional.
   /// [shareType] Optional.
-  GetPatchBaselinesResult({
+  const GetPatchBaselinesResult({
     required this.baselines,
     this.enableDetails,
     required this.id,

@@ -15,7 +15,7 @@ class ApplicationClientDetailsResponse {
   /// [applicationId] The client application Id.
   /// [oid] The client Oid.
   /// [puid] The client Puid
-  ApplicationClientDetailsResponse({
+  const ApplicationClientDetailsResponse({
     this.applicationId,
     this.oid,
     this.puid,

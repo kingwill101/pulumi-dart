@@ -15,7 +15,7 @@ class GetConnectorArgs {
   /// Creates a new [GetConnectorArgs].
   /// [connectorName] Connector Name.
   /// [resourceGroupName] Azure Resource Group Name.
-  GetConnectorArgs({
+  const GetConnectorArgs({
     required this.connectorName,
     required this.resourceGroupName,
   });

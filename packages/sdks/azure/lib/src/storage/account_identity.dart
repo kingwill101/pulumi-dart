@@ -21,7 +21,7 @@ class AccountIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Identity of this Storage Account.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Identity of this Storage Account.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Storage Account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
-  AccountIdentity({
+  const AccountIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

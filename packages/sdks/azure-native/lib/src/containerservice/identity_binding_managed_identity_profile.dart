@@ -9,7 +9,7 @@ class IdentityBindingManagedIdentityProfile {
 
   /// Creates a new [IdentityBindingManagedIdentityProfile].
   /// [resourceId] The resource ID of the managed identity.
-  IdentityBindingManagedIdentityProfile({
+  const IdentityBindingManagedIdentityProfile({
     required this.resourceId,
   });
 

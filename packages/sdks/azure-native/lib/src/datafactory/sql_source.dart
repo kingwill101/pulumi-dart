@@ -47,7 +47,7 @@ class SqlSource {
   /// [sqlReaderStoredProcedureName] Name of the stored procedure for a SQL Database source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
   /// [storedProcedureParameters] Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
   /// [type] Copy source type.
-  SqlSource({
+  const SqlSource({
     this.additionalColumns,
     this.disableMetricsCollection,
     this.isolationLevel,

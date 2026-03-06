@@ -18,7 +18,7 @@ class GetExpressRouteCircuitPeeringArgs {
   /// [circuitName] The name of the express route circuit.
   /// [peeringName] The name of the peering.
   /// [resourceGroupName] The name of the resource group.
-  GetExpressRouteCircuitPeeringArgs({
+  const GetExpressRouteCircuitPeeringArgs({
     required this.circuitName,
     required this.peeringName,
     required this.resourceGroupName,

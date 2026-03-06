@@ -11,7 +11,7 @@ class V2VmAcceleratorConfig {
   /// Creates a new [V2VmAcceleratorConfig].
   /// [topology] Topology of TPU in chips.
   /// [type] Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
-  V2VmAcceleratorConfig({
+  const V2VmAcceleratorConfig({
     required this.topology,
     required this.type,
   });

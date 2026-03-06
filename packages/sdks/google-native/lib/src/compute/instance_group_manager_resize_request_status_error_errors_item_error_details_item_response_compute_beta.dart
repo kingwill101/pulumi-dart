@@ -17,7 +17,7 @@ class InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResp
   /// [help] Required.
   /// [localizedMessage] Required.
   /// [quotaInfo] Required.
-  InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseComputeBeta({
+  const InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseComputeBeta({
     required this.errorInfo,
     required this.help,
     required this.localizedMessage,

@@ -8,7 +8,7 @@ class EndpointNetworkInterface {
 
   /// Creates a new [EndpointNetworkInterface].
   /// [networkInterfaceId] Identifier of the Elastic Network Interface (ENI).
-  EndpointNetworkInterface({
+  const EndpointNetworkInterface({
     this.networkInterfaceId,
   });
 

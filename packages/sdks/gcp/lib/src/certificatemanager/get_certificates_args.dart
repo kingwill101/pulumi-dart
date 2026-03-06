@@ -15,7 +15,7 @@ class GetCertificatesArgs {
   /// Creates a new [GetCertificatesArgs].
   /// [filter] Filter expression to restrict the certificates returned.
   /// [region] The region in which the resource belongs. If it is not provided, `GLOBAL` is used.
-  GetCertificatesArgs({
+  const GetCertificatesArgs({
     this.filter,
     this.region,
   });

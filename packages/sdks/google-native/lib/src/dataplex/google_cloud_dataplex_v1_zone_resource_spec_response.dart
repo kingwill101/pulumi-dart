@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1ZoneResourceSpecResponse {
 
   /// Creates a new [GoogleCloudDataplexV1ZoneResourceSpecResponse].
   /// [locationType] Immutable. The location type of the resources that are allowed to be attached to the assets within this zone.
-  GoogleCloudDataplexV1ZoneResourceSpecResponse({
+  const GoogleCloudDataplexV1ZoneResourceSpecResponse({
     required this.locationType,
   });
 

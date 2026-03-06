@@ -21,7 +21,7 @@ class ResourceMoveDetailsResponse {
   /// [sourceResourcePath] ARM resource path of source resource
   /// [startTimeUtc] Start time in UTC of latest ResourceMove operation attempted. ISO 8601 format.
   /// [targetResourcePath] ARM resource path of target resource used in latest ResourceMove operation
-  ResourceMoveDetailsResponse({
+  const ResourceMoveDetailsResponse({
     this.completionTimeUtc,
     this.operationId,
     this.sourceResourcePath,

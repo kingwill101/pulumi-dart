@@ -16,7 +16,7 @@ class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpe
   /// [frequency] Frequency of search trials to start train stage. Top N [TrainTrialSpec.max_parallel_trial_count] search trials will be trained for every M [TrainTrialSpec.frequency] trials searched.
   /// [maxParallelTrialCount] The maximum number of trials to run in parallel.
   /// [trainTrialJobSpec] The spec of a train trial job. The same spec applies to all train trials.
-  GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse({
+  const GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse({
     required this.frequency,
     required this.maxParallelTrialCount,
     required this.trainTrialJobSpec,

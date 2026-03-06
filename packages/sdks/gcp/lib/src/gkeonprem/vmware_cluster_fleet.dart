@@ -11,7 +11,7 @@ class VMwareClusterFleet {
 
   /// Creates a new [VMwareClusterFleet].
   /// [membership] (Output)
-  VMwareClusterFleet({
+  const VMwareClusterFleet({
     this.membership,
   });
 

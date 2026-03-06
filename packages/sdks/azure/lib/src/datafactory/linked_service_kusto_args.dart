@@ -54,7 +54,7 @@ class LinkedServiceKustoArgs {
   /// [servicePrincipalKey] The service principal key in which to authenticate against the Kusto Database.
   /// [tenant] The service principal tenant id or name in which to authenticate against the Kusto Database.
   /// [useManagedIdentity] Whether to use the Data Factory's managed identity to authenticate against the Kusto Database.
-  LinkedServiceKustoArgs({
+  const LinkedServiceKustoArgs({
     this.additionalProperties,
     this.annotations,
     required this.dataFactoryId,

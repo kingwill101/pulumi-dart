@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessagePla
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessagePlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessagePlainTextMessage({
+  const V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessagePlainTextMessage({
     required this.value,
   });
 

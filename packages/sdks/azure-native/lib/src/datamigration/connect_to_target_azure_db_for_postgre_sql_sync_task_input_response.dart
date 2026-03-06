@@ -13,7 +13,7 @@ class ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse {
   /// Creates a new [ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse].
   /// [sourceConnectionInfo] Connection information for source PostgreSQL server
   /// [targetConnectionInfo] Connection information for target Azure Database for PostgreSQL server
-  ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse({
+  const ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse({
     required this.sourceConnectionInfo,
     required this.targetConnectionInfo,
   });

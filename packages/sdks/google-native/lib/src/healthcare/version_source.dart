@@ -12,7 +12,7 @@ class VersionSource {
   /// Creates a new [VersionSource].
   /// [mshField] The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
   /// [value] The value to match with the field. For example, "My Application Name" or "2.3".
-  VersionSource({
+  const VersionSource({
     this.mshField,
     this.value,
   });

@@ -53,7 +53,7 @@ class ConnectionProfileArgs {
   /// [oracle] Specifies connection parameters required specifically for Oracle databases.
   /// [postgresql] Specifies connection parameters required specifically for PostgreSQL databases.
   /// [project] The ID of the project in which the resource belongs.
-  ConnectionProfileArgs({
+  const ConnectionProfileArgs({
     this.alloydb,
     this.cloudsql,
     required this.connectionProfileId,

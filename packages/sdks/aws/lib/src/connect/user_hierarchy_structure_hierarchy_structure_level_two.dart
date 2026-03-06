@@ -14,7 +14,7 @@ class UserHierarchyStructureHierarchyStructureLevelTwo {
   /// [arn] The Amazon Resource Name (ARN) of the hierarchy level.
   /// [id] The identifier of the hierarchy level.
   /// [name] The name of the user hierarchy level. Must not be more than 50 characters.
-  UserHierarchyStructureHierarchyStructureLevelTwo({
+  const UserHierarchyStructureHierarchyStructureLevelTwo({
     this.arn,
     this.id,
     required this.name,

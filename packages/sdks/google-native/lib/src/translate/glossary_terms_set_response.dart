@@ -10,7 +10,7 @@ class GlossaryTermsSetResponse {
 
   /// Creates a new [GlossaryTermsSetResponse].
   /// [terms] Each term in the set represents a term that can be replaced by the other terms.
-  GlossaryTermsSetResponse({
+  const GlossaryTermsSetResponse({
     required this.terms,
   });
 

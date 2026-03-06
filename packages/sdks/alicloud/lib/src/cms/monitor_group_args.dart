@@ -24,7 +24,7 @@ class MonitorGroupArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] A mapping of tags to assign to the resource.
-  MonitorGroupArgs({
+  const MonitorGroupArgs({
     this.contactGroups,
     this.monitorGroupName,
     this.resourceGroupId,

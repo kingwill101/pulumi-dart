@@ -11,7 +11,7 @@ class InstanceEventPublishConfig {
   /// Creates a new [InstanceEventPublishConfig].
   /// [enabled] Option to enable Event Publishing.
   /// [topic] The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
-  InstanceEventPublishConfig({
+  const InstanceEventPublishConfig({
     required this.enabled,
     required this.topic,
   });

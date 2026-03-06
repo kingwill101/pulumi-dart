@@ -22,7 +22,7 @@ class ApiKeyAuthModelResponse {
   /// [apiKeyName] API Key name
   /// [isApiKeyInPostPayload] Flag to indicate if API key is set in HTTP POST payload
   /// [type] Type of paging
-  ApiKeyAuthModelResponse({
+  const ApiKeyAuthModelResponse({
     required this.apiKey,
     this.apiKeyIdentifier,
     required this.apiKeyName,

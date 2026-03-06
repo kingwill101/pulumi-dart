@@ -8,7 +8,7 @@ class PolicyVMWorkloadProtectionPolicyRetentionDaily {
 
   /// Creates a new [PolicyVMWorkloadProtectionPolicyRetentionDaily].
   /// [count] The number of daily backups to keep. Possible values are between `7` and `9999`.
-  PolicyVMWorkloadProtectionPolicyRetentionDaily({
+  const PolicyVMWorkloadProtectionPolicyRetentionDaily({
     required this.count,
   });
 

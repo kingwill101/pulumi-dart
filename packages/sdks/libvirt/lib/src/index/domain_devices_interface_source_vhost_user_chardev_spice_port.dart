@@ -8,7 +8,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevSpicePort {
 
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainDevicesInterfaceSourceVhostUserChardevSpicePort({
+  const DomainDevicesInterfaceSourceVhostUserChardevSpicePort({
     required this.channel,
   });
 

@@ -9,7 +9,7 @@ class DataCacheConfigResponse {
 
   /// Creates a new [DataCacheConfigResponse].
   /// [dataCacheEnabled] Optional. Whether data cache is enabled for the instance.
-  DataCacheConfigResponse({
+  const DataCacheConfigResponse({
     required this.dataCacheEnabled,
   });
 

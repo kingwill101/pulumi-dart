@@ -55,7 +55,7 @@ class UserSettingsArgs {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [toolbarConfiguration] Configuration of the toolbar. Detailed below.
   /// [uploadAllowed] Specifies whether the user can upload files from the local device to the streaming session. Valid values are `Enabled` or `Disabled`.
-  UserSettingsArgs({
+  const UserSettingsArgs({
     this.additionalEncryptionContext,
     this.cookieSynchronizationConfiguration,
     required this.copyAllowed,

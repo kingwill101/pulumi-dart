@@ -28,7 +28,7 @@ class QueueState {
   /// [storageAccountId] The name of the Storage Account where the Storage Queue should be created.
   /// [storageAccountName] The name of the Storage Account where the Storage Queue should be created. This property is deprecated in favour of `storage_account_id`.
   /// [url] The data plane URL of the Storage Queue in the format of `&lt;storage queue endpoint&gt;/&lt;queue name&gt;`. E.g. `https://example.queue.core.windows.net/queue1`.
-  QueueState({
+  const QueueState({
     this.metadata,
     this.name,
     this.resourceManagerId,

@@ -17,7 +17,7 @@ class GetServerConfigContainerV1beta1Args {
   /// [project] Optional.
   /// [projectId] Required.
   /// [zone] Required.
-  GetServerConfigContainerV1beta1Args({
+  const GetServerConfigContainerV1beta1Args({
     required this.location,
     this.project,
     required this.projectId,

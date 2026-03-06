@@ -10,7 +10,7 @@ class BackupScheduleSpec {
 
   /// Creates a new [BackupScheduleSpec].
   /// [cronSpec] Cron style schedule specification..
-  BackupScheduleSpec({
+  const BackupScheduleSpec({
     this.cronSpec,
   });
 

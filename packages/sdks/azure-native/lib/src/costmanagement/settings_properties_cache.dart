@@ -23,7 +23,7 @@ class SettingsPropertiesCache {
   /// [parent] Resource ID of the parent scope. For instance, subscription's resource ID for a resource group or a management group resource ID for a subscription.
   /// [status] Indicates the status of the scope. Status only applies to subscriptions and billing accounts.
   /// [subchannel] Indicates the type of modern account. Allowed values include: Individual, Enterprise, Partner, Indirect, NotApplicable
-  SettingsPropertiesCache({
+  const SettingsPropertiesCache({
     required this.channel,
     required this.id,
     required this.name,

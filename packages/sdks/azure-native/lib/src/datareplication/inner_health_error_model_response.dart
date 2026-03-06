@@ -39,7 +39,7 @@ class InnerHealthErrorModelResponse {
   /// [severity] Gets or sets the error severity.
   /// [source] Gets or sets the error source.
   /// [summary] Gets or sets the error summary.
-  InnerHealthErrorModelResponse({
+  const InnerHealthErrorModelResponse({
     required this.category,
     required this.causes,
     required this.code,

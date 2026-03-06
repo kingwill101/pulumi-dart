@@ -16,7 +16,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataO
   /// [clientSecret] Required.
   /// [oauthRequest] Optional.
   /// [refreshToken] Optional.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials({
     this.accessToken,
     required this.clientId,
     required this.clientSecret,

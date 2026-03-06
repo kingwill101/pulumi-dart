@@ -20,7 +20,7 @@ class GetUsersUser {
   /// [id] The ID of the user id.
   /// [phone] The phone of the mobile phone number.
   /// [status] The status of the resource.
-  GetUsersUser({
+  const GetUsersUser({
     required this.email,
     required this.endUserId,
     required this.id,

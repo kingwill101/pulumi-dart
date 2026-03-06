@@ -11,7 +11,7 @@ class DomainDevicesFilesystemSourceVolume {
   /// Creates a new [DomainDevicesFilesystemSourceVolume].
   /// [pool] Defines the pool from which the volume of the filesystem is sourced.
   /// [volume] Indicates the specific volume name sourced for the filesystem.
-  DomainDevicesFilesystemSourceVolume({
+  const DomainDevicesFilesystemSourceVolume({
     required this.pool,
     required this.volume,
   });

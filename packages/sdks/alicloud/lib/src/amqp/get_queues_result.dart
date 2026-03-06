@@ -24,7 +24,7 @@ class GetQueuesResult {
   /// [outputFile] Optional.
   /// [queues] Required.
   /// [virtualHostName] Required.
-  GetQueuesResult({
+  const GetQueuesResult({
     required this.id,
     required this.ids,
     required this.instanceId,

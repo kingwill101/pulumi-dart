@@ -16,7 +16,7 @@ class DriverRequestsPatch {
   /// [driverName] DriverName is the name used by the DRA driver kubelet plugin.
   /// [requests] Requests describes all resources that are needed from the driver.
   /// [vendorParameters] VendorParameters are arbitrary setup parameters for all requests of the claim. They are ignored while allocating the claim.
-  DriverRequestsPatch({
+  const DriverRequestsPatch({
     this.driverName,
     this.requests,
     this.vendorParameters,

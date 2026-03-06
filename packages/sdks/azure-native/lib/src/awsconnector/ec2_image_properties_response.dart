@@ -34,7 +34,7 @@ class Ec2ImagePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2ImagePropertiesResponse({
+  const Ec2ImagePropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

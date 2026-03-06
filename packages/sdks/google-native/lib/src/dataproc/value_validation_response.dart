@@ -9,7 +9,7 @@ class ValueValidationResponse {
 
   /// Creates a new [ValueValidationResponse].
   /// [values] List of allowed values for the parameter.
-  ValueValidationResponse({
+  const ValueValidationResponse({
     required this.values,
   });
 

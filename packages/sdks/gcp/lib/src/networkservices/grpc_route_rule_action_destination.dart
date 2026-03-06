@@ -11,7 +11,7 @@ class GrpcRouteRuleActionDestination {
   /// Creates a new [GrpcRouteRuleActionDestination].
   /// [serviceName] The URL of a BackendService to route traffic to.
   /// [weight] Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-  GrpcRouteRuleActionDestination({
+  const GrpcRouteRuleActionDestination({
     this.serviceName,
     this.weight,
   });

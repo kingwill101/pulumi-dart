@@ -48,7 +48,7 @@ class CodeToolsSettingBindingState {
   /// [settingBindingId] Id of the setting binding.
   /// [target] Target of the binding.
   /// [updateTime] Update time stamp.
-  CodeToolsSettingBindingState({
+  const CodeToolsSettingBindingState({
     this.codeToolsSettingId,
     this.createTime,
     this.effectiveLabels,

@@ -15,7 +15,7 @@ class GetIpExtendedCommunityArgs {
   /// Creates a new [GetIpExtendedCommunityArgs].
   /// [ipExtendedCommunityName] Name of the IP Extended Community.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIpExtendedCommunityArgs({
+  const GetIpExtendedCommunityArgs({
     required this.ipExtendedCommunityName,
     required this.resourceGroupName,
   });

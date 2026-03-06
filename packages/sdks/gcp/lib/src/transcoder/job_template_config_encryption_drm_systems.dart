@@ -17,7 +17,7 @@ class JobTemplateConfigEncryptionDrmSystems {
   /// [fairplay] Fairplay configuration.
   /// [playready] Playready configuration.
   /// [widevine] Widevine configuration.
-  JobTemplateConfigEncryptionDrmSystems({
+  const JobTemplateConfigEncryptionDrmSystems({
     this.clearkey,
     this.fairplay,
     this.playready,

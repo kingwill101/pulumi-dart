@@ -38,7 +38,7 @@ class TenantDefaultSupportedIdpConfigState {
   /// [name] The name of the default supported IDP config resource
   /// [project] The ID of the project in which the resource belongs.
   /// [tenant] The name of the tenant where this DefaultSupportedIdpConfig resource exists
-  TenantDefaultSupportedIdpConfigState({
+  const TenantDefaultSupportedIdpConfigState({
     this.clientId,
     this.clientSecret,
     this.enabled,

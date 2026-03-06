@@ -34,7 +34,7 @@ class VirtualHubBgpConnectionArgs {
   /// [peerIp] Peer IP.
   /// [resourceGroupName] The resource group name of the VirtualHub.
   /// [virtualHubName] The name of the VirtualHub.
-  VirtualHubBgpConnectionArgs({
+  const VirtualHubBgpConnectionArgs({
     this.connectionName,
     this.hubVirtualNetworkConnection,
     this.id,

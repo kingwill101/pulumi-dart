@@ -35,7 +35,7 @@ class ObjectIamPolicyArgs {
   /// [resourceId] The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
   /// [userProject] The project to be billed for this request. Required for Requester Pays buckets.
   /// [version] The IAM policy format version.
-  ObjectIamPolicyArgs({
+  const ObjectIamPolicyArgs({
     this.bindings,
     required this.bucket,
     this.etag,

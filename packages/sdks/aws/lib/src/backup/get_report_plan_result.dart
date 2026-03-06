@@ -36,7 +36,7 @@ class GetReportPlanResult {
   /// [reportDeliveryChannels] An object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
   /// [reportSettings] An object that identifies the report template for the report. Reports are built using a report template. Detailed below.
   /// [tags] Metadata that you can assign to help organize the report plans you create.
-  GetReportPlanResult({
+  const GetReportPlanResult({
     required this.arn,
     required this.creationTime,
     required this.deploymentStatus,

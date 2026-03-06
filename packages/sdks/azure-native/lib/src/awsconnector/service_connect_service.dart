@@ -27,7 +27,7 @@ class ServiceConnectService {
   /// [portName] The ``portName`` must match the name of one of the ``portMappings`` from all the containers in the task definition of this Amazon ECS service.
   /// [timeout] A reference to an object that represents the configured timeouts for Service Connect. An object that represents the timeout configurations for Service Connect.  If ``idleTimeout`` is set to a time that is less than ``perRequestTimeout``, the connection will close when the ``idleTimeout`` is reached and not the ``perRequestTimeout``.
   /// [tls] A reference to an object that represents a Transport Layer Security (TLS) configuration. An object that represents the configuration for Service Connect TLS.
-  ServiceConnectService({
+  const ServiceConnectService({
     this.clientAliases,
     this.discoveryName,
     this.ingressPortOverride,

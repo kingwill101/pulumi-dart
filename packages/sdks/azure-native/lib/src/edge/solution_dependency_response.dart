@@ -21,7 +21,7 @@ class SolutionDependencyResponse {
   /// [solutionTemplateVersionId] Solution Template Version Id
   /// [solutionVersionId] Solution Version Id
   /// [targetId] Target Id
-  SolutionDependencyResponse({
+  const SolutionDependencyResponse({
     this.dependencies,
     this.solutionInstanceName,
     required this.solutionTemplateVersionId,

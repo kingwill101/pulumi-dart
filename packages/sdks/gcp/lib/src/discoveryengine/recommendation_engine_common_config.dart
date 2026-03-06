@@ -8,7 +8,7 @@ class RecommendationEngineCommonConfig {
 
   /// Creates a new [RecommendationEngineCommonConfig].
   /// [companyName] The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
-  RecommendationEngineCommonConfig({
+  const RecommendationEngineCommonConfig({
     this.companyName,
   });
 

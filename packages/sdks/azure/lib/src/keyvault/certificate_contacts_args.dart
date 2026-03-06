@@ -16,7 +16,7 @@ class CertificateContactsArgs {
   /// Creates a new [CertificateContactsArgs].
   /// [contacts] One or more `contact` blocks as defined below.
   /// [keyVaultId] The ID of the Key Vault. Changing this forces a new resource to be created.
-  CertificateContactsArgs({
+  const CertificateContactsArgs({
     this.contacts,
     required this.keyVaultId,
   });

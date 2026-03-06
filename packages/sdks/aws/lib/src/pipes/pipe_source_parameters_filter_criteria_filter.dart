@@ -8,7 +8,7 @@ class PipeSourceParametersFilterCriteriaFilter {
 
   /// Creates a new [PipeSourceParametersFilterCriteriaFilter].
   /// [pattern] The event pattern. At most 4096 characters.
-  PipeSourceParametersFilterCriteriaFilter({
+  const PipeSourceParametersFilterCriteriaFilter({
     required this.pattern,
   });
 

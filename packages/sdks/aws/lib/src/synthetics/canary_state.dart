@@ -88,7 +88,7 @@ class CanaryState {
   /// [timelines] Structure that contains information about when the canary was created, modified, and most recently run. see Timeline.
   /// [vpcConfig] Configuration block. Detailed below.
   /// [zipFile] ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3_bucket`, `s3_key`, and `s3_version`.**
-  CanaryState({
+  const CanaryState({
     this.arn,
     this.artifactConfig,
     this.artifactS3Location,

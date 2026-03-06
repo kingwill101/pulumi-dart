@@ -28,7 +28,7 @@ class GetConfigurationProfileAssignmentResult {
   /// [properties] Properties of the configuration profile assignment.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetConfigurationProfileAssignmentResult({
+  const GetConfigurationProfileAssignmentResult({
     required this.azureApiVersion,
     required this.id,
     required this.managedBy,

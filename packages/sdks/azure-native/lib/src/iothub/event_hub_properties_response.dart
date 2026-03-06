@@ -21,7 +21,7 @@ class EventHubPropertiesResponse {
   /// [partitionIds] The partition ids in the Event Hub-compatible endpoint.
   /// [path] The Event Hub-compatible name.
   /// [retentionTimeInDays] The retention time for device-to-cloud messages in days. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages
-  EventHubPropertiesResponse({
+  const EventHubPropertiesResponse({
     required this.endpoint,
     this.partitionCount,
     required this.partitionIds,

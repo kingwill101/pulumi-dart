@@ -20,7 +20,7 @@ class GetTableIamPolicyResult {
   /// [policyData] (Computed) The policy data
   /// [project] Required.
   /// [table] Required.
-  GetTableIamPolicyResult({
+  const GetTableIamPolicyResult({
     required this.etag,
     required this.id,
     required this.instanceName,

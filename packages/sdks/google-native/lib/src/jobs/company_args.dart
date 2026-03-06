@@ -45,7 +45,7 @@ class CompanyArgs {
   /// [project] Optional.
   /// [size] Optional. The employer's company size.
   /// [websiteUri] Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
-  CompanyArgs({
+  const CompanyArgs({
     this.careerSiteUri,
     required this.displayName,
     this.eeoText,

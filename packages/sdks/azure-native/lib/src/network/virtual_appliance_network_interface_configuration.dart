@@ -13,7 +13,7 @@ class VirtualApplianceNetworkInterfaceConfiguration {
   /// Creates a new [VirtualApplianceNetworkInterfaceConfiguration].
   /// [nicType] NIC type. This should be either PublicNic or PrivateNic.
   /// [properties] Represents a single NIC configuration properties.
-  VirtualApplianceNetworkInterfaceConfiguration({
+  const VirtualApplianceNetworkInterfaceConfiguration({
     this.nicType,
     this.properties,
   });

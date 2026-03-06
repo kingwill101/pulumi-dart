@@ -166,7 +166,7 @@ class SubnetworkState {
   /// [stackType] The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
   /// [state] 'The state of the subnetwork, which can be one of the following values:
   /// [subnetworkId] The unique identifier number for the resource. This identifier is defined by the server.
-  SubnetworkState({
+  const SubnetworkState({
     this.allowSubnetCidrRoutesOverlap,
     this.creationTimestamp,
     this.description,

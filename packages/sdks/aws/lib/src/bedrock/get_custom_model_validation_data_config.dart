@@ -9,7 +9,7 @@ class GetCustomModelValidationDataConfig {
 
   /// Creates a new [GetCustomModelValidationDataConfig].
   /// [validators] Information about the validators.
-  GetCustomModelValidationDataConfig({
+  const GetCustomModelValidationDataConfig({
     required this.validators,
   });
 

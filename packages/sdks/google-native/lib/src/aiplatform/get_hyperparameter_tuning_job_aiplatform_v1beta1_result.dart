@@ -59,7 +59,7 @@ class GetHyperparameterTuningJobAiplatformV1beta1Result {
   /// [trialJobSpec] The spec of a trial job. The same spec applies to the CustomJobs created in all the trials.
   /// [trials] Trials of the HyperparameterTuningJob.
   /// [updateTime] Time when the HyperparameterTuningJob was most recently updated.
-  GetHyperparameterTuningJobAiplatformV1beta1Result({
+  const GetHyperparameterTuningJobAiplatformV1beta1Result({
     required this.createTime,
     required this.displayName,
     required this.encryptionSpec,

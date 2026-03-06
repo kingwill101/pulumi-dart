@@ -14,7 +14,7 @@ class ReplicationResponse {
   /// Creates a new [ReplicationResponse].
   /// [automatic] The Secret will automatically be replicated without any restrictions.
   /// [userManaged] The Secret will only be replicated into the locations specified.
-  ReplicationResponse({
+  const ReplicationResponse({
     required this.automatic,
     required this.userManaged,
   });

@@ -8,7 +8,7 @@ class GetClusterDefaultSnatStatus {
 
   /// Creates a new [GetClusterDefaultSnatStatus].
   /// [disabled] When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
-  GetClusterDefaultSnatStatus({
+  const GetClusterDefaultSnatStatus({
     required this.disabled,
   });
 

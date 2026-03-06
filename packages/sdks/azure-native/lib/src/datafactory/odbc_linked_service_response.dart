@@ -46,7 +46,7 @@ class OdbcLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [userName] User name for Basic authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  OdbcLinkedServiceResponse({
+  const OdbcLinkedServiceResponse({
     this.annotations,
     this.authenticationType,
     this.connectVia,

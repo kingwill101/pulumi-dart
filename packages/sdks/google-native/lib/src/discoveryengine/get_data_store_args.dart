@@ -17,7 +17,7 @@ class GetDataStoreArgs {
   /// [dataStoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDataStoreArgs({
+  const GetDataStoreArgs({
     required this.collectionId,
     required this.dataStoreId,
     required this.location,

@@ -18,7 +18,7 @@ class UserManagedOpenAIProfileResponse {
   /// [embeddingModelType] Embedding Model Type
   /// [gptModelDeploymentName] GPT Model Deployment Name
   /// [id] Resource Id of OpenAI Resource
-  UserManagedOpenAIProfileResponse({
+  const UserManagedOpenAIProfileResponse({
     required this.embeddingModelDeploymentName,
     required this.embeddingModelType,
     required this.gptModelDeploymentName,

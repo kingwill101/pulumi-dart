@@ -11,7 +11,7 @@ class FhirStoreIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  FhirStoreIamMemberCondition({
+  const FhirStoreIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

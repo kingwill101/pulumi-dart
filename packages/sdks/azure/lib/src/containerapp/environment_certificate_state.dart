@@ -46,7 +46,7 @@ class EnvironmentCertificateState {
   /// [subjectName] The Subject Name for the Certificate.
   /// [tags] A mapping of tags to assign to the resource.
   /// [thumbprint] The Thumbprint of the Certificate.
-  EnvironmentCertificateState({
+  const EnvironmentCertificateState({
     this.certificateBlobBase64,
     this.certificateKeyVault,
     this.certificatePassword,

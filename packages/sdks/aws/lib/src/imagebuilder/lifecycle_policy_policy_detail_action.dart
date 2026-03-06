@@ -14,7 +14,7 @@ class LifecyclePolicyPolicyDetailAction {
   /// Creates a new [LifecyclePolicyPolicyDetailAction].
   /// [includeResources] Specifies the resources that the lifecycle policy applies to. Detailed below.
   /// [type] Specifies the lifecycle action to take. Valid values: `DELETE`, `DEPRECATE` or `DISABLE`.
-  LifecyclePolicyPolicyDetailAction({
+  const LifecyclePolicyPolicyDetailAction({
     this.includeResources,
     required this.type,
   });

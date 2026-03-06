@@ -15,7 +15,7 @@ class GetGroupsArgs {
   /// Creates a new [GetGroupsArgs].
   /// [identityStoreId] Identity Store ID associated with the Single Sign-On (SSO) Instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetGroupsArgs({
+  const GetGroupsArgs({
     required this.identityStoreId,
     this.region,
   });

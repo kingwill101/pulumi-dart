@@ -18,7 +18,7 @@ class ParentReferencePatchNetworkingK8sIoV1beta1 {
   /// [name] Name is the name of the object being referenced.
   /// [namespace] Namespace is the namespace of the object being referenced.
   /// [resource] Resource is the resource of the object being referenced.
-  ParentReferencePatchNetworkingK8sIoV1beta1({
+  const ParentReferencePatchNetworkingK8sIoV1beta1({
     this.group,
     this.name,
     this.namespace,

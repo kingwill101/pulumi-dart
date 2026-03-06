@@ -16,7 +16,7 @@ class AfdRouteCacheConfigurationResponse {
   /// [compressionSettings] compression settings.
   /// [queryParameters] query parameters to include or exclude (comma separated).
   /// [queryStringCachingBehavior] Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
-  AfdRouteCacheConfigurationResponse({
+  const AfdRouteCacheConfigurationResponse({
     this.compressionSettings,
     this.queryParameters,
     this.queryStringCachingBehavior,

@@ -12,7 +12,7 @@ class JavaComponentConfigurationProperty {
   /// Creates a new [JavaComponentConfigurationProperty].
   /// [propertyName] The name of the property
   /// [value] The value of the property
-  JavaComponentConfigurationProperty({
+  const JavaComponentConfigurationProperty({
     this.propertyName,
     this.value,
   });

@@ -35,7 +35,7 @@ class PscConnectionResponse {
   /// [gceOperation] The last Compute Engine operation to setup PSC connection.
   /// [pscConnectionId] The PSC connection id of the PSC forwarding rule.
   /// [state] State of the PSC Connection
-  PscConnectionResponse({
+  const PscConnectionResponse({
     required this.consumerAddress,
     required this.consumerForwardingRule,
     required this.consumerTargetProject,

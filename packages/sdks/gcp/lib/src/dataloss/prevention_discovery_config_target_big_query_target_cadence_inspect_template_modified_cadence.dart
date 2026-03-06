@@ -9,7 +9,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifie
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence].
   /// [frequency] How frequently data profiles can be updated when the template is modified. Defaults to never.
-  PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence({
+  const PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence({
     this.frequency,
   });
 

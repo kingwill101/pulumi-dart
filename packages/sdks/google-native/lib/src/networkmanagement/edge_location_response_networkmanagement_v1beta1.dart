@@ -9,7 +9,7 @@ class EdgeLocationResponseNetworkmanagementV1beta1 {
 
   /// Creates a new [EdgeLocationResponseNetworkmanagementV1beta1].
   /// [metropolitanArea] Name of the metropolitan area.
-  EdgeLocationResponseNetworkmanagementV1beta1({
+  const EdgeLocationResponseNetworkmanagementV1beta1({
     required this.metropolitanArea,
   });
 

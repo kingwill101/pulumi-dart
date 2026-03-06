@@ -27,7 +27,7 @@ class GetFoldersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [parentFolderId] The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
   /// [queryKeyword] The keyword used for the query, such as a folder name. Fuzzy match is supported.
-  GetFoldersArgs({
+  const GetFoldersArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

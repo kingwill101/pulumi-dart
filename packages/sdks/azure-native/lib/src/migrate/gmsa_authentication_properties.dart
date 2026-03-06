@@ -33,7 +33,7 @@ class GmsaAuthenticationProperties {
   /// [gmsaAccountName] Gets or sets the name to be used for GMSA.
   /// [gmsaUserPassword] Gets or sets the password of the user specified by RestApi.Controllers.V2022_05_01_preview.Models.WorkloadDeployment.Gmsa.GmsaAuthenticationProperties.GmsaUsername.
   /// [gmsaUsername] Gets or sets username of the user having authorization to access GMSA on Active Directory.
-  GmsaAuthenticationProperties({
+  const GmsaAuthenticationProperties({
     this.adDomainControllerDns,
     this.adDomainFqdn,
     this.akvProperties,

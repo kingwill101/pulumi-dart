@@ -24,7 +24,7 @@ class LabelByWorkspaceArgs {
   /// [labelName] The name of the Label.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the Workspace.
-  LabelByWorkspaceArgs({
+  const LabelByWorkspaceArgs({
     this.color,
     this.displayName,
     this.labelName,

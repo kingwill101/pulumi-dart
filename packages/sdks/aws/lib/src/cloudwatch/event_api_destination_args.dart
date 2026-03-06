@@ -30,7 +30,7 @@ class EventApiDestinationArgs {
   /// [invocationRateLimitPerSecond] Enter the maximum number of invocations per second to allow for this destination. Enter a value greater than 0 (default 300).
   /// [name] The name of the new API Destination. The name must be unique for your account. Maximum of 64 characters consisting of numbers, lower/upper case letters, .,-,_.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EventApiDestinationArgs({
+  const EventApiDestinationArgs({
     required this.connectionArn,
     this.description,
     required this.httpMethod,

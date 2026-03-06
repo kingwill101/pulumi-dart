@@ -15,7 +15,7 @@ class GetFactoryArgs {
   /// Creates a new [GetFactoryArgs].
   /// [name] The name of this Azure Data Factory.
   /// [resourceGroupName] The name of the Resource Group where the Azure Data Factory exists.
-  GetFactoryArgs({
+  const GetFactoryArgs({
     required this.name,
     required this.resourceGroupName,
   });

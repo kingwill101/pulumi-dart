@@ -18,7 +18,7 @@ class UrlObservationState {
   /// [sdkType] SDK integration mode. Value:
   /// [siteId] The site ID.
   /// [url] The URL of the page to monitor.
-  UrlObservationState({
+  const UrlObservationState({
     this.configId,
     this.sdkType,
     this.siteId,

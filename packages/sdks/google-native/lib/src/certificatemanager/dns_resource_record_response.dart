@@ -15,7 +15,7 @@ class DnsResourceRecordResponse {
   /// [data] Data of the DNS Resource Record.
   /// [name] Fully qualified name of the DNS Resource Record. e.g. `_acme-challenge.example.com`
   /// [type] Type of the DNS Resource Record. Currently always set to "CNAME".
-  DnsResourceRecordResponse({
+  const DnsResourceRecordResponse({
     required this.data,
     required this.name,
     required this.type,

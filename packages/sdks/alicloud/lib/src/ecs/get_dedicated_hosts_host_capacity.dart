@@ -32,7 +32,7 @@ class GetDedicatedHostsHostCapacity {
   /// [totalMemory] The total memory capacity, unit: GiB.
   /// [totalVcpus] The total number of vCPU cores.
   /// [totalVgpus] The total number of virtual GPUs.
-  GetDedicatedHostsHostCapacity({
+  const GetDedicatedHostsHostCapacity({
     required this.availableLocalStorage,
     required this.availableMemory,
     required this.availableVcpus,

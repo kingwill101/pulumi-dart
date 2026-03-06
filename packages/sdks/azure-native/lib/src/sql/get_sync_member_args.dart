@@ -24,7 +24,7 @@ class GetSyncMemberArgs {
   /// [serverName] The name of the server.
   /// [syncGroupName] The name of the sync group on which the sync member is hosted.
   /// [syncMemberName] The name of the sync member.
-  GetSyncMemberArgs({
+  const GetSyncMemberArgs({
     required this.databaseName,
     required this.resourceGroupName,
     required this.serverName,

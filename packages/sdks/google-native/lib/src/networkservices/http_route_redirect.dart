@@ -28,7 +28,7 @@ class HttpRouteRedirect {
   /// [prefixRewrite] Indicates that during redirection, the matched prefix (or path) should be swapped with this value. This option allows URLs be dynamically created based on the request.
   /// [responseCode] The HTTP Status code to use for the redirect.
   /// [stripQuery] if set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
-  HttpRouteRedirect({
+  const HttpRouteRedirect({
     this.hostRedirect,
     this.httpsRedirect,
     this.pathRedirect,

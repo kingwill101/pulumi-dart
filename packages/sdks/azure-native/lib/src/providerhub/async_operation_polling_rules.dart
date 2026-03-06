@@ -11,7 +11,7 @@ class AsyncOperationPollingRules {
   /// Creates a new [AsyncOperationPollingRules].
   /// [additionalOptions] The additional options.
   /// [authorizationActions] The authorization actions.
-  AsyncOperationPollingRules({
+  const AsyncOperationPollingRules({
     this.additionalOptions,
     this.authorizationActions,
   });

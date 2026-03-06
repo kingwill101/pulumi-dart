@@ -8,7 +8,7 @@ class CatalogDatabaseCreateTableDefaultPermissionPrincipal {
 
   /// Creates a new [CatalogDatabaseCreateTableDefaultPermissionPrincipal].
   /// [dataLakePrincipalIdentifier] An identifier for the Lake Formation principal.
-  CatalogDatabaseCreateTableDefaultPermissionPrincipal({
+  const CatalogDatabaseCreateTableDefaultPermissionPrincipal({
     this.dataLakePrincipalIdentifier,
   });
 

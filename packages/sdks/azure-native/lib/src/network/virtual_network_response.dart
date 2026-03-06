@@ -84,7 +84,7 @@ class VirtualNetworkResponse {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [virtualNetworkPeerings] A list of peerings in a Virtual Network.
-  VirtualNetworkResponse({
+  const VirtualNetworkResponse({
     this.addressSpace,
     this.bgpCommunities,
     this.ddosProtectionPlan,

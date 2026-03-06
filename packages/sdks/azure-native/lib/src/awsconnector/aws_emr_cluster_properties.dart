@@ -118,7 +118,7 @@ class AwsEmrClusterProperties {
   /// [terminationProtected] &lt;p&gt;Indicates whether Amazon EMR will lock the cluster to prevent the Amazon EC2 instances from being terminated by an API call or user intervention, or in the event of a cluster error.&lt;/p&gt;
   /// [unhealthyNodeReplacement] &lt;p&gt;Indicates whether Amazon EMR should gracefully replace Amazon EC2 core instances that have degraded within the cluster.&lt;/p&gt;
   /// [visibleToAllUsers] &lt;p&gt;Indicates whether the cluster is visible to IAM principals in the Amazon Web Services account associated with the cluster. When &lt;code&gt;true&lt;/code&gt;, IAM principals in the Amazon Web Services account can perform Amazon EMR cluster actions on the cluster that their IAM policies allow. When &lt;code&gt;false&lt;/code&gt;, only the IAM principal that created the cluster and the Amazon Web Services account root user can perform Amazon EMR actions, regardless of IAM permissions policies attached to other IAM principals.&lt;/p&gt; &lt;p&gt;The default value is &lt;code&gt;true&lt;/code&gt; if a value is not provided when creating a cluster using the Amazon EMR API &lt;a&gt;RunJobFlow&lt;/a&gt; command, the CLI &lt;a href='https://docs.aws.amazon.com/cli/latest/reference/emr/create-cluster.html'&gt;create-cluster&lt;/a&gt; command, or the Amazon Web Services Management Console.&lt;/p&gt;
-  AwsEmrClusterProperties({
+  const AwsEmrClusterProperties({
     this.applications,
     this.autoScalingRole,
     this.autoTerminate,

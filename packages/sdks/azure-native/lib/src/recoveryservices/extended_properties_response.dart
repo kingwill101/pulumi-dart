@@ -13,7 +13,7 @@ class ExtendedPropertiesResponse {
   /// Creates a new [ExtendedPropertiesResponse].
   /// [diskExclusionProperties] Extended Properties for Disk Exclusion.
   /// [linuxVmApplicationName] Linux VM name
-  ExtendedPropertiesResponse({
+  const ExtendedPropertiesResponse({
     this.diskExclusionProperties,
     this.linuxVmApplicationName,
   });

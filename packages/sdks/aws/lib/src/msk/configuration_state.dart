@@ -27,7 +27,7 @@ class ConfigurationState {
   /// [name] Name of the configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serverProperties] Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
-  ConfigurationState({
+  const ConfigurationState({
     this.arn,
     this.description,
     this.kafkaVersions,

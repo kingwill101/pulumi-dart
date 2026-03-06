@@ -10,7 +10,7 @@ class LinuxProfilePropertiesSsh {
 
   /// Creates a new [LinuxProfilePropertiesSsh].
   /// [publicKeys] PublicKeys - The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
-  LinuxProfilePropertiesSsh({
+  const LinuxProfilePropertiesSsh({
     this.publicKeys,
   });
 

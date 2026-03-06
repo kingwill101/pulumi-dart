@@ -15,7 +15,7 @@ class ConnectionAuthConfigOauth2JwtBearer {
   /// Creates a new [ConnectionAuthConfigOauth2JwtBearer].
   /// [clientKey] Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
   /// [jwtClaims] JwtClaims providers fields to generate the token.
-  ConnectionAuthConfigOauth2JwtBearer({
+  const ConnectionAuthConfigOauth2JwtBearer({
     this.clientKey,
     this.jwtClaims,
   });

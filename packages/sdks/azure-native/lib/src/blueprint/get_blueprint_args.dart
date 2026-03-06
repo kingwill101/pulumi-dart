@@ -15,7 +15,7 @@ class GetBlueprintArgs {
   /// Creates a new [GetBlueprintArgs].
   /// [blueprintName] Name of the blueprint definition.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
-  GetBlueprintArgs({
+  const GetBlueprintArgs({
     required this.blueprintName,
     required this.resourceScope,
   });

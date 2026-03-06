@@ -11,7 +11,7 @@ class GetAddonPodIdentityAssociation {
   /// Creates a new [GetAddonPodIdentityAssociation].
   /// [roleArn] ARN of the IAM role associated with the EKS add-on.
   /// [serviceAccount] Service account associated with the EKS add-on.
-  GetAddonPodIdentityAssociation({
+  const GetAddonPodIdentityAssociation({
     required this.roleArn,
     required this.serviceAccount,
   });

@@ -12,7 +12,7 @@ class ServerlessV2ScalingConfigurationResponse {
   /// Creates a new [ServerlessV2ScalingConfigurationResponse].
   /// [maxCapacity] The maximum number of Aurora capacity units (ACUs) for a DB instance in an Aurora Serverless v2 cluster. You can specify ACU values in half-step increments, such as 40, 40.5, 41, and so on. The largest value that you can use is 128.
   /// [minCapacity] The minimum number of Aurora capacity units (ACUs) for a DB instance in an Aurora Serverless v2 cluster. You can specify ACU values in half-step increments, such as 8, 8.5, 9, and so on. The smallest value that you can use is 0.5.
-  ServerlessV2ScalingConfigurationResponse({
+  const ServerlessV2ScalingConfigurationResponse({
     this.maxCapacity,
     this.minCapacity,
   });

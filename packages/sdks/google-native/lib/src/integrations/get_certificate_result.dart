@@ -33,7 +33,7 @@ class GetCertificateResult {
   /// [requestorId] Immutable. Requestor ID to be used to register certificate with trawler
   /// [validEndTime] The timestamp after which certificate will expire
   /// [validStartTime] The timestamp after which certificate will be valid
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.certificateStatus,
     required this.credentialId,
     required this.description,

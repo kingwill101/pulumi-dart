@@ -9,7 +9,7 @@ class StreamSourceAddresses {
 
   /// Creates a new [StreamSourceAddresses].
   /// [sourceAddresses] A source IP address or CIDR range
-  StreamSourceAddresses({
+  const StreamSourceAddresses({
     this.sourceAddresses,
   });
 

@@ -15,7 +15,7 @@ class ApplicationPackageContactResponse {
   /// [contactName] The contact name.
   /// [email] The contact email.
   /// [phone] The contact phone number.
-  ApplicationPackageContactResponse({
+  const ApplicationPackageContactResponse({
     this.contactName,
     required this.email,
     required this.phone,

@@ -11,7 +11,7 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
   /// Creates a new [CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration].
   /// [kmsKeyArn] ARN of the KMS key to use for backup encryption.
   /// [region] AWS region for backup storage.
-  CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration({
+  const CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration({
     this.kmsKeyArn,
     this.region,
   });

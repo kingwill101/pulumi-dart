@@ -16,7 +16,7 @@ class SqlDatabaseResource {
   /// [createMode] Enum to indicate the mode of resource creation.
   /// [id] Name of the Cosmos DB SQL database
   /// [restoreParameters] Parameters to indicate the information about the restore
-  SqlDatabaseResource({
+  const SqlDatabaseResource({
     this.createMode,
     required this.id,
     this.restoreParameters,

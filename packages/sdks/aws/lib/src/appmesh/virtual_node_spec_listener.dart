@@ -29,7 +29,7 @@ class VirtualNodeSpecListener {
   /// [portMapping] Port mapping information for the listener.
   /// [timeout] Timeouts for different protocols.
   /// [tls] Transport Layer Security (TLS) properties for the listener
-  VirtualNodeSpecListener({
+  const VirtualNodeSpecListener({
     this.connectionPool,
     this.healthCheck,
     this.outlierDetection,

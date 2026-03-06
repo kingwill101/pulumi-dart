@@ -12,7 +12,7 @@ class SelfTracing {
   /// Creates a new [SelfTracing].
   /// [intervalSeconds] The self tracing interval.
   /// [mode] The toggle to enable/disable self tracing.
-  SelfTracing({
+  const SelfTracing({
     this.intervalSeconds,
     this.mode,
   });

@@ -31,7 +31,7 @@ class IamServerCertificateProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamServerCertificateProperties({
+  const IamServerCertificateProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

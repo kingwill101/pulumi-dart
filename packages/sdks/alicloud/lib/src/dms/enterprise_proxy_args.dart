@@ -21,7 +21,7 @@ class EnterpriseProxyArgs {
   /// [password] The password of the database account.
   /// [tid] The ID of the tenant.
   /// [username] The username of the database account.
-  EnterpriseProxyArgs({
+  const EnterpriseProxyArgs({
     required this.instanceId,
     required this.password,
     this.tid,

@@ -35,7 +35,7 @@ class AwsSsmResourceComplianceSummaryItemProperties {
   /// [resourceId] &lt;p&gt;The resource ID.&lt;/p&gt;
   /// [resourceType] &lt;p&gt;The resource type.&lt;/p&gt;
   /// [status] &lt;p&gt;The compliance status for the resource.&lt;/p&gt;
-  AwsSsmResourceComplianceSummaryItemProperties({
+  const AwsSsmResourceComplianceSummaryItemProperties({
     this.complianceType,
     this.compliantSummary,
     this.executionSummary,

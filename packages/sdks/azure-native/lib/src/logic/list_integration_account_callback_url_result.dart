@@ -8,7 +8,7 @@ class ListIntegrationAccountCallbackUrlResult {
 
   /// Creates a new [ListIntegrationAccountCallbackUrlResult].
   /// [value] The URL value.
-  ListIntegrationAccountCallbackUrlResult({
+  const ListIntegrationAccountCallbackUrlResult({
     this.value,
   });
 

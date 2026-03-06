@@ -11,7 +11,7 @@ class StreamProcessorRegionsOfInterestPolygon {
   /// Creates a new [StreamProcessorRegionsOfInterestPolygon].
   /// [x] The value of the X coordinate for a point on a Polygon.
   /// [y] The value of the Y coordinate for a point on a Polygon.
-  StreamProcessorRegionsOfInterestPolygon({
+  const StreamProcessorRegionsOfInterestPolygon({
     this.x,
     this.y,
   });

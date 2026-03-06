@@ -10,7 +10,7 @@ class NodeSelector {
 
   /// Creates a new [NodeSelector].
   /// [nodeSelectorTerms] Required. A list of node selector terms. The terms are ORed.
-  NodeSelector({
+  const NodeSelector({
     required this.nodeSelectorTerms,
   });
 

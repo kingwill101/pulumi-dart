@@ -19,7 +19,7 @@ class FrontdoorSecretState {
   /// [cdnFrontdoorProfileName] The name of the Front Door Profile containing this Front Door Secret.
   /// [name] The name which should be used for this Front Door Secret. Possible values must start with a letter or a number, only contain letters, numbers and hyphens and have a length of between 2 and 260 characters. Changing this forces a new Front Door Secret to be created.
   /// [secret] A `secret` block as defined below. Changing this forces a new Front Door Secret to be created.
-  FrontdoorSecretState({
+  const FrontdoorSecretState({
     this.cdnFrontdoorProfileId,
     this.cdnFrontdoorProfileName,
     this.name,

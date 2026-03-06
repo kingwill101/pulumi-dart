@@ -9,7 +9,7 @@ class DomainDevicesHostdevSubsysMDevSource {
 
   /// Creates a new [DomainDevicesHostdevSubsysMDevSource].
   /// [address] Sets the address for the source of the multimedia subsystem device.
-  DomainDevicesHostdevSubsysMDevSource({
+  const DomainDevicesHostdevSubsysMDevSource({
     this.address,
   });
 

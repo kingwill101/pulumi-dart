@@ -52,7 +52,7 @@ class SmbAclAttachmentState {
   /// [keytabMd5] RThe string that is generated after the system encodes the keytab file by using MD5.
   /// [rejectUnencryptedAccess] Specifies whether to deny access from non-encrypted clients. Valid values:
   /// [superAdminSid] The ID of a super admin. The ID must meet the following requirements:
-  SmbAclAttachmentState({
+  const SmbAclAttachmentState({
     this.authMethod,
     this.enableAnonymousAccess,
     this.enabled,

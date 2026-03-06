@@ -17,7 +17,7 @@ class KafkaClusterMetastoresOozie {
   /// [password] The external Oozie metastore's existing SQL server admin password. Changing this forces a new resource to be created.
   /// [server] The fully-qualified domain name (FQDN) of the SQL server to use for the external Oozie metastore. Changing this forces a new resource to be created.
   /// [username] The external Oozie metastore's existing SQL server admin username. Changing this forces a new resource to be created.
-  KafkaClusterMetastoresOozie({
+  const KafkaClusterMetastoresOozie({
     required this.databaseName,
     required this.password,
     required this.server,

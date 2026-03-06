@@ -10,7 +10,7 @@ class A2ACrossClusterMigrationPolicyCreationInput {
 
   /// Creates a new [A2ACrossClusterMigrationPolicyCreationInput].
   /// [instanceType] The class type.
-  A2ACrossClusterMigrationPolicyCreationInput({
+  const A2ACrossClusterMigrationPolicyCreationInput({
     required this.instanceType,
   });
 

@@ -14,7 +14,7 @@ class RunDetailsResponse {
   /// [builder] Required.
   /// [byproducts] Required.
   /// [metadata] Required.
-  RunDetailsResponse({
+  const RunDetailsResponse({
     required this.builder,
     required this.byproducts,
     required this.metadata,

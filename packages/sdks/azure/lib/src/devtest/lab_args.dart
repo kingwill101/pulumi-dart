@@ -21,7 +21,7 @@ class LabArgs {
   /// [name] Specifies the name of the Dev Test Lab. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group under which the Dev Test Lab resource has to be created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  LabArgs({
+  const LabArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

@@ -31,7 +31,7 @@ class StaticInputData {
   /// [uri] [Required] Input Asset URI.
   /// [windowEnd] [Required] The end date of the data window.
   /// [windowStart] [Required] The start date of the data window.
-  StaticInputData({
+  const StaticInputData({
     this.columns,
     this.dataContext,
     required this.inputDataType,

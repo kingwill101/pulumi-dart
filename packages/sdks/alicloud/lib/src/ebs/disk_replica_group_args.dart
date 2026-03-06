@@ -75,7 +75,7 @@ class DiskReplicaGroupArgs {
   /// [sourceZoneId] The ID of the zone to which the production site belongs.
   /// [status] The status of the consistent replication group. Possible values:
   /// [tags] The tag of the resource
-  DiskReplicaGroupArgs({
+  const DiskReplicaGroupArgs({
     this.description,
     required this.destinationRegionId,
     required this.destinationZoneId,

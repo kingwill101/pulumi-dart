@@ -54,7 +54,7 @@ class SqlContainerResource {
   /// [restoreParameters] Parameters to indicate the information about the restore
   /// [uniqueKeyPolicy] The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
   /// [vectorEmbeddingPolicy] The vector embedding policy for the container.
-  SqlContainerResource({
+  const SqlContainerResource({
     this.analyticalStorageTtl,
     this.clientEncryptionPolicy,
     this.computedProperties,

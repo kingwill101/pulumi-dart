@@ -16,7 +16,7 @@ class NetworkingIpAssignmentArgs {
   /// Creates a new [NetworkingIpAssignmentArgs].
   /// [assignments] A list of IP/Linode assignments to apply.
   /// [region] The region where the IP addresses will be assigned.
-  NetworkingIpAssignmentArgs({
+  const NetworkingIpAssignmentArgs({
     this.assignments,
     required this.region,
   });

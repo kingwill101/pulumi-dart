@@ -18,7 +18,7 @@ class ServerDnsAliasArgs {
   /// [dnsAliasName] The name of the server dns alias.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server that the alias is pointing to.
-  ServerDnsAliasArgs({
+  const ServerDnsAliasArgs({
     this.dnsAliasName,
     required this.resourceGroupName,
     required this.serverName,

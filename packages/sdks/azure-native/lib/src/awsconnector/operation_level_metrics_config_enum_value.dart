@@ -9,7 +9,7 @@ class OperationLevelMetricsConfigEnumValue {
 
   /// Creates a new [OperationLevelMetricsConfigEnumValue].
   /// [value] Property value
-  OperationLevelMetricsConfigEnumValue({
+  const OperationLevelMetricsConfigEnumValue({
     this.value,
   });
 

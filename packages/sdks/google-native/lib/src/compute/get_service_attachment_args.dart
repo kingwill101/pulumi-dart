@@ -15,7 +15,7 @@ class GetServiceAttachmentArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [serviceAttachment] Required.
-  GetServiceAttachmentArgs({
+  const GetServiceAttachmentArgs({
     this.project,
     required this.region,
     required this.serviceAttachment,

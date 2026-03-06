@@ -21,7 +21,7 @@ class CxVersionNluSetting {
   /// [classificationThreshold] To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
   /// [modelTrainingMode] Indicates NLU model training mode.
   /// [modelType] Indicates the type of NLU model.
-  CxVersionNluSetting({
+  const CxVersionNluSetting({
     this.classificationThreshold,
     this.modelTrainingMode,
     this.modelType,

@@ -64,7 +64,7 @@ class ConfigurationStoreArgs {
   /// [sku] The SKU name of the App Configuration. Possible values are `free`, `developer`, `standard` and `premium`. Defaults to `free`.
   /// [softDeleteRetentionDays] The number of days that items should be retained for once soft-deleted. This field only works for `standard` sku. This value can be between `1` and `7` days. Defaults to `7`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  ConfigurationStoreArgs({
+  const ConfigurationStoreArgs({
     this.dataPlaneProxyAuthenticationMode,
     this.dataPlaneProxyPrivateLinkDelegationEnabled,
     this.encryption,

@@ -18,7 +18,7 @@ class GetArtifactStoreArgs {
   /// [artifactStoreName] The name of the artifact store.
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetArtifactStoreArgs({
+  const GetArtifactStoreArgs({
     required this.artifactStoreName,
     required this.publisherName,
     required this.resourceGroupName,

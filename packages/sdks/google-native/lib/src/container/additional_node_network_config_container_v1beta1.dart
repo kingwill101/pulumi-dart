@@ -12,7 +12,7 @@ class AdditionalNodeNetworkConfigContainerV1beta1 {
   /// Creates a new [AdditionalNodeNetworkConfigContainerV1beta1].
   /// [network] Name of the VPC where the additional interface belongs
   /// [subnetwork] Name of the subnetwork where the additional interface belongs
-  AdditionalNodeNetworkConfigContainerV1beta1({
+  const AdditionalNodeNetworkConfigContainerV1beta1({
     this.network,
     this.subnetwork,
   });

@@ -15,7 +15,7 @@ class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs {
   /// Creates a new [ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs].
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   /// [filter] The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
-  ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs({
+  const ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs({
     required this.billingAccountName,
     this.filter,
   });

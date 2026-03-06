@@ -12,7 +12,7 @@ class ExpectedValueRangeResponse {
   /// Creates a new [ExpectedValueRangeResponse].
   /// [max] Max threshold value for the metric
   /// [min] Min threshold value for the metric
-  ExpectedValueRangeResponse({
+  const ExpectedValueRangeResponse({
     required this.max,
     required this.min,
   });

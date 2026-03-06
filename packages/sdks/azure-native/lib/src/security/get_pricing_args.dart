@@ -15,7 +15,7 @@ class GetPricingArgs {
   /// Creates a new [GetPricingArgs].
   /// [pricingName] name of the pricing configuration
   /// [scopeId] The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
-  GetPricingArgs({
+  const GetPricingArgs({
     required this.pricingName,
     required this.scopeId,
   });

@@ -15,7 +15,7 @@ class GetMscSubContactVerificationMessageArgs {
   /// Creates a new [GetMscSubContactVerificationMessageArgs].
   /// [contactId] The ID of the Contact.
   /// [type] How a user receives verification messages. Valid values : `1`, `2`.
-  GetMscSubContactVerificationMessageArgs({
+  const GetMscSubContactVerificationMessageArgs({
     required this.contactId,
     required this.type,
   });

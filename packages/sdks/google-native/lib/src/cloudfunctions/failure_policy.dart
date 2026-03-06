@@ -9,7 +9,7 @@ class FailurePolicy {
 
   /// Creates a new [FailurePolicy].
   /// [retry] If specified, then the function will be retried in case of a failure.
-  FailurePolicy({
+  const FailurePolicy({
     this.retry,
   });
 

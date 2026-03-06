@@ -41,7 +41,7 @@ class VolumeConfigResponse {
   /// [snapshotsEnabled] Whether snapshots should be enabled.
   /// [type] The type of this Volume.
   /// [userNote] User note field, it can be used by customers to add additional information for the BMS Ops team .
-  VolumeConfigResponse({
+  const VolumeConfigResponse({
     required this.gcpService,
     required this.lunRanges,
     required this.machineIds,

@@ -30,7 +30,7 @@ class GetListenersArgs {
   /// [loadBalancerIds] The load balancer ids.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
-  GetListenersArgs({
+  const GetListenersArgs({
     this.enableDetails,
     this.ids,
     this.listenerIds,

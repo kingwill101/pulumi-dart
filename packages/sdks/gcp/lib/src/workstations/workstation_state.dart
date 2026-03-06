@@ -68,7 +68,7 @@ class WorkstationState {
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] The ID of the parent workstation cluster config.
   /// [workstationId] ID to use for the workstation.
-  WorkstationState({
+  const WorkstationState({
     this.annotations,
     this.createTime,
     this.displayName,

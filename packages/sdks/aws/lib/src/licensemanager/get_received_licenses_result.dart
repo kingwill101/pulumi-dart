@@ -17,7 +17,7 @@ class GetReceivedLicensesResult {
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetReceivedLicensesResult({
+  const GetReceivedLicensesResult({
     required this.arns,
     this.filters,
     required this.id,

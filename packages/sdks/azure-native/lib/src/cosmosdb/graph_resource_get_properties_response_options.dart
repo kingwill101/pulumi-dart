@@ -12,7 +12,7 @@ class GraphResourceGetPropertiesResponseOptions {
   /// Creates a new [GraphResourceGetPropertiesResponseOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings.
   /// [throughput] Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
-  GraphResourceGetPropertiesResponseOptions({
+  const GraphResourceGetPropertiesResponseOptions({
     this.autoscaleSettings,
     this.throughput,
   });

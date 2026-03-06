@@ -25,7 +25,7 @@ class ConditionAccesscontextmanagerV1beta {
   /// [negate] Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
   /// [regions] The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes.
   /// [requiredAccessLevels] A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
-  ConditionAccesscontextmanagerV1beta({
+  const ConditionAccesscontextmanagerV1beta({
     this.devicePolicy,
     this.ipSubnetworks,
     this.members,

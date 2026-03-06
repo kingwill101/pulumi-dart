@@ -34,7 +34,7 @@ class VmHostPlacementPolicyPropertiesResponse {
   /// [state] Whether the placement policy is enabled or disabled
   /// [type] Placement Policy type
   /// [vmMembers] Virtual machine members list
-  VmHostPlacementPolicyPropertiesResponse({
+  const VmHostPlacementPolicyPropertiesResponse({
     this.affinityStrength,
     required this.affinityType,
     this.azureHybridBenefitType,

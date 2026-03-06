@@ -12,7 +12,7 @@ class GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse {
   /// Creates a new [GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse].
   /// [identity] The service agent for the service.
   /// [name] The Google Cloud service name.
-  GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse({
+  const GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse({
     required this.identity,
     required this.name,
   });

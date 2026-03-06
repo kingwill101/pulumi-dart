@@ -8,7 +8,7 @@ class GetClusterUpgradePolicy {
 
   /// Creates a new [GetClusterUpgradePolicy].
   /// [supportType] Support type to use for the cluster.
-  GetClusterUpgradePolicy({
+  const GetClusterUpgradePolicy({
     required this.supportType,
   });
 

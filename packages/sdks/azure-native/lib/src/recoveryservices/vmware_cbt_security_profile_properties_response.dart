@@ -21,7 +21,7 @@ class VMwareCbtSecurityProfilePropertiesResponse {
   /// [isTargetVmSecureBootEnabled] A value indicating whether secure boot to be enabled.
   /// [isTargetVmTpmEnabled] A value indicating whether trusted platform module to be enabled.
   /// [targetVmSecurityType] The target VM security type.
-  VMwareCbtSecurityProfilePropertiesResponse({
+  const VMwareCbtSecurityProfilePropertiesResponse({
     this.isTargetVmConfidentialEncryptionEnabled,
     this.isTargetVmIntegrityMonitoringEnabled,
     this.isTargetVmSecureBootEnabled,

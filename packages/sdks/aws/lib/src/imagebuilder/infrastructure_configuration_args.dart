@@ -59,7 +59,7 @@ class InfrastructureConfigurationArgs {
   /// [subnetId] EC2 Subnet identifier. Also requires `security_group_ids` argument.
   /// [tags] Key-value map of resource tags to assign to the configuration. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [terminateInstanceOnFailure] Enable if the instance should be terminated when the pipeline fails. Defaults to `false`.
-  InfrastructureConfigurationArgs({
+  const InfrastructureConfigurationArgs({
     this.description,
     this.instanceMetadataOptions,
     required this.instanceProfileName,

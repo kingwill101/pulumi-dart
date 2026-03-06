@@ -9,7 +9,7 @@ class GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration {
   /// Creates a new [GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration].
   /// [unit] Required.
   /// [value] Required.
-  GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration({
+  const GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration({
     required this.unit,
     required this.value,
   });

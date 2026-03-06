@@ -10,7 +10,7 @@ class GoogleCloudRetailV2alphaModelModelFeaturesConfig {
 
   /// Creates a new [GoogleCloudRetailV2alphaModelModelFeaturesConfig].
   /// [frequentlyBoughtTogetherConfig] Additional configs for frequently-bought-together models.
-  GoogleCloudRetailV2alphaModelModelFeaturesConfig({
+  const GoogleCloudRetailV2alphaModelModelFeaturesConfig({
     this.frequentlyBoughtTogetherConfig,
   });
 

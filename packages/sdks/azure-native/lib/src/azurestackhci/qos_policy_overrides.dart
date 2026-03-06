@@ -15,7 +15,7 @@ class QosPolicyOverrides {
   /// [bandwidthPercentageSMB] This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   /// [priorityValue8021ActionCluster] This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   /// [priorityValue8021ActionSMB] This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  QosPolicyOverrides({
+  const QosPolicyOverrides({
     this.bandwidthPercentageSMB,
     this.priorityValue8021ActionCluster,
     this.priorityValue8021ActionSMB,

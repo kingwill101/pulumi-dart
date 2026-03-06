@@ -32,7 +32,7 @@ class AwsElasticBeanstalkConfigurationTemplateProperties {
   /// [solutionStackName] The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For example, 64bit Amazon Linux 2013.09 running Tomcat 7 Java 7. A solution stack specifies the operating system, runtime, and application server for a configuration template. It also determines the set of configuration options as well as the possible and default values. For more information, see [Supported Platforms](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html) in the AWS Elastic Beanstalk Developer Guide. You must specify SolutionStackName if you don't specify PlatformArn, EnvironmentId, or SourceConfiguration. Use the ListAvailableSolutionStacks API to obtain a list of available solution stacks.
   /// [sourceConfiguration] An Elastic Beanstalk configuration template to base this one on. If specified, Elastic Beanstalk uses the configuration values from the specified configuration template to create a new configuration.Values specified in OptionSettings override any values obtained from the SourceConfiguration.You must specify SourceConfiguration if you don't specify PlatformArn, EnvironmentId, or SolutionStackName.Constraint: If both solution stack name and source configuration are specified, the solution stack of the source configuration template must match the specified solution stack name.
   /// [templateName] The name of the configuration template
-  AwsElasticBeanstalkConfigurationTemplateProperties({
+  const AwsElasticBeanstalkConfigurationTemplateProperties({
     this.applicationName,
     this.description,
     this.environmentId,

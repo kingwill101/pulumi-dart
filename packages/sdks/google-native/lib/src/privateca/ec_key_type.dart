@@ -10,7 +10,7 @@ class EcKeyType {
 
   /// Creates a new [EcKeyType].
   /// [signatureAlgorithm] Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-  EcKeyType({
+  const EcKeyType({
     this.signatureAlgorithm,
   });
 

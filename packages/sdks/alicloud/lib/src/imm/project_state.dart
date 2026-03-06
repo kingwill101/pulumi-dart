@@ -12,7 +12,7 @@ class ProjectState {
   /// Creates a new [ProjectState].
   /// [project] The name of Project.
   /// [serviceRole] The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `alicloud.ram.Role`.
-  ProjectState({
+  const ProjectState({
     this.project,
     this.serviceRole,
   });

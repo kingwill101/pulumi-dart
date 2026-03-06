@@ -12,7 +12,7 @@ class ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse {
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse].
   /// [apiVersion] The api version.
   /// [enabled] Whether it's enabled.
-  ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse({
+  const ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse({
     this.apiVersion,
     this.enabled,
   });

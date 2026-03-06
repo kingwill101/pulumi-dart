@@ -18,7 +18,7 @@ class PlacementV1Toleration {
   /// [key] Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
   /// [operator] Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ClusterResourcePlacement can tolerate all taints of a particular category.
   /// [value] Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
-  PlacementV1Toleration({
+  const PlacementV1Toleration({
     this.effect,
     this.key,
     this.operator,

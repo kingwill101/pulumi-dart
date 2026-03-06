@@ -13,7 +13,7 @@ class DeploymentConfigurationResponse {
   /// Creates a new [DeploymentConfigurationResponse].
   /// [scaleUnits] Scale units will contains list of deployment data
   /// [version] deployment template version
-  DeploymentConfigurationResponse({
+  const DeploymentConfigurationResponse({
     required this.scaleUnits,
     this.version,
   });

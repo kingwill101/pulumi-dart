@@ -11,7 +11,7 @@ class InstanceIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  InstanceIamBindingCondition({
+  const InstanceIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -8,7 +8,7 @@ class EnterpriseSnapshotPolicySchedule {
 
   /// Creates a new [EnterpriseSnapshotPolicySchedule].
   /// [cronExpression] CronTab expression.
-  EnterpriseSnapshotPolicySchedule({
+  const EnterpriseSnapshotPolicySchedule({
     required this.cronExpression,
   });
 

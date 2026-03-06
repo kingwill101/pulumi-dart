@@ -9,7 +9,7 @@ class SensorIntegration {
 
   /// Creates a new [SensorIntegration].
   /// [enabled] Sensor integration enable state.
-  SensorIntegration({
+  const SensorIntegration({
     this.enabled,
   });
 

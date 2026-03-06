@@ -21,7 +21,7 @@ class FastSnapshotRestoreArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotId] ID of the snapshot.
   /// [timeouts] Optional.
-  FastSnapshotRestoreArgs({
+  const FastSnapshotRestoreArgs({
     required this.availabilityZone,
     this.region,
     required this.snapshotId,

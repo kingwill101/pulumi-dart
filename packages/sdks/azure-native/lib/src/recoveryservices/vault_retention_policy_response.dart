@@ -12,7 +12,7 @@ class VaultRetentionPolicyResponse {
   /// Creates a new [VaultRetentionPolicyResponse].
   /// [snapshotRetentionInDays] Required.
   /// [vaultRetention] Base class for retention policy.
-  VaultRetentionPolicyResponse({
+  const VaultRetentionPolicyResponse({
     required this.snapshotRetentionInDays,
     required this.vaultRetention,
   });

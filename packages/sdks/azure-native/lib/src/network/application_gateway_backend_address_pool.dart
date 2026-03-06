@@ -16,7 +16,7 @@ class ApplicationGatewayBackendAddressPool {
   /// [backendAddresses] Backend addresses.
   /// [id] Resource ID.
   /// [name] Name of the backend address pool that is unique within an Application Gateway.
-  ApplicationGatewayBackendAddressPool({
+  const ApplicationGatewayBackendAddressPool({
     this.backendAddresses,
     this.id,
     this.name,

@@ -18,7 +18,7 @@ class ServiceTemplateSpecContainerEnvFrom {
   /// [configMapRef] The ConfigMap to select from.
   /// [prefix] An optional identifier to prepend to each key in the ConfigMap.
   /// [secretRef] The Secret to select from.
-  ServiceTemplateSpecContainerEnvFrom({
+  const ServiceTemplateSpecContainerEnvFrom({
     this.configMapRef,
     this.prefix,
     this.secretRef,

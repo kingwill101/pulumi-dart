@@ -36,7 +36,7 @@ class GetJobDefinitionEksPropertyPodPropertyContainer {
   /// [resources] The type and amount of resources to assign to a container.
   /// [securityContexts] The security context for a job.
   /// [volumeMounts] The volume mounts for the container.
-  GetJobDefinitionEksPropertyPodPropertyContainer({
+  const GetJobDefinitionEksPropertyPodPropertyContainer({
     required this.args,
     required this.commands,
     required this.envs,

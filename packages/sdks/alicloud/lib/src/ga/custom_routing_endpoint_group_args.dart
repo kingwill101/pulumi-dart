@@ -24,7 +24,7 @@ class CustomRoutingEndpointGroupArgs {
   /// [description] The description of the endpoint group.
   /// [endpointGroupRegion] The ID of the region in which to create the endpoint group.
   /// [listenerId] The ID of the custom routing listener.
-  CustomRoutingEndpointGroupArgs({
+  const CustomRoutingEndpointGroupArgs({
     required this.acceleratorId,
     this.customRoutingEndpointGroupName,
     this.description,

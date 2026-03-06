@@ -12,7 +12,7 @@ class S3WordsListResponse {
   /// Creates a new [S3WordsListResponse].
   /// [bucketName] Property bucketName
   /// [objectKey] Property objectKey
-  S3WordsListResponse({
+  const S3WordsListResponse({
     this.bucketName,
     this.objectKey,
   });

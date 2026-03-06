@@ -8,7 +8,7 @@ class JwtResponse {
 
   /// Creates a new [JwtResponse].
   /// [compactJwt] The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
-  JwtResponse({
+  const JwtResponse({
     required this.compactJwt,
   });
 

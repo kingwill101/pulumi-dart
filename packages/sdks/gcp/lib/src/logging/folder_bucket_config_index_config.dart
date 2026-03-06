@@ -12,7 +12,7 @@ class FolderBucketConfigIndexConfig {
   /// Creates a new [FolderBucketConfigIndexConfig].
   /// [fieldPath] The LogEntry field path to index.
   /// [type] The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
-  FolderBucketConfigIndexConfig({
+  const FolderBucketConfigIndexConfig({
     required this.fieldPath,
     required this.type,
   });

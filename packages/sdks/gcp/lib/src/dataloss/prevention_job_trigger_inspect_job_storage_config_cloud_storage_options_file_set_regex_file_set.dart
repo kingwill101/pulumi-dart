@@ -18,7 +18,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
   /// [bucketName] The name of a Cloud Storage bucket.
   /// [excludeRegexes] A list of regular expressions matching file paths to exclude. All files in the bucket that match at
   /// [includeRegexes] A list of regular expressions matching file paths to include. All files in the bucket
-  PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet({
+  const PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet({
     required this.bucketName,
     this.excludeRegexes,
     this.includeRegexes,

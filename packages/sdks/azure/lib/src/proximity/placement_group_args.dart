@@ -31,7 +31,7 @@ class PlacementGroupArgs {
   /// [resourceGroupName] The name of the resource group in which to create the availability set. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zone] Specifies the supported zone of the Proximity Placement Group. Changing this forces a new resource to be created.
-  PlacementGroupArgs({
+  const PlacementGroupArgs({
     this.allowedVmSizes,
     this.location,
     this.name,

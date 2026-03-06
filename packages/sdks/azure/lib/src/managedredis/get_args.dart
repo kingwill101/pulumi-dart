@@ -15,7 +15,7 @@ class GetArgs {
   /// Creates a new [GetArgs].
   /// [name] The name of the Managed Redis instance.
   /// [resourceGroupName] The name of the Resource Group where the Managed Redis instance exists.
-  GetArgs({
+  const GetArgs({
     required this.name,
     required this.resourceGroupName,
   });

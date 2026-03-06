@@ -29,7 +29,7 @@ class GetRolesResult {
   /// [policyType] Optional.
   /// [roles] A list of Role. Each element contains the following attributes:
   /// [tags] (Available since v1.262.1) The tags of the RAM role.
-  GetRolesResult({
+  const GetRolesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

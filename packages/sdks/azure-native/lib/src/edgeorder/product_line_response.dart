@@ -40,7 +40,7 @@ class ProductLineResponse {
   /// [hierarchyInformation] Hierarchy information of a product.
   /// [imageInformation] Image information for the product system.
   /// [products] List of products in the product line.
-  ProductLineResponse({
+  const ProductLineResponse({
     required this.availabilityInformation,
     required this.costInformation,
     required this.description,

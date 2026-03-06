@@ -11,7 +11,7 @@ class AgentAgentActionGroupFunctionSchema {
 
   /// Creates a new [AgentAgentActionGroupFunctionSchema].
   /// [memberFunctions] Contains a list of functions.
-  AgentAgentActionGroupFunctionSchema({
+  const AgentAgentActionGroupFunctionSchema({
     this.memberFunctions,
   });
 

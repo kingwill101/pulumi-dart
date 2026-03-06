@@ -30,7 +30,7 @@ class ConsentStoreArgs {
   /// [location] Optional.
   /// [name] Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
   /// [project] Optional.
-  ConsentStoreArgs({
+  const ConsentStoreArgs({
     required this.consentStoreId,
     required this.datasetId,
     this.defaultConsentTtl,

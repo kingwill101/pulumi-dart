@@ -34,7 +34,7 @@ class GetProcessorResult {
   /// [processorVersionAliases] The processor version aliases.
   /// [state] The state of the processor.
   /// [type] The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
-  GetProcessorResult({
+  const GetProcessorResult({
     required this.createTime,
     required this.defaultProcessorVersion,
     required this.displayName,

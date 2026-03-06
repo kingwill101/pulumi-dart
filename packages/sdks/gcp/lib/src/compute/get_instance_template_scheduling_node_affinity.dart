@@ -14,7 +14,7 @@ class GetInstanceTemplateSchedulingNodeAffinity {
   /// [key] The key for the node affinity label.
   /// [operator] The operator. Can be `IN` for node-affinities
   /// [values] Required.
-  GetInstanceTemplateSchedulingNodeAffinity({
+  const GetInstanceTemplateSchedulingNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

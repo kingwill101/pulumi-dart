@@ -29,7 +29,7 @@ class GetMetricRuleTemplatesTemplate {
   /// [metricRuleTemplateName] The name of the alert template.
   /// [restVersion] The version of the alert template.
   /// [templateId] The ID of the alert template.
-  GetMetricRuleTemplatesTemplate({
+  const GetMetricRuleTemplatesTemplate({
     required this.alertTemplates,
     required this.description,
     required this.groupId,

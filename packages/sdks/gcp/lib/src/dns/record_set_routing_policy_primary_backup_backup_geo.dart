@@ -14,7 +14,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
   /// [healthCheckedTargets] For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
   /// [location] The location name defined in Google Cloud.
   /// [rrdatas] Optional.
-  RecordSetRoutingPolicyPrimaryBackupBackupGeo({
+  const RecordSetRoutingPolicyPrimaryBackupBackupGeo({
     this.healthCheckedTargets,
     required this.location,
     this.rrdatas,

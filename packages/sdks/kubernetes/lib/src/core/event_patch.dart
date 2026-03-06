@@ -61,7 +61,7 @@ class EventPatch {
   /// [series] Data about the Event series this event represents or nil if it's a singleton Event.
   /// [source] The component reporting this event. Should be a short machine understandable string.
   /// [type] Type of this event (Normal, Warning), new types could be added in the future
-  EventPatch({
+  const EventPatch({
     this.action,
     this.apiVersion,
     this.count,

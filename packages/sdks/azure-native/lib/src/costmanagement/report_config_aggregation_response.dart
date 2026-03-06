@@ -12,7 +12,7 @@ class ReportConfigAggregationResponse {
   /// Creates a new [ReportConfigAggregationResponse].
   /// [function] The name of the aggregation function to use.
   /// [name] The name of the column to aggregate.
-  ReportConfigAggregationResponse({
+  const ReportConfigAggregationResponse({
     required this.function,
     required this.name,
   });

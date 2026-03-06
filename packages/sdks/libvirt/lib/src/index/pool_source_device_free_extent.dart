@@ -11,7 +11,7 @@ class PoolSourceDeviceFreeExtent {
   /// Creates a new [PoolSourceDeviceFreeExtent].
   /// [end] Indicates the end value for the free extents available in the source device.
   /// [start] Defines the starting point for the free extents in the source device.
-  PoolSourceDeviceFreeExtent({
+  const PoolSourceDeviceFreeExtent({
     required this.end,
     required this.start,
   });

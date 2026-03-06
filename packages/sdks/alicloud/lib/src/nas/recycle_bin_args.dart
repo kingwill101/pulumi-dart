@@ -15,7 +15,7 @@ class RecycleBinArgs {
   /// Creates a new [RecycleBinArgs].
   /// [fileSystemId] The ID of the file system for which you want to enable the recycle bin feature.
   /// [reservedDays] The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
-  RecycleBinArgs({
+  const RecycleBinArgs({
     required this.fileSystemId,
     this.reservedDays,
   });

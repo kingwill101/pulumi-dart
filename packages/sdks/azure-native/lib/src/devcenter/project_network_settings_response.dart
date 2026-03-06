@@ -9,7 +9,7 @@ class ProjectNetworkSettingsResponse {
 
   /// Creates a new [ProjectNetworkSettingsResponse].
   /// [microsoftHostedNetworkEnableStatus] Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set.
-  ProjectNetworkSettingsResponse({
+  const ProjectNetworkSettingsResponse({
     required this.microsoftHostedNetworkEnableStatus,
   });
 

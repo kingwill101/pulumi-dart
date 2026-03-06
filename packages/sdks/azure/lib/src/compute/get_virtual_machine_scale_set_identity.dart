@@ -17,7 +17,7 @@ class GetVirtualMachineScaleSetIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Virtual Machine Scale Set.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Virtual Machine Scale Set.
   /// [type] The Type of IP Tag.
-  GetVirtualMachineScaleSetIdentity({
+  const GetVirtualMachineScaleSetIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

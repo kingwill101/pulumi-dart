@@ -15,7 +15,7 @@ class GetSqlServerRegistrationArgs {
   /// Creates a new [GetSqlServerRegistrationArgs].
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [sqlServerRegistrationName] Name of the SQL Server registration.
-  GetSqlServerRegistrationArgs({
+  const GetSqlServerRegistrationArgs({
     required this.resourceGroupName,
     required this.sqlServerRegistrationName,
   });

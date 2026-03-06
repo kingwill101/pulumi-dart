@@ -42,7 +42,7 @@ class GetFirewallResult {
   /// [pendingChanges] A set of object containing the fields, `droplet_id`,
   /// [status] A status string indicating the current state of the Firewall.
   /// [tags] The names of the Tags assigned to the Firewall.
-  GetFirewallResult({
+  const GetFirewallResult({
     required this.createdAt,
     required this.dropletIds,
     required this.firewallId,

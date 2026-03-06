@@ -18,7 +18,7 @@ class ByteMatchSetState {
   /// [arn] Amazon Resource Name (ARN) of the byte match set.
   /// [byteMatchTuples] Specifies the bytes (typically a string that corresponds
   /// [name] The name or description of the Byte Match Set.
-  ByteMatchSetState({
+  const ByteMatchSetState({
     this.arn,
     this.byteMatchTuples,
     this.name,

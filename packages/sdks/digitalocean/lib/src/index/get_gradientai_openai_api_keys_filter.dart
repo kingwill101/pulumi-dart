@@ -13,7 +13,7 @@ class GetGradientaiOpenaiApiKeysFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGradientaiOpenaiApiKeysFilter({
+  const GetGradientaiOpenaiApiKeysFilter({
     this.all,
     required this.key,
     this.matchBy,

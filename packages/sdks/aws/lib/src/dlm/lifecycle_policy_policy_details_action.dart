@@ -11,7 +11,7 @@ class LifecyclePolicyPolicyDetailsAction {
   /// Creates a new [LifecyclePolicyPolicyDetailsAction].
   /// [crossRegionCopies] The rule for copying shared snapshots across Regions. See the `cross_region_copy` configuration block.
   /// [name] Required.
-  LifecyclePolicyPolicyDetailsAction({
+  const LifecyclePolicyPolicyDetailsAction({
     required this.crossRegionCopies,
     required this.name,
   });

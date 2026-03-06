@@ -8,7 +8,7 @@ class DomainFeaturesHyperVRelaxed {
 
   /// Creates a new [DomainFeaturesHyperVRelaxed].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVRelaxed({
+  const DomainFeaturesHyperVRelaxed({
     this.state,
   });
 

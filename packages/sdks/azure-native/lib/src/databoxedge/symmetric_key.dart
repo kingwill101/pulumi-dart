@@ -10,7 +10,7 @@ class SymmetricKey {
 
   /// Creates a new [SymmetricKey].
   /// [connectionString] Connection string based on the symmetric key.
-  SymmetricKey({
+  const SymmetricKey({
     this.connectionString,
   });
 

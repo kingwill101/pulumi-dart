@@ -10,7 +10,7 @@ class TaskSchedulingPolicy {
 
   /// Creates a new [TaskSchedulingPolicy].
   /// [nodeFillType] How tasks should be distributed across compute nodes.
-  TaskSchedulingPolicy({
+  const TaskSchedulingPolicy({
     required this.nodeFillType,
   });
 

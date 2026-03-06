@@ -18,7 +18,7 @@ class ApiReleaseArgs {
   /// [apiId] The ID of the API Management API. Changing this forces a new API Management API Release to be created.
   /// [name] The name which should be used for this API Management API Release. Changing this forces a new API Management API Release to be created.
   /// [notes] The Release Notes.
-  ApiReleaseArgs({
+  const ApiReleaseArgs({
     required this.apiId,
     this.name,
     this.notes,

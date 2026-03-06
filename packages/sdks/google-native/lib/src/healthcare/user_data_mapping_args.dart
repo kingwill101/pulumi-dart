@@ -30,7 +30,7 @@ class UserDataMappingArgs {
   /// [project] Optional.
   /// [resourceAttributes] Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
   /// [userId] User's UUID provided by the client.
-  UserDataMappingArgs({
+  const UserDataMappingArgs({
     required this.consentStoreId,
     required this.dataId,
     required this.datasetId,

@@ -13,7 +13,7 @@ class MetricRange {
   /// Creates a new [MetricRange].
   /// [range] Range of values considered "good." For a one-sided range, set one bound to an infinite value.
   /// [timeSeries] A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
-  MetricRange({
+  const MetricRange({
     this.range,
     this.timeSeries,
   });

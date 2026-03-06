@@ -8,7 +8,7 @@ class SecurityActionDeny {
 
   /// Creates a new [SecurityActionDeny].
   /// [responseCode] The HTTP response code if the Action = DENY.
-  SecurityActionDeny({
+  const SecurityActionDeny({
     this.responseCode,
   });
 

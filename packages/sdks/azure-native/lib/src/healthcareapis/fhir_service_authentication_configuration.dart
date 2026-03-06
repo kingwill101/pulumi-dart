@@ -19,7 +19,7 @@ class FhirServiceAuthenticationConfiguration {
   /// [authority] The authority url for the service
   /// [smartIdentityProviders] The array of identity provider configurations for SMART on FHIR authentication.
   /// [smartProxyEnabled] If the SMART on FHIR proxy is enabled
-  FhirServiceAuthenticationConfiguration({
+  const FhirServiceAuthenticationConfiguration({
     this.audience,
     this.authority,
     this.smartIdentityProviders,

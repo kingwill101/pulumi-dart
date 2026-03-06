@@ -25,7 +25,7 @@ class AllowedClient {
   /// [mountPermissions] Mount permissions.
   /// [network] The network the access point sits on.
   /// [noRootSquash] Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
-  AllowedClient({
+  const AllowedClient({
     this.allowDev,
     this.allowSuid,
     this.allowedClientsCidr,

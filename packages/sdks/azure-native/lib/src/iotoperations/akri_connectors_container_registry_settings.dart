@@ -13,7 +13,7 @@ class AkriConnectorsContainerRegistrySettings {
   /// Creates a new [AkriConnectorsContainerRegistrySettings].
   /// [imagePullSecrets] Optional list of references to secrets in the same namespace to use for pulling the connector image.
   /// [registry] The container registry to use for the artifact.
-  AkriConnectorsContainerRegistrySettings({
+  const AkriConnectorsContainerRegistrySettings({
     this.imagePullSecrets,
     required this.registry,
   });

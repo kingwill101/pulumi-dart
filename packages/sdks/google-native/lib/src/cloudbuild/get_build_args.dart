@@ -19,7 +19,7 @@ class GetBuildArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [projectId] Required.
-  GetBuildArgs({
+  const GetBuildArgs({
     required this.buildId,
     required this.id,
     required this.location,

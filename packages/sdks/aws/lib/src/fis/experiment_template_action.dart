@@ -25,7 +25,7 @@ class ExperimentTemplateAction {
   /// [parameters] Parameter(s) for the action, if applicable. See below.
   /// [startAfters] Set of action names that must complete before this action can be executed.
   /// [target] Action's target, if applicable. See below.
-  ExperimentTemplateAction({
+  const ExperimentTemplateAction({
     required this.actionId,
     this.description,
     required this.name,

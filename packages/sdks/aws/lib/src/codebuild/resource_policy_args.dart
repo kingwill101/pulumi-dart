@@ -18,7 +18,7 @@ class ResourcePolicyArgs {
   /// [policy] A JSON-formatted resource policy. For more information, see [Sharing a Projec](https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share) and [Sharing a Report Group](https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The ARN of the Project or ReportGroup resource you want to associate with a resource policy.
-  ResourcePolicyArgs({
+  const ResourcePolicyArgs({
     required this.policy,
     this.region,
     required this.resourceArn,

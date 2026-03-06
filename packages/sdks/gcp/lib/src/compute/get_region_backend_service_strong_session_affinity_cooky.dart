@@ -15,7 +15,7 @@ class GetRegionBackendServiceStrongSessionAffinityCooky {
   /// [name] The name of the regional backend service.
   /// [path] Path to set for the cookie.
   /// [ttls] Lifetime of the cookie.
-  GetRegionBackendServiceStrongSessionAffinityCooky({
+  const GetRegionBackendServiceStrongSessionAffinityCooky({
     required this.name,
     required this.path,
     required this.ttls,

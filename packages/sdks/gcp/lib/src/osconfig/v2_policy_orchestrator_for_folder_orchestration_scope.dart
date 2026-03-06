@@ -14,7 +14,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScope {
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationScope].
   /// [selectors] Selectors of the orchestration scope. There is a logical AND between each
-  V2PolicyOrchestratorForFolderOrchestrationScope({
+  const V2PolicyOrchestratorForFolderOrchestrationScope({
     this.selectors,
   });
 

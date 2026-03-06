@@ -29,7 +29,7 @@ class WindowsUpdateResponse {
   /// [lastPublishedTimestamp] The last published timestamp of the update.
   /// [supportUrl] The hyperlink to the support information for the update.
   /// [title] The localized title of the update.
-  WindowsUpdateResponse({
+  const WindowsUpdateResponse({
     required this.categories,
     required this.description,
     required this.identity,

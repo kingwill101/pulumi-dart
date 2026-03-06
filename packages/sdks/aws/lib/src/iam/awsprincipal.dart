@@ -9,7 +9,7 @@ class AWSPrincipal {
 
   /// Creates a new [AWSPrincipal].
   /// [aWS] AWS account identifier or ARN.
-  AWSPrincipal({
+  const AWSPrincipal({
     required this.aWS,
   });
 

@@ -11,7 +11,7 @@ class RestoreWorkloadDiskTargetEnvironment {
   /// Creates a new [RestoreWorkloadDiskTargetEnvironment].
   /// [project] Required. Target project for the disk.
   /// [zone] Required. Target zone for the disk.
-  RestoreWorkloadDiskTargetEnvironment({
+  const RestoreWorkloadDiskTargetEnvironment({
     required this.project,
     required this.zone,
   });

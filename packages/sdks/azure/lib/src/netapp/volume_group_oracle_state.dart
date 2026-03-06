@@ -28,7 +28,7 @@ class VolumeGroupOracleState {
   /// [name] The name which should be used for this Application Volume Group. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [resourceGroupName] The name of the Resource Group where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [volumes] One or more `volume` blocks as defined below.
-  VolumeGroupOracleState({
+  const VolumeGroupOracleState({
     this.accountName,
     this.applicationIdentifier,
     this.groupDescription,

@@ -21,7 +21,7 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTrigger {
   /// [slowRequestWithPaths] (Optional) One or more `slow_request_with_path` blocks as defined above.
   /// [slowRequests] A `slow_request` block as defined above.
   /// [statusCodes] A `status_code` block as defined above.
-  GetLinuxWebAppSiteConfigAutoHealSettingTrigger({
+  const GetLinuxWebAppSiteConfigAutoHealSettingTrigger({
     required this.requests,
     required this.slowRequestWithPaths,
     this.slowRequests,

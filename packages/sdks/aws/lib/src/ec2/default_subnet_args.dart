@@ -44,7 +44,7 @@ class DefaultSubnetArgs {
   /// [privateDnsHostnameTypeOnLaunch] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   /// [tags] Optional.
-  DefaultSubnetArgs({
+  const DefaultSubnetArgs({
     this.assignIpv6AddressOnCreation,
     required this.availabilityZone,
     this.customerOwnedIpv4Pool,

@@ -13,7 +13,7 @@ class GetDataCollectorArgs {
   /// Creates a new [GetDataCollectorArgs].
   /// [datacollectorId] Required.
   /// [organizationId] Required.
-  GetDataCollectorArgs({
+  const GetDataCollectorArgs({
     required this.datacollectorId,
     required this.organizationId,
   });

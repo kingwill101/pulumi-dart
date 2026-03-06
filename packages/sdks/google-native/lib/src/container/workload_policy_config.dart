@@ -9,7 +9,7 @@ class WorkloadPolicyConfig {
 
   /// Creates a new [WorkloadPolicyConfig].
   /// [allowNetAdmin] If true, workloads can use NET_ADMIN capability.
-  WorkloadPolicyConfig({
+  const WorkloadPolicyConfig({
     this.allowNetAdmin,
   });
 

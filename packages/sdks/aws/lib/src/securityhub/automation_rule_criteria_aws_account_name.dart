@@ -9,7 +9,7 @@ class AutomationRuleCriteriaAwsAccountName {
   /// Creates a new [AutomationRuleCriteriaAwsAccountName].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaAwsAccountName({
+  const AutomationRuleCriteriaAwsAccountName({
     required this.comparison,
     required this.value,
   });

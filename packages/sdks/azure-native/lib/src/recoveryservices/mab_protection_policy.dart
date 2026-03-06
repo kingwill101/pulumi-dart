@@ -24,7 +24,7 @@ class MabProtectionPolicy {
   /// [resourceGuardOperationRequests] ResourceGuard Operation Requests
   /// [retentionPolicy] Retention policy details.
   /// [schedulePolicy] Backup schedule of backup policy.
-  MabProtectionPolicy({
+  const MabProtectionPolicy({
     required this.backupManagementType,
     this.protectedItemsCount,
     this.resourceGuardOperationRequests,

@@ -68,7 +68,7 @@ class AppState {
   /// [tags] A mapping of tags to assign to the Container App.
   /// [template] A `template` block as detailed below.
   /// [workloadProfileName] The name of the Workload Profile in the Container App Environment to place this Container App.
-  AppState({
+  const AppState({
     this.containerAppEnvironmentId,
     this.customDomainVerificationId,
     this.dapr,

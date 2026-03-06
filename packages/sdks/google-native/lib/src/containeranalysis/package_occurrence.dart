@@ -14,7 +14,7 @@ class PackageOccurrence {
   /// Creates a new [PackageOccurrence].
   /// [license] Licenses that have been declared by the authors of the package.
   /// [location] All of the places within the filesystem versions of this package have been found.
-  PackageOccurrence({
+  const PackageOccurrence({
     this.license,
     this.location,
   });

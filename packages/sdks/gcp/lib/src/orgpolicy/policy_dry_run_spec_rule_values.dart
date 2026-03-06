@@ -11,7 +11,7 @@ class PolicyDryRunSpecRuleValues {
   /// Creates a new [PolicyDryRunSpecRuleValues].
   /// [allowedValues] List of values allowed at this resource.
   /// [deniedValues] List of values denied at this resource.
-  PolicyDryRunSpecRuleValues({
+  const PolicyDryRunSpecRuleValues({
     this.allowedValues,
     this.deniedValues,
   });

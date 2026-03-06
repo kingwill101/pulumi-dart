@@ -11,7 +11,7 @@ class GetAuthorityUserDefinedAccessUrl {
   /// Creates a new [GetAuthorityUserDefinedAccessUrl].
   /// [aiaIssuingCertificateUrls] A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
   /// [crlAccessUrls] A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
-  GetAuthorityUserDefinedAccessUrl({
+  const GetAuthorityUserDefinedAccessUrl({
     required this.aiaIssuingCertificateUrls,
     required this.crlAccessUrls,
   });

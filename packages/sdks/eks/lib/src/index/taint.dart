@@ -12,7 +12,7 @@ class Taint {
   /// Creates a new [Taint].
   /// [effect] The effect of the taint.
   /// [value] The value of the taint.
-  Taint({
+  const Taint({
     required this.effect,
     required this.value,
   });

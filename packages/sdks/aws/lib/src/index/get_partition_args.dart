@@ -12,7 +12,7 @@ class GetPartitionArgs {
 
   /// Creates a new [GetPartitionArgs].
   /// [id] Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
-  GetPartitionArgs({
+  const GetPartitionArgs({
     this.id,
   });
 

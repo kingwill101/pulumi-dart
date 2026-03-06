@@ -17,7 +17,7 @@ class TopicRuleErrorActionS3 {
   /// [cannedAcl] The Amazon S3 canned ACL that controls access to the object identified by the object key. [Valid values](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
   /// [key] The object key.
   /// [roleArn] The ARN of the IAM role that grants access.
-  TopicRuleErrorActionS3({
+  const TopicRuleErrorActionS3({
     required this.bucketName,
     this.cannedAcl,
     required this.key,

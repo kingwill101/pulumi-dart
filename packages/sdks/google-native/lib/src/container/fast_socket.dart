@@ -9,7 +9,7 @@ class FastSocket {
 
   /// Creates a new [FastSocket].
   /// [enabled] Whether Fast Socket features are enabled in the node pool.
-  FastSocket({
+  const FastSocket({
     this.enabled,
   });
 

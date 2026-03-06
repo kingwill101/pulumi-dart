@@ -18,7 +18,7 @@ class WebAclAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
   /// [webAclId] The ID of the WAF Regional WebACL to create an association.
-  WebAclAssociationArgs({
+  const WebAclAssociationArgs({
     this.region,
     required this.resourceArn,
     required this.webAclId,

@@ -29,7 +29,7 @@ class AzureFirstPartyManagedCertificateParametersResponse {
   /// [subjectAlternativeNames] The list of SANs.
   /// [thumbprint] Certificate thumbprint.
   /// [type] The type of the secret resource.
-  AzureFirstPartyManagedCertificateParametersResponse({
+  const AzureFirstPartyManagedCertificateParametersResponse({
     required this.certificateAuthority,
     required this.expirationDate,
     required this.secretSource,

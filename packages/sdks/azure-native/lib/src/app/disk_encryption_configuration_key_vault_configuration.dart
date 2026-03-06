@@ -13,7 +13,7 @@ class DiskEncryptionConfigurationKeyVaultConfiguration {
   /// Creates a new [DiskEncryptionConfigurationKeyVaultConfiguration].
   /// [auth] Configuration properties for the authentication to the Key Vault
   /// [keyUrl] Key URL pointing to a key in KeyVault. Version segment of the Url is required.
-  DiskEncryptionConfigurationKeyVaultConfiguration({
+  const DiskEncryptionConfigurationKeyVaultConfiguration({
     this.auth,
     this.keyUrl,
   });

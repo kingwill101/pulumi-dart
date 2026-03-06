@@ -28,7 +28,7 @@ class ServerCollectorsOperationArgs {
   /// [provisioningState] The status of the last operation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverCollectorName] Physical server collector ARM name
-  ServerCollectorsOperationArgs({
+  const ServerCollectorsOperationArgs({
     this.agentProperties,
     this.discoverySiteId,
     required this.projectName,

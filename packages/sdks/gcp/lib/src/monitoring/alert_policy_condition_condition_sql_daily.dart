@@ -16,7 +16,7 @@ class AlertPolicyConditionConditionSqlDaily {
   /// Creates a new [AlertPolicyConditionConditionSqlDaily].
   /// [executionTime] The time of day (in UTC) at which the query should run. If left
   /// [periodicity] The number of days between runs. Must be greater than or equal
-  AlertPolicyConditionConditionSqlDaily({
+  const AlertPolicyConditionConditionSqlDaily({
     this.executionTime,
     required this.periodicity,
   });

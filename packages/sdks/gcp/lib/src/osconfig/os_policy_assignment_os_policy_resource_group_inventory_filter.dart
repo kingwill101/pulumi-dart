@@ -14,7 +14,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter {
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter].
   /// [osShortName] The OS short name
   /// [osVersion] The OS version Prefix matches are supported if
-  OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter({
+  const OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter({
     required this.osShortName,
     this.osVersion,
   });

@@ -8,7 +8,7 @@ class VpnConnectionVpcProject {
 
   /// Creates a new [VpnConnectionVpcProject].
   /// [projectId] The project of the VPC to connect to. If not specified, it is the same as the cluster project.
-  VpnConnectionVpcProject({
+  const VpnConnectionVpcProject({
     this.projectId,
   });
 

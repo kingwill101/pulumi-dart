@@ -11,7 +11,7 @@ class InstanceVswitch {
   /// Creates a new [InstanceVswitch].
   /// [vswitchId] ID of VSwitch.
   /// [zoneId] Zone ID of VSwitch.
-  InstanceVswitch({
+  const InstanceVswitch({
     required this.vswitchId,
     this.zoneId,
   });

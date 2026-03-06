@@ -13,7 +13,7 @@ class AddonVrProperties {
   /// Creates a new [AddonVrProperties].
   /// [addonType] Addon type
   /// [vrsCount] The vSphere Replication Server (VRS) count
-  AddonVrProperties({
+  const AddonVrProperties({
     required this.addonType,
     required this.vrsCount,
   });

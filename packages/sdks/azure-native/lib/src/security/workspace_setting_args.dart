@@ -18,7 +18,7 @@ class WorkspaceSettingArgs {
   /// [scope] All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
   /// [workspaceId] The full Azure ID of the workspace to save the data in
   /// [workspaceSettingName] Name of the security setting
-  WorkspaceSettingArgs({
+  const WorkspaceSettingArgs({
     required this.scope,
     required this.workspaceId,
     this.workspaceSettingName,

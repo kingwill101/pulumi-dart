@@ -13,7 +13,7 @@ class PodGroupPolicyPatch {
   /// Creates a new [PodGroupPolicyPatch].
   /// [basic] Basic specifies that the pods in this group should be scheduled using standard Kubernetes scheduling behavior.
   /// [gang] Gang specifies that the pods in this group should be scheduled using all-or-nothing semantics.
-  PodGroupPolicyPatch({
+  const PodGroupPolicyPatch({
     this.basic,
     this.gang,
   });

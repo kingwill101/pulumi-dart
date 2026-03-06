@@ -8,7 +8,7 @@ class GetSQuotaInfoDimensionsInfoDetail {
 
   /// Creates a new [GetSQuotaInfoDimensionsInfoDetail].
   /// [value] The value currently in effect and being enforced.
-  GetSQuotaInfoDimensionsInfoDetail({
+  const GetSQuotaInfoDimensionsInfoDetail({
     required this.value,
   });
 

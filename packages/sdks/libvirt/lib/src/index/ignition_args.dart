@@ -15,7 +15,7 @@ class IgnitionArgs {
   /// Creates a new [IgnitionArgs].
   /// [content] Ignition configuration content (JSON)
   /// [name] Name for this ignition resource
-  IgnitionArgs({
+  const IgnitionArgs({
     required this.content,
     this.name,
   });

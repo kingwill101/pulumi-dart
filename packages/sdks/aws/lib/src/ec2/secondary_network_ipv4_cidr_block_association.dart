@@ -14,7 +14,7 @@ class SecondaryNetworkIpv4CidrBlockAssociation {
   /// [associationId] Association ID for the IPv4 CIDR block.
   /// [cidrBlock] IPv4 CIDR block.
   /// [state] State of the IPv4 CIDR block association.
-  SecondaryNetworkIpv4CidrBlockAssociation({
+  const SecondaryNetworkIpv4CidrBlockAssociation({
     required this.associationId,
     required this.cidrBlock,
     required this.state,

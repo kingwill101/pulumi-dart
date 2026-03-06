@@ -11,7 +11,7 @@ class ServerCustomerManagedKey {
   /// Creates a new [ServerCustomerManagedKey].
   /// [keyVaultKeyId] The Key Vault Key Id that will be used to encrypt the Fluid Relay Server.
   /// [userAssignedIdentityId] The User Assigned Managed Identity ID to be used for accessing the Customer Managed Key for encryption.
-  ServerCustomerManagedKey({
+  const ServerCustomerManagedKey({
     required this.keyVaultKeyId,
     required this.userAssignedIdentityId,
   });

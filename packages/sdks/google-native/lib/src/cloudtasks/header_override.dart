@@ -10,7 +10,7 @@ class HeaderOverride {
 
   /// Creates a new [HeaderOverride].
   /// [header] header embodying a key and a value.
-  HeaderOverride({
+  const HeaderOverride({
     this.header,
   });
 

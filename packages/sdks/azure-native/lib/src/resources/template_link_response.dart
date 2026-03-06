@@ -21,7 +21,7 @@ class TemplateLinkResponse {
   /// [queryString] The query string (for example, a SAS token) to be used with the templateLink URI.
   /// [relativePath] The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
   /// [uri] The URI of the template to deploy. Use either the uri or id property, but not both.
-  TemplateLinkResponse({
+  const TemplateLinkResponse({
     this.contentVersion,
     this.id,
     this.queryString,

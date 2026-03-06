@@ -42,7 +42,7 @@ class VolumeState {
   /// [snapshotId] The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
   /// [tags] A list of the tags to be applied to this Volume.
   /// [volumeUrn] The uniform resource name for the volume.
-  VolumeState({
+  const VolumeState({
     this.description,
     this.dropletIds,
     this.filesystemLabel,

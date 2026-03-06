@@ -12,7 +12,7 @@ class ActivityDependencyResponse {
   /// Creates a new [ActivityDependencyResponse].
   /// [activity] Activity name.
   /// [dependencyConditions] Match-Condition for the dependency.
-  ActivityDependencyResponse({
+  const ActivityDependencyResponse({
     required this.activity,
     required this.dependencyConditions,
   });

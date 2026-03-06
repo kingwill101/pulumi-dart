@@ -20,7 +20,7 @@ class MigrateSqlServerSqlMISyncTaskProperties {
   /// [createdOn] DateTime in UTC when the task was created
   /// [input] Task input
   /// [taskType] Task type.
-  MigrateSqlServerSqlMISyncTaskProperties({
+  const MigrateSqlServerSqlMISyncTaskProperties({
     this.clientData,
     this.createdOn,
     this.input,

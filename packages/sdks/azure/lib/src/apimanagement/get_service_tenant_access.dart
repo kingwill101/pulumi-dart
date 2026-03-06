@@ -17,7 +17,7 @@ class GetServiceTenantAccess {
   /// [primaryKey] Primary access key for the tenant access information contract.
   /// [secondaryKey] Secondary access key for the tenant access information contract.
   /// [tenantId] The ID of the Tenant which has access to this API Management instance.
-  GetServiceTenantAccess({
+  const GetServiceTenantAccess({
     required this.enabled,
     required this.primaryKey,
     required this.secondaryKey,

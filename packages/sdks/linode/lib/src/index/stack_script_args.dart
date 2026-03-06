@@ -29,7 +29,7 @@ class StackScriptArgs {
   /// [label] The StackScript's label is for display purposes only.
   /// [revNote] This field allows you to add notes for the set of revisions made to this StackScript.
   /// [script] The script to execute when provisioning a new Linode with this StackScript.
-  StackScriptArgs({
+  const StackScriptArgs({
     required this.description,
     required this.images,
     this.isPublic,

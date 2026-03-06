@@ -50,7 +50,7 @@ class GetApplianceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Version of the Appliance
-  GetApplianceResult({
+  const GetApplianceResult({
     required this.azureApiVersion,
     this.distro,
     required this.id,

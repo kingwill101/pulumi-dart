@@ -14,7 +14,7 @@ class GradientaiKnowledgeBaseDataSourceSpacesDataSource {
   /// [bucketName] The name of the Spaces bucket
   /// [itemPath] The path to the item in the bucket
   /// [region] The region of the Spaces bucket
-  GradientaiKnowledgeBaseDataSourceSpacesDataSource({
+  const GradientaiKnowledgeBaseDataSourceSpacesDataSource({
     this.bucketName,
     this.itemPath,
     this.region,

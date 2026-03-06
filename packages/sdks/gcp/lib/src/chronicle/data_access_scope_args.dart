@@ -56,7 +56,7 @@ class DataAccessScopeArgs {
   /// [instance] The unique identifier for the Chronicle instance, which is the same as the customer ID.
   /// [location] The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   /// [project] The ID of the project in which the resource belongs.
-  DataAccessScopeArgs({
+  const DataAccessScopeArgs({
     this.allowAll,
     this.allowedDataAccessLabels,
     required this.dataAccessScopeId,

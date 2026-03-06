@@ -8,7 +8,7 @@ class FlavorDataResponse {
 
   /// Creates a new [FlavorDataResponse].
   /// [data] Model flavor-specific data.
-  FlavorDataResponse({
+  const FlavorDataResponse({
     this.data,
   });
 

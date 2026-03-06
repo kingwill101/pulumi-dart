@@ -8,7 +8,7 @@ class DomainAimlOptionsServerlessVectorAcceleration {
 
   /// Creates a new [DomainAimlOptionsServerlessVectorAcceleration].
   /// [enabled] Enables GPU-accelerated vector search for improved performance on vector workloads.
-  DomainAimlOptionsServerlessVectorAcceleration({
+  const DomainAimlOptionsServerlessVectorAcceleration({
     this.enabled,
   });
 

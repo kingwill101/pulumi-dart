@@ -8,7 +8,7 @@ class DomainDevicesSerialSourceDbus {
 
   /// Creates a new [DomainDevicesSerialSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesSerialSourceDbus({
+  const DomainDevicesSerialSourceDbus({
     this.channel,
   });
 

@@ -33,7 +33,7 @@ class GatewayArgs {
   /// [labels] Resource labels to represent user-provided metadata.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the gateway for the API.
-  GatewayArgs({
+  const GatewayArgs({
     required this.apiConfig,
     this.displayName,
     required this.gatewayId,

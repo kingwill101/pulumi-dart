@@ -16,7 +16,7 @@ class AiFeatureOnlineStoreBigtable {
   /// [autoScaling] Autoscaling config applied to Bigtable Instance.
   /// [enableDirectBigtableAccess] Optional. If true, enable direct access to the Bigtable instance.
   /// [zone] The zone where the Bigtable instance will be created.
-  AiFeatureOnlineStoreBigtable({
+  const AiFeatureOnlineStoreBigtable({
     required this.autoScaling,
     this.enableDirectBigtableAccess,
     this.zone,

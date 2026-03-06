@@ -10,7 +10,7 @@ class PkixPublicKeySetResponse {
 
   /// Creates a new [PkixPublicKeySetResponse].
   /// [pkixPublicKeys] `pkix_public_keys` must have at least one entry.
-  PkixPublicKeySetResponse({
+  const PkixPublicKeySetResponse({
     required this.pkixPublicKeys,
   });
 

@@ -14,7 +14,7 @@ class HttpRouteRuleActionResponseHeaderModifier {
   /// [add] Add the headers with given map where key is the name of the header, value is the value of the header.
   /// [removes] Remove headers (matching by header names) specified in the list.
   /// [set] Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
-  HttpRouteRuleActionResponseHeaderModifier({
+  const HttpRouteRuleActionResponseHeaderModifier({
     this.add,
     this.removes,
     this.set,

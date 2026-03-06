@@ -17,7 +17,7 @@ class GetSpokeIamPolicyNetworkconnectivityV1alpha1Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [spokeId] Required.
-  GetSpokeIamPolicyNetworkconnectivityV1alpha1Args({
+  const GetSpokeIamPolicyNetworkconnectivityV1alpha1Args({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

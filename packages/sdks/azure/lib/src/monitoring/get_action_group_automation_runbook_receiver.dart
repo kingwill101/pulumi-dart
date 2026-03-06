@@ -26,7 +26,7 @@ class GetActionGroupAutomationRunbookReceiver {
   /// [serviceUri] The URI where webhooks should be sent.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
   /// [webhookResourceId] The resource id for webhook linked to this runbook.
-  GetActionGroupAutomationRunbookReceiver({
+  const GetActionGroupAutomationRunbookReceiver({
     required this.automationAccountId,
     required this.isGlobalRunbook,
     required this.name,

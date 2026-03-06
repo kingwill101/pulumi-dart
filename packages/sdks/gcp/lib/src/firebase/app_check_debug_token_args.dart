@@ -31,7 +31,7 @@ class AppCheckDebugTokenArgs {
   /// [displayName] A human readable display name used to identify this debug token.
   /// [project] The ID of the project in which the resource belongs.
   /// [token] The secret token itself. Must be provided during creation, and must be a UUID4,
-  AppCheckDebugTokenArgs({
+  const AppCheckDebugTokenArgs({
     required this.appId,
     required this.displayName,
     this.project,

@@ -12,7 +12,7 @@ class ResourceTypeRegistrationPropertiesResourceCache {
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceCache].
   /// [enableResourceCache] Enable resource cache.
   /// [resourceCacheExpirationTimespan] Resource cache expiration timespan. This is a TimeSpan property.
-  ResourceTypeRegistrationPropertiesResourceCache({
+  const ResourceTypeRegistrationPropertiesResourceCache({
     this.enableResourceCache,
     this.resourceCacheExpirationTimespan,
   });

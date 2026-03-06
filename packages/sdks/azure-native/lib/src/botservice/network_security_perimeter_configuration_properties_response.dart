@@ -24,7 +24,7 @@ class NetworkSecurityPerimeterConfigurationPropertiesResponse {
   /// [provisioningIssues] List of Provisioning Issues if any
   /// [provisioningState] Optional.
   /// [resourceAssociation] Information about resource association
-  NetworkSecurityPerimeterConfigurationPropertiesResponse({
+  const NetworkSecurityPerimeterConfigurationPropertiesResponse({
     required this.networkSecurityPerimeter,
     required this.profile,
     this.provisioningIssues,

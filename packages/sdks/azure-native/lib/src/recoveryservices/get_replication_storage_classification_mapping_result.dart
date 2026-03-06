@@ -24,7 +24,7 @@ class GetReplicationStorageClassificationMappingResult {
   /// [name] Resource Name
   /// [properties] Properties of the storage mapping object.
   /// [type] Resource Type
-  GetReplicationStorageClassificationMappingResult({
+  const GetReplicationStorageClassificationMappingResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

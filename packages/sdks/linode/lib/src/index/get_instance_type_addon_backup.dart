@@ -11,7 +11,7 @@ class GetInstanceTypeAddonBackup {
   /// Creates a new [GetInstanceTypeAddonBackup].
   /// [prices] Required.
   /// [regionPrices] Required.
-  GetInstanceTypeAddonBackup({
+  const GetInstanceTypeAddonBackup({
     required this.prices,
     required this.regionPrices,
   });

@@ -11,7 +11,7 @@ class EntityRecognizerVpcConfig {
   /// Creates a new [EntityRecognizerVpcConfig].
   /// [securityGroupIds] List of security group IDs.
   /// [subnets] List of VPC subnets.
-  EntityRecognizerVpcConfig({
+  const EntityRecognizerVpcConfig({
     required this.securityGroupIds,
     required this.subnets,
   });

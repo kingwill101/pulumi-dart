@@ -21,7 +21,7 @@ class GetPageDialogflowV3beta1Args {
   /// [location] Required.
   /// [pageId] Required.
   /// [project] Optional.
-  GetPageDialogflowV3beta1Args({
+  const GetPageDialogflowV3beta1Args({
     required this.agentId,
     required this.flowId,
     this.languageCode,

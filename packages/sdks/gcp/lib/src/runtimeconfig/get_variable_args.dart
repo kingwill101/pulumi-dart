@@ -21,7 +21,7 @@ class GetVariableArgs {
   /// [name] The name of the Runtime Configurator configuration.
   /// [parent] The name of the RuntimeConfig resource containing this variable.
   /// [project] The project in which the resource belongs. If it
-  GetVariableArgs({
+  const GetVariableArgs({
     required this.name,
     required this.parent,
     this.project,

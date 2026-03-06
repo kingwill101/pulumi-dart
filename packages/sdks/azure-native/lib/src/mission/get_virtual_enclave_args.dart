@@ -15,7 +15,7 @@ class GetVirtualEnclaveArgs {
   /// Creates a new [GetVirtualEnclaveArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualEnclaveName] The name of the enclaveResource Resource
-  GetVirtualEnclaveArgs({
+  const GetVirtualEnclaveArgs({
     required this.resourceGroupName,
     required this.virtualEnclaveName,
   });

@@ -20,7 +20,7 @@ class GetSchemaResult {
   /// [revisionCreateTime] The timestamp that the revision was created.
   /// [revisionId] Immutable. The revision ID of the schema.
   /// [type] The type of the schema definition.
-  GetSchemaResult({
+  const GetSchemaResult({
     required this.definition,
     required this.name,
     required this.revisionCreateTime,

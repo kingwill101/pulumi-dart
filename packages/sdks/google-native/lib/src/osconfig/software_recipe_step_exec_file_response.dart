@@ -18,7 +18,7 @@ class SoftwareRecipeStepExecFileResponse {
   /// [args] Arguments to be passed to the provided executable.
   /// [artifactId] The id of the relevant artifact in the recipe.
   /// [localPath] The absolute path of the file on the local filesystem.
-  SoftwareRecipeStepExecFileResponse({
+  const SoftwareRecipeStepExecFileResponse({
     required this.allowedExitCodes,
     required this.args,
     required this.artifactId,

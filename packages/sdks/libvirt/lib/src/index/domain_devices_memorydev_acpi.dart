@@ -8,7 +8,7 @@ class DomainDevicesMemorydevAcpi {
 
   /// Creates a new [DomainDevicesMemorydevAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  DomainDevicesMemorydevAcpi({
+  const DomainDevicesMemorydevAcpi({
     this.index,
   });
 

@@ -29,7 +29,7 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult {
   /// [kind] Kind of resource.
   /// [name] Resource Name.
   /// [type] Resource type.
-  GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult({
+  const GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult({
     required this.azureApiVersion,
     required this.createdOn,
     this.functionAppRegion,

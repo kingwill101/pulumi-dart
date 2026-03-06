@@ -8,7 +8,7 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleH
 
   /// Creates a new [RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader].
   /// [name] The name of the query header to inspect. This setting must be provided as lower case characters.
-  RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader({
+  const RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader({
     required this.name,
   });
 

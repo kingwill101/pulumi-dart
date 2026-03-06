@@ -23,7 +23,7 @@ class GetAppIngressCor {
   /// [allowedOrigins] The list of origins that are allowed to make cross-origin calls.
   /// [exposedHeaders] The list of headers exposed to the browser in the response to a cross-origin request.
   /// [maxAgeInSeconds] The number of seconds that the browser can cache the results of a preflight request.
-  GetAppIngressCor({
+  const GetAppIngressCor({
     required this.allowCredentialsEnabled,
     required this.allowedHeaders,
     required this.allowedMethods,

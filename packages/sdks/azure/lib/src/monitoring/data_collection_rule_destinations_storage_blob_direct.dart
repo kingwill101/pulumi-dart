@@ -14,7 +14,7 @@ class DataCollectionRuleDestinationsStorageBlobDirect {
   /// [containerName] The Storage Container name.
   /// [name] The name which should be used for this destination. This name should be unique across all destinations regardless of type within the Data Collection Rule.
   /// [storageAccountId] The resource ID of the Storage Account.
-  DataCollectionRuleDestinationsStorageBlobDirect({
+  const DataCollectionRuleDestinationsStorageBlobDirect({
     required this.containerName,
     required this.name,
     required this.storageAccountId,

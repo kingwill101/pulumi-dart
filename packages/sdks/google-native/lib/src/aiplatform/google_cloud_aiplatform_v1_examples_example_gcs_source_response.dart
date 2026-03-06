@@ -13,7 +13,7 @@ class GoogleCloudAiplatformV1ExamplesExampleGcsSourceResponse {
   /// Creates a new [GoogleCloudAiplatformV1ExamplesExampleGcsSourceResponse].
   /// [dataFormat] The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
   /// [gcsSource] The Cloud Storage location for the input instances.
-  GoogleCloudAiplatformV1ExamplesExampleGcsSourceResponse({
+  const GoogleCloudAiplatformV1ExamplesExampleGcsSourceResponse({
     required this.dataFormat,
     required this.gcsSource,
   });

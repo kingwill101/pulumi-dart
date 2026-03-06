@@ -13,7 +13,7 @@ class GetSitesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] Set of Outposts Site identifiers.
   /// [region] Required.
-  GetSitesResult({
+  const GetSitesResult({
     required this.id,
     required this.ids,
     required this.region,

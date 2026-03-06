@@ -34,7 +34,7 @@ class GetExadataInfrastructureMaintenanceWindow {
   /// [patchingMode] Cloud Exadata Infrastructure node patching method.
   /// [preference] The maintenance window scheduling preference.
   /// [weeksOfMonths] Weeks during the month when maintenance should be performed.
-  GetExadataInfrastructureMaintenanceWindow({
+  const GetExadataInfrastructureMaintenanceWindow({
     required this.customActionTimeoutEnabled,
     required this.customActionTimeoutInMins,
     required this.daysOfWeeks,

@@ -38,7 +38,7 @@ class MuteConfigArgs {
   /// [muteConfigId] Unique identifier provided by the client within the parent scope.
   /// [parent] Resource name of the new mute configs's parent. Its format is
   /// [type] The type of the mute config, which determines what type of mute state the config affects.
-  MuteConfigArgs({
+  const MuteConfigArgs({
     this.description,
     this.expiryTime,
     required this.filter,

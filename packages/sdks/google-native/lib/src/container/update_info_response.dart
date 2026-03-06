@@ -10,7 +10,7 @@ class UpdateInfoResponse {
 
   /// Creates a new [UpdateInfoResponse].
   /// [blueGreenInfo] Information of a blue-green upgrade.
-  UpdateInfoResponse({
+  const UpdateInfoResponse({
     required this.blueGreenInfo,
   });
 

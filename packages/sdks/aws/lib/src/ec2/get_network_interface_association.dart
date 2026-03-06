@@ -26,7 +26,7 @@ class GetNetworkInterfaceAssociation {
   /// [ipOwnerId] ID of the Elastic IP address owner.
   /// [publicDnsName] Public DNS name.
   /// [publicIp] Address of the Elastic IP address bound to the network interface.
-  GetNetworkInterfaceAssociation({
+  const GetNetworkInterfaceAssociation({
     required this.allocationId,
     required this.associationId,
     required this.carrierIp,

@@ -43,7 +43,7 @@ class DeviceArgs {
   /// [tags] Key-value tags for the device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Type of device.
   /// [vendor] Vendor of the device.
-  DeviceArgs({
+  const DeviceArgs({
     this.awsLocation,
     this.description,
     required this.globalNetworkId,

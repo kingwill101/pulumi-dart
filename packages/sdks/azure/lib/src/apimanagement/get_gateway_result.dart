@@ -21,7 +21,7 @@ class GetGatewayResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [locationDatas] A `location_data` block as documented below.
   /// [name] A canonical name for the geographic or physical location.
-  GetGatewayResult({
+  const GetGatewayResult({
     required this.apiManagementId,
     required this.description,
     required this.id,

@@ -8,7 +8,7 @@ class LoadBalancerAlgorithm {
 
   /// Creates a new [LoadBalancerAlgorithm].
   /// [type] Type of the Load Balancer Algorithm. `round_robin` or `least_connections`
-  LoadBalancerAlgorithm({
+  const LoadBalancerAlgorithm({
     this.type,
   });
 

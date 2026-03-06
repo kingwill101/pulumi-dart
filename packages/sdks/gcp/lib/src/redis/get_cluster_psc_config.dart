@@ -10,7 +10,7 @@ class GetClusterPscConfig {
 
   /// Creates a new [GetClusterPscConfig].
   /// [network] Required. The consumer network where the network address of
-  GetClusterPscConfig({
+  const GetClusterPscConfig({
     required this.network,
   });
 

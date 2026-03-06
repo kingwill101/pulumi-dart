@@ -18,7 +18,7 @@ class BackupPolicyPostgresqlRetentionRule {
   /// [duration] Duration after which the backup is deleted. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy PostgreSQL to be created.
   /// [name] The name which should be used for this retention rule. Changing this forces a new Backup Policy PostgreSQL to be created.
   /// [priority] Specifies the priority of the rule. The priority number must be unique for each rule. The lower the priority number, the higher the priority of the rule. Changing this forces a new Backup Policy PostgreSQL to be created.
-  BackupPolicyPostgresqlRetentionRule({
+  const BackupPolicyPostgresqlRetentionRule({
     required this.criteria,
     required this.duration,
     required this.name,

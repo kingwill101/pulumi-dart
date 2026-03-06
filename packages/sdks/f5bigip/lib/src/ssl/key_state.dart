@@ -21,7 +21,7 @@ class KeyState {
   /// [name] Name of the SSL Certificate key to be Imported on to BIGIP
   /// [partition] Partition of ssl certificate key
   /// [passphrase] Passphrase on key.
-  KeyState({
+  const KeyState({
     this.content,
     this.fullPath,
     this.name,

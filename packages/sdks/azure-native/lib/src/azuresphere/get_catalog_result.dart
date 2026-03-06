@@ -33,7 +33,7 @@ class GetCatalogResult {
   /// [tags] Resource tags.
   /// [tenantId] The Azure Sphere tenant ID associated with the catalog.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCatalogResult({
+  const GetCatalogResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

@@ -15,7 +15,7 @@ class RegionBackendServiceStrongSessionAffinityCookieTtl {
   /// Creates a new [RegionBackendServiceStrongSessionAffinityCookieTtl].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  RegionBackendServiceStrongSessionAffinityCookieTtl({
+  const RegionBackendServiceStrongSessionAffinityCookieTtl({
     this.nanos,
     required this.seconds,
   });

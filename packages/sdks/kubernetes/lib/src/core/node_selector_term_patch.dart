@@ -13,7 +13,7 @@ class NodeSelectorTermPatch {
   /// Creates a new [NodeSelectorTermPatch].
   /// [matchExpressions] A list of node selector requirements by node's labels.
   /// [matchFields] A list of node selector requirements by node's fields.
-  NodeSelectorTermPatch({
+  const NodeSelectorTermPatch({
     this.matchExpressions,
     this.matchFields,
   });

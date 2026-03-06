@@ -9,7 +9,7 @@ class StorageClassificationMappingPropertiesResponse {
 
   /// Creates a new [StorageClassificationMappingPropertiesResponse].
   /// [targetStorageClassificationId] Target storage object Id.
-  StorageClassificationMappingPropertiesResponse({
+  const StorageClassificationMappingPropertiesResponse({
     this.targetStorageClassificationId,
   });
 

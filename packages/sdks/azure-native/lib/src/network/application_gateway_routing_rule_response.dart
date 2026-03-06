@@ -37,7 +37,7 @@ class ApplicationGatewayRoutingRuleResponse {
   /// [provisioningState] The provisioning state of the request routing rule resource.
   /// [ruleType] Rule type.
   /// [type] Type of the resource.
-  ApplicationGatewayRoutingRuleResponse({
+  const ApplicationGatewayRoutingRuleResponse({
     this.backendAddressPool,
     this.backendSettings,
     required this.etag,

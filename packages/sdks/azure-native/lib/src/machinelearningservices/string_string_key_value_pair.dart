@@ -9,7 +9,7 @@ class StringStringKeyValuePair {
   /// Creates a new [StringStringKeyValuePair].
   /// [key] Optional.
   /// [value] Optional.
-  StringStringKeyValuePair({
+  const StringStringKeyValuePair({
     this.key,
     this.value,
   });

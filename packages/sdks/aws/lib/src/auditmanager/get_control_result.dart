@@ -29,7 +29,7 @@ class GetControlResult {
   /// [tags] Required.
   /// [testingInformation] Required.
   /// [type] Required.
-  GetControlResult({
+  const GetControlResult({
     required this.actionPlanInstructions,
     required this.actionPlanTitle,
     required this.arn,

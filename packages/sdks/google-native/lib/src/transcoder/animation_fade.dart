@@ -20,7 +20,7 @@ class AnimationFade {
   /// [fadeType] Type of fade animation: `FADE_IN` or `FADE_OUT`.
   /// [startTimeOffset] The time to start the fade animation, in seconds. Default: 0
   /// [xy] Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
-  AnimationFade({
+  const AnimationFade({
     this.endTimeOffset,
     required this.fadeType,
     this.startTimeOffset,

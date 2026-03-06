@@ -12,7 +12,7 @@ class SharingEnvironmentConfigResponse {
   /// Creates a new [SharingEnvironmentConfigResponse].
   /// [dcrExchangeConfig] Data Clean Room (DCR), used for privacy-safe and secured data sharing.
   /// [defaultExchangeConfig] Default Analytics Hub data exchange, used for secured data sharing.
-  SharingEnvironmentConfigResponse({
+  const SharingEnvironmentConfigResponse({
     required this.dcrExchangeConfig,
     required this.defaultExchangeConfig,
   });

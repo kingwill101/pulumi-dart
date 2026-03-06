@@ -36,7 +36,7 @@ class OrganizationClusterByIdArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spec] Specification of the cluster
   /// [status] Specification of the cluster status
-  OrganizationClusterByIdArgs({
+  const OrganizationClusterByIdArgs({
     this.clusterId,
     required this.environmentId,
     this.kind,

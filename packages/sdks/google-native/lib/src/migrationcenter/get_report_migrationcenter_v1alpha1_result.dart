@@ -30,7 +30,7 @@ class GetReportMigrationcenterV1alpha1Result {
   /// [summary] Summary view of the Report.
   /// [type] Report type.
   /// [updateTime] Last update timestamp.
-  GetReportMigrationcenterV1alpha1Result({
+  const GetReportMigrationcenterV1alpha1Result({
     required this.createTime,
     required this.description,
     required this.displayName,

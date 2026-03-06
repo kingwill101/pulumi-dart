@@ -13,7 +13,7 @@ class GetCustomConstraintArgs {
   /// Creates a new [GetCustomConstraintArgs].
   /// [customConstraintId] Required.
   /// [organizationId] Required.
-  GetCustomConstraintArgs({
+  const GetCustomConstraintArgs({
     required this.customConstraintId,
     required this.organizationId,
   });

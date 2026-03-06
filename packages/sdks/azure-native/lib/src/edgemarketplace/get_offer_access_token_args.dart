@@ -18,7 +18,7 @@ class GetOfferAccessTokenArgs {
   /// [offerId] Id of the offer
   /// [requestId] The name of the publisher.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetOfferAccessTokenArgs({
+  const GetOfferAccessTokenArgs({
     required this.offerId,
     required this.requestId,
     required this.resourceUri,

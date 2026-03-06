@@ -34,7 +34,7 @@ class GetDeveloperAppKeyResult {
   /// [issuedAt] Time the developer app was created in milliseconds since epoch.
   /// [scopes] Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
   /// [status] Status of the credential. Valid values include `approved` or `revoked`.
-  GetDeveloperAppKeyResult({
+  const GetDeveloperAppKeyResult({
     required this.apiProducts,
     required this.attributes,
     required this.consumerKey,

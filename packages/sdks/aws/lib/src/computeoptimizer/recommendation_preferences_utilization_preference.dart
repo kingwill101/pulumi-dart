@@ -12,7 +12,7 @@ class RecommendationPreferencesUtilizationPreference {
   /// Creates a new [RecommendationPreferencesUtilizationPreference].
   /// [metricName] The name of the resource utilization metric name to customize. Valid values: `CpuUtilization`, `MemoryUtilization`.
   /// [metricParameters] The parameters to set when customizing the resource utilization thresholds.
-  RecommendationPreferencesUtilizationPreference({
+  const RecommendationPreferencesUtilizationPreference({
     required this.metricName,
     required this.metricParameters,
   });

@@ -15,7 +15,7 @@ class NodeTaintResponseContainerV1beta1 {
   /// [effect] Effect for taint.
   /// [key] Key for taint.
   /// [value] Value for taint.
-  NodeTaintResponseContainerV1beta1({
+  const NodeTaintResponseContainerV1beta1({
     required this.effect,
     required this.key,
     required this.value,

@@ -11,7 +11,7 @@ class SelectionConditionStringNotLike {
   /// Creates a new [SelectionConditionStringNotLike].
   /// [key] Key for the filter.
   /// [value] Value for the filter.
-  SelectionConditionStringNotLike({
+  const SelectionConditionStringNotLike({
     required this.key,
     required this.value,
   });

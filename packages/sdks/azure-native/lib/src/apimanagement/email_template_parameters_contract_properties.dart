@@ -15,7 +15,7 @@ class EmailTemplateParametersContractProperties {
   /// [description] Template parameter description.
   /// [name] Template parameter name.
   /// [title] Template parameter title.
-  EmailTemplateParametersContractProperties({
+  const EmailTemplateParametersContractProperties({
     this.description,
     this.name,
     this.title,

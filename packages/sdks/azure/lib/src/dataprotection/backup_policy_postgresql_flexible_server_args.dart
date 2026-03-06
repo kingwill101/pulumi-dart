@@ -29,7 +29,7 @@ class BackupPolicyPostgresqlFlexibleServerArgs {
   /// [retentionRules] One or more `retention_rule` blocks as defined below. Changing this forces a new resource to be created.
   /// [timeZone] Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault where the Backup Policy PostgreSQL Flexible Server should exist. Changing this forces a new resource to be created.
-  BackupPolicyPostgresqlFlexibleServerArgs({
+  const BackupPolicyPostgresqlFlexibleServerArgs({
     required this.backupRepeatingTimeIntervals,
     required this.defaultRetentionRule,
     this.name,

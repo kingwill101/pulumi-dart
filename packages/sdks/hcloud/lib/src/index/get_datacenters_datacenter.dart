@@ -23,7 +23,7 @@ class GetDatacentersDatacenter {
   /// [location] Location of the Datacenter. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   /// [name] Name of the Datacenter.
   /// [supportedServerTypeIds] List of supported Server Types in the Datacenter.
-  GetDatacentersDatacenter({
+  const GetDatacentersDatacenter({
     required this.availableServerTypeIds,
     required this.description,
     required this.id,

@@ -10,7 +10,7 @@ class AndroidKeyRestrictionsResponse {
 
   /// Creates a new [AndroidKeyRestrictionsResponse].
   /// [allowedApplications] A list of Android applications that are allowed to make API calls with this key.
-  AndroidKeyRestrictionsResponse({
+  const AndroidKeyRestrictionsResponse({
     required this.allowedApplications,
   });
 

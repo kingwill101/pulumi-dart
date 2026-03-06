@@ -29,7 +29,7 @@ class MigrateSqlServerSqlMITaskProperties {
   /// [parentTaskId] parent task id
   /// [taskId] task id
   /// [taskType] Task type.
-  MigrateSqlServerSqlMITaskProperties({
+  const MigrateSqlServerSqlMITaskProperties({
     this.clientData,
     this.createdOn,
     this.input,

@@ -12,7 +12,7 @@ class GoogleFirestoreAdminV1VectorConfig {
   /// Creates a new [GoogleFirestoreAdminV1VectorConfig].
   /// [dimension] The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
   /// [flat] Indicates the vector index is a flat index.
-  GoogleFirestoreAdminV1VectorConfig({
+  const GoogleFirestoreAdminV1VectorConfig({
     required this.dimension,
     this.flat,
   });

@@ -26,7 +26,7 @@ class GetAppServiceSiteConfigScmIpRestriction {
   /// [priority] The priority for this IP Restriction.
   /// [serviceTag] The Service Tag used for this IP Restriction.
   /// [virtualNetworkSubnetId] The Virtual Network Subnet ID used for this IP Restriction.
-  GetAppServiceSiteConfigScmIpRestriction({
+  const GetAppServiceSiteConfigScmIpRestriction({
     required this.action,
     required this.headers,
     required this.ipAddress,

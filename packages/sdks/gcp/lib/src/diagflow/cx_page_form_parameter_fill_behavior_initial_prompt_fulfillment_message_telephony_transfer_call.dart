@@ -8,7 +8,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTra
 
   /// Creates a new [CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall].
   /// [phoneNumber] Transfer the call to a phone number in E.164 format.
-  CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall({
+  const CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall({
     required this.phoneNumber,
   });
 

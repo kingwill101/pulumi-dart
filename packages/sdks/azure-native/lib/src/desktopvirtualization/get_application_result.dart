@@ -63,7 +63,7 @@ class GetApplicationResult {
   /// [showInPortal] Specifies whether to show the RemoteApp program in the RD Web Access server.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApplicationResult({
+  const GetApplicationResult({
     this.applicationType,
     required this.azureApiVersion,
     this.commandLineArguments,

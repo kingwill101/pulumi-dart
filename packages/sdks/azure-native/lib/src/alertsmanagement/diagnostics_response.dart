@@ -36,7 +36,7 @@ class DiagnosticsResponse {
   /// [scope] scope on which action rule will apply
   /// [status] Indicates if the given action rule is enabled or disabled
   /// [type] Indicates type of action rule
-  DiagnosticsResponse({
+  const DiagnosticsResponse({
     this.conditions,
     required this.createdAt,
     required this.createdBy,

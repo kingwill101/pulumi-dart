@@ -9,7 +9,7 @@ class IosTestLoop {
 
   /// Creates a new [IosTestLoop].
   /// [bundleId] Bundle ID of the app.
-  IosTestLoop({
+  const IosTestLoop({
     this.bundleId,
   });
 

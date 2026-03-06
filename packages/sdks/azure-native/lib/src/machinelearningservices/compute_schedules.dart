@@ -10,7 +10,7 @@ class ComputeSchedules {
 
   /// Creates a new [ComputeSchedules].
   /// [computeStartStop] The list of compute start stop schedules to be applied.
-  ComputeSchedules({
+  const ComputeSchedules({
     this.computeStartStop,
   });
 

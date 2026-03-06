@@ -13,7 +13,7 @@ class AppSeenDataResponse {
   /// Creates a new [AppSeenDataResponse].
   /// [appSeenList] array of appSeen
   /// [count] number of rows
-  AppSeenDataResponse({
+  const AppSeenDataResponse({
     required this.appSeenList,
     required this.count,
   });

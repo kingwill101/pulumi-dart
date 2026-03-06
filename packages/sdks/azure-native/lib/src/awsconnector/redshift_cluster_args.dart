@@ -25,7 +25,7 @@ class RedshiftClusterArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  RedshiftClusterArgs({
+  const RedshiftClusterArgs({
     this.location,
     this.name,
     this.properties,

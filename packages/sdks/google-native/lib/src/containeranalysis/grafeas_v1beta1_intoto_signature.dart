@@ -10,7 +10,7 @@ class GrafeasV1beta1IntotoSignature {
   /// Creates a new [GrafeasV1beta1IntotoSignature].
   /// [keyid] Optional.
   /// [sig] Optional.
-  GrafeasV1beta1IntotoSignature({
+  const GrafeasV1beta1IntotoSignature({
     this.keyid,
     this.sig,
   });

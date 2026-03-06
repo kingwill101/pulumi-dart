@@ -18,7 +18,7 @@ class ServiceMonitoringAgentProcessArgs {
   /// [instanceId] The ID of the instance.
   /// [processName] The name of the process.
   /// [processUser] The user who launches the process.
-  ServiceMonitoringAgentProcessArgs({
+  const ServiceMonitoringAgentProcessArgs({
     required this.instanceId,
     required this.processName,
     this.processUser,

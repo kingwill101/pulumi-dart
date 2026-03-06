@@ -23,7 +23,7 @@ class GradientaiAgentRouteArgs {
   /// [parentAgentUuid] The UUID of the parent agent.
   /// [rollback] Optional.
   /// [routeName] A name for the route.
-  GradientaiAgentRouteArgs({
+  const GradientaiAgentRouteArgs({
     required this.childAgentUuid,
     this.ifCase,
     required this.parentAgentUuid,

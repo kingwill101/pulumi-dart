@@ -15,7 +15,7 @@ class IpGroupProperties {
   /// [ipAddressType] IP Address type.
   /// [ipPrefixes] List of IP Prefixes.
   /// [name] IP Group name.
-  IpGroupProperties({
+  const IpGroupProperties({
     this.ipAddressType,
     this.ipPrefixes,
     this.name,

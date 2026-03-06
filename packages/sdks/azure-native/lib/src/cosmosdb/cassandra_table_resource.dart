@@ -19,7 +19,7 @@ class CassandraTableResource {
   /// [defaultTtl] Time to live of the Cosmos DB Cassandra table
   /// [id] Name of the Cosmos DB Cassandra table
   /// [schema] Schema of the Cosmos DB Cassandra table
-  CassandraTableResource({
+  const CassandraTableResource({
     this.analyticalStorageTtl,
     this.defaultTtl,
     required this.id,

@@ -38,7 +38,7 @@ class WebApplicationFirewallCustomRuleResponse {
   /// [rateLimitThreshold] Rate Limit threshold to apply in case ruleType is RateLimitRule. Must be greater than or equal to 1
   /// [ruleType] The rule type.
   /// [state] Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-  WebApplicationFirewallCustomRuleResponse({
+  const WebApplicationFirewallCustomRuleResponse({
     required this.action,
     required this.etag,
     this.groupByUserSession,

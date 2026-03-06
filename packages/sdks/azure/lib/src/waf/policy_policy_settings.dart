@@ -36,7 +36,7 @@ class PolicyPolicySettings {
   /// [requestBodyCheck] Is Request Body Inspection enabled? Defaults to `true`.
   /// [requestBodyEnforcement] Whether the firewall should block a request with body size greater then `max_request_body_size_in_kb`. Defaults to `true`.
   /// [requestBodyInspectLimitInKb] Specifies the maximum request body inspection limit in KB for the Web Application Firewall. Defaults to `128`.
-  PolicyPolicySettings({
+  const PolicyPolicySettings({
     this.enabled,
     this.fileUploadEnforcement,
     this.fileUploadLimitInMb,

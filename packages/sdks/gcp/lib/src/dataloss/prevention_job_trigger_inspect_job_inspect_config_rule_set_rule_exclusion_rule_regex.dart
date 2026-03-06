@@ -12,7 +12,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex {
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex].
   /// [groupIndexes] The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
   /// [pattern] Pattern defining the regular expression.
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex({
     this.groupIndexes,
     required this.pattern,
   });

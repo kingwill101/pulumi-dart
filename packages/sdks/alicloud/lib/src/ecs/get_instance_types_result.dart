@@ -57,7 +57,7 @@ class GetInstanceTypesResult {
   /// [sortedBy] Optional.
   /// [spotStrategy] Optional.
   /// [systemDiskCategory] Optional.
-  GetInstanceTypesResult({
+  const GetInstanceTypesResult({
     this.availabilityZone,
     this.cpuCoreCount,
     this.eniAmount,

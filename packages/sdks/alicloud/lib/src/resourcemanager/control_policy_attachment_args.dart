@@ -19,7 +19,7 @@ class ControlPolicyAttachmentArgs {
   /// Creates a new [ControlPolicyAttachmentArgs].
   /// [policyId] The ID of the access control policy.
   /// [targetId] The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
-  ControlPolicyAttachmentArgs({
+  const ControlPolicyAttachmentArgs({
     required this.policyId,
     required this.targetId,
   });

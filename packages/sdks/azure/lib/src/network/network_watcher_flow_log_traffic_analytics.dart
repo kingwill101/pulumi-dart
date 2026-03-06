@@ -20,7 +20,7 @@ class NetworkWatcherFlowLogTrafficAnalytics {
   /// [workspaceId] The resource GUID of the attached workspace.
   /// [workspaceRegion] The location of the attached workspace.
   /// [workspaceResourceId] The resource ID of the attached workspace.
-  NetworkWatcherFlowLogTrafficAnalytics({
+  const NetworkWatcherFlowLogTrafficAnalytics({
     required this.enabled,
     this.intervalInMinutes,
     required this.workspaceId,

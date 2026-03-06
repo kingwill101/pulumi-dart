@@ -42,7 +42,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults {
   /// [serviceAccount] The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
   /// [shieldedInstanceConfig] Shielded Instance options. Structure is documented below.
   /// [upgradeSettings] Specifies the upgrade settings for NAP created node pools
-  ClusterClusterAutoscalingAutoProvisioningDefaults({
+  const ClusterClusterAutoscalingAutoProvisioningDefaults({
     this.bootDiskKmsKey,
     this.diskSize,
     this.diskType,

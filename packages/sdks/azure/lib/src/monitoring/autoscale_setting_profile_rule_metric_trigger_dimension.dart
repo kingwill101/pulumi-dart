@@ -14,7 +14,7 @@ class AutoscaleSettingProfileRuleMetricTriggerDimension {
   /// [name] The name of the dimension.
   /// [operator] The dimension operator. Possible values are `Equals` and `NotEquals`. `Equals` means being equal to any of the values. `NotEquals` means being not equal to any of the values.
   /// [values] A list of dimension values.
-  AutoscaleSettingProfileRuleMetricTriggerDimension({
+  const AutoscaleSettingProfileRuleMetricTriggerDimension({
     required this.name,
     required this.operator,
     required this.values,

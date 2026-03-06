@@ -15,7 +15,7 @@ class GetGroupAlternateIdentifier {
   /// Creates a new [GetGroupAlternateIdentifier].
   /// [externalId] Configuration block for filtering by the identifier issued by an external identity provider. Detailed below.
   /// [uniqueAttribute] An entity attribute that's unique to a specific entity. Detailed below.
-  GetGroupAlternateIdentifier({
+  const GetGroupAlternateIdentifier({
     this.externalId,
     this.uniqueAttribute,
   });

@@ -9,7 +9,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceSlices {
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceSlices].
   /// [slices] Specifies individual slice configurations within the mirror source.
-  DomainDevicesDiskMirrorBackingStoreSourceSlices({
+  const DomainDevicesDiskMirrorBackingStoreSourceSlices({
     this.slices,
   });
 

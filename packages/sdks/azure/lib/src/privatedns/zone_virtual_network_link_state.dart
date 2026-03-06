@@ -27,7 +27,7 @@ class ZoneVirtualNetworkLinkState {
   /// [resourceGroupName] Specifies the resource group where the Private DNS Zone exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualNetworkId] The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
-  ZoneVirtualNetworkLinkState({
+  const ZoneVirtualNetworkLinkState({
     this.name,
     this.privateDnsZoneName,
     this.registrationEnabled,

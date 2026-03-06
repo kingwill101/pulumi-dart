@@ -10,7 +10,7 @@ class TopologiesProperties {
 
   /// Creates a new [TopologiesProperties].
   /// [bindings] bindings description.
-  TopologiesProperties({
+  const TopologiesProperties({
     this.bindings,
   });
 

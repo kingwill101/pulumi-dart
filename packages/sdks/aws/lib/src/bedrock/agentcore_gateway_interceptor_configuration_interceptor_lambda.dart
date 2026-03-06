@@ -8,7 +8,7 @@ class AgentcoreGatewayInterceptorConfigurationInterceptorLambda {
 
   /// Creates a new [AgentcoreGatewayInterceptorConfigurationInterceptorLambda].
   /// [arn] ARN of the Lambda function to invoke for the interceptor.
-  AgentcoreGatewayInterceptorConfigurationInterceptorLambda({
+  const AgentcoreGatewayInterceptorConfigurationInterceptorLambda({
     required this.arn,
   });
 

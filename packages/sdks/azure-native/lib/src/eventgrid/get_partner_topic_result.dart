@@ -58,7 +58,7 @@ class GetPartnerTopicResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [tags] Tags of the resource.
   /// [type] Type of the resource.
-  GetPartnerTopicResult({
+  const GetPartnerTopicResult({
     this.activationState,
     required this.azureApiVersion,
     this.eventTypeInfo,

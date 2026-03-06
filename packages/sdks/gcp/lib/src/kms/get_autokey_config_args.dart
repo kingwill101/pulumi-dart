@@ -13,7 +13,7 @@ class GetAutokeyConfigArgs {
 
   /// Creates a new [GetAutokeyConfigArgs].
   /// [folder] The folder in which the AutokeyConfig is configured. If it
-  GetAutokeyConfigArgs({
+  const GetAutokeyConfigArgs({
     required this.folder,
   });
 

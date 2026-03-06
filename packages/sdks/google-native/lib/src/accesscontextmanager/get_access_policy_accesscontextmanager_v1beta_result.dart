@@ -14,7 +14,7 @@ class GetAccessPolicyAccesscontextmanagerV1betaResult {
   /// [name] Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
   /// [parent] The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
   /// [title] Human readable title. Does not affect behavior.
-  GetAccessPolicyAccesscontextmanagerV1betaResult({
+  const GetAccessPolicyAccesscontextmanagerV1betaResult({
     required this.name,
     required this.parent,
     required this.title,

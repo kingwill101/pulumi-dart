@@ -44,7 +44,7 @@ class GetScheduleResult {
   /// [systemData] Metadata pertaining to creation and last modification of the schedule.
   /// [timeZoneId] The IANA timezone id for the schedule.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetScheduleResult({
+  const GetScheduleResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

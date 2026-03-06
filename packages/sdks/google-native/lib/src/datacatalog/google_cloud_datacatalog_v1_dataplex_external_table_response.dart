@@ -18,7 +18,7 @@ class GoogleCloudDatacatalogV1DataplexExternalTableResponse {
   /// [fullyQualifiedName] Fully qualified name (FQN) of the external table.
   /// [googleCloudResource] Google Cloud resource name of the external table.
   /// [system] Service in which the external table is registered.
-  GoogleCloudDatacatalogV1DataplexExternalTableResponse({
+  const GoogleCloudDatacatalogV1DataplexExternalTableResponse({
     required this.dataCatalogEntry,
     required this.fullyQualifiedName,
     required this.googleCloudResource,

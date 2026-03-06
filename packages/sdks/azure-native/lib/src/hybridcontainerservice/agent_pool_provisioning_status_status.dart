@@ -19,7 +19,7 @@ class AgentPoolProvisioningStatusStatus {
   /// [provisioningStatus] Contains Provisioning errors
   /// [readyReplicas] Total number of ready machines targeted by this deployment.
   /// [replicas] Total number of non-terminated machines targeted by this deployment
-  AgentPoolProvisioningStatusStatus({
+  const AgentPoolProvisioningStatusStatus({
     this.errorMessage,
     this.provisioningStatus,
     this.readyReplicas,

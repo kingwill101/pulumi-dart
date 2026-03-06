@@ -12,7 +12,7 @@ class AuthorizedApplicationProperties {
   /// Creates a new [AuthorizedApplicationProperties].
   /// [dataAuthorizations] The authorizations that determine the level of data access permissions on the specified resource types.
   /// [providerAuthorization] Optional.
-  AuthorizedApplicationProperties({
+  const AuthorizedApplicationProperties({
     this.dataAuthorizations,
     this.providerAuthorization,
   });

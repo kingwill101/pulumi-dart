@@ -15,7 +15,7 @@ class RetentionConfigurationState {
   /// [name] The name of the retention configuration object. The object is always named **default**.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [retentionPeriodInDays] The number of days AWS Config stores historical information.
-  RetentionConfigurationState({
+  const RetentionConfigurationState({
     this.name,
     this.region,
     this.retentionPeriodInDays,

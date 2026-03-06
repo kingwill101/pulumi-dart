@@ -14,7 +14,7 @@ class FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions {
   /// [enabled] Enables or disables the logging. Defaults to `false`.
   /// [logGroupName] The CloudWatch group name for logging. This value is required if `enabled` is true.
   /// [logStreamName] The CloudWatch log stream name for logging. This value is required if `enabled` is true.
-  FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions({
+  const FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions({
     this.enabled,
     this.logGroupName,
     this.logStreamName,

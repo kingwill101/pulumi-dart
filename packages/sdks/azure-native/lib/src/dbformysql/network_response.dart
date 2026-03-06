@@ -15,7 +15,7 @@ class NetworkResponse {
   /// [delegatedSubnetResourceId] Delegated subnet resource id used to setup vnet for a server.
   /// [privateDnsZoneResourceId] Private DNS zone resource id.
   /// [publicNetworkAccess] Whether or not public network access is allowed for this server. Value is 'Disabled' when server has VNet integration.
-  NetworkResponse({
+  const NetworkResponse({
     this.delegatedSubnetResourceId,
     this.privateDnsZoneResourceId,
     this.publicNetworkAccess,

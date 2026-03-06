@@ -22,7 +22,7 @@ class WorkloadsConfigResponse {
   /// [triggerer] Optional. Resources used by Airflow triggerers.
   /// [webServer] Optional. Resources used by Airflow web server.
   /// [worker] Optional. Resources used by Airflow workers.
-  WorkloadsConfigResponse({
+  const WorkloadsConfigResponse({
     required this.scheduler,
     required this.triggerer,
     required this.webServer,

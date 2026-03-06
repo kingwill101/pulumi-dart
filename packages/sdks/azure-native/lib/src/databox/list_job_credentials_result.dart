@@ -13,7 +13,7 @@ class ListJobCredentialsResult {
   /// Creates a new [ListJobCredentialsResult].
   /// [nextLink] Link for the next set of unencrypted credentials.
   /// [value] List of unencrypted credentials.
-  ListJobCredentialsResult({
+  const ListJobCredentialsResult({
     this.nextLink,
     this.value,
   });

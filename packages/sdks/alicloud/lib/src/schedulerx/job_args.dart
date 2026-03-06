@@ -83,7 +83,7 @@ class JobArgs {
   /// [timeConfig] Time configuration information See `time_config` below.
   /// [timezone] Time Zone
   /// [xAttrs] Task Extension Field
-  JobArgs({
+  const JobArgs({
     this.attemptInterval,
     this.className,
     this.content,

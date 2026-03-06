@@ -20,7 +20,7 @@ class UserPolicyAttachmentArgs {
   /// [policyName] The name of the policy.
   /// [policyType] Permission policy type.
   /// [userName] The name of the RAM user.
-  UserPolicyAttachmentArgs({
+  const UserPolicyAttachmentArgs({
     required this.policyName,
     required this.policyType,
     required this.userName,

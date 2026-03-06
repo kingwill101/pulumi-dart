@@ -18,7 +18,7 @@ class TlsCertMethodResponse {
   /// [automatic] Option 1 - Automatic TLS server certificate management with cert-manager.
   /// [keyVault] Option 3 - TLS server certificate retrieved from Key Vault..
   /// [manual] Option 2 - Manual TLS server certificate management through a defined secret.
-  TlsCertMethodResponse({
+  const TlsCertMethodResponse({
     this.automatic,
     this.keyVault,
     this.manual,

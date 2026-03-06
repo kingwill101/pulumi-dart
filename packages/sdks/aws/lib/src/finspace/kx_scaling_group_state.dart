@@ -55,7 +55,7 @@ class KxScalingGroupState {
   /// [statusReason] The error message when a failed state occurs.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. You can add up to 50 tags to a scaling group.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  KxScalingGroupState({
+  const KxScalingGroupState({
     this.arn,
     this.availabilityZoneId,
     this.clusters,

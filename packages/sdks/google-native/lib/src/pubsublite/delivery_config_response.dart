@@ -9,7 +9,7 @@ class DeliveryConfigResponse {
 
   /// Creates a new [DeliveryConfigResponse].
   /// [deliveryRequirement] The DeliveryRequirement for this subscription.
-  DeliveryConfigResponse({
+  const DeliveryConfigResponse({
     required this.deliveryRequirement,
   });
 

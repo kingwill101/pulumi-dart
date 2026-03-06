@@ -40,7 +40,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration {
   /// [patchMode] Specifies the mode of in-guest patching of this Windows Virtual Machine. Possible values are `ImageDefault` or `AutomaticByPlatform`. Defaults to `ImageDefault`. For more information on patch modes please see the [product documentation](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#patch-orchestration-modes).
   /// [provisionVmAgent] Should the Azure VM Agent be provisioned on each Virtual Machine in the Scale Set? Defaults to `true`. Changing this value forces a new resource to be created.
   /// [secrets] One or more `secret` blocks as defined below.
-  OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration({
+  const OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration({
     this.adminPassword,
     this.adminSshKeys,
     required this.adminUsername,

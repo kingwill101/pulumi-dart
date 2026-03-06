@@ -26,7 +26,7 @@ class BucketIpFilter {
   /// [mode] The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
   /// [publicNetworkSource] The public network IP address ranges that can access the bucket and its data. Structure is documented below.
   /// [vpcNetworkSources] The list of VPC networks that can access the bucket. Structure is documented below.
-  BucketIpFilter({
+  const BucketIpFilter({
     this.allowAllServiceAgentAccess,
     this.allowCrossOrgVpcs,
     required this.mode,

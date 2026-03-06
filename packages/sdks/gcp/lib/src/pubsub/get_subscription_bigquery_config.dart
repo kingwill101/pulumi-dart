@@ -30,7 +30,7 @@ class GetSubscriptionBigqueryConfig {
   /// [useTableSchema] When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
   /// [useTopicSchema] When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
   /// [writeMetadata] When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
-  GetSubscriptionBigqueryConfig({
+  const GetSubscriptionBigqueryConfig({
     required this.dropUnknownFields,
     required this.serviceAccountEmail,
     required this.table,

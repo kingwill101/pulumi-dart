@@ -11,7 +11,7 @@ class RestorePlanIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  RestorePlanIamMemberCondition({
+  const RestorePlanIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -61,7 +61,7 @@ class V2modelsSlotArgs {
   /// [subSlotSettings] Specifications for the constituent sub slots and the expression for the composite slot.
   /// [timeouts] Optional.
   /// [valueElicitationSetting] Prompts that Amazon Lex sends to the user to elicit a response that provides the value for the slot.
-  V2modelsSlotArgs({
+  const V2modelsSlotArgs({
     required this.botId,
     required this.botVersion,
     this.description,

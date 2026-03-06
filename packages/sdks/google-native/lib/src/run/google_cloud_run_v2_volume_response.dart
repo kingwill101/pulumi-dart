@@ -21,7 +21,7 @@ class GoogleCloudRunV2VolumeResponse {
   /// [emptyDir] Ephemeral storage used as a shared volume.
   /// [name] Volume's name.
   /// [secret] Secret represents a secret that should populate this volume.
-  GoogleCloudRunV2VolumeResponse({
+  const GoogleCloudRunV2VolumeResponse({
     required this.cloudSqlInstance,
     required this.emptyDir,
     required this.name,

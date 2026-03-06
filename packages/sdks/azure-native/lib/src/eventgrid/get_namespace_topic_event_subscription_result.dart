@@ -38,7 +38,7 @@ class GetNamespaceTopicEventSubscriptionResult {
   /// [provisioningState] Provisioning state of the event subscription.
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
-  GetNamespaceTopicEventSubscriptionResult({
+  const GetNamespaceTopicEventSubscriptionResult({
     required this.azureApiVersion,
     this.deliveryConfiguration,
     this.eventDeliverySchema,

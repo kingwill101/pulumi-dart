@@ -30,7 +30,7 @@ class GetHoneypotProbesResult {
   /// [probeStatus] Optional.
   /// [probeType] Probe type, support `host_probe` and `vpc_black_hole_probe`.
   /// [probes] A list of Honeypot Probe Entries. Each element contains the following attributes:
-  GetHoneypotProbesResult({
+  const GetHoneypotProbesResult({
     this.displayName,
     this.enableDetails,
     required this.id,

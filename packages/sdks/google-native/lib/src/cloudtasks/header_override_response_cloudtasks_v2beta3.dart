@@ -10,7 +10,7 @@ class HeaderOverrideResponseCloudtasksV2beta3 {
 
   /// Creates a new [HeaderOverrideResponseCloudtasksV2beta3].
   /// [header] header embodying a key and a value.
-  HeaderOverrideResponseCloudtasksV2beta3({
+  const HeaderOverrideResponseCloudtasksV2beta3({
     required this.header,
   });
 

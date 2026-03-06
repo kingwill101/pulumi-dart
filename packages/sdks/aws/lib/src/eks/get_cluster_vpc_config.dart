@@ -26,7 +26,7 @@ class GetClusterVpcConfig {
   /// [securityGroupIds] List of security group IDs
   /// [subnetIds] List of subnet IDs
   /// [vpcId] The VPC associated with your cluster.
-  GetClusterVpcConfig({
+  const GetClusterVpcConfig({
     required this.clusterSecurityGroupId,
     required this.endpointPrivateAccess,
     required this.endpointPublicAccess,

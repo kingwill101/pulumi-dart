@@ -20,7 +20,7 @@ class EnvironmentNodeConfig {
   /// [currentAggregateNodeCount] (Output)
   /// [maxNodeCount] The maximum total number of gateway nodes that the is reserved for all instances that
   /// [minNodeCount] The minimum total number of gateway nodes that the is reserved for all instances that
-  EnvironmentNodeConfig({
+  const EnvironmentNodeConfig({
     this.currentAggregateNodeCount,
     this.maxNodeCount,
     this.minNodeCount,

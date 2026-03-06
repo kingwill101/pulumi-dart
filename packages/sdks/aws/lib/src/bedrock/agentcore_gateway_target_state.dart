@@ -34,7 +34,7 @@ class AgentcoreGatewayTargetState {
   /// [targetConfiguration] Configuration for the target endpoint. See `target_configuration` below.
   /// [targetId] Unique identifier of the gateway target.
   /// [timeouts] Optional.
-  AgentcoreGatewayTargetState({
+  const AgentcoreGatewayTargetState({
     this.credentialProviderConfiguration,
     this.description,
     this.gatewayIdentifier,

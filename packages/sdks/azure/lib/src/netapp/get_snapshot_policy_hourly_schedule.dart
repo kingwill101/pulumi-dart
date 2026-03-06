@@ -11,7 +11,7 @@ class GetSnapshotPolicyHourlySchedule {
   /// Creates a new [GetSnapshotPolicyHourlySchedule].
   /// [minute] Minute of the hour that the snapshots will be created.
   /// [snapshotsToKeep] How many hourly snapshots to keep.
-  GetSnapshotPolicyHourlySchedule({
+  const GetSnapshotPolicyHourlySchedule({
     required this.minute,
     required this.snapshotsToKeep,
   });

@@ -33,7 +33,7 @@ class GetNetworkManagerResult {
   /// [scopeAccesses] A list of configuration deployment type configured on the Network Manager.
   /// [scopes] A `scope` block as defined below.
   /// [tags] A mapping of tags assigned to the Network Manager.
-  GetNetworkManagerResult({
+  const GetNetworkManagerResult({
     required this.crossTenantScopes,
     required this.description,
     required this.id,

@@ -15,7 +15,7 @@ class GetExportArgs {
   /// Creates a new [GetExportArgs].
   /// [name] Name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetExportArgs({
+  const GetExportArgs({
     required this.name,
     this.region,
   });

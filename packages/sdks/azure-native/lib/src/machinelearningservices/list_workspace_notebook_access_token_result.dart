@@ -21,7 +21,7 @@ class ListWorkspaceNotebookAccessTokenResult {
   /// [refreshToken] Required.
   /// [scope] Required.
   /// [tokenType] Required.
-  ListWorkspaceNotebookAccessTokenResult({
+  const ListWorkspaceNotebookAccessTokenResult({
     required this.accessToken,
     required this.expiresIn,
     required this.hostName,

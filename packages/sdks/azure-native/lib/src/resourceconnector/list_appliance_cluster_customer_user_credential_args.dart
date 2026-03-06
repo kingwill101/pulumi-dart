@@ -15,7 +15,7 @@ class ListApplianceClusterCustomerUserCredentialArgs {
   /// Creates a new [ListApplianceClusterCustomerUserCredentialArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Appliances name.
-  ListApplianceClusterCustomerUserCredentialArgs({
+  const ListApplianceClusterCustomerUserCredentialArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

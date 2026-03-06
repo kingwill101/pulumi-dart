@@ -11,7 +11,7 @@ class AwsNodePoolConfigProxyConfig {
   /// Creates a new [AwsNodePoolConfigProxyConfig].
   /// [secretArn] The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
   /// [secretVersion] The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
-  AwsNodePoolConfigProxyConfig({
+  const AwsNodePoolConfigProxyConfig({
     required this.secretArn,
     required this.secretVersion,
   });

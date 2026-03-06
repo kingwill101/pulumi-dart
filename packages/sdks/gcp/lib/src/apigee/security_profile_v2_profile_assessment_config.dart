@@ -12,7 +12,7 @@ class SecurityProfileV2ProfileAssessmentConfig {
   /// Creates a new [SecurityProfileV2ProfileAssessmentConfig].
   /// [assessment] The identifier for this object. Format specified above.
   /// [weight] The weight of the assessment.
-  SecurityProfileV2ProfileAssessmentConfig({
+  const SecurityProfileV2ProfileAssessmentConfig({
     required this.assessment,
     required this.weight,
   });

@@ -29,7 +29,7 @@ class SavedQueryArgs {
   /// [savedQueryId] Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are `a-z-`. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
   /// [v1Id] Required.
   /// [v1Id1] Required.
-  SavedQueryArgs({
+  const SavedQueryArgs({
     this.content,
     this.description,
     this.labels,

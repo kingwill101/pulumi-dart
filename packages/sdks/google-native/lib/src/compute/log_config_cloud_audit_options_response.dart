@@ -13,7 +13,7 @@ class LogConfigCloudAuditOptionsResponse {
   /// Creates a new [LogConfigCloudAuditOptionsResponse].
   /// [authorizationLoggingOptions] This is deprecated and has no effect. Do not use.
   /// [logName] This is deprecated and has no effect. Do not use.
-  LogConfigCloudAuditOptionsResponse({
+  const LogConfigCloudAuditOptionsResponse({
     required this.authorizationLoggingOptions,
     required this.logName,
   });

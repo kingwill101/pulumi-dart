@@ -9,7 +9,7 @@ class GuestConfigurationInformationResponse {
 
   /// Creates a new [GuestConfigurationInformationResponse].
   /// [enablementStatus] Indicates whether the service is enabled.
-  GuestConfigurationInformationResponse({
+  const GuestConfigurationInformationResponse({
     required this.enablementStatus,
   });
 

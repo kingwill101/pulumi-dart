@@ -21,7 +21,7 @@ class DataflowBuiltInTransformationDataset {
   /// [inputs] List of fields for enriching from the Broker State Store.
   /// [key] The key of the dataset.
   /// [schemaRef] The reference to the schema that describes the dataset. Allowed: JSON Schema/draft-7.
-  DataflowBuiltInTransformationDataset({
+  const DataflowBuiltInTransformationDataset({
     this.description,
     this.expression,
     required this.inputs,

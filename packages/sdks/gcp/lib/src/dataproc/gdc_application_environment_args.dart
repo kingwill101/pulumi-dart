@@ -43,7 +43,7 @@ class GdcApplicationEnvironmentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceinstance] The id of the service instance to which this application environment belongs.
   /// [sparkApplicationEnvironmentConfig] Represents the SparkApplicationEnvironmentConfig.
-  GdcApplicationEnvironmentArgs({
+  const GdcApplicationEnvironmentArgs({
     this.annotations,
     this.applicationEnvironmentId,
     this.displayName,

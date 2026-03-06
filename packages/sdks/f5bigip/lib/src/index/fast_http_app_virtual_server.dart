@@ -11,7 +11,7 @@ class FastHttpAppVirtualServer {
   /// Creates a new [FastHttpAppVirtualServer].
   /// [ip] IP4/IPv6 address to be used for virtual server ex: `10.1.1.1`
   /// [port] Port number to used for accessing virtual server/application
-  FastHttpAppVirtualServer({
+  const FastHttpAppVirtualServer({
     required this.ip,
     required this.port,
   });

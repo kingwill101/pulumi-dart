@@ -15,7 +15,7 @@ class GetDataExchangeArgs {
   /// [dataExchangeId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDataExchangeArgs({
+  const GetDataExchangeArgs({
     required this.dataExchangeId,
     required this.location,
     this.project,

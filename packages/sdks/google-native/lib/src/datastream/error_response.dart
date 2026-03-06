@@ -21,7 +21,7 @@ class ErrorResponse {
   /// [errorUuid] A unique identifier for this specific error, allowing it to be traced throughout the system in logs and API responses.
   /// [message] A message containing more information about the error that occurred.
   /// [reason] A title that explains the reason for the error.
-  ErrorResponse({
+  const ErrorResponse({
     required this.details,
     required this.errorTime,
     required this.errorUuid,

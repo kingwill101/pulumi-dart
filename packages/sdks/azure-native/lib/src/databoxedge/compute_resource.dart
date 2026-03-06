@@ -12,7 +12,7 @@ class ComputeResource {
   /// Creates a new [ComputeResource].
   /// [memoryInGB] Memory in GB
   /// [processorCount] Processor count
-  ComputeResource({
+  const ComputeResource({
     required this.memoryInGB,
     required this.processorCount,
   });

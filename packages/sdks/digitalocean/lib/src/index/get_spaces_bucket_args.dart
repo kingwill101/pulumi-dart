@@ -15,7 +15,7 @@ class GetSpacesBucketArgs {
   /// Creates a new [GetSpacesBucketArgs].
   /// [name] The name of the Spaces bucket.
   /// [region] The slug of the region where the bucket is stored.
-  GetSpacesBucketArgs({
+  const GetSpacesBucketArgs({
     required this.name,
     required this.region,
   });

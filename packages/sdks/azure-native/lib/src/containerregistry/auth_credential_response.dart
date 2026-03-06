@@ -19,7 +19,7 @@ class AuthCredentialResponse {
   /// [name] The name of the credential.
   /// [passwordSecretIdentifier] KeyVault Secret URI for accessing the password.
   /// [usernameSecretIdentifier] KeyVault Secret URI for accessing the username.
-  AuthCredentialResponse({
+  const AuthCredentialResponse({
     required this.credentialHealth,
     this.name,
     this.passwordSecretIdentifier,

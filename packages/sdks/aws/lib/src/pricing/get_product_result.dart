@@ -17,7 +17,7 @@ class GetProductResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [result] Set to the product returned from the API.
   /// [serviceCode] Required.
-  GetProductResult({
+  const GetProductResult({
     required this.filters,
     required this.id,
     required this.result,

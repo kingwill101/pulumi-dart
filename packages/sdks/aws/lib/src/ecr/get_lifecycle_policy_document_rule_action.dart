@@ -11,7 +11,7 @@ class GetLifecyclePolicyDocumentRuleAction {
   /// Creates a new [GetLifecyclePolicyDocumentRuleAction].
   /// [targetStorageClass] The storage class you want the lifecycle policy to transition the image to. `archive` is the only supported value.
   /// [type] Specify an action type. The supported values are `expire` (to delete images) and `transition` (to move images to archive storage).
-  GetLifecyclePolicyDocumentRuleAction({
+  const GetLifecyclePolicyDocumentRuleAction({
     this.targetStorageClass,
     required this.type,
   });

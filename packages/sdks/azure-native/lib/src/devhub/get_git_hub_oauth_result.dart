@@ -11,7 +11,7 @@ class GetGitHubOAuthResult {
   /// Creates a new [GetGitHubOAuthResult].
   /// [authURL] URL for authorizing the Developer Hub GitHub App
   /// [token] OAuth token used to make calls to GitHub
-  GetGitHubOAuthResult({
+  const GetGitHubOAuthResult({
     this.authURL,
     this.token,
   });

@@ -24,7 +24,7 @@ class BuildContext {
   /// Creates a new [BuildContext].
   /// [location] Resources to use for build context.
   /// [named] Additional build contexts to use.
-  BuildContext({
+  const BuildContext({
     required this.location,
     this.named,
   });

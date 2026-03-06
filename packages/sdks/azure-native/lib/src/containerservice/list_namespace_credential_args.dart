@@ -18,7 +18,7 @@ class ListNamespaceCredentialArgs {
   /// [namespaceName] The name of the namespace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  ListNamespaceCredentialArgs({
+  const ListNamespaceCredentialArgs({
     required this.namespaceName,
     required this.resourceGroupName,
     required this.resourceName,

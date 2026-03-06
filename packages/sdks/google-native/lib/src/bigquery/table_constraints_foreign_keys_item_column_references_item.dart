@@ -9,7 +9,7 @@ class TableConstraintsForeignKeysItemColumnReferencesItem {
   /// Creates a new [TableConstraintsForeignKeysItemColumnReferencesItem].
   /// [referencedColumn] Optional.
   /// [referencingColumn] Optional.
-  TableConstraintsForeignKeysItemColumnReferencesItem({
+  const TableConstraintsForeignKeysItemColumnReferencesItem({
     this.referencedColumn,
     this.referencingColumn,
   });

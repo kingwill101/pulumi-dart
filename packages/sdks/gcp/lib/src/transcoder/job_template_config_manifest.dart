@@ -15,7 +15,7 @@ class JobTemplateConfigManifest {
   /// [fileName] The name of the generated file. The default is `manifest`.
   /// [muxStreams] List of user supplied MuxStream.key values that should appear in this manifest.
   /// [type] Type of the manifest.
-  JobTemplateConfigManifest({
+  const JobTemplateConfigManifest({
     this.fileName,
     this.muxStreams,
     this.type,

@@ -33,7 +33,7 @@ class OpenIdConnectProviderArgs {
   /// [metadataEndpoint] The URI of the Metadata endpoint.
   /// [name] the Name of the OpenID Connect Provider which should be created within the API Management Service. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  OpenIdConnectProviderArgs({
+  const OpenIdConnectProviderArgs({
     required this.apiManagementName,
     required this.clientId,
     required this.clientSecret,

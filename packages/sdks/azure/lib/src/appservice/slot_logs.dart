@@ -19,7 +19,7 @@ class SlotLogs {
   /// [detailedErrorMessagesEnabled] Should `Detailed error messages` be enabled on this App Service slot? Defaults to `false`.
   /// [failedRequestTracingEnabled] Should `Failed request tracing` be enabled on this App Service slot? Defaults to `false`.
   /// [httpLogs] An `http_logs` block as defined below.
-  SlotLogs({
+  const SlotLogs({
     this.applicationLogs,
     this.detailedErrorMessagesEnabled,
     this.failedRequestTracingEnabled,

@@ -12,7 +12,7 @@ class AppSpecIngress {
   /// Creates a new [AppSpecIngress].
   /// [rules] Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
   /// [secureHeader] Optional.
-  AppSpecIngress({
+  const AppSpecIngress({
     this.rules,
     this.secureHeader,
   });

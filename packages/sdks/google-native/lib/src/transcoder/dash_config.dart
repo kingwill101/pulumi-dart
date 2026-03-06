@@ -10,7 +10,7 @@ class DashConfig {
 
   /// Creates a new [DashConfig].
   /// [segmentReferenceScheme] The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
-  DashConfig({
+  const DashConfig({
     this.segmentReferenceScheme,
   });
 

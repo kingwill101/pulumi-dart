@@ -12,7 +12,7 @@ class ServiceBackendPortPatch {
   /// Creates a new [ServiceBackendPortPatch].
   /// [name] name is the name of the port on the Service. This is a mutually exclusive setting with "Number".
   /// [number] number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with "Name".
-  ServiceBackendPortPatch({
+  const ServiceBackendPortPatch({
     this.name,
     this.number,
   });

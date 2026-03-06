@@ -240,7 +240,7 @@ class SiteConfig {
   /// [websiteTimeZone] Sets the time zone a site uses for generating timestamps. Compatible with Linux and Windows App Service. Setting the WEBSITE_TIME_ZONE app setting takes precedence over this config. For Linux, expects tz database values https://www.iana.org/time-zones (for a quick reference see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For Windows, expects one of the time zones listed under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones
   /// [windowsFxVersion] Xenon App Framework and version
   /// [xManagedServiceIdentityId] Explicit Managed Service Identity Id
-  SiteConfig({
+  const SiteConfig({
     this.acrUseManagedIdentityCreds,
     this.acrUserManagedIdentityID,
     this.alwaysOn,

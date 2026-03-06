@@ -8,7 +8,7 @@ class WebAclDefaultAction {
 
   /// Creates a new [WebAclDefaultAction].
   /// [type] Specifies how you want AWS WAF Regional to respond to requests that match the settings in a ruleE.g., `ALLOW`, `BLOCK` or `COUNT`
-  WebAclDefaultAction({
+  const WebAclDefaultAction({
     required this.type,
   });
 

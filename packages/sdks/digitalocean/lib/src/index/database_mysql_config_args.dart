@@ -93,7 +93,7 @@ class DatabaseMysqlConfigArgs {
   /// [sqlRequirePrimaryKey] Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
   /// [tmpTableSize] The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
   /// [waitTimeout] The number of seconds the server waits for activity on a noninteractive connection before closing it.
-  DatabaseMysqlConfigArgs({
+  const DatabaseMysqlConfigArgs({
     this.backupHour,
     this.backupMinute,
     this.binlogRetentionPeriod,

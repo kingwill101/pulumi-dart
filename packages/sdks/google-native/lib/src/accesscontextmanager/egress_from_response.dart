@@ -19,7 +19,7 @@ class EgressFromResponse {
   /// [identityType] Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
   /// [sourceRestriction] Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
   /// [sources] Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
-  EgressFromResponse({
+  const EgressFromResponse({
     required this.identities,
     required this.identityType,
     required this.sourceRestriction,

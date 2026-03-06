@@ -33,7 +33,7 @@ class GetInstanceTypesResult {
   /// [supportNodeTypes] Optional.
   /// [types] A list of emr instance types. Each element contains the following attributes:
   /// [zoneId] The available zone id in Alibaba Cloud account
-  GetInstanceTypesResult({
+  const GetInstanceTypesResult({
     required this.clusterType,
     required this.destinationResource,
     required this.id,

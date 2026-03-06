@@ -15,7 +15,7 @@ class OrganizationalUnitAssociationArgs {
   /// Creates a new [OrganizationalUnitAssociationArgs].
   /// [notificationConfigurationArn] ARN of the notification configuration to associate the organizational unit with.
   /// [organizationalUnitId] ID of the organizational unit or ID of the root to associate with the notification configuration. Can be a root ID (e.g., `r-1234`), or an organization ID (e.g., `o-1234567890`).
-  OrganizationalUnitAssociationArgs({
+  const OrganizationalUnitAssociationArgs({
     required this.notificationConfigurationArn,
     required this.organizationalUnitId,
   });

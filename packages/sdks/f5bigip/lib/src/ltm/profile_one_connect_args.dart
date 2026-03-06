@@ -39,7 +39,7 @@ class ProfileOneConnectArgs {
   /// [partition] Displays the administrative partition within which this profile resides
   /// [sharePools] Specify if you want to share the pool, default value is `disabled`.
   /// [sourceMask] Specifies a source IP mask. The default value is `0.0.0.0`. The system applies the value of this option to the source address to determine its eligibility for reuse. A mask of 0.0.0.0 causes the system to share reused connections across all clients. A host mask (all 1's in binary), causes the system to share only those reused connections originating from the same client IP address.
-  ProfileOneConnectArgs({
+  const ProfileOneConnectArgs({
     this.defaultsFrom,
     this.idleTimeoutOverride,
     this.limitType,

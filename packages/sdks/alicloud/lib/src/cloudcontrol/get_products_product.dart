@@ -14,7 +14,7 @@ class GetProductsProduct {
   /// [id] The ID of the resource supplied above.
   /// [productCode] The first ID of the resource
   /// [productName] The name of the resource
-  GetProductsProduct({
+  const GetProductsProduct({
     required this.id,
     required this.productCode,
     required this.productName,

@@ -30,7 +30,7 @@ class GatewayOperationDetailsResponse {
   /// [timeRemaining] A value indicating the time remaining for the operation in milliseconds.
   /// [uploadSpeed] A value indicating the upload speed in bytes per second.
   /// [vmwareReadThroughput] A value indicating the VMware read throughput in bytes per second.
-  GatewayOperationDetailsResponse({
+  const GatewayOperationDetailsResponse({
     required this.dataStores,
     required this.hostName,
     required this.progressPercentage,

@@ -30,7 +30,7 @@ class GetHostAccountsArgs {
   /// [nameRegex] A regex string to filter results by Host Account name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [protocolName] Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
-  GetHostAccountsArgs({
+  const GetHostAccountsArgs({
     this.hostAccountName,
     required this.hostId,
     this.ids,

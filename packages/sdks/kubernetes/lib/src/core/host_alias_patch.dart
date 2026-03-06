@@ -12,7 +12,7 @@ class HostAliasPatch {
   /// Creates a new [HostAliasPatch].
   /// [hostnames] Hostnames for the above IP address.
   /// [ip] IP address of the host file entry.
-  HostAliasPatch({
+  const HostAliasPatch({
     this.hostnames,
     this.ip,
   });

@@ -11,7 +11,7 @@ class BucketVersioningVersioningConfiguration {
   /// Creates a new [BucketVersioningVersioningConfiguration].
   /// [mfaDelete] Specifies whether MFA delete is enabled in the bucket versioning configuration. Valid values: `Enabled` or `Disabled`.
   /// [status] Versioning state of the bucket. Valid values: `Enabled`, `Suspended`, or `Disabled`. `Disabled` should only be used when creating or importing resources that correspond to unversioned S3 buckets.
-  BucketVersioningVersioningConfiguration({
+  const BucketVersioningVersioningConfiguration({
     this.mfaDelete,
     required this.status,
   });

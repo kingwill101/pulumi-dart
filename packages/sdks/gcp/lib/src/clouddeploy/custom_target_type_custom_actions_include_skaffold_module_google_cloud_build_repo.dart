@@ -14,7 +14,7 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo {
   /// [path] Relative path from the repository root to the Skaffold file.
   /// [ref] Branch or tag to use when cloning the repository.
   /// [repository] Cloud Build 2nd gen repository in the format of 'projects/&lt;project&gt;/locations/&lt;location&gt;/connections/&lt;connection&gt;/repositories/&lt;repository&gt;'.
-  CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo({
+  const CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo({
     this.path,
     this.ref,
     required this.repository,

@@ -12,7 +12,7 @@ class RequestUtilization {
   /// Creates a new [RequestUtilization].
   /// [targetConcurrentRequests] Target number of concurrent requests.
   /// [targetRequestCountPerSecond] Target requests per second.
-  RequestUtilization({
+  const RequestUtilization({
     this.targetConcurrentRequests,
     this.targetRequestCountPerSecond,
   });

@@ -62,7 +62,7 @@ class GetInstanceClassesArgs {
   /// [sortedBy] Sort the results by specified fields. The supported value is' Price '. Modifying this field will trigger resource reconstruction.
   /// [storageType] It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
   /// [zoneId] The Zone to launch the DB instance.
-  GetInstanceClassesArgs({
+  const GetInstanceClassesArgs({
     this.category,
     this.commodityCode,
     this.dbInstanceClass,

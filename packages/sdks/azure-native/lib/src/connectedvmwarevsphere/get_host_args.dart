@@ -15,7 +15,7 @@ class GetHostArgs {
   /// Creates a new [GetHostArgs].
   /// [hostName] Name of the host.
   /// [resourceGroupName] The Resource Group Name.
-  GetHostArgs({
+  const GetHostArgs({
     required this.hostName,
     required this.resourceGroupName,
   });

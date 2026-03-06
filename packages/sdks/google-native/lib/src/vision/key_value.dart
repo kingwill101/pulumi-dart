@@ -12,7 +12,7 @@ class KeyValue {
   /// Creates a new [KeyValue].
   /// [key] The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
   /// [value] The value of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
-  KeyValue({
+  const KeyValue({
     this.key,
     this.value,
   });

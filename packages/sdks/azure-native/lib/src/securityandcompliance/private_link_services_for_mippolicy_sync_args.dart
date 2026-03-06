@@ -33,7 +33,7 @@ class PrivateLinkServicesForMIPPolicySyncArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceName] The name of the service instance.
   /// [tags] The resource tags.
-  PrivateLinkServicesForMIPPolicySyncArgs({
+  const PrivateLinkServicesForMIPPolicySyncArgs({
     this.identity,
     required this.kind,
     this.location,

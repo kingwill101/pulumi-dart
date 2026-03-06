@@ -25,7 +25,7 @@ class GetJobResult {
   /// [properties] Properties of the Job resource
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetJobResult({
+  const GetJobResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

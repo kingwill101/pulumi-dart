@@ -12,7 +12,7 @@ class CFNFeatureAdditionalConfiguration {
   /// Creates a new [CFNFeatureAdditionalConfiguration].
   /// [name] Property name
   /// [status] Property status
-  CFNFeatureAdditionalConfiguration({
+  const CFNFeatureAdditionalConfiguration({
     this.name,
     this.status,
   });

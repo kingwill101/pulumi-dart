@@ -7,7 +7,7 @@ class GetLaunchTemplateCreditSpecification {
 
   /// Creates a new [GetLaunchTemplateCreditSpecification].
   /// [cpuCredits] Required.
-  GetLaunchTemplateCreditSpecification({
+  const GetLaunchTemplateCreditSpecification({
     required this.cpuCredits,
   });
 

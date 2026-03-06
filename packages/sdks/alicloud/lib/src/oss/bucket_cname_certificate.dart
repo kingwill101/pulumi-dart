@@ -32,7 +32,7 @@ class BucketCnameCertificate {
   /// [type] Certificate Type
   /// [validEndDate] Certificate validity period end time
   /// [validStartDate] Certificate validity period start time
-  BucketCnameCertificate({
+  const BucketCnameCertificate({
     this.certId,
     this.certificate,
     this.creationDate,

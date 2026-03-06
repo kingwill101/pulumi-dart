@@ -15,7 +15,7 @@ class GetCustomEntityStoreAssignmentArgs {
   /// Creates a new [GetCustomEntityStoreAssignmentArgs].
   /// [customEntityStoreAssignmentName] Name of the custom entity store assignment. Generated name is GUID.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetCustomEntityStoreAssignmentArgs({
+  const GetCustomEntityStoreAssignmentArgs({
     required this.customEntityStoreAssignmentName,
     required this.resourceGroupName,
   });

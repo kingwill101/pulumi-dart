@@ -16,7 +16,7 @@ class WeeklyMaintenanceWindowResponseRedisV1beta1 {
   /// [day] The day of week that maintenance updates occur.
   /// [duration] Duration of the maintenance window. The current window is fixed at 1 hour.
   /// [startTime] Start time of the window in UTC time.
-  WeeklyMaintenanceWindowResponseRedisV1beta1({
+  const WeeklyMaintenanceWindowResponseRedisV1beta1({
     required this.day,
     required this.duration,
     required this.startTime,

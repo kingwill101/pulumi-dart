@@ -14,7 +14,7 @@ class PrivatePoolV1Config {
   /// Creates a new [PrivatePoolV1Config].
   /// [networkConfig] Network configuration for the pool.
   /// [workerConfig] Machine configuration for the workers in the pool.
-  PrivatePoolV1Config({
+  const PrivatePoolV1Config({
     this.networkConfig,
     this.workerConfig,
   });

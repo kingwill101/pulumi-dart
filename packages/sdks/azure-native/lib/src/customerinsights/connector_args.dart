@@ -33,7 +33,7 @@ class ConnectorArgs {
   /// [hubName] The name of the hub.
   /// [isInternal] If this is an internal connector.
   /// [resourceGroupName] The name of the resource group.
-  ConnectorArgs({
+  const ConnectorArgs({
     this.connectorName,
     required this.connectorProperties,
     required this.connectorType,

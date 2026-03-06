@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingConditionalConditionalBranchCondition 
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalConditionalBranchCondition].
   /// [expressionString] Expression string that is evaluated.
-  V2modelsIntentInitialResponseSettingConditionalConditionalBranchCondition({
+  const V2modelsIntentInitialResponseSettingConditionalConditionalBranchCondition({
     required this.expressionString,
   });
 

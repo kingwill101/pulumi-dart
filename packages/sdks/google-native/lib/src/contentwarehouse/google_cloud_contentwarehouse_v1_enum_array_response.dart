@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1EnumArrayResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1EnumArrayResponse].
   /// [values] List of enum values.
-  GoogleCloudContentwarehouseV1EnumArrayResponse({
+  const GoogleCloudContentwarehouseV1EnumArrayResponse({
     required this.values,
   });
 

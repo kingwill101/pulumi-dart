@@ -18,7 +18,7 @@ class GetVirtualNetworkSubnetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subnetName] Name of the virtual network subnet
   /// [virtualNetworkName] Name of the virtual network
-  GetVirtualNetworkSubnetArgs({
+  const GetVirtualNetworkSubnetArgs({
     required this.resourceGroupName,
     required this.subnetName,
     required this.virtualNetworkName,

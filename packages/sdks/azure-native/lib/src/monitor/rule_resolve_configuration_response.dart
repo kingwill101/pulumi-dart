@@ -12,7 +12,7 @@ class RuleResolveConfigurationResponse {
   /// Creates a new [RuleResolveConfigurationResponse].
   /// [autoResolved] The flag that indicates whether or not to auto resolve a fired alert.
   /// [timeToResolve] The duration a rule must evaluate as healthy before the fired alert is automatically resolved represented in ISO 8601 duration format.
-  RuleResolveConfigurationResponse({
+  const RuleResolveConfigurationResponse({
     this.autoResolved,
     this.timeToResolve,
   });

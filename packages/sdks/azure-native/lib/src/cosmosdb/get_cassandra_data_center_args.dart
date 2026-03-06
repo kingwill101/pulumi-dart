@@ -18,7 +18,7 @@ class GetCassandraDataCenterArgs {
   /// [clusterName] Managed Cassandra cluster name.
   /// [dataCenterName] Data center name in a managed Cassandra cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCassandraDataCenterArgs({
+  const GetCassandraDataCenterArgs({
     required this.clusterName,
     required this.dataCenterName,
     required this.resourceGroupName,

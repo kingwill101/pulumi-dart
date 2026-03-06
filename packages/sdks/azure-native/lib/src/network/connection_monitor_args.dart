@@ -60,7 +60,7 @@ class ConnectionMonitorArgs {
   /// [tags] Connection monitor tags.
   /// [testConfigurations] List of connection monitor test configurations.
   /// [testGroups] List of connection monitor test groups.
-  ConnectionMonitorArgs({
+  const ConnectionMonitorArgs({
     this.autoStart,
     this.connectionMonitorName,
     this.destination,

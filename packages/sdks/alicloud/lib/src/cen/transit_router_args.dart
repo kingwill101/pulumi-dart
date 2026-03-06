@@ -29,7 +29,7 @@ class TransitRouterArgs {
   /// [tags] The tag of the resource
   /// [transitRouterDescription] The description of the Enterprise Edition transit router instance.
   /// [transitRouterName] The name of the Enterprise Edition transit router.
-  TransitRouterArgs({
+  const TransitRouterArgs({
     required this.cenId,
     this.dryRun,
     this.supportMulticast,

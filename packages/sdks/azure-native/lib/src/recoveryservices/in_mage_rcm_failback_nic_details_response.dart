@@ -18,7 +18,7 @@ class InMageRcmFailbackNicDetailsResponse {
   /// [macAddress] The mac address.
   /// [networkName] The network name.
   /// [sourceIpAddress] The IP address.
-  InMageRcmFailbackNicDetailsResponse({
+  const InMageRcmFailbackNicDetailsResponse({
     required this.adapterType,
     required this.macAddress,
     required this.networkName,

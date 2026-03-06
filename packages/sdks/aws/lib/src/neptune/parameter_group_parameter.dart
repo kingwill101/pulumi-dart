@@ -14,7 +14,7 @@ class ParameterGroupParameter {
   /// [applyMethod] The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
   /// [name] The name of the Neptune parameter.
   /// [value] The value of the Neptune parameter.
-  ParameterGroupParameter({
+  const ParameterGroupParameter({
     this.applyMethod,
     required this.name,
     required this.value,

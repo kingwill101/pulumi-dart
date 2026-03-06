@@ -13,7 +13,7 @@ class VmSizeProfileResponse {
   /// Creates a new [VmSizeProfileResponse].
   /// [name] The Sku name (e.g. 'Standard_DS1_v2')
   /// [rank] The rank of the VM size. This is used with 'RegularPriorityAllocationStrategy.Prioritized'
-  VmSizeProfileResponse({
+  const VmSizeProfileResponse({
     required this.name,
     this.rank,
   });

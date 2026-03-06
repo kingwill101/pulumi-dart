@@ -20,7 +20,7 @@ class RecoveryPlanGroupResponse {
   /// [groupType] The group type.
   /// [replicationProtectedItems] The list of protected items.
   /// [startGroupActions] The start group actions.
-  RecoveryPlanGroupResponse({
+  const RecoveryPlanGroupResponse({
     this.endGroupActions,
     required this.groupType,
     this.replicationProtectedItems,

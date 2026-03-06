@@ -30,7 +30,7 @@ class VswitchCidrReservationArgs {
   /// [ipVersion] Reserved ip version of network segment, valid values: `IPv4`, `IPv6`, default IPv4.
   /// [vswitchCidrReservationName] The name of the resource.
   /// [vswitchId] The Id of the switch instance.
-  VswitchCidrReservationArgs({
+  const VswitchCidrReservationArgs({
     this.cidrReservationCidr,
     this.cidrReservationDescription,
     this.cidrReservationMask,

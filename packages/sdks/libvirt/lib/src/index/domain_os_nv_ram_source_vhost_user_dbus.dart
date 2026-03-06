@@ -8,7 +8,7 @@ class DomainOsNvRamSourceVhostUserDbus {
 
   /// Creates a new [DomainOsNvRamSourceVhostUserDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainOsNvRamSourceVhostUserDbus({
+  const DomainOsNvRamSourceVhostUserDbus({
     this.channel,
   });
 

@@ -22,7 +22,7 @@ class Powershell72ModuleArgs {
   /// [moduleLink] A `module_link` block as defined below.
   /// [name] Specifies the name of the Module. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  Powershell72ModuleArgs({
+  const Powershell72ModuleArgs({
     required this.automationAccountId,
     required this.moduleLink,
     this.name,

@@ -43,7 +43,7 @@ class ApplicationGatewayBackendSettingsResponse {
   /// [timeout] Connection timeout in seconds. Application Gateway will fail the request if response is not received within ConnectionTimeout. Acceptable values are from 1 second to 86400 seconds.
   /// [trustedRootCertificates] Array of references to application gateway trusted root certificates.
   /// [type] Type of the resource.
-  ApplicationGatewayBackendSettingsResponse({
+  const ApplicationGatewayBackendSettingsResponse({
     required this.etag,
     this.hostName,
     this.id,

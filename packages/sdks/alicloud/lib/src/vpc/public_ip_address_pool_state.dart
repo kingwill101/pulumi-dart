@@ -46,7 +46,7 @@ class PublicIpAddressPoolState {
   /// [tags] The tags of PrefixList.
   /// [totalIpNum] The total number of public IP address pools.
   /// [usedIpNum] The number of used IP addresses in the public IP address pool.
-  PublicIpAddressPoolState({
+  const PublicIpAddressPoolState({
     this.bizType,
     this.createTime,
     this.description,

@@ -8,7 +8,7 @@ class AwsClusterControlPlaneConfigEncryption {
 
   /// Creates a new [AwsClusterControlPlaneConfigEncryption].
   /// [kmsKeyArn] The ARN of the AWS KMS key used to encrypt cluster configuration.
-  AwsClusterControlPlaneConfigEncryption({
+  const AwsClusterControlPlaneConfigEncryption({
     required this.kmsKeyArn,
   });
 

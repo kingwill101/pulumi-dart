@@ -23,7 +23,7 @@ class DomainDevicesInterfaceRoute {
   /// [metric] Configures the routing metric for determining the best route.
   /// [netmask] Specifies the netmask for the route configuration.
   /// [prefix] Sets the prefix length for the route configuration.
-  DomainDevicesInterfaceRoute({
+  const DomainDevicesInterfaceRoute({
     required this.address,
     this.family,
     required this.gateway,

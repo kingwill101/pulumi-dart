@@ -19,7 +19,7 @@ class GetGroupLookupGroupKey {
   /// Creates a new [GetGroupLookupGroupKey].
   /// [id] (Required) The ID of the entity.
   /// [namespace] (Optional) The namespace in which the entity exists.
-  GetGroupLookupGroupKey({
+  const GetGroupLookupGroupKey({
     required this.id,
     this.namespace,
   });

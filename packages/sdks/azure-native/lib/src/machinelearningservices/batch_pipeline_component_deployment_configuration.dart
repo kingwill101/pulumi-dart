@@ -23,7 +23,7 @@ class BatchPipelineComponentDeploymentConfiguration {
   /// [description] The description which will be applied to the job.
   /// [settings] Run-time settings for the pipeline job.
   /// [tags] The tags which will be applied to the job.
-  BatchPipelineComponentDeploymentConfiguration({
+  const BatchPipelineComponentDeploymentConfiguration({
     this.componentId,
     required this.deploymentConfigurationType,
     this.description,

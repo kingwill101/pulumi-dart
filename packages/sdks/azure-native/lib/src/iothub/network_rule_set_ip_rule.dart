@@ -15,7 +15,7 @@ class NetworkRuleSetIpRule {
   /// [action] IP Filter Action
   /// [filterName] Name of the IP filter rule.
   /// [ipMask] A string that contains the IP address range in CIDR notation for the rule.
-  NetworkRuleSetIpRule({
+  const NetworkRuleSetIpRule({
     this.action,
     required this.filterName,
     required this.ipMask,

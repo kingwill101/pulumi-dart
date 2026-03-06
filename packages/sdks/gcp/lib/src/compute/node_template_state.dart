@@ -65,7 +65,7 @@ class NodeTemplateState {
   /// [region] Region where nodes using the node template will be created.
   /// [selfLink] The URI of the created resource.
   /// [serverBinding] The server binding policy for nodes using this template. Determines
-  NodeTemplateState({
+  const NodeTemplateState({
     this.accelerators,
     this.cpuOvercommitType,
     this.creationTimestamp,

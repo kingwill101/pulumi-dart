@@ -11,7 +11,7 @@ class BucketV2Logging {
   /// Creates a new [BucketV2Logging].
   /// [targetBucket] Name of the bucket that will receive the log objects.
   /// [targetPrefix] To specify a key prefix for log objects.
-  BucketV2Logging({
+  const BucketV2Logging({
     required this.targetBucket,
     this.targetPrefix,
   });

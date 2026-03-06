@@ -10,7 +10,7 @@ class ListListSchemaResult {
 
   /// Creates a new [ListListSchemaResult].
   /// [value] Schemas array.
-  ListListSchemaResult({
+  const ListListSchemaResult({
     this.value,
   });
 

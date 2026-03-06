@@ -12,7 +12,7 @@ class VirtualNetworkEncryptionResponse {
   /// Creates a new [VirtualNetworkEncryptionResponse].
   /// [enabled] Indicates if encryption is enabled on the virtual network.
   /// [enforcement] If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
-  VirtualNetworkEncryptionResponse({
+  const VirtualNetworkEncryptionResponse({
     required this.enabled,
     this.enforcement,
   });

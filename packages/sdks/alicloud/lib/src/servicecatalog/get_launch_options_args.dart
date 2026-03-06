@@ -21,7 +21,7 @@ class GetLaunchOptionsArgs {
   /// [nameRegex] A regex string to filter results by portfolio name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [productId] Product ID.
-  GetLaunchOptionsArgs({
+  const GetLaunchOptionsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

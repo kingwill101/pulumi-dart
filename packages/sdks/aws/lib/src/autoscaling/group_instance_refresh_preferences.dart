@@ -36,7 +36,7 @@ class GroupInstanceRefreshPreferences {
   /// [scaleInProtectedInstances] Behavior when encountering instances protected from scale in are found. Available behaviors are `Refresh`, `Ignore`, and `Wait`. Default is `Ignore`.
   /// [skipMatching] Skip replacing instances that already have your desired configuration. Defaults to `false`.
   /// [standbyInstances] Behavior when encountering instances in the `Standby` state in are found. Available behaviors are `Terminate`, `Ignore`, and `Wait`. Default is `Ignore`.
-  GroupInstanceRefreshPreferences({
+  const GroupInstanceRefreshPreferences({
     this.alarmSpecification,
     this.autoRollback,
     this.checkpointDelay,

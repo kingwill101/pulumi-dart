@@ -16,7 +16,7 @@ class GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics {
   /// [metrics] The metrics and corresponding confidence intervals in the inference result.
   /// [sessionCount] Number of sessions that were allocated to this version.
   /// [version] The name of the flow Version. Format: `projects//locations//agents//flows//versions/`.
-  GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics({
+  const GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics({
     this.metrics,
     this.sessionCount,
     this.version,

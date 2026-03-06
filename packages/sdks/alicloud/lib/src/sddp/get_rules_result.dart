@@ -49,7 +49,7 @@ class GetRulesResult {
   /// [rules] A list of Sddp Rules. Each element contains the following attributes:
   /// [status] Sensitive Data Identification Rules Detection State of.
   /// [warnLevel] The Level of Risk.
-  GetRulesResult({
+  const GetRulesResult({
     this.category,
     this.contentCategory,
     this.customType,

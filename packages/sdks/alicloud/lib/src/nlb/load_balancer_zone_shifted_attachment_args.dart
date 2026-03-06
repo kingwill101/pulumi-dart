@@ -18,7 +18,7 @@ class LoadBalancerZoneShiftedAttachmentArgs {
   /// [loadBalancerId] Network load balancer id
   /// [vswitchId] The list of zones and vSwitch mappings
   /// [zoneId] ZoneId
-  LoadBalancerZoneShiftedAttachmentArgs({
+  const LoadBalancerZoneShiftedAttachmentArgs({
     required this.loadBalancerId,
     required this.vswitchId,
     required this.zoneId,

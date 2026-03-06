@@ -16,7 +16,7 @@ class StatusErrorResponse {
   /// [code] Error code for classification of errors (ex: '400', '404', '500', etc.).
   /// [details] Array of error details that describe the status of each error.
   /// [message] Human-readable helpful error message to provide additional context for error (e.g.,: “Capability ID 'foo' does not exist”).
-  StatusErrorResponse({
+  const StatusErrorResponse({
     required this.code,
     required this.details,
     required this.message,

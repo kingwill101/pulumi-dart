@@ -40,7 +40,7 @@ class ImpalaObjectDataset {
   /// [table] The table name of the Impala. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  ImpalaObjectDataset({
+  const ImpalaObjectDataset({
     this.annotations,
     this.description,
     this.folder,

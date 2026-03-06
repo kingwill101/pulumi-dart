@@ -16,7 +16,7 @@ class IosDeviceFile {
   /// [bundleId] The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files must specify which app installed on the device.
   /// [content] The source file
   /// [devicePath] Location of the file on the device, inside the app's sandboxed filesystem
-  IosDeviceFile({
+  const IosDeviceFile({
     this.bundleId,
     this.content,
     this.devicePath,

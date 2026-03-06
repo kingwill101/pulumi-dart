@@ -60,7 +60,7 @@ class OcspArgs {
   /// [statusAge] Specifies the maximum allowed lag time that the BIG-IP system accepts for the 'thisUpdate' time in the OCSP response, in seconds. The default value is `0`.
   /// [strictRespCertCheck] Specifies whether the responder's certificate is checked for an OCSP signing extension. The default value is `enabled`.
   /// [trustedResponders] Specifies the certificates used for validating the OCSP response.
-  OcspArgs({
+  const OcspArgs({
     this.cacheErrorTimeout,
     this.cacheTimeout,
     this.clockSkew,

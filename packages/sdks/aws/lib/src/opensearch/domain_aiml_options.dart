@@ -17,7 +17,7 @@ class DomainAimlOptions {
   /// [naturalLanguageQueryGenerationOptions] Configuration block for parameters required for natural language query generation on the specified domain.
   /// [s3VectorsEngine] Configuration block for parameters required to enable S3 vectors engine features on the specified domain.
   /// [serverlessVectorAcceleration] Configuration block for parameters required to enable GPU-accelerated vector search on the specified domain.
-  DomainAimlOptions({
+  const DomainAimlOptions({
     this.naturalLanguageQueryGenerationOptions,
     this.s3VectorsEngine,
     this.serverlessVectorAcceleration,

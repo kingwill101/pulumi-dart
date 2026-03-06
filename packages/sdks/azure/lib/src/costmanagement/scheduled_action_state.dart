@@ -48,7 +48,7 @@ class ScheduledActionState {
   /// [startDate] The start date and time of the Scheduled Action (UTC).
   /// [viewId] The ID of the Cost Management View that is used by the Scheduled Action. Changing this forces a new resource to be created.
   /// [weeksOfMonths] Specifies a list of weeks in which cost analysis data will be emailed. This property is applicable when `frequency` is `Monthly` and used in combination with `days_of_week`. Possible values are `First`, `Fourth`, `Last`, `Second` and `Third`.
-  ScheduledActionState({
+  const ScheduledActionState({
     this.dayOfMonth,
     this.daysOfWeeks,
     this.displayName,

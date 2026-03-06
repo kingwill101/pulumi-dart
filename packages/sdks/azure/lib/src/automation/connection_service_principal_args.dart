@@ -33,7 +33,7 @@ class ConnectionServicePrincipalArgs {
   /// [resourceGroupName] The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   /// [subscriptionId] The subscription GUID.
   /// [tenantId] The ID of the Tenant the Service Principal is assigned in.
-  ConnectionServicePrincipalArgs({
+  const ConnectionServicePrincipalArgs({
     required this.applicationId,
     required this.automationAccountName,
     required this.certificateThumbprint,

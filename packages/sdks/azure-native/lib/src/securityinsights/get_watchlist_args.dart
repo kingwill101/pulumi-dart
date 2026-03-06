@@ -18,7 +18,7 @@ class GetWatchlistArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [watchlistAlias] The watchlist alias
   /// [workspaceName] The name of the workspace.
-  GetWatchlistArgs({
+  const GetWatchlistArgs({
     required this.resourceGroupName,
     required this.watchlistAlias,
     required this.workspaceName,

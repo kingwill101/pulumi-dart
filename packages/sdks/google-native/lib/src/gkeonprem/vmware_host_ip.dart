@@ -12,7 +12,7 @@ class VmwareHostIp {
   /// Creates a new [VmwareHostIp].
   /// [hostname] Hostname of the machine. VM's name will be used if this field is empty.
   /// [ip] IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
-  VmwareHostIp({
+  const VmwareHostIp({
     this.hostname,
     this.ip,
   });

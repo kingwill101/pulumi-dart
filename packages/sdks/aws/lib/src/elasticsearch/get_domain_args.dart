@@ -18,7 +18,7 @@ class GetDomainArgs {
   /// [domainName] Name of the domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags assigned to the domain.
-  GetDomainArgs({
+  const GetDomainArgs({
     required this.domainName,
     this.region,
     this.tags,

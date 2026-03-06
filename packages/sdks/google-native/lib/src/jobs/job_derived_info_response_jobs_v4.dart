@@ -13,7 +13,7 @@ class JobDerivedInfoResponseJobsV4 {
   /// Creates a new [JobDerivedInfoResponseJobsV4].
   /// [jobCategories] Job categories derived from Job.title and Job.description.
   /// [locations] Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
-  JobDerivedInfoResponseJobsV4({
+  const JobDerivedInfoResponseJobsV4({
     required this.jobCategories,
     required this.locations,
   });

@@ -9,7 +9,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput {
 
   /// Creates a new [MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput].
   /// [name] Name of the table to migrate
-  MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput({
+  const MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput({
     this.name,
   });
 

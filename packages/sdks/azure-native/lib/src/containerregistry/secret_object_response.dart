@@ -15,7 +15,7 @@ class SecretObjectResponse {
   /// Creates a new [SecretObjectResponse].
   /// [type] The type of the secret object which determines how the value of the secret object has to be
   /// [value] The value of the secret. The format of this value will be determined
-  SecretObjectResponse({
+  const SecretObjectResponse({
     this.type,
     this.value,
   });

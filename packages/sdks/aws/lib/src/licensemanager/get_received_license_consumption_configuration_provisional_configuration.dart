@@ -8,7 +8,7 @@ class GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration {
 
   /// Creates a new [GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration].
   /// [maxTimeToLiveInMinutes] Maximum time for the provisional configuration, in minutes.
-  GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration({
+  const GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration({
     required this.maxTimeToLiveInMinutes,
   });
 

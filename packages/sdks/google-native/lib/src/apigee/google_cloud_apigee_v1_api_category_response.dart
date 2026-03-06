@@ -15,7 +15,7 @@ class GoogleCloudApigeeV1ApiCategoryResponse {
   /// [name] Name of the category.
   /// [siteId] Name of the portal.
   /// [updateTime] Time the category was last modified in milliseconds since epoch.
-  GoogleCloudApigeeV1ApiCategoryResponse({
+  const GoogleCloudApigeeV1ApiCategoryResponse({
     required this.name,
     required this.siteId,
     required this.updateTime,

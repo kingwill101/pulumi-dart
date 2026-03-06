@@ -13,7 +13,7 @@ class StorageVersionMigrationStatusPatch {
   /// Creates a new [StorageVersionMigrationStatusPatch].
   /// [conditions] The latest available observations of the migration's current state.
   /// [resourceVersion] ResourceVersion to compare with the GC cache for performing the migration. This is the current resource version of given group, version and resource when kube-controller-manager first observes this StorageVersionMigration resource.
-  StorageVersionMigrationStatusPatch({
+  const StorageVersionMigrationStatusPatch({
     this.conditions,
     this.resourceVersion,
   });

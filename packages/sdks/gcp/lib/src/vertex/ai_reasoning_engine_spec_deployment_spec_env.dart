@@ -19,7 +19,7 @@ class AiReasoningEngineSpecDeploymentSpecEnv {
   /// Creates a new [AiReasoningEngineSpecDeploymentSpecEnv].
   /// [name] The name of the environment variable. Must be a valid
   /// [value] Variables that reference a $(VAR_NAME) are expanded using
-  AiReasoningEngineSpecDeploymentSpecEnv({
+  const AiReasoningEngineSpecDeploymentSpecEnv({
     required this.name,
     required this.value,
   });

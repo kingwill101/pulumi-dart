@@ -32,7 +32,7 @@ class OrchestratedVirtualMachineScaleSetDataDisk {
   /// [ultraSsdDiskIopsReadWrite] Specifies the Read-Write IOPS for this Data Disk. Only settable when `storage_account_type` is `PremiumV2_LRS` or `UltraSSD_LRS`.
   /// [ultraSsdDiskMbpsReadWrite] Specifies the bandwidth in MB per second for this Data Disk. Only settable when `storage_account_type` is `PremiumV2_LRS` or `UltraSSD_LRS`.
   /// [writeAcceleratorEnabled] Specifies if Write Accelerator is enabled on the Data Disk. Defaults to `false`.
-  OrchestratedVirtualMachineScaleSetDataDisk({
+  const OrchestratedVirtualMachineScaleSetDataDisk({
     required this.caching,
     this.createOption,
     this.diskEncryptionSetId,

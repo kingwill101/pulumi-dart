@@ -14,7 +14,7 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoring
   /// [configurationType] Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `log_level` or `metrics_level` attribute values to be effective.
   /// [logLevel] Describes the verbosity of the CloudWatch Logs for an application. Valid values: `DEBUG`, `ERROR`, `INFO`, `WARN`.
   /// [metricsLevel] Describes the granularity of the CloudWatch Logs for an application. Valid values: `APPLICATION`, `OPERATOR`, `PARALLELISM`, `TASK`.
-  ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration({
+  const ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration({
     required this.configurationType,
     this.logLevel,
     this.metricsLevel,

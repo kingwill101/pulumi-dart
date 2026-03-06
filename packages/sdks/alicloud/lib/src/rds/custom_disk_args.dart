@@ -64,7 +64,7 @@ class CustomDiskArgs {
   /// [snapshotId] The snapshot used to create the cloud disk. Snapshots made on or before July 15, 2013 cannot be used to create cloud disks. The 'SnapshotId' parameter and the 'Size' parameter have the following limitations:
   /// [type] The method of expanding the disk. Value range:
   /// [zoneId] The zone ID.
-  CustomDiskArgs({
+  const CustomDiskArgs({
     this.autoPay,
     this.autoRenew,
     this.description,

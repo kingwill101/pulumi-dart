@@ -21,7 +21,7 @@ class MemberArgs {
   /// [email] The email of the member AWS account.
   /// [invite] Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  MemberArgs({
+  const MemberArgs({
     required this.accountId,
     this.email,
     this.invite,

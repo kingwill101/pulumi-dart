@@ -24,7 +24,7 @@ class GetTunnelsArgs {
   /// [nameRegex] A regex string to filter results by tunnel name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tableName] The name of OTS table.
-  GetTunnelsArgs({
+  const GetTunnelsArgs({
     this.ids,
     required this.instanceName,
     this.nameRegex,

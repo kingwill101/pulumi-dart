@@ -26,7 +26,7 @@ class DomainDevicesMemorydevSource {
   /// [pageSizeUnit] Specifies the unit for the page size of the memory device's source.
   /// [path] Configures the path for the backing storage of the memory device's source.
   /// [pmem] Sets the PMEM (Persistent Memory) configuration for the memory device source, indicating if it should use persistent memory.
-  DomainDevicesMemorydevSource({
+  const DomainDevicesMemorydevSource({
     this.alignSize,
     this.alignSizeUnit,
     this.nodeMask,

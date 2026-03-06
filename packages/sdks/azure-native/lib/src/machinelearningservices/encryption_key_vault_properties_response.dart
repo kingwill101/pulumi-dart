@@ -14,7 +14,7 @@ class EncryptionKeyVaultPropertiesResponse {
   /// [identityClientId] For future use - The client id of the identity which will be used to access key vault.
   /// [keyIdentifier] Key vault uri to access the encryption key.
   /// [keyVaultArmId] The ArmId of the keyVault where the customer owned encryption key is present.
-  EncryptionKeyVaultPropertiesResponse({
+  const EncryptionKeyVaultPropertiesResponse({
     this.identityClientId,
     required this.keyIdentifier,
     required this.keyVaultArmId,

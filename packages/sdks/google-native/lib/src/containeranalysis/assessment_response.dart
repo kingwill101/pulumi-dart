@@ -36,7 +36,7 @@ class AssessmentResponse {
   /// [shortDescription] A one sentence description of this Vex.
   /// [state] Provides the state of this Vulnerability assessment.
   /// [vulnerabilityId] The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
-  AssessmentResponse({
+  const AssessmentResponse({
     required this.cve,
     required this.impacts,
     required this.justification,

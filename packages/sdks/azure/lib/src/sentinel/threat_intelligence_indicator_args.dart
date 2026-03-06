@@ -72,7 +72,7 @@ class ThreatIntelligenceIndicatorArgs {
   /// [validateFromUtc] The start of validate date in RFC3339.
   /// [validateUntilUtc] The end of validate date of the Threat Intelligence Indicator in RFC3339 format.
   /// [workspaceId] The ID of the Log Analytics Workspace. Changing this forces a new Sentinel Threat Intelligence Indicator to be created.
-  ThreatIntelligenceIndicatorArgs({
+  const ThreatIntelligenceIndicatorArgs({
     this.confidence,
     this.createdBy,
     this.description,

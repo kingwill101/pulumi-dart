@@ -9,7 +9,7 @@ class MonitoringStateEnumValue {
 
   /// Creates a new [MonitoringStateEnumValue].
   /// [value] Property value
-  MonitoringStateEnumValue({
+  const MonitoringStateEnumValue({
     this.value,
   });
 

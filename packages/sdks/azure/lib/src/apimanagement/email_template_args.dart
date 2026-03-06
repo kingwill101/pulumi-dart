@@ -26,7 +26,7 @@ class EmailTemplateArgs {
   /// [resourceGroupName] The name of the Resource Group where the API Management Email Template should exist. Changing this forces a new API Management Email Template to be created.
   /// [subject] The subject of the Email.
   /// [templateName] The name of the Email Template. Possible values are `AccountClosedDeveloper`, `ApplicationApprovedNotificationMessage`, `ConfirmSignUpIdentityDefault`, `EmailChangeIdentityDefault`, `InviteUserNotificationMessage`, `NewCommentNotificationMessage`, `NewDeveloperNotificationMessage`, `NewIssueNotificationMessage`, `PasswordResetByAdminNotificationMessage`, `PasswordResetIdentityDefault`, `PurchaseDeveloperNotificationMessage`, `QuotaLimitApproachingDeveloperNotificationMessage`, `RejectDeveloperNotificationMessage`, `RequestDeveloperNotificationMessage`. Changing this forces a new API Management Email Template to be created.
-  EmailTemplateArgs({
+  const EmailTemplateArgs({
     required this.apiManagementName,
     required this.body,
     required this.resourceGroupName,

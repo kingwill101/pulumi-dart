@@ -18,7 +18,7 @@ class GetTableExternalCatalogTableOptionStorageDescriptor {
   /// [locationUri] The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
   /// [outputFormat] Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
   /// [serdeInfos] Serializer and deserializer information.
-  GetTableExternalCatalogTableOptionStorageDescriptor({
+  const GetTableExternalCatalogTableOptionStorageDescriptor({
     required this.inputFormat,
     required this.locationUri,
     required this.outputFormat,

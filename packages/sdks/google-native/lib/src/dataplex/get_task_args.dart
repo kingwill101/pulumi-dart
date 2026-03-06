@@ -17,7 +17,7 @@ class GetTaskArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [taskId] Required.
-  GetTaskArgs({
+  const GetTaskArgs({
     required this.lakeId,
     required this.location,
     this.project,

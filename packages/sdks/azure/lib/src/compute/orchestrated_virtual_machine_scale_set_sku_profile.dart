@@ -11,7 +11,7 @@ class OrchestratedVirtualMachineScaleSetSkuProfile {
   /// Creates a new [OrchestratedVirtualMachineScaleSetSkuProfile].
   /// [allocationStrategy] Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated. Possible values are `CapacityOptimized`, `LowestPrice` and `Prioritized`.
   /// [vmSizes] Specifies the VM sizes for the virtual machine scale set.
-  OrchestratedVirtualMachineScaleSetSkuProfile({
+  const OrchestratedVirtualMachineScaleSetSkuProfile({
     required this.allocationStrategy,
     required this.vmSizes,
   });

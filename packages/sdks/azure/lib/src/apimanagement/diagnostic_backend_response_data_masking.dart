@@ -13,7 +13,7 @@ class DiagnosticBackendResponseDataMasking {
   /// Creates a new [DiagnosticBackendResponseDataMasking].
   /// [headers] A `headers` block as defined below.
   /// [queryParams] A `query_params` block as defined below.
-  DiagnosticBackendResponseDataMasking({
+  const DiagnosticBackendResponseDataMasking({
     this.headers,
     this.queryParams,
   });

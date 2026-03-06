@@ -58,7 +58,7 @@ class GetServiceResult {
   /// [tags] A mapping of tags assigned to the resource.
   /// [tenantId] Required.
   /// [version] Required.
-  GetServiceResult({
+  const GetServiceResult({
     required this.deploymentId,
     required this.domainConfigurationType,
     required this.domainName,

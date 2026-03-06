@@ -16,7 +16,7 @@ class BackupPolicy {
   /// [datasourceTypes] Type of datasource for the backup management
   /// [objectType] Expected value is 'BackupPolicy'.
   /// [policyRules] Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
-  BackupPolicy({
+  const BackupPolicy({
     required this.datasourceTypes,
     required this.objectType,
     required this.policyRules,

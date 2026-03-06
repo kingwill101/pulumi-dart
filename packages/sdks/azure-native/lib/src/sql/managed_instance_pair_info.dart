@@ -12,7 +12,7 @@ class ManagedInstancePairInfo {
   /// Creates a new [ManagedInstancePairInfo].
   /// [partnerManagedInstanceId] Id of Partner Managed Instance in pair.
   /// [primaryManagedInstanceId] Id of Primary Managed Instance in pair.
-  ManagedInstancePairInfo({
+  const ManagedInstancePairInfo({
     this.partnerManagedInstanceId,
     this.primaryManagedInstanceId,
   });

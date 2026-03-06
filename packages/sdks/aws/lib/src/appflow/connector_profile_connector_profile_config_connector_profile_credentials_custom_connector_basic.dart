@@ -9,7 +9,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorBasic].
   /// [password] Required.
   /// [username] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorBasic({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorBasic({
     required this.password,
     required this.username,
   });

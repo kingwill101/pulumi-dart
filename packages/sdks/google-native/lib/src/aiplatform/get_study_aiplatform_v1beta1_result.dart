@@ -24,7 +24,7 @@ class GetStudyAiplatformV1beta1Result {
   /// [name] The name of a study. The study's globally unique identifier. Format: `projects/{project}/locations/{location}/studies/{study}`
   /// [state] The detailed state of a Study.
   /// [studySpec] Configuration of the Study.
-  GetStudyAiplatformV1beta1Result({
+  const GetStudyAiplatformV1beta1Result({
     required this.createTime,
     required this.displayName,
     required this.inactiveReason,

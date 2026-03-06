@@ -21,7 +21,7 @@ class BanditPolicyResponse {
   /// [policyType] Expected value is 'Bandit'.
   /// [slackAmount] Absolute distance allowed from the best performing run.
   /// [slackFactor] Ratio of the allowed distance from the best performing run.
-  BanditPolicyResponse({
+  const BanditPolicyResponse({
     this.delayEvaluation,
     this.evaluationInterval,
     required this.policyType,

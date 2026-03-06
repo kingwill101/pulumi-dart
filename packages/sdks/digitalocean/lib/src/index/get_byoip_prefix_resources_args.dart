@@ -12,7 +12,7 @@ class GetByoipPrefixResourcesArgs {
 
   /// Creates a new [GetByoipPrefixResourcesArgs].
   /// [byoipPrefixUuid] The UUID of the BYOIP prefix to list addresses from.
-  GetByoipPrefixResourcesArgs({
+  const GetByoipPrefixResourcesArgs({
     required this.byoipPrefixUuid,
   });
 

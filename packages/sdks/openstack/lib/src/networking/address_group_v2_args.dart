@@ -29,7 +29,7 @@ class AddressGroupV2Args {
   /// [name] A name of the address group.
   /// [projectId] The owner of the address group. Required if admin
   /// [region] The region in which to obtain the V2 networking client.
-  AddressGroupV2Args({
+  const AddressGroupV2Args({
     required this.addresses,
     this.description,
     this.name,

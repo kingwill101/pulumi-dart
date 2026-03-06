@@ -23,7 +23,7 @@ class GetConstraintArgs {
   /// [description] Description of the constraint.
   /// [id] Constraint identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetConstraintArgs({
+  const GetConstraintArgs({
     this.acceptLanguage,
     this.description,
     required this.id,

@@ -39,7 +39,7 @@ class WorkforcePoolIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   /// [workforcePoolId] Used to find the parent resource to bind the IAM policy to
-  WorkforcePoolIamMemberState({
+  const WorkforcePoolIamMemberState({
     this.condition,
     this.etag,
     this.location,

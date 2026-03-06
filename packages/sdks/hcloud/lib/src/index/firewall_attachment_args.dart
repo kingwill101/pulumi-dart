@@ -21,7 +21,7 @@ class FirewallAttachmentArgs {
   /// [firewallId] ID of the firewall the resources
   /// [labelSelectors] List of label selectors used to
   /// [serverIds] List of Server IDs to attach to the
-  FirewallAttachmentArgs({
+  const FirewallAttachmentArgs({
     required this.firewallId,
     this.labelSelectors,
     this.serverIds,

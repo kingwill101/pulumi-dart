@@ -9,7 +9,7 @@ class PlacementProfileResponse {
 
   /// Creates a new [PlacementProfileResponse].
   /// [faultDomainCount] The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
-  PlacementProfileResponse({
+  const PlacementProfileResponse({
     this.faultDomainCount,
   });
 

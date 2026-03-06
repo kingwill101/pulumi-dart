@@ -20,7 +20,7 @@ class GetPythonPackagesPythonPackage {
   /// [packageName] Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
   /// [updateTime] The time, as a RFC 3339 string, this package was updated.
   /// [version] Version of this package.
-  GetPythonPackagesPythonPackage({
+  const GetPythonPackagesPythonPackage({
     required this.createTime,
     required this.name,
     required this.packageName,

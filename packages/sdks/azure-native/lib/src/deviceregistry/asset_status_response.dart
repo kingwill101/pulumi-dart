@@ -21,7 +21,7 @@ class AssetStatusResponse {
   /// [errors] Array object to transfer and persist errors that originate from the Edge.
   /// [events] Array of event statuses that describe the status of each event.
   /// [version] A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
-  AssetStatusResponse({
+  const AssetStatusResponse({
     required this.datasets,
     required this.errors,
     required this.events,

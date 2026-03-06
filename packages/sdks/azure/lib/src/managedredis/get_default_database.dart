@@ -45,7 +45,7 @@ class GetDefaultDatabase {
   /// [port] The TCP port of the database endpoint.
   /// [primaryAccessKey] The Primary Access Key for the Managed Redis Database instance.
   /// [secondaryAccessKey] The Secondary Access Key for the Managed Redis Database instance.
-  GetDefaultDatabase({
+  const GetDefaultDatabase({
     required this.accessKeysAuthenticationEnabled,
     required this.clientProtocol,
     required this.clusteringPolicy,

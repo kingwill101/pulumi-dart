@@ -30,7 +30,7 @@ class GetAppGroupsResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] Optional.
   /// [type] Optional.
-  GetAppGroupsResult({
+  const GetAppGroupsResult({
     this.enableDetails,
     required this.groups,
     required this.id,

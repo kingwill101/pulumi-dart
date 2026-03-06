@@ -24,7 +24,7 @@ class GetSizesFilter {
   /// [key] Filter the sizes by this key. This may be one of `slug`,
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] Only retrieves sizes which keys has value that matches
-  GetSizesFilter({
+  const GetSizesFilter({
     this.all,
     required this.key,
     this.matchBy,

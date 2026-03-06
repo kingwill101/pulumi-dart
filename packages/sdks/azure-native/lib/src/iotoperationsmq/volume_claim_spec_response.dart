@@ -34,7 +34,7 @@ class VolumeClaimSpecResponse {
   /// [storageClassName] Name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
   /// [volumeMode] volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec. This is a beta feature.
   /// [volumeName] VolumeName is the binding reference to the PersistentVolume backing this claim.
-  VolumeClaimSpecResponse({
+  const VolumeClaimSpecResponse({
     this.accessModes,
     this.dataSource,
     this.dataSourceRef,

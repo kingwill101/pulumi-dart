@@ -14,7 +14,7 @@ class LinkedOperationRuleResponse {
   /// [dependsOnTypes] Depends on types.
   /// [linkedAction] The linked action.
   /// [linkedOperation] The linked operation.
-  LinkedOperationRuleResponse({
+  const LinkedOperationRuleResponse({
     this.dependsOnTypes,
     required this.linkedAction,
     required this.linkedOperation,

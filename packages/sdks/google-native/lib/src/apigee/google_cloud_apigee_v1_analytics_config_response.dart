@@ -18,7 +18,7 @@ class GoogleCloudApigeeV1AnalyticsConfigResponse {
   /// [expireTimeMillis] Time at which the Analytics add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
   /// [state] The state of the Analytics add-on.
   /// [updateTime] The latest update time.
-  GoogleCloudApigeeV1AnalyticsConfigResponse({
+  const GoogleCloudApigeeV1AnalyticsConfigResponse({
     required this.enabled,
     required this.expireTimeMillis,
     required this.state,

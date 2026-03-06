@@ -13,7 +13,7 @@ class VirtualGatewaySpecListenerTlsValidation {
   /// Creates a new [VirtualGatewaySpecListenerTlsValidation].
   /// [subjectAlternativeNames] SANs for a virtual gateway's listener's Transport Layer Security (TLS) validation context.
   /// [trust] TLS validation context trust.
-  VirtualGatewaySpecListenerTlsValidation({
+  const VirtualGatewaySpecListenerTlsValidation({
     this.subjectAlternativeNames,
     required this.trust,
   });

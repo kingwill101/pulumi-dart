@@ -72,7 +72,7 @@ class GetReplicationGroupResult {
   /// [replicationGroupId] Required.
   /// [snapshotRetentionLimit] Number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them.
   /// [snapshotWindow] Daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).
-  GetReplicationGroupResult({
+  const GetReplicationGroupResult({
     required this.arn,
     required this.authTokenEnabled,
     required this.automaticFailoverEnabled,

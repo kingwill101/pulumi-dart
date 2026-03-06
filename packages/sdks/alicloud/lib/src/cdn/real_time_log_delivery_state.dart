@@ -27,7 +27,7 @@ class RealTimeLogDeliveryState {
   /// [project] The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
   /// [slsRegion] The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
   /// [status] Resource attribute fields that represent the status of the resource.
-  RealTimeLogDeliveryState({
+  const RealTimeLogDeliveryState({
     this.domain,
     this.logstore,
     this.project,

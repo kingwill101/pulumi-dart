@@ -15,7 +15,7 @@ class TlsRouteRule {
   /// Creates a new [TlsRouteRule].
   /// [action] Required. A detailed rule defining how to route traffic.
   /// [matches] Matches define the predicate used to match requests to a given action.
-  TlsRouteRule({
+  const TlsRouteRule({
     required this.action,
     required this.matches,
   });

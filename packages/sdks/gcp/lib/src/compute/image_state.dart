@@ -131,7 +131,7 @@ class ImageState {
   /// [sourceSnapshot] URL of the source snapshot used to create this image.
   /// [sourceSnapshotEncryptionKey] The customer-supplied encryption key of the source snapshot. Required if
   /// [storageLocations] Cloud Storage bucket storage location of the image
-  ImageState({
+  const ImageState({
     this.archiveSizeBytes,
     this.creationTimestamp,
     this.description,

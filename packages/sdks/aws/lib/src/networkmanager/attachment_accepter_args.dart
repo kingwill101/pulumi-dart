@@ -15,7 +15,7 @@ class AttachmentAccepterArgs {
   /// Creates a new [AttachmentAccepterArgs].
   /// [attachmentId] ID of the attachment.
   /// [attachmentType] Type of attachment. Valid values: `CONNECT`, `DIRECT_CONNECT_GATEWAY`, `SITE_TO_SITE_VPN`, `TRANSIT_GATEWAY_ROUTE_TABLE`, `VPC`.
-  AttachmentAccepterArgs({
+  const AttachmentAccepterArgs({
     required this.attachmentId,
     required this.attachmentType,
   });

@@ -15,7 +15,7 @@ class GetFabricArgs {
   /// Creates a new [GetFabricArgs].
   /// [fabricName] The fabric name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFabricArgs({
+  const GetFabricArgs({
     required this.fabricName,
     required this.resourceGroupName,
   });

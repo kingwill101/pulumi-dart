@@ -100,7 +100,7 @@ class JobArgs {
   /// [transformNameMapping] The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
   /// [type] The type of Cloud Dataflow job.
   /// [view] The level of information requested in response.
-  JobArgs({
+  const JobArgs({
     this.clientRequestId,
     this.createTime,
     this.createdFromSnapshotId,

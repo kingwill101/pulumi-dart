@@ -11,7 +11,7 @@ class LabelingJobHumanTaskConfigUiConfig {
   /// Creates a new [LabelingJobHumanTaskConfigUiConfig].
   /// [humanTaskUiArn] ARN of the worker task template used to render the worker UI and tools for labeling job tasks.
   /// [uiTemplateS3Uri] S3 bucket location of the UI template, or worker task template.
-  LabelingJobHumanTaskConfigUiConfig({
+  const LabelingJobHumanTaskConfigUiConfig({
     this.humanTaskUiArn,
     this.uiTemplateS3Uri,
   });

@@ -12,7 +12,7 @@ class LayerResponseContaineranalysisV1alpha1 {
   /// Creates a new [LayerResponseContaineranalysisV1alpha1].
   /// [arguments] The recovered arguments to the Dockerfile directive.
   /// [directive] The recovered Dockerfile directive used to construct this layer.
-  LayerResponseContaineranalysisV1alpha1({
+  const LayerResponseContaineranalysisV1alpha1({
     required this.arguments,
     required this.directive,
   });

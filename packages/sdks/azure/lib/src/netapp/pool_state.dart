@@ -45,7 +45,7 @@ class PoolState {
   /// [serviceLevel] The service level of the file system. Valid values include `Premium`, `Standard`, `Ultra`, and `Flexible`. Changing this forces a new resource to be created.
   /// [sizeInTb] Provisioned size of the pool in TB. Value must be between `1` and `2048`.
   /// [tags] A mapping of tags to assign to the resource.
-  PoolState({
+  const PoolState({
     this.accountName,
     this.coolAccessEnabled,
     this.customThroughputMibps,

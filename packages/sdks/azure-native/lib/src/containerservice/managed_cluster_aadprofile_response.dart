@@ -27,7 +27,7 @@ class ManagedClusterAADProfileResponse {
   /// [serverAppID] (DEPRECATED) The server AAD application ID. Learn more at https://aka.ms/aks/aad-legacy.
   /// [serverAppSecret] (DEPRECATED) The server AAD application secret. Learn more at https://aka.ms/aks/aad-legacy.
   /// [tenantID] The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
-  ManagedClusterAADProfileResponse({
+  const ManagedClusterAADProfileResponse({
     this.adminGroupObjectIDs,
     this.clientAppID,
     this.enableAzureRBAC,

@@ -18,7 +18,7 @@ class FeatureResponse {
   /// [description] Specifies description
   /// [featureName] Specifies name
   /// [tags] Specifies tags
-  FeatureResponse({
+  const FeatureResponse({
     this.dataType,
     this.description,
     this.featureName,

@@ -22,7 +22,7 @@ class GetTransitGatewayArgs {
   /// [id] Identifier of the EC2 Transit Gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value tags for the EC2 Transit Gateway
-  GetTransitGatewayArgs({
+  const GetTransitGatewayArgs({
     this.filters,
     this.id,
     this.region,

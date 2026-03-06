@@ -9,7 +9,7 @@ class ConnectionManagedIdentityResponse {
   /// Creates a new [ConnectionManagedIdentityResponse].
   /// [clientId] Optional.
   /// [resourceId] Optional.
-  ConnectionManagedIdentityResponse({
+  const ConnectionManagedIdentityResponse({
     this.clientId,
     this.resourceId,
   });

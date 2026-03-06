@@ -11,7 +11,7 @@ class QueueIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  QueueIamMemberCondition({
+  const QueueIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

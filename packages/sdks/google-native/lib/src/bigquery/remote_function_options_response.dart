@@ -18,7 +18,7 @@ class RemoteFunctionOptionsResponse {
   /// [endpoint] Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
   /// [maxBatchingRows] Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
   /// [userDefinedContext] User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
-  RemoteFunctionOptionsResponse({
+  const RemoteFunctionOptionsResponse({
     required this.connection,
     required this.endpoint,
     required this.maxBatchingRows,

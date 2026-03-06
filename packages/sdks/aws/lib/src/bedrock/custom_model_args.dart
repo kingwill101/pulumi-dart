@@ -55,7 +55,7 @@ class CustomModelArgs {
   /// [trainingDataConfig] Information about the training dataset.
   /// [validationDataConfig] Information about the validation dataset.
   /// [vpcConfig] Configuration parameters for the private Virtual Private Cloud (VPC) that contains the resources you are using for this job.
-  CustomModelArgs({
+  const CustomModelArgs({
     required this.baseModelIdentifier,
     this.customModelKmsKeyId,
     required this.customModelName,

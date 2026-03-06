@@ -27,7 +27,7 @@ class SourceResponseContaineranalysisV1alpha1 {
   /// [fileHashes] Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
   /// [repoSource] If provided, get source from this location in a Cloud Repo.
   /// [storageSource] If provided, get the source from this location in Google Cloud Storage.
-  SourceResponseContaineranalysisV1alpha1({
+  const SourceResponseContaineranalysisV1alpha1({
     required this.additionalContexts,
     required this.artifactStorageSource,
     required this.context,

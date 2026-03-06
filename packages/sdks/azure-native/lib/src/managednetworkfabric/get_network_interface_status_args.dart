@@ -18,7 +18,7 @@ class GetNetworkInterfaceStatusArgs {
   /// [networkDeviceName] Name of the NetworkDevice.
   /// [networkInterfaceName] Name of the NetworkInterface
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkInterfaceStatusArgs({
+  const GetNetworkInterfaceStatusArgs({
     required this.networkDeviceName,
     required this.networkInterfaceName,
     required this.resourceGroupName,

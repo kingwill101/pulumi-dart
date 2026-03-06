@@ -26,7 +26,7 @@ class ApplianceMonitoringDetailsResponse {
   /// [esxiNfcBuffer] The ESXi NFC buffer details.
   /// [networkBandwidth] The appliance network bandwidth details.
   /// [ramDetails] The appliance RAM details.
-  ApplianceMonitoringDetailsResponse({
+  const ApplianceMonitoringDetailsResponse({
     required this.cpuDetails,
     required this.datastoreSnapshot,
     required this.disksReplicationDetails,

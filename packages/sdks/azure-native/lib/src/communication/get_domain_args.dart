@@ -18,7 +18,7 @@ class GetDomainArgs {
   /// [domainName] The name of the Domains resource.
   /// [emailServiceName] The name of the EmailService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDomainArgs({
+  const GetDomainArgs({
     required this.domainName,
     required this.emailServiceName,
     required this.resourceGroupName,

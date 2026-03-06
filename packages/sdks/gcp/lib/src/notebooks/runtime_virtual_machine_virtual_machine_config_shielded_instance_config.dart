@@ -24,7 +24,7 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled.
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.Secure
   /// [enableVtpm] Defines whether the instance has the vTPM enabled. Enabled by
-  RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig({
+  const RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
     this.enableVtpm,

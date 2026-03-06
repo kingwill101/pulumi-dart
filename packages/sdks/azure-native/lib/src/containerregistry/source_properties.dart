@@ -20,7 +20,7 @@ class SourceProperties {
   /// [repositoryUrl] The full URL to the source code repository
   /// [sourceControlAuthProperties] The authorization properties for accessing the source code repository and to set up
   /// [sourceControlType] The type of source control service.
-  SourceProperties({
+  const SourceProperties({
     this.branch,
     required this.repositoryUrl,
     this.sourceControlAuthProperties,

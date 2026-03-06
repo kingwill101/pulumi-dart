@@ -22,7 +22,7 @@ class VirtualHubRouteTableRoute {
   /// [name] The name which should be used for this route.
   /// [nextHop] The next hop's resource ID.
   /// [nextHopType] The type of next hop. Currently the only possible value is `ResourceId`. Defaults to `ResourceId`.
-  VirtualHubRouteTableRoute({
+  const VirtualHubRouteTableRoute({
     required this.destinations,
     required this.destinationsType,
     required this.name,

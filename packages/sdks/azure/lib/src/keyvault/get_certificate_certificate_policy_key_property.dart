@@ -19,7 +19,7 @@ class GetCertificateCertificatePolicyKeyProperty {
   /// [keySize] The size of the Key used in the Certificate.
   /// [keyType] Specifies the Type of Key, for example `RSA`.
   /// [reuseKey] Is the key reusable?
-  GetCertificateCertificatePolicyKeyProperty({
+  const GetCertificateCertificatePolicyKeyProperty({
     required this.curve,
     required this.exportable,
     required this.keySize,

@@ -32,7 +32,7 @@ class GetCompositeTypeDeploymentmanagerV2betaResult {
   /// [selfLink] Server defined URL for the resource.
   /// [status] Required.
   /// [templateContents] Files for the template type.
-  GetCompositeTypeDeploymentmanagerV2betaResult({
+  const GetCompositeTypeDeploymentmanagerV2betaResult({
     required this.description,
     required this.insertTime,
     required this.labels,

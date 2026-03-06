@@ -8,7 +8,7 @@ class TemplateTemplateMetadataMultiLanguageDetection {
 
   /// Creates a new [TemplateTemplateMetadataMultiLanguageDetection].
   /// [enableMultiLanguageDetection] If true, multi language detection will be enabled.
-  TemplateTemplateMetadataMultiLanguageDetection({
+  const TemplateTemplateMetadataMultiLanguageDetection({
     required this.enableMultiLanguageDetection,
   });
 

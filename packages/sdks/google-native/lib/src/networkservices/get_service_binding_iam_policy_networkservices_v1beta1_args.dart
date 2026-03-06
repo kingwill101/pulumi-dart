@@ -17,7 +17,7 @@ class GetServiceBindingIamPolicyNetworkservicesV1beta1Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [serviceBindingId] Required.
-  GetServiceBindingIamPolicyNetworkservicesV1beta1Args({
+  const GetServiceBindingIamPolicyNetworkservicesV1beta1Args({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

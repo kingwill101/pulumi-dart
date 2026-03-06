@@ -54,7 +54,7 @@ class AwsClusterArgs {
   /// [name] The name of this resource.
   /// [networking] Cluster-wide networking configuration.
   /// [project] The project for the resource
-  AwsClusterArgs({
+  const AwsClusterArgs({
     this.annotations,
     required this.authorization,
     required this.awsRegion,

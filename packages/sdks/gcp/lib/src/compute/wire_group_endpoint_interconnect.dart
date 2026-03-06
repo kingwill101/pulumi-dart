@@ -14,7 +14,7 @@ class WireGroupEndpointInterconnect {
   /// [interconnect] (Optional)
   /// [interconnectName] The identifier for this object. Format specified above.
   /// [vlanTags] VLAN tags for the interconnect.
-  WireGroupEndpointInterconnect({
+  const WireGroupEndpointInterconnect({
     this.interconnect,
     required this.interconnectName,
     this.vlanTags,

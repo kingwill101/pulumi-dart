@@ -14,7 +14,7 @@ class SelfSubjectAccessReviewSpecAuthorizationK8sIoV1beta1 {
   /// Creates a new [SelfSubjectAccessReviewSpecAuthorizationK8sIoV1beta1].
   /// [nonResourceAttributes] NonResourceAttributes describes information for a non-resource access request
   /// [resourceAttributes] ResourceAuthorizationAttributes describes information for a resource access request
-  SelfSubjectAccessReviewSpecAuthorizationK8sIoV1beta1({
+  const SelfSubjectAccessReviewSpecAuthorizationK8sIoV1beta1({
     this.nonResourceAttributes,
     this.resourceAttributes,
   });

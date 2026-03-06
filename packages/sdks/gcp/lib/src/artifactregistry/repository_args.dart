@@ -94,7 +94,7 @@ class RepositoryArgs {
   /// [repositoryId] The last part of the repository name, for example:
   /// [virtualRepositoryConfig] Configuration specific for a Virtual Repository.
   /// [vulnerabilityScanningConfig] Configuration for vulnerability scanning of artifacts stored in this repository.
-  RepositoryArgs({
+  const RepositoryArgs({
     this.cleanupPolicies,
     this.cleanupPolicyDryRun,
     this.description,

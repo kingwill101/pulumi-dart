@@ -11,7 +11,7 @@ class BucketAclV2AccessControlPolicyOwner {
   /// Creates a new [BucketAclV2AccessControlPolicyOwner].
   /// [displayName] Display name of the owner.
   /// [id] ID of the owner.
-  BucketAclV2AccessControlPolicyOwner({
+  const BucketAclV2AccessControlPolicyOwner({
     this.displayName,
     required this.id,
   });

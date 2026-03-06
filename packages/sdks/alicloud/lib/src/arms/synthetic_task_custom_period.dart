@@ -11,7 +11,7 @@ class SyntheticTaskCustomPeriod {
   /// Creates a new [SyntheticTaskCustomPeriod].
   /// [endHour] End hours, 0-24.
   /// [startHour] Starting hours, 0-24.
-  SyntheticTaskCustomPeriod({
+  const SyntheticTaskCustomPeriod({
     this.endHour,
     this.startHour,
   });

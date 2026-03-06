@@ -15,7 +15,7 @@ class GetProcessArgs {
   /// [location] Required.
   /// [processId] Required.
   /// [project] Optional.
-  GetProcessArgs({
+  const GetProcessArgs({
     required this.location,
     required this.processId,
     this.project,

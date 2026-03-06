@@ -61,7 +61,7 @@ class NodePool {
   /// [queuedProvisioning] Specifies the configuration of queued provisioning.
   /// [upgradeSettings] Upgrade settings control disruption and speed of the upgrade.
   /// [version] The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
-  NodePool({
+  const NodePool({
     this.autoscaling,
     this.bestEffortProvisioning,
     this.conditions,

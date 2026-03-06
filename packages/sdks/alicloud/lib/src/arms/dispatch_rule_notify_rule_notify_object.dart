@@ -14,7 +14,7 @@ class DispatchRuleNotifyRuleNotifyObject {
   /// [name] The name of the contact or contact group.
   /// [notifyObjectId] The ID of the contact or contact group.
   /// [notifyType] The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-  DispatchRuleNotifyRuleNotifyObject({
+  const DispatchRuleNotifyRuleNotifyObject({
     required this.name,
     required this.notifyObjectId,
     required this.notifyType,

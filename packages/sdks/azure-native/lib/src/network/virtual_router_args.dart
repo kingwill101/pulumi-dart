@@ -37,7 +37,7 @@ class VirtualRouterArgs {
   /// [virtualRouterAsn] VirtualRouter ASN.
   /// [virtualRouterIps] VirtualRouter IPs.
   /// [virtualRouterName] The name of the Virtual Router.
-  VirtualRouterArgs({
+  const VirtualRouterArgs({
     this.hostedGateway,
     this.hostedSubnet,
     this.id,

@@ -19,7 +19,7 @@ class IdentityResponse {
   /// [tenantId] The tenant ID of resource.
   /// [type] The identity type.
   /// [userAssignedIdentities] Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity.
-  IdentityResponse({
+  const IdentityResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

@@ -9,7 +9,7 @@ class DomainDefaultUserSettingsTensorBoardAppSettings {
 
   /// Creates a new [DomainDefaultUserSettingsTensorBoardAppSettings].
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block below.
-  DomainDefaultUserSettingsTensorBoardAppSettings({
+  const DomainDefaultUserSettingsTensorBoardAppSettings({
     this.defaultResourceSpec,
   });
 

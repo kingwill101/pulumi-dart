@@ -33,7 +33,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettings {
   /// [multiplexOutputSettings] Multiplex output settings. See Multiplex Output Settings for more details.
   /// [rtmpOutputSettings] RTMP output settings. See RTMP Output Settings for more details.
   /// [udpOutputSettings] UDP output settings. See UDP Output Settings for more details.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettings({
     this.archiveOutputSettings,
     this.frameCaptureOutputSettings,
     this.hlsOutputSettings,

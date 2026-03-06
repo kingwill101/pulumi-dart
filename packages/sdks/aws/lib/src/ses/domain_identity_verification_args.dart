@@ -15,7 +15,7 @@ class DomainIdentityVerificationArgs {
   /// Creates a new [DomainIdentityVerificationArgs].
   /// [domain] The domain name of the SES domain identity to verify.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DomainIdentityVerificationArgs({
+  const DomainIdentityVerificationArgs({
     required this.domain,
     this.region,
   });

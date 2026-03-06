@@ -25,7 +25,7 @@ class UserRecordResponse {
   /// [id] Id of the user
   /// [kind] Type of account
   /// [metadata] Metadata of the record
-  UserRecordResponse({
+  const UserRecordResponse({
     this.authType,
     this.email,
     this.fullName,

@@ -11,7 +11,7 @@ class RunCommandSourceScriptUriManagedIdentity {
   /// Creates a new [RunCommandSourceScriptUriManagedIdentity].
   /// [clientId] The client ID of the managed identity.
   /// [objectId] The object ID of the managed identity.
-  RunCommandSourceScriptUriManagedIdentity({
+  const RunCommandSourceScriptUriManagedIdentity({
     this.clientId,
     this.objectId,
   });

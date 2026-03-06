@@ -26,7 +26,7 @@ class GetGroupsGroup {
   /// [groupName] The Name of the group.
   /// [id] The ID of the Group.
   /// [provisionType] The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
-  GetGroupsGroup({
+  const GetGroupsGroup({
     required this.createTime,
     required this.description,
     required this.directoryId,

@@ -13,7 +13,7 @@ class GetInterconnectLocationsArgs {
 
   /// Creates a new [GetInterconnectLocationsArgs].
   /// [project] The project in which the resource belongs. If it
-  GetInterconnectLocationsArgs({
+  const GetInterconnectLocationsArgs({
     this.project,
   });
 

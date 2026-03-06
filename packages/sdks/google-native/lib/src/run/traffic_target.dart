@@ -21,7 +21,7 @@ class TrafficTarget {
   /// [percent] Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
   /// [revisionName] Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
   /// [tag] Tag is used to expose a dedicated url for referencing this target exclusively.
-  TrafficTarget({
+  const TrafficTarget({
     this.configurationName,
     this.latestRevision,
     this.percent,

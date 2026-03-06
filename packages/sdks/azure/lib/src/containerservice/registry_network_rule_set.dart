@@ -16,7 +16,7 @@ class RegistryNetworkRuleSet {
   /// Creates a new [RegistryNetworkRuleSet].
   /// [defaultAction] The behaviour for requests matching no rules. Either `Allow` or `Deny`. Defaults to `Allow`
   /// [ipRules] One or more `ip_rule` blocks as defined below.
-  RegistryNetworkRuleSet({
+  const RegistryNetworkRuleSet({
     this.defaultAction,
     this.ipRules,
   });

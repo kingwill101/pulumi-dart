@@ -10,7 +10,7 @@ class StackTraceResponseWorkflowexecutionsV1beta {
 
   /// Creates a new [StackTraceResponseWorkflowexecutionsV1beta].
   /// [elements] An array of stack elements.
-  StackTraceResponseWorkflowexecutionsV1beta({
+  const StackTraceResponseWorkflowexecutionsV1beta({
     required this.elements,
   });
 

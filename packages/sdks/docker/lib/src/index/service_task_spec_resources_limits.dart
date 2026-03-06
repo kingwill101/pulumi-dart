@@ -11,7 +11,7 @@ class ServiceTaskSpecResourcesLimits {
   /// Creates a new [ServiceTaskSpecResourcesLimits].
   /// [memoryBytes] The amounf of memory in bytes the container allocates
   /// [nanoCpus] CPU shares in units of `1/1e9` (or `10^-9`) of the CPU. Should be at least `1000000`
-  ServiceTaskSpecResourcesLimits({
+  const ServiceTaskSpecResourcesLimits({
     this.memoryBytes,
     this.nanoCpus,
   });

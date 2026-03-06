@@ -12,7 +12,7 @@ class GoogleCloudDatacatalogV1VertexDatasetSpecResponse {
   /// Creates a new [GoogleCloudDatacatalogV1VertexDatasetSpecResponse].
   /// [dataItemCount] The number of DataItems in this Dataset. Only apply for non-structured Dataset.
   /// [dataType] Type of the dataset.
-  GoogleCloudDatacatalogV1VertexDatasetSpecResponse({
+  const GoogleCloudDatacatalogV1VertexDatasetSpecResponse({
     required this.dataItemCount,
     required this.dataType,
   });

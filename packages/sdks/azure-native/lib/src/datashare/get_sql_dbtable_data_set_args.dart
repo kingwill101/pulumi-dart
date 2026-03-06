@@ -21,7 +21,7 @@ class GetSqlDBTableDataSetArgs {
   /// [dataSetName] The name of the dataSet.
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share.
-  GetSqlDBTableDataSetArgs({
+  const GetSqlDBTableDataSetArgs({
     required this.accountName,
     required this.dataSetName,
     required this.resourceGroupName,

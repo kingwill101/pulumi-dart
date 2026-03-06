@@ -18,7 +18,7 @@ class RefreshDetails {
   /// [inProgressRefreshJobId] If a refresh job is currently in progress on this share or container, this field indicates the ARM resource ID of that job. The field is empty if no job is in progress.
   /// [lastCompletedRefreshJobTimeInUTC] Indicates the completed time for the last refresh job on this particular share or container, if any.This could be a failed job or a successful job.
   /// [lastJob] Indicates the id of the last refresh job on this particular share or container,if any. This could be a failed job or a successful job.
-  RefreshDetails({
+  const RefreshDetails({
     this.errorManifestFile,
     this.inProgressRefreshJobId,
     this.lastCompletedRefreshJobTimeInUTC,

@@ -37,7 +37,7 @@ class PolicyArgs {
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [sku] The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
   /// [tags] Resource tags.
-  PolicyArgs({
+  const PolicyArgs({
     this.customRules,
     this.location,
     this.managedRules,

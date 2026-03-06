@@ -11,7 +11,7 @@ class EntryTypeIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  EntryTypeIamBindingCondition({
+  const EntryTypeIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

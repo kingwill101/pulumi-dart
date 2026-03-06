@@ -11,7 +11,7 @@ class SlotTypeEnumerationValue {
   /// Creates a new [SlotTypeEnumerationValue].
   /// [synonyms] Additional values related to the slot type value. Each item must be less than or equal to 140 characters in length.
   /// [value] The value of the slot type. Must be less than or equal to 140 characters in length.
-  SlotTypeEnumerationValue({
+  const SlotTypeEnumerationValue({
     this.synonyms,
     required this.value,
   });

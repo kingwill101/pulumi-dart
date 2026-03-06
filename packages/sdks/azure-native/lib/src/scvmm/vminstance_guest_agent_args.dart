@@ -23,7 +23,7 @@ class VMInstanceGuestAgentArgs {
   /// [httpProxyConfig] HTTP Proxy configuration for the VM.
   /// [provisioningAction] Gets or sets the guest agent provisioning action.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  VMInstanceGuestAgentArgs({
+  const VMInstanceGuestAgentArgs({
     this.credentials,
     this.httpProxyConfig,
     this.provisioningAction,

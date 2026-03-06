@@ -38,7 +38,7 @@ class GetCommandsCommandInvokeDesktop {
   /// [repeats] Command in the Desktop Implementation.
   /// [startTime] The Script Process on the Desktop, in the Start Timing of the Execution.
   /// [stopTime] If You Use the invocation Indicates That the Call of the Time.
-  GetCommandsCommandInvokeDesktop({
+  const GetCommandsCommandInvokeDesktop({
     required this.desktopId,
     required this.dropped,
     required this.errorCode,

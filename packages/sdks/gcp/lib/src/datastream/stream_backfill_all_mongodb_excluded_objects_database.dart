@@ -13,7 +13,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabase {
   /// Creates a new [StreamBackfillAllMongodbExcludedObjectsDatabase].
   /// [collections] Collections in the database.
   /// [database] Database name.
-  StreamBackfillAllMongodbExcludedObjectsDatabase({
+  const StreamBackfillAllMongodbExcludedObjectsDatabase({
     this.collections,
     required this.database,
   });

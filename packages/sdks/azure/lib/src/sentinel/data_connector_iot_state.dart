@@ -15,7 +15,7 @@ class DataConnectorIotState {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this Iot Data Connector resides in. Changing this forces a new Iot Data Connector to be created.
   /// [name] The name which should be used for this Iot Data Connector. Changing this forces a new Iot Data Connector to be created.
   /// [subscriptionId] The ID of the subscription that this Iot Data Connector connects to. Changing this forces a new Iot Data Connector to be created.
-  DataConnectorIotState({
+  const DataConnectorIotState({
     this.logAnalyticsWorkspaceId,
     this.name,
     this.subscriptionId,

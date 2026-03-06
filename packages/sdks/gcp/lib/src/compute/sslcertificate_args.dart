@@ -46,7 +46,7 @@ class SSLCertificateArgs {
   /// [namePrefix] Creates a unique name beginning with the
   /// [privateKey] The write-only private key in PEM format.
   /// [project] The ID of the project in which the resource belongs.
-  SSLCertificateArgs({
+  const SSLCertificateArgs({
     required this.certificate,
     this.description,
     this.name,

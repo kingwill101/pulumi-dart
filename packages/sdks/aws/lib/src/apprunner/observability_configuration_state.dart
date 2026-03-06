@@ -34,7 +34,7 @@ class ObservabilityConfigurationState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [traceConfiguration] Configuration of the tracing feature within this observability configuration. If you don't specify it, App Runner doesn't enable tracing. See Trace Configuration below for more details.
-  ObservabilityConfigurationState({
+  const ObservabilityConfigurationState({
     this.arn,
     this.latest,
     this.observabilityConfigurationName,

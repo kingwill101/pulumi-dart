@@ -21,7 +21,7 @@ class GetWorkerPoolArgs {
   /// [location] The location of the instance. eg us-central1
   /// [name] The name of the Cloud Run v2 Worker Pool.
   /// [project] The project in which the resource belongs. If it
-  GetWorkerPoolArgs({
+  const GetWorkerPoolArgs({
     this.location,
     required this.name,
     this.project,

@@ -17,7 +17,7 @@ class GetProjectEnvironmentTypeIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Dev Center Project Environment Type.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Dev Center Project Environment Type.
   /// [type] The type of Managed Service Identity that is configured on this Dev Center Project Environment Type.
-  GetProjectEnvironmentTypeIdentity({
+  const GetProjectEnvironmentTypeIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

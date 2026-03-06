@@ -14,7 +14,7 @@ class EgressPolicy {
   /// Creates a new [EgressPolicy].
   /// [egressFrom] Defines conditions on the source of a request causing this EgressPolicy to apply.
   /// [egressTo] Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply.
-  EgressPolicy({
+  const EgressPolicy({
     this.egressFrom,
     this.egressTo,
   });

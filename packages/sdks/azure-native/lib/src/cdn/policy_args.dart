@@ -44,7 +44,7 @@ class PolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.
   /// [tags] Resource tags.
-  PolicyArgs({
+  const PolicyArgs({
     this.customRules,
     this.extendedProperties,
     this.location,

@@ -8,7 +8,7 @@ class ScheduleHourlyRecurrence {
 
   /// Creates a new [ScheduleHourlyRecurrence].
   /// [minute] Minutes of the hour the schedule will run.
-  ScheduleHourlyRecurrence({
+  const ScheduleHourlyRecurrence({
     required this.minute,
   });
 

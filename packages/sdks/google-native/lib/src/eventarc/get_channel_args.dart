@@ -15,7 +15,7 @@ class GetChannelArgs {
   /// [channelId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetChannelArgs({
+  const GetChannelArgs({
     required this.channelId,
     required this.location,
     this.project,

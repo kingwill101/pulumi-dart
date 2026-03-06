@@ -58,7 +58,7 @@ class RegionNetworkFirewallPolicyWithRulesState {
   /// [rules] A list of firewall policy rules.
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
-  RegionNetworkFirewallPolicyWithRulesState({
+  const RegionNetworkFirewallPolicyWithRulesState({
     this.creationTimestamp,
     this.description,
     this.fingerprint,

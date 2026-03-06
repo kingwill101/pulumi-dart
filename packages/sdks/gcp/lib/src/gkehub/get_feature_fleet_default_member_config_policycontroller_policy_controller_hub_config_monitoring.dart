@@ -8,7 +8,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
 
   /// Creates a new [GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring].
   /// [backends] Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. Possible values: ["MONITORING_BACKEND_UNSPECIFIED", "PROMETHEUS", "CLOUD_MONITORING"]
-  GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring({
+  const GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring({
     required this.backends,
   });
 

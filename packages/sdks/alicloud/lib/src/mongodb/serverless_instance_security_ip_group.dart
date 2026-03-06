@@ -14,7 +14,7 @@ class ServerlessInstanceSecurityIpGroup {
   /// [securityIpGroupAttribute] The attribute of the IP whitelist. This parameter is empty by default.
   /// [securityIpGroupName] The name of the IP whitelist.
   /// [securityIpList] The IP addresses in the whitelist.
-  ServerlessInstanceSecurityIpGroup({
+  const ServerlessInstanceSecurityIpGroup({
     this.securityIpGroupAttribute,
     this.securityIpGroupName,
     this.securityIpList,

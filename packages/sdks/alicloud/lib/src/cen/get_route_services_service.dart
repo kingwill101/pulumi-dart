@@ -35,7 +35,7 @@ class GetRouteServicesService {
   /// [id] The ID of the route service.
   /// [status] The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
   /// [updateInterval] The update interval. Default value: 5. The value cannot be modified.
-  GetRouteServicesService({
+  const GetRouteServicesService({
     required this.accessRegionId,
     required this.cenId,
     required this.cidrs,

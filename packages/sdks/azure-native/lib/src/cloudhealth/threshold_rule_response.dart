@@ -12,7 +12,7 @@ class ThresholdRuleResponse {
   /// Creates a new [ThresholdRuleResponse].
   /// [operator] Operator how to compare the signal value with the threshold
   /// [threshold] Threshold value
-  ThresholdRuleResponse({
+  const ThresholdRuleResponse({
     required this.operator,
     required this.threshold,
   });

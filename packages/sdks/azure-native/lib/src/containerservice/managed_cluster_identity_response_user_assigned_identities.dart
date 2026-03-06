@@ -11,7 +11,7 @@ class ManagedClusterIdentityResponseUserAssignedIdentities {
   /// Creates a new [ManagedClusterIdentityResponseUserAssignedIdentities].
   /// [clientId] The client id of user assigned identity.
   /// [principalId] The principal id of user assigned identity.
-  ManagedClusterIdentityResponseUserAssignedIdentities({
+  const ManagedClusterIdentityResponseUserAssignedIdentities({
     required this.clientId,
     required this.principalId,
   });

@@ -17,7 +17,7 @@ class ProjectKajPolicyConfigState {
   /// Creates a new [ProjectKajPolicyConfigState].
   /// [defaultKeyAccessJustificationPolicy] The default key access justification policy used when a CryptoKey is
   /// [project] The ID of the project in which the resource belongs.
-  ProjectKajPolicyConfigState({
+  const ProjectKajPolicyConfigState({
     this.defaultKeyAccessJustificationPolicy,
     this.project,
   });

@@ -29,7 +29,7 @@ class GetLinuxFunctionAppSiteConfigApplicationStack {
   /// [pythonVersion] The version of Python used.
   /// [useCustomRuntime] Does the Linux Function App use a custom runtime?
   /// [useDotnetIsolatedRuntime] Required.
-  GetLinuxFunctionAppSiteConfigApplicationStack({
+  const GetLinuxFunctionAppSiteConfigApplicationStack({
     required this.dockers,
     required this.dotnetVersion,
     required this.javaVersion,

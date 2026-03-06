@@ -26,7 +26,7 @@ class BackupPolicyMysqlFlexibleServerState {
   /// [retentionRules] One or more `retention_rule` blocks as defined below. Changing this forces a new resource to be created.
   /// [timeZone] Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault where the Backup Policy MySQL Flexible Server should exist. Changing this forces a new resource to be created.
-  BackupPolicyMysqlFlexibleServerState({
+  const BackupPolicyMysqlFlexibleServerState({
     this.backupRepeatingTimeIntervals,
     this.defaultRetentionRule,
     this.name,

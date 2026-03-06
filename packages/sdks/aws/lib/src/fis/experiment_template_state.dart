@@ -46,7 +46,7 @@ class ExperimentTemplateState {
   /// [tags] Key-value mapping of tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [targets] Target of an action. See below.
-  ExperimentTemplateState({
+  const ExperimentTemplateState({
     this.actions,
     this.description,
     this.experimentOptions,

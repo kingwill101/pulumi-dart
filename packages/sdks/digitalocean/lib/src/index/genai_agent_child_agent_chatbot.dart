@@ -23,7 +23,7 @@ class GenaiAgentChildAgentChatbot {
   /// [primaryColor] Primary color for the chatbot
   /// [secondaryColor] Secondary color for the chatbot
   /// [startingMessage] Starting message for the chatbot
-  GenaiAgentChildAgentChatbot({
+  const GenaiAgentChildAgentChatbot({
     this.buttonBackgroundColor,
     this.logo,
     this.name,

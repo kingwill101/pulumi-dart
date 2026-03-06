@@ -15,7 +15,7 @@ class GetPipelineJobAiplatformV1beta1Args {
   /// [location] Required.
   /// [pipelineJobId] Required.
   /// [project] Optional.
-  GetPipelineJobAiplatformV1beta1Args({
+  const GetPipelineJobAiplatformV1beta1Args({
     required this.location,
     required this.pipelineJobId,
     this.project,

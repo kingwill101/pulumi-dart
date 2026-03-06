@@ -36,7 +36,7 @@ class WebApplicationConfiguration {
   /// [targetFilePath] Gets or sets the configuration target file path.
   /// [type] Gets or sets the configuration type.
   /// [value] Gets or sets the configuration value.
-  WebApplicationConfiguration({
+  const WebApplicationConfiguration({
     this.filePath,
     this.identifier,
     this.isDeploymentTimeEditable,

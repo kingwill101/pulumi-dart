@@ -38,7 +38,7 @@ class OsPolicyAssignmentOsPolicy {
   /// [id] The id of the OS policy with the following restrictions:
   /// [mode] Policy mode Possible values are: `MODE_UNSPECIFIED`,
   /// [resourceGroups] List of resource groups for the policy. For a
-  OsPolicyAssignmentOsPolicy({
+  const OsPolicyAssignmentOsPolicy({
     this.allowNoResourceGroupMatch,
     this.description,
     required this.id,

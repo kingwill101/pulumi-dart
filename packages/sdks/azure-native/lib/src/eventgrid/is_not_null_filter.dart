@@ -13,7 +13,7 @@ class IsNotNullFilter {
   /// Creates a new [IsNotNullFilter].
   /// [key] The field/property in the event based on which you want to filter.
   /// [operatorType] The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
-  IsNotNullFilter({
+  const IsNotNullFilter({
     this.key,
     required this.operatorType,
   });

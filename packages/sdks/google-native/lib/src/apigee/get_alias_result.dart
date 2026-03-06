@@ -15,7 +15,7 @@ class GetAliasResult {
   /// [alias] Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
   /// [certsInfo] Chain of certificates under this alias.
   /// [type] Type of alias.
-  GetAliasResult({
+  const GetAliasResult({
     required this.alias,
     required this.certsInfo,
     required this.type,

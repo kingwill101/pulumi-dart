@@ -14,7 +14,7 @@ class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval {
   /// Creates a new [TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval].
   /// [settings] Settings object for unreferenced file removal.
   /// [status] Whether the configuration is enabled.
-  TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval({
+  const TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval({
     required this.settings,
     required this.status,
   });

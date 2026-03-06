@@ -9,7 +9,7 @@ class NamespaceState {
 
   /// Creates a new [NamespaceState].
   /// [code] (Output)
-  NamespaceState({
+  const NamespaceState({
     this.code,
   });
 

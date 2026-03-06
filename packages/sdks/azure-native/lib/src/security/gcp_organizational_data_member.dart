@@ -16,7 +16,7 @@ class GcpOrganizationalDataMember {
   /// [managementProjectNumber] The GCP management project number from organizational onboarding
   /// [organizationMembershipType] The multi cloud account's membership type in the organization
   /// [parentHierarchyId] If the multi cloud account is not of membership type organization, this will be the ID of the project's parent
-  GcpOrganizationalDataMember({
+  const GcpOrganizationalDataMember({
     this.managementProjectNumber,
     required this.organizationMembershipType,
     this.parentHierarchyId,

@@ -76,7 +76,7 @@ class ExpressRouteCircuitArgs {
   /// [serviceProviderProvisioningState] The ServiceProviderProvisioningState state of the resource.
   /// [sku] The SKU.
   /// [tags] Resource tags.
-  ExpressRouteCircuitArgs({
+  const ExpressRouteCircuitArgs({
     this.allowClassicOperations,
     this.authorizationKey,
     this.authorizations,

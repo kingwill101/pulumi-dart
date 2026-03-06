@@ -12,7 +12,7 @@ class ClusterPodAutoscaling {
 
   /// Creates a new [ClusterPodAutoscaling].
   /// [hpaProfile] Enable the Horizontal Pod Autoscaling profile for this cluster.
-  ClusterPodAutoscaling({
+  const ClusterPodAutoscaling({
     required this.hpaProfile,
   });
 

@@ -49,7 +49,7 @@ class CertificateCertificateDescription {
   /// [subjectDescriptions] (Output)
   /// [subjectKeyIds] (Output)
   /// [x509Descriptions] (Output)
-  CertificateCertificateDescription({
+  const CertificateCertificateDescription({
     this.aiaIssuingCertificateUrls,
     this.authorityKeyIds,
     this.certFingerprints,

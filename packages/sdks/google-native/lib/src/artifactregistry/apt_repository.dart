@@ -10,7 +10,7 @@ class AptRepository {
 
   /// Creates a new [AptRepository].
   /// [publicRepository] One of the publicly available Apt repositories supported by Artifact Registry.
-  AptRepository({
+  const AptRepository({
     this.publicRepository,
   });
 

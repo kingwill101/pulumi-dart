@@ -18,7 +18,7 @@ class TransformationRuleActionResponse {
   /// [op] op specifies the operation to perform.
   /// [path] Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
   /// [value] Optional. A string that specifies the desired value in string format to use for transformation.
-  TransformationRuleActionResponse({
+  const TransformationRuleActionResponse({
     required this.fromPath,
     required this.op,
     required this.path,

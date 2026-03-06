@@ -24,7 +24,7 @@ class GetPreferenceSetMigrationcenterV1alpha1Result {
   /// [name] Name of the preference set.
   /// [updateTime] The timestamp when the preference set was last updated.
   /// [virtualMachinePreferences] A set of preferences that applies to all virtual machines in the context.
-  GetPreferenceSetMigrationcenterV1alpha1Result({
+  const GetPreferenceSetMigrationcenterV1alpha1Result({
     required this.createTime,
     required this.description,
     required this.displayName,

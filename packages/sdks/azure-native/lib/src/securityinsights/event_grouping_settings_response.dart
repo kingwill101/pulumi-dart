@@ -9,7 +9,7 @@ class EventGroupingSettingsResponse {
 
   /// Creates a new [EventGroupingSettingsResponse].
   /// [aggregationKind] The event grouping aggregation kinds
-  EventGroupingSettingsResponse({
+  const EventGroupingSettingsResponse({
     this.aggregationKind,
   });
 

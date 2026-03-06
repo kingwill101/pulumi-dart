@@ -49,7 +49,7 @@ class WebAppHostNameBindingArgs {
   /// [siteName] App Service app name.
   /// [sslState] SSL type
   /// [thumbprint] SSL certificate thumbprint
-  WebAppHostNameBindingArgs({
+  const WebAppHostNameBindingArgs({
     this.azureResourceName,
     this.azureResourceType,
     this.customHostNameDnsRecordType,

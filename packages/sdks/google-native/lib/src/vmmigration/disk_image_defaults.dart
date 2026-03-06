@@ -9,7 +9,7 @@ class DiskImageDefaults {
 
   /// Creates a new [DiskImageDefaults].
   /// [sourceImage] The Image resource used when creating the disk.
-  DiskImageDefaults({
+  const DiskImageDefaults({
     required this.sourceImage,
   });
 

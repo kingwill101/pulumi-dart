@@ -11,7 +11,7 @@ class GetApplicationAttributeBusinessOwner {
   /// Creates a new [GetApplicationAttributeBusinessOwner].
   /// [displayName] Optional. Contact's name.
   /// [email] Required. Email address of the contacts.
-  GetApplicationAttributeBusinessOwner({
+  const GetApplicationAttributeBusinessOwner({
     required this.displayName,
     required this.email,
   });

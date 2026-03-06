@@ -13,7 +13,7 @@ class GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs {
   /// Creates a new [GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs].
   /// [customModuleId] Required.
   /// [project] Optional.
-  GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs({
+  const GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs({
     required this.customModuleId,
     this.project,
   });

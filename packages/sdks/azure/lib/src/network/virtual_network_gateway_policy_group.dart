@@ -18,7 +18,7 @@ class VirtualNetworkGatewayPolicyGroup {
   /// [name] The name of the Virtual Network Gateway Policy Group.
   /// [policyMembers] One or more `policy_member` blocks as defined below.
   /// [priority] The priority for the Virtual Network Gateway Policy Group. Defaults to `0`.
-  VirtualNetworkGatewayPolicyGroup({
+  const VirtualNetworkGatewayPolicyGroup({
     this.isDefault,
     required this.name,
     required this.policyMembers,

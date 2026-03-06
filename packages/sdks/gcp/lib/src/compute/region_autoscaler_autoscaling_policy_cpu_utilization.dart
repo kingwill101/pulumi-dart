@@ -23,7 +23,7 @@ class RegionAutoscalerAutoscalingPolicyCpuUtilization {
   /// Creates a new [RegionAutoscalerAutoscalingPolicyCpuUtilization].
   /// [predictiveMethod] Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
   /// [target] The target CPU utilization that the autoscaler should maintain.
-  RegionAutoscalerAutoscalingPolicyCpuUtilization({
+  const RegionAutoscalerAutoscalingPolicyCpuUtilization({
     this.predictiveMethod,
     required this.target,
   });

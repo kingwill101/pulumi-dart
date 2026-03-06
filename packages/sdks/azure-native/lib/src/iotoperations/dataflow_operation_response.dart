@@ -24,7 +24,7 @@ class DataflowOperationResponse {
   /// [name] Optional user provided name of the transformation.
   /// [operationType] Type of operation.
   /// [sourceSettings] Source configuration.
-  DataflowOperationResponse({
+  const DataflowOperationResponse({
     this.builtInTransformationSettings,
     this.destinationSettings,
     this.name,

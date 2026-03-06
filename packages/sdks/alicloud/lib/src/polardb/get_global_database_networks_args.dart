@@ -31,7 +31,7 @@ class GetGlobalDatabaseNetworksArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the Global Database Network. Valid values:
-  GetGlobalDatabaseNetworksArgs({
+  const GetGlobalDatabaseNetworksArgs({
     this.dbClusterId,
     this.description,
     this.gdnId,

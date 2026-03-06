@@ -31,7 +31,7 @@ class MachineRunCommandInstanceViewResponse {
   /// [output] Script output stream.
   /// [startTime] Script start time.
   /// [statuses] The  status information.
-  MachineRunCommandInstanceViewResponse({
+  const MachineRunCommandInstanceViewResponse({
     this.endTime,
     this.error,
     this.executionMessage,

@@ -8,7 +8,7 @@ class SparkClusterComponentVersion {
 
   /// Creates a new [SparkClusterComponentVersion].
   /// [spark] The version of Spark which should be used for this HDInsight Spark Cluster. Changing this forces a new resource to be created.
-  SparkClusterComponentVersion({
+  const SparkClusterComponentVersion({
     required this.spark,
   });
 

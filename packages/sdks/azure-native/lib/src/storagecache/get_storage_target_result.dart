@@ -57,7 +57,7 @@ class GetStorageTargetResult {
   /// [targetType] Type of the Storage Target.
   /// [type] Type of the Storage Target; Microsoft.StorageCache/Cache/StorageTarget
   /// [unknown] Properties when targetType is unknown.
-  GetStorageTargetResult({
+  const GetStorageTargetResult({
     required this.allocationPercentage,
     required this.azureApiVersion,
     this.blobNfs,

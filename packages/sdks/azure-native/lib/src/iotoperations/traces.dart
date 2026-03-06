@@ -19,7 +19,7 @@ class Traces {
   /// [mode] The toggle to enable/disable traces.
   /// [selfTracing] The self tracing properties.
   /// [spanChannelCapacity] The span channel capacity.
-  Traces({
+  const Traces({
     this.cacheSizeMegabytes,
     this.mode,
     this.selfTracing,

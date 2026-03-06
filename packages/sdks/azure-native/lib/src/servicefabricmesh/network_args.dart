@@ -25,7 +25,7 @@ class NetworkArgs {
   /// [properties] Describes properties of a network resource.
   /// [resourceGroupName] Azure resource group name
   /// [tags] Resource tags.
-  NetworkArgs({
+  const NetworkArgs({
     this.location,
     this.networkResourceName,
     required this.properties,

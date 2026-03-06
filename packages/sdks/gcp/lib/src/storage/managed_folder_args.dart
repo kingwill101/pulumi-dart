@@ -22,7 +22,7 @@ class ManagedFolderArgs {
   /// [bucket] The name of the bucket that contains the managed folder.
   /// [forceDestroy] Allows the deletion of a managed folder even if contains
   /// [name] The name of the managed folder expressed as a path. Must include
-  ManagedFolderArgs({
+  const ManagedFolderArgs({
     required this.bucket,
     this.forceDestroy,
     this.name,

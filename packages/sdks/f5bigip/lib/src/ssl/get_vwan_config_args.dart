@@ -18,7 +18,7 @@ class GetVWanConfigArgs {
   /// [azureVwanName] Name of the Azure vWAN Name
   /// [azureVwanResourcegroup] Name of the Azure vWAN resource group
   /// [azureVwanVpnsite] Name of the Azure vWAN VPN site from which configuration to be download
-  GetVWanConfigArgs({
+  const GetVWanConfigArgs({
     required this.azureVwanName,
     required this.azureVwanResourcegroup,
     required this.azureVwanVpnsite,

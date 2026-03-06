@@ -15,7 +15,7 @@ class ManagementGroupLogSettingsResponse {
   /// [category] Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
   /// [categoryGroup] Name of a Management Group Diagnostic Log category group for a resource type this setting is applied to.
   /// [enabled] a value indicating whether this log is enabled.
-  ManagementGroupLogSettingsResponse({
+  const ManagementGroupLogSettingsResponse({
     this.category,
     this.categoryGroup,
     required this.enabled,

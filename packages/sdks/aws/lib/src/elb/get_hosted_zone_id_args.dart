@@ -12,7 +12,7 @@ class GetHostedZoneIdArgs {
 
   /// Creates a new [GetHostedZoneIdArgs].
   /// [region] Name of the Region whose AWS ELB HostedZoneId is desired. Defaults to the Region set in the provider configuration.
-  GetHostedZoneIdArgs({
+  const GetHostedZoneIdArgs({
     this.region,
   });
 

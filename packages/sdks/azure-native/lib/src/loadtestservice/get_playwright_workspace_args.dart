@@ -15,7 +15,7 @@ class GetPlaywrightWorkspaceArgs {
   /// Creates a new [GetPlaywrightWorkspaceArgs].
   /// [playwrightWorkspaceName] The name of the PlaywrightWorkspace
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPlaywrightWorkspaceArgs({
+  const GetPlaywrightWorkspaceArgs({
     required this.playwrightWorkspaceName,
     required this.resourceGroupName,
   });

@@ -14,7 +14,7 @@ class TlsRouteRouteRuleResponse {
   /// Creates a new [TlsRouteRouteRuleResponse].
   /// [action] The detailed rule defining how to route matched traffic.
   /// [matches] RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
-  TlsRouteRouteRuleResponse({
+  const TlsRouteRouteRuleResponse({
     required this.action,
     required this.matches,
   });

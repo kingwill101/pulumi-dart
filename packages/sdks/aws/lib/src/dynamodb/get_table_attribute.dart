@@ -10,7 +10,7 @@ class GetTableAttribute {
   /// Creates a new [GetTableAttribute].
   /// [name] Name of the DynamoDB table.
   /// [type] Required.
-  GetTableAttribute({
+  const GetTableAttribute({
     required this.name,
     required this.type,
   });

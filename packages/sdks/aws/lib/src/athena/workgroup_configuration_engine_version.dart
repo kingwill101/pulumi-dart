@@ -11,7 +11,7 @@ class WorkgroupConfigurationEngineVersion {
   /// Creates a new [WorkgroupConfigurationEngineVersion].
   /// [effectiveEngineVersion] The engine version on which the query runs. If `selected_engine_version` is set to `AUTO`, the effective engine version is chosen by Athena.
   /// [selectedEngineVersion] Requested engine version. Defaults to `AUTO`.
-  WorkgroupConfigurationEngineVersion({
+  const WorkgroupConfigurationEngineVersion({
     this.effectiveEngineVersion,
     this.selectedEngineVersion,
   });

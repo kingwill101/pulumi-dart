@@ -15,7 +15,7 @@ class GetSigningJobArgs {
   /// Creates a new [GetSigningJobArgs].
   /// [jobId] ID of the signing job on output.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetSigningJobArgs({
+  const GetSigningJobArgs({
     required this.jobId,
     this.region,
   });

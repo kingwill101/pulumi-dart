@@ -8,7 +8,7 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful {
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful].
   /// [behavior] Behavior when ungraceful. Valid values: `skip`.
-  PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful({
+  const PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful({
     required this.behavior,
   });
 

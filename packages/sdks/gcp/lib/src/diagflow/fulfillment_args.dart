@@ -29,7 +29,7 @@ class FulfillmentArgs {
   /// [features] The field defines whether the fulfillment is enabled for certain features.
   /// [genericWebService] Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
   /// [project] The ID of the project in which the resource belongs.
-  FulfillmentArgs({
+  const FulfillmentArgs({
     required this.displayName,
     this.enabled,
     this.features,

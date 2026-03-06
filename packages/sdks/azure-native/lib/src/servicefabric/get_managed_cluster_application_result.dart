@@ -50,7 +50,7 @@ class GetManagedClusterApplicationResult {
   /// [type] Azure resource type.
   /// [upgradePolicy] Describes the policy for a monitored application upgrade.
   /// [version] The version of the application type as defined in the application manifest.
-  GetManagedClusterApplicationResult({
+  const GetManagedClusterApplicationResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

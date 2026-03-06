@@ -13,7 +13,7 @@ class ListServerSitesControllerHealthSummaryResult {
   /// Creates a new [ListServerSitesControllerHealthSummaryResult].
   /// [nextLink] Gets the value of next link.
   /// [value] Gets the list of SiteHealthSummary.
-  ListServerSitesControllerHealthSummaryResult({
+  const ListServerSitesControllerHealthSummaryResult({
     required this.nextLink,
     required this.value,
   });

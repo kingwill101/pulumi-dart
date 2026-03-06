@@ -18,7 +18,7 @@ class VolumeTieringPolicy {
   /// [coolingThresholdDays] Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
   /// [hotTierBypassModeEnabled] Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
   /// [tierAction] Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
-  VolumeTieringPolicy({
+  const VolumeTieringPolicy({
     this.coolingThresholdDays,
     this.hotTierBypassModeEnabled,
     this.tierAction,

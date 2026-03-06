@@ -27,7 +27,7 @@ class ColumnResponse {
   /// [isHidden] Is column hidden.
   /// [name] Column name.
   /// [type] Column data type.
-  ColumnResponse({
+  const ColumnResponse({
     this.dataTypeHint,
     this.description,
     this.displayName,

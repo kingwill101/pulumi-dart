@@ -21,7 +21,7 @@ class GetCustomizationTaskErrorDetailsArgs {
   /// [devCenterName] The name of the devcenter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [taskName] The name of the Task.
-  GetCustomizationTaskErrorDetailsArgs({
+  const GetCustomizationTaskErrorDetailsArgs({
     required this.catalogName,
     required this.devCenterName,
     required this.resourceGroupName,

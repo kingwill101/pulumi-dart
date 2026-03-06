@@ -11,7 +11,7 @@ class LinkedServiceIntegrationRuntime {
   /// Creates a new [LinkedServiceIntegrationRuntime].
   /// [name] The integration runtime reference to associate with the Synapse Linked Service.
   /// [parameters] A map of parameters to associate with the integration runtime.
-  LinkedServiceIntegrationRuntime({
+  const LinkedServiceIntegrationRuntime({
     required this.name,
     this.parameters,
   });

@@ -34,7 +34,7 @@ class LogsLogGroupPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  LogsLogGroupPropertiesResponse({
+  const LogsLogGroupPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

@@ -21,7 +21,7 @@ class GetRolesArgs {
   /// [ids] A list of Resource Manager Role IDs.
   /// [nameRegex] A regex string to filter results by role name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetRolesArgs({
+  const GetRolesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

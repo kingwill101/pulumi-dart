@@ -15,7 +15,7 @@ class MaintenanceScheduleResponseMemcacheV1beta2 {
   /// [endTime] The end time of any upcoming scheduled maintenance for this instance.
   /// [scheduleDeadlineTime] The deadline that the maintenance schedule start time can not go beyond, including reschedule.
   /// [startTime] The start time of any upcoming scheduled maintenance for this instance.
-  MaintenanceScheduleResponseMemcacheV1beta2({
+  const MaintenanceScheduleResponseMemcacheV1beta2({
     required this.endTime,
     required this.scheduleDeadlineTime,
     required this.startTime,

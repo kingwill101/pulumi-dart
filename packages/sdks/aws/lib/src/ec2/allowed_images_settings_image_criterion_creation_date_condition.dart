@@ -8,7 +8,7 @@ class AllowedImagesSettingsImageCriterionCreationDateCondition {
 
   /// Creates a new [AllowedImagesSettingsImageCriterionCreationDateCondition].
   /// [maximumDaysSinceCreated] Maximum number of days since the AMI was created.
-  AllowedImagesSettingsImageCriterionCreationDateCondition({
+  const AllowedImagesSettingsImageCriterionCreationDateCondition({
     this.maximumDaysSinceCreated,
   });
 

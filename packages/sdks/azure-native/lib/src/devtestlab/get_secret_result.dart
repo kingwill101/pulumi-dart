@@ -32,7 +32,7 @@ class GetSecretResult {
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [value] The value of the secret for secret creation.
-  GetSecretResult({
+  const GetSecretResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

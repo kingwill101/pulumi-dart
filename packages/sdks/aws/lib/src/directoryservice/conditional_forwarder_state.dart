@@ -18,7 +18,7 @@ class ConditionalForwarderState {
   /// [dnsIps] A list of forwarder IP addresses.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [remoteDomainName] The fully qualified domain name of the remote domain for which forwarders will be used.
-  ConditionalForwarderState({
+  const ConditionalForwarderState({
     this.directoryId,
     this.dnsIps,
     this.region,

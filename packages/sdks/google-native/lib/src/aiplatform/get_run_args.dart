@@ -19,7 +19,7 @@ class GetRunArgs {
   /// [project] Optional.
   /// [runId] Required.
   /// [tensorboardId] Required.
-  GetRunArgs({
+  const GetRunArgs({
     required this.experimentId,
     required this.location,
     this.project,

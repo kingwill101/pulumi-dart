@@ -13,7 +13,7 @@ class EncryptionProperties {
   /// Creates a new [EncryptionProperties].
   /// [identity] All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
   /// [keyUrl] key encryption key Url, versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
-  EncryptionProperties({
+  const EncryptionProperties({
     this.identity,
     this.keyUrl,
   });

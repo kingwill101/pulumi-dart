@@ -27,7 +27,7 @@ class TableVerticalFeaturizationSettingsResponse {
   /// [enableDnnFeaturization] Determines whether to use Dnn based featurizers for data featurization.
   /// [mode] Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
   /// [transformerParams] User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
-  TableVerticalFeaturizationSettingsResponse({
+  const TableVerticalFeaturizationSettingsResponse({
     this.blockedTransformers,
     this.columnNameAndTypes,
     this.datasetLanguage,

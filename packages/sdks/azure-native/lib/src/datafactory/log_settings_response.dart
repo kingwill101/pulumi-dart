@@ -17,7 +17,7 @@ class LogSettingsResponse {
   /// [copyActivityLogSettings] Specifies settings for copy activity log.
   /// [enableCopyActivityLog] Specifies whether to enable copy activity log. Type: boolean (or Expression with resultType boolean).
   /// [logLocationSettings] Log location settings customer needs to provide when enabling log.
-  LogSettingsResponse({
+  const LogSettingsResponse({
     this.copyActivityLogSettings,
     this.enableCopyActivityLog,
     required this.logLocationSettings,

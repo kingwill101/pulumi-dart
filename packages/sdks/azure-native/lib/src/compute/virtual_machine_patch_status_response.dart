@@ -18,7 +18,7 @@ class VirtualMachinePatchStatusResponse {
   /// [availablePatchSummary] The available patch summary of the latest assessment operation for the virtual machine.
   /// [configurationStatuses] The enablement status of the specified patchMode
   /// [lastPatchInstallationSummary] The installation summary of the latest installation operation for the virtual machine.
-  VirtualMachinePatchStatusResponse({
+  const VirtualMachinePatchStatusResponse({
     this.availablePatchSummary,
     required this.configurationStatuses,
     this.lastPatchInstallationSummary,

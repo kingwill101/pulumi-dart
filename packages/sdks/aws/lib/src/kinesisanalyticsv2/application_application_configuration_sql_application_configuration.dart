@@ -17,7 +17,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfiguration {
   /// [input] The input stream used by the application.
   /// [outputs] The destination streams used by the application.
   /// [referenceDataSource] The reference data source used by the application.
-  ApplicationApplicationConfigurationSqlApplicationConfiguration({
+  const ApplicationApplicationConfigurationSqlApplicationConfiguration({
     this.input,
     this.outputs,
     this.referenceDataSource,

@@ -9,7 +9,7 @@ class PrivateConnectivity {
 
   /// Creates a new [PrivateConnectivity].
   /// [privateConnection] The resource name (URI) of the private connection.
-  PrivateConnectivity({
+  const PrivateConnectivity({
     required this.privateConnection,
   });
 

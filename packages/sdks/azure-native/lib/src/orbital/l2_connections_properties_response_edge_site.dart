@@ -9,7 +9,7 @@ class L2ConnectionsPropertiesResponseEdgeSite {
 
   /// Creates a new [L2ConnectionsPropertiesResponseEdgeSite].
   /// [id] Resource ID.
-  L2ConnectionsPropertiesResponseEdgeSite({
+  const L2ConnectionsPropertiesResponseEdgeSite({
     required this.id,
   });
 

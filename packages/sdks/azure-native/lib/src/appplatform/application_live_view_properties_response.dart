@@ -13,7 +13,7 @@ class ApplicationLiveViewPropertiesResponse {
   /// Creates a new [ApplicationLiveViewPropertiesResponse].
   /// [components] Component details of Application Live View
   /// [provisioningState] State of the Application Live View.
-  ApplicationLiveViewPropertiesResponse({
+  const ApplicationLiveViewPropertiesResponse({
     required this.components,
     required this.provisioningState,
   });

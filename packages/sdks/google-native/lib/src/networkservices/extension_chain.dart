@@ -17,7 +17,7 @@ class ExtensionChain {
   /// [extensions] A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains are limited to 1 extension per extension chain.
   /// [matchCondition] Conditions under which this chain is invoked for a request.
   /// [name] The name for this extension chain. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
-  ExtensionChain({
+  const ExtensionChain({
     required this.extensions,
     required this.matchCondition,
     required this.name,

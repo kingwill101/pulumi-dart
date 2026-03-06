@@ -21,7 +21,7 @@ class DataFlow {
   /// [outputStream] The output stream of the transform. Only required if the transform changes data to a different stream.
   /// [streams] List of streams for this data flow.
   /// [transformKql] The KQL query to transform stream data.
-  DataFlow({
+  const DataFlow({
     this.builtInTransform,
     this.destinations,
     this.outputStream,

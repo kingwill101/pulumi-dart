@@ -11,7 +11,7 @@ class DdrInstanceParameter {
   /// Creates a new [DdrInstanceParameter].
   /// [name] The parameter name.
   /// [value] The parameter value.
-  DdrInstanceParameter({
+  const DdrInstanceParameter({
     required this.name,
     required this.value,
   });

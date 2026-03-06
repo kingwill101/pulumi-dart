@@ -18,7 +18,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
   /// [collection] A collection of resources for this filter to apply to.
   /// [databaseResourceReference] The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
   /// [others] Match discovery resources not covered by any other filter.
-  PreventionDiscoveryConfigTargetCloudSqlTargetFilter({
+  const PreventionDiscoveryConfigTargetCloudSqlTargetFilter({
     this.collection,
     this.databaseResourceReference,
     this.others,

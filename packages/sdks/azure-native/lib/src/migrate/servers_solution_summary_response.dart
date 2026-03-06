@@ -25,7 +25,7 @@ class ServersSolutionSummaryResponse {
   /// [migratedCount] Gets or sets the count of servers migrated.
   /// [replicatingCount] Gets or sets the count of servers being replicated.
   /// [testMigratedCount] Gets or sets the count of servers test migrated.
-  ServersSolutionSummaryResponse({
+  const ServersSolutionSummaryResponse({
     this.assessedCount,
     this.discoveredCount,
     required this.instanceType,

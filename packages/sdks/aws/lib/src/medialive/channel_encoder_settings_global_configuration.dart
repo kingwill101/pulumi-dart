@@ -24,7 +24,7 @@ class ChannelEncoderSettingsGlobalConfiguration {
   /// [outputLockingMode] Indicates how MediaLive pipelines are synchronized. PIPELINE\_LOCKING - MediaLive will attempt to synchronize the output of each pipeline to the other. EPOCH\_LOCKING - MediaLive will attempt to synchronize the output of each pipeline to the Unix epoch.
   /// [outputTimingSource] Indicates whether the rate of frames emitted by the Live encoder should be paced by its system clock (which optionally may be locked to another source via NTP) or should be locked to the clock of the source that is providing the input stream.
   /// [supportLowFramerateInputs] Adjusts video input buffer for streams with very low video framerates. This is commonly set to enabled for music channels with less than one video frame per second.
-  ChannelEncoderSettingsGlobalConfiguration({
+  const ChannelEncoderSettingsGlobalConfiguration({
     this.initialAudioGain,
     this.inputEndAction,
     this.inputLossBehavior,

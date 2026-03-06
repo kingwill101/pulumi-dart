@@ -15,7 +15,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry].
   /// [key] Key of the map entry.
   /// [value] Value of the map entry.
-  AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry({
+  const AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry({
     this.key,
     this.value,
   });

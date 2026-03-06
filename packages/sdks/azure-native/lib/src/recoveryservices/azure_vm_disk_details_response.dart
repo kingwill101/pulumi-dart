@@ -36,7 +36,7 @@ class AzureVmDiskDetailsResponse {
   /// [vhdId] The VHD id.
   /// [vhdName] VHD name.
   /// [vhdType] VHD type.
-  AzureVmDiskDetailsResponse({
+  const AzureVmDiskDetailsResponse({
     this.customTargetDiskName,
     this.diskEncryptionSetId,
     this.diskId,

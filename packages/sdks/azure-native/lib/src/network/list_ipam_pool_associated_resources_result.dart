@@ -12,7 +12,7 @@ class ListIpamPoolAssociatedResourcesResult {
   /// Creates a new [ListIpamPoolAssociatedResourcesResult].
   /// [nextLink] The link used to get the next page of operations.
   /// [value] Optional.
-  ListIpamPoolAssociatedResourcesResult({
+  const ListIpamPoolAssociatedResourcesResult({
     this.nextLink,
     this.value,
   });

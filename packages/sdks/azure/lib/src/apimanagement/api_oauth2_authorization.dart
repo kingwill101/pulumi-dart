@@ -11,7 +11,7 @@ class ApiOauth2Authorization {
   /// Creates a new [ApiOauth2Authorization].
   /// [authorizationServerName] OAuth authorization server identifier. The name of an OAuth2 Authorization Server.
   /// [scope] Operations scope.
-  ApiOauth2Authorization({
+  const ApiOauth2Authorization({
     required this.authorizationServerName,
     this.scope,
   });

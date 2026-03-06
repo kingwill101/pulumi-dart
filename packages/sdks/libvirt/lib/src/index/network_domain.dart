@@ -11,7 +11,7 @@ class NetworkDomain {
   /// Creates a new [NetworkDomain].
   /// [localOnly] Sets whether the domain is local only, preventing it from being accessible externally.
   /// [name] Specifies the name of the domain within the network configuration.
-  NetworkDomain({
+  const NetworkDomain({
     this.localOnly,
     this.name,
   });

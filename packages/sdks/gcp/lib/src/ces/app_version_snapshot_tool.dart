@@ -83,7 +83,7 @@ class AppVersionSnapshotTool {
   /// [pythonFunctions] (Output)
   /// [systemTools] (Output)
   /// [updateTime] (Output)
-  AppVersionSnapshotTool({
+  const AppVersionSnapshotTool({
     this.clientFunctions,
     this.createTime,
     this.dataStoreTools,

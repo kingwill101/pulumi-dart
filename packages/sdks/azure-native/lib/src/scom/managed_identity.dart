@@ -12,7 +12,7 @@ class ManagedIdentity {
   /// Creates a new [ManagedIdentity].
   /// [type] The identity type
   /// [userAssignedIdentities] The resource ids of the user assigned identities to use
-  ManagedIdentity({
+  const ManagedIdentity({
     this.type,
     this.userAssignedIdentities,
   });

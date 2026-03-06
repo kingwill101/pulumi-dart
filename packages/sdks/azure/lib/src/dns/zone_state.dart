@@ -28,7 +28,7 @@ class ZoneState {
   /// [resourceGroupName] Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   /// [soaRecord] A `soa_record` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  ZoneState({
+  const ZoneState({
     this.maxNumberOfRecordSets,
     this.name,
     this.nameServers,

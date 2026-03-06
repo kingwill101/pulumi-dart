@@ -22,7 +22,7 @@ class DataboxJobSecretsResponse {
   /// [error] Error while fetching the secrets.
   /// [jobSecretsType] Used to indicate what type of job secrets object.
   /// [podSecrets] Contains the list of secret objects for a job.
-  DataboxJobSecretsResponse({
+  const DataboxJobSecretsResponse({
     required this.dcAccessSecurityCode,
     required this.error,
     required this.jobSecretsType,

@@ -33,7 +33,7 @@ class ComputeStartStopScheduleResponse {
   /// [schedule] [Deprecated] Not used any more.
   /// [status] Is the schedule enabled or disabled?
   /// [triggerType] [Required] The schedule trigger type.
-  ComputeStartStopScheduleResponse({
+  const ComputeStartStopScheduleResponse({
     this.action,
     this.cron,
     required this.id,

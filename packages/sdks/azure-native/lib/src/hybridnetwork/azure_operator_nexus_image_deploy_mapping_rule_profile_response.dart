@@ -13,7 +13,7 @@ class AzureOperatorNexusImageDeployMappingRuleProfileResponse {
   /// Creates a new [AzureOperatorNexusImageDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.
   /// [imageMappingRuleProfile] The vhd mapping rule profile.
-  AzureOperatorNexusImageDeployMappingRuleProfileResponse({
+  const AzureOperatorNexusImageDeployMappingRuleProfileResponse({
     this.applicationEnablement,
     this.imageMappingRuleProfile,
   });

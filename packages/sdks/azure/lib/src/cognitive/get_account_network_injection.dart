@@ -11,7 +11,7 @@ class GetAccountNetworkInjection {
   /// Creates a new [GetAccountNetworkInjection].
   /// [scenario] The feature that network injection is applied to.
   /// [subnetId] The ID of the subnet which is able to access this Cognitive Services Account.
-  GetAccountNetworkInjection({
+  const GetAccountNetworkInjection({
     required this.scenario,
     required this.subnetId,
   });

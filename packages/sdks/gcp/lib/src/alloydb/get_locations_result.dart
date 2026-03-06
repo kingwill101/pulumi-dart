@@ -15,7 +15,7 @@ class GetLocationsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [locations] Contains a list of `location`, which contains the details about a particular location.
   /// [project] Optional.
-  GetLocationsResult({
+  const GetLocationsResult({
     required this.id,
     required this.locations,
     this.project,

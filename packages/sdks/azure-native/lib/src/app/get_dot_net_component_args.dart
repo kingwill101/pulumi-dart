@@ -18,7 +18,7 @@ class GetDotNetComponentArgs {
   /// [environmentName] Name of the Managed Environment.
   /// [name] Name of the .NET Component.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDotNetComponentArgs({
+  const GetDotNetComponentArgs({
     required this.environmentName,
     required this.name,
     required this.resourceGroupName,

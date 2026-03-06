@@ -37,7 +37,7 @@ class GetIssueModelResult {
   /// [state] State of the model.
   /// [trainingStats] Immutable. The issue model's label statistics on its training data.
   /// [updateTime] The most recent time at which the issue model was updated.
-  GetIssueModelResult({
+  const GetIssueModelResult({
     required this.createTime,
     required this.displayName,
     required this.inputDataConfig,

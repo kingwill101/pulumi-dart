@@ -67,7 +67,7 @@ class GetAuthorityResult {
   /// [type] Required.
   /// [updateTime] Required.
   /// [userDefinedAccessUrls] Required.
-  GetAuthorityResult({
+  const GetAuthorityResult({
     required this.accessUrls,
     this.certificateAuthorityId,
     required this.configs,

@@ -14,7 +14,7 @@ class AppTemplateInitContainerVolumeMount {
   /// [name] The name of the Volume to be mounted in the container.
   /// [path] The path in the container at which to mount this volume.
   /// [subPath] The sub path of the volume to be mounted in the container.
-  AppTemplateInitContainerVolumeMount({
+  const AppTemplateInitContainerVolumeMount({
     required this.name,
     required this.path,
     this.subPath,

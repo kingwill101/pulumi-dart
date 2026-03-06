@@ -19,7 +19,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig {
   /// [disabled] (Output)
   /// [modelSettings] (Output)
   /// [prompt] (Output)
-  AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig({
+  const AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig({
     this.disabled,
     this.modelSettings,
     this.prompt,

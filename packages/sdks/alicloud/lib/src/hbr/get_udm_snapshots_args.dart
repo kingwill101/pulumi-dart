@@ -33,7 +33,7 @@ class GetUdmSnapshotsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [sourceType] Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
   /// [startTime] Start Time
-  GetUdmSnapshotsArgs({
+  const GetUdmSnapshotsArgs({
     this.diskId,
     required this.endTime,
     this.ids,

@@ -14,7 +14,7 @@ class ApplicationUpdateStrategyV2BatchUpdate {
   /// [batch] The number of batches in which you want to release the instances.
   /// [batchWaitTime] The batch wait time.
   /// [releaseType] The processing method for the batches. Valid values: `auto` and `manual`.
-  ApplicationUpdateStrategyV2BatchUpdate({
+  const ApplicationUpdateStrategyV2BatchUpdate({
     this.batch,
     this.batchWaitTime,
     this.releaseType,

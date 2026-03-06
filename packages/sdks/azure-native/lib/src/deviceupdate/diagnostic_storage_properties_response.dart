@@ -15,7 +15,7 @@ class DiagnosticStoragePropertiesResponse {
   /// [authenticationType] Authentication Type
   /// [connectionString] ConnectionString of the diagnostic storage account
   /// [resourceId] ResourceId of the diagnostic storage account
-  DiagnosticStoragePropertiesResponse({
+  const DiagnosticStoragePropertiesResponse({
     required this.authenticationType,
     this.connectionString,
     required this.resourceId,

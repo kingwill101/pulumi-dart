@@ -18,7 +18,7 @@ class OnPremClusterResponseGkehubV1beta1 {
   /// [clusterMissing] If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
   /// [clusterType] Immutable. The on prem cluster's type.
   /// [resourceLink] Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
-  OnPremClusterResponseGkehubV1beta1({
+  const OnPremClusterResponseGkehubV1beta1({
     required this.adminCluster,
     required this.clusterMissing,
     required this.clusterType,

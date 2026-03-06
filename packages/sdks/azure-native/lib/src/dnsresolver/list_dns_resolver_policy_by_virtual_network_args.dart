@@ -15,7 +15,7 @@ class ListDnsResolverPolicyByVirtualNetworkArgs {
   /// Creates a new [ListDnsResolverPolicyByVirtualNetworkArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualNetworkName] The name of the virtual network.
-  ListDnsResolverPolicyByVirtualNetworkArgs({
+  const ListDnsResolverPolicyByVirtualNetworkArgs({
     required this.resourceGroupName,
     required this.virtualNetworkName,
   });

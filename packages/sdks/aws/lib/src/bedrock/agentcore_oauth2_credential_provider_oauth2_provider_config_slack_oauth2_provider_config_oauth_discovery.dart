@@ -12,7 +12,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderCo
   /// Creates a new [AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfigOauthDiscovery].
   /// [authorizationServerMetadatas] Manual OAuth2 authorization server metadata configuration. Cannot be used together with `discovery_url`. See `authorization_server_metadata` below.
   /// [discoveryUrl] OpenID Connect discovery URL (e.g., `https://provider.com/.well-known/openid-configuration`). Cannot be used together with `authorization_server_metadata`.
-  AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfigOauthDiscovery({
+  const AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfigOauthDiscovery({
     required this.authorizationServerMetadatas,
     required this.discoveryUrl,
   });

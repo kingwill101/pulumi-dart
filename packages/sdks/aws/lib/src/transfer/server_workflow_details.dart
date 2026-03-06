@@ -13,7 +13,7 @@ class ServerWorkflowDetails {
   /// Creates a new [ServerWorkflowDetails].
   /// [onPartialUpload] A trigger that starts a workflow if a file is only partially uploaded. See Workflow Detail below. See `on_partial_upload` Block below for details.
   /// [onUpload] A trigger that starts a workflow: the workflow begins to execute after a file is uploaded. See `on_upload` Block below for details.
-  ServerWorkflowDetails({
+  const ServerWorkflowDetails({
     this.onPartialUpload,
     this.onUpload,
   });

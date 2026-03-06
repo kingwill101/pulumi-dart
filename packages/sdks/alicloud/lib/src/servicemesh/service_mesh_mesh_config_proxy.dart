@@ -20,7 +20,7 @@ class ServiceMeshMeshConfigProxy {
   /// [limitMemory] Sidecar injector Pods on the throttle
   /// [requestCpu] Sidecar injector Pods on the requested resource
   /// [requestMemory] Sidecar injector Pods on the requested resource
-  ServiceMeshMeshConfigProxy({
+  const ServiceMeshMeshConfigProxy({
     this.clusterDomain,
     this.limitCpu,
     this.limitMemory,

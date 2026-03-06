@@ -57,7 +57,7 @@ class VirtualMachineConfig {
   /// [shieldedInstanceConfig] Optional. Shielded VM Instance configuration settings.
   /// [subnet] Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
   /// [tags] Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
-  VirtualMachineConfig({
+  const VirtualMachineConfig({
     this.acceleratorConfig,
     this.bootImage,
     this.containerImages,

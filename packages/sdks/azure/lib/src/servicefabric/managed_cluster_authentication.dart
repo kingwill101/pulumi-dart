@@ -13,7 +13,7 @@ class ManagedClusterAuthentication {
   /// Creates a new [ManagedClusterAuthentication].
   /// [activeDirectory] A `active_directory` block as defined above.
   /// [certificates] One or more `certificate` blocks as defined below.
-  ManagedClusterAuthentication({
+  const ManagedClusterAuthentication({
     this.activeDirectory,
     this.certificates,
   });

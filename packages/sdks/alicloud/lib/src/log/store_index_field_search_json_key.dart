@@ -19,7 +19,7 @@ class StoreIndexFieldSearchJsonKey {
   /// [docValue] Whether to enable statistics. default to true.
   /// [name] When using the json_keys field, this field is required.
   /// [type] The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-  StoreIndexFieldSearchJsonKey({
+  const StoreIndexFieldSearchJsonKey({
     this.alias,
     this.docValue,
     required this.name,

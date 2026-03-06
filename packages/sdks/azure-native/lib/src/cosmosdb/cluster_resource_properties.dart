@@ -84,7 +84,7 @@ class ClusterResourceProperties {
   /// [replicationFactor] Number of copies of data maintained by the cluster
   /// [restoreFromBackupId] To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
   /// [subnetId] Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/&lt;subscription id&gt;/resourceGroups/&lt;resource group&gt;/providers/Microsoft.Network/virtualNetworks/&lt;virtual network&gt;/subnets/&lt;subnet&gt;'
-  ClusterResourceProperties({
+  const ClusterResourceProperties({
     this.allocationState,
     this.authenticationMethod,
     this.availabilityZone,

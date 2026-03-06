@@ -12,7 +12,7 @@ class GetVpcArgs {
 
   /// Creates a new [GetVpcArgs].
   /// [id] The unique id of this VPC.
-  GetVpcArgs({
+  const GetVpcArgs({
     required this.id,
   });
 

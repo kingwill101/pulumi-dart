@@ -11,7 +11,7 @@ class LifecyclePolicyPolicyDetailsScheduleRetainRule {
   /// [count] Optional.
   /// [interval] Optional.
   /// [intervalUnit] Optional.
-  LifecyclePolicyPolicyDetailsScheduleRetainRule({
+  const LifecyclePolicyPolicyDetailsScheduleRetainRule({
     this.count,
     this.interval,
     this.intervalUnit,

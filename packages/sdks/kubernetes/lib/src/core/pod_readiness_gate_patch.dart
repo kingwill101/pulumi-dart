@@ -9,7 +9,7 @@ class PodReadinessGatePatch {
 
   /// Creates a new [PodReadinessGatePatch].
   /// [conditionType] ConditionType refers to a condition in the pod's condition list with matching type.
-  PodReadinessGatePatch({
+  const PodReadinessGatePatch({
     this.conditionType,
   });
 

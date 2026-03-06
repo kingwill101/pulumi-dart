@@ -12,7 +12,7 @@ class SparkConfigurationParametrizationReferenceResponse {
   /// Creates a new [SparkConfigurationParametrizationReferenceResponse].
   /// [referenceName] Reference spark configuration name. Type: string (or Expression with resultType string).
   /// [type] Spark configuration reference type.
-  SparkConfigurationParametrizationReferenceResponse({
+  const SparkConfigurationParametrizationReferenceResponse({
     required this.referenceName,
     required this.type,
   });

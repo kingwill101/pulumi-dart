@@ -25,7 +25,7 @@ class GetLbFlavorDeprecatedResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The name of the flavor.
   /// [region] Required.
-  GetLbFlavorDeprecatedResult({
+  const GetLbFlavorDeprecatedResult({
     required this.description,
     required this.enabled,
     required this.flavorId,

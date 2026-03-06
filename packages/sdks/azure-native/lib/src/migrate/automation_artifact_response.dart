@@ -17,7 +17,7 @@ class AutomationArtifactResponse {
   /// [artifacts] Gets or sets the artifacts.
   /// [azureFileShareProfile] Azure file share profile for hydration of application folders not mounted on
   /// [status] Gets or sets the status of automation artifacts.
-  AutomationArtifactResponse({
+  const AutomationArtifactResponse({
     this.artifacts,
     this.azureFileShareProfile,
     this.status,

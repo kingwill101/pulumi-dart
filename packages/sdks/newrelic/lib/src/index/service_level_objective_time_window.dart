@@ -9,7 +9,7 @@ class ServiceLevelObjectiveTimeWindow {
 
   /// Creates a new [ServiceLevelObjectiveTimeWindow].
   /// [rolling] Rolling window.
-  ServiceLevelObjectiveTimeWindow({
+  const ServiceLevelObjectiveTimeWindow({
     required this.rolling,
   });
 

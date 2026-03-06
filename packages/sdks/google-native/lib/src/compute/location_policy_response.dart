@@ -12,7 +12,7 @@ class LocationPolicyResponse {
   /// Creates a new [LocationPolicyResponse].
   /// [locations] Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
   /// [targetShape] Strategy for distributing VMs across zones in a region.
-  LocationPolicyResponse({
+  const LocationPolicyResponse({
     required this.locations,
     required this.targetShape,
   });

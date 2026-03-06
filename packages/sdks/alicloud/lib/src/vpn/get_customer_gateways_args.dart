@@ -18,7 +18,7 @@ class GetCustomerGatewaysArgs {
   /// [ids] ID of the VPN customer gateways.
   /// [nameRegex] A regex string of VPN customer gateways name.
   /// [outputFile] Save the result to the file.
-  GetCustomerGatewaysArgs({
+  const GetCustomerGatewaysArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -40,7 +40,7 @@ class RoleAssignmentArtifactArgs {
   /// [resourceGroup] RoleAssignment will be scope to this resourceGroup. If empty, it scopes to the subscription.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   /// [roleDefinitionId] Azure resource ID of the RoleDefinition.
-  RoleAssignmentArtifactArgs({
+  const RoleAssignmentArtifactArgs({
     this.artifactName,
     required this.blueprintName,
     this.dependsOn,

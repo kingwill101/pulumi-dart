@@ -12,7 +12,7 @@ class ContentResponse {
   /// Creates a new [ContentResponse].
   /// [description] Description of the insight
   /// [title] Title of the insight
-  ContentResponse({
+  const ContentResponse({
     required this.description,
     required this.title,
   });

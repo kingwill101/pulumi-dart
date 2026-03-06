@@ -13,7 +13,7 @@ class AgentToolset {
   /// Creates a new [AgentToolset].
   /// [toolIds] The tools IDs to filter the toolset.
   /// [toolset] The resource name of the toolset.
-  AgentToolset({
+  const AgentToolset({
     this.toolIds,
     required this.toolset,
   });

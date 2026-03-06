@@ -18,7 +18,7 @@ class GetEncryptionSetArgs {
   /// [devCenterName] The name of the devcenter.
   /// [encryptionSetName] The name of the devcenter encryption set.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEncryptionSetArgs({
+  const GetEncryptionSetArgs({
     required this.devCenterName,
     required this.encryptionSetName,
     required this.resourceGroupName,

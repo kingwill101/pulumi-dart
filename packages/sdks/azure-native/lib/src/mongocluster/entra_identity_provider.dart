@@ -14,7 +14,7 @@ class EntraIdentityProvider {
   /// Creates a new [EntraIdentityProvider].
   /// [properties] The Entra identity properties for the user.
   /// [type] Identity provider types that a a user identity can belong to.
-  EntraIdentityProvider({
+  const EntraIdentityProvider({
     required this.properties,
     required this.type,
   });

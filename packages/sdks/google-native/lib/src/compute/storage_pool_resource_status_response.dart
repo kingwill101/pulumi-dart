@@ -30,7 +30,7 @@ class StoragePoolResourceStatusResponse {
   /// [usedBytes] Space used by data stored in disks within the storage pool (in bytes).
   /// [usedReducedBytes] Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
   /// [usedThroughput] Sum of all the disks' provisioned throughput in MB/s.
-  StoragePoolResourceStatusResponse({
+  const StoragePoolResourceStatusResponse({
     required this.aggregateDiskProvisionedIops,
     required this.aggregateDiskSizeGb,
     required this.lastResizeTimestamp,

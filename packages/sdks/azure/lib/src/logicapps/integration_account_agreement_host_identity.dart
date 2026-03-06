@@ -11,7 +11,7 @@ class IntegrationAccountAgreementHostIdentity {
   /// Creates a new [IntegrationAccountAgreementHostIdentity].
   /// [qualifier] The authenticating body that provides unique host identities to organizations.
   /// [value] The value that identifies the documents that your logic apps receive.
-  IntegrationAccountAgreementHostIdentity({
+  const IntegrationAccountAgreementHostIdentity({
     required this.qualifier,
     required this.value,
   });

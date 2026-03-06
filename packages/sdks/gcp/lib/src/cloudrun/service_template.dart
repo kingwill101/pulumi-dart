@@ -21,7 +21,7 @@ class ServiceTemplate {
   /// Creates a new [ServiceTemplate].
   /// [metadata] Optional metadata for this Revision, including labels and annotations.
   /// [spec] RevisionSpec holds the desired state of the Revision (from the client).
-  ServiceTemplate({
+  const ServiceTemplate({
     this.metadata,
     this.spec,
   });

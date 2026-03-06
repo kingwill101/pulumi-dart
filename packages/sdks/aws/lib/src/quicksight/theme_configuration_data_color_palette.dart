@@ -14,7 +14,7 @@ class ThemeConfigurationDataColorPalette {
   /// [colors] List of hexadecimal codes for the colors. Minimum of 8 items and maximum of 20 items.
   /// [emptyFillColor] The hexadecimal code of a color that applies to charts where a lack of data is highlighted.
   /// [minMaxGradients] The minimum and maximum hexadecimal codes that describe a color gradient. List of exactly 2 items.
-  ThemeConfigurationDataColorPalette({
+  const ThemeConfigurationDataColorPalette({
     this.colors,
     this.emptyFillColor,
     this.minMaxGradients,

@@ -32,7 +32,7 @@ class GetStateMachineResult {
   /// [revisionId] The revision identifier for the state machine.
   /// [roleArn] Set to the role_arn used by the state function.
   /// [status] Set to the current status of the state machine.
-  GetStateMachineResult({
+  const GetStateMachineResult({
     required this.arn,
     required this.creationDate,
     required this.definition,

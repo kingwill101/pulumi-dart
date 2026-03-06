@@ -17,7 +17,7 @@ class GetRouteTableRoute {
   /// [name] The name of the Route Table.
   /// [nextHopInIpAddress] Contains the IP address packets should be forwarded to.
   /// [nextHopType] The type of Azure hop the packet should be sent to.
-  GetRouteTableRoute({
+  const GetRouteTableRoute({
     required this.addressPrefix,
     required this.name,
     required this.nextHopInIpAddress,

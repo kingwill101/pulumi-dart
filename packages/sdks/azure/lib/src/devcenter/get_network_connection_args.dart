@@ -15,7 +15,7 @@ class GetNetworkConnectionArgs {
   /// Creates a new [GetNetworkConnectionArgs].
   /// [name] The name of this Dev Center Network Connection.
   /// [resourceGroupName] The name of the Resource Group where the Dev Center Network Connection exists.
-  GetNetworkConnectionArgs({
+  const GetNetworkConnectionArgs({
     required this.name,
     required this.resourceGroupName,
   });

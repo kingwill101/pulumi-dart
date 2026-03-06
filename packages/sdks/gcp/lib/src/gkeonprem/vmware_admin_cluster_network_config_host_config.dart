@@ -14,7 +14,7 @@ class VmwareAdminClusterNetworkConfigHostConfig {
   /// [dnsSearchDomains] DNS search domains.
   /// [dnsServers] DNS servers.
   /// [ntpServers] NTP servers.
-  VmwareAdminClusterNetworkConfigHostConfig({
+  const VmwareAdminClusterNetworkConfigHostConfig({
     this.dnsSearchDomains,
     this.dnsServers,
     this.ntpServers,

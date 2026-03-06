@@ -69,7 +69,7 @@ class GetImageIdsArgs {
   /// [tag] Search for images with a specific tag.
   /// [tags] A list of tags required to be set on the image (all
   /// [visibility] The visibility of the image. Must be one of
-  GetImageIdsArgs({
+  const GetImageIdsArgs({
     this.containerFormat,
     this.diskFormat,
     this.hidden,

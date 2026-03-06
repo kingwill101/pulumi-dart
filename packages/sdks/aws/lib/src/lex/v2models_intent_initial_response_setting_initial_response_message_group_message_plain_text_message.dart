@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessagePlai
 
   /// Creates a new [V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessagePlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessagePlainTextMessage({
+  const V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessagePlainTextMessage({
     required this.value,
   });
 

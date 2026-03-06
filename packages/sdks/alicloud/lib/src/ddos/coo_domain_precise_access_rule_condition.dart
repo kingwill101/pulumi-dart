@@ -19,7 +19,7 @@ class CooDomainPreciseAccessRuleCondition {
   /// [field] Matching field.
   /// [headerName] Custom HTTP header field name.
   /// [matchMethod] Matching method.
-  CooDomainPreciseAccessRuleCondition({
+  const CooDomainPreciseAccessRuleCondition({
     required this.content,
     required this.field,
     this.headerName,

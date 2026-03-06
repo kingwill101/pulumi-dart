@@ -13,7 +13,7 @@ class ExperimentTemplateActionParameter {
   /// Creates a new [ExperimentTemplateActionParameter].
   /// [key] Parameter name.
   /// [value] Parameter value.
-  ExperimentTemplateActionParameter({
+  const ExperimentTemplateActionParameter({
     required this.key,
     required this.value,
   });

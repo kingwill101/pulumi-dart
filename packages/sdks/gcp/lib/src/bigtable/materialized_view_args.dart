@@ -25,7 +25,7 @@ class MaterializedViewArgs {
   /// [materializedViewId] The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   /// [project] The ID of the project in which the resource belongs.
   /// [query] The materialized view's select query.
-  MaterializedViewArgs({
+  const MaterializedViewArgs({
     this.deletionProtection,
     this.instance,
     required this.materializedViewId,

@@ -9,7 +9,7 @@ class ServiceBasicPublicState {
 
   /// Creates a new [ServiceBasicPublicState].
   /// [createTime] The creation time of the resource.
-  ServiceBasicPublicState({
+  const ServiceBasicPublicState({
     this.createTime,
   });
 

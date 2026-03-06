@@ -30,7 +30,7 @@ class OrderState {
   /// [pricingCycle] The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
   /// [productCode] The product_code of market place product.
   /// [quantity] The quantity of the market product will be purchased.
-  OrderState({
+  const OrderState({
     this.components,
     this.couponId,
     this.duration,

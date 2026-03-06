@@ -30,7 +30,7 @@ class GetDatastoreResult {
   /// [state] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetDatastoreResult({
+  const GetDatastoreResult({
     required this.clusters,
     required this.createTime,
     required this.description,

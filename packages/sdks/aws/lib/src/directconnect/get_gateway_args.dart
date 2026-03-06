@@ -15,7 +15,7 @@ class GetGatewayArgs {
   /// Creates a new [GetGatewayArgs].
   /// [name] Name of the gateway to retrieve.
   /// [tags] A map of tags assigned to the gateway.
-  GetGatewayArgs({
+  const GetGatewayArgs({
     required this.name,
     this.tags,
   });

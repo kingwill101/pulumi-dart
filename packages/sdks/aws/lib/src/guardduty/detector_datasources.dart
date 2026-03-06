@@ -20,7 +20,7 @@ class DetectorDatasources {
   /// [kubernetes] Configures [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
   /// [malwareProtection] Configures [Malware Protection](https://docs.aws.amazon.com/guardduty/latest/ug/malware-protection.html).
   /// [s3Logs] Configures [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html).
-  DetectorDatasources({
+  const DetectorDatasources({
     this.kubernetes,
     this.malwareProtection,
     this.s3Logs,

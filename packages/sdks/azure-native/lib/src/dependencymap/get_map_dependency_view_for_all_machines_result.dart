@@ -28,7 +28,7 @@ class GetMapDependencyViewForAllMachinesResult {
   /// [properties] Properties for export dependencies. These should only be set if the status is Succeeded.
   /// [startTime] The start time of the operation.
   /// [status] The overall arm status of the operation. It has one of the terminal states - Succeeded/Failed/Canceled.
-  GetMapDependencyViewForAllMachinesResult({
+  const GetMapDependencyViewForAllMachinesResult({
     this.endTime,
     this.error,
     this.id,

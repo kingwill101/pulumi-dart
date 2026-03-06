@@ -16,7 +16,7 @@ class IntegrationRuntimeDataProxyPropertiesResponse {
   /// [connectVia] The self-hosted integration runtime reference.
   /// [path] The path to contain the staged data in the Blob storage.
   /// [stagingLinkedService] The staging linked service reference.
-  IntegrationRuntimeDataProxyPropertiesResponse({
+  const IntegrationRuntimeDataProxyPropertiesResponse({
     this.connectVia,
     this.path,
     this.stagingLinkedService,

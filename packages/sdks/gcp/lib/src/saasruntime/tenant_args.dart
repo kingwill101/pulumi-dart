@@ -44,7 +44,7 @@ class TenantArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [saas] A reference to the Saas that defines the product (managed service) that
   /// [tenantId] The ID value for the new tenant.
-  TenantArgs({
+  const TenantArgs({
     this.annotations,
     this.consumerResource,
     this.labels,

@@ -11,7 +11,7 @@ class ManagedResourceGroupConfigurationResponse {
   /// Creates a new [ManagedResourceGroupConfigurationResponse].
   /// [location] The location of the managed resource group. If not specified, the location of the parent resource is chosen.
   /// [name] The name for the managed resource group. If not specified, the unique name is automatically generated.
-  ManagedResourceGroupConfigurationResponse({
+  const ManagedResourceGroupConfigurationResponse({
     this.location,
     this.name,
   });

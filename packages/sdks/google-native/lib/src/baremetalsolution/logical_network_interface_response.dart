@@ -18,7 +18,7 @@ class LogicalNetworkInterfaceResponse {
   /// [ipAddress] IP address in the network
   /// [network] Name of the network
   /// [networkType] Type of network.
-  LogicalNetworkInterfaceResponse({
+  const LogicalNetworkInterfaceResponse({
     required this.defaultGateway,
     required this.ipAddress,
     required this.network,

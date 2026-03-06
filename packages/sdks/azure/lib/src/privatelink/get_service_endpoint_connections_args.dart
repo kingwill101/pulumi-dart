@@ -15,7 +15,7 @@ class GetServiceEndpointConnectionsArgs {
   /// Creates a new [GetServiceEndpointConnectionsArgs].
   /// [resourceGroupName] The name of the resource group in which the private link service resides.
   /// [serviceId] The resource ID of the private link service.
-  GetServiceEndpointConnectionsArgs({
+  const GetServiceEndpointConnectionsArgs({
     required this.resourceGroupName,
     required this.serviceId,
   });

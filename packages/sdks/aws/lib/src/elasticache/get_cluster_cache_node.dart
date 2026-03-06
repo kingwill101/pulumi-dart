@@ -18,7 +18,7 @@ class GetClusterCacheNode {
   /// [id] Required.
   /// [outpostArn] Required.
   /// [port] The port number on which each of the cache nodes will
-  GetClusterCacheNode({
+  const GetClusterCacheNode({
     required this.address,
     required this.availabilityZone,
     required this.id,

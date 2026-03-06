@@ -15,7 +15,7 @@ class Dimension {
   /// [key] The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
   /// [name] The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
   /// [value] Property value
-  Dimension({
+  const Dimension({
     this.key,
     this.name,
     this.value,

@@ -15,7 +15,7 @@ class SelfCheckResponse {
   /// [intervalSeconds] The self check interval.
   /// [mode] The toggle to enable/disable self check.
   /// [timeoutSeconds] The timeout for self check.
-  SelfCheckResponse({
+  const SelfCheckResponse({
     this.intervalSeconds,
     this.mode,
     this.timeoutSeconds,

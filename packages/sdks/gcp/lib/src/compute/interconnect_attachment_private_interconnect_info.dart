@@ -10,7 +10,7 @@ class InterconnectAttachmentPrivateInterconnectInfo {
 
   /// Creates a new [InterconnectAttachmentPrivateInterconnectInfo].
   /// [tag8021q] (Output)
-  InterconnectAttachmentPrivateInterconnectInfo({
+  const InterconnectAttachmentPrivateInterconnectInfo({
     this.tag8021q,
   });
 

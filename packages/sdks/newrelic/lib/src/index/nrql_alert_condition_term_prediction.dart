@@ -11,7 +11,7 @@ class NrqlAlertConditionTermPrediction {
   /// Creates a new [NrqlAlertConditionTermPrediction].
   /// [predictBy] BETA PREVIEW: the `predict_by` field is in limited release and only enabled for preview on a per-account basis. - The duration, in seconds, that the prediction should look into the future.
   /// [preferPredictionViolation] BETA PREVIEW: the `prefer_prediction_violation` field is in limited release and only enabled for preview on a per-account basis. - If a prediction incident is open when a term's static threshold is breached by the actual signal, default behavior is to close the prediction incident and open a static incident. Setting `prefer_prediction_violation` to `true` overrides this behavior leaving the prediction incident open and preventing a static incident from opening.
-  NrqlAlertConditionTermPrediction({
+  const NrqlAlertConditionTermPrediction({
     this.predictBy,
     this.preferPredictionViolation,
   });

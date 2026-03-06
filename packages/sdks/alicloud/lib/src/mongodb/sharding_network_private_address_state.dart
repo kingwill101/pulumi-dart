@@ -30,7 +30,7 @@ class ShardingNetworkPrivateAddressState {
   /// [networkAddresses] The connection string of the instance.
   /// [nodeId] The ID of the Shard node or ConfigServer node.
   /// [zoneId] The zone ID of the instance.
-  ShardingNetworkPrivateAddressState({
+  const ShardingNetworkPrivateAddressState({
     this.accountName,
     this.accountPassword,
     this.dbInstanceId,

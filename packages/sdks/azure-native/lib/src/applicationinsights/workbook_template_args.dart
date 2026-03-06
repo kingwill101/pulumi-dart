@@ -38,7 +38,7 @@ class WorkbookTemplateArgs {
   /// [resourceName] The name of the Application Insights component resource.
   /// [tags] Resource tags
   /// [templateData] Valid JSON object containing workbook template payload.
-  WorkbookTemplateArgs({
+  const WorkbookTemplateArgs({
     this.author,
     required this.galleries,
     this.localized,

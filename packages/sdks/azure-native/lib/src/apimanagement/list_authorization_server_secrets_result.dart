@@ -14,7 +14,7 @@ class ListAuthorizationServerSecretsResult {
   /// [clientSecret] oAuth Authorization Server Secrets.
   /// [resourceOwnerPassword] Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner password.
   /// [resourceOwnerUsername] Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner username.
-  ListAuthorizationServerSecretsResult({
+  const ListAuthorizationServerSecretsResult({
     this.clientSecret,
     this.resourceOwnerPassword,
     this.resourceOwnerUsername,

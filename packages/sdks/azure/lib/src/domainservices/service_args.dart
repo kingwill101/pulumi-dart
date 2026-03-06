@@ -49,7 +49,7 @@ class ServiceArgs {
   /// [security] A `security` block as defined below.
   /// [sku] The SKU to use when provisioning the Domain Service resource. One of `Standard`, `Enterprise` or `Premium`.
   /// [tags] A mapping of tags assigned to the resource.
-  ServiceArgs({
+  const ServiceArgs({
     this.domainConfigurationType,
     required this.domainName,
     this.filteredSyncEnabled,

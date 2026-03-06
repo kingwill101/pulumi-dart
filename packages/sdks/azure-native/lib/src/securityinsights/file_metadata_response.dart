@@ -21,7 +21,7 @@ class FileMetadataResponse {
   /// [fileFormat] The format of the file
   /// [fileName] The name of the file.
   /// [fileSize] The size of the file.
-  FileMetadataResponse({
+  const FileMetadataResponse({
     required this.deleteStatus,
     required this.fileContentUri,
     this.fileFormat,

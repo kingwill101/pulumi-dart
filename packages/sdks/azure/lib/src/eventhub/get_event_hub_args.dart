@@ -18,7 +18,7 @@ class GetEventHubArgs {
   /// [name] The name of this EventHub.
   /// [namespaceName] The name of the EventHub Namespace where the EventHub exists.
   /// [resourceGroupName] The name of the Resource Group where the EventHub exists.
-  GetEventHubArgs({
+  const GetEventHubArgs({
     required this.name,
     required this.namespaceName,
     required this.resourceGroupName,

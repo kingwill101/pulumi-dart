@@ -10,7 +10,7 @@ class ResourcePolicyWeeklyCycleComputeBeta {
 
   /// Creates a new [ResourcePolicyWeeklyCycleComputeBeta].
   /// [dayOfWeeks] Up to 7 intervals/windows, one for each day of the week.
-  ResourcePolicyWeeklyCycleComputeBeta({
+  const ResourcePolicyWeeklyCycleComputeBeta({
     this.dayOfWeeks,
   });
 

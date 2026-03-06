@@ -10,7 +10,7 @@ class GoogleCloudAiplatformV1NasJobOutputResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1NasJobOutputResponse].
   /// [multiTrialJobOutput] The output of this multi-trial Neural Architecture Search (NAS) job.
-  GoogleCloudAiplatformV1NasJobOutputResponse({
+  const GoogleCloudAiplatformV1NasJobOutputResponse({
     required this.multiTrialJobOutput,
   });
 

@@ -9,7 +9,7 @@ class StatefulRuleGroupOverride {
 
   /// Creates a new [StatefulRuleGroupOverride].
   /// [action] Property action
-  StatefulRuleGroupOverride({
+  const StatefulRuleGroupOverride({
     this.action,
   });
 

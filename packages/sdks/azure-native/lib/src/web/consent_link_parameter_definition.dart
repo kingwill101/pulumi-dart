@@ -18,7 +18,7 @@ class ConsentLinkParameterDefinition {
   /// [parameterName] Name of the parameter in the connection provider's OAuth settings
   /// [redirectUrl] Name of the parameter in the connection provider's OAuth settings
   /// [tenantId] The tenant id
-  ConsentLinkParameterDefinition({
+  const ConsentLinkParameterDefinition({
     this.objectId,
     this.parameterName,
     this.redirectUrl,

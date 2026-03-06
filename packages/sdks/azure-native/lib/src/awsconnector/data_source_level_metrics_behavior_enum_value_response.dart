@@ -9,7 +9,7 @@ class DataSourceLevelMetricsBehaviorEnumValueResponse {
 
   /// Creates a new [DataSourceLevelMetricsBehaviorEnumValueResponse].
   /// [value] Property value
-  DataSourceLevelMetricsBehaviorEnumValueResponse({
+  const DataSourceLevelMetricsBehaviorEnumValueResponse({
     this.value,
   });
 

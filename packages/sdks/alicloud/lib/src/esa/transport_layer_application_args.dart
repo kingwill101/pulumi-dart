@@ -28,7 +28,7 @@ class TransportLayerApplicationArgs {
   /// [recordName] Domain name of the transport layer application
   /// [rules] The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
   /// [siteId] Site ID.
-  TransportLayerApplicationArgs({
+  const TransportLayerApplicationArgs({
     this.crossBorderOptimization,
     this.ipAccessRule,
     this.ipv6,

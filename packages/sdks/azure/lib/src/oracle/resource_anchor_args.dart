@@ -18,7 +18,7 @@ class ResourceAnchorArgs {
   /// [name] The name which should be used for this Oracle Resource Anchor. Changing this forces a new Oracle Resource Anchor to be created.
   /// [resourceGroupName] The name of the Resource Group where the Oracle Resource Anchor should exist. Changing this forces a new Oracle Resource Anchor to be created.
   /// [tags] A mapping of tags which should be assigned to the Oracle Resource Anchor.
-  ResourceAnchorArgs({
+  const ResourceAnchorArgs({
     this.name,
     required this.resourceGroupName,
     this.tags,

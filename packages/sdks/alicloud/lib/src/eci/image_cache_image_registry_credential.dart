@@ -14,7 +14,7 @@ class ImageCacheImageRegistryCredential {
   /// [password] The password of the Image Registry.
   /// [server] The address of Image Registry without `http://` or `https://`.
   /// [userName] The user name of Image Registry.
-  ImageCacheImageRegistryCredential({
+  const ImageCacheImageRegistryCredential({
     this.password,
     this.server,
     this.userName,

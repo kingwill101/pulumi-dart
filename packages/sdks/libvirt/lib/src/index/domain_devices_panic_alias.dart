@@ -8,7 +8,7 @@ class DomainDevicesPanicAlias {
 
   /// Creates a new [DomainDevicesPanicAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesPanicAlias({
+  const DomainDevicesPanicAlias({
     required this.name,
   });
 

@@ -17,7 +17,7 @@ class PolicyVMWorkloadProtectionPolicyBackup {
   /// [frequencyInMinutes] The backup frequency in minutes for the VM Workload Backup Policy. Possible values are `15`, `30`, `60`, `120`, `240`, `480`, `720` and `1440`.
   /// [time] The time of day to perform the backup in 24hour format.
   /// [weekdays] The days of the week to perform backups on. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`. This is used when `frequency` is `Weekly`.
-  PolicyVMWorkloadProtectionPolicyBackup({
+  const PolicyVMWorkloadProtectionPolicyBackup({
     this.frequency,
     this.frequencyInMinutes,
     this.time,

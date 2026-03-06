@@ -47,7 +47,7 @@ class VolumeQuotaRuleArgs {
   /// [target] The quota rule applies to the specified user or group.
   /// [type] Types of Quota Rule.
   /// [volumeName] Name of the volume to create the quotaRule in.
-  VolumeQuotaRuleArgs({
+  const VolumeQuotaRuleArgs({
     this.description,
     required this.diskLimitMib,
     this.labels,

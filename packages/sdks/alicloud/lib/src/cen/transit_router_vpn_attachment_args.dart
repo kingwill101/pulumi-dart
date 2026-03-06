@@ -48,7 +48,7 @@ class TransitRouterVpnAttachmentArgs {
   /// [vpnId] The ID of the IPsec-VPN attachment.
   /// [vpnOwnerId] The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
   /// [zones] The Zone ID in the current region.
-  TransitRouterVpnAttachmentArgs({
+  const TransitRouterVpnAttachmentArgs({
     this.autoPublishRouteEnabled,
     this.cenId,
     this.chargeType,

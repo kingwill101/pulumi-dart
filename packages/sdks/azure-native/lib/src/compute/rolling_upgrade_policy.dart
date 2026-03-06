@@ -30,7 +30,7 @@ class RollingUpgradePolicy {
   /// [pauseTimeBetweenBatches] The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format. The default value is 0 seconds (PT0S).
   /// [prioritizeUnhealthyInstances] Upgrade all unhealthy instances in a scale set before any healthy instances.
   /// [rollbackFailedInstancesOnPolicyBreach] Rollback failed instances to previous model if the Rolling Upgrade policy is violated.
-  RollingUpgradePolicy({
+  const RollingUpgradePolicy({
     this.enableCrossZoneUpgrade,
     this.maxBatchInstancePercent,
     this.maxSurge,

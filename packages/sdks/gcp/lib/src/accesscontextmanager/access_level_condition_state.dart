@@ -62,7 +62,7 @@ class AccessLevelConditionState {
   /// [regions] The request must originate from one of the provided
   /// [requiredAccessLevels] A list of other access levels defined in the same Policy,
   /// [vpcNetworkSources] The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
-  AccessLevelConditionState({
+  const AccessLevelConditionState({
     this.accessLevel,
     this.accessPolicyId,
     this.devicePolicy,

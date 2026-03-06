@@ -13,7 +13,7 @@ class GetGradientaiKnowledgeBasesFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGradientaiKnowledgeBasesFilter({
+  const GetGradientaiKnowledgeBasesFilter({
     this.all,
     required this.key,
     this.matchBy,

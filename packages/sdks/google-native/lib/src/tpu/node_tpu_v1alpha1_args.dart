@@ -48,7 +48,7 @@ class NodeTpuV1alpha1Args {
   /// [schedulingConfig] The scheduling options for this node.
   /// [tensorflowVersion] The version of Tensorflow running in the Node.
   /// [useServiceNetworking] Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
-  NodeTpuV1alpha1Args({
+  const NodeTpuV1alpha1Args({
     required this.acceleratorType,
     this.cidrBlock,
     this.description,

@@ -21,7 +21,7 @@ class ProductTagArgs {
   /// [apiManagementProductId] The name of the API Management product. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this API Management Tag. Changing this forces a new API Management Tag to be created.
   /// [resourceGroupName] The name of the Resource Group in which the API Management Service should be exist. Changing this forces a new resource to be created.
-  ProductTagArgs({
+  const ProductTagArgs({
     required this.apiManagementName,
     required this.apiManagementProductId,
     this.name,

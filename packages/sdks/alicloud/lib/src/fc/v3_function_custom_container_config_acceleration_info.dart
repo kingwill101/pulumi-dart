@@ -8,7 +8,7 @@ class V3FunctionCustomContainerConfigAccelerationInfo {
 
   /// Creates a new [V3FunctionCustomContainerConfigAccelerationInfo].
   /// [status] Image Acceleration Status (Deprecated)
-  V3FunctionCustomContainerConfigAccelerationInfo({
+  const V3FunctionCustomContainerConfigAccelerationInfo({
     this.status,
   });
 

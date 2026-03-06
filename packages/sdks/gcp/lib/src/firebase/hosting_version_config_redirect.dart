@@ -19,7 +19,7 @@ class HostingVersionConfigRedirect {
   /// [location] The value to put in the HTTP location header of the response.
   /// [regex] The user-supplied RE2 regular expression to match against the request URL path.
   /// [statusCode] The status HTTP code to return in the response. It must be a valid 3xx status code.
-  HostingVersionConfigRedirect({
+  const HostingVersionConfigRedirect({
     this.glob,
     required this.location,
     this.regex,

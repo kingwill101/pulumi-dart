@@ -11,7 +11,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema {
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema].
   /// [inlinePayload] Optional.
   /// [s3] Optional.
-  AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema({
+  const AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema({
     this.inlinePayload,
     this.s3,
   });

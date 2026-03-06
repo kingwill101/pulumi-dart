@@ -15,7 +15,7 @@ class Tmpfs {
   /// [containerPath] The absolute file path where the tmpfs volume is to be mounted.
   /// [mountOptions] The list of tmpfs volume mount options.
   /// [size] The maximum size (in MiB) of the tmpfs volume.
-  Tmpfs({
+  const Tmpfs({
     this.containerPath,
     this.mountOptions,
     this.size,

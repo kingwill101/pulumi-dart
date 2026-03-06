@@ -184,7 +184,7 @@ class A2AReplicationDetailsResponse {
   /// [vmProtectionState] The protection state for the vm.
   /// [vmProtectionStateDescription] The protection state description for the vm.
   /// [vmSyncedConfigDetails] The synced configuration details.
-  A2AReplicationDetailsResponse({
+  const A2AReplicationDetailsResponse({
     required this.agentCertificateExpiryDate,
     this.agentExpiryDate,
     this.agentVersion,

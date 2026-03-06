@@ -33,7 +33,7 @@ class PostgresInstanceArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sku] Resource sku.
   /// [tags] Resource tags.
-  PostgresInstanceArgs({
+  const PostgresInstanceArgs({
     this.extendedLocation,
     this.location,
     this.postgresInstanceName,

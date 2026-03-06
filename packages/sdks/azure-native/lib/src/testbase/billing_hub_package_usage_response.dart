@@ -20,7 +20,7 @@ class BillingHubPackageUsageResponse {
   /// [totalUsedBillableHours] Optional.
   /// [totalUsedFreeHours] Optional.
   /// [usageEntriesGroupedByUpdateType] Optional.
-  BillingHubPackageUsageResponse({
+  const BillingHubPackageUsageResponse({
     this.applicationName,
     this.applicationVersion,
     this.azureResourceUri,

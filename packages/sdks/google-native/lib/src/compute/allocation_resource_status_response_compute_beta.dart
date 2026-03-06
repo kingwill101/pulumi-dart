@@ -10,7 +10,7 @@ class AllocationResourceStatusResponseComputeBeta {
 
   /// Creates a new [AllocationResourceStatusResponseComputeBeta].
   /// [specificSkuAllocation] Allocation Properties of this reservation.
-  AllocationResourceStatusResponseComputeBeta({
+  const AllocationResourceStatusResponseComputeBeta({
     required this.specificSkuAllocation,
   });
 

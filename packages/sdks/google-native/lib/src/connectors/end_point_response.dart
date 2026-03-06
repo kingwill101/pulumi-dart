@@ -13,7 +13,7 @@ class EndPointResponse {
   /// Creates a new [EndPointResponse].
   /// [endpointUri] The URI of the Endpoint.
   /// [headers] List of Header to be added to the Endpoint.
-  EndPointResponse({
+  const EndPointResponse({
     required this.endpointUri,
     required this.headers,
   });

@@ -18,7 +18,7 @@ class P2SVpnServerConfigRadiusClientRootCertificate {
   /// [id] Resource ID.
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [thumbprint] The Radius client root certificate thumbprint.
-  P2SVpnServerConfigRadiusClientRootCertificate({
+  const P2SVpnServerConfigRadiusClientRootCertificate({
     this.etag,
     this.id,
     this.name,

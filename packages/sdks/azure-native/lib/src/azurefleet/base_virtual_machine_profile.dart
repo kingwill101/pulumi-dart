@@ -80,7 +80,7 @@ class BaseVirtualMachineProfile {
   /// [serviceArtifactReference] Specifies the service artifact reference id used to set same image version for
   /// [storageProfile] Specifies the storage settings for the virtual machine disks.
   /// [userData] UserData for the virtual machines in the scale set, which must be base-64
-  BaseVirtualMachineProfile({
+  const BaseVirtualMachineProfile({
     this.applicationProfile,
     this.capacityReservation,
     this.diagnosticsProfile,

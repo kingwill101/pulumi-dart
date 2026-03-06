@@ -29,7 +29,7 @@ class GetBastionHostInstancesInstance {
   /// [storage] Required.
   /// [tags] Required.
   /// [userVswitchId] Required.
-  GetBastionHostInstancesInstance({
+  const GetBastionHostInstancesInstance({
     required this.bandwidth,
     required this.description,
     required this.id,

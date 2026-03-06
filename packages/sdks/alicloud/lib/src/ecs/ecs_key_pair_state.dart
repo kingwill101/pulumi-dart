@@ -31,7 +31,7 @@ class EcsKeyPairState {
   /// [publicKey] The public key of the key pair.
   /// [resourceGroupId] The ID of the resource group to which to add the key pair.
   /// [tags] A mapping of tags to assign to the resource.
-  EcsKeyPairState({
+  const EcsKeyPairState({
     this.createTime,
     this.fingerPrint,
     this.keyFile,

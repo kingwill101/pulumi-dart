@@ -28,7 +28,7 @@ class DiscoverySourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceName] discovery source resource
   /// [tags] Resource tags.
-  DiscoverySourceArgs({
+  const DiscoverySourceArgs({
     this.location,
     required this.mapName,
     this.properties,

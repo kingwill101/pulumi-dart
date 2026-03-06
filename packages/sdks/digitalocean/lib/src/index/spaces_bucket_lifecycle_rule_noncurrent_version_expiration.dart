@@ -8,7 +8,7 @@ class SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
 
   /// Creates a new [SpacesBucketLifecycleRuleNoncurrentVersionExpiration].
   /// [days] Specifies the number of days after which an object's non-current versions expire.
-  SpacesBucketLifecycleRuleNoncurrentVersionExpiration({
+  const SpacesBucketLifecycleRuleNoncurrentVersionExpiration({
     this.days,
   });
 

@@ -15,7 +15,7 @@ class AdapterPropertyOverridesResponse {
   /// [jumboPacket] This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   /// [networkDirect] This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   /// [networkDirectTechnology] This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
-  AdapterPropertyOverridesResponse({
+  const AdapterPropertyOverridesResponse({
     required this.jumboPacket,
     required this.networkDirect,
     required this.networkDirectTechnology,

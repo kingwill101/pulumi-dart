@@ -48,7 +48,7 @@ class ResourceGroupArgs {
   /// [minComputeResource] The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
   /// [nodeNum] The number of nodes.
   /// [users] The database accounts with which to associate the resource group.
-  ResourceGroupArgs({
+  const ResourceGroupArgs({
     this.clusterMode,
     this.clusterSizeResource,
     required this.dbClusterId,

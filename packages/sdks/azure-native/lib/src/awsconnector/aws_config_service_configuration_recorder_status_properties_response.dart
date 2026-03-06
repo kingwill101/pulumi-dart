@@ -31,7 +31,7 @@ class AwsConfigServiceConfigurationRecorderStatusPropertiesResponse {
   /// [lastStopTime] &lt;p&gt;The time the recorder was last stopped.&lt;/p&gt;
   /// [name] &lt;p&gt;The name of the configuration recorder.&lt;/p&gt;
   /// [recording] &lt;p&gt;Specifies whether or not the recorder is currently recording.&lt;/p&gt;
-  AwsConfigServiceConfigurationRecorderStatusPropertiesResponse({
+  const AwsConfigServiceConfigurationRecorderStatusPropertiesResponse({
     this.lastErrorCode,
     this.lastErrorMessage,
     this.lastStartTime,

@@ -34,7 +34,7 @@ class GetManagedNamespaceResult {
   /// [systemData] The system metadata relating to this resource.
   /// [tags] The tags to be persisted on the managed cluster namespace.
   /// [type] Resource type
-  GetManagedNamespaceResult({
+  const GetManagedNamespaceResult({
     required this.azureApiVersion,
     required this.eTag,
     required this.id,

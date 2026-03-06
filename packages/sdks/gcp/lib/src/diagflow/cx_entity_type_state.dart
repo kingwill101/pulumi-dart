@@ -54,7 +54,7 @@ class CxEntityTypeState {
   /// [name] The unique identifier of the entity type.
   /// [parent] The agent to create a entity type for.
   /// [redact] Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
-  CxEntityTypeState({
+  const CxEntityTypeState({
     this.autoExpansionMode,
     this.displayName,
     this.enableFuzzyExtraction,

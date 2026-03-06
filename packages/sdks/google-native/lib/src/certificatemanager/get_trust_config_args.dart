@@ -15,7 +15,7 @@ class GetTrustConfigArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [trustConfigId] Required.
-  GetTrustConfigArgs({
+  const GetTrustConfigArgs({
     required this.location,
     this.project,
     required this.trustConfigId,

@@ -20,7 +20,7 @@ class AuthenticationRule {
   /// [oauth] The requirements for OAuth credentials.
   /// [requirements] Requirements for additional authentication providers.
   /// [selector] Selects the methods to which this rule applies. Refer to selector for syntax details.
-  AuthenticationRule({
+  const AuthenticationRule({
     this.allowWithoutCredential,
     this.oauth,
     this.requirements,

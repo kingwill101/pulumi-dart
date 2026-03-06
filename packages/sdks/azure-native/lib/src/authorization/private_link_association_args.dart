@@ -19,7 +19,7 @@ class PrivateLinkAssociationArgs {
   /// [groupId] The management group ID.
   /// [plaId] The ID of the PLA
   /// [properties] The properties of the PrivateLinkAssociation.
-  PrivateLinkAssociationArgs({
+  const PrivateLinkAssociationArgs({
     required this.groupId,
     this.plaId,
     this.properties,

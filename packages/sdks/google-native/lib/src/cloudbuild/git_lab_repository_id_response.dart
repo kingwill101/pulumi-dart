@@ -9,7 +9,7 @@ class GitLabRepositoryIdResponse {
 
   /// Creates a new [GitLabRepositoryIdResponse].
   /// [webhookId] The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
-  GitLabRepositoryIdResponse({
+  const GitLabRepositoryIdResponse({
     required this.webhookId,
   });
 

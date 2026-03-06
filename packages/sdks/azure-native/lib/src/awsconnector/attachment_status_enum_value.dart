@@ -9,7 +9,7 @@ class AttachmentStatusEnumValue {
 
   /// Creates a new [AttachmentStatusEnumValue].
   /// [value] Property value
-  AttachmentStatusEnumValue({
+  const AttachmentStatusEnumValue({
     this.value,
   });
 

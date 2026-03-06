@@ -10,7 +10,7 @@ class SshConfiguration {
 
   /// Creates a new [SshConfiguration].
   /// [publicKeys] The list of SSH public keys used to authenticate with linux based VMs.
-  SshConfiguration({
+  const SshConfiguration({
     this.publicKeys,
   });
 

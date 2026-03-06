@@ -9,7 +9,7 @@ class ReplicaModifications {
 
   /// Creates a new [ReplicaModifications].
   /// [status] Specifies whether Amazon S3 replicates modifications on replicas.  *Allowed values*: ``Enabled`` | ``Disabled``
-  ReplicaModifications({
+  const ReplicaModifications({
     this.status,
   });
 

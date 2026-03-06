@@ -11,7 +11,7 @@ class ClusterNodeGroupAutoScalingPolicyConstraints {
   /// Creates a new [ClusterNodeGroupAutoScalingPolicyConstraints].
   /// [maxCapacity] The maximum capacity of constraints for emr node group auto scaling policy.
   /// [minCapacity] The minimum capacity of constraints for emr node group auto scaling policy.
-  ClusterNodeGroupAutoScalingPolicyConstraints({
+  const ClusterNodeGroupAutoScalingPolicyConstraints({
     this.maxCapacity,
     this.minCapacity,
   });

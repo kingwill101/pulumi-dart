@@ -19,7 +19,7 @@ class GetObjectAccessControlArgs {
   /// [generation] Optional.
   /// [object_] Required.
   /// [userProject] Optional.
-  GetObjectAccessControlArgs({
+  const GetObjectAccessControlArgs({
     required this.bucket,
     required this.entity,
     this.generation,

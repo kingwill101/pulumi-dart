@@ -18,7 +18,7 @@ class GetCustomPropertiesProperty {
   /// [id] The ID of the Custom Property.
   /// [propertyKey] The Custom attribute key.
   /// [propertyValues] Custom attribute sets the value of.
-  GetCustomPropertiesProperty({
+  const GetCustomPropertiesProperty({
     required this.customPropertyId,
     required this.id,
     required this.propertyKey,

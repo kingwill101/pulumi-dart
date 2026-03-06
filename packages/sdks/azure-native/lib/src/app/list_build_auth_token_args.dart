@@ -18,7 +18,7 @@ class ListBuildAuthTokenArgs {
   /// [buildName] The name of a build.
   /// [builderName] The name of the builder.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListBuildAuthTokenArgs({
+  const ListBuildAuthTokenArgs({
     required this.buildName,
     required this.builderName,
     required this.resourceGroupName,

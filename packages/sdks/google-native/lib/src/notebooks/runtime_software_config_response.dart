@@ -46,7 +46,7 @@ class RuntimeSoftwareConfigResponse {
   /// [postStartupScriptBehavior] Behavior for the post startup script.
   /// [upgradeable] Bool indicating whether an newer image is available in an image family.
   /// [version] version of boot image such as M100, from release label of the image.
-  RuntimeSoftwareConfigResponse({
+  const RuntimeSoftwareConfigResponse({
     required this.customGpuDriverPath,
     required this.disableTerminal,
     required this.enableHealthMonitoring,

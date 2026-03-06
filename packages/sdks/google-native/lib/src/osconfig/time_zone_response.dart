@@ -9,7 +9,7 @@ class TimeZoneResponse {
 
   /// Creates a new [TimeZoneResponse].
   /// [version] Optional. IANA Time Zone Database version number, e.g. "2019a".
-  TimeZoneResponse({
+  const TimeZoneResponse({
     required this.version,
   });
 

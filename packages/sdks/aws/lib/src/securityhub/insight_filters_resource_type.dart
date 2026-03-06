@@ -9,7 +9,7 @@ class InsightFiltersResourceType {
   /// Creates a new [InsightFiltersResourceType].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceType({
+  const InsightFiltersResourceType({
     required this.comparison,
     required this.value,
   });

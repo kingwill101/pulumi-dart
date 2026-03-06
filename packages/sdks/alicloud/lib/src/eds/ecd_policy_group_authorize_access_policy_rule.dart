@@ -11,7 +11,7 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule {
   /// Creates a new [EcdPolicyGroupAuthorizeAccessPolicyRule].
   /// [cidrIp] The cidrip of authorize access rule.
   /// [description] The description of authorize access rule.
-  EcdPolicyGroupAuthorizeAccessPolicyRule({
+  const EcdPolicyGroupAuthorizeAccessPolicyRule({
     this.cidrIp,
     this.description,
   });

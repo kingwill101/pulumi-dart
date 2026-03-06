@@ -10,7 +10,7 @@ class DeploymentConfigurationResponse {
 
   /// Creates a new [DeploymentConfigurationResponse].
   /// [virtualMachineConfiguration] The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
-  DeploymentConfigurationResponse({
+  const DeploymentConfigurationResponse({
     this.virtualMachineConfiguration,
   });
 

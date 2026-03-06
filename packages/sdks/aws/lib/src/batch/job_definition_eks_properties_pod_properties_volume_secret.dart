@@ -11,7 +11,7 @@ class JobDefinitionEksPropertiesPodPropertiesVolumeSecret {
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesVolumeSecret].
   /// [optional] Whether the secret or the secret's keys must be defined.
   /// [secretName] Name of the secret. The name must be allowed as a DNS subdomain name.
-  JobDefinitionEksPropertiesPodPropertiesVolumeSecret({
+  const JobDefinitionEksPropertiesPodPropertiesVolumeSecret({
     this.optional,
     required this.secretName,
   });

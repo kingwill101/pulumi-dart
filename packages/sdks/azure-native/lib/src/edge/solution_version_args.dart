@@ -29,7 +29,7 @@ class SolutionVersionArgs {
   /// [solutionName] Name of the solution
   /// [solutionVersionName] Name of the solution version
   /// [targetName] Name of the target
-  SolutionVersionArgs({
+  const SolutionVersionArgs({
     this.extendedLocation,
     this.properties,
     required this.resourceGroupName,

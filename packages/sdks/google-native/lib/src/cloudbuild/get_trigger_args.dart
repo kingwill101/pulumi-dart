@@ -17,7 +17,7 @@ class GetTriggerArgs {
   /// [project] Optional.
   /// [projectId] Required.
   /// [triggerId] Required.
-  GetTriggerArgs({
+  const GetTriggerArgs({
     required this.location,
     this.project,
     required this.projectId,

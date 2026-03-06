@@ -32,7 +32,7 @@ class GetVirtualClusterResult {
   /// [state] Status of the EKS cluster. One of `RUNNING`, `TERMINATING`, `TERMINATED`, `ARRESTED`.
   /// [tags] Key-value mapping of resource tags.
   /// [virtualClusterId] Required.
-  GetVirtualClusterResult({
+  const GetVirtualClusterResult({
     required this.arn,
     required this.containerProviders,
     required this.createdAt,

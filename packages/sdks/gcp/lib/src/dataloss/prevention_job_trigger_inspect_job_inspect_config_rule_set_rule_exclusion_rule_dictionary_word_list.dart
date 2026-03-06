@@ -9,7 +9,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList].
   /// [words] Words or phrases defining the dictionary. The dictionary must contain at least one
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList({
     required this.words,
   });
 

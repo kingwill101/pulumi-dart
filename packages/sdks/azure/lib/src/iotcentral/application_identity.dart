@@ -14,7 +14,7 @@ class ApplicationIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this IoT Central Application. The only possible value is `SystemAssigned`.
-  ApplicationIdentity({
+  const ApplicationIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

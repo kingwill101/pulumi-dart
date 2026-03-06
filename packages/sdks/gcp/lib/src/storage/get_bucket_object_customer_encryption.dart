@@ -11,7 +11,7 @@ class GetBucketObjectCustomerEncryption {
   /// Creates a new [GetBucketObjectCustomerEncryption].
   /// [encryptionAlgorithm] The encryption algorithm. Default: AES256
   /// [encryptionKey] Base64 encoded customer supplied encryption key.
-  GetBucketObjectCustomerEncryption({
+  const GetBucketObjectCustomerEncryption({
     required this.encryptionAlgorithm,
     required this.encryptionKey,
   });

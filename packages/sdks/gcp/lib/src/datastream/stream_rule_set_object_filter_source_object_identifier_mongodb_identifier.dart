@@ -11,7 +11,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier {
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier].
   /// [collection] The MongoDB collection name.
   /// [database] The MongoDB database name.
-  StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier({
+  const StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier({
     required this.collection,
     required this.database,
   });

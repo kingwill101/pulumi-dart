@@ -83,7 +83,7 @@ class GetOccurrenceContaineranalysisV1beta1Result {
   /// [spdxRelationship] Describes a specific SPDX Relationship.
   /// [updateTime] The time this occurrence was last updated.
   /// [vulnerability] Describes a security vulnerability.
-  GetOccurrenceContaineranalysisV1beta1Result({
+  const GetOccurrenceContaineranalysisV1beta1Result({
     required this.attestation,
     required this.build,
     required this.createTime,

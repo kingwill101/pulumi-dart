@@ -13,7 +13,7 @@ class ContainerServiceLinuxProfileResponse {
   /// Creates a new [ContainerServiceLinuxProfileResponse].
   /// [adminUsername] The administrator username to use for Linux VMs.
   /// [ssh] The SSH configuration for Linux-based VMs running on Azure.
-  ContainerServiceLinuxProfileResponse({
+  const ContainerServiceLinuxProfileResponse({
     required this.adminUsername,
     required this.ssh,
   });

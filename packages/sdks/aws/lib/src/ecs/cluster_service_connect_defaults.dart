@@ -8,7 +8,7 @@ class ClusterServiceConnectDefaults {
 
   /// Creates a new [ClusterServiceConnectDefaults].
   /// [namespace] ARN of the `aws.servicediscovery.HttpNamespace` that's used when you create a service and don't specify a Service Connect configuration.
-  ClusterServiceConnectDefaults({
+  const ClusterServiceConnectDefaults({
     required this.namespace,
   });
 

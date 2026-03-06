@@ -53,7 +53,7 @@ class GetApplicationGatewayRequestRoutingRule {
   /// [ruleType] The Type of Routing that is used for this Rule.
   /// [urlPathMapId] The ID of the associated URL Path Map.
   /// [urlPathMapName] The Name of the URL Path Map which is associated with this Routing Rule.
-  GetApplicationGatewayRequestRoutingRule({
+  const GetApplicationGatewayRequestRoutingRule({
     required this.backendAddressPoolId,
     required this.backendAddressPoolName,
     required this.backendHttpSettingsId,

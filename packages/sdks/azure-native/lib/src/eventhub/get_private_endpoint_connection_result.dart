@@ -35,7 +35,7 @@ class GetPrivateEndpointConnectionResult {
   /// [provisioningState] Provisioning state of the Private Endpoint Connection.
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
-  GetPrivateEndpointConnectionResult({
+  const GetPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

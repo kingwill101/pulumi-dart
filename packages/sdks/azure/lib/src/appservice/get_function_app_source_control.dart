@@ -20,7 +20,7 @@ class GetFunctionAppSourceControl {
   /// [repoUrl] The URL of the source code repository.
   /// [rollbackEnabled] Is roll-back enabled for the repository.
   /// [useMercurial] Uses Mercurial if `true`, otherwise uses Git.
-  GetFunctionAppSourceControl({
+  const GetFunctionAppSourceControl({
     required this.branch,
     required this.manualIntegration,
     required this.repoUrl,

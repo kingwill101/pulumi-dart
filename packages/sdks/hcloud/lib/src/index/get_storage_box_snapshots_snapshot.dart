@@ -27,7 +27,7 @@ class GetStorageBoxSnapshotsSnapshot {
   /// [name] Name of the Storage Box Snapshot.
   /// [stats] Statistics of the Storage Box Snapshot.
   /// [storageBoxId] ID of the Storage Box.
-  GetStorageBoxSnapshotsSnapshot({
+  const GetStorageBoxSnapshotsSnapshot({
     required this.description,
     required this.id,
     required this.isAutomatic,

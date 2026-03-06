@@ -27,7 +27,7 @@ class ElasticCloudDeploymentResponse {
   /// [kibanaServiceUrl] Kibana endpoint of the Elastic deployment.
   /// [kibanaSsoUrl] Kibana dashboard sso URL of the Elastic deployment.
   /// [name] Elastic deployment name
-  ElasticCloudDeploymentResponse({
+  const ElasticCloudDeploymentResponse({
     required this.azureSubscriptionId,
     required this.deploymentId,
     required this.elasticsearchRegion,

@@ -9,7 +9,7 @@ class InsightFiltersProcessName {
   /// Creates a new [InsightFiltersProcessName].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersProcessName({
+  const InsightFiltersProcessName({
     required this.comparison,
     required this.value,
   });

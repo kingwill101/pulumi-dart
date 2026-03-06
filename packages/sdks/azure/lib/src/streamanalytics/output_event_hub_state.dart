@@ -40,7 +40,7 @@ class OutputEventHubState {
   /// [sharedAccessPolicyKey] The shared access policy key for the specified shared access policy. Required when `authentication_mode` is set to `ConnectionString`.
   /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required when `authentication_mode` is set to `ConnectionString`.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  OutputEventHubState({
+  const OutputEventHubState({
     this.authenticationMode,
     this.eventhubName,
     this.name,

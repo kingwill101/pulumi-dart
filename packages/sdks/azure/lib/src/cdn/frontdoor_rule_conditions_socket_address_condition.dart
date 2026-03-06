@@ -18,7 +18,7 @@ class FrontdoorRuleConditionsSocketAddressCondition {
   /// [matchValues] Specify one or more IP address ranges. If multiple IP address ranges are specified, they're evaluated using `OR` logic.
   /// [negateCondition] If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
   /// [operator] The type of match. The Possible values are `IpMatch` or `Any`. Defaults to `IPMatch`.
-  FrontdoorRuleConditionsSocketAddressCondition({
+  const FrontdoorRuleConditionsSocketAddressCondition({
     this.matchValues,
     this.negateCondition,
     this.operator,

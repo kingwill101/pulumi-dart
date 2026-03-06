@@ -11,7 +11,7 @@ class AllowedResourceNameResponse {
   /// Creates a new [AllowedResourceNameResponse].
   /// [getActionVerb] Get action verb.
   /// [name] Resource name.
-  AllowedResourceNameResponse({
+  const AllowedResourceNameResponse({
     this.getActionVerb,
     this.name,
   });

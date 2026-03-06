@@ -24,7 +24,7 @@ class DomainDevicesInterfaceSourceHostdevPciAddress {
   /// [multiFunction] Indicates whether multi-function capability is enabled for the PCI device.
   /// [slot] Specifies the slot number in the PCI bus for the device.
   /// [zpci] Configures the settings specific to zPCI addressing for the PCI device.
-  DomainDevicesInterfaceSourceHostdevPciAddress({
+  const DomainDevicesInterfaceSourceHostdevPciAddress({
     this.bus,
     this.domain,
     this.function,

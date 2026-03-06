@@ -92,7 +92,7 @@ class GetDbNodeResult {
   /// [totalCpuCoreCount] The total number of CPU cores reserved on the DB node.
   /// [vnic2Id] The OCID of the second VNIC.
   /// [vnicId] The OCID of the VNIC.
-  GetDbNodeResult({
+  const GetDbNodeResult({
     required this.additionalDetails,
     required this.arn,
     required this.backupIpId,

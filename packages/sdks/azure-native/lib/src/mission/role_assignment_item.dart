@@ -13,7 +13,7 @@ class RoleAssignmentItem {
   /// Creates a new [RoleAssignmentItem].
   /// [principals] List of principal IDs to which to assign this role definition
   /// [roleDefinitionId] Role definition identifier
-  RoleAssignmentItem({
+  const RoleAssignmentItem({
     this.principals,
     required this.roleDefinitionId,
   });

@@ -15,7 +15,7 @@ class GetSaasSubscriptionLevelArgs {
   /// Creates a new [GetSaasSubscriptionLevelArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [resourceName] The name of the resource.
-  GetSaasSubscriptionLevelArgs({
+  const GetSaasSubscriptionLevelArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

@@ -16,7 +16,7 @@ class AppVersionSnapshotAgentAfterModelCallback {
   /// [description] The description of the app version.
   /// [disabled] (Output)
   /// [pythonCode] (Output)
-  AppVersionSnapshotAgentAfterModelCallback({
+  const AppVersionSnapshotAgentAfterModelCallback({
     this.description,
     this.disabled,
     this.pythonCode,

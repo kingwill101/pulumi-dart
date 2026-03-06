@@ -8,7 +8,7 @@ class PipelineParallelismConfiguration {
 
   /// Creates a new [PipelineParallelismConfiguration].
   /// [maxParallelExecutionSteps] The max number of steps that can be executed in parallel.
-  PipelineParallelismConfiguration({
+  const PipelineParallelismConfiguration({
     required this.maxParallelExecutionSteps,
   });
 

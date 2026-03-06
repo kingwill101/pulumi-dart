@@ -24,7 +24,7 @@ class WorkspaceArgs {
   /// [publicNetworkAccessEnabled] Is public network access enabled? Defaults to `true`.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Azure Monitor Workspace should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Monitor Workspace.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.location,
     this.name,
     this.publicNetworkAccessEnabled,

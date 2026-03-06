@@ -46,7 +46,7 @@ class GetDiskReplicaPairsPair {
   /// [rpo] The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
   /// [sourceZoneId] The ID of the zone to which the production site belongs.
   /// [status] The status of the resource.
-  GetDiskReplicaPairsPair({
+  const GetDiskReplicaPairsPair({
     required this.bandwidth,
     required this.description,
     required this.destinationDiskId,

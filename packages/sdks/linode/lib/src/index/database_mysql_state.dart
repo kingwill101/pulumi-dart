@@ -75,7 +75,7 @@ class DatabaseMysqlState {
   /// [updated] When this Managed Database was last updated.
   /// [updates] Configuration settings for automated patch update maintenance for the Managed Database.
   /// [version] The Managed Database engine version. (e.g. `v8.0.26`)
-  DatabaseMysqlState({
+  const DatabaseMysqlState({
     this.allowLists,
     this.caCert,
     this.clusterSize,

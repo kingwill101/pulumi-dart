@@ -9,7 +9,7 @@ class StorageProperties {
 
   /// Creates a new [StorageProperties].
   /// [sizeGb] The size of the data disk assigned to each server.
-  StorageProperties({
+  const StorageProperties({
     this.sizeGb,
   });
 

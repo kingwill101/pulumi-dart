@@ -18,7 +18,7 @@ class GetTrustedIdProviderArgs {
   /// [accountName] The name of the Data Lake Store account.
   /// [resourceGroupName] The name of the Azure resource group.
   /// [trustedIdProviderName] The name of the trusted identity provider to retrieve.
-  GetTrustedIdProviderArgs({
+  const GetTrustedIdProviderArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.trustedIdProviderName,

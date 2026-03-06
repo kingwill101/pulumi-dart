@@ -17,7 +17,7 @@ class GetWafRulesWafRuleCondition {
   /// [opValue] The logical symbol.
   /// [subKey] The subfield of the target field.
   /// [values] The match content. Separate multiple values with commas (,).
-  GetWafRulesWafRuleCondition({
+  const GetWafRulesWafRuleCondition({
     required this.key,
     required this.opValue,
     required this.subKey,

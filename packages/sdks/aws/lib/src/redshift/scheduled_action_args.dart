@@ -37,7 +37,7 @@ class ScheduledActionArgs {
   /// [schedule] The schedule of action. The schedule is defined format of "at expression" or "cron expression", for example `at(2016-03-04T17:27:00)` or `cron(0 10 ? * MON *)`. See [Scheduled Action](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ScheduledAction.html) for more information.
   /// [startTime] The start time in UTC when the schedule is active, in UTC RFC3339 format(for example, YYYY-MM-DDTHH:MM:SSZ).
   /// [targetAction] Target action. Documented below.
-  ScheduledActionArgs({
+  const ScheduledActionArgs({
     this.description,
     this.enable,
     this.endTime,

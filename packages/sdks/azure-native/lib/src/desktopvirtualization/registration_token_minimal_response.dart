@@ -12,7 +12,7 @@ class RegistrationTokenMinimalResponse {
   /// Creates a new [RegistrationTokenMinimalResponse].
   /// [expirationTime] Expiration time of registration token.
   /// [token] The registration token base64 encoded string.
-  RegistrationTokenMinimalResponse({
+  const RegistrationTokenMinimalResponse({
     this.expirationTime,
     this.token,
   });

@@ -11,7 +11,7 @@ class DatasetBinaryCompression {
   /// Creates a new [DatasetBinaryCompression].
   /// [level] The level of compression. Possible values are `Fastest` and `Optimal`.
   /// [type] The type of compression used during transport. Possible values are `BZip2`, `Deflate`, `GZip`, `Tar`, `TarGZip` and `ZipDeflate`.
-  DatasetBinaryCompression({
+  const DatasetBinaryCompression({
     this.level,
     required this.type,
   });

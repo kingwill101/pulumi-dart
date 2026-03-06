@@ -17,7 +17,7 @@ class ContainerGroupAcrRegistryInfo {
   /// [instanceId] The ACR enterprise edition example ID.
   /// [instanceName] The name of the ACR enterprise edition instance.
   /// [regionId] The ACR enterprise edition instance belongs to the region.
-  ContainerGroupAcrRegistryInfo({
+  const ContainerGroupAcrRegistryInfo({
     this.domains,
     this.instanceId,
     this.instanceName,

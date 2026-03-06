@@ -38,7 +38,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
   /// [minCpuPlatform] Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc &gt; Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
   /// [numInstances] Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
   /// [preemptibility] Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
-  WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig({
+  const WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig({
     this.accelerators,
     this.diskConfig,
     this.image,

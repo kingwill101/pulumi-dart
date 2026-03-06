@@ -12,7 +12,7 @@ class ArcAutoProvisioningConfiguration {
   /// Creates a new [ArcAutoProvisioningConfiguration].
   /// [privateLinkScope] Optional Arc private link scope resource id to link the Arc agent
   /// [proxy] Optional HTTP proxy endpoint to use for the Arc agent
-  ArcAutoProvisioningConfiguration({
+  const ArcAutoProvisioningConfiguration({
     this.privateLinkScope,
     this.proxy,
   });

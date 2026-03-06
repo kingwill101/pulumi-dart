@@ -16,7 +16,7 @@ class ContinuousBackupConfigResponseAlloydbV1alpha {
   /// [enabled] Whether ContinuousBackup is enabled.
   /// [encryptionConfig] The encryption config can be specified to encrypt the backups with a customer-managed encryption key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect the user data.
   /// [recoveryWindowDays] The number of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window. If not set, defaults to 14 days.
-  ContinuousBackupConfigResponseAlloydbV1alpha({
+  const ContinuousBackupConfigResponseAlloydbV1alpha({
     required this.enabled,
     required this.encryptionConfig,
     required this.recoveryWindowDays,

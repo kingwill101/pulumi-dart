@@ -18,7 +18,7 @@ class FutureReservationAggregateReservation {
   /// [reservedResources] futureReservations.list of reserved resources (CPUs, memory, accelerators).
   /// [vmFamily] The VM family that all instances scheduled against this reservation must belong to.
   /// [workloadType] The workload type of the instances that will target this reservation.
-  FutureReservationAggregateReservation({
+  const FutureReservationAggregateReservation({
     required this.reservedResources,
     this.vmFamily,
     this.workloadType,

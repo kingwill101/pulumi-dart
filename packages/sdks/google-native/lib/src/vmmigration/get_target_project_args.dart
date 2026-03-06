@@ -15,7 +15,7 @@ class GetTargetProjectArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [targetProjectId] Required.
-  GetTargetProjectArgs({
+  const GetTargetProjectArgs({
     required this.location,
     this.project,
     required this.targetProjectId,

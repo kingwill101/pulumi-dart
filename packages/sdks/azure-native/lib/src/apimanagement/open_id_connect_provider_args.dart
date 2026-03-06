@@ -39,7 +39,7 @@ class OpenIdConnectProviderArgs {
   /// [serviceName] The name of the API Management service.
   /// [useInApiDocumentation] If true, the Open ID Connect provider will be used in the API documentation in the developer portal. False by default if no value is provided.
   /// [useInTestConsole] If true, the Open ID Connect provider may be used in the developer portal test console. True by default if no value is provided.
-  OpenIdConnectProviderArgs({
+  const OpenIdConnectProviderArgs({
     required this.clientId,
     this.clientSecret,
     this.description,

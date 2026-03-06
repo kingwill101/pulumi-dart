@@ -46,7 +46,7 @@ class GetAppTemplateContainer {
   /// [readinessProbes] A `readiness_probe` block as detailed below.
   /// [startupProbes] A `startup_probe` block as detailed below.
   /// [volumeMounts] A `volume_mounts` block as detailed below.
-  GetAppTemplateContainer({
+  const GetAppTemplateContainer({
     required this.args,
     required this.commands,
     required this.cpu,

@@ -15,7 +15,7 @@ class ManagedDiskEncryptionKeyVaultProperties {
   /// [keyName] The name of KeyVault key.
   /// [keyVaultUri] The URI of KeyVault.
   /// [keyVersion] The version of KeyVault key.
-  ManagedDiskEncryptionKeyVaultProperties({
+  const ManagedDiskEncryptionKeyVaultProperties({
     required this.keyName,
     required this.keyVaultUri,
     required this.keyVersion,

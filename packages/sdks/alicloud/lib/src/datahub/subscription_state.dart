@@ -24,7 +24,7 @@ class SubscriptionState {
   /// [projectName] The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   /// [subId] The identidy of the subscription, generate from server side.
   /// [topicName] The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-  SubscriptionState({
+  const SubscriptionState({
     this.comment,
     this.createTime,
     this.lastModifyTime,

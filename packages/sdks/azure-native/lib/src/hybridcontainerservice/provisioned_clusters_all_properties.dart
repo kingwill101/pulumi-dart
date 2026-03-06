@@ -55,7 +55,7 @@ class ProvisionedClustersAllProperties {
   /// [networkProfile] NetworkProfile - Profile of network configuration.
   /// [nodeResourceGroup] NodeResourceGroup - Name of the resource group containing agent pool nodes.
   /// [windowsProfile] WindowsProfile - Profile for Windows VMs in the Provisioned Cluster.
-  ProvisionedClustersAllProperties({
+  const ProvisionedClustersAllProperties({
     this.aadProfile,
     this.addonProfiles,
     this.agentPoolProfiles,

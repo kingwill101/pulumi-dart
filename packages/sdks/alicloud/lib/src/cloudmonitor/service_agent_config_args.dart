@@ -14,7 +14,7 @@ class ServiceAgentConfigArgs {
 
   /// Creates a new [ServiceAgentConfigArgs].
   /// [enableInstallAgentNewEcs] Whether the cloud monitoring plug-in is automatically installed on the newly purchased ECS host. Value:
-  ServiceAgentConfigArgs({
+  const ServiceAgentConfigArgs({
     this.enableInstallAgentNewEcs,
   });
 

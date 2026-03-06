@@ -15,7 +15,7 @@ class GetB2CTenantArgs {
   /// Creates a new [GetB2CTenantArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [resourceName] The initial domain name of the Azure AD B2C tenant.
-  GetB2CTenantArgs({
+  const GetB2CTenantArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

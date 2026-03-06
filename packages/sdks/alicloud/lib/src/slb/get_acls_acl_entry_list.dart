@@ -9,7 +9,7 @@ class GetAclsAclEntryList {
   /// Creates a new [GetAclsAclEntryList].
   /// [comment] Required.
   /// [entry] Required.
-  GetAclsAclEntryList({
+  const GetAclsAclEntryList({
     required this.comment,
     required this.entry,
   });

@@ -17,7 +17,7 @@ class DomainDevicesInterfaceBandwidthInbound {
   /// [burst] Configures the maximum burst outbound bandwidth for the interface, allowing for temporary spikes in outgoing traffic.
   /// [floor] Establishes the minimum outbound bandwidth guarantee for the interface, ensuring a baseline level of outgoing traffic availability.
   /// [peak] Sets the peak outbound bandwidth limit for the interface, defining the absolute maximum capacity for outgoing traffic.
-  DomainDevicesInterfaceBandwidthInbound({
+  const DomainDevicesInterfaceBandwidthInbound({
     this.average,
     this.burst,
     this.floor,

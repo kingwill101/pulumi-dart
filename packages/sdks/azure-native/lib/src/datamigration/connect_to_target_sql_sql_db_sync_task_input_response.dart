@@ -13,7 +13,7 @@ class ConnectToTargetSqlSqlDbSyncTaskInputResponse {
   /// Creates a new [ConnectToTargetSqlSqlDbSyncTaskInputResponse].
   /// [sourceConnectionInfo] Connection information for source SQL Server
   /// [targetConnectionInfo] Connection information for target SQL DB
-  ConnectToTargetSqlSqlDbSyncTaskInputResponse({
+  const ConnectToTargetSqlSqlDbSyncTaskInputResponse({
     required this.sourceConnectionInfo,
     required this.targetConnectionInfo,
   });

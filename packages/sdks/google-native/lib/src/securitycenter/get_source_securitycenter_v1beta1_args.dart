@@ -13,7 +13,7 @@ class GetSourceSecuritycenterV1beta1Args {
   /// Creates a new [GetSourceSecuritycenterV1beta1Args].
   /// [organizationId] Required.
   /// [sourceId] Required.
-  GetSourceSecuritycenterV1beta1Args({
+  const GetSourceSecuritycenterV1beta1Args({
     required this.organizationId,
     required this.sourceId,
   });

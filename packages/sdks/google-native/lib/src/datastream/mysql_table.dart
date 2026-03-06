@@ -13,7 +13,7 @@ class MysqlTable {
   /// Creates a new [MysqlTable].
   /// [mysqlColumns] MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  MysqlTable({
+  const MysqlTable({
     this.mysqlColumns,
     this.table,
   });

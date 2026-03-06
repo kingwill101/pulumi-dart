@@ -32,7 +32,7 @@ class CertificateArgs {
   /// [certificatePem] The certificate to be registered. If `ca_pem` is unspecified, review
   /// [csr] The certificate signing request. Review
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  CertificateArgs({
+  const CertificateArgs({
     required this.active,
     this.caPem,
     this.certificatePem,

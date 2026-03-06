@@ -17,7 +17,7 @@ class TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Config
   /// [encryptionOption] Encryption option for the customer s3 location. Options are S3 server side encryption with an S3-managed key or KMS managed key. Valid values are `SSE_KMS` and `SSE_S3`.
   /// [kmsKeyId] KMS key arn for the customer s3 location when encrypting with a KMS managed key.
   /// [objectKeyPrefix] Object key prefix for the customer S3 location.
-  TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration({
+  const TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration({
     this.bucketName,
     this.encryptionOption,
     this.kmsKeyId,

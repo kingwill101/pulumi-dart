@@ -10,7 +10,7 @@ class StackTraceResponse {
 
   /// Creates a new [StackTraceResponse].
   /// [elements] An array of stack elements.
-  StackTraceResponse({
+  const StackTraceResponse({
     required this.elements,
   });
 

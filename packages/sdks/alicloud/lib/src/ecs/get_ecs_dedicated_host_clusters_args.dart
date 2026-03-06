@@ -30,7 +30,7 @@ class GetEcsDedicatedHostClustersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The zone ID of the dedicated host cluster.
-  GetEcsDedicatedHostClustersArgs({
+  const GetEcsDedicatedHostClustersArgs({
     this.dedicatedHostClusterIds,
     this.dedicatedHostClusterName,
     this.ids,

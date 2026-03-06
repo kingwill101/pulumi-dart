@@ -10,7 +10,7 @@ class EntityRecognizerInputDataConfigAnnotations {
   /// Creates a new [EntityRecognizerInputDataConfigAnnotations].
   /// [s3Uri] Location of training annotations.
   /// [testS3Uri] Optional.
-  EntityRecognizerInputDataConfigAnnotations({
+  const EntityRecognizerInputDataConfigAnnotations({
     required this.s3Uri,
     this.testS3Uri,
   });

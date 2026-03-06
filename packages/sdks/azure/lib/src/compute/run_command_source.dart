@@ -15,7 +15,7 @@ class RunCommandSource {
   /// [script] Optional.
   /// [scriptUri] Optional.
   /// [scriptUriManagedIdentity] A `script_uri_managed_identity` block as defined above.
-  RunCommandSource({
+  const RunCommandSource({
     this.commandId,
     this.script,
     this.scriptUri,

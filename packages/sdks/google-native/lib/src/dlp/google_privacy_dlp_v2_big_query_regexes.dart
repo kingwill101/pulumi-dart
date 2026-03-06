@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2BigQueryRegexes {
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryRegexes].
   /// [patterns] A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
-  GooglePrivacyDlpV2BigQueryRegexes({
+  const GooglePrivacyDlpV2BigQueryRegexes({
     this.patterns,
   });
 

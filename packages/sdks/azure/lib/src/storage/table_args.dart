@@ -19,7 +19,7 @@ class TableArgs {
   /// [acls] One or more `acl` blocks as defined below.
   /// [name] The name of the storage table. Only Alphanumeric characters allowed, starting with a letter. Must be unique within the storage account the table is located. Changing this forces a new resource to be created.
   /// [storageAccountName] Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
-  TableArgs({
+  const TableArgs({
     this.acls,
     this.name,
     required this.storageAccountName,

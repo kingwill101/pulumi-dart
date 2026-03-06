@@ -15,7 +15,7 @@ class WebTestPropertiesResponseContentValidation {
   /// [contentMatch] Content to look for in the return of the WebTest.  Must not be null or empty.
   /// [ignoreCase] When set, this value makes the ContentMatch validation case insensitive.
   /// [passIfTextFound] When true, validation will pass if there is a match for the ContentMatch string.  If false, validation will fail if there is a match
-  WebTestPropertiesResponseContentValidation({
+  const WebTestPropertiesResponseContentValidation({
     this.contentMatch,
     this.ignoreCase,
     this.passIfTextFound,

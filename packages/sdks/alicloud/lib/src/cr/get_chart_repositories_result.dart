@@ -22,7 +22,7 @@ class GetChartRepositoriesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [repositories] Required.
-  GetChartRepositoriesResult({
+  const GetChartRepositoriesResult({
     required this.id,
     required this.ids,
     required this.instanceId,

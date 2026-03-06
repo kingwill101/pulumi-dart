@@ -8,7 +8,7 @@ class MarketplaceSubscription {
 
   /// Creates a new [MarketplaceSubscription].
   /// [modelId] [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
-  MarketplaceSubscription({
+  const MarketplaceSubscription({
     required this.modelId,
   });
 

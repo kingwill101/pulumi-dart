@@ -26,7 +26,7 @@ class RouterGrantAssociationArgs {
   /// [instanceId] The ID of the network instance.
   /// [instanceRegionId] The ID of the region where the authorized network instance is located.
   /// [instanceType] The type of the network instance. Value:
-  RouterGrantAssociationArgs({
+  const RouterGrantAssociationArgs({
     required this.ecrId,
     required this.ecrOwnerAliUid,
     required this.instanceId,

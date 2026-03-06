@@ -94,7 +94,7 @@ class GetGatewayConnectionResult {
   /// [type] The type of connection. Valid options are `IPsec`
   /// [usePolicyBasedTrafficSelectors] If `true`, policy-based traffic
   /// [virtualNetworkGatewayId] The ID of the Virtual Network Gateway
-  GetGatewayConnectionResult({
+  const GetGatewayConnectionResult({
     required this.authorizationKey,
     required this.connectionProtocol,
     required this.dpdTimeoutSeconds,

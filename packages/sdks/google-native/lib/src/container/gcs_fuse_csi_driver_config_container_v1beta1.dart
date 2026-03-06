@@ -9,7 +9,7 @@ class GcsFuseCsiDriverConfigContainerV1beta1 {
 
   /// Creates a new [GcsFuseCsiDriverConfigContainerV1beta1].
   /// [enabled] Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
-  GcsFuseCsiDriverConfigContainerV1beta1({
+  const GcsFuseCsiDriverConfigContainerV1beta1({
     this.enabled,
   });
 

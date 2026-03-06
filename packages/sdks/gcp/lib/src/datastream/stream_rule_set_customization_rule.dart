@@ -15,7 +15,7 @@ class StreamRuleSetCustomizationRule {
   /// Creates a new [StreamRuleSetCustomizationRule].
   /// [bigqueryClustering] BigQuery clustering rule.
   /// [bigqueryPartitioning] BigQuery partitioning rule.
-  StreamRuleSetCustomizationRule({
+  const StreamRuleSetCustomizationRule({
     this.bigqueryClustering,
     this.bigqueryPartitioning,
   });

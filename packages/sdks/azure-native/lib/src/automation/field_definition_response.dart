@@ -15,7 +15,7 @@ class FieldDefinitionResponse {
   /// [isEncrypted] Gets or sets the isEncrypted flag of the connection field definition.
   /// [isOptional] Gets or sets the isOptional flag of the connection field definition.
   /// [type] Gets or sets the type of the connection field definition.
-  FieldDefinitionResponse({
+  const FieldDefinitionResponse({
     this.isEncrypted,
     this.isOptional,
     required this.type,

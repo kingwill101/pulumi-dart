@@ -91,7 +91,7 @@ class GoogleCloudMlV1VersionResponse {
   /// [runtimeVersion] The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
   /// [serviceAccount] Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
   /// [state] The state of a version.
-  GoogleCloudMlV1VersionResponse({
+  const GoogleCloudMlV1VersionResponse({
     required this.acceleratorConfig,
     required this.autoScaling,
     required this.container,

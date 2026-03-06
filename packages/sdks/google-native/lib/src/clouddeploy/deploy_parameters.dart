@@ -12,7 +12,7 @@ class DeployParameters {
   /// Creates a new [DeployParameters].
   /// [matchTargetLabels] Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
   /// [values] Values are deploy parameters in key-value pairs.
-  DeployParameters({
+  const DeployParameters({
     this.matchTargetLabels,
     required this.values,
   });

@@ -40,7 +40,7 @@ class GetGatewaysResult {
   /// [sslVpn] Whether the ssl function is enabled.
   /// [status] The status of the VPN
   /// [vpcId] ID of the VPC that the VPN belongs.
-  GetGatewaysResult({
+  const GetGatewaysResult({
     this.businessStatus,
     this.enableIpsec,
     required this.gateways,

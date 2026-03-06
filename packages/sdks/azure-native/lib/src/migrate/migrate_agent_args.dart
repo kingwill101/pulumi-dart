@@ -28,7 +28,7 @@ class MigrateAgentArgs {
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [subscriptionId] Azure Subscription Id in which project was created.
   /// [tags] Gets or sets the resource tags.
-  MigrateAgentArgs({
+  const MigrateAgentArgs({
     this.agentName,
     required this.modernizeProjectName,
     this.properties,

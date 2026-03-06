@@ -19,7 +19,7 @@ class GetLakeEnvironmentIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetLakeEnvironmentIamPolicyArgs({
+  const GetLakeEnvironmentIamPolicyArgs({
     required this.environmentId,
     required this.lakeId,
     required this.location,

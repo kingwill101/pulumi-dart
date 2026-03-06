@@ -16,7 +16,7 @@ class ResourceResponseContaineranalysisV1beta1 {
   /// [contentHash] Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
   /// [name] Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
   /// [uri] The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
-  ResourceResponseContaineranalysisV1beta1({
+  const ResourceResponseContaineranalysisV1beta1({
     required this.contentHash,
     required this.name,
     required this.uri,

@@ -18,7 +18,7 @@ class GetOpenAIArgs {
   /// [integrationName] OpenAI Integration name
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetOpenAIArgs({
+  const GetOpenAIArgs({
     required this.integrationName,
     required this.monitorName,
     required this.resourceGroupName,

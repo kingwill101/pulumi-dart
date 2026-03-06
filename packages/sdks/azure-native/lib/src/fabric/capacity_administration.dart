@@ -9,7 +9,7 @@ class CapacityAdministration {
 
   /// Creates a new [CapacityAdministration].
   /// [members] An array of administrator user identities.
-  CapacityAdministration({
+  const CapacityAdministration({
     required this.members,
   });
 

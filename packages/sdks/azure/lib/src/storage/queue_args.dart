@@ -25,7 +25,7 @@ class QueueArgs {
   /// [name] The name of the Queue which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
   /// [storageAccountId] The name of the Storage Account where the Storage Queue should be created.
   /// [storageAccountName] The name of the Storage Account where the Storage Queue should be created. This property is deprecated in favour of `storage_account_id`.
-  QueueArgs({
+  const QueueArgs({
     this.metadata,
     this.name,
     this.storageAccountId,

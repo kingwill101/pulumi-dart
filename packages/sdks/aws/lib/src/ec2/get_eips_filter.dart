@@ -12,7 +12,7 @@ class GetEipsFilter {
   /// Creates a new [GetEipsFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field. An Elastic IP will be selected if any one of the given values matches.
-  GetEipsFilter({
+  const GetEipsFilter({
     required this.name,
     required this.values,
   });

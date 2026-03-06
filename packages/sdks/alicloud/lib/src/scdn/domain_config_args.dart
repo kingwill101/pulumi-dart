@@ -19,7 +19,7 @@ class DomainConfigArgs {
   /// [domainName] Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   /// [functionArgs] The args of the domain config.
   /// [functionName] The name of the domain config.
-  DomainConfigArgs({
+  const DomainConfigArgs({
     required this.domainName,
     required this.functionArgs,
     required this.functionName,

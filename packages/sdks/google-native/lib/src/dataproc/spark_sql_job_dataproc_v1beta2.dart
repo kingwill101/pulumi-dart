@@ -26,7 +26,7 @@ class SparkSqlJobDataprocV1beta2 {
   /// [queryFileUri] The HCFS URI of the script that contains SQL queries.
   /// [queryList] A list of queries.
   /// [scriptVariables] Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
-  SparkSqlJobDataprocV1beta2({
+  const SparkSqlJobDataprocV1beta2({
     this.jarFileUris,
     this.loggingConfig,
     this.properties,

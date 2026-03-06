@@ -8,7 +8,7 @@ class ListenerRuleActionFixedResponse {
 
   /// Creates a new [ListenerRuleActionFixedResponse].
   /// [statusCode] The HTTP response code.
-  ListenerRuleActionFixedResponse({
+  const ListenerRuleActionFixedResponse({
     required this.statusCode,
   });
 

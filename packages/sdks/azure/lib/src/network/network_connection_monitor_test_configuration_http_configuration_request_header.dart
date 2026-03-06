@@ -11,7 +11,7 @@ class NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader {
   /// Creates a new [NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader].
   /// [name] The name of the HTTP header.
   /// [value] The value of the HTTP header.
-  NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader({
+  const NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader({
     required this.name,
     required this.value,
   });

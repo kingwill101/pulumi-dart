@@ -15,7 +15,7 @@ class GetTargetInstanceComputeBetaArgs {
   /// [project] Optional.
   /// [targetInstance] Required.
   /// [zone] Required.
-  GetTargetInstanceComputeBetaArgs({
+  const GetTargetInstanceComputeBetaArgs({
     this.project,
     required this.targetInstance,
     required this.zone,

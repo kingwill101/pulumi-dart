@@ -10,7 +10,7 @@ class GetClientOpenIdUserInfoResult {
   /// Creates a new [GetClientOpenIdUserInfoResult].
   /// [email] The email of the account used by the provider to authenticate with GCP.
   /// [id] Required.
-  GetClientOpenIdUserInfoResult({
+  const GetClientOpenIdUserInfoResult({
     required this.email,
     required this.id,
   });

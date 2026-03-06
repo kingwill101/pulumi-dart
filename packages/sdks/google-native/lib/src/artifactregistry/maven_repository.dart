@@ -10,7 +10,7 @@ class MavenRepository {
 
   /// Creates a new [MavenRepository].
   /// [publicRepository] One of the publicly available Maven repositories supported by Artifact Registry.
-  MavenRepository({
+  const MavenRepository({
     this.publicRepository,
   });
 

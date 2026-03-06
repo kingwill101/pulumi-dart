@@ -28,7 +28,7 @@ class SpringCloudDevToolPortalArgs {
   /// [publicNetworkAccessEnabled] Is public network access enabled?
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Dev Tool Portal to be created.
   /// [sso] A `sso` block as defined below.
-  SpringCloudDevToolPortalArgs({
+  const SpringCloudDevToolPortalArgs({
     this.applicationAcceleratorEnabled,
     this.applicationLiveViewEnabled,
     this.name,

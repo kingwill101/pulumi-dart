@@ -15,7 +15,7 @@ class InstanceSharedIpsArgs {
   /// Creates a new [InstanceSharedIpsArgs].
   /// [addresses] The set of IPs to share with the Linode.
   /// [linodeId] The ID of the Linode to share the IPs to.
-  InstanceSharedIpsArgs({
+  const InstanceSharedIpsArgs({
     required this.addresses,
     required this.linodeId,
   });

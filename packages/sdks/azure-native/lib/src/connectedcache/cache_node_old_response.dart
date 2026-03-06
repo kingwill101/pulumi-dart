@@ -15,7 +15,7 @@ class CacheNodeOldResponse {
   /// [statusCode] statusCode used to get code details of Mcc response object
   /// [statusDetails] statusDetails used to get inner details of Mcc response object
   /// [statusText] statusText used to get status details in string format of Mcc response object
-  CacheNodeOldResponse({
+  const CacheNodeOldResponse({
     this.statusCode,
     this.statusDetails,
     this.statusText,

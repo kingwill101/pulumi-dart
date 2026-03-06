@@ -16,7 +16,7 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration {
   /// [cloudWatchMonitoringConfiguration] Monitoring configurations for CloudWatch.
   /// [persistentAppUi] Monitoring configurations for the persistent application UI.
   /// [s3MonitoringConfiguration] Amazon S3 configuration for monitoring log publishing.
-  JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration({
+  const JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration({
     this.cloudWatchMonitoringConfiguration,
     this.persistentAppUi,
     this.s3MonitoringConfiguration,

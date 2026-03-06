@@ -21,7 +21,7 @@ class ProjectFilePropertiesResponse {
   /// [lastModified] Modification DateTime.
   /// [mediaType] File content type. This property can be modified to reflect the file content type.
   /// [size] File size.
-  ProjectFilePropertiesResponse({
+  const ProjectFilePropertiesResponse({
     this.extension,
     this.filePath,
     required this.lastModified,

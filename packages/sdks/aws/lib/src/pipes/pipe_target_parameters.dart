@@ -52,7 +52,7 @@ class PipeTargetParameters {
   /// [sagemakerPipelineParameters] The parameters for using a SageMaker AI pipeline as a target. Detailed below.
   /// [sqsQueueParameters] The parameters for using a Amazon SQS stream as a target. Detailed below.
   /// [stepFunctionStateMachineParameters] The parameters for using a Step Functions state machine as a target. Detailed below.
-  PipeTargetParameters({
+  const PipeTargetParameters({
     this.batchJobParameters,
     this.cloudwatchLogsParameters,
     this.ecsTaskParameters,

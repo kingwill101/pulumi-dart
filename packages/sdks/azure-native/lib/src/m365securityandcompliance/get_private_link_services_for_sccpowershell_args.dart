@@ -15,7 +15,7 @@ class GetPrivateLinkServicesForSCCPowershellArgs {
   /// Creates a new [GetPrivateLinkServicesForSCCPowershellArgs].
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceName] The name of the service instance.
-  GetPrivateLinkServicesForSCCPowershellArgs({
+  const GetPrivateLinkServicesForSCCPowershellArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

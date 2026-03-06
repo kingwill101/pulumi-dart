@@ -12,7 +12,7 @@ class RegionResizeRequestStatusErrorErrorErrorDetailHelpLink {
   /// Creates a new [RegionResizeRequestStatusErrorErrorErrorDetailHelpLink].
   /// [description] An optional description of this resize-request.
   /// [url] (Output)
-  RegionResizeRequestStatusErrorErrorErrorDetailHelpLink({
+  const RegionResizeRequestStatusErrorErrorErrorDetailHelpLink({
     this.description,
     this.url,
   });

@@ -8,7 +8,7 @@ class DomainDevicesHostdevAlias {
 
   /// Creates a new [DomainDevicesHostdevAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesHostdevAlias({
+  const DomainDevicesHostdevAlias({
     required this.name,
   });
 

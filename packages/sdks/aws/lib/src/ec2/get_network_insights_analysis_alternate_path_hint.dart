@@ -9,7 +9,7 @@ class GetNetworkInsightsAnalysisAlternatePathHint {
   /// Creates a new [GetNetworkInsightsAnalysisAlternatePathHint].
   /// [componentArn] Required.
   /// [componentId] Required.
-  GetNetworkInsightsAnalysisAlternatePathHint({
+  const GetNetworkInsightsAnalysisAlternatePathHint({
     required this.componentArn,
     required this.componentId,
   });

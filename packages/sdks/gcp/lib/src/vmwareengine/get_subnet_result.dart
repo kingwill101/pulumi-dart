@@ -36,7 +36,7 @@ class GetSubnetResult {
   /// [uid] Required.
   /// [updateTime] Required.
   /// [vlanId] Required.
-  GetSubnetResult({
+  const GetSubnetResult({
     required this.createTime,
     required this.dhcpAddressRanges,
     required this.gatewayId,

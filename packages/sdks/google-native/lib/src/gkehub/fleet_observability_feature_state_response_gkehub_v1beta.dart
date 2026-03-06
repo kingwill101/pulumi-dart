@@ -14,7 +14,7 @@ class FleetObservabilityFeatureStateResponseGkehubV1beta {
   /// Creates a new [FleetObservabilityFeatureStateResponseGkehubV1beta].
   /// [logging] The feature state of default logging.
   /// [monitoring] The feature state of fleet monitoring.
-  FleetObservabilityFeatureStateResponseGkehubV1beta({
+  const FleetObservabilityFeatureStateResponseGkehubV1beta({
     required this.logging,
     required this.monitoring,
   });

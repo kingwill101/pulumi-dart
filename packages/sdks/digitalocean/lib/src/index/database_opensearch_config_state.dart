@@ -123,7 +123,7 @@ class DatabaseOpensearchConfigState {
   /// [threadPoolSearchThrottledSize] Number of workers in the search throttled operation thread pool. This pool is used for searching frozen indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
   /// [threadPoolWriteQueueSize] Size of queue for operations in the write thread pool.
   /// [threadPoolWriteSize] Number of workers in the write operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
-  DatabaseOpensearchConfigState({
+  const DatabaseOpensearchConfigState({
     this.actionAutoCreateIndexEnabled,
     this.actionDestructiveRequiresName,
     this.clusterId,

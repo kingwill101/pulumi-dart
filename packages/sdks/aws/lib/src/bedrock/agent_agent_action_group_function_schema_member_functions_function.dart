@@ -15,7 +15,7 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction {
   /// [description] Description of the function and its purpose.
   /// [name] Name for the function.
   /// [parameters] Parameters that the agent elicits from the user to fulfill the function. See `parameters` Block for details.
-  AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction({
+  const AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction({
     this.description,
     required this.name,
     this.parameters,

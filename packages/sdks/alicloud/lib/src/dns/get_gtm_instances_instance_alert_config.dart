@@ -17,7 +17,7 @@ class GetGtmInstancesInstanceAlertConfig {
   /// [emailNotice] Whether to configure mail notification.
   /// [noticeType] The Alarm Event Type.
   /// [smsNotice] Whether to configure SMS notification.
-  GetGtmInstancesInstanceAlertConfig({
+  const GetGtmInstancesInstanceAlertConfig({
     required this.dingtalkNotice,
     required this.emailNotice,
     required this.noticeType,

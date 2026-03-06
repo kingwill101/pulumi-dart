@@ -17,7 +17,7 @@ class GetApplicationOptionalClaim {
   /// [accessTokens] One or more `access_token` blocks as documented below.
   /// [idTokens] One or more `id_token` blocks as documented below.
   /// [saml2Tokens] One or more `saml2_token` blocks as documented below.
-  GetApplicationOptionalClaim({
+  const GetApplicationOptionalClaim({
     this.accessTokens,
     this.idTokens,
     this.saml2Tokens,

@@ -9,7 +9,7 @@ class IotMappingPropertiesResponse {
 
   /// Creates a new [IotMappingPropertiesResponse].
   /// [content] The mapping.
-  IotMappingPropertiesResponse({
+  const IotMappingPropertiesResponse({
     this.content,
   });
 

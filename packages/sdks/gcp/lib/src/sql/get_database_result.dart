@@ -22,7 +22,7 @@ class GetDatabaseResult {
   /// [name] Required.
   /// [project] Optional.
   /// [selfLink] Required.
-  GetDatabaseResult({
+  const GetDatabaseResult({
     required this.charset,
     required this.collation,
     required this.deletionPolicy,

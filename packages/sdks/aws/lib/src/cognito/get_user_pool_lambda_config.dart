@@ -36,7 +36,7 @@ class GetUserPoolLambdaConfig {
   /// [preTokenGenerationConfigs] Required.
   /// [userMigration] Required.
   /// [verifyAuthChallengeResponse] Required.
-  GetUserPoolLambdaConfig({
+  const GetUserPoolLambdaConfig({
     required this.createAuthChallenge,
     required this.customEmailSenders,
     required this.customMessage,

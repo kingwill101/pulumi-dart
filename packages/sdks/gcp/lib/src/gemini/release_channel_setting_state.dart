@@ -44,7 +44,7 @@ class ReleaseChannelSettingState {
   /// [releaseChannel] Release channel to be used.
   /// [releaseChannelSettingId] Id of the Release Channel Setting.
   /// [updateTime] Update time stamp.
-  ReleaseChannelSettingState({
+  const ReleaseChannelSettingState({
     this.createTime,
     this.effectiveLabels,
     this.labels,

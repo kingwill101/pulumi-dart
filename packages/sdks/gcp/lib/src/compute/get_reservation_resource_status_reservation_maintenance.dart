@@ -30,7 +30,7 @@ class GetReservationResourceStatusReservationMaintenance {
   /// [subblockInfraMaintenanceOngoingCount] Describes number of subblock Infrastructure that has ongoing maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not all VM Families will support this field.
   /// [subblockInfraMaintenancePendingCount] Describes number of subblock Infrastructure that has pending maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not all VM Families will support this field.
   /// [upcomingGroupMaintenances] Maintenance information on this group of VMs.
-  GetReservationResourceStatusReservationMaintenance({
+  const GetReservationResourceStatusReservationMaintenance({
     required this.instanceMaintenanceOngoingCount,
     required this.instanceMaintenancePendingCount,
     required this.maintenanceOngoingCount,

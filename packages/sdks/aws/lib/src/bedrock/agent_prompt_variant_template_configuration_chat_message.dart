@@ -12,7 +12,7 @@ class AgentPromptVariantTemplateConfigurationChatMessage {
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatMessage].
   /// [content] Contains the content for the message you pass to, or receive from a model. See [Message Content] for more information.
   /// [role] The role that the message belongs to.
-  AgentPromptVariantTemplateConfigurationChatMessage({
+  const AgentPromptVariantTemplateConfigurationChatMessage({
     this.content,
     required this.role,
   });

@@ -18,7 +18,7 @@ class GetConnectionGatewayArgs {
   /// [connectionGatewayName] The connection gateway name
   /// [resourceGroupName] The resource group
   /// [subscriptionId] Subscription Id
-  GetConnectionGatewayArgs({
+  const GetConnectionGatewayArgs({
     required this.connectionGatewayName,
     required this.resourceGroupName,
     this.subscriptionId,

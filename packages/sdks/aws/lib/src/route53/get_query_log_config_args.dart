@@ -27,7 +27,7 @@ class GetQueryLogConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resolverQueryLogConfigId] ID of the Route53 Resolver Query Logging Configuration.
   /// [tags] Map of tags to assign to the service.
-  GetQueryLogConfigArgs({
+  const GetQueryLogConfigArgs({
     this.filters,
     this.name,
     this.region,

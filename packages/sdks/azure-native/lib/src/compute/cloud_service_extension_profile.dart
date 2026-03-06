@@ -10,7 +10,7 @@ class CloudServiceExtensionProfile {
 
   /// Creates a new [CloudServiceExtensionProfile].
   /// [extensions] List of extensions for the cloud service.
-  CloudServiceExtensionProfile({
+  const CloudServiceExtensionProfile({
     this.extensions,
   });
 

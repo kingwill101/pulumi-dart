@@ -49,7 +49,7 @@ class PrincipalAccessBoundaryPolicyState {
   /// [principalAccessBoundaryPolicyId] The ID to use to create the principal access boundary policy.
   /// [uid] Output only. The globally unique ID of the principal access boundary policy.
   /// [updateTime] Output only. The time when the principal access boundary policy was most recently updated.
-  PrincipalAccessBoundaryPolicyState({
+  const PrincipalAccessBoundaryPolicyState({
     this.annotations,
     this.createTime,
     this.details,

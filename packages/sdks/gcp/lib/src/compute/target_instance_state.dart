@@ -51,7 +51,7 @@ class TargetInstanceState {
   /// [securityPolicy] The resource URL for the security policy associated with this target instance.
   /// [selfLink] The URI of the created resource.
   /// [zone] URL of the zone where the target instance resides.
-  TargetInstanceState({
+  const TargetInstanceState({
     this.creationTimestamp,
     this.description,
     this.instance,

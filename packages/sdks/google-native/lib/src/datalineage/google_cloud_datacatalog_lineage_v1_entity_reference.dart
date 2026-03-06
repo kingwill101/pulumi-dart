@@ -9,7 +9,7 @@ class GoogleCloudDatacatalogLineageV1EntityReference {
 
   /// Creates a new [GoogleCloudDatacatalogLineageV1EntityReference].
   /// [fullyQualifiedName] [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
-  GoogleCloudDatacatalogLineageV1EntityReference({
+  const GoogleCloudDatacatalogLineageV1EntityReference({
     required this.fullyQualifiedName,
   });
 

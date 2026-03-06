@@ -11,7 +11,7 @@ class AIServicesStorage {
   /// Creates a new [AIServicesStorage].
   /// [identityClientId] The client ID of the Managed Identity associated with the Storage Account.
   /// [storageAccountId] The ID of the Storage Account.
-  AIServicesStorage({
+  const AIServicesStorage({
     this.identityClientId,
     required this.storageAccountId,
   });

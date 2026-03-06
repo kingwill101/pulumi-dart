@@ -25,7 +25,7 @@ class DistributionResponse {
   /// [latestVersion] The latest available version of this package in this distribution channel.
   /// [maintainer] A freeform string denoting the maintainer of this package.
   /// [url] The distribution channel-specific homepage for this package.
-  DistributionResponse({
+  const DistributionResponse({
     required this.architecture,
     required this.cpeUri,
     required this.description,

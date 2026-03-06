@@ -130,7 +130,7 @@ class InstanceFromMachineImageArgs {
   /// [sourceMachineImageEncryptionKey] Encryption key for the source machine image.
   /// [tags] The list of tags attached to the instance.
   /// [zone] The zone that the machine should be created in. If not
-  InstanceFromMachineImageArgs({
+  const InstanceFromMachineImageArgs({
     this.advancedMachineFeatures,
     this.allowStoppingForUpdate,
     this.canIpForward,

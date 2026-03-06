@@ -9,7 +9,7 @@ class GetVirtualGatewaySpecListenerTlCertificateFile {
   /// Creates a new [GetVirtualGatewaySpecListenerTlCertificateFile].
   /// [certificateChain] Required.
   /// [privateKey] Required.
-  GetVirtualGatewaySpecListenerTlCertificateFile({
+  const GetVirtualGatewaySpecListenerTlCertificateFile({
     required this.certificateChain,
     required this.privateKey,
   });

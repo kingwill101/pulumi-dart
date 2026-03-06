@@ -9,7 +9,7 @@ class SecurityPolicyRulePreconfiguredWafConfigResponseComputeV1 {
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigResponseComputeV1].
   /// [exclusions] A list of exclusions to apply during preconfigured WAF evaluation.
-  SecurityPolicyRulePreconfiguredWafConfigResponseComputeV1({
+  const SecurityPolicyRulePreconfiguredWafConfigResponseComputeV1({
     required this.exclusions,
   });
 

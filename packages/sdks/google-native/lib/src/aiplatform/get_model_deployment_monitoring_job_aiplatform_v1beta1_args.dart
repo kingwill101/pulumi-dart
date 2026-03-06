@@ -15,7 +15,7 @@ class GetModelDeploymentMonitoringJobAiplatformV1beta1Args {
   /// [location] Required.
   /// [modelDeploymentMonitoringJobId] Required.
   /// [project] Optional.
-  GetModelDeploymentMonitoringJobAiplatformV1beta1Args({
+  const GetModelDeploymentMonitoringJobAiplatformV1beta1Args({
     required this.location,
     required this.modelDeploymentMonitoringJobId,
     this.project,

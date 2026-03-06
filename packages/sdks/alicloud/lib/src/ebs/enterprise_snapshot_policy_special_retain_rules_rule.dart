@@ -15,7 +15,7 @@ class EnterpriseSnapshotPolicySpecialRetainRulesRule {
   /// [specialPeriodUnit] The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
   /// [timeInterval] Optional.
   /// [timeUnit] Optional.
-  EnterpriseSnapshotPolicySpecialRetainRulesRule({
+  const EnterpriseSnapshotPolicySpecialRetainRulesRule({
     this.specialPeriodUnit,
     this.timeInterval,
     this.timeUnit,

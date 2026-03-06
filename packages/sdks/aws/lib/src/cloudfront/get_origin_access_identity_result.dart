@@ -35,7 +35,7 @@ class GetOriginAccessIdentityResult {
   /// [iamArn] Pre-generated ARN for use in S3 bucket policies (see below).
   /// [id] Required.
   /// [s3CanonicalUserId] The Amazon S3 canonical user ID for the origin
-  GetOriginAccessIdentityResult({
+  const GetOriginAccessIdentityResult({
     required this.arn,
     required this.callerReference,
     required this.cloudfrontAccessIdentityPath,

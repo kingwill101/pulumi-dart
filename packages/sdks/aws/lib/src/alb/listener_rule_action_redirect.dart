@@ -23,7 +23,7 @@ class ListenerRuleActionRedirect {
   /// [protocol] The protocol. Valid values are `HTTP`, `HTTPS`, or `#{protocol}`. Defaults to `#{protocol}`.
   /// [query] The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include the leading "?". Defaults to `#{query}`.
   /// [statusCode] The HTTP redirect code. The redirect is either permanent (`HTTP_301`) or temporary (`HTTP_302`).
-  ListenerRuleActionRedirect({
+  const ListenerRuleActionRedirect({
     this.host,
     this.path,
     this.port,

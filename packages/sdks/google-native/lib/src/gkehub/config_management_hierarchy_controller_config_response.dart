@@ -15,7 +15,7 @@ class ConfigManagementHierarchyControllerConfigResponse {
   /// [enableHierarchicalResourceQuota] Whether hierarchical resource quota is enabled in this cluster.
   /// [enablePodTreeLabels] Whether pod tree labels are enabled in this cluster.
   /// [enabled] Whether Hierarchy Controller is enabled in this cluster.
-  ConfigManagementHierarchyControllerConfigResponse({
+  const ConfigManagementHierarchyControllerConfigResponse({
     required this.enableHierarchicalResourceQuota,
     required this.enablePodTreeLabels,
     required this.enabled,

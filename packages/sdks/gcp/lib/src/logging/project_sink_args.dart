@@ -57,7 +57,7 @@ class ProjectSinkArgs {
   /// [name] The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
   /// [project] The ID of the project to create the sink in. If omitted, the project associated with the provider is
   /// [uniqueWriterIdentity] Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
-  ProjectSinkArgs({
+  const ProjectSinkArgs({
     this.bigqueryOptions,
     this.customWriterIdentity,
     this.description,

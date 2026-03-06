@@ -15,7 +15,7 @@ class AuthorityConfigSubjectConfig {
   /// Creates a new [AuthorityConfigSubjectConfig].
   /// [subject] Contains distinguished name fields such as the location and organization.
   /// [subjectAltName] The subject alternative name fields.
-  AuthorityConfigSubjectConfig({
+  const AuthorityConfigSubjectConfig({
     required this.subject,
     this.subjectAltName,
   });

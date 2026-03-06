@@ -22,7 +22,7 @@ class PrivateEndpointConnectionArgs {
   /// [properties] The properties of a private endpoint connection
   /// [resourceGroupName] The name of the resource group that contains the IoT hub.
   /// [resourceName] The name of the IoT hub.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
     required this.properties,
     required this.resourceGroupName,

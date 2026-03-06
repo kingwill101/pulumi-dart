@@ -15,7 +15,7 @@ class GetRegionJobIamPolicyArgs {
   /// [jobId] Required.
   /// [project] Optional.
   /// [regionId] Required.
-  GetRegionJobIamPolicyArgs({
+  const GetRegionJobIamPolicyArgs({
     required this.jobId,
     this.project,
     required this.regionId,

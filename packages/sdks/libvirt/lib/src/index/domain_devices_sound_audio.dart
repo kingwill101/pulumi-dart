@@ -8,7 +8,7 @@ class DomainDevicesSoundAudio {
 
   /// Creates a new [DomainDevicesSoundAudio].
   /// [id] This field sets the identifier for the audio configuration in the sound device of the domain.
-  DomainDevicesSoundAudio({
+  const DomainDevicesSoundAudio({
     this.id,
   });
 

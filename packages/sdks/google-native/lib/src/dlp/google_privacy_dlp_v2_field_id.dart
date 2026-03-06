@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2FieldId {
 
   /// Creates a new [GooglePrivacyDlpV2FieldId].
   /// [name] Name describing the field.
-  GooglePrivacyDlpV2FieldId({
+  const GooglePrivacyDlpV2FieldId({
     this.name,
   });
 

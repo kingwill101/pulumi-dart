@@ -14,7 +14,7 @@ class ObfuscationRuleAction {
   /// [attributes] Attribute names for action. An empty list applies the action to all the attributes.
   /// [expressionId] Expression Id for action.
   /// [method] Obfuscation method to use. Methods for replacing obfuscated values are `HASH_SHA256` and `MASK`.
-  ObfuscationRuleAction({
+  const ObfuscationRuleAction({
     required this.attributes,
     required this.expressionId,
     required this.method,

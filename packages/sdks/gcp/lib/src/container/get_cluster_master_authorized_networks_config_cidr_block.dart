@@ -11,7 +11,7 @@ class GetClusterMasterAuthorizedNetworksConfigCidrBlock {
   /// Creates a new [GetClusterMasterAuthorizedNetworksConfigCidrBlock].
   /// [cidrBlock] External network that can access Kubernetes master through HTTPS. Must be specified in CIDR notation.
   /// [displayName] Field for users to identify CIDR blocks.
-  GetClusterMasterAuthorizedNetworksConfigCidrBlock({
+  const GetClusterMasterAuthorizedNetworksConfigCidrBlock({
     required this.cidrBlock,
     required this.displayName,
   });

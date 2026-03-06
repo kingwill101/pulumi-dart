@@ -24,7 +24,7 @@ class GetSecondaryIndexesArgs {
   /// [nameRegex] A regex string to filter results by secondary index name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tableName] The name of OTS table.
-  GetSecondaryIndexesArgs({
+  const GetSecondaryIndexesArgs({
     this.ids,
     required this.instanceName,
     this.nameRegex,

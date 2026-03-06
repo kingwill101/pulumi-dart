@@ -17,7 +17,7 @@ class WeeklyMaintenanceWindowMemcacheV1beta2 {
   /// [day] Allows to define schedule that runs specified day of the week.
   /// [duration] Duration of the time window.
   /// [startTime] Start time of the window in UTC.
-  WeeklyMaintenanceWindowMemcacheV1beta2({
+  const WeeklyMaintenanceWindowMemcacheV1beta2({
     required this.day,
     required this.duration,
     required this.startTime,

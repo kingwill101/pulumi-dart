@@ -11,7 +11,7 @@ class DomainPerfEvent {
   /// Creates a new [DomainPerfEvent].
   /// [enabled] Controls whether performance monitoring events are enabled.
   /// [name] Sets the name of the performance monitoring event.
-  DomainPerfEvent({
+  const DomainPerfEvent({
     required this.enabled,
     required this.name,
   });

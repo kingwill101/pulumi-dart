@@ -23,7 +23,7 @@ class CxIntentTrainingPhrase {
   /// [id] (Output)
   /// [parts] The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
   /// [repeatCount] Indicates how many times this example was added to the intent.
-  CxIntentTrainingPhrase({
+  const CxIntentTrainingPhrase({
     this.id,
     required this.parts,
     this.repeatCount,

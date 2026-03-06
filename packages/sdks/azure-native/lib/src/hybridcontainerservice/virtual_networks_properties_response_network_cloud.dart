@@ -9,7 +9,7 @@ class VirtualNetworksPropertiesResponseNetworkCloud {
 
   /// Creates a new [VirtualNetworksPropertiesResponseNetworkCloud].
   /// [networkId] The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
-  VirtualNetworksPropertiesResponseNetworkCloud({
+  const VirtualNetworksPropertiesResponseNetworkCloud({
     this.networkId,
   });
 

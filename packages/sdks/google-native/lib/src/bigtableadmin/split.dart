@@ -9,7 +9,7 @@ class Split {
 
   /// Creates a new [Split].
   /// [key] Row key to use as an initial tablet boundary.
-  Split({
+  const Split({
     this.key,
   });
 

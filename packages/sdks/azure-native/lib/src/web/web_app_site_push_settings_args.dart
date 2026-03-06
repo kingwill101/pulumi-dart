@@ -33,7 +33,7 @@ class WebAppSitePushSettingsArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [tagWhitelistJson] Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
   /// [tagsRequiringAuth] Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
-  WebAppSitePushSettingsArgs({
+  const WebAppSitePushSettingsArgs({
     this.dynamicTagsJson,
     required this.isPushEnabled,
     this.kind,

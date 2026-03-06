@@ -40,7 +40,7 @@ class VmwareVmDetails {
   /// [powerState] The power state of the VM at the moment list was taken.
   /// [uuid] The unique identifier of the VM in vCenter.
   /// [vmId] The VM's id in the source (note that this is not the MigratingVm's id). This is the moref id of the VM.
-  VmwareVmDetails({
+  const VmwareVmDetails({
     this.committedStorageMb,
     this.cpuCount,
     this.datacenterDescription,

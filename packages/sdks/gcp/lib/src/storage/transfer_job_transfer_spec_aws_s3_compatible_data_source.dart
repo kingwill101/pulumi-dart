@@ -21,7 +21,7 @@ class TransferJobTransferSpecAwsS3CompatibleDataSource {
   /// [path] Specifies the path to transfer objects.
   /// [region] Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
   /// [s3Metadata] S3 compatible metadata.
-  TransferJobTransferSpecAwsS3CompatibleDataSource({
+  const TransferJobTransferSpecAwsS3CompatibleDataSource({
     required this.bucketName,
     required this.endpoint,
     this.path,

@@ -9,7 +9,7 @@ class GoogleFirestoreAdminV1WeeklyRecurrenceResponse {
 
   /// Creates a new [GoogleFirestoreAdminV1WeeklyRecurrenceResponse].
   /// [day] The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
-  GoogleFirestoreAdminV1WeeklyRecurrenceResponse({
+  const GoogleFirestoreAdminV1WeeklyRecurrenceResponse({
     required this.day,
   });
 

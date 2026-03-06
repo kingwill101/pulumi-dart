@@ -18,7 +18,7 @@ class GetEdgeActionVersionCodeArgs {
   /// [edgeActionName] The name of the Edge Action
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] The name of the Edge Action version
-  GetEdgeActionVersionCodeArgs({
+  const GetEdgeActionVersionCodeArgs({
     required this.edgeActionName,
     required this.resourceGroupName,
     required this.version,

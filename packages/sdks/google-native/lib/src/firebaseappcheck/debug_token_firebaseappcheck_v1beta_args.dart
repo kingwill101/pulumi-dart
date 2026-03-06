@@ -22,7 +22,7 @@ class DebugTokenFirebaseappcheckV1betaArgs {
   /// [name] The relative resource name of the debug token, in the format: ``` projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
   /// [project] Optional.
   /// [token] Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
-  DebugTokenFirebaseappcheckV1betaArgs({
+  const DebugTokenFirebaseappcheckV1betaArgs({
     required this.appId,
     required this.displayName,
     this.name,

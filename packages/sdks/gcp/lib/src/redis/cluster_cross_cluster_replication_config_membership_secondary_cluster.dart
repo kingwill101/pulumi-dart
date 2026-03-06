@@ -13,7 +13,7 @@ class ClusterCrossClusterReplicationConfigMembershipSecondaryCluster {
   /// Creates a new [ClusterCrossClusterReplicationConfigMembershipSecondaryCluster].
   /// [cluster] (Output)
   /// [uid] (Output)
-  ClusterCrossClusterReplicationConfigMembershipSecondaryCluster({
+  const ClusterCrossClusterReplicationConfigMembershipSecondaryCluster({
     this.cluster,
     this.uid,
   });

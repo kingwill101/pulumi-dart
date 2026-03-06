@@ -29,7 +29,7 @@ class GetNotificationResult {
   /// [payloadFormat] The desired content of the Payload.
   /// [selfLink] The canonical URL of this notification.
   /// [topic] The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-  GetNotificationResult({
+  const GetNotificationResult({
     required this.customAttributes,
     required this.etag,
     required this.eventTypes,

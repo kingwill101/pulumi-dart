@@ -38,7 +38,7 @@ class NodeGroupArgs {
   /// [regionId] Required.
   /// [requestId] Optional. A unique ID used to identify the request. If the server receives two CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests) with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
   /// [roles] Node group roles.
-  NodeGroupArgs({
+  const NodeGroupArgs({
     required this.clusterId,
     this.labels,
     this.name,

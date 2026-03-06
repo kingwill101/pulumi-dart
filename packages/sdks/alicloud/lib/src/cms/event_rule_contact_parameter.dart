@@ -14,7 +14,7 @@ class EventRuleContactParameter {
   /// [contactGroupName] The name of the alert contact group.
   /// [contactParametersId] The ID of the recipient that receives alert notifications.
   /// [level] The alert level and the corresponding notification methods.
-  EventRuleContactParameter({
+  const EventRuleContactParameter({
     this.contactGroupName,
     this.contactParametersId,
     this.level,

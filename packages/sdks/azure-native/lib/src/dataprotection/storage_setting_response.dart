@@ -12,7 +12,7 @@ class StorageSettingResponse {
   /// Creates a new [StorageSettingResponse].
   /// [datastoreType] Gets or sets the type of the datastore.
   /// [type] Gets or sets the type.
-  StorageSettingResponse({
+  const StorageSettingResponse({
     this.datastoreType,
     this.type,
   });

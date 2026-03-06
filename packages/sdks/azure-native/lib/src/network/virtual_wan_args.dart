@@ -36,7 +36,7 @@ class VirtualWanArgs {
   /// [tags] Resource tags.
   /// [type] The type of the VirtualWAN.
   /// [virtualWANName] The name of the VirtualWAN being created or updated.
-  VirtualWanArgs({
+  const VirtualWanArgs({
     this.allowBranchToBranchTraffic,
     this.allowVnetToVnetTraffic,
     this.disableVpnEncryption,

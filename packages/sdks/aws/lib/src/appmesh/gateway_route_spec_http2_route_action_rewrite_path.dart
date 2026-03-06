@@ -8,7 +8,7 @@ class GatewayRouteSpecHttp2RouteActionRewritePath {
 
   /// Creates a new [GatewayRouteSpecHttp2RouteActionRewritePath].
   /// [exact] The exact path to match on.
-  GatewayRouteSpecHttp2RouteActionRewritePath({
+  const GatewayRouteSpecHttp2RouteActionRewritePath({
     required this.exact,
   });
 

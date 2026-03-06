@@ -13,7 +13,7 @@ class TarReadSettings {
   /// Creates a new [TarReadSettings].
   /// [preserveCompressionFileNameAsFolder] Preserve the compression file name as folder path. Type: boolean (or Expression with resultType boolean).
   /// [type] The Compression setting type.
-  TarReadSettings({
+  const TarReadSettings({
     this.preserveCompressionFileNameAsFolder,
     required this.type,
   });

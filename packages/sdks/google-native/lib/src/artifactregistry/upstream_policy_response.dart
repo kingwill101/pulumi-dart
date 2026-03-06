@@ -12,7 +12,7 @@ class UpstreamPolicyResponse {
   /// Creates a new [UpstreamPolicyResponse].
   /// [priority] Entries with a greater priority value take precedence in the pull order.
   /// [repository] A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
-  UpstreamPolicyResponse({
+  const UpstreamPolicyResponse({
     required this.priority,
     required this.repository,
   });

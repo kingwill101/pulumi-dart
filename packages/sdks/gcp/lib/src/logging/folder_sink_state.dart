@@ -55,7 +55,7 @@ class FolderSinkState {
   /// [interceptChildren] Whether or not to intercept logs from child projects. If true, matching logs will not
   /// [name] The name of the logging sink.
   /// [writerIdentity] The identity associated with this sink. This identity must be granted write access to the
-  FolderSinkState({
+  const FolderSinkState({
     this.bigqueryOptions,
     this.description,
     this.destination,

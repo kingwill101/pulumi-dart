@@ -12,7 +12,7 @@ class ExtensionActionPoint {
   /// Creates a new [ExtensionActionPoint].
   /// [actions] An action defines the tasks the extension performs during the AppConfig workflow. Detailed below.
   /// [point] The point at which to perform the defined actions. Valid points are `PRE_CREATE_HOSTED_CONFIGURATION_VERSION`, `PRE_START_DEPLOYMENT`, `ON_DEPLOYMENT_START`, `ON_DEPLOYMENT_STEP`, `ON_DEPLOYMENT_BAKING`, `ON_DEPLOYMENT_COMPLETE`, `ON_DEPLOYMENT_ROLLED_BACK`.
-  ExtensionActionPoint({
+  const ExtensionActionPoint({
     required this.actions,
     required this.point,
   });

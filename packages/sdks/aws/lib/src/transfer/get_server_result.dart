@@ -51,7 +51,7 @@ class GetServerResult {
   /// [structuredLogDestinations] A set of ARNs of destinations that will receive structured logs from the transfer server such as CloudWatch Log Group ARNs.
   /// [tags] Map of tags assigned to the resource.
   /// [url] URL of the service endpoint used to authenticate users with an `identity_provider_type` of `API_GATEWAY`.
-  GetServerResult({
+  const GetServerResult({
     required this.arn,
     required this.certificate,
     required this.domain,

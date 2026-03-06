@@ -11,7 +11,7 @@ class GetPlanStageTarget {
   /// Creates a new [GetPlanStageTarget].
   /// [channelTargetInfos] Required.
   /// [contactTargetInfos] Required.
-  GetPlanStageTarget({
+  const GetPlanStageTarget({
     required this.channelTargetInfos,
     required this.contactTargetInfos,
   });

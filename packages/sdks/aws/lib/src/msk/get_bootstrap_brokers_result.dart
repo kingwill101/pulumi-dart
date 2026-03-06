@@ -42,7 +42,7 @@ class GetBootstrapBrokersResult {
   /// [clusterArn] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetBootstrapBrokersResult({
+  const GetBootstrapBrokersResult({
     required this.bootstrapBrokers,
     required this.bootstrapBrokersPublicSaslIam,
     required this.bootstrapBrokersPublicSaslScram,

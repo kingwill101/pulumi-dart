@@ -8,7 +8,7 @@ class DomainDevicesTpmBackendExternalSourceDbus {
 
   /// Creates a new [DomainDevicesTpmBackendExternalSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesTpmBackendExternalSourceDbus({
+  const DomainDevicesTpmBackendExternalSourceDbus({
     this.channel,
   });
 

@@ -29,7 +29,7 @@ class GetExperimentResult {
   /// [name] Name of the TensorboardExperiment. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}`
   /// [source] Immutable. Source of the TensorboardExperiment. Example: a custom training job.
   /// [updateTime] Timestamp when this TensorboardExperiment was last updated.
-  GetExperimentResult({
+  const GetExperimentResult({
     required this.createTime,
     required this.description,
     required this.displayName,

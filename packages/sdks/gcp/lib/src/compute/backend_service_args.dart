@@ -287,7 +287,7 @@ class BackendServiceArgs {
   /// [strongSessionAffinityCookie] Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
   /// [timeoutSec] The backend service timeout has a different meaning depending on the type of load balancer.
   /// [tlsSettings] Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
-  BackendServiceArgs({
+  const BackendServiceArgs({
     this.affinityCookieTtlSec,
     this.backends,
     this.cdnPolicy,

@@ -11,7 +11,7 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDelive
   /// Creates a new [InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config].
   /// [bucketName] S3 bucket name.
   /// [keyPrefix] S3 prefix.
-  InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config({
+  const InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config({
     required this.bucketName,
     this.keyPrefix,
   });

@@ -14,7 +14,7 @@ class WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
   /// [count] The number of Slow Requests in the time `interval` to trigger this rule.
   /// [interval] The time interval in the form `hh:mm:ss`.
   /// [timeTaken] The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
-  WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest({
+  const WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest({
     required this.count,
     required this.interval,
     required this.timeTaken,

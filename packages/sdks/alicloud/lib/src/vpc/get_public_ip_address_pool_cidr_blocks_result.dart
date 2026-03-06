@@ -26,7 +26,7 @@ class GetPublicIpAddressPoolCidrBlocksResult {
   /// [outputFile] Optional.
   /// [publicIpAddressPoolId] The ID of the Vpc Public IP address pool.
   /// [status] The status of the CIDR block in the Vpc Public IP address pool.
-  GetPublicIpAddressPoolCidrBlocksResult({
+  const GetPublicIpAddressPoolCidrBlocksResult({
     required this.blocks,
     this.cidrBlock,
     required this.id,

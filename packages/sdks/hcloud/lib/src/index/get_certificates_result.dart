@@ -15,7 +15,7 @@ class GetCertificatesResult {
   /// [certificates] (list) List of all matching certificates. See `data.hcloud_certificate` for schema.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [withSelector] Optional.
-  GetCertificatesResult({
+  const GetCertificatesResult({
     required this.certificates,
     required this.id,
     this.withSelector,

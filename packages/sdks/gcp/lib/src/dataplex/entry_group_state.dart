@@ -51,7 +51,7 @@ class EntryGroupState {
   /// [transferStatus] Denotes the transfer status of the Entry Group. It is unspecified
   /// [uid] System generated globally unique ID for the EntryGroup. This ID will be different if the EntryGroup is deleted and re-created with the same name.
   /// [updateTime] The time when the EntryGroup was last updated.
-  EntryGroupState({
+  const EntryGroupState({
     this.createTime,
     this.description,
     this.displayName,

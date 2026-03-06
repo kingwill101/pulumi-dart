@@ -14,7 +14,7 @@ class RuntimeTemplateNetworkSpec {
   /// [enableInternetAccess] Enable public internet access for the runtime.
   /// [network] The name of the VPC that this runtime is in.
   /// [subnetwork] The name of the subnetwork that this runtime is in.
-  RuntimeTemplateNetworkSpec({
+  const RuntimeTemplateNetworkSpec({
     this.enableInternetAccess,
     this.network,
     this.subnetwork,

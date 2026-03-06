@@ -10,7 +10,7 @@ class GetCustomizationTaskErrorDetailsResult {
 
   /// Creates a new [GetCustomizationTaskErrorDetailsResult].
   /// [errors] Errors associated with resources synchronized from the catalog.
-  GetCustomizationTaskErrorDetailsResult({
+  const GetCustomizationTaskErrorDetailsResult({
     required this.errors,
   });
 

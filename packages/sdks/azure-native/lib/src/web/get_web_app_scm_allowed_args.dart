@@ -15,7 +15,7 @@ class GetWebAppScmAllowedArgs {
   /// Creates a new [GetWebAppScmAllowedArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppScmAllowedArgs({
+  const GetWebAppScmAllowedArgs({
     required this.name,
     required this.resourceGroupName,
   });

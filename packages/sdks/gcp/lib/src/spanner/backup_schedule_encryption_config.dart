@@ -20,7 +20,7 @@ class BackupScheduleEncryptionConfig {
   /// [encryptionType] The encryption type of backups created by the backup schedule.
   /// [kmsKeyName] The resource name of the Cloud KMS key to use for encryption.
   /// [kmsKeyNames] Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
-  BackupScheduleEncryptionConfig({
+  const BackupScheduleEncryptionConfig({
     required this.encryptionType,
     this.kmsKeyName,
     this.kmsKeyNames,

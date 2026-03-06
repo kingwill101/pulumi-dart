@@ -11,7 +11,7 @@ class WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLoca
   /// Creates a new [WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation].
   /// [bucket] Specifies the S3 bucket for the customer input file.
   /// [key] The name assigned to the file when it was created in S3. You use the object key to retrieve the object.
-  WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation({
+  const WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation({
     this.bucket,
     this.key,
   });

@@ -9,7 +9,7 @@ class VvpInstanceStorage {
 
   /// Creates a new [VvpInstanceStorage].
   /// [oss] OSS stores information. See `oss` below.
-  VvpInstanceStorage({
+  const VvpInstanceStorage({
     required this.oss,
   });
 

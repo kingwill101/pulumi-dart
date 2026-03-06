@@ -12,7 +12,7 @@ class UrlMapTestHeaderComputeV1 {
   /// Creates a new [UrlMapTestHeaderComputeV1].
   /// [name] Header name.
   /// [value] Header value.
-  UrlMapTestHeaderComputeV1({
+  const UrlMapTestHeaderComputeV1({
     this.name,
     this.value,
   });

@@ -9,7 +9,7 @@ class TaskDefinitionKernelCapabilities {
   /// Creates a new [TaskDefinitionKernelCapabilities].
   /// [add] Optional.
   /// [drop] Optional.
-  TaskDefinitionKernelCapabilities({
+  const TaskDefinitionKernelCapabilities({
     this.add,
     this.drop,
   });

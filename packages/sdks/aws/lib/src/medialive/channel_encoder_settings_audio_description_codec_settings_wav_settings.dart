@@ -12,7 +12,7 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings {
   /// [bitDepth] Optional.
   /// [codingMode] Optional.
   /// [sampleRate] Sample rate in Hz.
-  ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings({
+  const ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings({
     this.bitDepth,
     this.codingMode,
     this.sampleRate,

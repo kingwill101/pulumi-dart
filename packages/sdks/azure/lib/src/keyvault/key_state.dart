@@ -71,7 +71,7 @@ class KeyState {
   /// [versionlessId] The Base ID of the Key Vault Key.
   /// [x] The EC X component of this Key Vault Key.
   /// [y] The EC Y component of this Key Vault Key.
-  KeyState({
+  const KeyState({
     this.curve,
     this.e,
     this.expirationDate,

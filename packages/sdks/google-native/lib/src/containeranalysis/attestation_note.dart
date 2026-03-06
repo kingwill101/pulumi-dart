@@ -10,7 +10,7 @@ class AttestationNote {
 
   /// Creates a new [AttestationNote].
   /// [hint] Hint hints at the purpose of the attestation authority.
-  AttestationNote({
+  const AttestationNote({
     this.hint,
   });
 

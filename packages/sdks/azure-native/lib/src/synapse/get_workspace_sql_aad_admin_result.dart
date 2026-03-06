@@ -29,7 +29,7 @@ class GetWorkspaceSqlAadAdminResult {
   /// [sid] Object ID of the workspace active directory administrator
   /// [tenantId] Tenant ID of the workspace active directory administrator
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkspaceSqlAadAdminResult({
+  const GetWorkspaceSqlAadAdminResult({
     this.administratorType,
     required this.azureApiVersion,
     required this.id,

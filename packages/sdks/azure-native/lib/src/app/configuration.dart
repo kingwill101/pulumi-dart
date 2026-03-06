@@ -47,7 +47,7 @@ class Configuration {
   /// [secrets] Collection of secrets used by a Container app
   /// [service] Container App to be a dev Container App Service
   /// [targetLabel] Required in labels revisions mode. Label to apply to newly created revision.
-  Configuration({
+  const Configuration({
     this.activeRevisionsMode,
     this.dapr,
     this.identitySettings,

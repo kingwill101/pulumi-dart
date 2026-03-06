@@ -8,7 +8,7 @@ class MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration {
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration].
   /// [insightsTarget] SQS queue to deliver results.
-  MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration({
+  const MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration({
     required this.insightsTarget,
   });
 

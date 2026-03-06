@@ -21,7 +21,7 @@ class GetAddonArgs {
   /// [clusterName] Name of the EKS Cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
-  GetAddonArgs({
+  const GetAddonArgs({
     required this.addonName,
     required this.clusterName,
     this.region,

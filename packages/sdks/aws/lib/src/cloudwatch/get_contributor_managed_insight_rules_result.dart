@@ -18,7 +18,7 @@ class GetContributorManagedInsightRulesResult {
   /// [managedRules] Managed rules that are available for the specified Amazon Web Services resource. See `managed_rules reference` below for details.
   /// [region] Required.
   /// [resourceArn] If a managed rule is enabled, this is the ARN for the related Amazon Web Services resource.
-  GetContributorManagedInsightRulesResult({
+  const GetContributorManagedInsightRulesResult({
     required this.id,
     required this.managedRules,
     required this.region,

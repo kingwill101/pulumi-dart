@@ -8,7 +8,7 @@ class ServerBindingComputeV1 {
 
   /// Creates a new [ServerBindingComputeV1].
   /// [type] Optional.
-  ServerBindingComputeV1({
+  const ServerBindingComputeV1({
     this.type,
   });
 

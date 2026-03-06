@@ -13,7 +13,7 @@ class NetworkManagerScope {
   /// Creates a new [NetworkManagerScope].
   /// [managementGroupIds] A list of management group IDs.
   /// [subscriptionIds] A list of subscription IDs.
-  NetworkManagerScope({
+  const NetworkManagerScope({
     this.managementGroupIds,
     this.subscriptionIds,
   });

@@ -14,7 +14,7 @@ class WorkflowIssuesFilterPredicate {
   /// [attribute] Issue event attribute to check
   /// [operator] An operator to use to compare the attribute with the provided `values`, see supported operators below
   /// [values] The `attribute` must match **any** of the values in this list
-  WorkflowIssuesFilterPredicate({
+  const WorkflowIssuesFilterPredicate({
     required this.attribute,
     required this.operator,
     required this.values,

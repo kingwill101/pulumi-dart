@@ -12,7 +12,7 @@ class TCPSocketActionResponse {
   /// Creates a new [TCPSocketActionResponse].
   /// [host] Not supported by Cloud Run.
   /// [port] Port number to access on the container. Number must be in the range 1 to 65535.
-  TCPSocketActionResponse({
+  const TCPSocketActionResponse({
     required this.host,
     required this.port,
   });

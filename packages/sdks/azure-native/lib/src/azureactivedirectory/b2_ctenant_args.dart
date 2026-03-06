@@ -34,7 +34,7 @@ class B2CTenantArgs {
   /// [resourceName] The initial domain name of the Azure AD B2C tenant.
   /// [sku] SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
   /// [tags] Resource Tags
-  B2CTenantArgs({
+  const B2CTenantArgs({
     this.countryCode,
     this.displayName,
     this.isGoLocalTenant,

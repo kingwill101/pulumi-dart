@@ -22,7 +22,7 @@ class GetRulesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [rules] Required.
-  GetRulesResult({
+  const GetRulesResult({
     this.endpointId,
     required this.id,
     required this.ids,

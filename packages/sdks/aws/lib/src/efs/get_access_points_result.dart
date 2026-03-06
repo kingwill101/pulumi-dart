@@ -18,7 +18,7 @@ class GetAccessPointsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] Set of identifiers.
   /// [region] Required.
-  GetAccessPointsResult({
+  const GetAccessPointsResult({
     required this.arns,
     required this.fileSystemId,
     required this.id,

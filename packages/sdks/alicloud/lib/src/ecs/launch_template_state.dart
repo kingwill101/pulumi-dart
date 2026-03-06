@@ -167,7 +167,7 @@ class LaunchTemplateState {
   /// [vpcId] Optional.
   /// [vswitchId] When creating a VPC-Connected instance, you must specify its VSwitch ID.
   /// [zoneId] The zone ID of the instance.
-  LaunchTemplateState({
+  const LaunchTemplateState({
     this.autoReleaseTime,
     this.autoRenew,
     this.autoRenewPeriod,

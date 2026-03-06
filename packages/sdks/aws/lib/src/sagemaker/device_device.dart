@@ -14,7 +14,7 @@ class DeviceDevice {
   /// [description] A description for the device.
   /// [deviceName] The name of the device.
   /// [iotThingName] Amazon Web Services Internet of Things (IoT) object name.
-  DeviceDevice({
+  const DeviceDevice({
     this.description,
     required this.deviceName,
     this.iotThingName,

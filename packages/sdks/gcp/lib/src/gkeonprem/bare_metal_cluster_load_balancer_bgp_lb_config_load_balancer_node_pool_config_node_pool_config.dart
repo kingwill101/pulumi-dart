@@ -35,7 +35,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
   /// [nodeConfigs] The list of machine addresses in the Bare Metal Node Pool.
   /// [operatingSystem] Specifies the nodes operating system (default: LINUX).
   /// [taints] The initial taints assigned to nodes of this node pool.
-  BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig({
+  const BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig({
     this.kubeletConfig,
     this.labels,
     this.nodeConfigs,

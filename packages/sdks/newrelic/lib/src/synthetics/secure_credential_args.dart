@@ -24,7 +24,7 @@ class SecureCredentialArgs {
   /// [key] The secure credential's key name.  Regardless of the case used in the configuration, the provider will provide an upcased key to the underlying API.
   /// [lastUpdated] The time the secure credential was last updated.
   /// [value] The secure credential's value.
-  SecureCredentialArgs({
+  const SecureCredentialArgs({
     this.accountId,
     this.description,
     required this.key,

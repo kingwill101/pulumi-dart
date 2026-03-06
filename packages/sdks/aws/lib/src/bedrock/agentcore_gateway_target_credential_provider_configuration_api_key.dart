@@ -17,7 +17,7 @@ class AgentcoreGatewayTargetCredentialProviderConfigurationApiKey {
   /// [credentialParameterName] Name of the parameter containing the API key credential.
   /// [credentialPrefix] Prefix to add to the API key credential value.
   /// [providerArn] ARN of the OIDC provider for API key authentication.
-  AgentcoreGatewayTargetCredentialProviderConfigurationApiKey({
+  const AgentcoreGatewayTargetCredentialProviderConfigurationApiKey({
     this.credentialLocation,
     this.credentialParameterName,
     this.credentialPrefix,

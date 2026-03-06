@@ -21,7 +21,7 @@ class RoleManagementPolicyAssignmentArgs {
   /// [roleDefinitionId] The role definition of management policy assignment.
   /// [roleManagementPolicyAssignmentName] The name of format {guid_guid} the role management policy assignment to upsert.
   /// [scope] The role management policy scope.
-  RoleManagementPolicyAssignmentArgs({
+  const RoleManagementPolicyAssignmentArgs({
     this.policyId,
     this.roleDefinitionId,
     this.roleManagementPolicyAssignmentName,

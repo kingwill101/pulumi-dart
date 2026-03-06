@@ -18,7 +18,7 @@ class AIServicesNetworkAcls {
   /// [defaultAction] The Default Action to use when no rules match from `ip_rules` / `virtual_network_rules`. Possible values are `Allow` and `Deny`.
   /// [ipRules] One or more IP Addresses, or CIDR Blocks which should be able to access the AI Services Account.
   /// [virtualNetworkRules] A `virtual_network_rules` block as defined below.
-  AIServicesNetworkAcls({
+  const AIServicesNetworkAcls({
     this.bypass,
     required this.defaultAction,
     this.ipRules,

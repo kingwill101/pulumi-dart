@@ -18,7 +18,7 @@ class GetAutoExportJobArgs {
   /// [amlFilesystemName] Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   /// [autoExportJobName] Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAutoExportJobArgs({
+  const GetAutoExportJobArgs({
     required this.amlFilesystemName,
     required this.autoExportJobName,
     required this.resourceGroupName,

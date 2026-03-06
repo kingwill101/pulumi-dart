@@ -53,7 +53,7 @@ class CommunityArgs {
   /// [policyOverride] Policy override setting for the community. Specifies whether to apply enclave-specific policies or disable policy enforcement.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  CommunityArgs({
+  const CommunityArgs({
     this.addressSpace,
     this.approvalSettings,
     this.communityName,

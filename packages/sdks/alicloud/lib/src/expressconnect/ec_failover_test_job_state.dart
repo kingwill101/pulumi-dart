@@ -27,7 +27,7 @@ class EcFailoverTestJobState {
   /// [resourceIds] Resource id list.
   /// [resourceType] Resource type.
   /// [status] The status of the resource.
-  EcFailoverTestJobState({
+  const EcFailoverTestJobState({
     this.description,
     this.ecFailoverTestJobName,
     this.jobDuration,

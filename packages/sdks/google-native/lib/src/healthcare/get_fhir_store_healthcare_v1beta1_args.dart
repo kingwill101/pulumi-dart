@@ -17,7 +17,7 @@ class GetFhirStoreHealthcareV1beta1Args {
   /// [fhirStoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFhirStoreHealthcareV1beta1Args({
+  const GetFhirStoreHealthcareV1beta1Args({
     required this.datasetId,
     required this.fhirStoreId,
     required this.location,

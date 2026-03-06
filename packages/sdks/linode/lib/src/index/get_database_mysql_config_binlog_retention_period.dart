@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigBinlogRetentionPeriod {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigBinlogRetentionPeriod({
+  const GetDatabaseMysqlConfigBinlogRetentionPeriod({
     required this.description,
     required this.example,
     required this.maximum,

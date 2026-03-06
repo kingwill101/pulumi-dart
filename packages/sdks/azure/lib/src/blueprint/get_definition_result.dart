@@ -30,7 +30,7 @@ class GetDefinitionResult {
   /// [targetScope] The target scope.
   /// [timeCreated] The timestamp of when this Blueprint Definition was created.
   /// [versions] A list of versions published for this Blueprint Definition.
-  GetDefinitionResult({
+  const GetDefinitionResult({
     required this.description,
     required this.displayName,
     required this.id,

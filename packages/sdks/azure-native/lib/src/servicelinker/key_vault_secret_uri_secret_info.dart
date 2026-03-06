@@ -13,7 +13,7 @@ class KeyVaultSecretUriSecretInfo {
   /// Creates a new [KeyVaultSecretUriSecretInfo].
   /// [secretType] The secret type.
   /// [value] URI to the keyvault secret
-  KeyVaultSecretUriSecretInfo({
+  const KeyVaultSecretUriSecretInfo({
     required this.secretType,
     this.value,
   });

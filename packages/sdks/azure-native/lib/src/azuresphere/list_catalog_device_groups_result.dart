@@ -13,7 +13,7 @@ class ListCatalogDeviceGroupsResult {
   /// Creates a new [ListCatalogDeviceGroupsResult].
   /// [nextLink] The link to the next page of items
   /// [value] The DeviceGroup items on this page
-  ListCatalogDeviceGroupsResult({
+  const ListCatalogDeviceGroupsResult({
     this.nextLink,
     required this.value,
   });

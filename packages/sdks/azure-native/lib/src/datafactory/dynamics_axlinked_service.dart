@@ -46,7 +46,7 @@ class DynamicsAXLinkedService {
   /// [type] Type of linked service.
   /// [url] The Dynamics AX (or Dynamics 365 Finance and Operations) instance OData endpoint.
   /// [version] Version of the linked service.
-  DynamicsAXLinkedService({
+  const DynamicsAXLinkedService({
     required this.aadResourceId,
     this.annotations,
     this.connectVia,

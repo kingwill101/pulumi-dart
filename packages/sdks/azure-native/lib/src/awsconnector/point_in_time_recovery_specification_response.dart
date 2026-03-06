@@ -9,7 +9,7 @@ class PointInTimeRecoverySpecificationResponse {
 
   /// Creates a new [PointInTimeRecoverySpecificationResponse].
   /// [pointInTimeRecoveryEnabled] Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.
-  PointInTimeRecoverySpecificationResponse({
+  const PointInTimeRecoverySpecificationResponse({
     this.pointInTimeRecoveryEnabled,
   });
 

@@ -12,7 +12,7 @@ class GetRepositoryRemoteRepositoryConfigMavenRepository {
   /// Creates a new [GetRepositoryRemoteRepositoryConfigMavenRepository].
   /// [customRepositories] [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// [publicRepository] Address of the remote repository. Possible values: ["MAVEN_CENTRAL"]
-  GetRepositoryRemoteRepositoryConfigMavenRepository({
+  const GetRepositoryRemoteRepositoryConfigMavenRepository({
     required this.customRepositories,
     required this.publicRepository,
   });

@@ -17,7 +17,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy {
   /// [instanceSelectionLists] List of instance selection options that the group will use when creating new VMs.
   /// [instanceSelectionResults] A list of instance selection results in the group.
   /// [provisioningModelMix] Defines how the Group selects the provisioning model to ensure required reliability.
-  ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy({
+  const ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy({
     this.instanceSelectionLists,
     this.instanceSelectionResults,
     this.provisioningModelMix,

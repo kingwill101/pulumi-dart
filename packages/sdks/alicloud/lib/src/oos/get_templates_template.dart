@@ -50,7 +50,7 @@ class GetTemplatesTemplate {
   /// [templateVersion] Version of the OOS Template.
   /// [updatedBy] The user who updated the template.
   /// [updatedDate] The time when the template was updated.
-  GetTemplatesTemplate({
+  const GetTemplatesTemplate({
     required this.category,
     required this.createdBy,
     required this.createdDate,

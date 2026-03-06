@@ -25,7 +25,7 @@ class BackendCircuitBreakerRuleFailureCondition {
   /// [intervalDuration] Specifies the time window over which failures are counted, in ISO 8601 format.
   /// [percentage] Specifies the percentage of failures within the specified interval that will trigger the circuit breaker. Possible values are between `1` and `100`.
   /// [statusCodeRanges] One or more `status_code_range` blocks as defined below.
-  BackendCircuitBreakerRuleFailureCondition({
+  const BackendCircuitBreakerRuleFailureCondition({
     this.count,
     this.errorReasons,
     required this.intervalDuration,

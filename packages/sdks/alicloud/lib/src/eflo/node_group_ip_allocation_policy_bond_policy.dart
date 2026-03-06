@@ -12,7 +12,7 @@ class NodeGroupIpAllocationPolicyBondPolicy {
   /// Creates a new [NodeGroupIpAllocationPolicyBondPolicy].
   /// [bondDefaultSubnet] Default bond cluster subnet
   /// [bonds] Bond information See `bonds` below.
-  NodeGroupIpAllocationPolicyBondPolicy({
+  const NodeGroupIpAllocationPolicyBondPolicy({
     this.bondDefaultSubnet,
     this.bonds,
   });

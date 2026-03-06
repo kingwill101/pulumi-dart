@@ -11,7 +11,7 @@ class GetContainerRecipeComponentParameter {
   /// Creates a new [GetContainerRecipeComponentParameter].
   /// [name] Name of the container recipe.
   /// [value] Value of the component parameter.
-  GetContainerRecipeComponentParameter({
+  const GetContainerRecipeComponentParameter({
     required this.name,
     required this.value,
   });

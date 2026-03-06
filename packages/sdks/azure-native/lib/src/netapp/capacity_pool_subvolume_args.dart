@@ -33,7 +33,7 @@ class CapacityPoolSubvolumeArgs {
   /// [size] Truncate subvolume to the provided size in bytes
   /// [subvolumeName] The name of the subvolume.
   /// [volumeName] The name of the volume
-  CapacityPoolSubvolumeArgs({
+  const CapacityPoolSubvolumeArgs({
     required this.accountName,
     this.parentPath,
     this.path,

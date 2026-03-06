@@ -9,7 +9,7 @@ class OpenSearchPartitionInstanceTypeEnumValueResponse {
 
   /// Creates a new [OpenSearchPartitionInstanceTypeEnumValueResponse].
   /// [value] Property value
-  OpenSearchPartitionInstanceTypeEnumValueResponse({
+  const OpenSearchPartitionInstanceTypeEnumValueResponse({
     this.value,
   });
 

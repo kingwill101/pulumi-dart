@@ -22,7 +22,7 @@ class SynchronizationJobProvisionOnDemandArgs {
   /// [servicePrincipalId] The ID of the service principal for the synchronization job.
   /// [synchronizationJobId] The ID of the synchronization job.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
-  SynchronizationJobProvisionOnDemandArgs({
+  const SynchronizationJobProvisionOnDemandArgs({
     required this.parameters,
     required this.servicePrincipalId,
     required this.synchronizationJobId,

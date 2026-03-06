@@ -83,7 +83,7 @@ class GatewayState {
   /// [vpnGatewayName] The name of the VPN gateway.
   /// [vpnType] The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
   /// [vswitchId] The ID of the VSwitch to which the VPN gateway is attached.
-  GatewayState({
+  const GatewayState({
     this.autoPay,
     this.autoPropagate,
     this.bandwidth,

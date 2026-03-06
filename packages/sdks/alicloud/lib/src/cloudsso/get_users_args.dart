@@ -30,7 +30,7 @@ class GetUsersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [provisionType] ProvisionType. Valid values: `Manual`, `Synchronized`.
   /// [status] The status of user. Valid values: `Disabled`, `Enabled`.
-  GetUsersArgs({
+  const GetUsersArgs({
     required this.directoryId,
     this.enableDetails,
     this.ids,

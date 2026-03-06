@@ -10,7 +10,7 @@ class WorkspaceEncryptionParameter {
 
   /// Creates a new [WorkspaceEncryptionParameter].
   /// [value] The value which should be used for this field.
-  WorkspaceEncryptionParameter({
+  const WorkspaceEncryptionParameter({
     this.value,
   });
 

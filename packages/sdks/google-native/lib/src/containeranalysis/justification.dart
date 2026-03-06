@@ -13,7 +13,7 @@ class Justification {
   /// Creates a new [Justification].
   /// [details] Additional details on why this justification was chosen.
   /// [justificationType] The justification type for this vulnerability.
-  Justification({
+  const Justification({
     this.details,
     this.justificationType,
   });

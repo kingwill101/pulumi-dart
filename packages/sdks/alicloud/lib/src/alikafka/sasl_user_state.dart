@@ -30,7 +30,7 @@ class SaslUserState {
   /// [password] The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
   /// [type] The authentication mechanism. Default value: `plain`. Valid values:
   /// [username] The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
-  SaslUserState({
+  const SaslUserState({
     this.instanceId,
     this.kmsEncryptedPassword,
     this.kmsEncryptionContext,

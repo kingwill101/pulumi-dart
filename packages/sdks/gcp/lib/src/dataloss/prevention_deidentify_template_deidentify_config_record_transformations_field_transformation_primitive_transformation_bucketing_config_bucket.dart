@@ -23,7 +23,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// [max] Upper bound of the range, exclusive; type must match min.
   /// [min] Lower bound of the range, inclusive. Type should be the same as max if used.
   /// [replacementValue] Replacement value for this bucket.
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket({
     this.max,
     this.min,
     required this.replacementValue,

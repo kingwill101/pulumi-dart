@@ -20,7 +20,7 @@ class PresetAudio {
   /// [channels] The number of audio channels in the output file
   /// [codec] The audio codec for the output file. Valid values are `AAC`, `flac`, `mp2`, `mp3`, `pcm`, and `vorbis`.
   /// [sampleRate] The sample rate of the audio stream in the output file, in hertz. Valid values are: `auto`, `22050`, `32000`, `44100`, `48000`, `96000`
-  PresetAudio({
+  const PresetAudio({
     this.audioPackingMode,
     this.bitRate,
     this.channels,

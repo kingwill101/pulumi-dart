@@ -54,7 +54,7 @@ class ExampleState {
   /// [name] Identifier. The unique identifier of the example.
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Timestamp when the example was last updated.
-  ExampleState({
+  const ExampleState({
     this.app,
     this.createTime,
     this.description,

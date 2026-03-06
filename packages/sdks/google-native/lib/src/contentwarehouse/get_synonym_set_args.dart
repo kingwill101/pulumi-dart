@@ -15,7 +15,7 @@ class GetSynonymSetArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [synonymSetId] Required.
-  GetSynonymSetArgs({
+  const GetSynonymSetArgs({
     required this.location,
     this.project,
     required this.synonymSetId,

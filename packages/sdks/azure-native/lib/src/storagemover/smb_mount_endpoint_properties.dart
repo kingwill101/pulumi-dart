@@ -23,7 +23,7 @@ class SmbMountEndpointProperties {
   /// [endpointType] The Endpoint resource type.
   /// [host] The host name or IP address of the server exporting the file system.
   /// [shareName] The name of the SMB share being exported from the server.
-  SmbMountEndpointProperties({
+  const SmbMountEndpointProperties({
     this.credentials,
     this.description,
     required this.endpointType,

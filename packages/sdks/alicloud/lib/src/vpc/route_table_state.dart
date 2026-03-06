@@ -40,7 +40,7 @@ class RouteTableState {
   /// [status] Routing table state
   /// [tags] The tag
   /// [vpcId] The ID of VPC.
-  RouteTableState({
+  const RouteTableState({
     this.associateType,
     this.createTime,
     this.description,

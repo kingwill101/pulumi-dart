@@ -8,7 +8,7 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint {
 
   /// Creates a new [WebAclRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint].
   /// [fallbackBehavior] Match status to assign to the web request if there is insufficient TSL Client Hello information to compute the JA4 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
-  WebAclRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint({
+  const WebAclRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint({
     required this.fallbackBehavior,
   });
 

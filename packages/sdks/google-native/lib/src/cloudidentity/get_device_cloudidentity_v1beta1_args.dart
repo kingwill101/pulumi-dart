@@ -13,7 +13,7 @@ class GetDeviceCloudidentityV1beta1Args {
   /// Creates a new [GetDeviceCloudidentityV1beta1Args].
   /// [customer] Optional.
   /// [deviceId] Required.
-  GetDeviceCloudidentityV1beta1Args({
+  const GetDeviceCloudidentityV1beta1Args({
     this.customer,
     required this.deviceId,
   });

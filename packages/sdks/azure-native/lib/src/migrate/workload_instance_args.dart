@@ -28,7 +28,7 @@ class WorkloadInstanceArgs {
   /// [subscriptionId] Azure Subscription Id in which project was created.
   /// [tags] Gets or sets the resource tags.
   /// [workloadInstanceName] Workload instance name.
-  WorkloadInstanceArgs({
+  const WorkloadInstanceArgs({
     required this.modernizeProjectName,
     this.properties,
     required this.resourceGroupName,

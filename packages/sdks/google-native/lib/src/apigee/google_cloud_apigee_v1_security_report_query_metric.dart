@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1SecurityReportQueryMetric {
   /// [name] Metric name.
   /// [operator] One of `+`, `-`, `/`, `%`, `*`.
   /// [value] Operand value should be provided when operator is set.
-  GoogleCloudApigeeV1SecurityReportQueryMetric({
+  const GoogleCloudApigeeV1SecurityReportQueryMetric({
     this.aggregationFunction,
     this.alias,
     required this.name,

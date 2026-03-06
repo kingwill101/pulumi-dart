@@ -11,7 +11,7 @@ class ConnectionServicePrincipalResponse {
   /// [clientId] Optional.
   /// [clientSecret] Optional.
   /// [tenantId] Optional.
-  ConnectionServicePrincipalResponse({
+  const ConnectionServicePrincipalResponse({
     this.clientId,
     this.clientSecret,
     this.tenantId,

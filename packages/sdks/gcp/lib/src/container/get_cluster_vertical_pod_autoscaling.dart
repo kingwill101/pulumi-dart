@@ -8,7 +8,7 @@ class GetClusterVerticalPodAutoscaling {
 
   /// Creates a new [GetClusterVerticalPodAutoscaling].
   /// [enabled] Enables vertical pod autoscaling.
-  GetClusterVerticalPodAutoscaling({
+  const GetClusterVerticalPodAutoscaling({
     required this.enabled,
   });
 

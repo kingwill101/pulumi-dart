@@ -11,7 +11,7 @@ class GetDataSetColumnGroupGeoSpatialColumnGroup {
   /// [columns] Required.
   /// [countryCode] Required.
   /// [name] Required.
-  GetDataSetColumnGroupGeoSpatialColumnGroup({
+  const GetDataSetColumnGroupGeoSpatialColumnGroup({
     required this.columns,
     required this.countryCode,
     required this.name,

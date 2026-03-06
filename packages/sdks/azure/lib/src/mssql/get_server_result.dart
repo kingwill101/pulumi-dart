@@ -41,7 +41,7 @@ class GetServerResult {
   /// [tags] A mapping of tags assigned to this Microsoft SQL Server.
   /// [transparentDataEncryptionKeyVaultKeyId] The Key Vault Key URI to be used as the `Customer Managed Key` (CMK/BYOK) for the `Transparent Data Encryption` (TDE) layer.
   /// [version] The version of the Microsoft SQL Server.
-  GetServerResult({
+  const GetServerResult({
     required this.administratorLogin,
     required this.expressVulnerabilityAssessmentEnabled,
     required this.fullyQualifiedDomainName,

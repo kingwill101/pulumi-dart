@@ -19,7 +19,7 @@ class ConfigClient {
   /// [apiKey] (Output)
   /// [firebaseSubdomain] (Output)
   /// [permissions] Configuration related to restricting a user's ability to affect their account.
-  ConfigClient({
+  const ConfigClient({
     this.apiKey,
     this.firebaseSubdomain,
     this.permissions,

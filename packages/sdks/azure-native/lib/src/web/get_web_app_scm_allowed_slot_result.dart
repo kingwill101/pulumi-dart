@@ -23,7 +23,7 @@ class GetWebAppScmAllowedSlotResult {
   /// [kind] Kind of resource.
   /// [name] Resource Name.
   /// [type] Resource type.
-  GetWebAppScmAllowedSlotResult({
+  const GetWebAppScmAllowedSlotResult({
     required this.allow,
     required this.azureApiVersion,
     required this.id,

@@ -11,7 +11,7 @@ class BareMetalAdminClusterStorageLvpShareConfigLvpConfig {
   /// Creates a new [BareMetalAdminClusterStorageLvpShareConfigLvpConfig].
   /// [path] The host machine path.
   /// [storageClass] The StorageClass name that PVs will be created with.
-  BareMetalAdminClusterStorageLvpShareConfigLvpConfig({
+  const BareMetalAdminClusterStorageLvpShareConfigLvpConfig({
     required this.path,
     required this.storageClass,
   });

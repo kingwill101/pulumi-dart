@@ -20,7 +20,7 @@ class DomainDevicesDiskSourceNetworkIdentity {
   /// [keyfile] Defines the key file used for network identity in the backing store source configuration.
   /// [user] Configures the user associated with the network identity in the backing store source.
   /// [userName] Sets the user name for network identity in the backing store source configuration.
-  DomainDevicesDiskSourceNetworkIdentity({
+  const DomainDevicesDiskSourceNetworkIdentity({
     this.agentSock,
     this.group,
     this.keyfile,

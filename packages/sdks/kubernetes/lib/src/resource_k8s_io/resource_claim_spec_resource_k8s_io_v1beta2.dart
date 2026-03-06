@@ -10,7 +10,7 @@ class ResourceClaimSpecResourceK8sIoV1beta2 {
 
   /// Creates a new [ResourceClaimSpecResourceK8sIoV1beta2].
   /// [devices] Devices defines how to request devices.
-  ResourceClaimSpecResourceK8sIoV1beta2({
+  const ResourceClaimSpecResourceK8sIoV1beta2({
     this.devices,
   });
 

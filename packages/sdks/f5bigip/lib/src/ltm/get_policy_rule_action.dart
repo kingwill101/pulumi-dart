@@ -213,7 +213,7 @@ class GetPolicyRuleAction {
   /// [vlanId] Required.
   /// [wam] Required.
   /// [write] Required.
-  GetPolicyRuleAction({
+  const GetPolicyRuleAction({
     required this.appService,
     required this.application,
     required this.asm,

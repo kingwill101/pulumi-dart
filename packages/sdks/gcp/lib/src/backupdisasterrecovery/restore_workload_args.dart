@@ -59,7 +59,7 @@ class RestoreWorkloadArgs {
   /// [name] Required. The resource name of the backup instance.
   /// [regionDiskTargetEnvironment] Optional. The destination environment for regional disk restoration.
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID
-  RestoreWorkloadArgs({
+  const RestoreWorkloadArgs({
     required this.backupId,
     required this.backupVaultId,
     this.clearOverridesFieldMask,

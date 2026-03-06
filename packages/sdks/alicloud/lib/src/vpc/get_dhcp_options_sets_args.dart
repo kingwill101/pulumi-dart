@@ -27,7 +27,7 @@ class GetDhcpOptionsSetsArgs {
   /// [nameRegex] A regex string to filter results by Dhcp Options Set name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
-  GetDhcpOptionsSetsArgs({
+  const GetDhcpOptionsSetsArgs({
     this.dhcpOptionsSetName,
     this.domainName,
     this.ids,

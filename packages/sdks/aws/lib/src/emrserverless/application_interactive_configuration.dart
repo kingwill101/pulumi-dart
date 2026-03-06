@@ -11,7 +11,7 @@ class ApplicationInteractiveConfiguration {
   /// Creates a new [ApplicationInteractiveConfiguration].
   /// [livyEndpointEnabled] Enables an Apache Livy endpoint that you can connect to and run interactive jobs.
   /// [studioEnabled] Enables you to connect an application to Amazon EMR Studio to run interactive workloads in a notebook.
-  ApplicationInteractiveConfiguration({
+  const ApplicationInteractiveConfiguration({
     this.livyEndpointEnabled,
     this.studioEnabled,
   });

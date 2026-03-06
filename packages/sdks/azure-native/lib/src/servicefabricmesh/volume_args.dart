@@ -31,7 +31,7 @@ class VolumeArgs {
   /// [resourceGroupName] Azure resource group name
   /// [tags] Resource tags.
   /// [volumeResourceName] The identity of the volume.
-  VolumeArgs({
+  const VolumeArgs({
     this.azureFileParameters,
     this.description,
     this.location,

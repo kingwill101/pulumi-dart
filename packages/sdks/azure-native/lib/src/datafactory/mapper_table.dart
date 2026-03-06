@@ -17,7 +17,7 @@ class MapperTable {
   /// [dslConnectorProperties] List of name/value pairs for connection properties.
   /// [name] Name of the table.
   /// [schema] List of columns for the source table.
-  MapperTable({
+  const MapperTable({
     this.dslConnectorProperties,
     this.name,
     this.schema,

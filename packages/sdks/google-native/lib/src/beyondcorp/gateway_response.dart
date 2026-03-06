@@ -15,7 +15,7 @@ class GatewayResponse {
   /// [type] The type of hosting used by the gateway.
   /// [uri] Server-defined URI for this resource.
   /// [userPort] User port reserved on the gateways for this connection, if not specified or zero, the default port is 19443.
-  GatewayResponse({
+  const GatewayResponse({
     required this.type,
     required this.uri,
     required this.userPort,

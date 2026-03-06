@@ -44,7 +44,7 @@ class ProductFamilyResponse {
   /// [imageInformation] Image information for the product system.
   /// [productLines] List of product lines supported in the product family.
   /// [resourceProviderDetails] Contains details related to resource provider.
-  ProductFamilyResponse({
+  const ProductFamilyResponse({
     required this.availabilityInformation,
     required this.costInformation,
     required this.description,

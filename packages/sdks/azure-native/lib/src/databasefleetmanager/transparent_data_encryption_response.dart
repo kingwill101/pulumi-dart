@@ -15,7 +15,7 @@ class TransparentDataEncryptionResponse {
   /// [enableAutoRotation] Enable key auto rotation
   /// [keyUri] Customer Managed Key (CMK) Uri.
   /// [keys] Additional Keys
-  TransparentDataEncryptionResponse({
+  const TransparentDataEncryptionResponse({
     this.enableAutoRotation,
     this.keyUri,
     this.keys,

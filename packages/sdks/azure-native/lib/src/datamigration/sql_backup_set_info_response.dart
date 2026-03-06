@@ -40,7 +40,7 @@ class SqlBackupSetInfoResponse {
   /// [isBackupRestored] Whether this backup set has been restored or not.
   /// [lastLSN] Last LSN of the backup set.
   /// [listOfBackupFiles] List of files in the backup set.
-  SqlBackupSetInfoResponse({
+  const SqlBackupSetInfoResponse({
     required this.backupFinishDate,
     required this.backupSetId,
     required this.backupStartDate,

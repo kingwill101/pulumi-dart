@@ -19,7 +19,7 @@ class VirtualNetworkGatewayIpConfiguration {
   /// [privateIpAddressAllocation] Defines how the private IP address of the gateways virtual interface is assigned. The only valid value is `Dynamic` for Virtual Network Gateway (`Static` is not supported by the service yet). Defaults to `Dynamic`.
   /// [publicIpAddressId] The ID of the public IP address to associate with the Virtual Network Gateway.
   /// [subnetId] The ID of the gateway subnet of a virtual network in which the virtual network gateway will be created. It is mandatory that the associated subnet is named `GatewaySubnet`. Therefore, each virtual network can contain at most a single Virtual Network Gateway.
-  VirtualNetworkGatewayIpConfiguration({
+  const VirtualNetworkGatewayIpConfiguration({
     this.name,
     this.privateIpAddressAllocation,
     this.publicIpAddressId,

@@ -133,7 +133,7 @@ class AlertPolicyConditionConditionThreshold {
   /// [forecastOptions] When this field is present, the `MetricThreshold`
   /// [thresholdValue] A value against which to compare the time
   /// [trigger] The number/percent of time series for which
-  AlertPolicyConditionConditionThreshold({
+  const AlertPolicyConditionConditionThreshold({
     this.aggregations,
     required this.comparison,
     this.denominatorAggregations,

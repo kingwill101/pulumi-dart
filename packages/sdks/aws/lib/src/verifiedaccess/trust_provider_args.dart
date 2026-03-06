@@ -47,7 +47,7 @@ class TrustProviderArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [trustProviderType] The type of trust provider can be either user or device-based.
   /// [userTrustProviderType] The type of user-based trust provider.
-  TrustProviderArgs({
+  const TrustProviderArgs({
     this.description,
     this.deviceOptions,
     this.deviceTrustProviderType,

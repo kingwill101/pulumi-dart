@@ -32,7 +32,7 @@ class CxFlowEventHandlerTriggerFulfillment {
   /// [setParameterActions] Set parameter values before executing the webhook.
   /// [tag] The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
   /// [webhook] The webhook to call. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
-  CxFlowEventHandlerTriggerFulfillment({
+  const CxFlowEventHandlerTriggerFulfillment({
     this.conditionalCases,
     this.enableGenerativeFallback,
     this.messages,

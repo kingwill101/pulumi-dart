@@ -126,7 +126,7 @@ class EventSourceMappingState {
   /// [topics] Name of the Kafka topics. Only available for MSK sources. A single topic name must be specified.
   /// [tumblingWindowInSeconds] Duration in seconds of a processing window for [AWS Lambda streaming analytics](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-windows). The range is between 1 second up to 900 seconds. Only available for stream sources (DynamoDB and Kinesis).
   /// [uuid] UUID of the created event source mapping.
-  EventSourceMappingState({
+  const EventSourceMappingState({
     this.amazonManagedKafkaEventSourceConfig,
     this.arn,
     this.batchSize,

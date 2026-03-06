@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationSecurityGroup {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationSecurityGroup({
+  const NetworkInsightsAnalysisExplanationSecurityGroup({
     this.arn,
     this.id,
     this.name,

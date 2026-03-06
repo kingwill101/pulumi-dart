@@ -10,7 +10,7 @@ class PerformanceConfig {
 
   /// Creates a new [PerformanceConfig].
   /// [dumpParallelLevel] Initial dump parallelism level.
-  PerformanceConfig({
+  const PerformanceConfig({
     this.dumpParallelLevel,
   });
 

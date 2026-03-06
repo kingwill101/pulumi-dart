@@ -18,7 +18,7 @@ class GetReplicaArgs {
   /// [configStoreName] The name of the configuration store.
   /// [replicaName] The name of the replica.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
-  GetReplicaArgs({
+  const GetReplicaArgs({
     required this.configStoreName,
     required this.replicaName,
     required this.resourceGroupName,

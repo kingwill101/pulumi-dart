@@ -32,7 +32,7 @@ class GetSandboxCustomImageResult {
   /// [provisioningState] The provisioned state of the resource.
   /// [requirementsFileContent] The requirements file content.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSandboxCustomImageResult({
+  const GetSandboxCustomImageResult({
     required this.azureApiVersion,
     this.baseImageName,
     required this.id,

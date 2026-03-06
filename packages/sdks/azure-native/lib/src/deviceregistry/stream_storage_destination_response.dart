@@ -14,7 +14,7 @@ class StreamStorageDestinationResponse {
   /// Creates a new [StreamStorageDestinationResponse].
   /// [configuration] The storage destination configuration.
   /// [target] The set of supported stream destinations for an asset.
-  StreamStorageDestinationResponse({
+  const StreamStorageDestinationResponse({
     required this.configuration,
     required this.target,
   });

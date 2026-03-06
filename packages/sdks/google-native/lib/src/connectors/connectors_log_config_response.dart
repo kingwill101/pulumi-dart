@@ -9,7 +9,7 @@ class ConnectorsLogConfigResponse {
 
   /// Creates a new [ConnectorsLogConfigResponse].
   /// [enabled] Enabled represents whether logging is enabled or not for a connection.
-  ConnectorsLogConfigResponse({
+  const ConnectorsLogConfigResponse({
     required this.enabled,
   });
 

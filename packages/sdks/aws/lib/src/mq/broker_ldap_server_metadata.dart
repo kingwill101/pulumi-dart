@@ -38,7 +38,7 @@ class BrokerLdapServerMetadata {
   /// [userRoleName] Name of the LDAP attribute for the user group membership.
   /// [userSearchMatching] Search criteria for users.
   /// [userSearchSubtree] Whether the directory search scope is the entire sub-tree.
-  BrokerLdapServerMetadata({
+  const BrokerLdapServerMetadata({
     this.hosts,
     this.roleBase,
     this.roleName,

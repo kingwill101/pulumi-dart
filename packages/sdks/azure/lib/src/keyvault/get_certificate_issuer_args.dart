@@ -15,7 +15,7 @@ class GetCertificateIssuerArgs {
   /// Creates a new [GetCertificateIssuerArgs].
   /// [keyVaultId] The ID of the Key Vault in which to locate the Certificate Issuer.
   /// [name] The name of the Key Vault Certificate Issuer.
-  GetCertificateIssuerArgs({
+  const GetCertificateIssuerArgs({
     required this.keyVaultId,
     required this.name,
   });

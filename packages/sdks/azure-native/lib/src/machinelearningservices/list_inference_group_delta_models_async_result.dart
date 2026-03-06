@@ -11,7 +11,7 @@ class ListInferenceGroupDeltaModelsAsyncResult {
   /// Creates a new [ListInferenceGroupDeltaModelsAsyncResult].
   /// [nextLink] The link to the next page of String objects. If null, there are no additional pages.
   /// [value] An array of objects of type String.
-  ListInferenceGroupDeltaModelsAsyncResult({
+  const ListInferenceGroupDeltaModelsAsyncResult({
     this.nextLink,
     this.value,
   });

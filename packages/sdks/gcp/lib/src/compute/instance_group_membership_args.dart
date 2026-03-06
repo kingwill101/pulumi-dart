@@ -22,7 +22,7 @@ class InstanceGroupMembershipArgs {
   /// [instanceGroup] Represents an Instance Group resource name that the instance belongs to.
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the instance group resides.
-  InstanceGroupMembershipArgs({
+  const InstanceGroupMembershipArgs({
     required this.instance,
     required this.instanceGroup,
     this.project,

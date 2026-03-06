@@ -17,7 +17,7 @@ class DomainDevicesInterfaceBackend {
   /// [tap] Controls whether the backend uses a tap device.
   /// [type] Configures the type of backend for the interface, specifying how the interface connects to the underlying hardware.
   /// [vhost] Controls whether the vhost user mode is enabled for the interface, optimizing network performance by using shared memory.
-  DomainDevicesInterfaceBackend({
+  const DomainDevicesInterfaceBackend({
     this.logFile,
     this.tap,
     this.type,

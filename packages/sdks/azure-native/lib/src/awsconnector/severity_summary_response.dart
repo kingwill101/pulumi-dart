@@ -24,7 +24,7 @@ class SeveritySummaryResponse {
   /// [lowCount] &lt;p&gt;The total number of resources or compliance items that have a severity level of low. Low severity is determined by the organization that published the compliance items.&lt;/p&gt;
   /// [mediumCount] &lt;p&gt;The total number of resources or compliance items that have a severity level of medium. Medium severity is determined by the organization that published the compliance items.&lt;/p&gt;
   /// [unspecifiedCount] &lt;p&gt;The total number of resources or compliance items that have a severity level of unspecified. Unspecified severity is determined by the organization that published the compliance items.&lt;/p&gt;
-  SeveritySummaryResponse({
+  const SeveritySummaryResponse({
     this.criticalCount,
     this.highCount,
     this.informationalCount,

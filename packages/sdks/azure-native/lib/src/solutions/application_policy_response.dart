@@ -15,7 +15,7 @@ class ApplicationPolicyResponse {
   /// [name] The policy name
   /// [parameters] The policy parameters.
   /// [policyDefinitionId] The policy definition Id.
-  ApplicationPolicyResponse({
+  const ApplicationPolicyResponse({
     this.name,
     this.parameters,
     this.policyDefinitionId,

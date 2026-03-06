@@ -23,7 +23,7 @@ class GitLabGroupResponse {
   /// [properties] GitLab Group properties.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GitLabGroupResponse({
+  const GitLabGroupResponse({
     required this.id,
     required this.name,
     this.properties,

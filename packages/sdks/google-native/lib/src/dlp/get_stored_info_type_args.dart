@@ -15,7 +15,7 @@ class GetStoredInfoTypeArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [storedInfoTypeId] Required.
-  GetStoredInfoTypeArgs({
+  const GetStoredInfoTypeArgs({
     required this.location,
     this.project,
     required this.storedInfoTypeId,

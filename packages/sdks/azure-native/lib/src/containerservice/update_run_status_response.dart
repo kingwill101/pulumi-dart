@@ -18,7 +18,7 @@ class UpdateRunStatusResponse {
   /// [nodeImageSelection] The node image upgrade specs for the update run. It is only set in update run when `NodeImageSelection.type` is `Consistent`.
   /// [stages] The stages composing an update run. Stages are run sequentially withing an UpdateRun.
   /// [status] The status of the UpdateRun.
-  UpdateRunStatusResponse({
+  const UpdateRunStatusResponse({
     required this.nodeImageSelection,
     required this.stages,
     required this.status,

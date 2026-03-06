@@ -11,7 +11,7 @@ class ClickHouseEnterpriseDbClusterMultiZone {
   /// Creates a new [ClickHouseEnterpriseDbClusterMultiZone].
   /// [vswitchIds] List of vSwitch IDs.
   /// [zoneId] Zone ID.
-  ClickHouseEnterpriseDbClusterMultiZone({
+  const ClickHouseEnterpriseDbClusterMultiZone({
     this.vswitchIds,
     this.zoneId,
   });

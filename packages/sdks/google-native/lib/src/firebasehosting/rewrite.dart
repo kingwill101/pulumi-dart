@@ -28,7 +28,7 @@ class Rewrite {
   /// [path] The URL path to rewrite the request to.
   /// [regex] The user-supplied RE2 regular expression to match against the request URL path.
   /// [run] The request will be forwarded to Cloud Run.
-  Rewrite({
+  const Rewrite({
     this.dynamicLinks,
     this.function,
     this.functionRegion,

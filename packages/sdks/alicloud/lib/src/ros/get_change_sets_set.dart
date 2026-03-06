@@ -45,7 +45,7 @@ class GetChangeSetsSet {
   /// [status] The status of the change set.
   /// [templateBody] The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
   /// [timeoutInMinutes] Timeout In Minutes.
-  GetChangeSetsSet({
+  const GetChangeSetsSet({
     required this.changeSetId,
     required this.changeSetName,
     required this.changeSetType,

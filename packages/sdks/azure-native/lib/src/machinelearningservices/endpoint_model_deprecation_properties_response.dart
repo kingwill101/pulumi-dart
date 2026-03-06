@@ -11,7 +11,7 @@ class EndpointModelDeprecationPropertiesResponse {
   /// Creates a new [EndpointModelDeprecationPropertiesResponse].
   /// [fineTune] The datetime of deprecation of the fineTune Model.
   /// [inference] The datetime of deprecation of the inference Model.
-  EndpointModelDeprecationPropertiesResponse({
+  const EndpointModelDeprecationPropertiesResponse({
     this.fineTune,
     this.inference,
   });

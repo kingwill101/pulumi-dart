@@ -14,7 +14,7 @@ class LinuxVirtualMachineInboundNatRule {
   /// [backendPort] The Backend Port associated with this NAT Rule. Changing this forces a new resource to be created.
   /// [frontendPort] The frontend port associated with this Inbound NAT Rule.
   /// [protocol] The Protocol used for this NAT Rule. Possible values are `Tcp` and `Udp`.
-  LinuxVirtualMachineInboundNatRule({
+  const LinuxVirtualMachineInboundNatRule({
     required this.backendPort,
     this.frontendPort,
     required this.protocol,

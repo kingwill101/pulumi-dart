@@ -24,7 +24,7 @@ class GetSchedulesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [schedules] Required.
-  GetSchedulesResult({
+  const GetSchedulesResult({
     required this.flowName,
     required this.id,
     required this.ids,

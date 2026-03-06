@@ -34,7 +34,7 @@ class FrontdoorProfileState {
   /// [responseTimeoutSeconds] Specifies the maximum response timeout in seconds. Possible values are between `16` and `240` seconds (inclusive). Defaults to `120` seconds.
   /// [skuName] Specifies the SKU for this Front Door Profile. Possible values include `Standard_AzureFrontDoor` and `Premium_AzureFrontDoor`. Changing this forces a new resource to be created.
   /// [tags] Specifies a mapping of tags to assign to the resource.
-  FrontdoorProfileState({
+  const FrontdoorProfileState({
     this.identity,
     this.logScrubbingRules,
     this.name,

@@ -11,7 +11,7 @@ class EdgeKubernetesLogConfig {
   /// Creates a new [EdgeKubernetesLogConfig].
   /// [project] Log Service project name, cluster logs will output to this project.
   /// [type] Type of collecting logs, only `SLS` are supported currently.
-  EdgeKubernetesLogConfig({
+  const EdgeKubernetesLogConfig({
     this.project,
     required this.type,
   });

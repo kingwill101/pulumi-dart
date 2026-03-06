@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysNice {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysNice].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysNice({
+  const DomainFeaturesCapabilitiesSysNice({
     this.state,
   });
 

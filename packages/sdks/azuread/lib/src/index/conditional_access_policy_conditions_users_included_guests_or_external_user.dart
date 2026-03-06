@@ -12,7 +12,7 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser {
   /// Creates a new [ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser].
   /// [externalTenants] An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
   /// [guestOrExternalUserTypes] A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-  ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser({
+  const ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser({
     this.externalTenants,
     required this.guestOrExternalUserTypes,
   });

@@ -14,7 +14,7 @@ class InsightsReportConfigCsvOptions {
   /// [delimiter] The delimiter used to separate the fields in the inventory report CSV file.
   /// [headerRequired] The boolean that indicates whether or not headers are included in the inventory report CSV file.
   /// [recordSeparator] The character used to separate the records in the inventory report CSV file.
-  InsightsReportConfigCsvOptions({
+  const InsightsReportConfigCsvOptions({
     this.delimiter,
     this.headerRequired,
     this.recordSeparator,

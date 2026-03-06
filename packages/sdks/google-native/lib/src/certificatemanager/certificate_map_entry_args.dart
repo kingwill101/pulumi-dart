@@ -37,7 +37,7 @@ class CertificateMapEntryArgs {
   /// [matcher] A predefined matcher for particular cases, other than SNI selection.
   /// [name] A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
   /// [project] Optional.
-  CertificateMapEntryArgs({
+  const CertificateMapEntryArgs({
     required this.certificateMapEntryId,
     required this.certificateMapId,
     this.certificates,

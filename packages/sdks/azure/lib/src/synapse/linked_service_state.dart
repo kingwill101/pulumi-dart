@@ -42,7 +42,7 @@ class LinkedServiceState {
   /// [synapseWorkspaceId] The Synapse Workspace ID in which to associate the Linked Service with. Changing this forces a new Synapse Linked Service to be created.
   /// [type] The type of data stores that will be connected to Synapse. Valid Values include `AmazonMWS`, `AmazonRdsForOracle`, `AmazonRdsForSqlServer`, `AmazonRedshift`, `AmazonS3`, `AzureBatch`. Changing this forces a new resource to be created.
   /// [typePropertiesJson] A JSON object that contains the properties of the Synapse Linked Service.
-  LinkedServiceState({
+  const LinkedServiceState({
     this.additionalProperties,
     this.annotations,
     this.description,

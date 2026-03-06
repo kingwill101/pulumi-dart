@@ -33,7 +33,7 @@ class ResourcePolicyExemptionState {
   /// [policyAssignmentId] The ID of the Policy Assignment to be exempted at the specified Scope. Changing this forces a new resource to be created.
   /// [policyDefinitionReferenceIds] The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
   /// [resourceId] The Resource ID where the Policy Exemption should be applied. Changing this forces a new resource to be created.
-  ResourcePolicyExemptionState({
+  const ResourcePolicyExemptionState({
     this.description,
     this.displayName,
     this.exemptionCategory,

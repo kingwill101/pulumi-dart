@@ -10,7 +10,7 @@ class ImagePipelineImageScanningConfigurationEcrConfiguration {
   /// Creates a new [ImagePipelineImageScanningConfigurationEcrConfiguration].
   /// [containerTags] Optional.
   /// [repositoryName] The name of the repository to scan
-  ImagePipelineImageScanningConfigurationEcrConfiguration({
+  const ImagePipelineImageScanningConfigurationEcrConfiguration({
     this.containerTags,
     this.repositoryName,
   });

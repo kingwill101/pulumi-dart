@@ -32,7 +32,7 @@ class CapacityDetailsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The SKU of the PowerBI Dedicated capacity resource.
   /// [tags] Resource tags.
-  CapacityDetailsArgs({
+  const CapacityDetailsArgs({
     this.administration,
     this.dedicatedCapacityName,
     this.location,

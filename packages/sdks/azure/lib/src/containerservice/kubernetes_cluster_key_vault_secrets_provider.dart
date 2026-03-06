@@ -17,7 +17,7 @@ class KubernetesClusterKeyVaultSecretsProvider {
   /// [secretIdentities] An `secret_identity` block is exported. The exported attributes are defined below.
   /// [secretRotationEnabled] Should the secret store CSI driver on the AKS cluster be enabled?
   /// [secretRotationInterval] The interval to poll for secret rotation. This attribute is only set when `secret_rotation_enabled` is true. Defaults to `2m`.
-  KubernetesClusterKeyVaultSecretsProvider({
+  const KubernetesClusterKeyVaultSecretsProvider({
     this.secretIdentities,
     this.secretRotationEnabled,
     this.secretRotationInterval,

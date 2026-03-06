@@ -18,7 +18,7 @@ class ElasticSnapshotPolicyWeeklySchedule {
   /// [hour] Indicates which hour in UTC timezone a snapshot should be taken
   /// [minute] Indicates which minute snapshot should be taken
   /// [snapshotsToKeep] Weekly snapshot count to keep
-  ElasticSnapshotPolicyWeeklySchedule({
+  const ElasticSnapshotPolicyWeeklySchedule({
     this.days,
     this.hour,
     this.minute,

@@ -24,7 +24,7 @@ class AccountBackup {
   /// [storageRedundancy] The storage redundancy is used to indicate the type of backup residency. Possible values are `Geo`, `Local` and `Zone`. Defaults to `Geo`.
   /// [tier] The continuous backup tier. Possible values are `Continuous7Days` and `Continuous30Days`.
   /// [type] The type of the `backup`. Possible values are `Continuous` and `Periodic`.
-  AccountBackup({
+  const AccountBackup({
     this.intervalInMinutes,
     this.retentionInHours,
     this.storageRedundancy,

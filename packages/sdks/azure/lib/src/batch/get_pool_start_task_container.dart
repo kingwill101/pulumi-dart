@@ -18,7 +18,7 @@ class GetPoolStartTaskContainer {
   /// [registries] The same reference as `container_registries` block defined as follows.
   /// [runOptions] Additional options to the container create command.
   /// [workingDirectory] A flag to indicate where the container task working directory is.
-  GetPoolStartTaskContainer({
+  const GetPoolStartTaskContainer({
     required this.imageName,
     required this.registries,
     required this.runOptions,

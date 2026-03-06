@@ -16,7 +16,7 @@ class GetVaultIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] The identity type of this Managed Service Identity.
-  GetVaultIdentity({
+  const GetVaultIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

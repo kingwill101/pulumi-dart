@@ -15,7 +15,7 @@ class GetConnectorArgs {
   /// [connectorId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConnectorArgs({
+  const GetConnectorArgs({
     required this.connectorId,
     required this.location,
     this.project,

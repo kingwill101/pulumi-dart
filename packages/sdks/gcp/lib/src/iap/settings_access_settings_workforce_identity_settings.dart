@@ -17,7 +17,7 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
   /// Creates a new [SettingsAccessSettingsWorkforceIdentitySettings].
   /// [oauth2] OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
   /// [workforcePools] The workforce pool resources. Only one workforce pool is accepted.
-  SettingsAccessSettingsWorkforceIdentitySettings({
+  const SettingsAccessSettingsWorkforceIdentitySettings({
     this.oauth2,
     this.workforcePools,
   });

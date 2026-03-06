@@ -26,7 +26,7 @@ class RuleSetArgs {
   /// [project] Optional.
   /// [rules] List of rules given by the customer.
   /// [source] Source of the rules i.e., customer name.
-  RuleSetArgs({
+  const RuleSetArgs({
     this.description,
     this.location,
     this.name,

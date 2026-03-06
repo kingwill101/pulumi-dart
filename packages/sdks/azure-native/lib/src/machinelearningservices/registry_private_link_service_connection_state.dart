@@ -15,7 +15,7 @@ class RegistryPrivateLinkServiceConnectionState {
   /// [actionsRequired] Some RP chose "None". Other RPs use this for region expansion.
   /// [description] User-defined message that, per NRP doc, may be used for approval-related message.
   /// [status] Connection status of the service consumer with the service provider
-  RegistryPrivateLinkServiceConnectionState({
+  const RegistryPrivateLinkServiceConnectionState({
     this.actionsRequired,
     this.description,
     this.status,

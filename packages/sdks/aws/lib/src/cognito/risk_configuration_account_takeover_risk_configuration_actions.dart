@@ -17,7 +17,7 @@ class RiskConfigurationAccountTakeoverRiskConfigurationActions {
   /// [highAction] Action to take for a high risk. See action block below.
   /// [lowAction] Action to take for a low risk. See action block below.
   /// [mediumAction] Action to take for a medium risk. See action block below.
-  RiskConfigurationAccountTakeoverRiskConfigurationActions({
+  const RiskConfigurationAccountTakeoverRiskConfigurationActions({
     this.highAction,
     this.lowAction,
     this.mediumAction,

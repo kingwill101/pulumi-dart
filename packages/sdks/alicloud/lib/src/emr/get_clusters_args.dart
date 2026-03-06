@@ -55,7 +55,7 @@ class GetClustersArgs {
   /// [resourceGroupId] The Resource Group ID.
   /// [statusLists] The status list. Valid values: `ABNORMAL`, `CREATE_FAILED`, `CREATING`, `IDLE`, `RELEASED`, `RELEASE_FAILED`, `RELEASING`, `RUNNING`, `WAIT_FOR_PAY`.
   /// [vpcId] The VPC ID.
-  GetClustersArgs({
+  const GetClustersArgs({
     this.clusterName,
     this.clusterTypeLists,
     this.createType,

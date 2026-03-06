@@ -80,7 +80,7 @@ class MulticastDomainNetworkservicesState {
   /// [states] (Output)
   /// [uniqueId] The Google-generated UUID for the resource. This value is
   /// [updateTime] The timestamp when the multicast domain was most recently
-  MulticastDomainNetworkservicesState({
+  const MulticastDomainNetworkservicesState({
     this.adminNetwork,
     this.connectionConfig,
     this.createTime,

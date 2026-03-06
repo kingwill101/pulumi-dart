@@ -8,7 +8,7 @@ class EndpointDeploymentConfigAutoRollbackConfigurationAlarm {
 
   /// Creates a new [EndpointDeploymentConfigAutoRollbackConfigurationAlarm].
   /// [alarmName] The name of a CloudWatch alarm in your account.
-  EndpointDeploymentConfigAutoRollbackConfigurationAlarm({
+  const EndpointDeploymentConfigAutoRollbackConfigurationAlarm({
     required this.alarmName,
   });
 

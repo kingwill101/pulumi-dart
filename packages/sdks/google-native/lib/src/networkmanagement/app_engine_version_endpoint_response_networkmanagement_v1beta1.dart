@@ -9,7 +9,7 @@ class AppEngineVersionEndpointResponseNetworkmanagementV1beta1 {
 
   /// Creates a new [AppEngineVersionEndpointResponseNetworkmanagementV1beta1].
   /// [uri] An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
-  AppEngineVersionEndpointResponseNetworkmanagementV1beta1({
+  const AppEngineVersionEndpointResponseNetworkmanagementV1beta1({
     required this.uri,
   });
 

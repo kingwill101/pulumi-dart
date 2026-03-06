@@ -27,7 +27,7 @@ class DatabaseConnectionPoolArgs {
   /// [name] The name for the database connection pool.
   /// [size] The desired size of the PGBouncer connection pool.
   /// [user] The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
-  DatabaseConnectionPoolArgs({
+  const DatabaseConnectionPoolArgs({
     required this.clusterId,
     required this.dbName,
     required this.mode,

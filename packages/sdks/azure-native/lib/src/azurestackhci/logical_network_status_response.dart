@@ -16,7 +16,7 @@ class LogicalNetworkStatusResponse {
   /// [errorCode] LogicalNetwork provisioning error code
   /// [errorMessage] Descriptive error message
   /// [provisioningStatus] Logical network provisioning status
-  LogicalNetworkStatusResponse({
+  const LogicalNetworkStatusResponse({
     this.errorCode,
     this.errorMessage,
     this.provisioningStatus,

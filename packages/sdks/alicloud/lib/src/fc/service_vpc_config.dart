@@ -14,7 +14,7 @@ class ServiceVpcConfig {
   /// [securityGroupId] A security group ID associated with the Function Compute Service.
   /// [vpcId] A vpc ID associated with the Function Compute Service.
   /// [vswitchIds] A list of vswitch IDs associated with the Function Compute Service.
-  ServiceVpcConfig({
+  const ServiceVpcConfig({
     required this.securityGroupId,
     this.vpcId,
     required this.vswitchIds,

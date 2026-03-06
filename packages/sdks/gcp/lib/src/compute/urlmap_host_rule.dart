@@ -18,7 +18,7 @@ class URLMapHostRule {
   /// [description] An optional description of this resource. Provide this property when you create
   /// [hosts] The list of host patterns to match. They must be valid hostnames, except * will
   /// [pathMatcher] The name of the PathMatcher to use to match the path portion of the URL if the
-  URLMapHostRule({
+  const URLMapHostRule({
     this.description,
     required this.hosts,
     required this.pathMatcher,

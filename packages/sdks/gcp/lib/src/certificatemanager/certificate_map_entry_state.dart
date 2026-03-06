@@ -62,7 +62,7 @@ class CertificateMapEntryState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] A serving state of this Certificate Map Entry.
   /// [updateTime] Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
-  CertificateMapEntryState({
+  const CertificateMapEntryState({
     this.certificates,
     this.createTime,
     this.description,

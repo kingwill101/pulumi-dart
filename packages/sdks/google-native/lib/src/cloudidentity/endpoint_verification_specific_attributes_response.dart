@@ -10,7 +10,7 @@ class EndpointVerificationSpecificAttributesResponse {
 
   /// Creates a new [EndpointVerificationSpecificAttributesResponse].
   /// [certificateAttributes] Details of certificates.
-  EndpointVerificationSpecificAttributesResponse({
+  const EndpointVerificationSpecificAttributesResponse({
     required this.certificateAttributes,
   });
 

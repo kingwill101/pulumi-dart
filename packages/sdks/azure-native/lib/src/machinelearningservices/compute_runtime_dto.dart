@@ -8,7 +8,7 @@ class ComputeRuntimeDto {
 
   /// Creates a new [ComputeRuntimeDto].
   /// [sparkRuntimeVersion] Optional.
-  ComputeRuntimeDto({
+  const ComputeRuntimeDto({
     this.sparkRuntimeVersion,
   });
 

@@ -20,7 +20,7 @@ class GetServerDnsAliasResult {
   /// [id] Resource ID.
   /// [name] Resource name.
   /// [type] Resource type.
-  GetServerDnsAliasResult({
+  const GetServerDnsAliasResult({
     required this.azureApiVersion,
     required this.azureDnsRecord,
     required this.id,

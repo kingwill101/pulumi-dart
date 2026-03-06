@@ -9,7 +9,7 @@ class CertificateReferenceResponse {
 
   /// Creates a new [CertificateReferenceResponse].
   /// [resourceId] Resource Id of the certificate
-  CertificateReferenceResponse({
+  const CertificateReferenceResponse({
     required this.resourceId,
   });
 

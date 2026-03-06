@@ -8,7 +8,7 @@ class ForwardingRuleRuleConditionHostConfig {
 
   /// Creates a new [ForwardingRuleRuleConditionHostConfig].
   /// [values] The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
-  ForwardingRuleRuleConditionHostConfig({
+  const ForwardingRuleRuleConditionHostConfig({
     this.values,
   });
 

@@ -15,7 +15,7 @@ class ServiceServiceConnectConfigurationServiceClientAlias {
   /// [dnsName] Name that you use in the applications of client tasks to connect to this service.
   /// [port] Listening port number for the Service Connect proxy. This port is available inside of all of the tasks within the same namespace.
   /// [testTrafficRules] Configuration block for test traffic routing rules. See below.
-  ServiceServiceConnectConfigurationServiceClientAlias({
+  const ServiceServiceConnectConfigurationServiceClientAlias({
     this.dnsName,
     required this.port,
     this.testTrafficRules,

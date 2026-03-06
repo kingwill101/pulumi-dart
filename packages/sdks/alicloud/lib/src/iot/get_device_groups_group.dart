@@ -35,7 +35,7 @@ class GetDeviceGroupsGroup {
   /// [groupName] The GroupName of the device group.
   /// [id] The ID of the device group.
   /// [success] Whether the call is successful.
-  GetDeviceGroupsGroup({
+  const GetDeviceGroupsGroup({
     required this.createTime,
     required this.deviceActive,
     required this.deviceCount,

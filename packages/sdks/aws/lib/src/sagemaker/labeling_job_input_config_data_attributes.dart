@@ -8,7 +8,7 @@ class LabelingJobInputConfigDataAttributes {
 
   /// Creates a new [LabelingJobInputConfigDataAttributes].
   /// [contentClassifiers] Declares that your content is free of personally identifiable information or adult content. Valid values: `FreeOfPersonallyIdentifiableInformation`, `FreeOfAdultContent`.
-  LabelingJobInputConfigDataAttributes({
+  const LabelingJobInputConfigDataAttributes({
     this.contentClassifiers,
   });
 

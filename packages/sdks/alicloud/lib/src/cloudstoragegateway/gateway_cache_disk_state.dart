@@ -27,7 +27,7 @@ class GatewayCacheDiskState {
   /// [localFilePath] The path of the cache disk.
   /// [performanceLevel] The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
   /// [status] The status of the Gateway Cache Disk.
-  GatewayCacheDiskState({
+  const GatewayCacheDiskState({
     this.cacheDiskCategory,
     this.cacheDiskSizeInGb,
     this.cacheId,

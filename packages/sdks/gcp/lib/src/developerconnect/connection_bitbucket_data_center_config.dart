@@ -39,7 +39,7 @@ class ConnectionBitbucketDataCenterConfig {
   /// [serviceDirectoryConfig] ServiceDirectoryConfig represents Service Directory configuration for a
   /// [sslCaCertificate] Optional. SSL certificate authority to trust when making requests to Bitbucket Data
   /// [webhookSecretSecretVersion] Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
-  ConnectionBitbucketDataCenterConfig({
+  const ConnectionBitbucketDataCenterConfig({
     required this.authorizerCredential,
     required this.hostUri,
     required this.readAuthorizerCredential,

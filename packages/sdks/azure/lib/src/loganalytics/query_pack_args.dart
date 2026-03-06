@@ -21,7 +21,7 @@ class QueryPackArgs {
   /// [name] The name which should be used for this Log Analytics Query Pack. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Log Analytics Query Pack should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Log Analytics Query Pack.
-  QueryPackArgs({
+  const QueryPackArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

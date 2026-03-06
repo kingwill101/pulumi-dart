@@ -32,7 +32,7 @@ class ListFirewallPolicyIdpsSignatureArgs {
   /// [resultsPerPage] The number of the results to return in each page
   /// [search] Search term in all columns
   /// [skip] The number of records matching the filter to skip
-  ListFirewallPolicyIdpsSignatureArgs({
+  const ListFirewallPolicyIdpsSignatureArgs({
     this.filters,
     required this.firewallPolicyName,
     this.orderBy,

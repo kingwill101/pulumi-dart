@@ -18,7 +18,7 @@ class ComplianceStatusResponse {
   /// [lastConfigApplied] Datetime the configuration was last applied.
   /// [message] Message from when the configuration was applied.
   /// [messageLevel] Level of the message.
-  ComplianceStatusResponse({
+  const ComplianceStatusResponse({
     required this.complianceState,
     this.lastConfigApplied,
     this.message,

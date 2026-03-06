@@ -8,7 +8,7 @@ class AiFeatureGroupBigQueryBigQuerySource {
 
   /// Creates a new [AiFeatureGroupBigQueryBigQuerySource].
   /// [inputUri] BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
-  AiFeatureGroupBigQueryBigQuerySource({
+  const AiFeatureGroupBigQueryBigQuerySource({
     required this.inputUri,
   });
 

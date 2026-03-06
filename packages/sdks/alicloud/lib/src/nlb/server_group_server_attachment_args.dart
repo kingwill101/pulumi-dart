@@ -39,7 +39,7 @@ class ServerGroupServerAttachmentArgs {
   /// [serverIp] The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
   /// [serverType] The type of the backend server. Valid values:
   /// [weight] The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
-  ServerGroupServerAttachmentArgs({
+  const ServerGroupServerAttachmentArgs({
     this.description,
     this.port,
     required this.serverGroupId,

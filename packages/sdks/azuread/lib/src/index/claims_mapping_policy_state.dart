@@ -12,7 +12,7 @@ class ClaimsMappingPolicyState {
   /// Creates a new [ClaimsMappingPolicyState].
   /// [definitions] The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
   /// [displayName] The display name for this Claims Mapping Policy.
-  ClaimsMappingPolicyState({
+  const ClaimsMappingPolicyState({
     this.definitions,
     this.displayName,
   });

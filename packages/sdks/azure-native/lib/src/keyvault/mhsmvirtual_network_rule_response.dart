@@ -9,7 +9,7 @@ class MHSMVirtualNetworkRuleResponse {
 
   /// Creates a new [MHSMVirtualNetworkRuleResponse].
   /// [id] Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
-  MHSMVirtualNetworkRuleResponse({
+  const MHSMVirtualNetworkRuleResponse({
     required this.id,
   });
 

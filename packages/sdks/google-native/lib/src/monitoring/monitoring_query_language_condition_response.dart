@@ -19,7 +19,7 @@ class MonitoringQueryLanguageConditionResponse {
   /// [evaluationMissingData] A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
   /// [query] Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
   /// [trigger] The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
-  MonitoringQueryLanguageConditionResponse({
+  const MonitoringQueryLanguageConditionResponse({
     required this.duration,
     required this.evaluationMissingData,
     required this.query,

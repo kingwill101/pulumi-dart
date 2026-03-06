@@ -23,7 +23,7 @@ class GetSamlProvidersProvider {
   /// [id] The ID of the SAML Provider.
   /// [samlProviderName] The saml provider name.
   /// [updateDate] The update time.
-  GetSamlProvidersProvider({
+  const GetSamlProvidersProvider({
     required this.arn,
     required this.description,
     required this.encodedsamlMetadataDocument,

@@ -20,7 +20,7 @@ class BudgetManagementGroupNotification {
   /// [operator] The comparison operator for the notification. Must be one of `EqualTo`, `GreaterThan`, or `GreaterThanOrEqualTo`.
   /// [threshold] Threshold value associated with a notification. Notification is sent when the cost exceeded the threshold. It is always percent and has to be between 0 and 1000.
   /// [thresholdType] The type of threshold for the notification. This determines whether the notification is triggered by forecasted costs or actual costs. The allowed values are `Actual` and `Forecasted`. Default is `Actual`.
-  BudgetManagementGroupNotification({
+  const BudgetManagementGroupNotification({
     required this.contactEmails,
     this.enabled,
     required this.operator,

@@ -15,7 +15,7 @@ class EncryptionKeyVaultProperties {
   /// [keyName] The name of the key.
   /// [keyVaultUrl] The URL of the vault.
   /// [keyVersion] The version of the key.
-  EncryptionKeyVaultProperties({
+  const EncryptionKeyVaultProperties({
     this.keyName,
     this.keyVaultUrl,
     this.keyVersion,

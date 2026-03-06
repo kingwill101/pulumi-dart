@@ -46,7 +46,7 @@ class GoogleCloudStorageReadSettingsResponse {
   /// [type] The read setting type.
   /// [wildcardFileName] Google Cloud Storage wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] Google Cloud Storage wildcardFolderPath. Type: string (or Expression with resultType string).
-  GoogleCloudStorageReadSettingsResponse({
+  const GoogleCloudStorageReadSettingsResponse({
     this.deleteFilesAfterCompletion,
     this.disableMetricsCollection,
     this.enablePartitionDiscovery,

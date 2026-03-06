@@ -28,7 +28,7 @@ class FolderState {
   /// [name] The name of the folder expressed as a path. Must include
   /// [selfLink] The URI of the created resource.
   /// [updateTime] The timestamp at which this folder was most recently updated.
-  FolderState({
+  const FolderState({
     this.bucket,
     this.createTime,
     this.forceDestroy,

@@ -15,7 +15,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary {
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary].
   /// [cloudStoragePath] Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   /// [wordList] List of words or phrases to search for.
-  PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary({
+  const PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary({
     this.cloudStoragePath,
     this.wordList,
   });

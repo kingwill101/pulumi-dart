@@ -46,7 +46,7 @@ class GetSqlDWTableDataSetMappingResult {
   /// [systemData] System Data of the Azure resource.
   /// [tableName] SQL DW table name.
   /// [type] Type of the azure resource
-  GetSqlDWTableDataSetMappingResult({
+  const GetSqlDWTableDataSetMappingResult({
     required this.azureApiVersion,
     required this.dataSetId,
     required this.dataSetMappingStatus,

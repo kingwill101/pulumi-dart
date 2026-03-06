@@ -26,7 +26,7 @@ class ConnectionProfileMysqlProfile {
   /// [secretManagerStoredPassword] A reference to a Secret Manager resource name storing the user's password.
   /// [sslConfig] SSL configuration for the MySQL connection.
   /// [username] Username for the MySQL connection.
-  ConnectionProfileMysqlProfile({
+  const ConnectionProfileMysqlProfile({
     required this.hostname,
     this.password,
     this.port,

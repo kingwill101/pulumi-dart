@@ -10,7 +10,7 @@ class Automatic {
 
   /// Creates a new [Automatic].
   /// [customerManagedEncryption] Optional. The customer-managed encryption configuration of the Secret. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
-  Automatic({
+  const Automatic({
     this.customerManagedEncryption,
   });
 

@@ -16,7 +16,7 @@ class GetWebBackendServiceIamPolicyArgs {
   /// Creates a new [GetWebBackendServiceIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [webBackendService] Used to find the parent resource to bind the IAM policy to
-  GetWebBackendServiceIamPolicyArgs({
+  const GetWebBackendServiceIamPolicyArgs({
     this.project,
     required this.webBackendService,
   });

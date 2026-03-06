@@ -31,7 +31,7 @@ class SsmResourceComplianceSummaryItemProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  SsmResourceComplianceSummaryItemProperties({
+  const SsmResourceComplianceSummaryItemProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

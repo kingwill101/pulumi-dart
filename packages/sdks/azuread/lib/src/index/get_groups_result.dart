@@ -24,7 +24,7 @@ class GetGroupsResult {
   /// [objectIds] The object IDs of the groups.
   /// [returnAll] Optional.
   /// [securityEnabled] Required.
-  GetGroupsResult({
+  const GetGroupsResult({
     required this.displayNamePrefix,
     required this.displayNames,
     required this.id,

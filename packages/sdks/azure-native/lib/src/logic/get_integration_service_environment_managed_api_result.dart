@@ -69,7 +69,7 @@ class GetIntegrationServiceEnvironmentManagedApiResult {
   /// [runtimeUrls] The runtime urls.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetIntegrationServiceEnvironmentManagedApiResult({
+  const GetIntegrationServiceEnvironmentManagedApiResult({
     required this.apiDefinitionUrl,
     required this.apiDefinitions,
     required this.azureApiVersion,

@@ -32,7 +32,7 @@ class ExperienceArgs {
   /// [name] A name for your Amazon Kendra experience.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] The Amazon Resource Name (ARN) of a role with permission to access `Query API`, `QuerySuggestions API`, `SubmitFeedback API`, and `AWS SSO` that stores your user and group information. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
-  ExperienceArgs({
+  const ExperienceArgs({
     this.configuration,
     this.description,
     required this.indexId,

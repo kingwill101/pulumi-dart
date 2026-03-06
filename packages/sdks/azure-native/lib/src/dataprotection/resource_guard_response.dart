@@ -21,7 +21,7 @@ class ResourceGuardResponse {
   /// [provisioningState] Provisioning state of the BackupVault resource
   /// [resourceGuardOperations] {readonly} List of operation details those are protected by the ResourceGuard resource
   /// [vaultCriticalOperationExclusionList] List of critical operations which are not protected by this resourceGuard
-  ResourceGuardResponse({
+  const ResourceGuardResponse({
     required this.allowAutoApprovals,
     required this.description,
     required this.provisioningState,

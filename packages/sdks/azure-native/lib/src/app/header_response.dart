@@ -12,7 +12,7 @@ class HeaderResponse {
   /// Creates a new [HeaderResponse].
   /// [key] The key of otlp configuration header
   /// [value] The value of otlp configuration header
-  HeaderResponse({
+  const HeaderResponse({
     this.key,
     this.value,
   });

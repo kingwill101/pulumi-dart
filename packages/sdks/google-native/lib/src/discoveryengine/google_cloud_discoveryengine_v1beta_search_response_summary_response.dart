@@ -16,7 +16,7 @@ class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponse {
   /// [safetyAttributes] A collection of Safety Attribute categories and their associated confidence scores.
   /// [summarySkippedReasons] Additional summary-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this field is not set.
   /// [summaryText] The summary content.
-  GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponse({
+  const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponse({
     required this.safetyAttributes,
     required this.summarySkippedReasons,
     required this.summaryText,

@@ -12,7 +12,7 @@ class GoogleCloudDataplexV1DataAttributeBindingPath {
   /// Creates a new [GoogleCloudDataplexV1DataAttributeBindingPath].
   /// [attributes] Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
   /// [name] The name identifier of the path. Nested columns should be of the form: 'address.city'.
-  GoogleCloudDataplexV1DataAttributeBindingPath({
+  const GoogleCloudDataplexV1DataAttributeBindingPath({
     this.attributes,
     required this.name,
   });

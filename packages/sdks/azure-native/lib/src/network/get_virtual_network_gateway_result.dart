@@ -122,7 +122,7 @@ class GetVirtualNetworkGatewayResult {
   /// [vpnClientConfiguration] The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
   /// [vpnGatewayGeneration] The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
   /// [vpnType] The type of this virtual network gateway.
-  GetVirtualNetworkGatewayResult({
+  const GetVirtualNetworkGatewayResult({
     this.activeActive,
     this.adminState,
     this.allowRemoteVnetTraffic,

@@ -12,7 +12,7 @@ class RaiBlocklistItemPropertiesResponse {
   /// Creates a new [RaiBlocklistItemPropertiesResponse].
   /// [isRegex] If the pattern is a regex pattern.
   /// [pattern] Pattern to match against.
-  RaiBlocklistItemPropertiesResponse({
+  const RaiBlocklistItemPropertiesResponse({
     this.isRegex,
     this.pattern,
   });

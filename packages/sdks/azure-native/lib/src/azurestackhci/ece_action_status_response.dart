@@ -13,7 +13,7 @@ class EceActionStatusResponse {
   /// Creates a new [EceActionStatusResponse].
   /// [status] Status of ECE action AzureStackHCI Cluster Deployment.
   /// [steps] List of steps of AzureStackHCI Cluster Deployment.
-  EceActionStatusResponse({
+  const EceActionStatusResponse({
     required this.status,
     required this.steps,
   });

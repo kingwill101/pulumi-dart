@@ -47,7 +47,7 @@ class CompanyJobsV4Args {
   /// [size] The employer's company size.
   /// [tenantId] Required.
   /// [websiteUri] The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
-  CompanyJobsV4Args({
+  const CompanyJobsV4Args({
     this.careerSiteUri,
     required this.displayName,
     this.eeoText,

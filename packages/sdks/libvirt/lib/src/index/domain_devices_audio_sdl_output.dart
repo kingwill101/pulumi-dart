@@ -8,7 +8,7 @@ class DomainDevicesAudioSdlOutput {
 
   /// Creates a new [DomainDevicesAudioSdlOutput].
   /// [bufferCount] Defines the number of output buffers in the SDL audio configuration.
-  DomainDevicesAudioSdlOutput({
+  const DomainDevicesAudioSdlOutput({
     this.bufferCount,
   });
 

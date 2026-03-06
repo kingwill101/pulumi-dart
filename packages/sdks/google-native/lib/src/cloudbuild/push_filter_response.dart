@@ -15,7 +15,7 @@ class PushFilterResponse {
   /// [branch] Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
   /// [invertRegex] When true, only trigger a build if the revision regex does NOT match the git_ref regex.
   /// [tag] Regexes matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-  PushFilterResponse({
+  const PushFilterResponse({
     required this.branch,
     required this.invertRegex,
     required this.tag,

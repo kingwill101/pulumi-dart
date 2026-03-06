@@ -18,7 +18,7 @@ class K8sActiveDirectoryResponse {
   /// [connector] Optional.
   /// [encryptionTypes] An array of encryption types
   /// [keytabSecret] Keytab secret used to authenticate with Active Directory.
-  K8sActiveDirectoryResponse({
+  const K8sActiveDirectoryResponse({
     this.accountName,
     this.connector,
     this.encryptionTypes,

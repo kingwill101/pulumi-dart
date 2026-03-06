@@ -18,7 +18,7 @@ class DomainDevicesGraphicSdl {
   /// [fullScreen] Configures whether the SDL graphics output should launch in fullscreen mode.
   /// [gl] Sets the OpenGL settings specific to the SDL graphics configuration.
   /// [xauth] Configures X authentication for the SDL graphics display.
-  DomainDevicesGraphicSdl({
+  const DomainDevicesGraphicSdl({
     this.display,
     this.fullScreen,
     this.gl,

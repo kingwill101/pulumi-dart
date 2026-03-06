@@ -11,7 +11,7 @@ class EventTargetSagemakerPipelineTargetPipelineParameterList {
   /// Creates a new [EventTargetSagemakerPipelineTargetPipelineParameterList].
   /// [name] Name of parameter to start execution of a SageMaker AI Model Building Pipeline.
   /// [value] Value of parameter to start execution of a SageMaker AI Model Building Pipeline.
-  EventTargetSagemakerPipelineTargetPipelineParameterList({
+  const EventTargetSagemakerPipelineTargetPipelineParameterList({
     required this.name,
     required this.value,
   });

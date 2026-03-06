@@ -9,7 +9,7 @@ class NetworkInterfaceResourceNamesResponse {
 
   /// Creates a new [NetworkInterfaceResourceNamesResponse].
   /// [networkInterfaceName] The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
-  NetworkInterfaceResourceNamesResponse({
+  const NetworkInterfaceResourceNamesResponse({
     this.networkInterfaceName,
   });
 

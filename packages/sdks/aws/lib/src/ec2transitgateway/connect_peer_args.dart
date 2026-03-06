@@ -30,7 +30,7 @@ class ConnectPeerArgs {
   /// [tags] Key-value tags for the EC2 Transit Gateway Connect Peer. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayAddress] The IP address assigned to Transit Gateway, which will be used as tunnel endpoint. This address must be from associated Transit Gateway CIDR block. The address must be from the same address family as `peer_address`. If not set explicitly, it will be selected from associated Transit Gateway CIDR blocks
   /// [transitGatewayAttachmentId] The Transit Gateway Connect
-  ConnectPeerArgs({
+  const ConnectPeerArgs({
     this.bgpAsn,
     required this.insideCidrBlocks,
     required this.peerAddress,

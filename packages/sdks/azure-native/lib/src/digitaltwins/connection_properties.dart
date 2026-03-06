@@ -13,7 +13,7 @@ class ConnectionProperties {
   /// Creates a new [ConnectionProperties].
   /// [groupIds] The list of group ids for the private endpoint connection.
   /// [privateLinkServiceConnectionState] The connection state.
-  ConnectionProperties({
+  const ConnectionProperties({
     this.groupIds,
     this.privateLinkServiceConnectionState,
   });

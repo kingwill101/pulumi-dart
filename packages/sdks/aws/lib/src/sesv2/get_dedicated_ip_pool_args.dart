@@ -18,7 +18,7 @@ class GetDedicatedIpPoolArgs {
   /// [poolName] Name of the dedicated IP pool.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags attached to the pool.
-  GetDedicatedIpPoolArgs({
+  const GetDedicatedIpPoolArgs({
     required this.poolName,
     this.region,
     this.tags,

@@ -50,7 +50,7 @@ class GetDataSetResult {
   /// [rowLevelPermissionDataSets] Required.
   /// [rowLevelPermissionTagConfigurations] Required.
   /// [tags] Required.
-  GetDataSetResult({
+  const GetDataSetResult({
     required this.arn,
     required this.awsAccountId,
     required this.columnGroups,

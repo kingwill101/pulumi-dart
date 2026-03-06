@@ -8,7 +8,7 @@ class GetThemeConfigurationTypographyFontFamily {
 
   /// Creates a new [GetThemeConfigurationTypographyFontFamily].
   /// [fontFamily] Font family name.
-  GetThemeConfigurationTypographyFontFamily({
+  const GetThemeConfigurationTypographyFontFamily({
     required this.fontFamily,
   });
 

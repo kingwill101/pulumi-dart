@@ -26,7 +26,7 @@ class GetManagedMaintenanceWindowStatusResult {
   /// [lastWindowEndTimeUTC] Last window end time in UTC.
   /// [lastWindowStartTimeUTC] Last window start time in UTC.
   /// [lastWindowStatusUpdateAtUTC] Last window update time in UTC.
-  GetManagedMaintenanceWindowStatusResult({
+  const GetManagedMaintenanceWindowStatusResult({
     required this.canApplyUpdates,
     required this.isRegionReady,
     required this.isWindowActive,

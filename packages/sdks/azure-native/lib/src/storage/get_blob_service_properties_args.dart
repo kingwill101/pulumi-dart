@@ -18,7 +18,7 @@ class GetBlobServicePropertiesArgs {
   /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   /// [blobServicesName] The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetBlobServicePropertiesArgs({
+  const GetBlobServicePropertiesArgs({
     required this.accountName,
     required this.blobServicesName,
     required this.resourceGroupName,

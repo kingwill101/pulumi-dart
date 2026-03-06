@@ -15,7 +15,7 @@ class GetPreferenceSetArgs {
   /// [location] Required.
   /// [preferenceSetId] Required.
   /// [project] Optional.
-  GetPreferenceSetArgs({
+  const GetPreferenceSetArgs({
     required this.location,
     required this.preferenceSetId,
     this.project,

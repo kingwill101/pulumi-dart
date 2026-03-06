@@ -21,7 +21,7 @@ class HeaderMatch {
   /// [prefixMatch] Prefix value of the header
   /// [regexMatch] Regex value of the header
   /// [suffixMatch] Suffix value of the header
-  HeaderMatch({
+  const HeaderMatch({
     this.exactMatch,
     this.header,
     this.prefixMatch,

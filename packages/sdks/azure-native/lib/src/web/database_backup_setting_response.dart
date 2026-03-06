@@ -18,7 +18,7 @@ class DatabaseBackupSettingResponse {
   /// [connectionStringName] Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
   /// [databaseType] Database type (e.g. SqlAzure / MySql).
   /// [name] Optional.
-  DatabaseBackupSettingResponse({
+  const DatabaseBackupSettingResponse({
     this.connectionString,
     this.connectionStringName,
     required this.databaseType,

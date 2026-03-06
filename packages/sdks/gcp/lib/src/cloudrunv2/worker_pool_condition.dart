@@ -38,7 +38,7 @@ class WorkerPoolCondition {
   /// [severity] (Output)
   /// [state] (Output)
   /// [type] (Output)
-  WorkerPoolCondition({
+  const WorkerPoolCondition({
     this.executionReason,
     this.lastTransitionTime,
     this.message,

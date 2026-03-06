@@ -49,7 +49,7 @@ class WorkflowState {
   /// [type] Type of the workflow. Valid values: `BUILD`, `TEST`.
   /// [uri] S3 URI with data of the workflow. Exactly one of `data` and `uri` can be specified.
   /// [version] Version of the workflow.
-  WorkflowState({
+  const WorkflowState({
     this.arn,
     this.changeDescription,
     this.data,

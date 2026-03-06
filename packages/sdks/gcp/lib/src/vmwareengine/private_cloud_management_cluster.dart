@@ -30,7 +30,7 @@ class PrivateCloudManagementCluster {
   /// [clusterId] The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
   /// [nodeTypeConfigs] The map of cluster node types in this cluster,
   /// [stretchedClusterConfig] The stretched cluster configuration for the private cloud.
-  PrivateCloudManagementCluster({
+  const PrivateCloudManagementCluster({
     this.autoscalingSettings,
     required this.clusterId,
     this.nodeTypeConfigs,

@@ -8,7 +8,7 @@ class AgentAgentMemoryConfigurationSessionSummaryConfiguration {
 
   /// Creates a new [AgentAgentMemoryConfigurationSessionSummaryConfiguration].
   /// [maxRecentSessions] Maximum number of recent session summaries to include in the agent's prompt context.
-  AgentAgentMemoryConfigurationSessionSummaryConfiguration({
+  const AgentAgentMemoryConfigurationSessionSummaryConfiguration({
     required this.maxRecentSessions,
   });
 

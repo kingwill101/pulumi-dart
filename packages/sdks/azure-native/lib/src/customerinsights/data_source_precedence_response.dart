@@ -24,7 +24,7 @@ class DataSourcePrecedenceResponse {
   /// [name] The data source name
   /// [precedence] the precedence value.
   /// [status] The data source status.
-  DataSourcePrecedenceResponse({
+  const DataSourcePrecedenceResponse({
     required this.dataSourceReferenceId,
     required this.dataSourceType,
     required this.id,

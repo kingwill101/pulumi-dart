@@ -11,7 +11,7 @@ class OntapFileSystemDiskIopsConfiguration {
   /// Creates a new [OntapFileSystemDiskIopsConfiguration].
   /// [iops] The total number of SSD IOPS provisioned for the file system.
   /// [mode] Specifies whether the number of IOPS for the file system is using the system. Valid values are `AUTOMATIC` and `USER_PROVISIONED`. Default value is `AUTOMATIC`.
-  OntapFileSystemDiskIopsConfiguration({
+  const OntapFileSystemDiskIopsConfiguration({
     this.iops,
     this.mode,
   });

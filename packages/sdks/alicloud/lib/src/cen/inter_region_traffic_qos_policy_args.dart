@@ -24,7 +24,7 @@ class InterRegionTrafficQosPolicyArgs {
   /// [interRegionTrafficQosPolicyName] The name of the traffic scheduling policy.
   /// [transitRouterAttachmentId] Peer Attachment ID.
   /// [transitRouterId] The ID of the forwarding router instance.
-  InterRegionTrafficQosPolicyArgs({
+  const InterRegionTrafficQosPolicyArgs({
     this.bandwidthGuaranteeMode,
     this.interRegionTrafficQosPolicyDescription,
     this.interRegionTrafficQosPolicyName,

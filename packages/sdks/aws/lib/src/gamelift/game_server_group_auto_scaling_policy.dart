@@ -14,7 +14,7 @@ class GameServerGroupAutoScalingPolicy {
   /// Creates a new [GameServerGroupAutoScalingPolicy].
   /// [estimatedInstanceWarmup] Length of time, in seconds, it takes for a new instance to start
   /// [targetTrackingConfiguration] Required.
-  GameServerGroupAutoScalingPolicy({
+  const GameServerGroupAutoScalingPolicy({
     this.estimatedInstanceWarmup,
     required this.targetTrackingConfiguration,
   });

@@ -24,7 +24,7 @@ class GetDeploymentArgs {
   /// [deviceGroupName] Name of device group.
   /// [productName] Name of product.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDeploymentArgs({
+  const GetDeploymentArgs({
     required this.catalogName,
     required this.deploymentName,
     required this.deviceGroupName,

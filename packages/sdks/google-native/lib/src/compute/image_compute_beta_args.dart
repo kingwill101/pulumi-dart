@@ -103,7 +103,7 @@ class ImageComputeBetaArgs {
   /// [sourceType] The type of the image used to create this disk. The default and only valid value is RAW.
   /// [storageLocations] Cloud Storage bucket storage location of the image (regional or multi-regional).
   /// [userLicenses] A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
-  ImageComputeBetaArgs({
+  const ImageComputeBetaArgs({
     this.architecture,
     this.archiveSizeBytes,
     this.deprecated,

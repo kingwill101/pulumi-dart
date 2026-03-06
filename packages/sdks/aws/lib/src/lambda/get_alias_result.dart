@@ -26,7 +26,7 @@ class GetAliasResult {
   /// [invokeArn] ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   /// [name] Required.
   /// [region] Required.
-  GetAliasResult({
+  const GetAliasResult({
     required this.arn,
     required this.description,
     required this.functionName,

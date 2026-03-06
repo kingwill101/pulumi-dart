@@ -28,7 +28,7 @@ class ReplicatorReplicationInfoListTopicReplication {
   /// [topicNameConfiguration] Configuration for specifying replicated topic names should be the same as their corresponding upstream topics or prefixed with source cluster alias.
   /// [topicsToExcludes] List of regular expression patterns indicating the topics that should not be replica.
   /// [topicsToReplicates] List of regular expression patterns indicating the topics to copy.
-  ReplicatorReplicationInfoListTopicReplication({
+  const ReplicatorReplicationInfoListTopicReplication({
     this.copyAccessControlListsForTopics,
     this.copyTopicConfigurations,
     this.detectAndCopyNewTopics,

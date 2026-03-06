@@ -8,7 +8,7 @@ class AutomationRuleActionFindingFieldsUpdateWorkflow {
 
   /// Creates a new [AutomationRuleActionFindingFieldsUpdateWorkflow].
   /// [status] The status of the investigation into the finding. The allowed values are the following `NEW`, `NOTIFIED`, `RESOLVED` and `SUPPRESSED`.
-  AutomationRuleActionFindingFieldsUpdateWorkflow({
+  const AutomationRuleActionFindingFieldsUpdateWorkflow({
     this.status,
   });
 

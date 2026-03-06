@@ -27,7 +27,7 @@ class CertManagerCertificateSpecResponse {
   /// [renewBefore] When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
   /// [san] Additional Subject Alternative Names (SANs) to include in the certificate.
   /// [secretName] Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-  CertManagerCertificateSpecResponse({
+  const CertManagerCertificateSpecResponse({
     this.duration,
     required this.issuerRef,
     this.privateKey,

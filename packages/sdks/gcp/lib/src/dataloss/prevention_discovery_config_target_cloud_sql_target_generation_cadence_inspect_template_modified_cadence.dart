@@ -9,7 +9,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTempl
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence].
   /// [frequency] How frequently data profiles can be updated when the template is modified. Defaults to never.
-  PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence({
+  const PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence({
     required this.frequency,
   });
 

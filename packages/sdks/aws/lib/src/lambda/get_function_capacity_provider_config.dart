@@ -9,7 +9,7 @@ class GetFunctionCapacityProviderConfig {
 
   /// Creates a new [GetFunctionCapacityProviderConfig].
   /// [lambdaManagedInstancesCapacityProviderConfigs] Configuration block for Lambda Managed Instances Capacity Provider.
-  GetFunctionCapacityProviderConfig({
+  const GetFunctionCapacityProviderConfig({
     required this.lambdaManagedInstancesCapacityProviderConfigs,
   });
 

@@ -34,7 +34,7 @@ class ContactListState {
   /// [tags] Key-value map of resource tags for the contact list. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [topics] Configuration block(s) with topic for the contact list. Detailed below.
-  ContactListState({
+  const ContactListState({
     this.arn,
     this.contactListName,
     this.createdTimestamp,

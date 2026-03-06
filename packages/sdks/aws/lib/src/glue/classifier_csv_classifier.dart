@@ -32,7 +32,7 @@ class ClassifierCsvClassifier {
   /// [headers] A list of strings representing column names.
   /// [quoteSymbol] A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
   /// [serde] The SerDe for processing CSV. Valid values are `OpenCSVSerDe`, `LazySimpleSerDe`, `None`.
-  ClassifierCsvClassifier({
+  const ClassifierCsvClassifier({
     this.allowSingleColumn,
     this.containsHeader,
     this.customDatatypeConfigured,

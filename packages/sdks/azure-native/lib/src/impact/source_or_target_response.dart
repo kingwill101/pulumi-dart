@@ -9,7 +9,7 @@ class SourceOrTargetResponse {
 
   /// Creates a new [SourceOrTargetResponse].
   /// [azureResourceId] Azure resource id, example /subscription/{subscription}/resourceGroup/{rg}/Microsoft.compute/virtualMachine/{vmName}
-  SourceOrTargetResponse({
+  const SourceOrTargetResponse({
     this.azureResourceId,
   });
 

@@ -21,7 +21,7 @@ class OrganizationSecurityPolicyRuleMatchConfig {
   /// [destIpRanges] Destination IP address range in CIDR format. Required for
   /// [layer4Configs] Pairs of IP protocols and ports that the rule should match.
   /// [srcIpRanges] Source IP address range in CIDR format. Required for
-  OrganizationSecurityPolicyRuleMatchConfig({
+  const OrganizationSecurityPolicyRuleMatchConfig({
     this.destIpRanges,
     required this.layer4Configs,
     this.srcIpRanges,

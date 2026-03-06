@@ -18,7 +18,7 @@ class GetElasticPoolArgs {
   /// [name] The name of the elastic pool.
   /// [resourceGroupName] The name of the resource group which contains the elastic pool.
   /// [serverName] The name of the SQL Server which contains the elastic pool.
-  GetElasticPoolArgs({
+  const GetElasticPoolArgs({
     required this.name,
     required this.resourceGroupName,
     required this.serverName,

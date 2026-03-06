@@ -20,7 +20,7 @@ class GetWorkspaceTagOperationLinkResult {
   /// [name] The name of the resource
   /// [operationId] Full resource Id of an API operation.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkspaceTagOperationLinkResult({
+  const GetWorkspaceTagOperationLinkResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

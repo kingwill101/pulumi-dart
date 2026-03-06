@@ -17,7 +17,7 @@ class GetServingConfigRetailV2alphaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [servingConfigId] Required.
-  GetServingConfigRetailV2alphaArgs({
+  const GetServingConfigRetailV2alphaArgs({
     required this.catalogId,
     required this.location,
     this.project,

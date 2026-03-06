@@ -11,7 +11,7 @@ class GetServerlessCacheCacheUsageLimitsEcpuPerSecond {
   /// Creates a new [GetServerlessCacheCacheUsageLimitsEcpuPerSecond].
   /// [maximum] The maximum number of ECPUs the cache can consume per second.
   /// [minimum] The minimum number of ECPUs the cache can consume per second.
-  GetServerlessCacheCacheUsageLimitsEcpuPerSecond({
+  const GetServerlessCacheCacheUsageLimitsEcpuPerSecond({
     required this.maximum,
     required this.minimum,
   });

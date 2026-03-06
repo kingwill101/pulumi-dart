@@ -52,7 +52,7 @@ class HubspotLinkedServiceResponse {
   /// [useHostVerification] Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.
   /// [usePeerVerification] Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
   /// [version] Version of the linked service.
-  HubspotLinkedServiceResponse({
+  const HubspotLinkedServiceResponse({
     this.accessToken,
     this.annotations,
     required this.clientId,

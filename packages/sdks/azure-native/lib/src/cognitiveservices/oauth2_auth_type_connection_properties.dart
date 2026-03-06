@@ -36,7 +36,7 @@ class OAuth2AuthTypeConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  OAuth2AuthTypeConnectionProperties({
+  const OAuth2AuthTypeConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

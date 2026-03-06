@@ -38,7 +38,7 @@ class GetServiceResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags to assign to the resource.
-  GetServiceResult({
+  const GetServiceResult({
     required this.accessPolicyObjectIds,
     required this.authenticationConfigurations,
     required this.corsConfigurations,

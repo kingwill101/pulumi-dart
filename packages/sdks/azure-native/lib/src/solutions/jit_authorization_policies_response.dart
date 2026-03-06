@@ -12,7 +12,7 @@ class JitAuthorizationPoliciesResponse {
   /// Creates a new [JitAuthorizationPoliciesResponse].
   /// [principalId] The the principal id that will be granted JIT access.
   /// [roleDefinitionId] The role definition id that will be granted to the Principal.
-  JitAuthorizationPoliciesResponse({
+  const JitAuthorizationPoliciesResponse({
     required this.principalId,
     required this.roleDefinitionId,
   });

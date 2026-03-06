@@ -30,7 +30,7 @@ class GetCryptoKeyLatestVersionResult {
   /// [publicKeys] If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
   /// [state] The current state of the latest CryptoKeyVersion. See the [state reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions#CryptoKeyVersion.CryptoKeyVersionState) for possible outputs.
   /// [version] Required.
-  GetCryptoKeyLatestVersionResult({
+  const GetCryptoKeyLatestVersionResult({
     required this.algorithm,
     required this.cryptoKey,
     this.filter,

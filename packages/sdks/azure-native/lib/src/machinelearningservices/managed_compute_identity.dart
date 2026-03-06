@@ -14,7 +14,7 @@ class ManagedComputeIdentity {
   /// Creates a new [ManagedComputeIdentity].
   /// [computeIdentityType] Monitor compute identity type enum.
   /// [identity] The identity which will be leveraged by the monitoring jobs.
-  ManagedComputeIdentity({
+  const ManagedComputeIdentity({
     required this.computeIdentityType,
     this.identity,
   });

@@ -26,7 +26,7 @@ class GetResourceSharesResult {
   /// [resourceShareOwner] Required.
   /// [shares] Required.
   /// [status] Optional.
-  GetResourceSharesResult({
+  const GetResourceSharesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

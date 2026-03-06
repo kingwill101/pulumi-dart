@@ -27,7 +27,7 @@ class OSDetailsResponse {
   /// [osType] VM Disk details.
   /// [productType] Product type.
   /// [userSelectedOSName] The OS name selected by user.
-  OSDetailsResponse({
+  const OSDetailsResponse({
     this.oSMajorVersion,
     this.oSMinorVersion,
     this.oSVersion,

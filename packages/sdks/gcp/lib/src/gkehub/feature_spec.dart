@@ -25,7 +25,7 @@ class FeatureSpec {
   /// [fleetobservability] Fleet Observability feature spec.
   /// [multiclusteringress] Multicluster Ingress-specific spec.
   /// [rbacrolebindingactuation] RBACRolebinding Actuation feature spec.
-  FeatureSpec({
+  const FeatureSpec({
     this.clusterupgrade,
     this.fleetobservability,
     this.multiclusteringress,

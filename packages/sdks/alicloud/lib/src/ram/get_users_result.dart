@@ -29,7 +29,7 @@ class GetUsersResult {
   /// [policyName] Optional.
   /// [policyType] Optional.
   /// [users] A list of users. Each element contains the following attributes:
-  GetUsersResult({
+  const GetUsersResult({
     this.groupName,
     required this.id,
     required this.ids,

@@ -21,7 +21,7 @@ class GetAutoSnapshotPoliciesArgs {
   /// [nameRegex] A regex string to filter results by Auto Snapshot Policy name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the automatic snapshot policy. Valid values: `Creating`, `Available`.
-  GetAutoSnapshotPoliciesArgs({
+  const GetAutoSnapshotPoliciesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

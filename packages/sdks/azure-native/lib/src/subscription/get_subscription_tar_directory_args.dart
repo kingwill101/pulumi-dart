@@ -12,7 +12,7 @@ class GetSubscriptionTarDirectoryArgs {
 
   /// Creates a new [GetSubscriptionTarDirectoryArgs].
   /// [subscriptionId] Subscription Id.
-  GetSubscriptionTarDirectoryArgs({
+  const GetSubscriptionTarDirectoryArgs({
     this.subscriptionId,
   });
 

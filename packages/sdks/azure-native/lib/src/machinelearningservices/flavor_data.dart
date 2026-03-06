@@ -8,7 +8,7 @@ class FlavorData {
 
   /// Creates a new [FlavorData].
   /// [data] Model flavor-specific data.
-  FlavorData({
+  const FlavorData({
     this.data,
   });
 

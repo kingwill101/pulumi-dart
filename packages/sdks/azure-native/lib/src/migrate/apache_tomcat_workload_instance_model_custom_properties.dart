@@ -20,7 +20,7 @@ class ApacheTomcatWorkloadInstanceModelCustomProperties {
   /// [instanceType] Gets or sets the instance type.
   /// [webAppArmId] Gets or sets the Web application ARM id.
   /// [webAppSiteName] Gets or sets the Web application site name.
-  ApacheTomcatWorkloadInstanceModelCustomProperties({
+  const ApacheTomcatWorkloadInstanceModelCustomProperties({
     this.apacheTomcatWebApplication,
     required this.instanceType,
     this.webAppArmId,

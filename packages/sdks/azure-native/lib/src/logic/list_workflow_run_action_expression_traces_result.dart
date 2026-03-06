@@ -9,7 +9,7 @@ class ListWorkflowRunActionExpressionTracesResult {
 
   /// Creates a new [ListWorkflowRunActionExpressionTracesResult].
   /// [inputs] Optional.
-  ListWorkflowRunActionExpressionTracesResult({
+  const ListWorkflowRunActionExpressionTracesResult({
     this.inputs,
   });
 

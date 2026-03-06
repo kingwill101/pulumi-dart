@@ -25,7 +25,7 @@ class AzureOperatorNexusNetworkFunctionImageApplication {
   /// [dependsOnProfile] Depends on profile definition.
   /// [deployParametersMappingRuleProfile] Deploy mapping rule profile.
   /// [name] The name of the network function application.
-  AzureOperatorNexusNetworkFunctionImageApplication({
+  const AzureOperatorNexusNetworkFunctionImageApplication({
     this.artifactProfile,
     required this.artifactType,
     this.dependsOnProfile,

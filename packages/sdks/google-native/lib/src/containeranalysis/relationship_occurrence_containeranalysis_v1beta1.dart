@@ -15,7 +15,7 @@ class RelationshipOccurrenceContaineranalysisV1beta1 {
   /// [comment] A place for the SPDX file creator to record any general comments about the relationship
   /// [source] Also referred to as SPDXRef-A The source SPDX element (file, package, etc)
   /// [target] Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
-  RelationshipOccurrenceContaineranalysisV1beta1({
+  const RelationshipOccurrenceContaineranalysisV1beta1({
     this.comment,
     this.source,
     this.target,

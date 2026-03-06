@@ -24,7 +24,7 @@ class GetRouteEntriesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [routeTableId] The ID of the router table to which the route entry belongs.
   /// [type] The type of the route entry.
-  GetRouteEntriesArgs({
+  const GetRouteEntriesArgs({
     this.cidrBlock,
     this.instanceId,
     this.outputFile,

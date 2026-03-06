@@ -13,7 +13,7 @@ class ListProductsAndConfigurationsResult {
   /// Creates a new [ListProductsAndConfigurationsResult].
   /// [nextLink] The link to the next page of items
   /// [value] The Configuration items on this page
-  ListProductsAndConfigurationsResult({
+  const ListProductsAndConfigurationsResult({
     this.nextLink,
     required this.value,
   });

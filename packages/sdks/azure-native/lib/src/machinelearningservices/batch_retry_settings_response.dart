@@ -12,7 +12,7 @@ class BatchRetrySettingsResponse {
   /// Creates a new [BatchRetrySettingsResponse].
   /// [maxRetries] Maximum retry count for a mini-batch
   /// [timeout] Invocation timeout for a mini-batch, in ISO 8601 format.
-  BatchRetrySettingsResponse({
+  const BatchRetrySettingsResponse({
     this.maxRetries,
     this.timeout,
   });

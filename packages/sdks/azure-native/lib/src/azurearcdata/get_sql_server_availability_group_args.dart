@@ -18,7 +18,7 @@ class GetSqlServerAvailabilityGroupArgs {
   /// [availabilityGroupName] Name of SQL Availability Group
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerInstanceName] Name of SQL Server Instance
-  GetSqlServerAvailabilityGroupArgs({
+  const GetSqlServerAvailabilityGroupArgs({
     required this.availabilityGroupName,
     required this.resourceGroupName,
     required this.sqlServerInstanceName,

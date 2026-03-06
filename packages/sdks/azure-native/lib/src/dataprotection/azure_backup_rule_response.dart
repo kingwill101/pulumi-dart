@@ -23,7 +23,7 @@ class AzureBackupRuleResponse {
   /// [name] Required.
   /// [objectType] Expected value is 'AzureBackupRule'.
   /// [trigger] Trigger context
-  AzureBackupRuleResponse({
+  const AzureBackupRuleResponse({
     this.backupParameters,
     required this.dataStore,
     required this.name,

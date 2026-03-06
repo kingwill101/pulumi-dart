@@ -14,7 +14,7 @@ class GetGenaiKnowledgeBaseIndexingJobsMeta {
   /// [page] Current page number
   /// [pages] Total number of pages
   /// [total] Total number of items
-  GetGenaiKnowledgeBaseIndexingJobsMeta({
+  const GetGenaiKnowledgeBaseIndexingJobsMeta({
     required this.page,
     required this.pages,
     required this.total,

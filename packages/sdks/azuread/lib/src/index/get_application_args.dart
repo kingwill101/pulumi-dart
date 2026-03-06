@@ -23,7 +23,7 @@ class GetApplicationArgs {
   /// [displayName] Specifies the display name of the application.
   /// [identifierUri] Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
   /// [objectId] Specifies the Object ID of the application.
-  GetApplicationArgs({
+  const GetApplicationArgs({
     this.clientId,
     this.displayName,
     this.identifierUri,

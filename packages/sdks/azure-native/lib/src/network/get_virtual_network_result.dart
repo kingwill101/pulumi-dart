@@ -84,7 +84,7 @@ class GetVirtualNetworkResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [virtualNetworkPeerings] A list of peerings in a Virtual Network.
-  GetVirtualNetworkResult({
+  const GetVirtualNetworkResult({
     this.addressSpace,
     required this.azureApiVersion,
     this.bgpCommunities,

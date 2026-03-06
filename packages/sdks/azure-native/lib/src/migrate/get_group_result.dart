@@ -24,7 +24,7 @@ class GetGroupResult {
   /// [name] Name of the group.
   /// [properties] Properties of the group.
   /// [type] Type of the object = [Microsoft.Migrate/assessmentProjects/groups].
-  GetGroupResult({
+  const GetGroupResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

@@ -50,7 +50,7 @@ class GetAwsServiceDiscoveryArgs {
   /// [type] Optional.
   /// [undetectableAction] Action to take when node cannot be detected,default `remove`.
   /// [updateInterval] Update interval for service discovery.
-  GetAwsServiceDiscoveryArgs({
+  const GetAwsServiceDiscoveryArgs({
     this.addressRealm,
     this.awsAccessKey,
     this.awsRegion,

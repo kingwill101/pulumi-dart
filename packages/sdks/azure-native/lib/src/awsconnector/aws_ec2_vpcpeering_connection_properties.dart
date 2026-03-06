@@ -28,7 +28,7 @@ class AwsEc2VPCPeeringConnectionProperties {
   /// [peerVpcId] The ID of the VPC with which you are creating the VPC peering connection. You must specify this parameter in the request.
   /// [tags] Property tags
   /// [vpcId] The ID of the VPC.
-  AwsEc2VPCPeeringConnectionProperties({
+  const AwsEc2VPCPeeringConnectionProperties({
     this.id,
     this.peerOwnerId,
     this.peerRegion,

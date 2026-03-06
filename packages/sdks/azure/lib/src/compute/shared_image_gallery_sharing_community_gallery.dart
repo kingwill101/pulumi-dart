@@ -20,7 +20,7 @@ class SharedImageGallerySharingCommunityGallery {
   /// [prefix] Prefix of the community public name for the Shared Image Gallery. Changing this forces a new resource to be created.
   /// [publisherEmail] Email of the publisher for the Shared Image Gallery. Changing this forces a new resource to be created.
   /// [publisherUri] URI of the publisher for the Shared Image Gallery. Changing this forces a new resource to be created.
-  SharedImageGallerySharingCommunityGallery({
+  const SharedImageGallerySharingCommunityGallery({
     required this.eula,
     this.name,
     required this.prefix,

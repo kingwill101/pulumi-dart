@@ -43,7 +43,7 @@ class PackageNoteResponse {
   /// [packageType] The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
   /// [url] The homepage for this package.
   /// [version] The version of the package.
-  PackageNoteResponse({
+  const PackageNoteResponse({
     required this.architecture,
     required this.cpeUri,
     required this.description,

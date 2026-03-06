@@ -32,7 +32,7 @@ class IntegrationServiceEnvironmentManagedApiArgs {
   /// [location] The resource location.
   /// [resourceGroup] The resource group name.
   /// [tags] The resource tags.
-  IntegrationServiceEnvironmentManagedApiArgs({
+  const IntegrationServiceEnvironmentManagedApiArgs({
     this.apiName,
     this.deploymentParameters,
     this.integrationServiceEnvironment,

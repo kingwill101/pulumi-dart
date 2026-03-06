@@ -7,7 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow].
   /// [instanceUrl] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow({
     required this.instanceUrl,
   });
 

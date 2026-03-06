@@ -23,7 +23,7 @@ class GetWorkloadIdentityPoolResult {
   /// [expireTime] Time after which the workload identity pool will be permanently purged and cannot be recovered.
   /// [name] The resource name of the pool.
   /// [state] The state of the pool.
-  GetWorkloadIdentityPoolResult({
+  const GetWorkloadIdentityPoolResult({
     required this.description,
     required this.disabled,
     required this.displayName,

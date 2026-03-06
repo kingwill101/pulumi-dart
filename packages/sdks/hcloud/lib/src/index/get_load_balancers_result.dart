@@ -15,7 +15,7 @@ class GetLoadBalancersResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [loadBalancers] (list) List of all matching load balancers. See `data.hcloud_load_balancer` for schema.
   /// [withSelector] Optional.
-  GetLoadBalancersResult({
+  const GetLoadBalancersResult({
     required this.id,
     required this.loadBalancers,
     this.withSelector,

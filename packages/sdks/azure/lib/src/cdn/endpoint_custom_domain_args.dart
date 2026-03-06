@@ -28,7 +28,7 @@ class EndpointCustomDomainArgs {
   /// [hostName] The host name of the custom domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   /// [name] The name which should be used for this CDN Endpoint Custom Domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   /// [userManagedHttps] A `user_managed_https` block as defined below.
-  EndpointCustomDomainArgs({
+  const EndpointCustomDomainArgs({
     required this.cdnEndpointId,
     this.cdnManagedHttps,
     required this.hostName,

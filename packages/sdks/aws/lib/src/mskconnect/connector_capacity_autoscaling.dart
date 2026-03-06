@@ -22,7 +22,7 @@ class ConnectorCapacityAutoscaling {
   /// [minWorkerCount] The minimum number of workers allocated to the connector.
   /// [scaleInPolicy] The scale-in policy for the connector. See `scale_in_policy` Block for details.
   /// [scaleOutPolicy] The scale-out policy for the connector. See `scale_out_policy` Block for details.
-  ConnectorCapacityAutoscaling({
+  const ConnectorCapacityAutoscaling({
     required this.maxWorkerCount,
     this.mcuCount,
     required this.minWorkerCount,

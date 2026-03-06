@@ -22,7 +22,7 @@ class BackupSchedule {
   /// [keepAtLeastOneBackup] True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
   /// [retentionPeriodInDays] After how many days backups should be deleted.
   /// [startTime] When the schedule should start working.
-  BackupSchedule({
+  const BackupSchedule({
     required this.frequencyInterval,
     required this.frequencyUnit,
     required this.keepAtLeastOneBackup,

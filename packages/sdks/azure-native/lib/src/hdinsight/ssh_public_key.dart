@@ -9,7 +9,7 @@ class SshPublicKey {
 
   /// Creates a new [SshPublicKey].
   /// [certificateData] The certificate for SSH.
-  SshPublicKey({
+  const SshPublicKey({
     this.certificateData,
   });
 

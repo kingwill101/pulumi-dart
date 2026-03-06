@@ -26,7 +26,7 @@ class GetApiIssueAttachmentResult {
   /// [name] The name of the resource
   /// [title] Filename by which the binary data will be saved.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApiIssueAttachmentResult({
+  const GetApiIssueAttachmentResult({
     required this.azureApiVersion,
     required this.content,
     required this.contentFormat,

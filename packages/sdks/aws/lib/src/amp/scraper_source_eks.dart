@@ -13,7 +13,7 @@ class ScraperSourceEks {
   /// [clusterArn] Required.
   /// [securityGroupIds] List of the security group IDs for the Amazon EKS cluster VPC configuration.
   /// [subnetIds] List of subnet IDs. Must be in at least two different availability zones.
-  ScraperSourceEks({
+  const ScraperSourceEks({
     required this.clusterArn,
     this.securityGroupIds,
     required this.subnetIds,

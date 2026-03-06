@@ -89,7 +89,7 @@ class ClusterArgs {
   /// [vpcId] Optional.
   /// [vswitchId] The virtual switch ID to launch DB instances in one VPC.
   /// [zoneId] The Zone to launch the DB cluster.
-  ClusterArgs({
+  const ClusterArgs({
     this.autoRenewPeriod,
     this.computeResource,
     required this.dbClusterCategory,

@@ -13,7 +13,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargets {
   /// Creates a new [RecordSetRoutingPolicyWrrHealthCheckedTargets].
   /// [externalEndpoints] The list of external endpoint addresses to health check.
   /// [internalLoadBalancers] The list of internal load balancers to health check.
-  RecordSetRoutingPolicyWrrHealthCheckedTargets({
+  const RecordSetRoutingPolicyWrrHealthCheckedTargets({
     this.externalEndpoints,
     this.internalLoadBalancers,
   });

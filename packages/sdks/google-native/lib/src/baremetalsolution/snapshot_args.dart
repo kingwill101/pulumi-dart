@@ -21,7 +21,7 @@ class SnapshotArgs {
   /// [name] The name of the snapshot.
   /// [project] Optional.
   /// [volumeId] Required.
-  SnapshotArgs({
+  const SnapshotArgs({
     this.description,
     this.location,
     this.name,

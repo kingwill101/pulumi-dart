@@ -32,7 +32,7 @@ class IoTAddonArgs {
   /// [kind] Addon type.
   /// [resourceGroupName] The resource group name.
   /// [roleName] The role name.
-  IoTAddonArgs({
+  const IoTAddonArgs({
     this.addonName,
     required this.deviceName,
     required this.ioTDeviceDetails,

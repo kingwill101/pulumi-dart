@@ -8,7 +8,7 @@ class DatascanExecutionSpecTriggerOneTime {
 
   /// Creates a new [DatascanExecutionSpecTriggerOneTime].
   /// [ttlAfterScanCompletion] Time to live for the DataScan and its results after the one-time run completes. Accepts a string with a unit suffix 's' (e.g., '7200s'). Default is 24 hours. Ranges between 0 and 31536000 seconds (1 year).
-  DatascanExecutionSpecTriggerOneTime({
+  const DatascanExecutionSpecTriggerOneTime({
     this.ttlAfterScanCompletion,
   });
 

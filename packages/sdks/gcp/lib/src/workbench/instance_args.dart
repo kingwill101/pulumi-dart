@@ -54,7 +54,7 @@ class InstanceArgs {
   /// [location] Part of `parent`. See documentation of `projectsId`.
   /// [name] The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
   /// [project] The ID of the project in which the resource belongs.
-  InstanceArgs({
+  const InstanceArgs({
     this.desiredState,
     this.disableProxyAccess,
     this.enableManagedEuc,

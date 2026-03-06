@@ -29,7 +29,7 @@ class EndpointAttachmentState {
   /// [name] Name of the Endpoint Attachment in the following format:
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [serviceAttachment] Format: projects/*/regions/*/serviceAttachments/*
-  EndpointAttachmentState({
+  const EndpointAttachmentState({
     this.connectionState,
     this.endpointAttachmentId,
     this.host,

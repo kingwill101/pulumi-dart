@@ -3,11 +3,11 @@
 import 'package:pulumi_linode/index.dart' as module_index;
 import 'package:pulumi_linode/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final AccountSettings = module_index.AccountSettings.new;
   final AccountSettingsArgs = module_index.AccountSettingsArgs.new;
   final AccountSettingsState = module_index.AccountSettingsState.new;
@@ -1387,7 +1387,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Linode = module_providers.ProviderProvider.new;
   final LinodeArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

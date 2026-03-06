@@ -11,7 +11,7 @@ class GetSecurityGatewayHub {
   /// Creates a new [GetSecurityGatewayHub].
   /// [internetGateways] Internet Gateway configuration.
   /// [region] Required.
-  GetSecurityGatewayHub({
+  const GetSecurityGatewayHub({
     required this.internetGateways,
     required this.region,
   });

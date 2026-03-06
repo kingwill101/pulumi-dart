@@ -21,7 +21,7 @@ class ExtensionMonitoringStatusArgs {
   /// [primaryKey] The cluster monitor workspace key.
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceId] The cluster monitor workspace ID.
-  ExtensionMonitoringStatusArgs({
+  const ExtensionMonitoringStatusArgs({
     required this.clusterName,
     this.primaryKey,
     required this.resourceGroupName,

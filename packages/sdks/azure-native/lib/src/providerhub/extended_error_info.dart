@@ -22,7 +22,7 @@ class ExtendedErrorInfo {
   /// [details] The error details.
   /// [message] The error message.
   /// [target] The target of the error.
-  ExtendedErrorInfo({
+  const ExtendedErrorInfo({
     this.additionalInfo,
     this.code,
     this.details,

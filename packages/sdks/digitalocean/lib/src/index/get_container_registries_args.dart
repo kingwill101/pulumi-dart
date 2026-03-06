@@ -11,7 +11,7 @@ class GetContainerRegistriesArgs {
 
   /// Creates a new [GetContainerRegistriesArgs].
   /// [name] Required.
-  GetContainerRegistriesArgs({
+  const GetContainerRegistriesArgs({
     required this.name,
   });
 

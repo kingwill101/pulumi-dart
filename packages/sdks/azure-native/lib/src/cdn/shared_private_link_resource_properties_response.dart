@@ -22,7 +22,7 @@ class SharedPrivateLinkResourcePropertiesResponse {
   /// [privateLinkLocation] The location of the shared private link resource
   /// [requestMessage] The request message for requesting approval of the shared private link resource.
   /// [status] Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
-  SharedPrivateLinkResourcePropertiesResponse({
+  const SharedPrivateLinkResourcePropertiesResponse({
     this.groupId,
     this.privateLink,
     this.privateLinkLocation,

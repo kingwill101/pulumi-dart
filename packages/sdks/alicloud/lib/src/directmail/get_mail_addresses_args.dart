@@ -24,7 +24,7 @@ class GetMailAddressesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [sendtype] Account type. Valid values: `batch`, `trigger`.
   /// [status] Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
-  GetMailAddressesArgs({
+  const GetMailAddressesArgs({
     this.ids,
     this.keyWord,
     this.outputFile,

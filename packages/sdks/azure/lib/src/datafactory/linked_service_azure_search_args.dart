@@ -38,7 +38,7 @@ class LinkedServiceAzureSearchArgs {
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [searchServiceKey] The key of the Azure Search Service.
   /// [url] The URL of the Search Service endpoint (e.g. &lt;https://{searchServiceName}.search.windows.net&gt;).
-  LinkedServiceAzureSearchArgs({
+  const LinkedServiceAzureSearchArgs({
     this.additionalProperties,
     this.annotations,
     required this.dataFactoryId,

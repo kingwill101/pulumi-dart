@@ -26,7 +26,7 @@ class CustomImageArgs {
   /// [instanceId] The ID of the instance.
   /// [status] The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
   /// [systemSnapshotId] The ID of the system snapshot.
-  CustomImageArgs({
+  const CustomImageArgs({
     required this.customImageName,
     this.description,
     required this.instanceId,

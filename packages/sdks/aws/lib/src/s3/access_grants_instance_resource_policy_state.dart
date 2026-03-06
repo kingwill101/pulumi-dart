@@ -15,7 +15,7 @@ class AccessGrantsInstanceResourcePolicyState {
   /// [accountId] The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
   /// [policy] The policy document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AccessGrantsInstanceResourcePolicyState({
+  const AccessGrantsInstanceResourcePolicyState({
     this.accountId,
     this.policy,
     this.region,

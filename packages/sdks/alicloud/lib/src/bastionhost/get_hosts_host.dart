@@ -42,7 +42,7 @@ class GetHostsHost {
   /// [protocols] The host of the protocol information.
   /// [source] Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
   /// [sourceInstanceId] Specify the newly created ECS instance ID or dedicated cluster host ID.
-  GetHostsHost({
+  const GetHostsHost({
     required this.activeAddressType,
     required this.comment,
     required this.hostId,

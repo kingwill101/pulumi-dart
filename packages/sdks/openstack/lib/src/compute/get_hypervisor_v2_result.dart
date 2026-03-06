@@ -35,7 +35,7 @@ class GetHypervisorV2Result {
   /// [status] The status of the hypervisor (`enabled` or `disabled`)
   /// [type] The type of the hypervisor (example: `QEMU`)
   /// [vcpus] The number of virtual CPUs the hypervisor can provide
-  GetHypervisorV2Result({
+  const GetHypervisorV2Result({
     required this.disk,
     required this.hostIp,
     required this.hostname,

@@ -17,7 +17,7 @@ class GetClusterMaintenancePolicy {
   /// [dailyMaintenanceWindows] Time window specified for daily maintenance operations. Specify start_time in RFC3339 format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
   /// [maintenanceExclusions] Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
   /// [recurringWindows] Time window for recurring maintenance operations.
-  GetClusterMaintenancePolicy({
+  const GetClusterMaintenancePolicy({
     required this.dailyMaintenanceWindows,
     required this.maintenanceExclusions,
     required this.recurringWindows,

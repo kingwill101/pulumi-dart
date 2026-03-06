@@ -8,7 +8,7 @@ class EngineModelDefaultVersion {
 
   /// Creates a new [EngineModelDefaultVersion].
   /// [name] The name specified for the version when it was created.
-  EngineModelDefaultVersion({
+  const EngineModelDefaultVersion({
     required this.name,
   });
 

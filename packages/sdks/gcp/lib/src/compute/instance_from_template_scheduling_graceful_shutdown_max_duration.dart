@@ -15,7 +15,7 @@ class InstanceFromTemplateSchedulingGracefulShutdownMaxDuration {
   /// Creates a new [InstanceFromTemplateSchedulingGracefulShutdownMaxDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  InstanceFromTemplateSchedulingGracefulShutdownMaxDuration({
+  const InstanceFromTemplateSchedulingGracefulShutdownMaxDuration({
     this.nanos,
     required this.seconds,
   });

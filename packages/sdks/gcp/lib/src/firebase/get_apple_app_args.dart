@@ -19,7 +19,7 @@ class GetAppleAppArgs {
   /// Creates a new [GetAppleAppArgs].
   /// [appId] The app_id of name of the Firebase iosApp.
   /// [project] The ID of the project in which the resource belongs.
-  GetAppleAppArgs({
+  const GetAppleAppArgs({
     required this.appId,
     this.project,
   });

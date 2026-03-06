@@ -10,7 +10,7 @@ class FilterGroup {
 
   /// Creates a new [FilterGroup].
   /// [webhookFilter] Property webhookFilter
-  FilterGroup({
+  const FilterGroup({
     this.webhookFilter,
   });
 

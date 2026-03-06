@@ -13,7 +13,7 @@ class UnencryptedCredentialsResponse {
   /// Creates a new [UnencryptedCredentialsResponse].
   /// [jobName] Name of the job.
   /// [jobSecrets] Secrets related to this job.
-  UnencryptedCredentialsResponse({
+  const UnencryptedCredentialsResponse({
     required this.jobName,
     required this.jobSecrets,
   });

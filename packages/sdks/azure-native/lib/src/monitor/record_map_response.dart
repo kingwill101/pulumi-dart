@@ -12,7 +12,7 @@ class RecordMapResponse {
   /// Creates a new [RecordMapResponse].
   /// [from] Record Map Key.
   /// [to] Record Map Value.
-  RecordMapResponse({
+  const RecordMapResponse({
     required this.from,
     required this.to,
   });

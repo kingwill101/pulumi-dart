@@ -32,7 +32,7 @@ class TestSuiteOverview {
   /// [skippedCount] Number of test cases not run, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
   /// [totalCount] Number of test cases, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
   /// [xmlSource] If this test suite was parsed from XML, this is the URI where the original XML file is stored. Note: Multiple test suites can share the same xml_source Returns INVALID_ARGUMENT if the uri format is not supported. - In create/response: optional - In update request: never
-  TestSuiteOverview({
+  const TestSuiteOverview({
     this.elapsedTime,
     this.errorCount,
     this.failureCount,

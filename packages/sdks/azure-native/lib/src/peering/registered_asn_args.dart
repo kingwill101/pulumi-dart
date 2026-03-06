@@ -21,7 +21,7 @@ class RegisteredAsnArgs {
   /// [peeringName] The name of the peering.
   /// [registeredAsnName] The name of the ASN.
   /// [resourceGroupName] The name of the resource group.
-  RegisteredAsnArgs({
+  const RegisteredAsnArgs({
     this.asn,
     required this.peeringName,
     this.registeredAsnName,

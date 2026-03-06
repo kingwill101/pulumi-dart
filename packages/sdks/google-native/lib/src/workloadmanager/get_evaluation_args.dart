@@ -15,7 +15,7 @@ class GetEvaluationArgs {
   /// [evaluationId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEvaluationArgs({
+  const GetEvaluationArgs({
     required this.evaluationId,
     required this.location,
     this.project,

@@ -19,7 +19,7 @@ class InputResponse {
   /// [name] Resource name
   /// [properties] The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
   /// [type] Resource type
-  InputResponse({
+  const InputResponse({
     required this.id,
     this.name,
     this.properties,

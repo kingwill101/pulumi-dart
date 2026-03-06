@@ -184,7 +184,7 @@ class GetDisksArgs {
   /// [tags] A map of tags assigned to the disks. It must be in the format:
   /// [type] Disk type. Possible values: `system` and `data`.
   /// [zoneId] Optional.
-  GetDisksArgs({
+  const GetDisksArgs({
     this.additionalAttributes,
     this.autoSnapshotPolicyId,
     this.availabilityZone,

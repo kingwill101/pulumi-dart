@@ -69,7 +69,7 @@ class GetLoadBalancerResult {
   /// [sku] The load balancer SKU.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetLoadBalancerResult({
+  const GetLoadBalancerResult({
     required this.azureApiVersion,
     this.backendAddressPools,
     required this.etag,

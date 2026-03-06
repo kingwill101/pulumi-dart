@@ -12,7 +12,7 @@ class TaskHubPropertiesResponse {
   /// Creates a new [TaskHubPropertiesResponse].
   /// [dashboardUrl] URL of the durable task scheduler dashboard
   /// [provisioningState] The status of the last operation
-  TaskHubPropertiesResponse({
+  const TaskHubPropertiesResponse({
     required this.dashboardUrl,
     required this.provisioningState,
   });

@@ -46,7 +46,7 @@ class VpcPeeringConnectionAccepterState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] The ID of the accepter VPC.
   /// [vpcPeeringConnectionId] The VPC Peering Connection ID to manage.
-  VpcPeeringConnectionAccepterState({
+  const VpcPeeringConnectionAccepterState({
     this.acceptStatus,
     this.accepter,
     this.autoAccept,

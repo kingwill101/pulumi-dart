@@ -9,7 +9,7 @@ class SubnetResponse {
 
   /// Creates a new [SubnetResponse].
   /// [addressPrefix] Represents address prefix.
-  SubnetResponse({
+  const SubnetResponse({
     this.addressPrefix,
   });
 

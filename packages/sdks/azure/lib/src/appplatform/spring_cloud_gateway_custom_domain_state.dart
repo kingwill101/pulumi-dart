@@ -15,7 +15,7 @@ class SpringCloudGatewayCustomDomainState {
   /// [name] The name which should be used for this Spring Cloud Gateway Custom Domain. Changing this forces a new Spring Cloud Gateway Custom Domain to be created.
   /// [springCloudGatewayId] The ID of the Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway Custom Domain to be created.
   /// [thumbprint] Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Gateway Custom Domain.
-  SpringCloudGatewayCustomDomainState({
+  const SpringCloudGatewayCustomDomainState({
     this.name,
     this.springCloudGatewayId,
     this.thumbprint,

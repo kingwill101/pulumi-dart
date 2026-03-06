@@ -10,7 +10,7 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScope {
 
   /// Creates a new [GcpUserAccessBindingScopedAccessSettingScopeClientScope].
   /// [restrictedClientApplication] Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
-  GcpUserAccessBindingScopedAccessSettingScopeClientScope({
+  const GcpUserAccessBindingScopedAccessSettingScopeClientScope({
     this.restrictedClientApplication,
   });
 

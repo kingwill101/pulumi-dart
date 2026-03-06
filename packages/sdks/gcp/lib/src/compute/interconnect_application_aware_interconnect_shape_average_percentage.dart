@@ -13,7 +13,7 @@ class InterconnectApplicationAwareInterconnectShapeAveragePercentage {
   /// Creates a new [InterconnectApplicationAwareInterconnectShapeAveragePercentage].
   /// [percentage] Bandwidth percentage for a specific traffic class.
   /// [trafficClass] Enum representing the various traffic classes offered by AAI.
-  InterconnectApplicationAwareInterconnectShapeAveragePercentage({
+  const InterconnectApplicationAwareInterconnectShapeAveragePercentage({
     this.percentage,
     this.trafficClass,
   });

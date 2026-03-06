@@ -8,7 +8,7 @@ class StackSetManagedExecution {
 
   /// Creates a new [StackSetManagedExecution].
   /// [active] When set to true, StackSets performs non-conflicting operations concurrently and queues conflicting operations. After conflicting operations finish, StackSets starts queued operations in request order. Default is false.
-  StackSetManagedExecution({
+  const StackSetManagedExecution({
     this.active,
   });
 

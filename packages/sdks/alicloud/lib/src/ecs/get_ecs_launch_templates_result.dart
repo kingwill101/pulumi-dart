@@ -33,7 +33,7 @@ class GetEcsLaunchTemplatesResult {
   /// [templateResourceGroupId] Optional.
   /// [templateTags] The tags of the launch template.
   /// [templates] A list of Ecs Launch Templates. Each element contains the following attributes:
-  GetEcsLaunchTemplatesResult({
+  const GetEcsLaunchTemplatesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

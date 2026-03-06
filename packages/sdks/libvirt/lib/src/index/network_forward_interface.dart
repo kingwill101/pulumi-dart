@@ -8,7 +8,7 @@ class NetworkForwardInterface {
 
   /// Creates a new [NetworkForwardInterface].
   /// [dev] Specifies the device for the forwarding interface.
-  NetworkForwardInterface({
+  const NetworkForwardInterface({
     this.dev,
   });
 

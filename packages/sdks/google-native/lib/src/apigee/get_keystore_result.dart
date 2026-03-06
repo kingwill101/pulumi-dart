@@ -11,7 +11,7 @@ class GetKeystoreResult {
   /// Creates a new [GetKeystoreResult].
   /// [aliases] Aliases in this keystore.
   /// [name] Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
-  GetKeystoreResult({
+  const GetKeystoreResult({
     required this.aliases,
     required this.name,
   });

@@ -25,7 +25,7 @@ class ClusterVirtualClusterConfig {
   /// [auxiliaryServicesConfig] Configuration of auxiliary services used by this cluster.
   /// [kubernetesClusterConfig] The configuration for running the Dataproc cluster on Kubernetes.
   /// [stagingBucket] The Cloud Storage staging bucket used to stage files,
-  ClusterVirtualClusterConfig({
+  const ClusterVirtualClusterConfig({
     this.auxiliaryServicesConfig,
     this.kubernetesClusterConfig,
     this.stagingBucket,

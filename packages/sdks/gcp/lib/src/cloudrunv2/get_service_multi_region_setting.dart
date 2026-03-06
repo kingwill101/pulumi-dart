@@ -11,7 +11,7 @@ class GetServiceMultiRegionSetting {
   /// Creates a new [GetServiceMultiRegionSetting].
   /// [multiRegionId] System-generated unique id for the multi-region Service.
   /// [regions] The list of regions to deploy the multi-region Service.
-  GetServiceMultiRegionSetting({
+  const GetServiceMultiRegionSetting({
     required this.multiRegionId,
     required this.regions,
   });

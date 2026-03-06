@@ -42,7 +42,7 @@ class SubscriptionPushConfig {
   /// [noWrapper] When set, the payload to the push endpoint is not wrapped.Sets the
   /// [oidcToken] If specified, Pub/Sub will generate and attach an OIDC JWT token as
   /// [pushEndpoint] A URL locating the endpoint to which messages should be pushed.
-  SubscriptionPushConfig({
+  const SubscriptionPushConfig({
     this.attributes,
     this.noWrapper,
     this.oidcToken,

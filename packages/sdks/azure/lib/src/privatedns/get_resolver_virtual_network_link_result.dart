@@ -18,7 +18,7 @@ class GetResolverVirtualNetworkLinkResult {
   /// [metadata] The metadata attached to the Private DNS Resolver Virtual Network Link.
   /// [name] Required.
   /// [virtualNetworkId] The ID of the Virtual Network that is linked to the Private DNS Resolver Virtual Network Link.
-  GetResolverVirtualNetworkLinkResult({
+  const GetResolverVirtualNetworkLinkResult({
     required this.dnsForwardingRulesetId,
     required this.id,
     required this.metadata,

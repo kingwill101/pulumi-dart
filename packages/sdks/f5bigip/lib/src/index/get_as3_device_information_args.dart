@@ -13,7 +13,7 @@ class GetAs3DeviceInformationArgs {
   /// Creates a new [GetAs3DeviceInformationArgs].
   /// [applications] Optional.
   /// [tenant] Required.
-  GetAs3DeviceInformationArgs({
+  const GetAs3DeviceInformationArgs({
     this.applications,
     required this.tenant,
   });

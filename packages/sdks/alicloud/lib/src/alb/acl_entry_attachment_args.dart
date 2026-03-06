@@ -18,7 +18,7 @@ class AclEntryAttachmentArgs {
   /// [aclId] The ID of the Acl.
   /// [description] The description of the entry.
   /// [entry] The CIDR blocks.
-  AclEntryAttachmentArgs({
+  const AclEntryAttachmentArgs({
     required this.aclId,
     this.description,
     required this.entry,

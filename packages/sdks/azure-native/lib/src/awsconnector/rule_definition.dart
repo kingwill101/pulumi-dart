@@ -13,7 +13,7 @@ class RuleDefinition {
   /// Creates a new [RuleDefinition].
   /// [actions] Property actions
   /// [matchAttributes] Property matchAttributes
-  RuleDefinition({
+  const RuleDefinition({
     this.actions,
     this.matchAttributes,
   });

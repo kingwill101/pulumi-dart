@@ -12,7 +12,7 @@ class EventPublishConfigDatafusionV1beta1 {
   /// Creates a new [EventPublishConfigDatafusionV1beta1].
   /// [enabled] Option to enable Event Publishing.
   /// [topic] The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
-  EventPublishConfigDatafusionV1beta1({
+  const EventPublishConfigDatafusionV1beta1({
     required this.enabled,
     required this.topic,
   });

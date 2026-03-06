@@ -10,7 +10,7 @@ class Authentication {
 
   /// Creates a new [Authentication].
   /// [symmetricKey] Symmetric key for authentication.
-  Authentication({
+  const Authentication({
     this.symmetricKey,
   });
 

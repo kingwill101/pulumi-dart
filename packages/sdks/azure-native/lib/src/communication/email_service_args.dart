@@ -24,7 +24,7 @@ class EmailServiceArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  EmailServiceArgs({
+  const EmailServiceArgs({
     required this.dataLocation,
     this.emailServiceName,
     this.location,

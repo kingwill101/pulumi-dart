@@ -10,7 +10,7 @@ class VirtualMachinesProfileResponse {
 
   /// Creates a new [VirtualMachinesProfileResponse].
   /// [scale] Specifications on how to scale a VirtualMachines agent pool.
-  VirtualMachinesProfileResponse({
+  const VirtualMachinesProfileResponse({
     this.scale,
   });
 

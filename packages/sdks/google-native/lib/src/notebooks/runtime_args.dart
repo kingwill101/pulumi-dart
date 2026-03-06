@@ -34,7 +34,7 @@ class RuntimeArgs {
   /// [runtimeId] Required. User-defined unique ID of this Runtime.
   /// [softwareConfig] The config settings for software inside the runtime.
   /// [virtualMachine] Use a Compute Engine VM image to start the managed notebook instance.
-  RuntimeArgs({
+  const RuntimeArgs({
     this.accessConfig,
     this.labels,
     this.location,

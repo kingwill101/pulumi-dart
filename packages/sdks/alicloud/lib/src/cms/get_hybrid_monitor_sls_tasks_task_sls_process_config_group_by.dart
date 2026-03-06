@@ -9,7 +9,7 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy {
   /// Creates a new [GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy].
   /// [alias] Required.
   /// [slsKeyName] Required.
-  GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy({
+  const GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy({
     required this.alias,
     required this.slsKeyName,
   });

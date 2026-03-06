@@ -18,7 +18,7 @@ class GitCatalogResponse {
   /// [path] The folder where the catalog items can be found inside the repository.
   /// [secretIdentifier] A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
   /// [uri] Git URI.
-  GitCatalogResponse({
+  const GitCatalogResponse({
     this.branch,
     this.path,
     this.secretIdentifier,

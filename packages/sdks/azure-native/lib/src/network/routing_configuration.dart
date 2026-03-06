@@ -24,7 +24,7 @@ class RoutingConfiguration {
   /// [outboundRouteMap] The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
   /// [propagatedRouteTables] The list of RouteTables to advertise the routes to.
   /// [vnetRoutes] List of routes that control routing from VirtualHub into a virtual network connection.
-  RoutingConfiguration({
+  const RoutingConfiguration({
     this.associatedRouteTable,
     this.inboundRouteMap,
     this.outboundRouteMap,

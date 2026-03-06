@@ -18,7 +18,7 @@ class PolicyTableArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value tags for the EC2 Transit Gateway Policy Table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayId] EC2 Transit Gateway identifier.
-  PolicyTableArgs({
+  const PolicyTableArgs({
     this.region,
     this.tags,
     required this.transitGatewayId,

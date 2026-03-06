@@ -17,7 +17,7 @@ class JobRestoreStrategy {
   /// [jobStartTimeInMs] Stateless start time. When stateless start is selected, you can set this parameter to enable all source tables that support startTime to read data from this time.
   /// [kind] Restore type
   /// [savepointId] SavepointId
-  JobRestoreStrategy({
+  const JobRestoreStrategy({
     this.allowNonRestoredState,
     this.jobStartTimeInMs,
     this.kind,

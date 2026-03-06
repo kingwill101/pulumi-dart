@@ -15,7 +15,7 @@ class SaasPropertiesResponseTerm {
   /// [endDate] The end date of the current term
   /// [startDate] The start date of the current term
   /// [termUnit] The unit indicating Monthly / Yearly
-  SaasPropertiesResponseTerm({
+  const SaasPropertiesResponseTerm({
     this.endDate,
     this.startDate,
     this.termUnit,

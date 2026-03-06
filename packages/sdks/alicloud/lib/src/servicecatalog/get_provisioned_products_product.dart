@@ -72,7 +72,7 @@ class GetProvisionedProductsProduct {
   /// [status] Instance status
   /// [statusMessage] The status message of the product instance
   /// [tags] Optional.
-  GetProvisionedProductsProduct({
+  const GetProvisionedProductsProduct({
     required this.createTime,
     required this.id,
     required this.lastProvisioningTaskId,

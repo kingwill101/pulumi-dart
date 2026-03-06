@@ -9,7 +9,7 @@ class PriorityLevelConfigurationReference {
 
   /// Creates a new [PriorityLevelConfigurationReference].
   /// [name] `name` is the name of the priority level configuration being referenced Required.
-  PriorityLevelConfigurationReference({
+  const PriorityLevelConfigurationReference({
     required this.name,
   });
 

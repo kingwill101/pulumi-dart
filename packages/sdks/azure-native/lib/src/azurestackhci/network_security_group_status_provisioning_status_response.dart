@@ -12,7 +12,7 @@ class NetworkSecurityGroupStatusProvisioningStatusResponse {
   /// Creates a new [NetworkSecurityGroupStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the network security group
   /// [status] The status of the operation performed on the network security group [Succeeded, Failed, InProgress]
-  NetworkSecurityGroupStatusProvisioningStatusResponse({
+  const NetworkSecurityGroupStatusProvisioningStatusResponse({
     this.operationId,
     required this.status,
   });

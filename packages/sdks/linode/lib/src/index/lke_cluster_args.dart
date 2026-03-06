@@ -51,7 +51,7 @@ class LkeClusterArgs {
   /// [tags] An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
   /// [tier] The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
   /// [vpcId] The ID of the VPC to use for the Kubernetes cluster.
-  LkeClusterArgs({
+  const LkeClusterArgs({
     this.aplEnabled,
     this.controlPlane,
     this.externalPoolTags,

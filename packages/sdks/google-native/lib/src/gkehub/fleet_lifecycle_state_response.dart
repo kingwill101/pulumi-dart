@@ -9,7 +9,7 @@ class FleetLifecycleStateResponse {
 
   /// Creates a new [FleetLifecycleStateResponse].
   /// [code] The current state of the Fleet resource.
-  FleetLifecycleStateResponse({
+  const FleetLifecycleStateResponse({
     required this.code,
   });
 

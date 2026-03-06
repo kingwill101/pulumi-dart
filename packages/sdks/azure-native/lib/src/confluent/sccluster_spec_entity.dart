@@ -48,7 +48,7 @@ class SCClusterSpecEntity {
   /// [package] Stream governance configuration
   /// [region] The cloud service provider region
   /// [zone] type of zone availability
-  SCClusterSpecEntity({
+  const SCClusterSpecEntity({
     this.apiEndpoint,
     this.availability,
     this.byok,

@@ -41,7 +41,7 @@ class MachineImageArgs {
   /// [sourceDiskEncryptionKeys] [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
   /// [sourceInstance] The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
   /// [storageLocations] The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
-  MachineImageArgs({
+  const MachineImageArgs({
     this.description,
     this.guestFlush,
     this.machineImageEncryptionKey,

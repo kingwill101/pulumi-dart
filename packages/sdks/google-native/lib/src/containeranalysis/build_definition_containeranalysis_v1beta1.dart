@@ -14,7 +14,7 @@ class BuildDefinitionContaineranalysisV1beta1 {
   /// [externalParameters] Optional.
   /// [internalParameters] Optional.
   /// [resolvedDependencies] Optional.
-  BuildDefinitionContaineranalysisV1beta1({
+  const BuildDefinitionContaineranalysisV1beta1({
     this.buildType,
     this.externalParameters,
     this.internalParameters,

@@ -15,7 +15,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTl {
   /// [enforce] Required.
   /// [ports] Required.
   /// [validations] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicyTl({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicyTl({
     required this.certificates,
     required this.enforce,
     required this.ports,

@@ -36,7 +36,7 @@ class Intents {
   /// [qosPolicyOverrides] Set QoS PolicyOverrides for cluster.
   /// [trafficType] List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
   /// [virtualSwitchConfigurationOverrides] Set virtualSwitch ConfigurationOverrides for cluster.
-  Intents({
+  const Intents({
     this.adapter,
     this.adapterPropertyOverrides,
     this.name,

@@ -30,7 +30,7 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
   /// [targetPercent] Target capacity percentage.
   /// [timeoutMinutes] Timeout in minutes.
   /// [ungracefuls] Ungraceful behavior configuration. See Ungraceful Capacity below.
-  PlanWorkflowStepParallelConfigStepEksResourceScalingConfig({
+  const PlanWorkflowStepParallelConfigStepEksResourceScalingConfig({
     required this.capacityMonitoringApproach,
     this.eksClusters,
     this.kubernetesResourceTypes,

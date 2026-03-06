@@ -32,7 +32,7 @@ class GetInstanceTypesCoreInstanceType {
   /// [storageType] Name of the storage type.
   /// [version] The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
   /// [zone] Name of zone id.
-  GetInstanceTypesCoreInstanceType({
+  const GetInstanceTypesCoreInstanceType({
     required this.category,
     required this.cpuSize,
     required this.engine,

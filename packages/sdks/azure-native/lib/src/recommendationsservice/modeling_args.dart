@@ -28,7 +28,7 @@ class ModelingArgs {
   /// [properties] Modeling resource properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ModelingArgs({
+  const ModelingArgs({
     required this.accountName,
     this.location,
     this.modelingName,

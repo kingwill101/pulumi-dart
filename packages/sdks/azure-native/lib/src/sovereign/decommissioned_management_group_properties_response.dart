@@ -13,7 +13,7 @@ class DecommissionedManagementGroupPropertiesResponse {
   /// Creates a new [DecommissionedManagementGroupPropertiesResponse].
   /// [create] This parameter determines whether the 'Decommissioned' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
   /// [policyInitiativesAssignmentProperties] Array of policy initiatives applied to the management group.
-  DecommissionedManagementGroupPropertiesResponse({
+  const DecommissionedManagementGroupPropertiesResponse({
     required this.create,
     required this.policyInitiativesAssignmentProperties,
   });

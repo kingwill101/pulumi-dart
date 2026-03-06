@@ -44,7 +44,7 @@ class GatewayArgs {
   /// [storageBundleId] The ID of the gateway cluster.
   /// [type] The type of the gateway. Valid values: `File`, `Iscsi`.
   /// [vswitchId] The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
-  GatewayArgs({
+  const GatewayArgs({
     this.description,
     this.gatewayClass,
     required this.gatewayName,

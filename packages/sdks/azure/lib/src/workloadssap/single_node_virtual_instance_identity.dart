@@ -11,7 +11,7 @@ class SingleNodeVirtualInstanceIdentity {
   /// Creates a new [SingleNodeVirtualInstanceIdentity].
   /// [identityIds] A list of User Assigned Managed Identity IDs to be assigned to this SAP Single Node Virtual Instance.
   /// [type] The type of Managed Service Identity that should be configured on this SAP Single Node Virtual Instance. The only possible value is `UserAssigned`.
-  SingleNodeVirtualInstanceIdentity({
+  const SingleNodeVirtualInstanceIdentity({
     required this.identityIds,
     required this.type,
   });

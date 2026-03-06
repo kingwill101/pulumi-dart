@@ -18,7 +18,7 @@ class ZnodeState {
   /// [clusterId] The ID of the Cluster.
   /// [data] The Node data.
   /// [path] The Node path. The value must start with a forward slash (/).
-  ZnodeState({
+  const ZnodeState({
     this.acceptLanguage,
     this.clusterId,
     this.data,

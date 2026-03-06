@@ -18,7 +18,7 @@ class ReverseSshConnectivityResponse {
   /// [vmIp] The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
   /// [vmPort] The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
   /// [vpc] The name of the VPC to peer with the Cloud SQL private network.
-  ReverseSshConnectivityResponse({
+  const ReverseSshConnectivityResponse({
     required this.vm,
     required this.vmIp,
     required this.vmPort,

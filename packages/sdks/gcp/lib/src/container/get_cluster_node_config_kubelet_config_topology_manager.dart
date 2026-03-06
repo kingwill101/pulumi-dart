@@ -11,7 +11,7 @@ class GetClusterNodeConfigKubeletConfigTopologyManager {
   /// Creates a new [GetClusterNodeConfigKubeletConfigTopologyManager].
   /// [policy] The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.
   /// [scope] The Topology Manager scope, defining the granularity at which policy decisions are applied. Valid values are "container" (resources are aligned per container within a pod) or "pod" (resources are aligned for the entire pod).
-  GetClusterNodeConfigKubeletConfigTopologyManager({
+  const GetClusterNodeConfigKubeletConfigTopologyManager({
     required this.policy,
     required this.scope,
   });

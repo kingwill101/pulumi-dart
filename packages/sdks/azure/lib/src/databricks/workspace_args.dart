@@ -85,7 +85,7 @@ class WorkspaceArgs {
   /// [resourceGroupName] The name of the Resource Group in which the Databricks Workspace should exist. Changing this forces a new resource to be created.
   /// [sku] The `sku` to use for the Databricks Workspace. Possible values are `standard`, `premium`, or `trial`.
   /// [tags] A mapping of tags to assign to the resource.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.accessConnectorId,
     this.customParameters,
     this.customerManagedKeyEnabled,

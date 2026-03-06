@@ -12,7 +12,7 @@ class ElasticMountTargetPropertiesResponse {
   /// Creates a new [ElasticMountTargetPropertiesResponse].
   /// [ipAddress] The mount target's IPv4 address, used to mount the volume
   /// [smbServerFqdn] The SMB server's Fully Qualified Domain Name, FQDN
-  ElasticMountTargetPropertiesResponse({
+  const ElasticMountTargetPropertiesResponse({
     required this.ipAddress,
     required this.smbServerFqdn,
   });

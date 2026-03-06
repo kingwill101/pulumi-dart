@@ -15,7 +15,7 @@ class RelationshipLinkFieldMappingResponse {
   /// [interactionFieldName] The field name on the Interaction Type.
   /// [linkType] Link type.
   /// [relationshipFieldName] The field name on the Relationship metadata.
-  RelationshipLinkFieldMappingResponse({
+  const RelationshipLinkFieldMappingResponse({
     required this.interactionFieldName,
     this.linkType,
     required this.relationshipFieldName,

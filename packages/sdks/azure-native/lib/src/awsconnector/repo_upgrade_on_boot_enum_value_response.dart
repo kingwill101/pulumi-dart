@@ -9,7 +9,7 @@ class RepoUpgradeOnBootEnumValueResponse {
 
   /// Creates a new [RepoUpgradeOnBootEnumValueResponse].
   /// [value] Property value
-  RepoUpgradeOnBootEnumValueResponse({
+  const RepoUpgradeOnBootEnumValueResponse({
     this.value,
   });
 

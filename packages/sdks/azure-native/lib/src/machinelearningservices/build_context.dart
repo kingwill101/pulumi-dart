@@ -14,7 +14,7 @@ class BuildContext {
   /// Creates a new [BuildContext].
   /// [contextUri] [Required] URI of the Docker build context used to build the image. Supports blob URIs on environment creation and may return blob or Git URIs.
   /// [dockerfilePath] Path to the Dockerfile in the build context.
-  BuildContext({
+  const BuildContext({
     required this.contextUri,
     this.dockerfilePath,
   });

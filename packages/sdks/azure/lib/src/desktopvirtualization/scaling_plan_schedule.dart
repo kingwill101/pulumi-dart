@@ -59,7 +59,7 @@ class ScalingPlanSchedule {
   /// [rampUpLoadBalancingAlgorithm] The load Balancing Algorithm to use during the Ramp-Up period. Possible values are `DepthFirst` and `BreadthFirst`.
   /// [rampUpMinimumHostsPercent] Specifies the minimum percentage of session host virtual machines to start during ramp-up for peak hours. For example, if Minimum percentage of hosts is specified as `10%` and total number of session hosts in your host pool is `10`, autoscale will ensure a minimum of `1` session host is available to take user connections.
   /// [rampUpStartTime] The time at which Ramp-Up scaling will begin. This is also the end-time for the Ramp-Up period. The time must be specified in "HH:MM" format.
-  ScalingPlanSchedule({
+  const ScalingPlanSchedule({
     required this.daysOfWeeks,
     required this.name,
     required this.offPeakLoadBalancingAlgorithm,

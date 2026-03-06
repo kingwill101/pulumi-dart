@@ -14,7 +14,7 @@ class ConfigurationConfiguration {
   /// [name] Configuration parameter name. Changing this creates a new resource.
   /// [stringType] Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
   /// [value] Configuration parameter value. Changing this creates a new resource.
-  ConfigurationConfiguration({
+  const ConfigurationConfiguration({
     required this.name,
     this.stringType,
     required this.value,

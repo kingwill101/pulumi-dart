@@ -23,7 +23,7 @@ class GetKeyResult {
   /// [keyVaultUrl] The Key Vault Url of the workspace key.
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetKeyResult({
+  const GetKeyResult({
     required this.azureApiVersion,
     required this.id,
     this.isActiveCMK,

@@ -21,7 +21,7 @@ class GetBrokerAuthenticationArgs {
   /// [brokerName] Name of MQ broker resource
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBrokerAuthenticationArgs({
+  const GetBrokerAuthenticationArgs({
     required this.authenticationName,
     required this.brokerName,
     required this.mqName,

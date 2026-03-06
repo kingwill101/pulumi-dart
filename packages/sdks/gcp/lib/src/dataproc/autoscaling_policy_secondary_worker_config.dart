@@ -27,7 +27,7 @@ class AutoscalingPolicySecondaryWorkerConfig {
   /// [maxInstances] Maximum number of instances for this group. Note that by default, clusters will not use
   /// [minInstances] Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
   /// [weight] Weight for the instance group, which is used to determine the fraction of total workers
-  AutoscalingPolicySecondaryWorkerConfig({
+  const AutoscalingPolicySecondaryWorkerConfig({
     this.maxInstances,
     this.minInstances,
     this.weight,

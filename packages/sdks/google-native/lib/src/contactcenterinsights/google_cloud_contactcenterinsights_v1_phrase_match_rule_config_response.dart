@@ -10,7 +10,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse {
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse].
   /// [exactMatchConfig] The configuration for the exact match rule.
-  GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse({
+  const GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse({
     required this.exactMatchConfig,
   });
 

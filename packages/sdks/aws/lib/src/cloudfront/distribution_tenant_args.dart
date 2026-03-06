@@ -46,7 +46,7 @@ class DistributionTenantArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [waitForDeployment] If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to `false` will skip the process. Default: `true`.
-  DistributionTenantArgs({
+  const DistributionTenantArgs({
     this.connectionGroupId,
     this.customizations,
     required this.distributionId,

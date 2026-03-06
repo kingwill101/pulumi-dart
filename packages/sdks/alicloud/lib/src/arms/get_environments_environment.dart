@@ -50,7 +50,7 @@ class GetEnvironmentsEnvironment {
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] A mapping of tags to assign to the resource.
   /// [userId] The user ID.
-  GetEnvironmentsEnvironment({
+  const GetEnvironmentsEnvironment({
     required this.bindResourceId,
     required this.bindResourceType,
     required this.bindVpcCidr,

@@ -20,7 +20,7 @@ class PlanWorkflowStepDocumentDbConfig {
   /// [globalClusterIdentifier] Required.
   /// [timeoutMinutes] Optional.
   /// [ungracefuls] Optional.
-  PlanWorkflowStepDocumentDbConfig({
+  const PlanWorkflowStepDocumentDbConfig({
     required this.behavior,
     this.crossAccountRole,
     required this.databaseClusterArns,

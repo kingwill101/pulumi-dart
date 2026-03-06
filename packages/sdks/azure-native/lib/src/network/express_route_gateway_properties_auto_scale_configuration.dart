@@ -10,7 +10,7 @@ class ExpressRouteGatewayPropertiesAutoScaleConfiguration {
 
   /// Creates a new [ExpressRouteGatewayPropertiesAutoScaleConfiguration].
   /// [bounds] Minimum and maximum number of scale units to deploy.
-  ExpressRouteGatewayPropertiesAutoScaleConfiguration({
+  const ExpressRouteGatewayPropertiesAutoScaleConfiguration({
     this.bounds,
   });
 

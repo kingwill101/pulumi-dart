@@ -30,7 +30,7 @@ class GetBackupsAutomaticAndOnDemandResult {
   /// [source] Source of the backup.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetBackupsAutomaticAndOnDemandResult({
+  const GetBackupsAutomaticAndOnDemandResult({
     required this.azureApiVersion,
     this.backupType,
     this.completedTime,

@@ -26,7 +26,7 @@ class AlertRuleAnomalyBuiltInArgs {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace. Changing this forces a new Built-in Anomaly Alert Rule to be created.
   /// [mode] mode of the Built-in Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   /// [name] The Name of the built-in Anomaly Alert Rule.
-  AlertRuleAnomalyBuiltInArgs({
+  const AlertRuleAnomalyBuiltInArgs({
     this.displayName,
     required this.enabled,
     required this.logAnalyticsWorkspaceId,

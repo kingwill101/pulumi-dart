@@ -61,7 +61,7 @@ class Datapolicyv2DataPolicyState {
   /// [policyTag] Policy tag resource name, in the format of
   /// [project] The ID of the project in which the resource belongs.
   /// [version] The version of the Data Policy resource.
-  Datapolicyv2DataPolicyState({
+  const Datapolicyv2DataPolicyState({
     this.dataMaskingPolicy,
     this.dataPolicyId,
     this.dataPolicyType,

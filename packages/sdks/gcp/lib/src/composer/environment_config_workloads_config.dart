@@ -25,7 +25,7 @@ class EnvironmentConfigWorkloadsConfig {
   /// [triggerer] Configuration for resources used by Airflow triggerers.
   /// [webServer] Configuration for resources used by Airflow web server.
   /// [worker] Configuration for resources used by Airflow workers.
-  EnvironmentConfigWorkloadsConfig({
+  const EnvironmentConfigWorkloadsConfig({
     this.dagProcessor,
     this.scheduler,
     this.triggerer,

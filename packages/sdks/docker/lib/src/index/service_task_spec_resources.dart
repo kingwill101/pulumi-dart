@@ -13,7 +13,7 @@ class ServiceTaskSpecResources {
   /// Creates a new [ServiceTaskSpecResources].
   /// [limits] Describes the resources which can be advertised by a node and requested by a task
   /// [reservation] An object describing the resources which can be advertised by a node and requested by a task
-  ServiceTaskSpecResources({
+  const ServiceTaskSpecResources({
     this.limits,
     this.reservation,
   });

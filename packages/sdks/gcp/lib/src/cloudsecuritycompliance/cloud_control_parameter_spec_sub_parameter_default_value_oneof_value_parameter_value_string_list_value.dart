@@ -8,7 +8,7 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueS
 
   /// Creates a new [CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue].
   /// [values] The strings in the list.
-  CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue({
+  const CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue({
     required this.values,
   });
 

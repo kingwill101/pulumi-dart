@@ -14,7 +14,7 @@ class RestorePointSourceVMDataDisk {
   /// Creates a new [RestorePointSourceVMDataDisk].
   /// [diskRestorePoint] Contains Disk Restore Point properties.
   /// [managedDisk] Contains the managed disk details.
-  RestorePointSourceVMDataDisk({
+  const RestorePointSourceVMDataDisk({
     this.diskRestorePoint,
     this.managedDisk,
   });

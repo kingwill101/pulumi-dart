@@ -18,7 +18,7 @@ class ScriptActionResponse {
   /// [parameters] The parameters for the script action.
   /// [roles] The node types on which the script action should be executed.
   /// [uri] The URI for the script action.
-  ScriptActionResponse({
+  const ScriptActionResponse({
     required this.name,
     this.parameters,
     required this.roles,

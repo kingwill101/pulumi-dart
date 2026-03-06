@@ -23,7 +23,7 @@ class GetProductVersionsArgs {
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [productId] Product ID
-  GetProductVersionsArgs({
+  const GetProductVersionsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

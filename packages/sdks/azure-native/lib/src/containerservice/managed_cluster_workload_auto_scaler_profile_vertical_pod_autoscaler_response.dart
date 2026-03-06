@@ -9,7 +9,7 @@ class ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse {
 
   /// Creates a new [ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse].
   /// [enabled] Whether to enable VPA. Default value is false.
-  ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse({
+  const ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse({
     required this.enabled,
   });
 

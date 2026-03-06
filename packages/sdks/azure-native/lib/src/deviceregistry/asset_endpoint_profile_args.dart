@@ -41,7 +41,7 @@ class AssetEndpointProfileArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [targetAddress] The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
-  AssetEndpointProfileArgs({
+  const AssetEndpointProfileArgs({
     this.additionalConfiguration,
     this.assetEndpointProfileName,
     this.authentication,

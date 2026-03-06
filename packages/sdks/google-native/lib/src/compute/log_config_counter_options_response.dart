@@ -16,7 +16,7 @@ class LogConfigCounterOptionsResponse {
   /// [customFields] This is deprecated and has no effect. Do not use.
   /// [field] This is deprecated and has no effect. Do not use.
   /// [metric] This is deprecated and has no effect. Do not use.
-  LogConfigCounterOptionsResponse({
+  const LogConfigCounterOptionsResponse({
     required this.customFields,
     required this.field,
     required this.metric,

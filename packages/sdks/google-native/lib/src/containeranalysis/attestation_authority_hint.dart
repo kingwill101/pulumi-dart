@@ -9,7 +9,7 @@ class AttestationAuthorityHint {
 
   /// Creates a new [AttestationAuthorityHint].
   /// [humanReadableName] The human readable name of this Attestation Authority, for example "qa".
-  AttestationAuthorityHint({
+  const AttestationAuthorityHint({
     this.humanReadableName,
   });
 

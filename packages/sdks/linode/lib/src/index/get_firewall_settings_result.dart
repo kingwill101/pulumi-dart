@@ -11,7 +11,7 @@ class GetFirewallSettingsResult {
   /// Creates a new [GetFirewallSettingsResult].
   /// [defaultFirewallIds] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetFirewallSettingsResult({
+  const GetFirewallSettingsResult({
     required this.defaultFirewallIds,
     required this.id,
   });

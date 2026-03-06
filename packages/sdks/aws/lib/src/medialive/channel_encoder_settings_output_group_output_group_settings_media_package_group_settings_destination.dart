@@ -8,7 +8,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSetti
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination].
   /// [destinationRefId] Reference ID for the destination.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination({
     required this.destinationRefId,
   });
 

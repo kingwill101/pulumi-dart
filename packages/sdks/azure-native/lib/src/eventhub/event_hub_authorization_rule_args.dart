@@ -24,7 +24,7 @@ class EventHubAuthorizationRuleArgs {
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   /// [rights] The rights associated with the rule.
-  EventHubAuthorizationRuleArgs({
+  const EventHubAuthorizationRuleArgs({
     this.authorizationRuleName,
     required this.eventHubName,
     required this.namespaceName,

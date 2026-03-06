@@ -25,7 +25,7 @@ class HciReportedPropertiesResponse {
   /// [networkProfile] HCI device network information.
   /// [osProfile] HCI device OS specific information.
   /// [sbeDeploymentPackageInfo] Solution builder extension (SBE) deployment package information.
-  HciReportedPropertiesResponse({
+  const HciReportedPropertiesResponse({
     required this.deviceState,
     required this.extensionProfile,
     required this.networkProfile,

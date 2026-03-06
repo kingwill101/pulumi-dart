@@ -50,7 +50,7 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationState {
   /// [rolloutResource] (Output)
   /// [startTime] (Output)
   /// [state] Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
-  V2PolicyOrchestratorOrchestrationStateCurrentIterationState({
+  const V2PolicyOrchestratorOrchestrationStateCurrentIterationState({
     this.error,
     this.failedActions,
     this.finishTime,

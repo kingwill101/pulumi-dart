@@ -15,7 +15,7 @@ class GetContainerAppAuthTokenArgs {
   /// Creates a new [GetContainerAppAuthTokenArgs].
   /// [containerAppName] Name of the Container App.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetContainerAppAuthTokenArgs({
+  const GetContainerAppAuthTokenArgs({
     required this.containerAppName,
     required this.resourceGroupName,
   });

@@ -39,7 +39,7 @@ class GetRegionSecurityPolicyResult {
   /// [selfLinkWithPolicyId] Required.
   /// [type] Required.
   /// [userDefinedFields] Required.
-  GetRegionSecurityPolicyResult({
+  const GetRegionSecurityPolicyResult({
     required this.advancedOptionsConfigs,
     required this.ddosProtectionConfigs,
     required this.description,

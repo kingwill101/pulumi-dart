@@ -17,7 +17,7 @@ class CentralServerFullResourceNames {
   /// [availabilitySetName] The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
   /// [loadBalancer] The resource names object for load balancer and related resources.
   /// [virtualMachines] The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
-  CentralServerFullResourceNames({
+  const CentralServerFullResourceNames({
     this.availabilitySetName,
     this.loadBalancer,
     this.virtualMachines,

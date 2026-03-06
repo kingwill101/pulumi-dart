@@ -22,7 +22,7 @@ class AccountVdmAttributesState {
   /// [guardianAttributes] Specifies additional settings for your VDM configuration as applicable to the Guardian.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vdmEnabled] Specifies the status of your VDM configuration. Valid values: `ENABLED`, `DISABLED`.
-  AccountVdmAttributesState({
+  const AccountVdmAttributesState({
     this.dashboardAttributes,
     this.guardianAttributes,
     this.region,

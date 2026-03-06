@@ -20,7 +20,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnecti
   /// [consumerServiceProjectId] The project ID of consumer service project of this consumer endpoint.
   /// [ipAddress] The IP address of the consumer endpoint.
   /// [status] The connection status of the consumer endpoint.
-  GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection({
+  const GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection({
     required this.consumerNetwork,
     required this.consumerNetworkStatus,
     required this.consumerServiceProjectId,

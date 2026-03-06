@@ -28,7 +28,7 @@ class GetHostAccountsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [protocolName] Optional.
-  GetHostAccountsResult({
+  const GetHostAccountsResult({
     required this.accounts,
     this.hostAccountName,
     required this.hostId,

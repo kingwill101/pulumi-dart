@@ -39,7 +39,7 @@ class GetDataCollectionEndpointResult {
   /// [publicNetworkAccessEnabled] Whether network access from public internet to the Data Collection Endpoint are allowed. Possible values are `true` and `false`.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags which should be assigned to the Data Collection Endpoint.
-  GetDataCollectionEndpointResult({
+  const GetDataCollectionEndpointResult({
     required this.configurationAccessEndpoint,
     required this.description,
     required this.id,

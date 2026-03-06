@@ -53,7 +53,7 @@ class ScheduleTargetEcsParameters {
   /// [tags] The metadata that you apply to the task. Each tag consists of a key and an optional value. For more information, see [`RunTask`](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html) in the Amazon ECS API Reference.
   /// [taskCount] The number of tasks to create. Ranges from `1` (default) to `10`.
   /// [taskDefinitionArn] ARN of the task definition to use.
-  ScheduleTargetEcsParameters({
+  const ScheduleTargetEcsParameters({
     this.capacityProviderStrategies,
     this.enableEcsManagedTags,
     this.enableExecuteCommand,

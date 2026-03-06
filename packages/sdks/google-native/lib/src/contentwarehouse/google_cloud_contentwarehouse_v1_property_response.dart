@@ -41,7 +41,7 @@ class GoogleCloudContentwarehouseV1PropertyResponse {
   /// [propertyValues] Nested structured data property values.
   /// [textValues] String/text property values.
   /// [timestampValues] Timestamp property values. It is not supported by CMEK compliant deployment.
-  GoogleCloudContentwarehouseV1PropertyResponse({
+  const GoogleCloudContentwarehouseV1PropertyResponse({
     required this.dateTimeValues,
     required this.enumValues,
     required this.floatValues,

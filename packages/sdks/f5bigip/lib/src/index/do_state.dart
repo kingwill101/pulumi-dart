@@ -33,7 +33,7 @@ class DoState {
   /// [doJson] Name of the of the Declarative DO JSON file
   /// [tenantName] unique identifier for DO resource
   /// [timeout] DO json
-  DoState({
+  const DoState({
     this.bigipAddress,
     this.bigipPassword,
     this.bigipPort,

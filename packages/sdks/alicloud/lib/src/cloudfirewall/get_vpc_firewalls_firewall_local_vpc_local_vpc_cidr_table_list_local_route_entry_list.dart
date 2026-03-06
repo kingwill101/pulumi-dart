@@ -11,7 +11,7 @@ class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
   /// Creates a new [GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList].
   /// [localDestinationCidr] The target network segment of the local VPC.
   /// [localNextHopInstanceId] The ID of the next-hop instance in the local VPC.
-  GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList({
+  const GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList({
     required this.localDestinationCidr,
     required this.localNextHopInstanceId,
   });

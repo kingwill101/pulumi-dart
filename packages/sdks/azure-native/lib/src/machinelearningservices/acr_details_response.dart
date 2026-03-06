@@ -10,7 +10,7 @@ class AcrDetailsResponse {
 
   /// Creates a new [AcrDetailsResponse].
   /// [systemCreatedAcrAccount] Details of system created ACR account to be used for the Registry
-  AcrDetailsResponse({
+  const AcrDetailsResponse({
     this.systemCreatedAcrAccount,
   });
 

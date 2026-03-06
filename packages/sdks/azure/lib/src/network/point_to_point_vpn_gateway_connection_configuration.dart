@@ -19,7 +19,7 @@ class PointToPointVpnGatewayConnectionConfiguration {
   /// [name] The Name which should be used for this Connection Configuration.
   /// [route] A `route` block as defined below.
   /// [vpnClientAddressPool] A `vpn_client_address_pool` block as defined below.
-  PointToPointVpnGatewayConnectionConfiguration({
+  const PointToPointVpnGatewayConnectionConfiguration({
     this.internetSecurityEnabled,
     required this.name,
     this.route,

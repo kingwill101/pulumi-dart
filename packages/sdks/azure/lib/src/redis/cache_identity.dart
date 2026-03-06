@@ -17,7 +17,7 @@ class CacheIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Redis Cluster. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
-  CacheIdentity({
+  const CacheIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

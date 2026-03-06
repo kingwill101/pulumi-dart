@@ -28,7 +28,7 @@ class GetDocumentSchemaResult {
   /// [name] The resource name of the document schema. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. The name is ignored when creating a document schema.
   /// [propertyDefinitions] Document details.
   /// [updateTime] The time when the document schema is last updated.
-  GetDocumentSchemaResult({
+  const GetDocumentSchemaResult({
     required this.createTime,
     required this.description,
     required this.displayName,

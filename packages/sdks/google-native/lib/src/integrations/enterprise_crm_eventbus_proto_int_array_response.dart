@@ -7,7 +7,7 @@ class EnterpriseCrmEventbusProtoIntArrayResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoIntArrayResponse].
   /// [values] Required.
-  EnterpriseCrmEventbusProtoIntArrayResponse({
+  const EnterpriseCrmEventbusProtoIntArrayResponse({
     required this.values,
   });
 

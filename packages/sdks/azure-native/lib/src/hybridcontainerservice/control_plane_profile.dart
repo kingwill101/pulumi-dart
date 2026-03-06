@@ -54,7 +54,7 @@ class ControlPlaneProfile {
   /// [nodeTaints] NodeTaints - Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
   /// [osType] OsType - OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'
   /// [vmSize] VmSize - The size of the agent pool VMs.
-  ControlPlaneProfile({
+  const ControlPlaneProfile({
     this.availabilityZones,
     this.cloudProviderProfile,
     this.controlPlaneEndpoint,

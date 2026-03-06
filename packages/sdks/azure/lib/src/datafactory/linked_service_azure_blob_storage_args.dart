@@ -65,7 +65,7 @@ class LinkedServiceAzureBlobStorageArgs {
   /// [storageKind] Optional.
   /// [tenantId] Optional.
   /// [useManagedIdentity] Optional.
-  LinkedServiceAzureBlobStorageArgs({
+  const LinkedServiceAzureBlobStorageArgs({
     this.additionalProperties,
     this.annotations,
     this.connectionString,

@@ -9,7 +9,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore].
   /// [score] The sensitivity score applied to the resource.
-  PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore({
+  const PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore({
     required this.score,
   });
 

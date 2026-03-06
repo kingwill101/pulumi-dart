@@ -19,7 +19,7 @@ class GroupPolicyAssignmentIdentity {
   /// [principalId] The Principal ID of the Policy Assignment for this Management Group.
   /// [tenantId] The Tenant ID of the Policy Assignment for this Management Group.
   /// [type] The Type of Managed Identity which should be added to this Policy Definition. Possible values are `SystemAssigned` and `UserAssigned`.
-  GroupPolicyAssignmentIdentity({
+  const GroupPolicyAssignmentIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

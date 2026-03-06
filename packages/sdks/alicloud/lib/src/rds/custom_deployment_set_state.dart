@@ -37,7 +37,7 @@ class CustomDeploymentSetState {
   /// [onUnableToRedeployFailedInstance] After the instance in the deployment set is down and migrated, there is no emergency solution for the scattered instance inventory. Value range:
   /// [status] The status of the resource
   /// [strategy] Deployment strategy. Value range:
-  CustomDeploymentSetState({
+  const CustomDeploymentSetState({
     this.customDeploymentSetName,
     this.description,
     this.groupCount,

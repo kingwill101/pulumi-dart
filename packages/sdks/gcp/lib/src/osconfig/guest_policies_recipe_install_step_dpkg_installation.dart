@@ -8,7 +8,7 @@ class GuestPoliciesRecipeInstallStepDpkgInstallation {
 
   /// Creates a new [GuestPoliciesRecipeInstallStepDpkgInstallation].
   /// [artifactId] The id of the relevant artifact in the recipe.
-  GuestPoliciesRecipeInstallStepDpkgInstallation({
+  const GuestPoliciesRecipeInstallStepDpkgInstallation({
     required this.artifactId,
   });
 

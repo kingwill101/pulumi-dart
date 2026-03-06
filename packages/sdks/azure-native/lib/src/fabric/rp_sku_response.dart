@@ -12,7 +12,7 @@ class RpSkuResponse {
   /// Creates a new [RpSkuResponse].
   /// [name] The name of the SKU level.
   /// [tier] The name of the Azure pricing tier to which the SKU applies.
-  RpSkuResponse({
+  const RpSkuResponse({
     required this.name,
     required this.tier,
   });

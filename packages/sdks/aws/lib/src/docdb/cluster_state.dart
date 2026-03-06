@@ -146,7 +146,7 @@ class ClusterState {
   /// [tags] A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcSecurityGroupIds] List of VPC security groups to associate
-  ClusterState({
+  const ClusterState({
     this.allowMajorVersionUpgrade,
     this.applyImmediately,
     this.arn,

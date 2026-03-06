@@ -15,7 +15,7 @@ class GetBastionHostArgs {
   /// Creates a new [GetBastionHostArgs].
   /// [bastionHostName] The name of the Bastion Host.
   /// [resourceGroupName] The name of the resource group.
-  GetBastionHostArgs({
+  const GetBastionHostArgs({
     required this.bastionHostName,
     required this.resourceGroupName,
   });

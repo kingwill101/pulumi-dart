@@ -11,7 +11,7 @@ class SharedDirectoryTarget {
   /// Creates a new [SharedDirectoryTarget].
   /// [id] Identifier of the directory consumer account.
   /// [type] Type of identifier to be used in the `id` field. Valid value is `ACCOUNT`. Default is `ACCOUNT`.
-  SharedDirectoryTarget({
+  const SharedDirectoryTarget({
     required this.id,
     this.type,
   });

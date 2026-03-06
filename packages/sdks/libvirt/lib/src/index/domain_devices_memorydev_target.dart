@@ -42,7 +42,7 @@ class DomainDevicesMemorydevTarget {
   /// [requestedUnit] Specifies the unit of measurement for the requested memory amount.
   /// [size] Configures the size of the memory device to be allocated at boot time.
   /// [sizeUnit] Indicates the unit of measurement for the size of the memory device.
-  DomainDevicesMemorydevTarget({
+  const DomainDevicesMemorydevTarget({
     this.address,
     this.block,
     this.blockUnit,

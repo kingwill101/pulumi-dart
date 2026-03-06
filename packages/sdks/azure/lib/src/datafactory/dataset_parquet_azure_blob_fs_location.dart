@@ -23,7 +23,7 @@ class DatasetParquetAzureBlobFsLocation {
   /// [fileSystem] The container on the Azure Data Lake Storage Account hosting the file.
   /// [filename] The filename of the file on the Azure Data Lake Storage Account.
   /// [path] The folder path to the file on the Azure Data Lake Storage Account.
-  DatasetParquetAzureBlobFsLocation({
+  const DatasetParquetAzureBlobFsLocation({
     this.dynamicFileSystemEnabled,
     this.dynamicFilenameEnabled,
     this.dynamicPathEnabled,

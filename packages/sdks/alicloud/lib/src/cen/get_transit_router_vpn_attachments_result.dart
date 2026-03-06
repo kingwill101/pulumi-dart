@@ -37,7 +37,7 @@ class GetTransitRouterVpnAttachmentsResult {
   /// [tags] (Available since v1.245.0) The tag of the resource.
   /// [transitRouterAttachmentId] (Available since v1.245.0) The ID of the VPN attachment.
   /// [transitRouterId] The ID of the transit router.
-  GetTransitRouterVpnAttachmentsResult({
+  const GetTransitRouterVpnAttachmentsResult({
     required this.attachments,
     this.cenId,
     required this.id,

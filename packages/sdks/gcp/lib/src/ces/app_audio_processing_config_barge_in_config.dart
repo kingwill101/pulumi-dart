@@ -11,7 +11,7 @@ class AppAudioProcessingConfigBargeInConfig {
 
   /// Creates a new [AppAudioProcessingConfigBargeInConfig].
   /// [bargeInAwareness] If enabled, the agent will adapt its next response based on the assumption
-  AppAudioProcessingConfigBargeInConfig({
+  const AppAudioProcessingConfigBargeInConfig({
     this.bargeInAwareness,
   });
 

@@ -26,7 +26,7 @@ class DocumentClassifierInputDataConfig {
   /// [labelDelimiter] Delimiter between labels when training a multi-label classifier.
   /// [s3Uri] Location of training documents.
   /// [testS3Uri] Optional.
-  DocumentClassifierInputDataConfig({
+  const DocumentClassifierInputDataConfig({
     this.augmentedManifests,
     this.dataFormat,
     this.labelDelimiter,

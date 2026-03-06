@@ -17,7 +17,7 @@ class DataflowGraphDestinationNodeResponse {
   /// [destinationSettings] Destination configuration.
   /// [name] Name of the node.
   /// [nodeType] DataflowGraph node types.
-  DataflowGraphDestinationNodeResponse({
+  const DataflowGraphDestinationNodeResponse({
     required this.destinationSettings,
     required this.name,
     required this.nodeType,

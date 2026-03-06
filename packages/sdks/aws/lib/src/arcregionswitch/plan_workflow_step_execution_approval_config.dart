@@ -11,7 +11,7 @@ class PlanWorkflowStepExecutionApprovalConfig {
   /// Creates a new [PlanWorkflowStepExecutionApprovalConfig].
   /// [approvalRole] ARN of the IAM role for approval.
   /// [timeoutMinutes] Timeout in minutes for the approval.
-  PlanWorkflowStepExecutionApprovalConfig({
+  const PlanWorkflowStepExecutionApprovalConfig({
     required this.approvalRole,
     this.timeoutMinutes,
   });

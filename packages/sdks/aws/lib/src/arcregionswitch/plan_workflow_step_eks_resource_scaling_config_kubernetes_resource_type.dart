@@ -11,7 +11,7 @@ class PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType {
   /// Creates a new [PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType].
   /// [apiVersion] Kubernetes API version.
   /// [kind] Kubernetes resource kind.
-  PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType({
+  const PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType({
     required this.apiVersion,
     required this.kind,
   });

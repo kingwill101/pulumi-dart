@@ -11,7 +11,7 @@ class ProviderFeaturesRecoveryService {
   /// [purgeProtectedItemsFromVaultOnDestroy] Optional.
   /// [vmBackupStopProtectionAndRetainDataOnDestroy] Optional.
   /// [vmBackupSuspendProtectionAndRetainDataOnDestroy] Optional.
-  ProviderFeaturesRecoveryService({
+  const ProviderFeaturesRecoveryService({
     this.purgeProtectedItemsFromVaultOnDestroy,
     this.vmBackupStopProtectionAndRetainDataOnDestroy,
     this.vmBackupSuspendProtectionAndRetainDataOnDestroy,

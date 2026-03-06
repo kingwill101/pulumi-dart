@@ -15,7 +15,7 @@ class SmbSettings {
   /// [smbAccessBasedEnumeration] Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
   /// [smbEncryption] Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
   /// [smbNonBrowsable] Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
-  SmbSettings({
+  const SmbSettings({
     this.smbAccessBasedEnumeration,
     this.smbEncryption,
     this.smbNonBrowsable,

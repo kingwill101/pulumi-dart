@@ -18,7 +18,7 @@ class LoadBalancerResourceNames {
   /// [frontendIpConfigurationNames] The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
   /// [healthProbeNames] The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
   /// [loadBalancerName] The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
-  LoadBalancerResourceNames({
+  const LoadBalancerResourceNames({
     this.backendPoolNames,
     this.frontendIpConfigurationNames,
     this.healthProbeNames,

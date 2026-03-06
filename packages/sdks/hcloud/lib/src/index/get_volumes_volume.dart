@@ -21,7 +21,7 @@ class GetVolumesVolume {
   /// [name] Required.
   /// [serverId] Optional.
   /// [size] Required.
-  GetVolumesVolume({
+  const GetVolumesVolume({
     required this.deleteProtection,
     required this.id,
     required this.labels,

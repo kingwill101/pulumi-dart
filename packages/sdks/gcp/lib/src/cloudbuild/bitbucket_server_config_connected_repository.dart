@@ -11,7 +11,7 @@ class BitbucketServerConfigConnectedRepository {
   /// Creates a new [BitbucketServerConfigConnectedRepository].
   /// [projectKey] Identifier for the project storing the repository.
   /// [repoSlug] Identifier for the repository.
-  BitbucketServerConfigConnectedRepository({
+  const BitbucketServerConfigConnectedRepository({
     required this.projectKey,
     required this.repoSlug,
   });

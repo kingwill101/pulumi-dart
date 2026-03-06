@@ -10,7 +10,7 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBod
   /// Creates a new [RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern({
+  const RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

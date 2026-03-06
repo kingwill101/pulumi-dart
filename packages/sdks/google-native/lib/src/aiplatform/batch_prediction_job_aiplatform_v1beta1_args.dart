@@ -74,7 +74,7 @@ class BatchPredictionJobAiplatformV1beta1Args {
   /// [project] Optional.
   /// [serviceAccount] The service account that the DeployedModel's container runs as. If not specified, a system generated one will be used, which has minimal permissions and the custom container, if used, may not have enough permission to access other Google Cloud resources. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
   /// [unmanagedContainerModel] Contains model information necessary to perform batch prediction without requiring uploading to model registry. Exactly one of model and unmanaged_container_model must be set.
-  BatchPredictionJobAiplatformV1beta1Args({
+  const BatchPredictionJobAiplatformV1beta1Args({
     this.dedicatedResources,
     this.disableContainerLogging,
     required this.displayName,

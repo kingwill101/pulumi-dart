@@ -32,7 +32,7 @@ class ListEndpointIngressGatewayCredentialsResult {
   /// [serverId] The arc ingress gateway server app id.
   /// [serviceConfigurationToken] The token to access the enabled service.
   /// [tenantId] The target resource home tenant id.
-  ListEndpointIngressGatewayCredentialsResult({
+  const ListEndpointIngressGatewayCredentialsResult({
     required this.accessKey,
     this.expiresOn,
     required this.hostname,

@@ -19,7 +19,7 @@ class FlowAccessControlConfigurationResponse {
   /// [contents] The access control configuration for accessing workflow run contents.
   /// [triggers] The access control configuration for invoking workflow triggers.
   /// [workflowManagement] The access control configuration for workflow management.
-  FlowAccessControlConfigurationResponse({
+  const FlowAccessControlConfigurationResponse({
     this.actions,
     this.contents,
     this.triggers,

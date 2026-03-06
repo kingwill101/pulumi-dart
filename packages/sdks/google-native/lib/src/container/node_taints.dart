@@ -10,7 +10,7 @@ class NodeTaints {
 
   /// Creates a new [NodeTaints].
   /// [taints] List of node taints.
-  NodeTaints({
+  const NodeTaints({
     this.taints,
   });
 

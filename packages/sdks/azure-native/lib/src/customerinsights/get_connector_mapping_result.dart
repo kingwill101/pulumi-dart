@@ -63,7 +63,7 @@ class GetConnectorMappingResult {
   /// [state] State of connector mapping.
   /// [tenantId] The hub name.
   /// [type] Resource type.
-  GetConnectorMappingResult({
+  const GetConnectorMappingResult({
     required this.azureApiVersion,
     required this.connectorMappingName,
     required this.connectorName,

@@ -14,7 +14,7 @@ class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion {
   /// [comparator] The operator to use in a condition. Valid combination of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)
   /// [key] The object property to use in the condition. Valid combination of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-simplecriterionkeyforjob)
   /// [values] An array that lists the values to use in the condition. Valid combination of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-simplecriterionforjob)
-  ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion({
+  const ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion({
     this.comparator,
     this.key,
     this.values,

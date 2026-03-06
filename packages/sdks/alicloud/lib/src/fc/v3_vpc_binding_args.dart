@@ -15,7 +15,7 @@ class V3VpcBindingArgs {
   /// Creates a new [V3VpcBindingArgs].
   /// [functionName] Function Name
   /// [vpcId] VPC instance ID
-  V3VpcBindingArgs({
+  const V3VpcBindingArgs({
     required this.functionName,
     this.vpcId,
   });

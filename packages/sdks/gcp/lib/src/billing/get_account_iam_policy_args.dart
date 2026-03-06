@@ -12,7 +12,7 @@ class GetAccountIamPolicyArgs {
 
   /// Creates a new [GetAccountIamPolicyArgs].
   /// [billingAccountId] The billing account id.
-  GetAccountIamPolicyArgs({
+  const GetAccountIamPolicyArgs({
     required this.billingAccountId,
   });
 

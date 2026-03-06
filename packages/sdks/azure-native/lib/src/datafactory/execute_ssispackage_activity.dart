@@ -80,7 +80,7 @@ class ExecuteSSISPackageActivity {
   /// [state] Activity state. This is an optional property and if not provided, the state will be Active by default.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  ExecuteSSISPackageActivity({
+  const ExecuteSSISPackageActivity({
     required this.connectVia,
     this.dependsOn,
     this.description,

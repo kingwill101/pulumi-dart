@@ -11,7 +11,7 @@ class ListGatewayKeysResult {
   /// Creates a new [ListGatewayKeysResult].
   /// [primary] Primary gateway key.
   /// [secondary] Secondary gateway key.
-  ListGatewayKeysResult({
+  const ListGatewayKeysResult({
     this.primary,
     this.secondary,
   });

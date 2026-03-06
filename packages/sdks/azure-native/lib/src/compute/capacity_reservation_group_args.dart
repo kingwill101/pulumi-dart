@@ -28,7 +28,7 @@ class CapacityReservationGroupArgs {
   /// [sharingProfile] Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. The capacity reservation group resource can generally be shared across subscriptions belonging to a single Azure AAD tenant or across AAD tenants if there is a trust relationship established between the tenants.  Block capacity reservation does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
   /// [tags] Resource tags.
   /// [zones] The availability zones.
-  CapacityReservationGroupArgs({
+  const CapacityReservationGroupArgs({
     this.capacityReservationGroupName,
     this.location,
     required this.resourceGroupName,

@@ -17,7 +17,7 @@ class InstanceBabelfishConfig {
   /// [masterUserPassword] The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
   /// [masterUsername] The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
   /// [migrationMode] The migration mode of the instance. Valid values: **single-db** and **multi-db**.
-  InstanceBabelfishConfig({
+  const InstanceBabelfishConfig({
     required this.babelfishEnabled,
     required this.masterUserPassword,
     required this.masterUsername,

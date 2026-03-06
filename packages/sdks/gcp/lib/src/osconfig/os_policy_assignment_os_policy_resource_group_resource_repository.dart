@@ -25,7 +25,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
   /// [goo] A Goo Repository. Structure is
   /// [yum] A Yum Repository. Structure is
   /// [zypper] A Zypper Repository. Structure is
-  OsPolicyAssignmentOsPolicyResourceGroupResourceRepository({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourceRepository({
     this.apt,
     this.goo,
     this.yum,

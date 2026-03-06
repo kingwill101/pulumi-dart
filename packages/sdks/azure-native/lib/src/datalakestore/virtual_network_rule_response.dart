@@ -18,7 +18,7 @@ class VirtualNetworkRuleResponse {
   /// [name] The resource name.
   /// [subnetId] The resource identifier for the subnet.
   /// [type] The resource type.
-  VirtualNetworkRuleResponse({
+  const VirtualNetworkRuleResponse({
     required this.id,
     required this.name,
     required this.subnetId,

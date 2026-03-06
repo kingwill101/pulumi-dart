@@ -12,7 +12,7 @@ class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
   /// Creates a new [NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig].
   /// [certificateAuthorityDomainConfigs] Parameters for configuring CA certificate and domains.
   /// [enabled] Whether or not private registries are configured.
-  NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig({
+  const NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig({
     this.certificateAuthorityDomainConfigs,
     required this.enabled,
   });

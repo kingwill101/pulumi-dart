@@ -25,7 +25,7 @@ class GetTopicAuthorizationRuleArgs {
   /// [resourceGroupName] The name of the resource group in which the ServiceBus Namespace exists.
   /// [topicId] Optional.
   /// [topicName] The name of the ServiceBus Topic.
-  GetTopicAuthorizationRuleArgs({
+  const GetTopicAuthorizationRuleArgs({
     required this.name,
     this.namespaceName,
     this.queueName,

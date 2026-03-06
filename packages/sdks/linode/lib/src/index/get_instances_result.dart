@@ -19,7 +19,7 @@ class GetInstancesResult {
   /// [instances] Required.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.filters,
     required this.id,
     required this.instances,

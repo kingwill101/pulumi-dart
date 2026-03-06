@@ -14,7 +14,7 @@ class DeploymentGroupOnPremisesInstanceTagFilter {
   /// [key] The key of the tag filter.
   /// [type] The type of the tag filter, either `KEY_ONLY`, `VALUE_ONLY`, or `KEY_AND_VALUE`.
   /// [value] The value of the tag filter.
-  DeploymentGroupOnPremisesInstanceTagFilter({
+  const DeploymentGroupOnPremisesInstanceTagFilter({
     this.key,
     this.type,
     this.value,

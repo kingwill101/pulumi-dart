@@ -55,7 +55,7 @@ class ConnectPeerState {
   /// [subnetArn] Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ConnectPeerState({
+  const ConnectPeerState({
     this.arn,
     this.bgpOptions,
     this.configurations,

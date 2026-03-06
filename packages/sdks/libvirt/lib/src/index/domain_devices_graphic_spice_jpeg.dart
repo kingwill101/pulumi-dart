@@ -8,7 +8,7 @@ class DomainDevicesGraphicSpiceJpeg {
 
   /// Creates a new [DomainDevicesGraphicSpiceJpeg].
   /// [compression] Sets the JPEG compression quality for images sent via the Spice protocol.
-  DomainDevicesGraphicSpiceJpeg({
+  const DomainDevicesGraphicSpiceJpeg({
     required this.compression,
   });
 

@@ -9,7 +9,7 @@ class ClusterUpgradePostConditionsGkehubV1alpha {
 
   /// Creates a new [ClusterUpgradePostConditionsGkehubV1alpha].
   /// [soaking] Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days. Required.
-  ClusterUpgradePostConditionsGkehubV1alpha({
+  const ClusterUpgradePostConditionsGkehubV1alpha({
     required this.soaking,
   });
 

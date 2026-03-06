@@ -24,7 +24,7 @@ class KubernetesMetadataResponseGkehubV1beta1 {
   /// [nodeProviderId] Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and the node_provider_id will be empty.
   /// [updateTime] The time at which these details were last updated. This update_time is different from the Membership-level update_time since EndpointDetails are updated internally for API consumers.
   /// [vcpuCount] vCPU count as reported by Kubernetes nodes resources.
-  KubernetesMetadataResponseGkehubV1beta1({
+  const KubernetesMetadataResponseGkehubV1beta1({
     required this.kubernetesApiServerVersion,
     required this.memoryMb,
     required this.nodeCount,

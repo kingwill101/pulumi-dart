@@ -14,7 +14,7 @@ class GetApplicationGatewayTrustedClientCertificate {
   /// [data] The content of the Trusted Client Certificate in use.
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of this Application Gateway.
-  GetApplicationGatewayTrustedClientCertificate({
+  const GetApplicationGatewayTrustedClientCertificate({
     required this.data,
     required this.id,
     required this.name,

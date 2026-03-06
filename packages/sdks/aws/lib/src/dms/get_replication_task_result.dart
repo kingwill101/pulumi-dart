@@ -47,7 +47,7 @@ class GetReplicationTaskResult {
   /// [tableMappings] An escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
   /// [tags] Required.
   /// [targetEndpointArn] The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
-  GetReplicationTaskResult({
+  const GetReplicationTaskResult({
     required this.cdcStartPosition,
     required this.cdcStartTime,
     required this.id,

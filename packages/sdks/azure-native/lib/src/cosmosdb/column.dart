@@ -12,7 +12,7 @@ class Column {
   /// Creates a new [Column].
   /// [name] Name of the Cosmos DB Cassandra table column
   /// [type] Type of the Cosmos DB Cassandra table column
-  Column({
+  const Column({
     this.name,
     this.type,
   });

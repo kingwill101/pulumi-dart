@@ -27,7 +27,7 @@ class RdnsArgs {
   /// [loadBalancerId] The Load Balancer the `ip_address` belongs to.
   /// [primaryIpId] The Primary IP the `ip_address` belongs to.
   /// [serverId] The server the `ip_address` belongs to.
-  RdnsArgs({
+  const RdnsArgs({
     required this.dnsPtr,
     this.floatingIpId,
     required this.ipAddress,

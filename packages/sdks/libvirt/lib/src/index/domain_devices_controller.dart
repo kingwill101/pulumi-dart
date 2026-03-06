@@ -49,7 +49,7 @@ class DomainDevicesController {
   /// [usb] Configures settings specific to the USB controller device.
   /// [virtIoSerial] Configures settings related to the VirtIO serial controller device.
   /// [xenBus] Configures settings related to the Xen bus controller device.
-  DomainDevicesController({
+  const DomainDevicesController({
     this.acpi,
     this.address,
     this.alias,

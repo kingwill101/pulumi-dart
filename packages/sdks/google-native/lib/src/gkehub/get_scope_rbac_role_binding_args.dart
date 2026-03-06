@@ -17,7 +17,7 @@ class GetScopeRbacRoleBindingArgs {
   /// [project] Optional.
   /// [rbacrolebindingId] Required.
   /// [scopeId] Required.
-  GetScopeRbacRoleBindingArgs({
+  const GetScopeRbacRoleBindingArgs({
     required this.location,
     this.project,
     required this.rbacrolebindingId,

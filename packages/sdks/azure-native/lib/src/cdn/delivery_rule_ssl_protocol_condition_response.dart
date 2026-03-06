@@ -14,7 +14,7 @@ class DeliveryRuleSslProtocolConditionResponse {
   /// Creates a new [DeliveryRuleSslProtocolConditionResponse].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleSslProtocolConditionResponse({
+  const DeliveryRuleSslProtocolConditionResponse({
     required this.name,
     required this.parameters,
   });

@@ -12,7 +12,7 @@ class ManagedHsmSkuResponse {
   /// Creates a new [ManagedHsmSkuResponse].
   /// [family] SKU Family of the managed HSM Pool
   /// [name] SKU of the managed HSM Pool
-  ManagedHsmSkuResponse({
+  const ManagedHsmSkuResponse({
     required this.family,
     required this.name,
   });

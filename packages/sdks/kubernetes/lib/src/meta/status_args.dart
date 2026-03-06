@@ -32,7 +32,7 @@ class StatusArgs {
   /// [message] A human-readable description of the status of this operation.
   /// [metadata] Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [reason] A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
-  StatusArgs({
+  const StatusArgs({
     this.apiVersion,
     this.code,
     this.details,

@@ -23,7 +23,7 @@ class ProjectBuildBatchConfigResponse {
   /// [restrictions] &lt;p&gt;A &lt;code&gt;BatchRestrictions&lt;/code&gt; object that specifies the restrictions for the batch build.&lt;/p&gt;
   /// [serviceRole] &lt;p&gt;Specifies the service role ARN for the batch build project.&lt;/p&gt;
   /// [timeoutInMins] &lt;p&gt;Specifies the maximum amount of time, in minutes, that the batch build must be completed in.&lt;/p&gt;
-  ProjectBuildBatchConfigResponse({
+  const ProjectBuildBatchConfigResponse({
     this.batchReportMode,
     this.combineArtifacts,
     this.restrictions,

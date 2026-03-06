@@ -8,7 +8,7 @@ class LaunchTemplateMonitoring {
 
   /// Creates a new [LaunchTemplateMonitoring].
   /// [enabled] If `true`, the launched EC2 instance will have detailed monitoring enabled.
-  LaunchTemplateMonitoring({
+  const LaunchTemplateMonitoring({
     this.enabled,
   });
 

@@ -21,7 +21,7 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
   /// Creates a new [AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig].
   /// [dnsPeeringConfigs] Optional. DNS peering configurations.
   /// [networkAttachment] Optional. The name of the Compute Engine network attachment
-  AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig({
+  const AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig({
     this.dnsPeeringConfigs,
     this.networkAttachment,
   });

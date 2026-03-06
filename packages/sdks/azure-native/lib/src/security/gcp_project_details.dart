@@ -12,7 +12,7 @@ class GcpProjectDetails {
   /// Creates a new [GcpProjectDetails].
   /// [projectId] The GCP Project id
   /// [projectNumber] The unique GCP Project number
-  GcpProjectDetails({
+  const GcpProjectDetails({
     this.projectId,
     this.projectNumber,
   });

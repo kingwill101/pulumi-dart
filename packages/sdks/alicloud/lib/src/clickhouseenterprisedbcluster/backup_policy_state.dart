@@ -18,7 +18,7 @@ class BackupPolicyState {
   /// [dbInstanceId] The instance ID.
   /// [preferredBackupPeriod] Backup period.
   /// [preferredBackupTime] Backup time.
-  BackupPolicyState({
+  const BackupPolicyState({
     this.backupRetentionPeriod,
     this.dbInstanceId,
     this.preferredBackupPeriod,

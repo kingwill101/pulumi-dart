@@ -53,7 +53,7 @@ class WorkloadInstanceModelPropertiesResponse {
   /// [replicationStatusDescription] Gets or sets the workload replication state description.
   /// [sourceName] Gets or sets the source name.
   /// [sourcePlatform] Gets or sets the source platform.
-  WorkloadInstanceModelPropertiesResponse({
+  const WorkloadInstanceModelPropertiesResponse({
     required this.allowedOperations,
     required this.currentJob,
     this.customProperties,

@@ -16,7 +16,7 @@ class AnalyticsConnectorDataLakeDataDestinationResponse {
   /// [dataLakeName] The name for the Data Lake.
   /// [name] Name of data destination.
   /// [type] Type of data destination.
-  AnalyticsConnectorDataLakeDataDestinationResponse({
+  const AnalyticsConnectorDataLakeDataDestinationResponse({
     required this.dataLakeName,
     this.name,
     required this.type,

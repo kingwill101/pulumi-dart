@@ -12,7 +12,7 @@ class RecommendedActionImplementationInfoResponse {
   /// Creates a new [RecommendedActionImplementationInfoResponse].
   /// [method] Gets the method in which this recommended action can be manually implemented. e.g., TSql, AzurePowerShell.
   /// [script] Gets the manual implementation script. e.g., T-SQL script that could be executed on the database.
-  RecommendedActionImplementationInfoResponse({
+  const RecommendedActionImplementationInfoResponse({
     required this.method,
     required this.script,
   });

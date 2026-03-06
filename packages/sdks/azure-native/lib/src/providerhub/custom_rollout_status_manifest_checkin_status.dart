@@ -18,7 +18,7 @@ class CustomRolloutStatusManifestCheckinStatus {
   /// [isCheckedIn] Whether the manifest is checked in.
   /// [pullRequest] The pull request.
   /// [statusMessage] The status message.
-  CustomRolloutStatusManifestCheckinStatus({
+  const CustomRolloutStatusManifestCheckinStatus({
     this.commitId,
     required this.isCheckedIn,
     this.pullRequest,

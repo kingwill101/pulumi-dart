@@ -20,7 +20,7 @@ class GetManagedRuleGroupRuleAction {
   /// [captchas] Required.
   /// [challenges] Required.
   /// [counts] Required.
-  GetManagedRuleGroupRuleAction({
+  const GetManagedRuleGroupRuleAction({
     required this.allows,
     required this.blocks,
     required this.captchas,

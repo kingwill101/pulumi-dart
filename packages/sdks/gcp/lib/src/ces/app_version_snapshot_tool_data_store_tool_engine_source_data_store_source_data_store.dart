@@ -42,7 +42,7 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore {
   /// [documentProcessingMode] (Output)
   /// [name] (Output)
   /// [type] (Output)
-  AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore({
+  const AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore({
     this.connectorConfigs,
     this.createTime,
     this.displayName,

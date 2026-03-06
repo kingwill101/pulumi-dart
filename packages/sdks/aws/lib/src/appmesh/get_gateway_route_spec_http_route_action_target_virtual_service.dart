@@ -7,7 +7,7 @@ class GetGatewayRouteSpecHttpRouteActionTargetVirtualService {
 
   /// Creates a new [GetGatewayRouteSpecHttpRouteActionTargetVirtualService].
   /// [virtualServiceName] Required.
-  GetGatewayRouteSpecHttpRouteActionTargetVirtualService({
+  const GetGatewayRouteSpecHttpRouteActionTargetVirtualService({
     required this.virtualServiceName,
   });
 

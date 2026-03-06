@@ -9,7 +9,7 @@ class GatewayRouteSpecGrpcRouteAction {
 
   /// Creates a new [GatewayRouteSpecGrpcRouteAction].
   /// [target] Target that traffic is routed to when a request matches the gateway route.
-  GatewayRouteSpecGrpcRouteAction({
+  const GatewayRouteSpecGrpcRouteAction({
     required this.target,
   });
 

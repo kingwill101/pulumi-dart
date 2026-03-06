@@ -8,7 +8,7 @@ class ScheduleDailyRecurrence {
 
   /// Creates a new [ScheduleDailyRecurrence].
   /// [time] The time each day when the schedule takes effect.
-  ScheduleDailyRecurrence({
+  const ScheduleDailyRecurrence({
     required this.time,
   });
 

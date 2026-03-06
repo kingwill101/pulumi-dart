@@ -8,7 +8,7 @@ class QueueSettings {
 
   /// Creates a new [QueueSettings].
   /// [jobTier] Controls the compute job tier
-  QueueSettings({
+  const QueueSettings({
     this.jobTier,
   });
 

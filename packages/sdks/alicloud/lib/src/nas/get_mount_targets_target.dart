@@ -29,7 +29,7 @@ class GetMountTargetsTarget {
   /// [type] Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
   /// [vpcId] Filter results by a specific VpcId.
   /// [vswitchId] Filter results by a specific VSwitchId.
-  GetMountTargetsTarget({
+  const GetMountTargetsTarget({
     required this.accessGroupName,
     required this.id,
     required this.mountTargetDomain,

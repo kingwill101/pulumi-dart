@@ -31,7 +31,7 @@ class ServicePrincipalSecretAuthInfoResponse {
   /// [roles] Optional, this value specifies the Azure roles to be assigned. Automatically
   /// [secret] Secret for servicePrincipal auth.
   /// [userName] Username created in the database which is mapped to a user in AAD.
-  ServicePrincipalSecretAuthInfoResponse({
+  const ServicePrincipalSecretAuthInfoResponse({
     this.authMode,
     required this.authType,
     required this.clientId,

@@ -15,7 +15,7 @@ class KeyPairArgs {
   /// Creates a new [KeyPairArgs].
   /// [keyPairName] The Key Name.
   /// [publicKeyBody] The public key body.
-  KeyPairArgs({
+  const KeyPairArgs({
     required this.keyPairName,
     required this.publicKeyBody,
   });

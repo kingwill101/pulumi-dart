@@ -23,7 +23,7 @@ class DomainMappingStatus {
   /// [observedGeneration] ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
   /// [resourceRecords] The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
   /// [url] Optional. Not supported by Cloud Run.
-  DomainMappingStatus({
+  const DomainMappingStatus({
     this.conditions,
     this.mappedRouteName,
     this.observedGeneration,

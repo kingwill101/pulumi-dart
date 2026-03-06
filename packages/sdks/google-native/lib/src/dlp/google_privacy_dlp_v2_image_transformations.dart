@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2ImageTransformations {
 
   /// Creates a new [GooglePrivacyDlpV2ImageTransformations].
   /// [transforms] Optional.
-  GooglePrivacyDlpV2ImageTransformations({
+  const GooglePrivacyDlpV2ImageTransformations({
     this.transforms,
   });
 

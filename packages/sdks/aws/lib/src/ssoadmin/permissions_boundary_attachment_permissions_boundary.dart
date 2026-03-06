@@ -12,7 +12,7 @@ class PermissionsBoundaryAttachmentPermissionsBoundary {
   /// Creates a new [PermissionsBoundaryAttachmentPermissionsBoundary].
   /// [customerManagedPolicyReference] Specifies the name and path of a customer managed policy. See below.
   /// [managedPolicyArn] AWS-managed IAM policy ARN to use as the permissions boundary.
-  PermissionsBoundaryAttachmentPermissionsBoundary({
+  const PermissionsBoundaryAttachmentPermissionsBoundary({
     this.customerManagedPolicyReference,
     this.managedPolicyArn,
   });

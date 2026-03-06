@@ -24,7 +24,7 @@ class SnapshotState {
   /// [ensRegionId] The node ID of ENS.
   /// [snapshotName] Name of the snapshot instance.
   /// [status] Snapshot Status. Valid values: creating, available, deleting, error.
-  SnapshotState({
+  const SnapshotState({
     this.createTime,
     this.description,
     this.diskId,

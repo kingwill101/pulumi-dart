@@ -33,7 +33,7 @@ class RecordSetState {
   /// [rrdatas] Optional.
   /// [ttl] The time-to-live of this record set (seconds).
   /// [type] The DNS record set type.
-  RecordSetState({
+  const RecordSetState({
     this.managedZone,
     this.name,
     this.project,

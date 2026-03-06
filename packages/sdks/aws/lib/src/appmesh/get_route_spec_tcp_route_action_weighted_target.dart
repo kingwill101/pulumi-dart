@@ -11,7 +11,7 @@ class GetRouteSpecTcpRouteActionWeightedTarget {
   /// [port] Required.
   /// [virtualNode] Required.
   /// [weight] Required.
-  GetRouteSpecTcpRouteActionWeightedTarget({
+  const GetRouteSpecTcpRouteActionWeightedTarget({
     required this.port,
     required this.virtualNode,
     required this.weight,

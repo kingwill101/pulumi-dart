@@ -22,7 +22,7 @@ class AzureStorageBlobContainerEndpointPropertiesResponse {
   /// [endpointType] The Endpoint resource type.
   /// [provisioningState] The provisioning state of this resource.
   /// [storageAccountResourceId] The Azure Resource ID of the storage account that is the target destination.
-  AzureStorageBlobContainerEndpointPropertiesResponse({
+  const AzureStorageBlobContainerEndpointPropertiesResponse({
     required this.blobContainerName,
     this.description,
     required this.endpointType,

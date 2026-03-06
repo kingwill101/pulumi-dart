@@ -19,7 +19,7 @@ class GetAssetArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetAssetArgs({
+  const GetAssetArgs({
     required this.assetId,
     required this.lakeId,
     required this.location,

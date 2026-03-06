@@ -21,7 +21,7 @@ class RemoteAddressMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
-  RemoteAddressMatchConditionParametersResponse({
+  const RemoteAddressMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

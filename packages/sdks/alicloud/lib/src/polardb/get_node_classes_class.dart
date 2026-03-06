@@ -12,7 +12,7 @@ class GetNodeClassesClass {
   /// Creates a new [GetNodeClassesClass].
   /// [supportedEngines] A list of PolarDB node classes in the zone.
   /// [zoneId] The Zone to launch the PolarDB cluster.
-  GetNodeClassesClass({
+  const GetNodeClassesClass({
     required this.supportedEngines,
     required this.zoneId,
   });

@@ -15,7 +15,7 @@ class NicIPAddressSettingsResponse {
   /// [allocationMethod] Gets the ip address allocation method.
   /// [ipAddress] Gets the ip address for the nic.
   /// [subnetMask] Gets the mask.
-  NicIPAddressSettingsResponse({
+  const NicIPAddressSettingsResponse({
     required this.allocationMethod,
     required this.ipAddress,
     required this.subnetMask,

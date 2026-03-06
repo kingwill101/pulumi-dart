@@ -13,7 +13,7 @@ class GetOrganizationSinkArgs {
   /// Creates a new [GetOrganizationSinkArgs].
   /// [organizationId] Required.
   /// [sinkId] Required.
-  GetOrganizationSinkArgs({
+  const GetOrganizationSinkArgs({
     required this.organizationId,
     required this.sinkId,
   });

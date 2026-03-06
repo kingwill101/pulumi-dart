@@ -15,7 +15,7 @@ class GetWorkgroupEndpoint {
   /// [address] The DNS address of the VPC endpoint.
   /// [port] The port that Amazon Redshift Serverless listens on.
   /// [vpcEndpoints] The VPC endpoint or the Redshift Serverless workgroup. See `VPC Endpoint` below.
-  GetWorkgroupEndpoint({
+  const GetWorkgroupEndpoint({
     required this.address,
     required this.port,
     required this.vpcEndpoints,

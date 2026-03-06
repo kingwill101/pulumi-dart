@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesis
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput].
   /// [resourceArn] The ARN of the input Kinesis data stream to read.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput({
     required this.resourceArn,
   });
 

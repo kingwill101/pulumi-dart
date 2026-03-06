@@ -31,7 +31,7 @@ class HttpRouteHeaderMatchResponseNetworkservicesV1beta1 {
   /// [rangeMatch] If specified, the rule will match if the request header value is within the range.
   /// [regexMatch] The value of the header must match the regular expression specified in regex_match. For regular expression grammar, please see: https://github.com/google/re2/wiki/Syntax
   /// [suffixMatch] The value of the header must end with the contents of suffix_match.
-  HttpRouteHeaderMatchResponseNetworkservicesV1beta1({
+  const HttpRouteHeaderMatchResponseNetworkservicesV1beta1({
     required this.exactMatch,
     required this.header,
     required this.invertMatch,

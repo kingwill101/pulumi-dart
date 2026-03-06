@@ -37,7 +37,7 @@ class ADLSGen2FileSystemDataSetArgs {
   /// [shareName] The name of the share to add the data set to.
   /// [storageAccountName] Storage account name of the source data set
   /// [subscriptionId] Subscription id of storage account
-  ADLSGen2FileSystemDataSetArgs({
+  const ADLSGen2FileSystemDataSetArgs({
     required this.accountName,
     this.dataSetName,
     required this.fileSystem,

@@ -18,7 +18,7 @@ class GetAlidnsDomainGroupsArgs {
   /// [ids] A list of instance IDs.
   /// [nameRegex] A regex string to filter results by the domain group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAlidnsDomainGroupsArgs({
+  const GetAlidnsDomainGroupsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

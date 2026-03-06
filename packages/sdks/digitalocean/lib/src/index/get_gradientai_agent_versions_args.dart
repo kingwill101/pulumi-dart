@@ -17,7 +17,7 @@ class GetGradientaiAgentVersionsArgs {
   /// [agentId] Required.
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGradientaiAgentVersionsArgs({
+  const GetGradientaiAgentVersionsArgs({
     required this.agentId,
     this.filters,
     this.sorts,

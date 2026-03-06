@@ -14,7 +14,7 @@ class ClusterClusterNode {
   /// [nodeRole] Whether the node is a leader node or a compute node
   /// [privateIpAddress] The private IP address of a node within a cluster
   /// [publicIpAddress] The public IP address of a node within a cluster
-  ClusterClusterNode({
+  const ClusterClusterNode({
     this.nodeRole,
     this.privateIpAddress,
     this.publicIpAddress,

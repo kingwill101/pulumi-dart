@@ -43,7 +43,7 @@ class ExpressRouteLinkResponse {
   /// [provisioningState] The provisioning state of the express route link resource.
   /// [rackId] Mapping of physical patch panel to rack.
   /// [routerName] Name of Azure router associated with physical port.
-  ExpressRouteLinkResponse({
+  const ExpressRouteLinkResponse({
     this.adminState,
     required this.coloLocation,
     required this.connectorType,

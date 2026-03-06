@@ -22,7 +22,7 @@ class IPPoolResponse {
   /// [ipPoolType] Type of the IP Pool [vm, vippool]
   /// [name] Name of the IP-Pool
   /// [start] Start of the IP address pool
-  IPPoolResponse({
+  const IPPoolResponse({
     this.end,
     this.info,
     this.ipPoolType,

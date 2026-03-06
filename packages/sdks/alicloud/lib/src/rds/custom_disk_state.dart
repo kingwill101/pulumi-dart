@@ -73,7 +73,7 @@ class CustomDiskState {
   /// [status] Disk status. Value Description:_use: In use.
   /// [type] The method of expanding the disk. Value range:
   /// [zoneId] The zone ID.
-  CustomDiskState({
+  const CustomDiskState({
     this.autoPay,
     this.autoRenew,
     this.createTime,

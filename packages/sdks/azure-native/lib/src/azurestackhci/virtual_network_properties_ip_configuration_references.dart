@@ -9,7 +9,7 @@ class VirtualNetworkPropertiesIpConfigurationReferences {
 
   /// Creates a new [VirtualNetworkPropertiesIpConfigurationReferences].
   /// [id] IPConfigurationID
-  VirtualNetworkPropertiesIpConfigurationReferences({
+  const VirtualNetworkPropertiesIpConfigurationReferences({
     this.id,
   });
 

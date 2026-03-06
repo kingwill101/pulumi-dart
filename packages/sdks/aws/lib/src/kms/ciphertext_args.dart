@@ -28,7 +28,7 @@ class CiphertextArgs {
   /// [plaintextWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [plaintextWoVersion] Used together with `plaintext_wo` to trigger a replacement. Modify this value when a replacement is required.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  CiphertextArgs({
+  const CiphertextArgs({
     this.context,
     required this.keyId,
     this.plaintext,

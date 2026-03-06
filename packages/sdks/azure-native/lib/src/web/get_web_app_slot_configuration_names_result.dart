@@ -29,7 +29,7 @@ class GetWebAppSlotConfigurationNamesResult {
   /// [kind] Kind of resource.
   /// [name] Resource Name.
   /// [type] Resource type.
-  GetWebAppSlotConfigurationNamesResult({
+  const GetWebAppSlotConfigurationNamesResult({
     this.appSettingNames,
     required this.azureApiVersion,
     this.azureStorageConfigNames,

@@ -39,7 +39,7 @@ class GetParametersArgs {
   /// [sortOrder] The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The data type of the common parameter. Valid values: `String`, `StringList`.
-  GetParametersArgs({
+  const GetParametersArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

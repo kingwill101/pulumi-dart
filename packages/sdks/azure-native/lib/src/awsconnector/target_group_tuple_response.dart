@@ -12,7 +12,7 @@ class TargetGroupTupleResponse {
   /// Creates a new [TargetGroupTupleResponse].
   /// [targetGroupArn] The Amazon Resource Name (ARN) of the target group.
   /// [weight] The weight. The range is 0 to 999.
-  TargetGroupTupleResponse({
+  const TargetGroupTupleResponse({
     this.targetGroupArn,
     this.weight,
   });

@@ -25,7 +25,7 @@ class DataflowEndpointMqttAuthenticationResponse {
   /// [systemAssignedManagedIdentitySettings] System-assigned managed identity authentication.
   /// [userAssignedManagedIdentitySettings] User-assigned managed identity authentication.
   /// [x509CertificateSettings] X.509 certificate authentication.
-  DataflowEndpointMqttAuthenticationResponse({
+  const DataflowEndpointMqttAuthenticationResponse({
     required this.method,
     this.serviceAccountTokenSettings,
     this.systemAssignedManagedIdentitySettings,

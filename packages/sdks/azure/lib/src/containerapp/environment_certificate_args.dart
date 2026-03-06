@@ -34,7 +34,7 @@ class EnvironmentCertificateArgs {
   /// [containerAppEnvironmentId] The Container App Managed Environment ID to configure this Certificate on. Changing this forces a new resource to be created.
   /// [name] The name of the Container Apps Environment Certificate. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  EnvironmentCertificateArgs({
+  const EnvironmentCertificateArgs({
     this.certificateBlobBase64,
     this.certificateKeyVault,
     this.certificatePassword,

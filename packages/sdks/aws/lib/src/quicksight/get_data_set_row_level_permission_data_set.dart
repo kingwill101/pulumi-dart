@@ -15,7 +15,7 @@ class GetDataSetRowLevelPermissionDataSet {
   /// [namespace] Required.
   /// [permissionPolicy] Required.
   /// [status] Required.
-  GetDataSetRowLevelPermissionDataSet({
+  const GetDataSetRowLevelPermissionDataSet({
     required this.arn,
     required this.formatVersion,
     required this.namespace,

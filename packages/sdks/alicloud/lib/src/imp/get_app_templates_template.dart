@@ -42,7 +42,7 @@ class GetAppTemplatesTemplate {
   /// [sdkInfo] SDK information.
   /// [standardRoomInfo] Model room information.
   /// [status] Application template usage status.
-  GetAppTemplatesTemplate({
+  const GetAppTemplatesTemplate({
     required this.appTemplateCreator,
     required this.appTemplateId,
     required this.appTemplateName,

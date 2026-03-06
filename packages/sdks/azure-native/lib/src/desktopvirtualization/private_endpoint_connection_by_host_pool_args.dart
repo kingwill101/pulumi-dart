@@ -22,7 +22,7 @@ class PrivateEndpointConnectionByHostPoolArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource.
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PrivateEndpointConnectionByHostPoolArgs({
+  const PrivateEndpointConnectionByHostPoolArgs({
     required this.hostPoolName,
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,

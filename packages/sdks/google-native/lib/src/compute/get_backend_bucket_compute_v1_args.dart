@@ -13,7 +13,7 @@ class GetBackendBucketComputeV1Args {
   /// Creates a new [GetBackendBucketComputeV1Args].
   /// [backendBucket] Required.
   /// [project] Optional.
-  GetBackendBucketComputeV1Args({
+  const GetBackendBucketComputeV1Args({
     required this.backendBucket,
     this.project,
   });

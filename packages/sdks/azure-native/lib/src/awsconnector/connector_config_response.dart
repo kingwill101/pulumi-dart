@@ -21,7 +21,7 @@ class ConnectorConfigResponse {
   /// [activationId] &lt;p&gt;A unique ID associated with the cluster for registration purposes.&lt;/p&gt;
   /// [provider] &lt;p&gt;The cluster's cloud service provider.&lt;/p&gt;
   /// [roleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the role to communicate with services from the connected Kubernetes cluster.&lt;/p&gt;
-  ConnectorConfigResponse({
+  const ConnectorConfigResponse({
     this.activationCode,
     this.activationExpiry,
     this.activationId,

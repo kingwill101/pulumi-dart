@@ -32,7 +32,7 @@ class GooglePrivacyDlpV2ValueResponse {
   /// [stringValue] string
   /// [timeValue] time of day
   /// [timestampValue] timestamp
-  GooglePrivacyDlpV2ValueResponse({
+  const GooglePrivacyDlpV2ValueResponse({
     required this.booleanValue,
     required this.dateValue,
     required this.dayOfWeekValue,

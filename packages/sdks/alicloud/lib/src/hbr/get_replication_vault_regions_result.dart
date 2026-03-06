@@ -14,7 +14,7 @@ class GetReplicationVaultRegionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [regions] Required.
-  GetReplicationVaultRegionsResult({
+  const GetReplicationVaultRegionsResult({
     required this.id,
     this.outputFile,
     required this.regions,

@@ -12,7 +12,7 @@ class CidrCollectionArgs {
 
   /// Creates a new [CidrCollectionArgs].
   /// [name] Unique name for the CIDR collection.
-  CidrCollectionArgs({
+  const CidrCollectionArgs({
     this.name,
   });
 

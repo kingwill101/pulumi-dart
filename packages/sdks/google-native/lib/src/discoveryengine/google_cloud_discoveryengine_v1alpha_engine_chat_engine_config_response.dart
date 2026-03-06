@@ -13,7 +13,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse {
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse].
   /// [agentCreationConfig] The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
   /// [dialogflowAgentToLink] The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use chat_engine_metadata.dialogflow_agent for actual agent association after Engine is created.
-  GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse({
+  const GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse({
     required this.agentCreationConfig,
     required this.dialogflowAgentToLink,
   });

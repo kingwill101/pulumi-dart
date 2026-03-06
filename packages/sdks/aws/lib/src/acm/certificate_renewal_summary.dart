@@ -13,7 +13,7 @@ class CertificateRenewalSummary {
   /// [renewalStatus] The status of ACM's managed renewal of the certificate
   /// [renewalStatusReason] The reason that a renewal request was unsuccessful or is pending
   /// [updatedAt] Optional.
-  CertificateRenewalSummary({
+  const CertificateRenewalSummary({
     this.renewalStatus,
     this.renewalStatusReason,
     this.updatedAt,

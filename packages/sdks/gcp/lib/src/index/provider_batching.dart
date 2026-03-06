@@ -9,7 +9,7 @@ class ProviderBatching {
   /// Creates a new [ProviderBatching].
   /// [enableBatching] Optional.
   /// [sendAfter] Optional.
-  ProviderBatching({
+  const ProviderBatching({
     this.enableBatching,
     this.sendAfter,
   });

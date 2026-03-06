@@ -17,7 +17,7 @@ class GetProfilesProfilesProfile {
   /// [id] ID of the Profile.
   /// [name] Name of the Profile.
   /// [shareStatus] Share status of the Profile. Valid values [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_Profile.html)
-  GetProfilesProfilesProfile({
+  const GetProfilesProfilesProfile({
     required this.arn,
     required this.id,
     required this.name,

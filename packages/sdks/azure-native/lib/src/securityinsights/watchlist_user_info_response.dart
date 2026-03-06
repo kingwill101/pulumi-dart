@@ -15,7 +15,7 @@ class WatchlistUserInfoResponse {
   /// [email] The email of the user.
   /// [name] The name of the user.
   /// [objectId] The object id of the user.
-  WatchlistUserInfoResponse({
+  const WatchlistUserInfoResponse({
     required this.email,
     required this.name,
     this.objectId,

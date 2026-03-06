@@ -12,7 +12,7 @@ class CapacityReservationTargetResponse {
   /// Creates a new [CapacityReservationTargetResponse].
   /// [capacityReservationId] &lt;p&gt;The ID of the targeted Capacity Reservation.&lt;/p&gt;
   /// [capacityReservationResourceGroupArn] &lt;p&gt;The ARN of the targeted Capacity Reservation group.&lt;/p&gt;
-  CapacityReservationTargetResponse({
+  const CapacityReservationTargetResponse({
     this.capacityReservationId,
     this.capacityReservationResourceGroupArn,
   });

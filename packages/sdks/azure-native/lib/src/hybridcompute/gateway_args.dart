@@ -27,7 +27,7 @@ class GatewayArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  GatewayArgs({
+  const GatewayArgs({
     this.allowedFeatures,
     this.gatewayName,
     this.gatewayType,

@@ -19,7 +19,7 @@ class GetSpacesBucketsArgs {
   /// Creates a new [GetSpacesBucketsArgs].
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetSpacesBucketsArgs({
+  const GetSpacesBucketsArgs({
     this.filters,
     this.sorts,
   });

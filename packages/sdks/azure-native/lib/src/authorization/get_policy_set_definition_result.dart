@@ -52,7 +52,7 @@ class GetPolicySetDefinitionResult {
   /// [type] The type of the resource (Microsoft.Authorization/policySetDefinitions).
   /// [version] The policy set definition version in #.#.# format.
   /// [versions] A list of available versions for this policy set definition.
-  GetPolicySetDefinitionResult({
+  const GetPolicySetDefinitionResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

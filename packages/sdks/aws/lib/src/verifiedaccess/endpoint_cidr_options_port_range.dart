@@ -9,7 +9,7 @@ class EndpointCidrOptionsPortRange {
   /// Creates a new [EndpointCidrOptionsPortRange].
   /// [fromPort] Required.
   /// [toPort] Required.
-  EndpointCidrOptionsPortRange({
+  const EndpointCidrOptionsPortRange({
     required this.fromPort,
     required this.toPort,
   });

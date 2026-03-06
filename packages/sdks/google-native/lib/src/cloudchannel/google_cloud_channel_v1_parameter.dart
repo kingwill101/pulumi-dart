@@ -13,7 +13,7 @@ class GoogleCloudChannelV1Parameter {
   /// Creates a new [GoogleCloudChannelV1Parameter].
   /// [name] Name of the parameter.
   /// [value] Value of the parameter.
-  GoogleCloudChannelV1Parameter({
+  const GoogleCloudChannelV1Parameter({
     this.name,
     this.value,
   });

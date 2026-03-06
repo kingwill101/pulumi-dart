@@ -8,7 +8,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
 
   /// Creates a new [GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity].
   /// [clientAuthentications] Required.
-  GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity({
+  const GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity({
     required this.clientAuthentications,
   });
 

@@ -20,7 +20,7 @@ class VpcscConfigArgs {
   /// [location] The name of the location this config is located in.
   /// [project] The ID of the project in which the resource belongs.
   /// [vpcscPolicy] The VPC SC policy for project and location.
-  VpcscConfigArgs({
+  const VpcscConfigArgs({
     this.location,
     this.project,
     this.vpcscPolicy,

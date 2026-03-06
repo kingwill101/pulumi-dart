@@ -12,7 +12,7 @@ class EndpointAuthKeys {
   /// Creates a new [EndpointAuthKeys].
   /// [primaryKey] The primary key.
   /// [secondaryKey] The secondary key.
-  EndpointAuthKeys({
+  const EndpointAuthKeys({
     this.primaryKey,
     this.secondaryKey,
   });

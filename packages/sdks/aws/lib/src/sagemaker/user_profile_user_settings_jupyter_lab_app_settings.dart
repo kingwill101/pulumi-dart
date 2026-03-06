@@ -30,7 +30,7 @@ class UserProfileUserSettingsJupyterLabAppSettings {
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
   /// [emrSettings] The configuration parameters that specify the IAM roles assumed by the execution role of SageMaker AI (assumable roles) and the cluster instances or job execution environments (execution roles or runtime roles) to manage and access resources required for running Amazon EMR clusters or Amazon EMR Serverless applications. see `emr_settings` Block below.
   /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  UserProfileUserSettingsJupyterLabAppSettings({
+  const UserProfileUserSettingsJupyterLabAppSettings({
     this.appLifecycleManagement,
     this.builtInLifecycleConfigArn,
     this.codeRepositories,

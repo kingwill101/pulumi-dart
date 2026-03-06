@@ -9,7 +9,7 @@ class ClassItem {
 
   /// Creates a new [ClassItem].
   /// [value] The class item's value.
-  ClassItem({
+  const ClassItem({
     this.value,
   });
 

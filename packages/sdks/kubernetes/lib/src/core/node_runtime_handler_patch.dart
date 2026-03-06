@@ -13,7 +13,7 @@ class NodeRuntimeHandlerPatch {
   /// Creates a new [NodeRuntimeHandlerPatch].
   /// [features] Supported features.
   /// [name] Runtime handler name. Empty for the default runtime handler.
-  NodeRuntimeHandlerPatch({
+  const NodeRuntimeHandlerPatch({
     this.features,
     this.name,
   });

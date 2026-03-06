@@ -11,7 +11,7 @@ class GetMetastoreServiceMaintenanceWindow {
   /// Creates a new [GetMetastoreServiceMaintenanceWindow].
   /// [dayOfWeek] The day of week, when the window starts. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
   /// [hourOfDay] The hour of day (0-23) when the window starts.
-  GetMetastoreServiceMaintenanceWindow({
+  const GetMetastoreServiceMaintenanceWindow({
     required this.dayOfWeek,
     required this.hourOfDay,
   });

@@ -11,7 +11,7 @@ class JobManualTriggerConfig {
   /// Creates a new [JobManualTriggerConfig].
   /// [parallelism] Number of parallel replicas of a job that can run at a given time.
   /// [replicaCompletionCount] Minimum number of successful replica completions before overall job completion.
-  JobManualTriggerConfig({
+  const JobManualTriggerConfig({
     this.parallelism,
     this.replicaCompletionCount,
   });

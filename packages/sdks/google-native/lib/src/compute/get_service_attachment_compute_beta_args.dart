@@ -15,7 +15,7 @@ class GetServiceAttachmentComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [serviceAttachment] Required.
-  GetServiceAttachmentComputeBetaArgs({
+  const GetServiceAttachmentComputeBetaArgs({
     this.project,
     required this.region,
     required this.serviceAttachment,

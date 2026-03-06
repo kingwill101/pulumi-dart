@@ -10,7 +10,7 @@ class PriorityLevelConfigurationStatusPatch {
 
   /// Creates a new [PriorityLevelConfigurationStatusPatch].
   /// [conditions] `conditions` is the current state of "request-priority".
-  PriorityLevelConfigurationStatusPatch({
+  const PriorityLevelConfigurationStatusPatch({
     this.conditions,
   });
 

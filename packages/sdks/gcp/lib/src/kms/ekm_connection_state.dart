@@ -37,7 +37,7 @@ class EkmConnectionState {
   /// [name] The resource name for the EkmConnection.
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceResolvers] A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
-  EkmConnectionState({
+  const EkmConnectionState({
     this.createTime,
     this.cryptoSpacePath,
     this.etag,

@@ -23,7 +23,7 @@ class KxClusterAutoScalingConfiguration {
   /// [minNodeCount] Lowest number of nodes to scale. Must be at least 1 and less than the `max_node_count`. If nodes in cluster belong to multiple availability zones, then `min_node_count` must be at least 3.
   /// [scaleInCooldownSeconds] Duration in seconds that FinSpace will wait after a scale in event before initiating another scaling event.
   /// [scaleOutCooldownSeconds] Duration in seconds that FinSpace will wait after a scale out event before initiating another scaling event.
-  KxClusterAutoScalingConfiguration({
+  const KxClusterAutoScalingConfiguration({
     required this.autoScalingMetric,
     required this.maxNodeCount,
     required this.metricTarget,

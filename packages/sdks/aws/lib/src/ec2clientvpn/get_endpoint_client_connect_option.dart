@@ -9,7 +9,7 @@ class GetEndpointClientConnectOption {
   /// Creates a new [GetEndpointClientConnectOption].
   /// [enabled] Required.
   /// [lambdaFunctionArn] Required.
-  GetEndpointClientConnectOption({
+  const GetEndpointClientConnectOption({
     required this.enabled,
     required this.lambdaFunctionArn,
   });

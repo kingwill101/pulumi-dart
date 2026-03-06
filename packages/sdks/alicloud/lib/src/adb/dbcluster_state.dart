@@ -113,7 +113,7 @@ class DBClusterState {
   /// [vpcId] The vpc ID of the resource.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the resource.
-  DBClusterState({
+  const DBClusterState({
     this.autoRenewPeriod,
     this.computeResource,
     this.connectionString,

@@ -25,7 +25,7 @@ class BusinessProcessDevelopmentArtifactPropertiesResponse {
   /// [description] The description of the business process.
   /// [identifier] The business process identifier.
   /// [trackingProfiles] The tracking profile for the business process.
-  BusinessProcessDevelopmentArtifactPropertiesResponse({
+  const BusinessProcessDevelopmentArtifactPropertiesResponse({
     this.businessProcessMapping,
     this.businessProcessStages,
     this.description,

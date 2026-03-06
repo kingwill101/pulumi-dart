@@ -9,7 +9,7 @@ class TcpExporterResponse {
 
   /// Creates a new [TcpExporterResponse].
   /// [url] TCP url to export.
-  TcpExporterResponse({
+  const TcpExporterResponse({
     required this.url,
   });
 

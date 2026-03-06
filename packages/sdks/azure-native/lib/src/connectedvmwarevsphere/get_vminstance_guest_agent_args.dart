@@ -12,7 +12,7 @@ class GetVMInstanceGuestAgentArgs {
 
   /// Creates a new [GetVMInstanceGuestAgentArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  GetVMInstanceGuestAgentArgs({
+  const GetVMInstanceGuestAgentArgs({
     required this.resourceUri,
   });
 

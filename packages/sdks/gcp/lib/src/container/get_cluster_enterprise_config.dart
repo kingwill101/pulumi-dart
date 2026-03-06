@@ -11,7 +11,7 @@ class GetClusterEnterpriseConfig {
   /// Creates a new [GetClusterEnterpriseConfig].
   /// [clusterTier] Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
   /// [desiredTier] Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
-  GetClusterEnterpriseConfig({
+  const GetClusterEnterpriseConfig({
     required this.clusterTier,
     required this.desiredTier,
   });

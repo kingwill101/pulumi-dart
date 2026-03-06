@@ -15,7 +15,7 @@ class GetAutoscalerArgs {
   /// [autoscaler] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetAutoscalerArgs({
+  const GetAutoscalerArgs({
     required this.autoscaler,
     this.project,
     required this.zone,

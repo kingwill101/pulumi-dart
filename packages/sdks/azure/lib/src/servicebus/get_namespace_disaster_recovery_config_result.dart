@@ -33,7 +33,7 @@ class GetNamespaceDisasterRecoveryConfigResult {
   /// [primaryConnectionStringAlias] The alias Primary Connection String for the ServiceBus Namespace.
   /// [resourceGroupName] Required.
   /// [secondaryConnectionStringAlias] The alias Secondary Connection String for the ServiceBus Namespace
-  GetNamespaceDisasterRecoveryConfigResult({
+  const GetNamespaceDisasterRecoveryConfigResult({
     this.aliasAuthorizationRuleId,
     required this.defaultPrimaryKey,
     required this.defaultSecondaryKey,

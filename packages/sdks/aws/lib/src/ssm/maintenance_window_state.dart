@@ -48,7 +48,7 @@ class MaintenanceWindowState {
   /// [startDate] Timestamp in [ISO-8601 extended format](https://www.iso.org/iso-8601-date-and-time-format.html) when to begin the maintenance window.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  MaintenanceWindowState({
+  const MaintenanceWindowState({
     this.allowUnassociatedTargets,
     this.cutoff,
     this.description,

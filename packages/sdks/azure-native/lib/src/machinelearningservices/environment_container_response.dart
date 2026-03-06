@@ -27,7 +27,7 @@ class EnvironmentContainerResponse {
   /// [properties] The asset property dictionary.
   /// [provisioningState] Provisioning state for the environment container.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  EnvironmentContainerResponse({
+  const EnvironmentContainerResponse({
     this.description,
     this.isArchived,
     required this.latestVersion,

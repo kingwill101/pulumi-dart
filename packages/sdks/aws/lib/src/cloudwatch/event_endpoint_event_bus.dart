@@ -8,7 +8,7 @@ class EventEndpointEventBus {
 
   /// Creates a new [EventEndpointEventBus].
   /// [eventBusArn] The ARN of the event bus the endpoint is associated with.
-  EventEndpointEventBus({
+  const EventEndpointEventBus({
     required this.eventBusArn,
   });
 

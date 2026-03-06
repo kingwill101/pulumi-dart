@@ -66,7 +66,7 @@ class WindowsVirtualMachineState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [uniqueIdentifier] The unique immutable identifier of the Virtual Machine.
   /// [username] The Username associated with the local administrator on this Virtual Machine. Changing this forces a new resource to be created.
-  WindowsVirtualMachineState({
+  const WindowsVirtualMachineState({
     this.allowClaim,
     this.disallowPublicIpAddress,
     this.fqdn,

@@ -12,7 +12,7 @@ class HttpsTriggerResponse {
   /// Creates a new [HttpsTriggerResponse].
   /// [securityLevel] The security level for the function.
   /// [url] The deployed url for the function.
-  HttpsTriggerResponse({
+  const HttpsTriggerResponse({
     required this.securityLevel,
     required this.url,
   });

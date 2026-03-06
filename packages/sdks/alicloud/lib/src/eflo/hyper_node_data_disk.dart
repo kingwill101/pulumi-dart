@@ -26,7 +26,7 @@ class HyperNodeDataDisk {
   /// [performanceLevel] When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
   /// [provisionedIops] ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
   /// [size] The size of the disk. The unit is GiB.
-  HyperNodeDataDisk({
+  const HyperNodeDataDisk({
     this.burstingEnabled,
     this.category,
     this.deleteWithNode,

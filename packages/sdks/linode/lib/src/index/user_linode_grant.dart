@@ -11,7 +11,7 @@ class UserLinodeGrant {
   /// Creates a new [UserLinodeGrant].
   /// [id] The ID of the entity this grant applies to.
   /// [permissions] The level of access this User has to this entity. If null, this User has no access.
-  UserLinodeGrant({
+  const UserLinodeGrant({
     required this.id,
     required this.permissions,
   });

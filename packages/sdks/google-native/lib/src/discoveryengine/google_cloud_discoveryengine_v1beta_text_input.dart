@@ -13,7 +13,7 @@ class GoogleCloudDiscoveryengineV1betaTextInput {
   /// Creates a new [GoogleCloudDiscoveryengineV1betaTextInput].
   /// [context] Conversation context of the input.
   /// [input] Text input.
-  GoogleCloudDiscoveryengineV1betaTextInput({
+  const GoogleCloudDiscoveryengineV1betaTextInput({
     this.context,
     this.input,
   });

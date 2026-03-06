@@ -15,7 +15,7 @@ class GetTagKeyArgs {
   /// Creates a new [GetTagKeyArgs].
   /// [parent] The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
   /// [shortName] The tag key's short_name.
-  GetTagKeyArgs({
+  const GetTagKeyArgs({
     required this.parent,
     required this.shortName,
   });

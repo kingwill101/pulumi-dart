@@ -8,7 +8,7 @@ class NodePoolNodeConfigGvnic {
 
   /// Creates a new [NodePoolNodeConfigGvnic].
   /// [enabled] Whether or not gvnic is enabled
-  NodePoolNodeConfigGvnic({
+  const NodePoolNodeConfigGvnic({
     required this.enabled,
   });
 

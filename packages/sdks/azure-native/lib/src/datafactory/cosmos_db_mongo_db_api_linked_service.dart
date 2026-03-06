@@ -36,7 +36,7 @@ class CosmosDbMongoDbApiLinkedService {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  CosmosDbMongoDbApiLinkedService({
+  const CosmosDbMongoDbApiLinkedService({
     this.annotations,
     this.connectVia,
     required this.connectionString,

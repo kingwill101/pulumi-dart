@@ -25,7 +25,7 @@ class GetGatewayCustomDomainResult {
   /// [properties] The properties of custom domain for Spring Cloud Gateway
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetGatewayCustomDomainResult({
+  const GetGatewayCustomDomainResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

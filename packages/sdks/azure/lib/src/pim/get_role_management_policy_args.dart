@@ -15,7 +15,7 @@ class GetRoleManagementPolicyArgs {
   /// Creates a new [GetRoleManagementPolicyArgs].
   /// [roleDefinitionId] The scoped Role Definition ID of the role for which this policy applies.
   /// [scope] The scope to which this Role Management Policy applies. Can refer to a management group, a subscription, a resource group or a resource.
-  GetRoleManagementPolicyArgs({
+  const GetRoleManagementPolicyArgs({
     required this.roleDefinitionId,
     required this.scope,
   });

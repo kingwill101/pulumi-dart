@@ -9,7 +9,7 @@ class V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting {
 
   /// Creates a new [V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting].
   /// [audioRecognitionStrategy] Enables using the slot values as a custom vocabulary for recognizing user utterances.
-  V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting({
+  const V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting({
     this.audioRecognitionStrategy,
   });
 

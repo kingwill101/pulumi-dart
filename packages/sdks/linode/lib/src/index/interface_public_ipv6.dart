@@ -21,7 +21,7 @@ class InterfacePublicIpv6 {
   /// [ranges] Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
   /// [shareds] (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
   /// [slaacs] (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
-  InterfacePublicIpv6({
+  const InterfacePublicIpv6({
     this.assignedRanges,
     this.ranges,
     this.shareds,

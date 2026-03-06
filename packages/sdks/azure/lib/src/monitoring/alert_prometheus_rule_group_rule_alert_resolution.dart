@@ -11,7 +11,7 @@ class AlertPrometheusRuleGroupRuleAlertResolution {
   /// Creates a new [AlertPrometheusRuleGroupRuleAlertResolution].
   /// [autoResolved] Is the alert auto-resolution? Possible values are `true` and `false`.
   /// [timeToResolve] Specifies the alert auto-resolution interval, represented in ISO 8601 duration format.
-  AlertPrometheusRuleGroupRuleAlertResolution({
+  const AlertPrometheusRuleGroupRuleAlertResolution({
     this.autoResolved,
     this.timeToResolve,
   });

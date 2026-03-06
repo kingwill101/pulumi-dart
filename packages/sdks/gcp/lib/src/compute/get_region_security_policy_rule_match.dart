@@ -18,7 +18,7 @@ class GetRegionSecurityPolicyRuleMatch {
   /// [configs] The configuration options available when specifying versionedExpr.
   /// [exprs] User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. See [Sample expressions](https://cloud.google.com/armor/docs/configure-security-policies#sample-expressions) for examples.
   /// [versionedExpr] Preconfigured versioned expression. If this field is specified, config must also be specified.
-  GetRegionSecurityPolicyRuleMatch({
+  const GetRegionSecurityPolicyRuleMatch({
     required this.configs,
     required this.exprs,
     required this.versionedExpr,

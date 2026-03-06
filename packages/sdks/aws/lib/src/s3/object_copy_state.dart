@@ -170,7 +170,7 @@ class ObjectCopyState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [versionId] Version ID of the newly created copy.
   /// [websiteRedirect] Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
-  ObjectCopyState({
+  const ObjectCopyState({
     this.acl,
     this.arn,
     this.bucket,

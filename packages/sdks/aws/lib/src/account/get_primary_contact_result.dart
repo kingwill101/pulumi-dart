@@ -46,7 +46,7 @@ class GetPrimaryContactResult {
   /// [postalCode] The postal code of the primary contact address.
   /// [stateOrRegion] The state or region of the primary contact address.
   /// [websiteUrl] The URL of the website associated with the primary contact information.
-  GetPrimaryContactResult({
+  const GetPrimaryContactResult({
     required this.accountId,
     required this.addressLine1,
     required this.addressLine2,

@@ -9,7 +9,7 @@ class GetResolverEndpointFilter {
   /// Creates a new [GetResolverEndpointFilter].
   /// [name] Required.
   /// [values] Required.
-  GetResolverEndpointFilter({
+  const GetResolverEndpointFilter({
     required this.name,
     required this.values,
   });

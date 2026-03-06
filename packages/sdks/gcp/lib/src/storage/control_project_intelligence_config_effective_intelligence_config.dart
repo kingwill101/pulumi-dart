@@ -13,7 +13,7 @@ class ControlProjectIntelligenceConfigEffectiveIntelligenceConfig {
   /// Creates a new [ControlProjectIntelligenceConfigEffectiveIntelligenceConfig].
   /// [effectiveEdition] (Output)
   /// [intelligenceConfig] (Output)
-  ControlProjectIntelligenceConfigEffectiveIntelligenceConfig({
+  const ControlProjectIntelligenceConfigEffectiveIntelligenceConfig({
     this.effectiveEdition,
     this.intelligenceConfig,
   });

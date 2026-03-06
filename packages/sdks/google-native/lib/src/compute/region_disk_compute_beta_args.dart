@@ -119,7 +119,7 @@ class RegionDiskComputeBetaArgs {
   /// [storageType] [Deprecated] Storage type of the persistent disk.
   /// [type] URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
   /// [userLicenses] A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
-  RegionDiskComputeBetaArgs({
+  const RegionDiskComputeBetaArgs({
     this.architecture,
     this.asyncPrimaryDisk,
     this.description,

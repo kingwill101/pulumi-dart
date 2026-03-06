@@ -39,7 +39,7 @@ class NetworkInterfacesResponse {
   /// [networkName] Gets or sets the name of the virtual network in vmmServer that the nic is connected to.
   /// [nicId] Gets or sets the nic id.
   /// [virtualNetworkId] Gets or sets the ARM Id of the Microsoft.ScVmm/virtualNetwork resource to connect the nic.
-  NetworkInterfacesResponse({
+  const NetworkInterfacesResponse({
     required this.displayName,
     this.ipv4AddressType,
     required this.ipv4Addresses,

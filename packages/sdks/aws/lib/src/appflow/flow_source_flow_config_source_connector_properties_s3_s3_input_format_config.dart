@@ -8,7 +8,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig].
   /// [s3InputFileType] File type that Amazon AppFlow gets from your Amazon S3 bucket. Valid values are `CSV` and `JSON`.
-  FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig({
+  const FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig({
     this.s3InputFileType,
   });
 

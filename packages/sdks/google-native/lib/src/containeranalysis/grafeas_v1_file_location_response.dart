@@ -9,7 +9,7 @@ class GrafeasV1FileLocationResponse {
 
   /// Creates a new [GrafeasV1FileLocationResponse].
   /// [filePath] For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
-  GrafeasV1FileLocationResponse({
+  const GrafeasV1FileLocationResponse({
     required this.filePath,
   });
 

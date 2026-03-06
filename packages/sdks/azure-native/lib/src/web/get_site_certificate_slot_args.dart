@@ -21,7 +21,7 @@ class GetSiteCertificateSlotArgs {
   /// [name] Name of the site.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
-  GetSiteCertificateSlotArgs({
+  const GetSiteCertificateSlotArgs({
     required this.certificateName,
     required this.name,
     required this.resourceGroupName,

@@ -8,7 +8,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecIn
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema].
   /// [json] A JSON object defining the input schema for the tool.
-  AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema({
+  const AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema({
     this.json,
   });
 

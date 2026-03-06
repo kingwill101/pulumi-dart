@@ -23,7 +23,7 @@ class GetFrontdoorEndpointResult {
   /// [profileName] Required.
   /// [resourceGroupName] Required.
   /// [tags] Specifies a mapping of Tags assigned to this Front Door Endpoint.
-  GetFrontdoorEndpointResult({
+  const GetFrontdoorEndpointResult({
     required this.enabled,
     required this.hostName,
     required this.id,

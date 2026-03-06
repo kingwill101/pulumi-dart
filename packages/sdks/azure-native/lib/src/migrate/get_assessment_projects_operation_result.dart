@@ -67,7 +67,7 @@ class GetAssessmentProjectsOperationResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedTimestamp] Time when this project was last updated. Date-Time represented in ISO-8601
-  GetAssessmentProjectsOperationResult({
+  const GetAssessmentProjectsOperationResult({
     this.assessmentSolutionId,
     required this.azureApiVersion,
     required this.createdTimestamp,

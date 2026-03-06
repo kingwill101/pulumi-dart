@@ -12,7 +12,7 @@ class DistributionTrustedSigner {
   /// Creates a new [DistributionTrustedSigner].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
   /// [items] List of nested attributes for each trusted signer
-  DistributionTrustedSigner({
+  const DistributionTrustedSigner({
     this.enabled,
     this.items,
   });

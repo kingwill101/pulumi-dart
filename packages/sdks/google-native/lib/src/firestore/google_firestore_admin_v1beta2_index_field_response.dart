@@ -15,7 +15,7 @@ class GoogleFirestoreAdminV1beta2IndexFieldResponse {
   /// [arrayConfig] Indicates that this field supports operations on `array_value`s.
   /// [fieldPath] Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
   /// [order] Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-  GoogleFirestoreAdminV1beta2IndexFieldResponse({
+  const GoogleFirestoreAdminV1beta2IndexFieldResponse({
     required this.arrayConfig,
     required this.fieldPath,
     required this.order,

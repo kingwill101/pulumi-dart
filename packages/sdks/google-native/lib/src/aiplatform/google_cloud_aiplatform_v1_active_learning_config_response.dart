@@ -20,7 +20,7 @@ class GoogleCloudAiplatformV1ActiveLearningConfigResponse {
   /// [maxDataItemPercentage] Max percent of total DataItems for human labeling.
   /// [sampleConfig] Active learning data sampling config. For every active learning labeling iteration, it will select a batch of data based on the sampling strategy.
   /// [trainingConfig] CMLE training config. For every active learning labeling iteration, system will train a machine learning model on CMLE. The trained model will be used by data sampling algorithm to select DataItems.
-  GoogleCloudAiplatformV1ActiveLearningConfigResponse({
+  const GoogleCloudAiplatformV1ActiveLearningConfigResponse({
     required this.maxDataItemCount,
     required this.maxDataItemPercentage,
     required this.sampleConfig,

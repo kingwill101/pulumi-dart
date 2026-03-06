@@ -13,7 +13,7 @@ class WeeklyScheduleResponse {
   /// Creates a new [WeeklyScheduleResponse].
   /// [daysOfWeek] The days of the week to perform a backup. If this field is left empty, the default of every day of the week is used.
   /// [startTimes] The times during the day to start a backup. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00). If no start times are provided, a single fixed start time is chosen arbitrarily.
-  WeeklyScheduleResponse({
+  const WeeklyScheduleResponse({
     required this.daysOfWeek,
     required this.startTimes,
   });

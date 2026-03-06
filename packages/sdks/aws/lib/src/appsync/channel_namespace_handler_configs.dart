@@ -13,7 +13,7 @@ class ChannelNamespaceHandlerConfigs {
   /// Creates a new [ChannelNamespaceHandlerConfigs].
   /// [onPublish] Handler configuration. See Handler Config below.
   /// [onSubscribe] Handler configuration. See Handler Config below.
-  ChannelNamespaceHandlerConfigs({
+  const ChannelNamespaceHandlerConfigs({
     this.onPublish,
     this.onSubscribe,
   });

@@ -12,7 +12,7 @@ class TriggerReference {
   /// Creates a new [TriggerReference].
   /// [referenceName] Reference trigger name.
   /// [type] Trigger reference type.
-  TriggerReference({
+  const TriggerReference({
     required this.referenceName,
     required this.type,
   });

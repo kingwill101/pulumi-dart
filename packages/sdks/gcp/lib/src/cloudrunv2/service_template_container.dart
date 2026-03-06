@@ -68,7 +68,7 @@ class ServiceTemplateContainer {
   /// [startupProbe] Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   /// [volumeMounts] Volume to mount into the container's filesystem.
   /// [workingDir] Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
-  ServiceTemplateContainer({
+  const ServiceTemplateContainer({
     this.args,
     this.baseImageUri,
     this.buildInfos,

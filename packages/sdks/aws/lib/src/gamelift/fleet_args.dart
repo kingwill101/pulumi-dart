@@ -58,7 +58,7 @@ class FleetArgs {
   /// [runtimeConfiguration] Instructions for launching server processes on each instance in the fleet. See below.
   /// [scriptId] ID of the GameLift Script to be deployed on the fleet. Conflicts with `build_id`.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  FleetArgs({
+  const FleetArgs({
     this.buildId,
     this.certificateConfiguration,
     this.description,

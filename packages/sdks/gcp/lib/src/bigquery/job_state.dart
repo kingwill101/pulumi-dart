@@ -70,7 +70,7 @@ class JobState {
   /// [reservation] The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
   /// [statuses] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
   /// [userEmail] Email address of the user who ran the job.
-  JobState({
+  const JobState({
     this.copy,
     this.effectiveLabels,
     this.extract,

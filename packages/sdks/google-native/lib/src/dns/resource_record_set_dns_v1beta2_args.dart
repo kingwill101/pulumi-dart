@@ -37,7 +37,7 @@ class ResourceRecordSetDnsV1beta2Args {
   /// [signatureRrdatas] As defined in RFC 4034 (section 3.2).
   /// [ttl] Number of seconds that this ResourceRecordSet can be cached by resolvers.
   /// [type] The identifier of a supported record type. See the list of Supported DNS record types.
-  ResourceRecordSetDnsV1beta2Args({
+  const ResourceRecordSetDnsV1beta2Args({
     this.clientOperationId,
     this.kind,
     required this.managedZone,

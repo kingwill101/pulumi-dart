@@ -18,7 +18,7 @@ class S3Location {
   /// [eTag] The Amazon S3 ETag (a file checksum) of the OpenAPI file. If you don't specify a value, API Gateway skips ETag validation of your OpenAPI file.
   /// [key] The file name of the OpenAPI file (Amazon S3 object name).
   /// [version] For versioning-enabled buckets, a specific version of the OpenAPI file.
-  S3Location({
+  const S3Location({
     this.bucket,
     this.eTag,
     this.key,

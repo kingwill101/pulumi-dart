@@ -27,7 +27,7 @@ class GetFirewallRuleResult {
   /// [startIpAddress] The start IP address of the server firewall rule. Must be IPv4 format.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetFirewallRuleResult({
+  const GetFirewallRuleResult({
     required this.azureApiVersion,
     required this.endIpAddress,
     required this.id,

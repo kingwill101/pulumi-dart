@@ -24,7 +24,7 @@ class GetProductAsEndUsersResult {
   /// [sortBy] Optional.
   /// [sortOrder] Optional.
   /// [users] A list of Product As End User Entries. Each element contains the following attributes:
-  GetProductAsEndUsersResult({
+  const GetProductAsEndUsersResult({
     required this.id,
     required this.ids,
     this.nameRegex,

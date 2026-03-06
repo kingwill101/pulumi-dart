@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesNetBindService {
 
   /// Creates a new [DomainFeaturesCapabilitiesNetBindService].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesNetBindService({
+  const DomainFeaturesCapabilitiesNetBindService({
     this.state,
   });
 

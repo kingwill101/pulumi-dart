@@ -12,7 +12,7 @@ class DiscoveryErrorResponse {
   /// Creates a new [DiscoveryErrorResponse].
   /// [context] Additional context information, like resource IDs or query details
   /// [message] Error message
-  DiscoveryErrorResponse({
+  const DiscoveryErrorResponse({
     required this.context,
     required this.message,
   });

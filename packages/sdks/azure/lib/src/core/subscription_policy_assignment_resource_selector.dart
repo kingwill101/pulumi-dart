@@ -12,7 +12,7 @@ class SubscriptionPolicyAssignmentResourceSelector {
   /// Creates a new [SubscriptionPolicyAssignmentResourceSelector].
   /// [name] Specifies a name for the resource selector.
   /// [selectors] One or more `resource_selector` block as defined below.
-  SubscriptionPolicyAssignmentResourceSelector({
+  const SubscriptionPolicyAssignmentResourceSelector({
     this.name,
     required this.selectors,
   });

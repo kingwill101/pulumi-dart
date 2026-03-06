@@ -34,7 +34,7 @@ class AccountArgs {
   /// [disabled] Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
   /// [displayName] The display name for the service account.
   /// [project] The ID of the project that the service account will be created in.
-  AccountArgs({
+  const AccountArgs({
     this.accountId,
     this.createIgnoreAlreadyExists,
     this.description,

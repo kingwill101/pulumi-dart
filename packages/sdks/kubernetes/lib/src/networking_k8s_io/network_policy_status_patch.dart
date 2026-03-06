@@ -10,7 +10,7 @@ class NetworkPolicyStatusPatch {
 
   /// Creates a new [NetworkPolicyStatusPatch].
   /// [conditions] Conditions holds an array of metav1.Condition that describe the state of the NetworkPolicy. Current service state
-  NetworkPolicyStatusPatch({
+  const NetworkPolicyStatusPatch({
     this.conditions,
   });
 

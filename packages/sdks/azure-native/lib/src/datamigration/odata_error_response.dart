@@ -15,7 +15,7 @@ class ODataErrorResponse {
   /// [code] The machine-readable description of the error, such as 'InvalidRequest' or 'InternalServerError'
   /// [details] Inner errors that caused this error
   /// [message] The human-readable description of the error
-  ODataErrorResponse({
+  const ODataErrorResponse({
     this.code,
     this.details,
     this.message,

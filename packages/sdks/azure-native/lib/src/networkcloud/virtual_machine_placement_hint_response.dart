@@ -17,7 +17,7 @@ class VirtualMachinePlacementHintResponse {
   /// [resourceId] The resource ID of the target object that the placement hints will be checked against, e.g., the bare metal node to host the virtual machine.
   /// [schedulingExecution] The indicator of whether the hint is a hard or soft requirement during scheduling.
   /// [scope] The scope for the virtual machine affinity or anti-affinity placement hint. It should always be "Machine" in the case of node affinity.
-  VirtualMachinePlacementHintResponse({
+  const VirtualMachinePlacementHintResponse({
     required this.hintType,
     required this.resourceId,
     required this.schedulingExecution,

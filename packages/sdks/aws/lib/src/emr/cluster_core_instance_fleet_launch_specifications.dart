@@ -13,7 +13,7 @@ class ClusterCoreInstanceFleetLaunchSpecifications {
   /// Creates a new [ClusterCoreInstanceFleetLaunchSpecifications].
   /// [onDemandSpecifications] Configuration block for on demand instances launch specifications.
   /// [spotSpecifications] Configuration block for spot instances launch specifications.
-  ClusterCoreInstanceFleetLaunchSpecifications({
+  const ClusterCoreInstanceFleetLaunchSpecifications({
     this.onDemandSpecifications,
     this.spotSpecifications,
   });

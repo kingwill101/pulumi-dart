@@ -30,7 +30,7 @@ class GetServiceLevelAlertHelperArgs {
   /// [sliGuid] The guid of the sli we want to set the alert on.
   /// [sloPeriod] The time window of the Service Level Objective in days. Valid values are `1`, `7` and `28`.
   /// [sloTarget] The target of the Service Level Objective, valid values between `0` and `100`.
-  GetServiceLevelAlertHelperArgs({
+  const GetServiceLevelAlertHelperArgs({
     required this.alertType,
     this.customEvaluationPeriod,
     this.customToleratedBudgetConsumption,

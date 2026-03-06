@@ -18,7 +18,7 @@ class GetAppSpecIngressRule {
   /// [cors] The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
   /// [match] Required.
   /// [redirect] Optional.
-  GetAppSpecIngressRule({
+  const GetAppSpecIngressRule({
     required this.component,
     required this.cors,
     required this.match,

@@ -11,7 +11,7 @@ class GetListenerRuleConditionQueryStringValue {
   /// Creates a new [GetListenerRuleConditionQueryStringValue].
   /// [key] Key of query parameter
   /// [value] Value of query parameter
-  GetListenerRuleConditionQueryStringValue({
+  const GetListenerRuleConditionQueryStringValue({
     required this.key,
     required this.value,
   });

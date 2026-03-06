@@ -18,7 +18,7 @@ class GetReplicationPolicyArgs {
   /// [name] Specifies the name of the Azure Site Recovery replication policy.
   /// [recoveryVaultName] The name of the Recovery Services Vault that the Azure Site Recovery replication policy is associated witth.
   /// [resourceGroupName] The name of the resource group in which the associated Azure Site Recovery replication policy resides.
-  GetReplicationPolicyArgs({
+  const GetReplicationPolicyArgs({
     required this.name,
     required this.recoveryVaultName,
     required this.resourceGroupName,

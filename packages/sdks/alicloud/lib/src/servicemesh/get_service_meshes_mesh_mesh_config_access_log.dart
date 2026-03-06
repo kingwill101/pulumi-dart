@@ -11,7 +11,7 @@ class GetServiceMeshesMeshMeshConfigAccessLog {
   /// Creates a new [GetServiceMeshesMeshMeshConfigAccessLog].
   /// [enabled] Whether to enable CNI.
   /// [project] The Service grid audit that to the project.
-  GetServiceMeshesMeshMeshConfigAccessLog({
+  const GetServiceMeshesMeshMeshConfigAccessLog({
     required this.enabled,
     required this.project,
   });

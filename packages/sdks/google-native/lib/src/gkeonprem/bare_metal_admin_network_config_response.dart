@@ -10,7 +10,7 @@ class BareMetalAdminNetworkConfigResponse {
 
   /// Creates a new [BareMetalAdminNetworkConfigResponse].
   /// [islandModeCidr] Configuration for Island mode CIDR.
-  BareMetalAdminNetworkConfigResponse({
+  const BareMetalAdminNetworkConfigResponse({
     required this.islandModeCidr,
   });
 

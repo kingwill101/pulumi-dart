@@ -18,7 +18,7 @@ class DynamicDetectionRule {
   /// [dynamicThresholdModel] ML model to use for dynamic thresholds
   /// [modelSensitivity] ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
   /// [trainingStartTime] Start time of the training in UTC.
-  DynamicDetectionRule({
+  const DynamicDetectionRule({
     required this.dynamicThresholdDirection,
     required this.dynamicThresholdModel,
     required this.modelSensitivity,

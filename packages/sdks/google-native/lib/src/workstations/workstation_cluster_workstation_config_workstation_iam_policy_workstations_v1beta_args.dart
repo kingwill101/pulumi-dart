@@ -36,7 +36,7 @@ class WorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaA
   /// [workstationClusterId] Required.
   /// [workstationConfigId] Required.
   /// [workstationId] Required.
-  WorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs({
+  const WorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs({
     this.auditConfigs,
     this.bindings,
     this.etag,

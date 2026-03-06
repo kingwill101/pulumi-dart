@@ -18,7 +18,7 @@ class GetIoTRoleArgs {
   /// [deviceName] The device name.
   /// [name] The role name.
   /// [resourceGroupName] The resource group name.
-  GetIoTRoleArgs({
+  const GetIoTRoleArgs({
     required this.deviceName,
     required this.name,
     required this.resourceGroupName,

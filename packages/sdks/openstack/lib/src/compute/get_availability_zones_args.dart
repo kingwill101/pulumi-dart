@@ -15,7 +15,7 @@ class GetAvailabilityZonesArgs {
   /// Creates a new [GetAvailabilityZonesArgs].
   /// [region] The `region` to fetch availability zones from, defaults to the provider's `region`
   /// [state] The `state` of the availability zones to match, default ("available").
-  GetAvailabilityZonesArgs({
+  const GetAvailabilityZonesArgs({
     this.region,
     this.state,
   });

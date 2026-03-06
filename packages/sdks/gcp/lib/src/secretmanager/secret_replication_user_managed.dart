@@ -10,7 +10,7 @@ class SecretReplicationUserManaged {
 
   /// Creates a new [SecretReplicationUserManaged].
   /// [replicas] The list of Replicas for this Secret. Cannot be empty.
-  SecretReplicationUserManaged({
+  const SecretReplicationUserManaged({
     required this.replicas,
   });
 

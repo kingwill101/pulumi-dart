@@ -12,7 +12,7 @@ class ManagedVirtualNetworkReferenceResponse {
   /// Creates a new [ManagedVirtualNetworkReferenceResponse].
   /// [referenceName] Reference ManagedVirtualNetwork name.
   /// [type] Managed Virtual Network reference type.
-  ManagedVirtualNetworkReferenceResponse({
+  const ManagedVirtualNetworkReferenceResponse({
     required this.referenceName,
     required this.type,
   });

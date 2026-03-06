@@ -15,7 +15,7 @@ class AwsCloudProfileResponse {
   /// [accountId] Account id for the AWS account.
   /// [excludedAccounts] List of AWS accounts which need to be excluded.
   /// [isOrganizationalAccount] Boolean value that indicates whether the account is organizational or not. True represents organization account, whereas false represents a single account.
-  AwsCloudProfileResponse({
+  const AwsCloudProfileResponse({
     required this.accountId,
     this.excludedAccounts,
     this.isOrganizationalAccount,

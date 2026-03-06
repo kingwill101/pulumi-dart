@@ -12,7 +12,7 @@ class ResourceTypeRegistrationPropertiesCapacityRuleResponse {
   /// Creates a new [ResourceTypeRegistrationPropertiesCapacityRuleResponse].
   /// [capacityPolicy] Capacity policy.
   /// [skuAlias] Sku alias
-  ResourceTypeRegistrationPropertiesCapacityRuleResponse({
+  const ResourceTypeRegistrationPropertiesCapacityRuleResponse({
     this.capacityPolicy,
     this.skuAlias,
   });

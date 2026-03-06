@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecRes
   /// Creates a new [GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse].
   /// [goal] The optimization goal of the metric.
   /// [metricId] The ID of the metric. Must not contain whitespaces.
-  GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse({
+  const GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse({
     required this.goal,
     required this.metricId,
   });

@@ -34,7 +34,7 @@ class GetPortfoliosArgs {
   /// [scope] The query scope. Valid values: `Local`(default), `Import`, `All`.
   /// [sortBy] The field that is used to sort the queried data. The value is fixed as CreateTime, which specifies the creation time of product portfolios.
   /// [sortOrder] The order in which you want to sort the queried data. Valid values: `Asc`, `Desc`.
-  GetPortfoliosArgs({
+  const GetPortfoliosArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

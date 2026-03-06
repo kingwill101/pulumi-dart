@@ -11,7 +11,7 @@ class SpringCloudGatewayClientAuthorization {
   /// Creates a new [SpringCloudGatewayClientAuthorization].
   /// [certificateIds] Specifies the Spring Cloud Certificate IDs of the Spring Cloud Gateway.
   /// [verificationEnabled] Specifies whether the client certificate verification is enabled.
-  SpringCloudGatewayClientAuthorization({
+  const SpringCloudGatewayClientAuthorization({
     this.certificateIds,
     this.verificationEnabled,
   });

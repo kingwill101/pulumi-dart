@@ -28,7 +28,7 @@ class DeploymentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [start] Start the application once deployed.
   /// [timeouts] Optional.
-  DeploymentState({
+  const DeploymentState({
     this.applicationId,
     this.applicationVersion,
     this.deploymentId,

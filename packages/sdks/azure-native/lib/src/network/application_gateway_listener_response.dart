@@ -40,7 +40,7 @@ class ApplicationGatewayListenerResponse {
   /// [sslCertificate] SSL certificate resource of an application gateway.
   /// [sslProfile] SSL profile resource of the application gateway.
   /// [type] Type of the resource.
-  ApplicationGatewayListenerResponse({
+  const ApplicationGatewayListenerResponse({
     required this.etag,
     this.frontendIPConfiguration,
     this.frontendPort,

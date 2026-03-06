@@ -66,7 +66,7 @@ class SSLPolicyState {
   /// [profile] Profile specifies the set of SSL features that can be used by the
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The URI of the created resource.
-  SSLPolicyState({
+  const SSLPolicyState({
     this.creationTimestamp,
     this.customFeatures,
     this.description,

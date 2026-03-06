@@ -11,7 +11,7 @@ class SparkClusterMonitor {
   /// Creates a new [SparkClusterMonitor].
   /// [logAnalyticsWorkspaceId] The Operations Management Suite (OMS) workspace ID.
   /// [primaryKey] The Operations Management Suite (OMS) workspace key.
-  SparkClusterMonitor({
+  const SparkClusterMonitor({
     required this.logAnalyticsWorkspaceId,
     required this.primaryKey,
   });

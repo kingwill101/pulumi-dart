@@ -14,7 +14,7 @@ class PluginConfigTemplateAdditionalConfigTemplateEnumOption {
   /// [description] Description of the option.
   /// [displayName] Display name of the option.
   /// [id] Id of the option.
-  PluginConfigTemplateAdditionalConfigTemplateEnumOption({
+  const PluginConfigTemplateAdditionalConfigTemplateEnumOption({
     this.description,
     required this.displayName,
     required this.id,

@@ -13,7 +13,7 @@ class GetThemeConfigurationSheetTileLayout {
   /// Creates a new [GetThemeConfigurationSheetTileLayout].
   /// [gutters] The gutter settings that apply between tiles. See gutter.
   /// [margins] The margin settings that apply around the outside edge of sheets. See margin.
-  GetThemeConfigurationSheetTileLayout({
+  const GetThemeConfigurationSheetTileLayout({
     required this.gutters,
     required this.margins,
   });

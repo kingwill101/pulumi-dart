@@ -16,7 +16,7 @@ class CustomTargetTypeIamPolicyState {
   /// [name] Optional.
   /// [policyData] Optional.
   /// [project] Optional.
-  CustomTargetTypeIamPolicyState({
+  const CustomTargetTypeIamPolicyState({
     this.etag,
     this.location,
     this.name,

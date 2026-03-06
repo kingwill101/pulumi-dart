@@ -16,7 +16,7 @@ class GetPlacementGroupResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] Required.
-  GetPlacementGroupResult({
+  const GetPlacementGroupResult({
     required this.id,
     required this.location,
     required this.name,

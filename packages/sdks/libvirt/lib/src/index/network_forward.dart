@@ -34,7 +34,7 @@ class NetworkForward {
   /// [mode] Configures the mode of operation for the network forwarding.
   /// [nat] Enables or disables NAT (Network Address Translation) for the forwarding configuration.
   /// [pfs] Configures per-packet forwarding service, enabling a fine-tuned forwarding operation.
-  NetworkForward({
+  const NetworkForward({
     this.addresses,
     this.dev,
     this.driver,

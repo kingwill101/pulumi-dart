@@ -8,7 +8,7 @@ class SpringCloudServiceDefaultBuildService {
 
   /// Creates a new [SpringCloudServiceDefaultBuildService].
   /// [containerRegistryName] Specifies the name of the container registry used in the default build service.
-  SpringCloudServiceDefaultBuildService({
+  const SpringCloudServiceDefaultBuildService({
     this.containerRegistryName,
   });
 

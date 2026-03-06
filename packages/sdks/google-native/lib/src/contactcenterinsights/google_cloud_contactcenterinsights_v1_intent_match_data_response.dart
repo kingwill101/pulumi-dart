@@ -9,7 +9,7 @@ class GoogleCloudContactcenterinsightsV1IntentMatchDataResponse {
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1IntentMatchDataResponse].
   /// [intentUniqueId] The id of the matched intent. Can be used to retrieve the corresponding intent information.
-  GoogleCloudContactcenterinsightsV1IntentMatchDataResponse({
+  const GoogleCloudContactcenterinsightsV1IntentMatchDataResponse({
     required this.intentUniqueId,
   });
 

@@ -26,7 +26,7 @@ class GetTaskIamPolicyArgs {
   /// [location] The location in which the task will be created in.
   /// [project] The ID of the project in which the resource belongs.
   /// [taskId] Used to find the parent resource to bind the IAM policy to
-  GetTaskIamPolicyArgs({
+  const GetTaskIamPolicyArgs({
     required this.lake,
     this.location,
     this.project,

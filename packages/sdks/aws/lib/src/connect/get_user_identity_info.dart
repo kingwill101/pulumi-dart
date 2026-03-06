@@ -17,7 +17,7 @@ class GetUserIdentityInfo {
   /// [firstName] The first name.
   /// [lastName] The last name.
   /// [secondaryEmail] The secondary email address. If present, email notifications will be sent to this email address instead of the primary one.
-  GetUserIdentityInfo({
+  const GetUserIdentityInfo({
     required this.email,
     required this.firstName,
     required this.lastName,

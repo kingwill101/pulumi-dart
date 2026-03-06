@@ -10,7 +10,7 @@ class ManagedZonePeeringConfig {
 
   /// Creates a new [ManagedZonePeeringConfig].
   /// [targetNetwork] The network with which to peer.
-  ManagedZonePeeringConfig({
+  const ManagedZonePeeringConfig({
     required this.targetNetwork,
   });
 

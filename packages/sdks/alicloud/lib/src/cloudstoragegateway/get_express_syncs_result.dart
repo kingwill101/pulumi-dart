@@ -20,7 +20,7 @@ class GetExpressSyncsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [syncs] Required.
-  GetExpressSyncsResult({
+  const GetExpressSyncsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

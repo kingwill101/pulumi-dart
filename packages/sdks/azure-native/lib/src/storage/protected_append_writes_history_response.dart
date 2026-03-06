@@ -12,7 +12,7 @@ class ProtectedAppendWritesHistoryResponse {
   /// Creates a new [ProtectedAppendWritesHistoryResponse].
   /// [allowProtectedAppendWritesAll] When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.
   /// [timestamp] Returns the date and time the tag was added.
-  ProtectedAppendWritesHistoryResponse({
+  const ProtectedAppendWritesHistoryResponse({
     this.allowProtectedAppendWritesAll,
     required this.timestamp,
   });

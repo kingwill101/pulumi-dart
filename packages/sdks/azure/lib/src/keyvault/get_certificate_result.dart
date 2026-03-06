@@ -54,7 +54,7 @@ class GetCertificateResult {
   /// [version] The current version of the Key Vault Certificate.
   /// [versionlessId] The Base ID of the Key Vault Certificate.
   /// [versionlessSecretId] The Base ID of the Key Vault Secret.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.certificateData,
     required this.certificateDataBase64,
     required this.certificatePolicies,

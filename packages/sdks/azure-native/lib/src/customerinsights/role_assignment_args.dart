@@ -72,7 +72,7 @@ class RoleAssignmentArgs {
   /// [segments] The Role assignments set for the assignment.
   /// [views] Views set for the assignment.
   /// [widgetTypes] Widget types set for the assignment.
-  RoleAssignmentArgs({
+  const RoleAssignmentArgs({
     this.assignmentName,
     this.conflationPolicies,
     this.connectors,

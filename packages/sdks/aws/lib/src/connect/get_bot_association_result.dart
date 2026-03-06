@@ -15,7 +15,7 @@ class GetBotAssociationResult {
   /// [instanceId] Required.
   /// [lexBot] Required.
   /// [region] Required.
-  GetBotAssociationResult({
+  const GetBotAssociationResult({
     required this.id,
     required this.instanceId,
     required this.lexBot,

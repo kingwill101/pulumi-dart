@@ -14,7 +14,7 @@ class ConnectionParameter {
   /// Creates a new [ConnectionParameter].
   /// [oAuthSettings] OAuth settings for the connection provider
   /// [type] Type of the parameter
-  ConnectionParameter({
+  const ConnectionParameter({
     this.oAuthSettings,
     this.type,
   });

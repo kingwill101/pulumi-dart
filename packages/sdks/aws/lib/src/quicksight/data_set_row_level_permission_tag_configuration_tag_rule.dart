@@ -17,7 +17,7 @@ class DataSetRowLevelPermissionTagConfigurationTagRule {
   /// [matchAllValue] A string that you want to use to filter by all the values in a column in the dataset and don’t want to list the values one by one.
   /// [tagKey] Unique key for a tag.
   /// [tagMultiValueDelimiter] A string that you want to use to delimit the values when you pass the values at run time.
-  DataSetRowLevelPermissionTagConfigurationTagRule({
+  const DataSetRowLevelPermissionTagConfigurationTagRule({
     required this.columnName,
     this.matchAllValue,
     required this.tagKey,

@@ -24,7 +24,7 @@ class GetExchangesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [virtualHostName] Required.
-  GetExchangesResult({
+  const GetExchangesResult({
     required this.exchanges,
     required this.id,
     required this.ids,

@@ -20,7 +20,7 @@ class DomainMappingSpec {
   /// [certificateMode] The mode of the certificate.
   /// [forceOverride] If set, the mapping will override any mapping set before this spec was set.
   /// [routeName] The name of the Cloud Run Service that this DomainMapping applies to.
-  DomainMappingSpec({
+  const DomainMappingSpec({
     this.certificateMode,
     this.forceOverride,
     required this.routeName,

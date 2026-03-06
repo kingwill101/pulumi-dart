@@ -24,7 +24,7 @@ class EndpointServicebusArgs {
   /// [name] The name which should be used for this Digital Twins Service Bus Endpoint. Changing this forces a new Digital Twins Service Bus Endpoint to be created.
   /// [servicebusPrimaryConnectionString] The primary connection string of the Service Bus Topic Authorization Rule with a minimum of `send` permission. .
   /// [servicebusSecondaryConnectionString] The secondary connection string of the Service Bus Topic Authorization Rule with a minimum of `send` permission.
-  EndpointServicebusArgs({
+  const EndpointServicebusArgs({
     this.deadLetterStorageSecret,
     required this.digitalTwinsId,
     this.name,

@@ -49,7 +49,7 @@ class InstanceFromMachineImageBootDiskInitializeParams {
   /// [sourceSnapshotEncryptionKey] The encryption key used to decrypt the source snapshot.
   /// [storagePool] The URL of the storage pool in which the new disk is created
   /// [type] The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
-  InstanceFromMachineImageBootDiskInitializeParams({
+  const InstanceFromMachineImageBootDiskInitializeParams({
     this.architecture,
     this.enableConfidentialCompute,
     this.image,

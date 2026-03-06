@@ -30,7 +30,7 @@ class ActivationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registrationLimit] The maximum number of managed instances you want to register. The default value is 1 instance.
   /// [tags] A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ActivationArgs({
+  const ActivationArgs({
     this.description,
     this.expirationDate,
     required this.iamRole,

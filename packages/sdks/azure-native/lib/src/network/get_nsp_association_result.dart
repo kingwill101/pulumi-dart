@@ -39,7 +39,7 @@ class GetNspAssociationResult {
   /// [provisioningState] The provisioning state of the resource  association resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNspAssociationResult({
+  const GetNspAssociationResult({
     this.accessMode,
     required this.azureApiVersion,
     required this.hasProvisioningIssues,

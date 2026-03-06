@@ -12,7 +12,7 @@ class Attribute {
   /// Creates a new [Attribute].
   /// [attributeDefinitionId] Indicates the name of an attribute defined in the consent store.
   /// [values] The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
-  Attribute({
+  const Attribute({
     this.attributeDefinitionId,
     required this.values,
   });

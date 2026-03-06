@@ -17,7 +17,7 @@ class RouterStatusBestRouteWarning {
   /// [code] A warning code, if applicable. For example, Compute Engine returns
   /// [datas] Metadata about this warning in key: value format. For example:
   /// [message] A human-readable description of the warning code.
-  RouterStatusBestRouteWarning({
+  const RouterStatusBestRouteWarning({
     required this.code,
     required this.datas,
     required this.message,

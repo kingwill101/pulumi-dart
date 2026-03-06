@@ -13,7 +13,7 @@ class GetLicenseArgs {
   /// Creates a new [GetLicenseArgs].
   /// [license] Required.
   /// [project] Optional.
-  GetLicenseArgs({
+  const GetLicenseArgs({
     required this.license,
     this.project,
   });

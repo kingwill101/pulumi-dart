@@ -38,7 +38,7 @@ class GetStackInstancesInstance {
   /// [stackInstanceRegionId] The region of the stack instance.
   /// [status] The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
   /// [statusReason] The reason why the stack is in its current state.
-  GetStackInstancesInstance({
+  const GetStackInstancesInstance({
     required this.id,
     required this.parameterOverrides,
     required this.stackGroupId,

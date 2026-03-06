@@ -17,7 +17,7 @@ class GetSshKeysSshKey {
   /// [id] The ID of the ssh key.
   /// [name] The name of the ssh key.
   /// [publicKey] The public key of the ssh key.
-  GetSshKeysSshKey({
+  const GetSshKeysSshKey({
     required this.fingerprint,
     required this.id,
     required this.name,

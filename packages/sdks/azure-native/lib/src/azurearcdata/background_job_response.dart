@@ -24,7 +24,7 @@ class BackgroundJobResponse {
   /// [lastExecutionTime] The last execution time of the background job.
   /// [startTime] The start time of the background job.
   /// [state] The state of the background job.
-  BackgroundJobResponse({
+  const BackgroundJobResponse({
     this.endTime,
     this.executionState,
     this.lastExecutionStatus,

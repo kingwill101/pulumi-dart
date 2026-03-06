@@ -28,7 +28,7 @@ class GroupInitContainer {
   /// [secureEnvironmentVariables] A list of sensitive environment variables to be set on the container. Specified as a map of name/value pairs. Changing this forces a new resource to be created.
   /// [securities] The definition of the security context for this container as documented in the `security` block below. Changing this forces a new resource to be created.
   /// [volumes] The definition of a volume mount for this container as documented in the `volume` block below. Changing this forces a new resource to be created.
-  GroupInitContainer({
+  const GroupInitContainer({
     this.commands,
     this.environmentVariables,
     required this.image,

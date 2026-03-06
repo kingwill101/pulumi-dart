@@ -9,7 +9,7 @@ class KvAccountState {
 
   /// Creates a new [KvAccountState].
   /// [status] The status of the resource.
-  KvAccountState({
+  const KvAccountState({
     this.status,
   });
 

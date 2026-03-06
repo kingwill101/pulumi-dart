@@ -59,7 +59,7 @@ class GetDeviceResult {
   /// [name] The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
   /// [numId] [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
   /// [state] [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
-  GetDeviceResult({
+  const GetDeviceResult({
     required this.blocked,
     required this.config,
     required this.credentials,

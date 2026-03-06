@@ -8,7 +8,7 @@ class DomainMatchingAutoMergingConsolidation {
 
   /// Creates a new [DomainMatchingAutoMergingConsolidation].
   /// [matchingAttributesLists] A list of matching criteria.
-  DomainMatchingAutoMergingConsolidation({
+  const DomainMatchingAutoMergingConsolidation({
     required this.matchingAttributesLists,
   });
 

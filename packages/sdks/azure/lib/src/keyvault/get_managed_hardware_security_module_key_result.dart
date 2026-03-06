@@ -37,7 +37,7 @@ class GetManagedHardwareSecurityModuleKeyResult {
   /// [tags] A mapping of tags assigned to this Managed Hardware Security Module Key.
   /// [version] The current version of the Managed Hardware Security Module Key.
   /// [versionedId] The versioned ID of the Managed Hardware Security Module Key.
-  GetManagedHardwareSecurityModuleKeyResult({
+  const GetManagedHardwareSecurityModuleKeyResult({
     required this.curve,
     required this.expirationDate,
     required this.id,

@@ -18,7 +18,7 @@ class DatasetVersionAiplatformV1beta1Args {
   /// [etag] Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   /// [location] Optional.
   /// [project] Optional.
-  DatasetVersionAiplatformV1beta1Args({
+  const DatasetVersionAiplatformV1beta1Args({
     required this.datasetId,
     this.etag,
     this.location,

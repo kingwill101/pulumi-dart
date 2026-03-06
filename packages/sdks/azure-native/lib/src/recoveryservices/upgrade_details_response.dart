@@ -33,7 +33,7 @@ class UpgradeDetailsResponse {
   /// [status] Status of the vault upgrade operation.
   /// [triggerType] The way the vault upgrade was triggered.
   /// [upgradedResourceId] Resource ID of the upgraded vault.
-  UpgradeDetailsResponse({
+  const UpgradeDetailsResponse({
     required this.endTimeUtc,
     required this.lastUpdatedTimeUtc,
     required this.message,

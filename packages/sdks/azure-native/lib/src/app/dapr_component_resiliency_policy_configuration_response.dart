@@ -18,7 +18,7 @@ class DaprComponentResiliencyPolicyConfigurationResponse {
   /// [circuitBreakerPolicy] The optional circuit breaker policy configuration
   /// [httpRetryPolicy] The optional HTTP retry policy configuration
   /// [timeoutPolicy] The optional timeout policy configuration
-  DaprComponentResiliencyPolicyConfigurationResponse({
+  const DaprComponentResiliencyPolicyConfigurationResponse({
     this.circuitBreakerPolicy,
     this.httpRetryPolicy,
     this.timeoutPolicy,

@@ -68,7 +68,7 @@ class GetInstancesInstance {
   /// [status] The instance status.
   /// [storage] The storage space of the shard node.
   /// [tags] A mapping of tags to assign to the resource.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.availabilityZone,
     required this.chargeType,
     required this.creationTime,

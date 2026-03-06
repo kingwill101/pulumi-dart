@@ -18,7 +18,7 @@ class GetAssociationsInterfaceArgs {
   /// [associationName] Name of Association
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [trafficControllerName] traffic controller name for path
-  GetAssociationsInterfaceArgs({
+  const GetAssociationsInterfaceArgs({
     required this.associationName,
     required this.resourceGroupName,
     required this.trafficControllerName,

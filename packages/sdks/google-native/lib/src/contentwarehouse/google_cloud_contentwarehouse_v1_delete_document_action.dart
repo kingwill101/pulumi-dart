@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1DeleteDocumentAction {
 
   /// Creates a new [GoogleCloudContentwarehouseV1DeleteDocumentAction].
   /// [enableHardDelete] Boolean field to select between hard vs soft delete options. Set 'true' for 'hard delete' and 'false' for 'soft delete'.
-  GoogleCloudContentwarehouseV1DeleteDocumentAction({
+  const GoogleCloudContentwarehouseV1DeleteDocumentAction({
     this.enableHardDelete,
   });
 

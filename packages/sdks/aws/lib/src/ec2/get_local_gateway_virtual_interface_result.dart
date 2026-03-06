@@ -35,7 +35,7 @@ class GetLocalGatewayVirtualInterfaceResult {
   /// [region] Required.
   /// [tags] Required.
   /// [vlan] Virtual Local Area Network.
-  GetLocalGatewayVirtualInterfaceResult({
+  const GetLocalGatewayVirtualInterfaceResult({
     this.filters,
     required this.id,
     required this.localAddress,

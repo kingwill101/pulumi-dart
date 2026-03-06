@@ -14,7 +14,7 @@ class NatGatewayAvailabilityZoneAddress {
   /// [allocationIds] List of allocation IDs of the Elastic IP addresses (EIPs) to be used for handling outbound NAT traffic in this specific Availability Zone.
   /// [availabilityZone] Availability Zone (e.g. `us-west-2a`) where this specific NAT gateway configuration will be active. Exactly one of `availability_zone` or `availability_zone_id` must be specified.
   /// [availabilityZoneId] Availability Zone ID (e.g. `usw2-az2`) where this specific NAT gateway configuration will be active. Exactly one of `availability_zone` or `availability_zone_id` must be specified.
-  NatGatewayAvailabilityZoneAddress({
+  const NatGatewayAvailabilityZoneAddress({
     this.allocationIds,
     this.availabilityZone,
     this.availabilityZoneId,

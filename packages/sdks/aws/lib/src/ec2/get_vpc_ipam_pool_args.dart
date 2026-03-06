@@ -28,7 +28,7 @@ class GetVpcIpamPoolArgs {
   /// [ipamPoolId] ID of the IPAM pool you would like information on.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assigned to the resource.
-  GetVpcIpamPoolArgs({
+  const GetVpcIpamPoolArgs({
     this.allocationResourceTags,
     this.filters,
     this.id,

@@ -8,7 +8,7 @@ class GetClusterNodeConfigSandboxConfig {
 
   /// Creates a new [GetClusterNodeConfigSandboxConfig].
   /// [sandboxType] Type of the sandbox to use for the node (e.g. 'gvisor')
-  GetClusterNodeConfigSandboxConfig({
+  const GetClusterNodeConfigSandboxConfig({
     required this.sandboxType,
   });
 

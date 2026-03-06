@@ -15,7 +15,7 @@ class GetServicePrincipalArgs {
   /// Creates a new [GetServicePrincipalArgs].
   /// [region] Region you'd like the SPN for. Defaults to the Region set in the provider configuration.
   /// [serviceName] Name of the service you want to generate a Service Principal Name for.
-  GetServicePrincipalArgs({
+  const GetServicePrincipalArgs({
     this.region,
     required this.serviceName,
   });

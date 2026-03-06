@@ -26,7 +26,7 @@ class GetInvocationArgs {
   /// [qualifier] Qualifier (a.k.a version) of the Lambda function. Defaults to `$LATEST`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tenantId] Tenant Id to serve invocations from specified tenant.
-  GetInvocationArgs({
+  const GetInvocationArgs({
     required this.functionName,
     required this.input,
     this.qualifier,

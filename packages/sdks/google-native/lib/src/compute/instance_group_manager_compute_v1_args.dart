@@ -66,7 +66,7 @@ class InstanceGroupManagerComputeV1Args {
   /// [updatePolicy] The update policy for this managed instance group.
   /// [versions] Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
   /// [zone] Optional.
-  InstanceGroupManagerComputeV1Args({
+  const InstanceGroupManagerComputeV1Args({
     this.autoHealingPolicies,
     this.baseInstanceName,
     this.description,

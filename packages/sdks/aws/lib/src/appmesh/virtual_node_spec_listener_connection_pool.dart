@@ -21,7 +21,7 @@ class VirtualNodeSpecListenerConnectionPool {
   /// [http2s] Connection pool information for HTTP2 listeners.
   /// [https] Connection pool information for HTTP listeners.
   /// [tcps] Connection pool information for TCP listeners.
-  VirtualNodeSpecListenerConnectionPool({
+  const VirtualNodeSpecListenerConnectionPool({
     this.grpc,
     this.http2s,
     this.https,

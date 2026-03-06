@@ -27,7 +27,7 @@ class ReportArgs {
   /// [format] The format of the report being delivered.
   /// [reportName] Report Name.
   /// [schedule] Has schedule information for the report.
-  ReportArgs({
+  const ReportArgs({
     required this.definition,
     required this.deliveryInfo,
     this.format,

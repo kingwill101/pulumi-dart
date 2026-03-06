@@ -8,7 +8,7 @@ class GetClusterIdentityOidc {
 
   /// Creates a new [GetClusterIdentityOidc].
   /// [issuer] Issuer URL for the OpenID Connect identity provider.
-  GetClusterIdentityOidc({
+  const GetClusterIdentityOidc({
     required this.issuer,
   });
 

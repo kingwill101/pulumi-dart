@@ -21,7 +21,7 @@ class GetCassandraResourceCassandraTableArgs {
   /// [keyspaceName] Cosmos DB keyspace name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tableName] Cosmos DB table name.
-  GetCassandraResourceCassandraTableArgs({
+  const GetCassandraResourceCassandraTableArgs({
     required this.accountName,
     required this.keyspaceName,
     required this.resourceGroupName,

@@ -17,7 +17,7 @@ class SharingProfileResponse {
   /// [communityGalleryInfo] Information of community gallery if current gallery is shared to community.
   /// [groups] A list of sharing profile groups.
   /// [permissions] This property allows you to specify the permission of sharing gallery. Possible values are: **Private,** **Groups,** **Community.**
-  SharingProfileResponse({
+  const SharingProfileResponse({
     this.communityGalleryInfo,
     required this.groups,
     this.permissions,

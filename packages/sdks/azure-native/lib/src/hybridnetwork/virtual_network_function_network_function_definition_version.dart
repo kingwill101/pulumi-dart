@@ -20,7 +20,7 @@ class VirtualNetworkFunctionNetworkFunctionDefinitionVersion {
   /// [description] The network function definition version description.
   /// [networkFunctionTemplate] Virtual network function template.
   /// [networkFunctionType] The network function type.
-  VirtualNetworkFunctionNetworkFunctionDefinitionVersion({
+  const VirtualNetworkFunctionNetworkFunctionDefinitionVersion({
     this.deployParameters,
     this.description,
     this.networkFunctionTemplate,

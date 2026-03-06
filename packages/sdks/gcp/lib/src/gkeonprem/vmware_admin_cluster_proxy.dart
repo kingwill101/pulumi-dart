@@ -12,7 +12,7 @@ class VmwareAdminClusterProxy {
   /// Creates a new [VmwareAdminClusterProxy].
   /// [noProxy] A comma-separated list of IP addresses, IP address ranges,
   /// [url] The proxy url.
-  VmwareAdminClusterProxy({
+  const VmwareAdminClusterProxy({
     this.noProxy,
     required this.url,
   });

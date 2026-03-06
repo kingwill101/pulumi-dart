@@ -12,7 +12,7 @@ class Fingerprint {
   /// Creates a new [Fingerprint].
   /// [v1Name] The layer ID of the final layer in the Docker image's v1 representation.
   /// [v2Blob] The ordered list of v2 blobs that represent a given image.
-  Fingerprint({
+  const Fingerprint({
     required this.v1Name,
     required this.v2Blob,
   });

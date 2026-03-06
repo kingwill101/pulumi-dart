@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestin
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema].
   /// [recordFormatType] Specifies the format of the records on the output stream. Valid values: `CSV`, `JSON`.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema({
     required this.recordFormatType,
   });
 

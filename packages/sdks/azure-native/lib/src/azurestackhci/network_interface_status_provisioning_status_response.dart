@@ -12,7 +12,7 @@ class NetworkInterfaceStatusProvisioningStatusResponse {
   /// Creates a new [NetworkInterfaceStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the network interface
   /// [status] The status of the operation performed on the network interface [Succeeded, Failed, InProgress]
-  NetworkInterfaceStatusProvisioningStatusResponse({
+  const NetworkInterfaceStatusProvisioningStatusResponse({
     this.operationId,
     required this.status,
   });

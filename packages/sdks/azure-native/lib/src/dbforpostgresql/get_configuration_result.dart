@@ -54,7 +54,7 @@ class GetConfigurationResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [unit] Units in which the configuration (also known as server parameter) value is expressed.
   /// [value] Value of the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
-  GetConfigurationResult({
+  const GetConfigurationResult({
     required this.allowedValues,
     required this.azureApiVersion,
     required this.dataType,

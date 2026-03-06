@@ -20,7 +20,7 @@ class LoadBalancerServiceHttp {
   /// [cookieName] Name of the cookie for sticky session. Default: `HCLBSTICKY`
   /// [redirectHttp] Redirect HTTP to HTTPS traffic. Only supported for services with `protocol` `https` using the default HTTP port `80`.
   /// [stickySessions] Enable sticky sessions
-  LoadBalancerServiceHttp({
+  const LoadBalancerServiceHttp({
     this.certificates,
     this.cookieLifetime,
     this.cookieName,

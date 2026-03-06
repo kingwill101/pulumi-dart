@@ -8,7 +8,7 @@ class GetFactoryGitHubAccessTokenResult {
 
   /// Creates a new [GetFactoryGitHubAccessTokenResult].
   /// [gitHubAccessToken] GitHub access token.
-  GetFactoryGitHubAccessTokenResult({
+  const GetFactoryGitHubAccessTokenResult({
     this.gitHubAccessToken,
   });
 

@@ -47,7 +47,7 @@ class ServiceEndpointPolicyResponse {
   /// [subnets] A collection of references to subnets.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  ServiceEndpointPolicyResponse({
+  const ServiceEndpointPolicyResponse({
     this.contextualServiceEndpointPolicies,
     required this.etag,
     this.id,

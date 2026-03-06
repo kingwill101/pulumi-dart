@@ -7,7 +7,7 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustSd {
 
   /// Creates a new [GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustSd].
   /// [secretName] Required.
-  GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustSd({
+  const GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustSd({
     required this.secretName,
   });
 

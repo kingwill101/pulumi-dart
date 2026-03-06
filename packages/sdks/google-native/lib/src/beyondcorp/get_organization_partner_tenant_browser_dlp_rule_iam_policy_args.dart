@@ -17,7 +17,7 @@ class GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [organizationId] Required.
   /// [partnerTenantId] Required.
-  GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs({
+  const GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs({
     required this.browserDlpRuleId,
     this.optionsRequestedPolicyVersion,
     required this.organizationId,

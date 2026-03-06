@@ -36,7 +36,7 @@ class GetSourceResult {
   /// [name] The Source name.
   /// [updateTime] The update time timestamp.
   /// [vmware] Vmware type source details.
-  GetSourceResult({
+  const GetSourceResult({
     required this.aws,
     required this.azure,
     required this.createTime,

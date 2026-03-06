@@ -22,7 +22,7 @@ class GetTagsFilter {
   /// [key] Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] Only retrieves tags which keys has value that matches
-  GetTagsFilter({
+  const GetTagsFilter({
     this.all,
     required this.key,
     this.matchBy,

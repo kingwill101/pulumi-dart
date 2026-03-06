@@ -27,7 +27,7 @@ class NetworkDns {
   /// [hosts] Defines the host settings for DNS within the virtual network, controlling how local hostnames are resolved.
   /// [srVs] Configures the SRV records for the DNS entries.
   /// [txTs] Configures TXT records for DNS entries.
-  NetworkDns({
+  const NetworkDns({
     this.enable,
     this.forwardPlainNames,
     this.forwarders,

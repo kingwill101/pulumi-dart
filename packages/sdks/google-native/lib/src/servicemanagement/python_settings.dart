@@ -10,7 +10,7 @@ class PythonSettings {
 
   /// Creates a new [PythonSettings].
   /// [common] Some settings.
-  PythonSettings({
+  const PythonSettings({
     this.common,
   });
 

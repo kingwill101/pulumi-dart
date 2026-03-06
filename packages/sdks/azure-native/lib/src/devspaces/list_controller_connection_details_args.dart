@@ -18,7 +18,7 @@ class ListControllerConnectionDetailsArgs {
   /// [name] Name of the resource.
   /// [resourceGroupName] Resource group to which the resource belongs.
   /// [targetContainerHostResourceId] Resource ID of the target container host mapped to the Azure Dev Spaces Controller.
-  ListControllerConnectionDetailsArgs({
+  const ListControllerConnectionDetailsArgs({
     required this.name,
     required this.resourceGroupName,
     required this.targetContainerHostResourceId,

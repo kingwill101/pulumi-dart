@@ -62,7 +62,7 @@ class LoadBalancerArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [sku] The load balancer SKU.
   /// [tags] Resource tags.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     this.backendAddressPools,
     this.extendedLocation,
     this.frontendIPConfigurations,

@@ -24,7 +24,7 @@ class GetListenersArgs {
   /// [nameRegex] A regex string to filter results by Listener name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the listener. Valid values: `active`, `configuring`, `creating`.
-  GetListenersArgs({
+  const GetListenersArgs({
     required this.acceleratorId,
     this.ids,
     this.nameRegex,

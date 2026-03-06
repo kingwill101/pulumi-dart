@@ -8,7 +8,7 @@ class LogTransformerTransformerConfigParseRoute53 {
 
   /// Creates a new [LogTransformerTransformerConfigParseRoute53].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigParseRoute53({
+  const LogTransformerTransformerConfigParseRoute53({
     this.source,
   });
 

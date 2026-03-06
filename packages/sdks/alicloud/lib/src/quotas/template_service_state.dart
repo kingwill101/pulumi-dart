@@ -10,7 +10,7 @@ class TemplateServiceState {
 
   /// Creates a new [TemplateServiceState].
   /// [serviceStatus] Status of the quota template. Valid values:
-  TemplateServiceState({
+  const TemplateServiceState({
     this.serviceStatus,
   });
 

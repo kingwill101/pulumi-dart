@@ -23,7 +23,7 @@ class ProjectFileSystemLocation {
   /// [mountOptions] The mount options for a file system created by AWS EFS.
   /// [mountPoint] The location in the container where you mount the file system.
   /// [type] The type of the file system. The one supported type is `EFS`.
-  ProjectFileSystemLocation({
+  const ProjectFileSystemLocation({
     this.identifier,
     this.location,
     this.mountOptions,

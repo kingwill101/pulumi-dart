@@ -15,7 +15,7 @@ class ExpressRouteCircuitSku {
   /// [family] The family of the SKU.
   /// [name] The name of the SKU.
   /// [tier] The tier of the SKU.
-  ExpressRouteCircuitSku({
+  const ExpressRouteCircuitSku({
     this.family,
     this.name,
     this.tier,

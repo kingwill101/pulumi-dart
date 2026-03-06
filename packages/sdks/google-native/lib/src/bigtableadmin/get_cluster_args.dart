@@ -15,7 +15,7 @@ class GetClusterArgs {
   /// [clusterId] Required.
   /// [instanceId] Required.
   /// [project] Optional.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.clusterId,
     required this.instanceId,
     this.project,

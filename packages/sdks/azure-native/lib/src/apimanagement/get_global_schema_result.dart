@@ -26,7 +26,7 @@ class GetGlobalSchemaResult {
   /// [schemaType] Schema Type. Immutable.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Json-encoded string for non json-based schema.
-  GetGlobalSchemaResult({
+  const GetGlobalSchemaResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

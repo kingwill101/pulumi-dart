@@ -20,7 +20,7 @@ class DataLakeConfiguration {
   /// [lifecycleConfiguration] Provides lifecycle details of Amazon Security Lake object.
   /// [region] The AWS Regions where Security Lake is automatically enabled.
   /// [replicationConfiguration] Provides replication details of Amazon Security Lake object.
-  DataLakeConfiguration({
+  const DataLakeConfiguration({
     this.encryptionConfigurations,
     this.lifecycleConfiguration,
     required this.region,

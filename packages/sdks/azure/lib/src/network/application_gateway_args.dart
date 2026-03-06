@@ -134,7 +134,7 @@ class ApplicationGatewayArgs {
   /// [urlPathMaps] One or more `url_path_map` blocks as defined below.
   /// [wafConfiguration] A `waf_configuration` block as defined below.
   /// [zones] Specifies a list of Availability Zones in which this Application Gateway should be located. Changing this forces a new Application Gateway to be created.
-  ApplicationGatewayArgs({
+  const ApplicationGatewayArgs({
     this.authenticationCertificates,
     this.autoscaleConfiguration,
     required this.backendAddressPools,

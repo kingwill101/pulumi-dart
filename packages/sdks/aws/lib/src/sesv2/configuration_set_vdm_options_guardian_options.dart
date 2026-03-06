@@ -8,7 +8,7 @@ class ConfigurationSetVdmOptionsGuardianOptions {
 
   /// Creates a new [ConfigurationSetVdmOptionsGuardianOptions].
   /// [optimizedSharedDelivery] Specifies the status of your VDM optimized shared delivery. Valid values: `ENABLED`, `DISABLED`.
-  ConfigurationSetVdmOptionsGuardianOptions({
+  const ConfigurationSetVdmOptionsGuardianOptions({
     this.optimizedSharedDelivery,
   });
 

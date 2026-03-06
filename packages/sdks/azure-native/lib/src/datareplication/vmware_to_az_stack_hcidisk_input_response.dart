@@ -25,7 +25,7 @@ class VMwareToAzStackHCIDiskInputResponse {
   /// [isDynamic] Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
   /// [isOsDisk] Gets or sets a value indicating whether disk is os disk.
   /// [storageContainerId] Gets or sets the target storage account ARM Id.
-  VMwareToAzStackHCIDiskInputResponse({
+  const VMwareToAzStackHCIDiskInputResponse({
     required this.diskFileFormat,
     required this.diskId,
     required this.diskSizeGB,

@@ -42,7 +42,7 @@ class BudgetActionArgs {
   /// [notificationType] The type of a notification. Valid values are `ACTUAL` or `FORECASTED`.
   /// [subscribers] A list of subscribers. See Subscriber.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  BudgetActionArgs({
+  const BudgetActionArgs({
     this.accountId,
     required this.actionThreshold,
     required this.actionType,

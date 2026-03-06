@@ -31,7 +31,7 @@ class GetQuotaAlarmsResult {
   /// [quotaActionCode] Optional.
   /// [quotaAlarmName] Optional.
   /// [quotaDimensions] Optional.
-  GetQuotaAlarmsResult({
+  const GetQuotaAlarmsResult({
     required this.alarms,
     this.enableDetails,
     required this.id,

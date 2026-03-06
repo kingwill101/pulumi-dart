@@ -29,7 +29,7 @@ class FindingsFilterFindingCriteriaCriterion {
   /// [lt] The value for the property is less than the specified value.
   /// [lte] The value for the property is less than or equal to the specified value.
   /// [neqs] The value for the property doesn't match (doesn't equal) the specified value. If you specify multiple values, Amazon Macie uses OR logic to join the values.
-  FindingsFilterFindingCriteriaCriterion({
+  const FindingsFilterFindingCriteriaCriterion({
     this.eqExactMatches,
     this.eqs,
     required this.field,

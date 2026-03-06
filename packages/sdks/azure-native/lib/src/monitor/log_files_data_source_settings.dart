@@ -10,7 +10,7 @@ class LogFilesDataSourceSettings {
 
   /// Creates a new [LogFilesDataSourceSettings].
   /// [text] Text settings
-  LogFilesDataSourceSettings({
+  const LogFilesDataSourceSettings({
     this.text,
   });
 

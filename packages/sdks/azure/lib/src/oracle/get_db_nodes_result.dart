@@ -15,7 +15,7 @@ class GetDbNodesResult {
   /// [cloudVmClusterId] Required.
   /// [dbNodes] A `db_nodes` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetDbNodesResult({
+  const GetDbNodesResult({
     required this.cloudVmClusterId,
     required this.dbNodes,
     required this.id,

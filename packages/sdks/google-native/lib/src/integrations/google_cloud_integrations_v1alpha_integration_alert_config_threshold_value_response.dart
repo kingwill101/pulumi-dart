@@ -12,7 +12,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse
   /// Creates a new [GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse].
   /// [absolute] Absolute value threshold.
   /// [percentage] Percentage threshold.
-  GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse({
+  const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse({
     required this.absolute,
     required this.percentage,
   });

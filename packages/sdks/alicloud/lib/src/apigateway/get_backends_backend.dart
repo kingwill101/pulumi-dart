@@ -25,7 +25,7 @@ class GetBackendsBackend {
   /// [description] The description of the Backend.
   /// [id] Required.
   /// [modifiedTime] The modified time of the Backend.
-  GetBackendsBackend({
+  const GetBackendsBackend({
     required this.backendId,
     required this.backendName,
     required this.backendType,

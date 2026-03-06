@@ -40,7 +40,7 @@ class ThemeArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [themeId] Identifier of the theme.
   /// [versionDescription] A description of the current theme version being created/updated.
-  ThemeArgs({
+  const ThemeArgs({
     this.awsAccountId,
     required this.baseThemeId,
     this.configuration,

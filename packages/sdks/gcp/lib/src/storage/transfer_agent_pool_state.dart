@@ -31,7 +31,7 @@ class TransferAgentPoolState {
   /// [name] The ID of the agent pool to create.
   /// [project] The ID of the project in which the resource belongs.
   /// [state] Specifies the state of the AgentPool.
-  TransferAgentPoolState({
+  const TransferAgentPoolState({
     this.bandwidthLimit,
     this.displayName,
     this.name,

@@ -9,7 +9,7 @@ class AnomalyResultEnumEnumValueResponse {
 
   /// Creates a new [AnomalyResultEnumEnumValueResponse].
   /// [value] Property value
-  AnomalyResultEnumEnumValueResponse({
+  const AnomalyResultEnumEnumValueResponse({
     this.value,
   });
 

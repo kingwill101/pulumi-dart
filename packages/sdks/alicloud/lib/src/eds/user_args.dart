@@ -24,7 +24,7 @@ class UserArgs {
   /// [password] The password of the user password.
   /// [phone] The phone of the mobile phone number.
   /// [status] The status of the resource. Valid values: `Unlocked`, `Locked`.
-  UserArgs({
+  const UserArgs({
     required this.email,
     required this.endUserId,
     this.password,

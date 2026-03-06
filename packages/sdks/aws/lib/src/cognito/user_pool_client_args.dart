@@ -86,7 +86,7 @@ class UserPoolClientArgs {
   /// [tokenValidityUnits] Configuration block for representing the validity times in units. See details below. Detailed below.
   /// [userPoolId] User pool the client belongs to.
   /// [writeAttributes] List of user pool attributes that the application client can write to.
-  UserPoolClientArgs({
+  const UserPoolClientArgs({
     this.accessTokenValidity,
     this.allowedOauthFlows,
     this.allowedOauthFlowsUserPoolClient,

@@ -8,7 +8,7 @@ class SessionInfoResponse {
 
   /// Creates a new [SessionInfoResponse].
   /// [sessionId] // [Preview] Id of the session.
-  SessionInfoResponse({
+  const SessionInfoResponse({
     required this.sessionId,
   });
 

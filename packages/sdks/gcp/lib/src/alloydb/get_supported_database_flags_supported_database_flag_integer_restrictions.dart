@@ -11,7 +11,7 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions {
   /// Creates a new [GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions].
   /// [maxValue] The maximum value that can be specified, if applicable.
   /// [minValue] The minimum value that can be specified, if applicable.
-  GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions({
+  const GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions({
     required this.maxValue,
     required this.minValue,
   });

@@ -18,7 +18,7 @@ class VcenterResponse {
   /// [internalIp] Internal IP address of the appliance.
   /// [state] The state of the appliance.
   /// [version] Version of the appliance.
-  VcenterResponse({
+  const VcenterResponse({
     required this.fqdn,
     required this.internalIp,
     required this.state,

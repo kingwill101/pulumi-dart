@@ -59,7 +59,7 @@ class TransferJobTransferSpec {
   /// [sourceAgentPoolName] Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
   /// [transferManifest] Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
   /// [transferOptions] Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
-  TransferJobTransferSpec({
+  const TransferJobTransferSpec({
     this.awsS3CompatibleDataSource,
     this.awsS3DataSource,
     this.azureBlobStorageDataSource,

@@ -20,7 +20,7 @@ class VmwareReplicatedVmNetworkInterface {
   /// [targetStaticIp] Static IP to assign when a failover is done.
   /// [targetSubnetName] Name of the subnet to use when a failover is done.
   /// [testSubnetName] Name of the subnet to use when a test failover is done.
-  VmwareReplicatedVmNetworkInterface({
+  const VmwareReplicatedVmNetworkInterface({
     required this.isPrimary,
     required this.sourceMacAddress,
     this.targetStaticIp,

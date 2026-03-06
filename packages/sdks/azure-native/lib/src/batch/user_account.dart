@@ -24,7 +24,7 @@ class UserAccount {
   /// [name] The name of the user account. Names can contain any Unicode characters up to a maximum length of 20.
   /// [password] The password for the user account.
   /// [windowsUserConfiguration] This property can only be specified if the user is on a Windows pool. If not specified and on a Windows pool, the user is created with the default options.
-  UserAccount({
+  const UserAccount({
     this.elevationLevel,
     this.linuxUserConfiguration,
     required this.name,

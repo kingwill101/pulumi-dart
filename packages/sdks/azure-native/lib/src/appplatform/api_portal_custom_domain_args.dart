@@ -25,7 +25,7 @@ class ApiPortalCustomDomainArgs {
   /// [properties] The properties of custom domain for API portal
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  ApiPortalCustomDomainArgs({
+  const ApiPortalCustomDomainArgs({
     required this.apiPortalName,
     this.domainName,
     this.properties,

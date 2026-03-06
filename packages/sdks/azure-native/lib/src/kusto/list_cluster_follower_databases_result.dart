@@ -10,7 +10,7 @@ class ListClusterFollowerDatabasesResult {
 
   /// Creates a new [ListClusterFollowerDatabasesResult].
   /// [value] The list of follower database result.
-  ListClusterFollowerDatabasesResult({
+  const ListClusterFollowerDatabasesResult({
     this.value,
   });
 

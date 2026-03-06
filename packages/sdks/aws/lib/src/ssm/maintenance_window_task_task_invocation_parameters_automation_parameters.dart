@@ -12,7 +12,7 @@ class MaintenanceWindowTaskTaskInvocationParametersAutomationParameters {
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParametersAutomationParameters].
   /// [documentVersion] The version of an Automation document to use during task execution.
   /// [parameters] The parameters for the RUN_COMMAND task execution. Documented below.
-  MaintenanceWindowTaskTaskInvocationParametersAutomationParameters({
+  const MaintenanceWindowTaskTaskInvocationParametersAutomationParameters({
     this.documentVersion,
     this.parameters,
   });

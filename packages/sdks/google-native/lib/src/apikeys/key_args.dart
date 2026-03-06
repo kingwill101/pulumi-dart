@@ -26,7 +26,7 @@ class KeyArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [restrictions] Key restrictions.
-  KeyArgs({
+  const KeyArgs({
     this.annotations,
     this.displayName,
     this.keyId,

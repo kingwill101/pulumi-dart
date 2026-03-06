@@ -19,7 +19,7 @@ class GetReportMigrationcenterV1alpha1Args {
   /// [reportConfigId] Required.
   /// [reportId] Required.
   /// [view] Optional.
-  GetReportMigrationcenterV1alpha1Args({
+  const GetReportMigrationcenterV1alpha1Args({
     required this.location,
     this.project,
     required this.reportConfigId,

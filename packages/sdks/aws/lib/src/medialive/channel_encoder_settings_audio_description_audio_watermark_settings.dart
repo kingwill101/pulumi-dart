@@ -8,7 +8,7 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings {
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings].
   /// [nielsenWatermarksSettings] Optional.
-  ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings({
+  const ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings({
     this.nielsenWatermarksSettings,
   });
 

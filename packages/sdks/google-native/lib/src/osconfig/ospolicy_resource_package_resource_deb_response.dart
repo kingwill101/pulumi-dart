@@ -13,7 +13,7 @@ class OSPolicyResourcePackageResourceDebResponse {
   /// Creates a new [OSPolicyResourcePackageResourceDebResponse].
   /// [pullDeps] Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
   /// [source] A deb package.
-  OSPolicyResourcePackageResourceDebResponse({
+  const OSPolicyResourcePackageResourceDebResponse({
     required this.pullDeps,
     required this.source,
   });

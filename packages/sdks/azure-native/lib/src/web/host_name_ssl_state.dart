@@ -26,7 +26,7 @@ class HostNameSslState {
   /// [thumbprint] SSL certificate thumbprint.
   /// [toUpdate] Set to &lt;code&gt;true&lt;/code&gt; to update existing hostname.
   /// [virtualIP] Virtual IP address assigned to the hostname if IP based SSL is enabled.
-  HostNameSslState({
+  const HostNameSslState({
     this.hostType,
     this.name,
     this.sslState,

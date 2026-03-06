@@ -90,7 +90,7 @@ class SubnetPoolState {
   /// [tags] A set of string tags for the subnetpool.
   /// [updatedAt] The time at which subnetpool was created.
   /// [valueSpecs] Map of additional options.
-  SubnetPoolState({
+  const SubnetPoolState({
     this.addressScopeId,
     this.allTags,
     this.createdAt,

@@ -20,7 +20,7 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableCell {
   /// [detectedLanguages] A list of detected languages together with confidence.
   /// [layout] Layout for TableCell.
   /// [rowSpan] How many rows this cell spans.
-  GoogleCloudDocumentaiV1DocumentPageTableTableCell({
+  const GoogleCloudDocumentaiV1DocumentPageTableTableCell({
     this.colSpan,
     this.detectedLanguages,
     this.layout,

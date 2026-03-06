@@ -41,7 +41,7 @@ class GetPrivateLinkServicesForSCCPowershellResult {
   /// [systemData] Required property for system data
   /// [tags] The resource tags.
   /// [type] The resource type.
-  GetPrivateLinkServicesForSCCPowershellResult({
+  const GetPrivateLinkServicesForSCCPowershellResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

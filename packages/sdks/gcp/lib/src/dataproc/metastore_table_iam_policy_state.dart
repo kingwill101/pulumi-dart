@@ -31,7 +31,7 @@ class MetastoreTableIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
   /// [table] Used to find the parent resource to bind the IAM policy to
-  MetastoreTableIamPolicyState({
+  const MetastoreTableIamPolicyState({
     this.databaseId,
     this.etag,
     this.location,

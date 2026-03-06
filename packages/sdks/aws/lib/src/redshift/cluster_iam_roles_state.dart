@@ -18,7 +18,7 @@ class ClusterIamRolesState {
   /// [defaultIamRoleArn] The Amazon Resource Name (ARN) for the IAM role that was set as default for the cluster when the cluster was created.
   /// [iamRoleArns] A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ClusterIamRolesState({
+  const ClusterIamRolesState({
     this.clusterIdentifier,
     this.defaultIamRoleArn,
     this.iamRoleArns,

@@ -57,7 +57,7 @@ class PolicyVMArgs {
   /// [retentionYearly] Configures the policy yearly retention as documented in the `retention_yearly` block below.
   /// [tieringPolicy] A `tiering_policy` block as defined below.
   /// [timezone] Specifies the timezone. [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Defaults to `UTC`
-  PolicyVMArgs({
+  const PolicyVMArgs({
     required this.backup,
     this.instantRestoreResourceGroup,
     this.instantRestoreRetentionDays,

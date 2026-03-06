@@ -32,7 +32,7 @@ class GetEndUserProductsEndUserProduct {
   /// [productName] Product name.
   /// [productType] Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
   /// [providerName] Product provider.
-  GetEndUserProductsEndUserProduct({
+  const GetEndUserProductsEndUserProduct({
     required this.createTime,
     required this.description,
     required this.hasDefaultLaunchOption,

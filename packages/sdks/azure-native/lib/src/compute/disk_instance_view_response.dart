@@ -17,7 +17,7 @@ class DiskInstanceViewResponse {
   /// [encryptionSettings] Specifies the encryption settings for the OS Disk. &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
   /// [name] The disk name.
   /// [statuses] The resource status information.
-  DiskInstanceViewResponse({
+  const DiskInstanceViewResponse({
     this.encryptionSettings,
     this.name,
     this.statuses,

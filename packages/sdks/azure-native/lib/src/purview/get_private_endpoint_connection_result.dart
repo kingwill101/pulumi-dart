@@ -32,7 +32,7 @@ class GetPrivateEndpointConnectionResult {
   /// [provisioningState] The provisioning state.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Gets or sets the type.
-  GetPrivateEndpointConnectionResult({
+  const GetPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

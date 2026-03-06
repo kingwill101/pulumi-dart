@@ -29,7 +29,7 @@ class UserAddresses {
   /// [region] The region of the address.
   /// [streetAddress] The street of the address.
   /// [type] The type of address.
-  UserAddresses({
+  const UserAddresses({
     this.country,
     this.formatted,
     this.locality,

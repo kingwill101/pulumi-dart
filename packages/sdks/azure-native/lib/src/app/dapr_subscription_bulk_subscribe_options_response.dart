@@ -15,7 +15,7 @@ class DaprSubscriptionBulkSubscribeOptionsResponse {
   /// [enabled] Enable bulk subscription
   /// [maxAwaitDurationMs] Maximum duration in milliseconds to wait before a bulk message is sent to the app.
   /// [maxMessagesCount] Maximum number of messages to deliver in a bulk message.
-  DaprSubscriptionBulkSubscribeOptionsResponse({
+  const DaprSubscriptionBulkSubscribeOptionsResponse({
     this.enabled,
     this.maxAwaitDurationMs,
     this.maxMessagesCount,

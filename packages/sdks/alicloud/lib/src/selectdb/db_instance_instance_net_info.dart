@@ -24,7 +24,7 @@ class DbInstanceInstanceNetInfo {
   /// [portLists] A list for port provides SelectDB service.
   /// [vpcInstanceId] The VPC ID.
   /// [vswitchId] The ID of vswitch for DBInstance.
-  DbInstanceInstanceNetInfo({
+  const DbInstanceInstanceNetInfo({
     this.connectionString,
     this.dbIp,
     this.netType,

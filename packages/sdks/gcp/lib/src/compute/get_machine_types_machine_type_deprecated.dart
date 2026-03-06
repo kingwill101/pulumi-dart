@@ -11,7 +11,7 @@ class GetMachineTypesMachineTypeDeprecated {
   /// Creates a new [GetMachineTypesMachineTypeDeprecated].
   /// [replacement] The URL of the suggested replacement for a deprecated machine type.
   /// [state] The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
-  GetMachineTypesMachineTypeDeprecated({
+  const GetMachineTypesMachineTypeDeprecated({
     required this.replacement,
     required this.state,
   });

@@ -15,7 +15,7 @@ class ClusterNodePoolPlacementPolicy {
   /// [policyName] If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
   /// [tpuTopology] The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
   /// [type] Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
-  ClusterNodePoolPlacementPolicy({
+  const ClusterNodePoolPlacementPolicy({
     this.policyName,
     this.tpuTopology,
     required this.type,

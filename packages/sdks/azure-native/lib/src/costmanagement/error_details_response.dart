@@ -12,7 +12,7 @@ class ErrorDetailsResponse {
   /// Creates a new [ErrorDetailsResponse].
   /// [code] Error code.
   /// [message] Error message indicating why the operation failed.
-  ErrorDetailsResponse({
+  const ErrorDetailsResponse({
     required this.code,
     required this.message,
   });

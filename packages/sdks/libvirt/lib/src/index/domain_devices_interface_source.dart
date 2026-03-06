@@ -64,7 +64,7 @@ class DomainDevicesInterfaceSource {
   /// [vdpa] Configures settings for using a vDPA network device with the interface, enabling specialized network performance.
   /// [vds] Configures settings for using a vDS network source with the interface, supporting advanced network features.
   /// [vhostUser] Sets configurations for using vhost-user to connect the network interface to a user space application.
-  DomainDevicesInterfaceSource({
+  const DomainDevicesInterfaceSource({
     this.bridge,
     this.client,
     this.direct,

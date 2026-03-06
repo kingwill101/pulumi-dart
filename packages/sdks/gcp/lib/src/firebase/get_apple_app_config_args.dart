@@ -18,7 +18,7 @@ class GetAppleAppConfigArgs {
   /// Creates a new [GetAppleAppConfigArgs].
   /// [appId] The id of the Firebase iOS App.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetAppleAppConfigArgs({
+  const GetAppleAppConfigArgs({
     required this.appId,
     this.project,
   });

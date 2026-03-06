@@ -13,7 +13,7 @@ class ServiceEndpointState {
   /// Creates a new [ServiceEndpointState].
   /// [endpointEnabled] Specifies whether the endpoint is enabled. Valid values:
   /// [endpointType] Access point type. Value:
-  ServiceEndpointState({
+  const ServiceEndpointState({
     this.endpointEnabled,
     this.endpointType,
   });

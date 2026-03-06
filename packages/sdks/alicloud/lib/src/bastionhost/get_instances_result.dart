@@ -24,7 +24,7 @@ class GetInstancesResult {
   /// [instances] A list of apis. Each element contains the following attributes:
   /// [outputFile] Optional.
   /// [tags] A map of tags assigned to the bastionhost instance.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.descriptionRegex,
     required this.descriptions,
     required this.id,

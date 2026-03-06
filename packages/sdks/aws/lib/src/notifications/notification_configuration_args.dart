@@ -29,7 +29,7 @@ class NotificationConfigurationArgs {
   /// [description] Description of the NotificationConfiguration. Length constraints: Minimum length of 0,
   /// [name] Name of the NotificationConfiguration. Supports RFC 3986's unreserved characters. Length
   /// [tags] Map of tags to assign to the resource. A tag is a string-to-string map of key-value pairs. If
-  NotificationConfigurationArgs({
+  const NotificationConfigurationArgs({
     this.aggregationDuration,
     required this.description,
     this.name,

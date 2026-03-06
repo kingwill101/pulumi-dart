@@ -37,7 +37,7 @@ class GetTransitRouterVpcAttachmentsResult {
   /// [transitRouterAttachmentId] The ID of the Transit Router VPC Attachment.
   /// [transitRouterId] (Available since v1.224.0) The ID of the transit router.
   /// [vpcId] The ID of the VPC.
-  GetTransitRouterVpcAttachmentsResult({
+  const GetTransitRouterVpcAttachmentsResult({
     required this.attachments,
     required this.cenId,
     required this.id,

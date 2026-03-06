@@ -37,7 +37,7 @@ class QuickbaseLinkedService {
   /// [url] The url to connect Quickbase source. Type: string (or Expression with resultType string).
   /// [userToken] The user token for the Quickbase source.
   /// [version] Version of the linked service.
-  QuickbaseLinkedService({
+  const QuickbaseLinkedService({
     this.annotations,
     this.connectVia,
     this.description,

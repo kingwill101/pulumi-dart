@@ -15,7 +15,7 @@ class GetInstanceTableIamPolicyArgs {
   /// [instanceId] Required.
   /// [project] Optional.
   /// [tableId] Required.
-  GetInstanceTableIamPolicyArgs({
+  const GetInstanceTableIamPolicyArgs({
     required this.instanceId,
     this.project,
     required this.tableId,

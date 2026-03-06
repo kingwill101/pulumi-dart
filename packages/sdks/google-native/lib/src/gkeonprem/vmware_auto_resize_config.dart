@@ -9,7 +9,7 @@ class VmwareAutoResizeConfig {
 
   /// Creates a new [VmwareAutoResizeConfig].
   /// [enabled] Whether to enable controle plane node auto resizing.
-  VmwareAutoResizeConfig({
+  const VmwareAutoResizeConfig({
     this.enabled,
   });
 

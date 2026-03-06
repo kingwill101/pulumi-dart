@@ -9,7 +9,7 @@ class ServiceServicePropertyRegistrationType {
 
   /// Creates a new [ServiceServicePropertyRegistrationType].
   /// [type] (Output)
-  ServiceServicePropertyRegistrationType({
+  const ServiceServicePropertyRegistrationType({
     this.type,
   });
 

@@ -8,7 +8,7 @@ class PolicyDns64ConfigScope {
 
   /// Creates a new [PolicyDns64ConfigScope].
   /// [allQueries] Controls whether DNS64 is enabled globally at the network level.
-  PolicyDns64ConfigScope({
+  const PolicyDns64ConfigScope({
     this.allQueries,
   });
 

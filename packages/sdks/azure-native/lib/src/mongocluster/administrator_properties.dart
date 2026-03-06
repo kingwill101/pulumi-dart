@@ -12,7 +12,7 @@ class AdministratorProperties {
   /// Creates a new [AdministratorProperties].
   /// [password] The administrator password.
   /// [userName] The administrator user name.
-  AdministratorProperties({
+  const AdministratorProperties({
     this.password,
     this.userName,
   });

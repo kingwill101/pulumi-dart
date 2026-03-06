@@ -41,7 +41,7 @@ class GetGradientaiAgentsAgentAgentGuardrail {
   /// [type] Type of the Guardrail
   /// [updatedAt] Updated At timestamp for the Guardrail
   /// [uuid] Guardrail UUID
-  GetGradientaiAgentsAgentAgentGuardrail({
+  const GetGradientaiAgentsAgentAgentGuardrail({
     this.agentUuid,
     required this.createdAt,
     this.defaultResponse,

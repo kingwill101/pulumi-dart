@@ -18,7 +18,7 @@ class GetSoaRecordArgs {
   /// [name] The name of the DNS SOA Record.
   /// [resourceGroupName] Specifies the resource group where the DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the DNS Zone where the resource exists.
-  GetSoaRecordArgs({
+  const GetSoaRecordArgs({
     this.name,
     required this.resourceGroupName,
     required this.zoneName,

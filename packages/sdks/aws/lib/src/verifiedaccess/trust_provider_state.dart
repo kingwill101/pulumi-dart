@@ -46,7 +46,7 @@ class TrustProviderState {
   /// [tagsAll] Optional.
   /// [trustProviderType] The type of trust provider can be either user or device-based.
   /// [userTrustProviderType] The type of user-based trust provider.
-  TrustProviderState({
+  const TrustProviderState({
     this.description,
     this.deviceOptions,
     this.deviceTrustProviderType,

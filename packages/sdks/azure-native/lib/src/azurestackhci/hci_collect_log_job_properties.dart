@@ -19,7 +19,7 @@ class HciCollectLogJobProperties {
   /// [fromDate] From date for log collection.
   /// [jobType] Job Type supported.
   /// [toDate] To date for log collection.
-  HciCollectLogJobProperties({
+  const HciCollectLogJobProperties({
     this.deploymentMode,
     required this.fromDate,
     required this.jobType,

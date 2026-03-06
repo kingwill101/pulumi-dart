@@ -29,7 +29,7 @@ class GetApiPortalResult {
   /// [sku] Sku of the API portal resource
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetApiPortalResult({
+  const GetApiPortalResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -15,7 +15,7 @@ class GetRoute53ResourceRecordSetArgs {
   /// Creates a new [GetRoute53ResourceRecordSetArgs].
   /// [name] Name of Route53ResourceRecordSet
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRoute53ResourceRecordSetArgs({
+  const GetRoute53ResourceRecordSetArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -38,7 +38,7 @@ class GetClusterInstancesResult {
   /// [outputFile] Optional.
   /// [tags] Optional.
   /// [totalCount] The total count of list emr cluster ecs instances.
-  GetClusterInstancesResult({
+  const GetClusterInstancesResult({
     required this.clusterId,
     required this.id,
     required this.ids,

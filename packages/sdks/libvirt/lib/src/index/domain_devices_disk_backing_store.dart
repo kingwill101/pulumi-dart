@@ -16,7 +16,7 @@ class DomainDevicesDiskBackingStore {
   /// [format] Defines the format of the data store used in the backing store source configuration.
   /// [index] Sets the index for the backing store in relation to other backing stores, managing their order and priority.
   /// [source] Specifies the source of the backing store, determining its origin and how it is accessed.
-  DomainDevicesDiskBackingStore({
+  const DomainDevicesDiskBackingStore({
     this.format,
     this.index,
     this.source,

@@ -49,7 +49,7 @@ class VirtualMachineArgs {
   /// [storageProfile] StorageProfile - contains information about the disks and storage information for the virtual machine
   /// [tags] Resource tags.
   /// [virtualMachineName] Name of the virtual machine
-  VirtualMachineArgs({
+  const VirtualMachineArgs({
     this.extendedLocation,
     this.hardwareProfile,
     this.identity,

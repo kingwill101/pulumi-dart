@@ -18,7 +18,7 @@ class GetBucketsBucketLifecycleRule {
   /// [expiration] A list of one element containing expiration attributes of an object. It contains the following attributes:
   /// [id] Unique ID of the rule.
   /// [prefix] Prefix applicable to a rule. Only those objects with a matching prefix can be affected by the rule.
-  GetBucketsBucketLifecycleRule({
+  const GetBucketsBucketLifecycleRule({
     required this.enabled,
     required this.expiration,
     required this.id,

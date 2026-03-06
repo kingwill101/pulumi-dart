@@ -10,18 +10,18 @@ import 'package:pulumi_f5bigip/ssl.dart' as module_ssl;
 import 'package:pulumi_f5bigip/sys.dart' as module_sys;
 import 'package:pulumi_f5bigip/vcmp.dart' as module_vcmp;
 
-final cm = _CmModuleNamespace();
-final fast = _FastModuleNamespace();
-final index = _IndexModuleNamespace();
-final ltm = _LtmModuleNamespace();
-final net = _NetModuleNamespace();
-final providers = _ProvidersModuleNamespace();
-final ssl = _SslModuleNamespace();
-final sys = _SysModuleNamespace();
-final vcmp = _VcmpModuleNamespace();
+final cm = const _CmModuleNamespace();
+final fast = const _FastModuleNamespace();
+final index = const _IndexModuleNamespace();
+final ltm = const _LtmModuleNamespace();
+final net = const _NetModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
+final ssl = const _SslModuleNamespace();
+final sys = const _SysModuleNamespace();
+final vcmp = const _VcmpModuleNamespace();
 
 class _CmModuleNamespace {
-  _CmModuleNamespace();
+  const _CmModuleNamespace();
   final Device = module_cm.Device.new;
   final DeviceArgs = module_cm.DeviceArgs.new;
   final DeviceGroup = module_cm.DeviceGroup.new;
@@ -35,7 +35,7 @@ class _CmModuleNamespace {
 }
 
 class _FastModuleNamespace {
-  _FastModuleNamespace();
+  const _FastModuleNamespace();
   final GetAwsServiceDiscoveryArgs = module_fast.GetAwsServiceDiscoveryArgs.new;
   final GetAwsServiceDiscoveryResult = module_fast.GetAwsServiceDiscoveryResult.new;
   final GetAwsServiceDiscoveryResultArgs = module_fast.GetAwsServiceDiscoveryResult.new;
@@ -55,7 +55,7 @@ class _FastModuleNamespace {
 }
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final As3 = module_index.As3.new;
   final As3Args = module_index.As3Args.new;
   final As3DeleteApps = module_index.As3DeleteApps.new;
@@ -199,7 +199,7 @@ class _IndexModuleNamespace {
 }
 
 class _LtmModuleNamespace {
-  _LtmModuleNamespace();
+  const _LtmModuleNamespace();
   final CipherGroup = module_ltm.CipherGroup.new;
   final CipherGroupArgs = module_ltm.CipherGroupArgs.new;
   final CipherGroupState = module_ltm.CipherGroupState.new;
@@ -397,7 +397,7 @@ class _LtmModuleNamespace {
 }
 
 class _NetModuleNamespace {
-  _NetModuleNamespace();
+  const _NetModuleNamespace();
   final Route = module_net.Route.new;
   final RouteArgs = module_net.RouteArgs.new;
   final RouteState = module_net.RouteState.new;
@@ -415,7 +415,7 @@ class _NetModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final F5bigip = module_providers.ProviderProvider.new;
   final F5bigipArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
@@ -428,7 +428,7 @@ class _ProvidersModuleNamespace {
 }
 
 class _SslModuleNamespace {
-  _SslModuleNamespace();
+  const _SslModuleNamespace();
   final Certificate = module_ssl.Certificate.new;
   final CertificateArgs = module_ssl.CertificateArgs.new;
   final CertificateState = module_ssl.CertificateState.new;
@@ -474,7 +474,7 @@ class _SslModuleNamespace {
 }
 
 class _SysModuleNamespace {
-  _SysModuleNamespace();
+  const _SysModuleNamespace();
   final BigIpLicense = module_sys.BigIpLicense.new;
   final BigIpLicenseArgs = module_sys.BigIpLicenseArgs.new;
   final BigIpLicenseState = module_sys.BigIpLicenseState.new;
@@ -524,7 +524,7 @@ class _SysModuleNamespace {
 }
 
 class _VcmpModuleNamespace {
-  _VcmpModuleNamespace();
+  const _VcmpModuleNamespace();
   final Guest = module_vcmp.Guest.new;
   final GuestArgs = module_vcmp.GuestArgs.new;
   final GuestState = module_vcmp.GuestState.new;

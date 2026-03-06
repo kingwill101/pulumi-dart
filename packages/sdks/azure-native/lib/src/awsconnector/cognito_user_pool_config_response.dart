@@ -15,7 +15,7 @@ class CognitoUserPoolConfigResponse {
   /// [appIdClientRegex] &lt;p&gt;A regular expression for validating the incoming Amazon Cognito user pool app client ID. If this value isn't set, no filtering is applied.&lt;/p&gt;
   /// [awsRegion] &lt;p&gt;The Amazon Web Services Region in which the user pool was created.&lt;/p&gt;
   /// [userPoolId] &lt;p&gt;The user pool ID.&lt;/p&gt;
-  CognitoUserPoolConfigResponse({
+  const CognitoUserPoolConfigResponse({
     this.appIdClientRegex,
     this.awsRegion,
     this.userPoolId,

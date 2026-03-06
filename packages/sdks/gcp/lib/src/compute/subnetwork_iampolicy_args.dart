@@ -26,7 +26,7 @@ class SubnetworkIAMPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The GCP region for this subnetwork.
   /// [subnetwork] Used to find the parent resource to bind the IAM policy to
-  SubnetworkIAMPolicyArgs({
+  const SubnetworkIAMPolicyArgs({
     required this.policyData,
     this.project,
     this.region,

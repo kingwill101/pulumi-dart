@@ -13,7 +13,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters].
   /// [csvMappingParameters] Provides additional mapping information when the record format uses delimiters (for example, CSV).
   /// [jsonMappingParameters] Provides additional mapping information when JSON is the record format on the streaming source.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters({
     this.csvMappingParameters,
     this.jsonMappingParameters,
   });

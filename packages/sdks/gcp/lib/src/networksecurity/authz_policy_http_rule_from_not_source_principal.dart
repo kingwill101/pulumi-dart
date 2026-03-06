@@ -54,7 +54,7 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipal {
   /// [principal] Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
   /// [principalSelector] An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
   /// [suffix] (Optional, Deprecated)
-  AuthzPolicyHttpRuleFromNotSourcePrincipal({
+  const AuthzPolicyHttpRuleFromNotSourcePrincipal({
     this.contains,
     this.exact,
     this.ignoreCase,

@@ -31,7 +31,7 @@ class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
   /// [status] The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The ID of the vSwitch.
-  GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc({
+  const GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc({
     required this.defaultAccess,
     required this.id,
     required this.instanceId,

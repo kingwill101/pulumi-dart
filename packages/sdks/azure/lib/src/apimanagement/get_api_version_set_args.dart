@@ -18,7 +18,7 @@ class GetApiVersionSetArgs {
   /// [apiManagementName] The name of the API Management Service where the API Version Set exists.
   /// [name] The name of the API Version Set.
   /// [resourceGroupName] The name of the Resource Group in which the parent API Management Service exists.
-  GetApiVersionSetArgs({
+  const GetApiVersionSetArgs({
     required this.apiManagementName,
     required this.name,
     required this.resourceGroupName,

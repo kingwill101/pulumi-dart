@@ -15,7 +15,7 @@ class MetaTagArgs {
   /// Creates a new [MetaTagArgs].
   /// [key] The key of the tag meta tag. key must be 1 to 128 characters in length.
   /// [values] The values of the tag meta tag.
-  MetaTagArgs({
+  const MetaTagArgs({
     required this.key,
     required this.values,
   });

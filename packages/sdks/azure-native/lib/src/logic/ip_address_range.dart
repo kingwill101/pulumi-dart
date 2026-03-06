@@ -9,7 +9,7 @@ class IpAddressRange {
 
   /// Creates a new [IpAddressRange].
   /// [addressRange] The IP address range.
-  IpAddressRange({
+  const IpAddressRange({
     this.addressRange,
   });
 

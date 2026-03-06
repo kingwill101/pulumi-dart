@@ -15,7 +15,7 @@ class GetConnectorArgs {
   /// Creates a new [GetConnectorArgs].
   /// [id] Unique identifier for connector
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetConnectorArgs({
+  const GetConnectorArgs({
     required this.id,
     this.region,
   });

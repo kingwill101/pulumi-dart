@@ -8,7 +8,7 @@ class OrganizationFeedFeedOutputConfigPubsubDestination {
 
   /// Creates a new [OrganizationFeedFeedOutputConfigPubsubDestination].
   /// [topic] Destination on Cloud Pubsub topic.
-  OrganizationFeedFeedOutputConfigPubsubDestination({
+  const OrganizationFeedFeedOutputConfigPubsubDestination({
     required this.topic,
   });
 

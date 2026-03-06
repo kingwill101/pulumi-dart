@@ -41,7 +41,7 @@ class GetAuthorizerResult {
   /// [region] Required.
   /// [restApiId] Required.
   /// [type] Type of the authorizer.
-  GetAuthorizerResult({
+  const GetAuthorizerResult({
     required this.arn,
     required this.authorizerCredentials,
     required this.authorizerId,

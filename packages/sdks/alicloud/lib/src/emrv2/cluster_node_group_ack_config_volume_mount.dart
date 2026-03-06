@@ -11,7 +11,7 @@ class ClusterNodeGroupAckConfigVolumeMount {
   /// Creates a new [ClusterNodeGroupAckConfigVolumeMount].
   /// [name] The name of ack cluster job pod volume mounts.
   /// [path] The path of ack cluster job pod volume mounts.
-  ClusterNodeGroupAckConfigVolumeMount({
+  const ClusterNodeGroupAckConfigVolumeMount({
     required this.name,
     required this.path,
   });

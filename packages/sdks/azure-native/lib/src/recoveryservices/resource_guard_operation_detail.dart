@@ -9,7 +9,7 @@ class ResourceGuardOperationDetail {
   /// Creates a new [ResourceGuardOperationDetail].
   /// [defaultResourceRequest] Optional.
   /// [vaultCriticalOperation] Optional.
-  ResourceGuardOperationDetail({
+  const ResourceGuardOperationDetail({
     this.defaultResourceRequest,
     this.vaultCriticalOperation,
   });

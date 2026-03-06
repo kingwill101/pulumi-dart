@@ -17,7 +17,7 @@ class GetDatabasePostgresqlConfigWorkMem {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabasePostgresqlConfigWorkMem({
+  const GetDatabasePostgresqlConfigWorkMem({
     required this.description,
     required this.example,
     required this.maximum,

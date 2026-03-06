@@ -18,7 +18,7 @@ class GetReferenceDataSetArgs {
   /// [environmentName] The name of the Time Series Insights environment associated with the specified resource group.
   /// [referenceDataSetName] The name of the Time Series Insights reference data set associated with the specified environment.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetReferenceDataSetArgs({
+  const GetReferenceDataSetArgs({
     required this.environmentName,
     required this.referenceDataSetName,
     required this.resourceGroupName,

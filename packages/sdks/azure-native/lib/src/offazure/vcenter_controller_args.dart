@@ -33,7 +33,7 @@ class VcenterControllerArgs {
   /// [runAsAccountId] Gets or sets the run as account ID of the vCenter.
   /// [siteName] Site name
   /// [vcenterName] VCenters name
-  VcenterControllerArgs({
+  const VcenterControllerArgs({
     this.fqdn,
     this.friendlyName,
     this.port,

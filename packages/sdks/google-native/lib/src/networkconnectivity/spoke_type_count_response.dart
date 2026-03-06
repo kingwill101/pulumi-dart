@@ -12,7 +12,7 @@ class SpokeTypeCountResponse {
   /// Creates a new [SpokeTypeCountResponse].
   /// [count] The total number of spokes of this type that are associated with the hub.
   /// [spokeType] The type of the spokes.
-  SpokeTypeCountResponse({
+  const SpokeTypeCountResponse({
     required this.count,
     required this.spokeType,
   });

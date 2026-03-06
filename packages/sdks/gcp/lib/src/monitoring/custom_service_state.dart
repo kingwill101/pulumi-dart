@@ -34,7 +34,7 @@ class CustomServiceState {
   /// [serviceId] An optional service ID to use. If not given, the server will generate a
   /// [telemetry] Configuration for how to query telemetry on a Service.
   /// [userLabels] Labels which have been used to annotate the service. Label keys must start
-  CustomServiceState({
+  const CustomServiceState({
     this.displayName,
     this.name,
     this.project,

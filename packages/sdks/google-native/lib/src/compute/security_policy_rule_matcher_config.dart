@@ -19,7 +19,7 @@ class SecurityPolicyRuleMatcherConfig {
   /// [destPorts] Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
   /// [layer4Configs] Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
   /// [srcIpRanges] CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
-  SecurityPolicyRuleMatcherConfig({
+  const SecurityPolicyRuleMatcherConfig({
     this.destIpRanges,
     this.destPorts,
     this.layer4Configs,

@@ -8,7 +8,7 @@ class EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse].
   /// [parameters] Required.
-  EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse({
+  const EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse({
     required this.parameters,
   });
 

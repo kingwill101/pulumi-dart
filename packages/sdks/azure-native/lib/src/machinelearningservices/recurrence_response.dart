@@ -23,7 +23,7 @@ class RecurrenceResponse {
   /// [schedule] [Required] The recurrence schedule.
   /// [startTime] The start time in yyyy-MM-ddTHH:mm:ss format.
   /// [timeZone] Specifies time zone in which the schedule runs.
-  RecurrenceResponse({
+  const RecurrenceResponse({
     this.frequency,
     this.interval,
     this.schedule,

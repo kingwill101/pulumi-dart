@@ -35,7 +35,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
   /// [dockerRuntime] Whether dockerRuntime is allowed to be set or what runtimes are allowed. Note linux_isolation takes precedence, and if set, docker_runtime values may be rejected if they are incompatible with the selected isolation.
   /// [dockerSiblingContainers] Whether dockerSiblingContainers can be used.
   /// [linuxIsolation] linux_isolation allows overriding the docker runtime used for containers started on Linux.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy({
+  const GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy({
     this.containerImageSources,
     this.dockerAddCapabilities,
     this.dockerChrootPath,

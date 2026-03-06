@@ -23,7 +23,7 @@ class SynonymSetArgs {
   /// [name] The resource name of the SynonymSet This is mandatory for google.api.resource. Format: projects/{project_number}/locations/{location}/synonymSets/{context}.
   /// [project] Optional.
   /// [synonyms] List of Synonyms for the context.
-  SynonymSetArgs({
+  const SynonymSetArgs({
     this.context,
     this.location,
     this.name,

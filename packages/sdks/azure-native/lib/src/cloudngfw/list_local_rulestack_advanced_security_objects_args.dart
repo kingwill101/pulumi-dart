@@ -21,7 +21,7 @@ class ListLocalRulestackAdvancedSecurityObjectsArgs {
   /// [skip] Optional.
   /// [top] Optional.
   /// [type] Required.
-  ListLocalRulestackAdvancedSecurityObjectsArgs({
+  const ListLocalRulestackAdvancedSecurityObjectsArgs({
     required this.localRulestackName,
     required this.resourceGroupName,
     this.skip,

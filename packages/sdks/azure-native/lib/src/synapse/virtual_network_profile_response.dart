@@ -9,7 +9,7 @@ class VirtualNetworkProfileResponse {
 
   /// Creates a new [VirtualNetworkProfileResponse].
   /// [computeSubnetId] Subnet ID used for computes in workspace
-  VirtualNetworkProfileResponse({
+  const VirtualNetworkProfileResponse({
     this.computeSubnetId,
   });
 

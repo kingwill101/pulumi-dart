@@ -59,7 +59,7 @@ class NotebookInstanceArgs {
   /// [subnetId] The VPC subnet ID.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [volumeSize] The size, in GB, of the ML storage volume to attach to the notebook instance. The default value is 5 GB.
-  NotebookInstanceArgs({
+  const NotebookInstanceArgs({
     this.additionalCodeRepositories,
     this.defaultCodeRepository,
     this.directInternetAccess,

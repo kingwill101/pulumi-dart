@@ -18,7 +18,7 @@ class ProjectState {
   /// [createTime] Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
   /// [lastModifyTime] Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
   /// [name] The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-  ProjectState({
+  const ProjectState({
     this.comment,
     this.createTime,
     this.lastModifyTime,

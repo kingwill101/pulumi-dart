@@ -47,7 +47,7 @@ class ConditionalAccessPolicyConditions {
   /// [signInRiskLevels] A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
   /// [userRiskLevels] A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
   /// [users] A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
-  ConditionalAccessPolicyConditions({
+  const ConditionalAccessPolicyConditions({
     required this.applications,
     this.authenticationFlowTransferMethods,
     required this.clientAppTypes,

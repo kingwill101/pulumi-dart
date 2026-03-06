@@ -15,7 +15,7 @@ class GetPublicCloudConnectorArgs {
   /// Creates a new [GetPublicCloudConnectorArgs].
   /// [publicCloudConnector] Represent public cloud connectors resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPublicCloudConnectorArgs({
+  const GetPublicCloudConnectorArgs({
     required this.publicCloudConnector,
     required this.resourceGroupName,
   });

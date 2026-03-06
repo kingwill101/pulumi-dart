@@ -15,7 +15,7 @@ class EventEvent {
   /// [attributes] An attribute to include in your event payload. Multiple attribute blocks can be defined for an event.
   /// [timestamp] Must be a Unix epoch timestamp. You can define timestamps either in seconds or in milliseconds.
   /// [type] The event's name. Can be a combination of alphanumeric characters, underscores, and colons.
-  EventEvent({
+  const EventEvent({
     required this.attributes,
     this.timestamp,
     required this.type,

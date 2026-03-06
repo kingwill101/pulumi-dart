@@ -26,7 +26,7 @@ class BatchSparkBatch {
   /// [jarFileUris] HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
   /// [mainClass] The name of the driver main class. The jar file that contains the class must be in the
   /// [mainJarFileUri] The HCFS URI of the jar file that contains the main class.
-  BatchSparkBatch({
+  const BatchSparkBatch({
     this.archiveUris,
     this.args,
     this.fileUris,

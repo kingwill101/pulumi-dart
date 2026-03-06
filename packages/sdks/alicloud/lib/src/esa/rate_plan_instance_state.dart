@@ -44,7 +44,7 @@ class RatePlanInstanceState {
   /// [planName] Package name.
   /// [status] The plan status. , the plan is unavailable.
   /// [type] The DNS setup option for the website. Valid values:
-  RatePlanInstanceState({
+  const RatePlanInstanceState({
     this.autoPay,
     this.autoRenew,
     this.coverage,

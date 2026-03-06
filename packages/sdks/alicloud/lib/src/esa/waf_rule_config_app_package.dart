@@ -9,7 +9,7 @@ class WafRuleConfigAppPackage {
 
   /// Creates a new [WafRuleConfigAppPackage].
   /// [packageSigns] Security mechanism to prevent apps from being repackaged. See `package_signs` below.
-  WafRuleConfigAppPackage({
+  const WafRuleConfigAppPackage({
     this.packageSigns,
   });
 

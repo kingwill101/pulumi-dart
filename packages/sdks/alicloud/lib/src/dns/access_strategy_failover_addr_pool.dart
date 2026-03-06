@@ -11,7 +11,7 @@ class AccessStrategyFailoverAddrPool {
   /// Creates a new [AccessStrategyFailoverAddrPool].
   /// [addrPoolId] The ID of the address pool in the secondary address pool group.
   /// [lbaWeight] The weight of the address pool in the secondary address pool group.
-  AccessStrategyFailoverAddrPool({
+  const AccessStrategyFailoverAddrPool({
     this.addrPoolId,
     this.lbaWeight,
   });

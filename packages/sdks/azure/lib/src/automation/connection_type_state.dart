@@ -22,7 +22,7 @@ class ConnectionTypeState {
   /// [isGlobal] Whether the connection type is global. Changing this forces a new Automation to be created.
   /// [name] The name which should be used for this Automation Connection Type. Changing this forces a new Automation to be created.
   /// [resourceGroupName] The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
-  ConnectionTypeState({
+  const ConnectionTypeState({
     this.automationAccountName,
     this.fields,
     this.isGlobal,

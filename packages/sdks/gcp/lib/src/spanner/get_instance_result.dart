@@ -40,7 +40,7 @@ class GetInstanceResult {
   /// [project] Optional.
   /// [pulumiLabels] Required.
   /// [state] Required.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.autoscalingConfigs,
     this.config,
     required this.defaultBackupScheduleType,

@@ -30,7 +30,7 @@ class GetMongoClusterFirewallRuleResult {
   /// [startIpAddress] The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetMongoClusterFirewallRuleResult({
+  const GetMongoClusterFirewallRuleResult({
     required this.azureApiVersion,
     required this.endIpAddress,
     required this.id,

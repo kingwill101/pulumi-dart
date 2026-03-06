@@ -23,7 +23,7 @@ class GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft {
   /// [nodefsAvailable] Defines percentage of soft eviction threshold for nodefs.available.
   /// [nodefsInodesFree] Defines percentage of soft eviction threshold for nodefs.inodesFree.
   /// [pidAvailable] Defines percentage of soft eviction threshold for pid.available.
-  GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft({
+  const GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft({
     required this.imagefsAvailable,
     required this.imagefsInodesFree,
     required this.memoryAvailable,

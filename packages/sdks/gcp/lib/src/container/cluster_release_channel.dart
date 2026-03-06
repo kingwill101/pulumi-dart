@@ -14,7 +14,7 @@ class ClusterReleaseChannel {
 
   /// Creates a new [ClusterReleaseChannel].
   /// [channel] The selected release channel.
-  ClusterReleaseChannel({
+  const ClusterReleaseChannel({
     required this.channel,
   });
 

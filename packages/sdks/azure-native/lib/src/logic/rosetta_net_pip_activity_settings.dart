@@ -18,7 +18,7 @@ class RosettaNetPipActivitySettings {
   /// [acknowledgmentOfReceiptSettings] The RosettaNet ProcessConfiguration acknowledgement settings.
   /// [activityBehavior] The RosettaNet ProcessConfiguration activity behavior.
   /// [activityType] The RosettaNet ProcessConfiguration activity type.
-  RosettaNetPipActivitySettings({
+  const RosettaNetPipActivitySettings({
     required this.acknowledgmentOfReceiptSettings,
     required this.activityBehavior,
     required this.activityType,

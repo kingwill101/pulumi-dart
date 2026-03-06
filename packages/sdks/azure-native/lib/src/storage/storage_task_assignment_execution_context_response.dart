@@ -14,7 +14,7 @@ class StorageTaskAssignmentExecutionContextResponse {
   /// Creates a new [StorageTaskAssignmentExecutionContextResponse].
   /// [target] Execution target of the storage task assignment
   /// [trigger] Execution trigger of the storage task assignment
-  StorageTaskAssignmentExecutionContextResponse({
+  const StorageTaskAssignmentExecutionContextResponse({
     this.target,
     required this.trigger,
   });

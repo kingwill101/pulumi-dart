@@ -13,7 +13,7 @@ class Hl7SchemaConfigResponseHealthcareV1beta1 {
   /// Creates a new [Hl7SchemaConfigResponseHealthcareV1beta1].
   /// [messageSchemaConfigs] Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
   /// [version] Each VersionSource is tested and only if they all match is the schema used for the message.
-  Hl7SchemaConfigResponseHealthcareV1beta1({
+  const Hl7SchemaConfigResponseHealthcareV1beta1({
     required this.messageSchemaConfigs,
     required this.version,
   });

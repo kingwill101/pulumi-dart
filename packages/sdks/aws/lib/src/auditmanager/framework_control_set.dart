@@ -15,7 +15,7 @@ class FrameworkControlSet {
   /// [controls] Configuration block(s) for the controls within the control set. See `controls` Block below for details.
   /// [id] Unique identifier for the framework.
   /// [name] Name of the control set.
-  FrameworkControlSet({
+  const FrameworkControlSet({
     this.controls,
     this.id,
     required this.name,

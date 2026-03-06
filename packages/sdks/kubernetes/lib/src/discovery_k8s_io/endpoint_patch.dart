@@ -33,7 +33,7 @@ class EndpointPatch {
   /// [nodeName] nodeName represents the name of the Node hosting this endpoint. This can be used to determine endpoints local to a Node.
   /// [targetRef] targetRef is a reference to a Kubernetes object that represents this endpoint.
   /// [zone] zone is the name of the Zone this endpoint exists in.
-  EndpointPatch({
+  const EndpointPatch({
     this.addresses,
     this.conditions,
     this.deprecatedTopology,

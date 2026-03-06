@@ -8,7 +8,7 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseComputeBeta {
 
   /// Creates a new [InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseComputeBeta].
   /// [allEffective] A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
-  InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseComputeBeta({
+  const InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseComputeBeta({
     required this.allEffective,
   });
 

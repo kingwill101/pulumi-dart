@@ -10,7 +10,7 @@ class RubySettings {
 
   /// Creates a new [RubySettings].
   /// [common] Some settings.
-  RubySettings({
+  const RubySettings({
     this.common,
   });
 

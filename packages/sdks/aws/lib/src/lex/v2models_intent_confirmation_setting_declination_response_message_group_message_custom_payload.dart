@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageCus
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageCustomPayload({
+  const V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageCustomPayload({
     required this.value,
   });
 

@@ -37,7 +37,7 @@ class CodeSigningConfigState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  CodeSigningConfigState({
+  const CodeSigningConfigState({
     this.allowedPublishers,
     this.arn,
     this.configId,

@@ -67,7 +67,7 @@ class GetGlobalForwardingRuleResult {
   /// [sourceIpRanges] Required.
   /// [subnetwork] Required.
   /// [target] Required.
-  GetGlobalForwardingRuleResult({
+  const GetGlobalForwardingRuleResult({
     required this.allowPscGlobalAccess,
     required this.baseForwardingRule,
     required this.description,

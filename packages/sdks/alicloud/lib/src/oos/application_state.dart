@@ -18,7 +18,7 @@ class ApplicationState {
   /// [description] Application group description information.
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
-  ApplicationState({
+  const ApplicationState({
     this.applicationName,
     this.description,
     this.resourceGroupId,

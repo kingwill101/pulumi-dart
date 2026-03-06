@@ -9,7 +9,7 @@ class MaterialResponse {
   /// Creates a new [MaterialResponse].
   /// [digest] Required.
   /// [uri] Required.
-  MaterialResponse({
+  const MaterialResponse({
     required this.digest,
     required this.uri,
   });

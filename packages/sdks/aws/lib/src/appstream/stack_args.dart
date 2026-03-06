@@ -60,7 +60,7 @@ class StackArgs {
   /// [streamingExperienceSettings] The streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userSettings] Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action.
-  StackArgs({
+  const StackArgs({
     this.accessEndpoints,
     this.applicationSettings,
     this.description,

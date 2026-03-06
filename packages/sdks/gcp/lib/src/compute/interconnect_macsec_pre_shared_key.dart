@@ -29,7 +29,7 @@ class InterconnectMacsecPreSharedKey {
   /// [failOpen] (Optional, Deprecated)
   /// [name] A name for this pre-shared key. The name must be 1-63 characters long, and
   /// [startTime] A RFC3339 timestamp on or after which the key is valid. startTime can be in the
-  InterconnectMacsecPreSharedKey({
+  const InterconnectMacsecPreSharedKey({
     this.failOpen,
     required this.name,
     this.startTime,

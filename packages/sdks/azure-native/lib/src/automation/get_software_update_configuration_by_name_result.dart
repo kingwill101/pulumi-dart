@@ -48,7 +48,7 @@ class GetSoftwareUpdateConfigurationByNameResult {
   /// [tasks] Tasks information for the Software update configuration.
   /// [type] Resource type
   /// [updateConfiguration] update specific properties for the Software update configuration
-  GetSoftwareUpdateConfigurationByNameResult({
+  const GetSoftwareUpdateConfigurationByNameResult({
     required this.azureApiVersion,
     required this.createdBy,
     required this.creationTime,

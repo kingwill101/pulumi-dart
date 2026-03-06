@@ -18,7 +18,7 @@ class ResolverFirewallConfigState {
   /// [ownerId] The AWS account ID of the owner of the VPC that this firewall configuration applies to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceId] The ID of the VPC that the configuration is for.
-  ResolverFirewallConfigState({
+  const ResolverFirewallConfigState({
     this.firewallFailOpen,
     this.ownerId,
     this.region,

@@ -12,7 +12,7 @@ class AccessControlRulesRole {
   /// Creates a new [AccessControlRulesRole].
   /// [name] The name of the role.
   /// [privileges] A list of privileges needed by this role.
-  AccessControlRulesRole({
+  const AccessControlRulesRole({
     required this.name,
     required this.privileges,
   });

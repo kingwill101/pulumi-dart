@@ -26,7 +26,7 @@ class FileTaskStep {
   /// [type] The type of the step.
   /// [values] The collection of overridable values that can be passed when running a task.
   /// [valuesFilePath] The task values/parameters file path relative to the source context.
-  FileTaskStep({
+  const FileTaskStep({
     this.contextAccessToken,
     this.contextPath,
     required this.taskFilePath,

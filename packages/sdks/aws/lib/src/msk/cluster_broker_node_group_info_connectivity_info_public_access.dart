@@ -8,7 +8,7 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess {
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess].
   /// [type] Public access type. Valid values: `DISABLED`, `SERVICE_PROVIDED_EIPS`.
-  ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess({
+  const ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess({
     this.type,
   });
 

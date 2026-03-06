@@ -12,7 +12,7 @@ class AuthenticatorGroupsConfig {
   /// Creates a new [AuthenticatorGroupsConfig].
   /// [enabled] Whether this cluster should return group membership lookups during authentication using a group of security groups.
   /// [securityGroup] The name of the security group-of-groups to be used. Only relevant if enabled = true.
-  AuthenticatorGroupsConfig({
+  const AuthenticatorGroupsConfig({
     this.enabled,
     this.securityGroup,
   });

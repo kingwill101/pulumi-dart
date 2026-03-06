@@ -86,7 +86,7 @@ class GetRdsBackupsBackup {
   /// [metaStatus] The backup set status of the database table. **NOTE:** an empty string indicates that the backup set for database table recovery is not enabled. Valid values:
   /// [storageClass] The storage medium for the backup set. Valid values:
   /// [storeStatus] StoreStatus.
-  GetRdsBackupsBackup({
+  const GetRdsBackupsBackup({
     required this.backupDownloadUrl,
     required this.backupEndTime,
     required this.backupId,

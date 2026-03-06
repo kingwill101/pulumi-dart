@@ -17,7 +17,7 @@ class ScheduledQueryRulesAlertTriggerMetricTrigger {
   /// [metricTriggerType] Metric Trigger Type - 'Consecutive' or 'Total'.
   /// [operator] Evaluation operation for rule - 'Equal', 'GreaterThan', GreaterThanOrEqual', 'LessThan', or 'LessThanOrEqual'.
   /// [threshold] The threshold of the metric trigger. Values must be between 0 and 10000 inclusive.
-  ScheduledQueryRulesAlertTriggerMetricTrigger({
+  const ScheduledQueryRulesAlertTriggerMetricTrigger({
     this.metricColumn,
     required this.metricTriggerType,
     required this.operator,

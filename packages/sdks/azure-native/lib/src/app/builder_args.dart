@@ -32,7 +32,7 @@ class BuilderArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  BuilderArgs({
+  const BuilderArgs({
     this.builderName,
     this.containerRegistries,
     required this.environmentId,

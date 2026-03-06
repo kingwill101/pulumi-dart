@@ -25,7 +25,7 @@ class NetworkInsightsAnalysisExplanationRouteTableRoute {
   /// [origin] Optional.
   /// [transitGatewayId] Optional.
   /// [vpcPeeringConnectionId] Optional.
-  NetworkInsightsAnalysisExplanationRouteTableRoute({
+  const NetworkInsightsAnalysisExplanationRouteTableRoute({
     this.destinationCidr,
     this.destinationPrefixListId,
     this.egressOnlyInternetGatewayId,

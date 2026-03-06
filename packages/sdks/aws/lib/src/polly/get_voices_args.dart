@@ -25,7 +25,7 @@ class GetVoicesArgs {
   /// [languageCode] Language identification tag for filtering the list of voices returned. If not specified, all available voices are returned.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [voices] List of voices with their properties. See `voices` Attribute Reference below.
-  GetVoicesArgs({
+  const GetVoicesArgs({
     this.engine,
     this.includeAdditionalLanguageCodes,
     this.languageCode,

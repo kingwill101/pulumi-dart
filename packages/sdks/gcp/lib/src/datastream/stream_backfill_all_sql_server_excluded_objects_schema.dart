@@ -13,7 +13,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchema {
   /// Creates a new [StreamBackfillAllSqlServerExcludedObjectsSchema].
   /// [schema] Schema name.
   /// [tables] Tables in the schema.
-  StreamBackfillAllSqlServerExcludedObjectsSchema({
+  const StreamBackfillAllSqlServerExcludedObjectsSchema({
     required this.schema,
     this.tables,
   });

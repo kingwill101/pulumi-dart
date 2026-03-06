@@ -27,7 +27,7 @@ class GetPlacementGroupArgs {
   /// [name] Name of the placement group.
   /// [type] (string) Type of the Placement Group.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetPlacementGroupArgs({
+  const GetPlacementGroupArgs({
     this.id,
     this.labels,
     this.mostRecent,

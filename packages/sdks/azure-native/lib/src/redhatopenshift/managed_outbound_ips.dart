@@ -9,7 +9,7 @@ class ManagedOutboundIPs {
 
   /// Creates a new [ManagedOutboundIPs].
   /// [count] Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
-  ManagedOutboundIPs({
+  const ManagedOutboundIPs({
     this.count,
   });
 

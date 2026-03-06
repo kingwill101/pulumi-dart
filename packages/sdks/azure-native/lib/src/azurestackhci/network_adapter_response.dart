@@ -34,7 +34,7 @@ class NetworkAdapterResponse {
   /// [macAddress] MAC address.
   /// [subnetMask] Subnet mask.
   /// [vlanId] VLAN ID for the network setup.
-  NetworkAdapterResponse({
+  const NetworkAdapterResponse({
     this.adapterName,
     this.dnsAddressArray,
     this.gateway,

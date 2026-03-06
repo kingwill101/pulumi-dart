@@ -12,7 +12,7 @@ class MlStatisticsResponse {
   /// Creates a new [MlStatisticsResponse].
   /// [iterationResults] Results for all completed iterations.
   /// [maxIterations] Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
-  MlStatisticsResponse({
+  const MlStatisticsResponse({
     required this.iterationResults,
     required this.maxIterations,
   });

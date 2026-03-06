@@ -10,7 +10,7 @@ class LoadBalancerProfile {
 
   /// Creates a new [LoadBalancerProfile].
   /// [managedOutboundIps] The desired managed outbound IPs for the cluster public load balancer.
-  LoadBalancerProfile({
+  const LoadBalancerProfile({
     this.managedOutboundIps,
   });
 

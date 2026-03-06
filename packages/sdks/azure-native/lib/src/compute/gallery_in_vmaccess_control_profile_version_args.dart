@@ -44,7 +44,7 @@ class GalleryInVMAccessControlProfileVersionArgs {
   /// [rules] This is the Access Control Rules specification for an inVMAccessControlProfile version.
   /// [tags] Resource tags.
   /// [targetLocations] The target regions where the Resource Profile version is going to be replicated to. This property is updatable.
-  GalleryInVMAccessControlProfileVersionArgs({
+  const GalleryInVMAccessControlProfileVersionArgs({
     required this.defaultAccess,
     this.excludeFromLatest,
     required this.galleryName,

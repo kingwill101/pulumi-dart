@@ -10,7 +10,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo {
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo].
   /// [errorHandlingConfig] Optional.
   /// [object_] Required.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo({
     this.errorHandlingConfig,
     required this.object_,
   });

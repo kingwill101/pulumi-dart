@@ -26,7 +26,7 @@ class TaxonomyIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Taxonomy location region.
   /// [taxonomy] Used to find the parent resource to bind the IAM policy to
-  TaxonomyIamPolicyState({
+  const TaxonomyIamPolicyState({
     this.etag,
     this.policyData,
     this.project,

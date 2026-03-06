@@ -8,7 +8,7 @@ class TxtRecordRecord {
 
   /// Creates a new [TxtRecordRecord].
   /// [value] The value of the TXT record. Max length: 1024 characters
-  TxtRecordRecord({
+  const TxtRecordRecord({
     required this.value,
   });
 

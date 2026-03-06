@@ -17,7 +17,7 @@ class GetDbServersResult {
   /// [dbServers] the list of DB servers along with their properties.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetDbServersResult({
+  const GetDbServersResult({
     required this.cloudExadataInfrastructureId,
     required this.dbServers,
     required this.id,

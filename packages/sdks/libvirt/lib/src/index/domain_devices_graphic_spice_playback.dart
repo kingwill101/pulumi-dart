@@ -8,7 +8,7 @@ class DomainDevicesGraphicSpicePlayback {
 
   /// Creates a new [DomainDevicesGraphicSpicePlayback].
   /// [compression] Sets compression options for audio and video playback over the Spice connection.
-  DomainDevicesGraphicSpicePlayback({
+  const DomainDevicesGraphicSpicePlayback({
     required this.compression,
   });
 

@@ -9,7 +9,7 @@ class Batching {
   /// Creates a new [Batching].
   /// [enableBatching] Optional.
   /// [sendAfter] Optional.
-  Batching({
+  const Batching({
     this.enableBatching,
     this.sendAfter,
   });

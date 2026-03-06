@@ -11,7 +11,7 @@ class DomainDevicesInterfaceVirtualPortParamsOpenVSwitch {
   /// Creates a new [DomainDevicesInterfaceVirtualPortParamsOpenVSwitch].
   /// [interfaceId] Specifies the interface ID for the Open vSwitch virtual port parameters.
   /// [profileId] Sets the profile ID for the Open vSwitch virtual port parameters.
-  DomainDevicesInterfaceVirtualPortParamsOpenVSwitch({
+  const DomainDevicesInterfaceVirtualPortParamsOpenVSwitch({
     this.interfaceId,
     this.profileId,
   });

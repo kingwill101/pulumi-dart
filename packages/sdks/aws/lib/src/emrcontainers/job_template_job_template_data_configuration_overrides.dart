@@ -13,7 +13,7 @@ class JobTemplateJobTemplateDataConfigurationOverrides {
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverrides].
   /// [applicationConfigurations] The configurations for the application running by the job run.
   /// [monitoringConfiguration] The configurations for monitoring.
-  JobTemplateJobTemplateDataConfigurationOverrides({
+  const JobTemplateJobTemplateDataConfigurationOverrides({
     this.applicationConfigurations,
     this.monitoringConfiguration,
   });

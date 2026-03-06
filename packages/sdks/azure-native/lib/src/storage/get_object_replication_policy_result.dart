@@ -38,7 +38,7 @@ class GetObjectReplicationPolicyResult {
   /// [rules] The storage account object replication rules.
   /// [sourceAccount] Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetObjectReplicationPolicyResult({
+  const GetObjectReplicationPolicyResult({
     required this.azureApiVersion,
     required this.destinationAccount,
     required this.enabledTime,

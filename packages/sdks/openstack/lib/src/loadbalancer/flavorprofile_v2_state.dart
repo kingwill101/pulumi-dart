@@ -26,7 +26,7 @@ class FlavorprofileV2State {
   /// [name] Name of the flavorprofile. Changing this updates the existing
   /// [providerName] The provider_name that the flavor_profile will use.
   /// [region] The region in which to obtain the V2 Networking client.
-  FlavorprofileV2State({
+  const FlavorprofileV2State({
     this.flavorData,
     this.name,
     this.providerName,

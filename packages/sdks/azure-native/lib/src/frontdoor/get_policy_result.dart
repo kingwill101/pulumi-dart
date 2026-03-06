@@ -60,7 +60,7 @@ class GetPolicyResult {
   /// [sku] The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetPolicyResult({
+  const GetPolicyResult({
     required this.azureApiVersion,
     this.customRules,
     this.etag,

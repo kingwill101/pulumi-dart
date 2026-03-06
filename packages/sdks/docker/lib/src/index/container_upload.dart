@@ -26,7 +26,7 @@ class ContainerUpload {
   /// [permissions] The permission mode for the file in the container. Has precedence over `executable`.
   /// [source] A filename that references a file which will be uploaded as the object content. This allows for large file uploads that do not get stored in state. Conflicts with `content` & `content_base64`
   /// [sourceHash] If using `source`, this will force an update if the file content has updated but the filename has not.
-  ContainerUpload({
+  const ContainerUpload({
     this.content,
     this.contentBase64,
     this.executable,

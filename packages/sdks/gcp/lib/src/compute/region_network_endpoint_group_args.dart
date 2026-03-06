@@ -77,7 +77,7 @@ class RegionNetworkEndpointGroupArgs {
   /// [region] A reference to the region where the regional NEGs reside.
   /// [serverlessDeployment] This field is only used for SERVERLESS NEGs.
   /// [subnetwork] This field is only used for PSC NEGs.
-  RegionNetworkEndpointGroupArgs({
+  const RegionNetworkEndpointGroupArgs({
     this.appEngine,
     this.cloudFunction,
     this.cloudRun,

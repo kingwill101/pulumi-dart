@@ -45,7 +45,7 @@ class DatasetHttpState {
   /// [requestBody] The body for the HTTP request.
   /// [requestMethod] The HTTP method for the HTTP request. (e.g. GET, POST)
   /// [schemaColumns] A `schema_column` block as defined below.
-  DatasetHttpState({
+  const DatasetHttpState({
     this.additionalProperties,
     this.annotations,
     this.dataFactoryId,

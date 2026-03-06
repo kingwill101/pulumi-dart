@@ -40,7 +40,7 @@ class EngineModelArgs {
   /// [onlinePredictionLogging] If true, online prediction access logs are sent to StackDriver Logging.
   /// [project] The ID of the project in which the resource belongs.
   /// [regions] The list of regions where the model is going to be deployed.
-  EngineModelArgs({
+  const EngineModelArgs({
     this.defaultVersion,
     this.description,
     this.labels,

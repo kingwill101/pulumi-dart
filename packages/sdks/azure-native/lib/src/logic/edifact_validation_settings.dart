@@ -36,7 +36,7 @@ class EdifactValidationSettings {
   /// [validateCharacterSet] The value indicating whether to validate character set in the message.
   /// [validateEDITypes] The value indicating whether to Whether to validate EDI types.
   /// [validateXSDTypes] The value indicating whether to Whether to validate XSD types.
-  EdifactValidationSettings({
+  const EdifactValidationSettings({
     required this.allowLeadingAndTrailingSpacesAndZeroes,
     required this.checkDuplicateGroupControlNumber,
     required this.checkDuplicateInterchangeControlNumber,

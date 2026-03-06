@@ -32,7 +32,7 @@ class SpringCloudGatewayRouteConfigRoute {
   /// [title] Specifies the title which will be applied to methods in the generated OpenAPI documentation.
   /// [tokenRelay] Should pass currently-authenticated user's identity token to application service?
   /// [uri] Specifies the full uri which will override `appName`.
-  SpringCloudGatewayRouteConfigRoute({
+  const SpringCloudGatewayRouteConfigRoute({
     this.classificationTags,
     this.description,
     this.filters,

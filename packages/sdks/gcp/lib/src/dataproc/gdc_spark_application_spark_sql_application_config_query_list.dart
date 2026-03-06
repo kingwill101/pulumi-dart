@@ -8,7 +8,7 @@ class GdcSparkApplicationSparkSqlApplicationConfigQueryList {
 
   /// Creates a new [GdcSparkApplicationSparkSqlApplicationConfigQueryList].
   /// [queries] The queries to run.
-  GdcSparkApplicationSparkSqlApplicationConfigQueryList({
+  const GdcSparkApplicationSparkSqlApplicationConfigQueryList({
     required this.queries,
   });
 

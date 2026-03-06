@@ -34,7 +34,7 @@ class SessionTemplateArgs {
   /// [name] The resource name of the session template.
   /// [project] Optional.
   /// [runtimeConfig] Optional. Runtime configuration for session execution.
-  SessionTemplateArgs({
+  const SessionTemplateArgs({
     this.description,
     this.environmentConfig,
     this.jupyterSession,

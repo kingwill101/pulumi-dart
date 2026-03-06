@@ -61,7 +61,7 @@ class AppResourcePropertiesResponse {
   /// [url] URL of the App
   /// [vnetAddons] Additional App settings in vnet injection instance
   /// [workloadProfileName] The workload profile used for this app. Supported for Consumption + Dedicated plan.
-  AppResourcePropertiesResponse({
+  const AppResourcePropertiesResponse({
     this.addonConfigs,
     this.customPersistentDisks,
     this.enableEndToEndTLS,

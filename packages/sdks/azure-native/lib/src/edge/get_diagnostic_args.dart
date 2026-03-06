@@ -15,7 +15,7 @@ class GetDiagnosticArgs {
   /// Creates a new [GetDiagnosticArgs].
   /// [diagnosticName] Name of Diagnostic.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDiagnosticArgs({
+  const GetDiagnosticArgs({
     required this.diagnosticName,
     required this.resourceGroupName,
   });

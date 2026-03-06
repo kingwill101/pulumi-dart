@@ -30,7 +30,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
   /// [clientSecret] OAuth2 client secret. Cannot be used with `client_secret_wo`. Must be used together with `client_id`.
   /// [clientSecretWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [oauthDiscovery] OAuth discovery configuration. See `oauth_discovery` below.
-  AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig({
+  const AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig({
     this.clientCredentialsWoVersion,
     this.clientId,
     this.clientIdWo,

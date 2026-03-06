@@ -18,7 +18,7 @@ class NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1alpha1 {
   /// Creates a new [NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1alpha1].
   /// [nonResourceURLs] `nonResourceURLs` is a set of url prefixes that a user should have access to and may not be empty. For example:
   /// [verbs] `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required.
-  NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1alpha1({
+  const NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1alpha1({
     this.nonResourceURLs,
     this.verbs,
   });

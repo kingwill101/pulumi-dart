@@ -13,7 +13,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition].
   /// [minimumRiskScore] The minimum data risk score that triggers the condition.
   /// [minimumSensitivityScore] The minimum sensitivity level that triggers the condition.
-  PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition({
+  const PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition({
     this.minimumRiskScore,
     this.minimumSensitivityScore,
   });

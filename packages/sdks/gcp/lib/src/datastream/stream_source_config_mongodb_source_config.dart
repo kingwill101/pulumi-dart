@@ -20,7 +20,7 @@ class StreamSourceConfigMongodbSourceConfig {
   /// [excludeObjects] MongoDB collections to include in the stream.
   /// [includeObjects] MongoDB collections to include in the stream.
   /// [maxConcurrentBackfillTasks] Optional. Maximum number of concurrent backfill tasks. The number
-  StreamSourceConfigMongodbSourceConfig({
+  const StreamSourceConfigMongodbSourceConfig({
     this.excludeObjects,
     this.includeObjects,
     this.maxConcurrentBackfillTasks,

@@ -29,7 +29,7 @@ class GetListenerDefaultAction {
   /// [redirects] Required.
   /// [targetGroupArn] Required.
   /// [type] Required.
-  GetListenerDefaultAction({
+  const GetListenerDefaultAction({
     required this.authenticateCognitos,
     required this.authenticateOidcs,
     required this.fixedResponses,

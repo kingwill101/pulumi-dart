@@ -19,7 +19,7 @@ class QueryExecutionResultResponse {
   /// [sourceResult] Query analysis result from the source
   /// [statementsInBatch] Total no. of statements in the batch
   /// [targetResult] Query analysis result from the target
-  QueryExecutionResultResponse({
+  const QueryExecutionResultResponse({
     this.queryText,
     this.sourceResult,
     this.statementsInBatch,

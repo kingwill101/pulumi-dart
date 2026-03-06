@@ -83,7 +83,7 @@ class TransitRouterPeerAttachmentState {
   /// [transitRouterAttachmentName] . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
   /// [transitRouterId] The ID of the local Enterprise Edition transit router.
   /// [transitRouterPeerAttachmentName] The new name of the inter-region connection.
-  TransitRouterPeerAttachmentState({
+  const TransitRouterPeerAttachmentState({
     this.autoPublishRouteEnabled,
     this.bandwidth,
     this.bandwidthType,

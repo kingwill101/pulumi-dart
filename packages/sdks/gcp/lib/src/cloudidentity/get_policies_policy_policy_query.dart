@@ -17,7 +17,7 @@ class GetPoliciesPolicyPolicyQuery {
   /// [orgUnit] The org unit that the policy applies to.
   /// [query] The query that defines which entities the policy applies to.
   /// [sortOrder] The sort order of the policy.
-  GetPoliciesPolicyPolicyQuery({
+  const GetPoliciesPolicyPolicyQuery({
     required this.group,
     required this.orgUnit,
     required this.query,

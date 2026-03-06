@@ -20,7 +20,7 @@ class GetEnvgroupResult {
   /// [lastModifiedAt] The time at which the environment group was last updated as milliseconds since epoch.
   /// [name] ID of the environment group.
   /// [state] State of the environment group. Values other than ACTIVE means the resource is not ready to use.
-  GetEnvgroupResult({
+  const GetEnvgroupResult({
     required this.createdAt,
     required this.hostnames,
     required this.lastModifiedAt,

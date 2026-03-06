@@ -15,7 +15,7 @@ class GetSharedKeysArgs {
   /// Creates a new [GetSharedKeysArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetSharedKeysArgs({
+  const GetSharedKeysArgs({
     required this.resourceGroupName,
     required this.workspaceName,
   });

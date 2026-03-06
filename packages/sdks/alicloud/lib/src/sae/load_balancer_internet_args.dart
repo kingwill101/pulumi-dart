@@ -19,7 +19,7 @@ class LoadBalancerInternetArgs {
   /// [appId] The target application ID that needs to be bound to the SLB.
   /// [internetSlbId] The internet SLB ID.
   /// [internets] The bound private network SLB. See `internet` below.
-  LoadBalancerInternetArgs({
+  const LoadBalancerInternetArgs({
     required this.appId,
     this.internetSlbId,
     required this.internets,

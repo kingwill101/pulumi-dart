@@ -9,7 +9,7 @@ class GetAppServiceSiteCredential {
   /// Creates a new [GetAppServiceSiteCredential].
   /// [password] Required.
   /// [username] Required.
-  GetAppServiceSiteCredential({
+  const GetAppServiceSiteCredential({
     required this.password,
     required this.username,
   });

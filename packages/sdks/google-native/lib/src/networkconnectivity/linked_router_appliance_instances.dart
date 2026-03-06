@@ -13,7 +13,7 @@ class LinkedRouterApplianceInstances {
   /// Creates a new [LinkedRouterApplianceInstances].
   /// [instances] The list of router appliance instances.
   /// [siteToSiteDataTransfer] A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
-  LinkedRouterApplianceInstances({
+  const LinkedRouterApplianceInstances({
     this.instances,
     this.siteToSiteDataTransfer,
   });

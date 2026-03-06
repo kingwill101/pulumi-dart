@@ -88,7 +88,7 @@ class BareMetalAdminClusterArgs {
   /// [proxy] Specifies the cluster proxy configuration.
   /// [securityConfig] Specifies the security related settings for the Bare Metal User Cluster.
   /// [storage] Specifies the cluster storage configuration.
-  BareMetalAdminClusterArgs({
+  const BareMetalAdminClusterArgs({
     this.annotations,
     this.bareMetalVersion,
     this.clusterOperations,

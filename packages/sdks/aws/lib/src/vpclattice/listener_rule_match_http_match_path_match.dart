@@ -14,7 +14,7 @@ class ListenerRuleMatchHttpMatchPathMatch {
   /// Creates a new [ListenerRuleMatchHttpMatchPathMatch].
   /// [caseSensitive] Indicates whether the match is case sensitive.
   /// [match] The header match type.
-  ListenerRuleMatchHttpMatchPathMatch({
+  const ListenerRuleMatchHttpMatchPathMatch({
     this.caseSensitive,
     required this.match,
   });

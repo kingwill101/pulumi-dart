@@ -8,7 +8,7 @@ class ListWorkspaceNamedValueResult {
 
   /// Creates a new [ListWorkspaceNamedValueResult].
   /// [value] This is secret value of the NamedValue entity.
-  ListWorkspaceNamedValueResult({
+  const ListWorkspaceNamedValueResult({
     this.value,
   });
 

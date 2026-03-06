@@ -21,7 +21,7 @@ class ResourcePool {
   /// [generation] Generation tracks the change in a pool over time. Whenever a driver changes something about one or more of the resources in a pool, it must change the generation in all ResourceSlices which are part of that pool. Consumers of ResourceSlices should only consider resources from the pool with the highest generation number. The generation may be reset by drivers, which should be fine for consumers, assuming that all ResourceSlices in a pool are updated to match or deleted.
   /// [name] Name is used to identify the pool. For node-local devices, this is often the node name, but this is not required.
   /// [resourceSliceCount] ResourceSliceCount is the total number of ResourceSlices in the pool at this generation number. Must be greater than zero.
-  ResourcePool({
+  const ResourcePool({
     required this.generation,
     required this.name,
     required this.resourceSliceCount,

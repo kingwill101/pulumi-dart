@@ -11,7 +11,7 @@ class FilterFilterCriteriaLambdaFunctionExecutionRoleArn {
   /// Creates a new [FilterFilterCriteriaLambdaFunctionExecutionRoleArn].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaLambdaFunctionExecutionRoleArn({
+  const FilterFilterCriteriaLambdaFunctionExecutionRoleArn({
     required this.comparison,
     required this.value,
   });

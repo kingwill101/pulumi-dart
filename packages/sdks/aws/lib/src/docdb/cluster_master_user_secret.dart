@@ -12,7 +12,7 @@ class ClusterMasterUserSecret {
   /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
   /// [secretArn] Optional.
   /// [secretStatus] Optional.
-  ClusterMasterUserSecret({
+  const ClusterMasterUserSecret({
     this.kmsKeyId,
     this.secretArn,
     this.secretStatus,

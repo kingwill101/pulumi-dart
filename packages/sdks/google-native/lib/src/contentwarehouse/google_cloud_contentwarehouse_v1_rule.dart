@@ -23,7 +23,7 @@ class GoogleCloudContentwarehouseV1Rule {
   /// [description] Short description of the rule and its context.
   /// [ruleId] ID of the rule. It has to be unique across all the examples. This is managed internally.
   /// [triggerType] Identifies the trigger type for running the policy.
-  GoogleCloudContentwarehouseV1Rule({
+  const GoogleCloudContentwarehouseV1Rule({
     this.actions,
     this.condition,
     this.description,

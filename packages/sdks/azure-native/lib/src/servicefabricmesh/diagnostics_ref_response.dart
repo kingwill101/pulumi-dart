@@ -12,7 +12,7 @@ class DiagnosticsRefResponse {
   /// Creates a new [DiagnosticsRefResponse].
   /// [enabled] Status of whether or not sinks are enabled.
   /// [sinkRefs] List of sinks to be used if enabled. References the list of sinks in DiagnosticsDescription.
-  DiagnosticsRefResponse({
+  const DiagnosticsRefResponse({
     this.enabled,
     this.sinkRefs,
   });

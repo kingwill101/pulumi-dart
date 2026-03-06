@@ -17,7 +17,7 @@ class LoadBalancerDeletionProtectionConfig {
   /// [enabled] Specifies whether to enable deletion protection. Valid values:
   /// [enabledTime] Opening time of the configuration read-only mode.
   /// [reason] The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
-  LoadBalancerDeletionProtectionConfig({
+  const LoadBalancerDeletionProtectionConfig({
     this.enabled,
     this.enabledTime,
     this.reason,

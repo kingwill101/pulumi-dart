@@ -13,7 +13,7 @@ class GetInstructionArgs {
   /// Creates a new [GetInstructionArgs].
   /// [instructionId] Required.
   /// [project] Optional.
-  GetInstructionArgs({
+  const GetInstructionArgs({
     required this.instructionId,
     this.project,
   });

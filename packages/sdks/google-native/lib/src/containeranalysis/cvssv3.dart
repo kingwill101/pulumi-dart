@@ -38,7 +38,7 @@ class CVSSv3 {
   /// [privilegesRequired] Optional.
   /// [scope] Optional.
   /// [userInteraction] Optional.
-  CVSSv3({
+  const CVSSv3({
     this.attackComplexity,
     this.attackVector,
     this.availabilityImpact,

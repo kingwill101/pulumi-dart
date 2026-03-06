@@ -9,7 +9,7 @@ class Postdeploy {
 
   /// Creates a new [Postdeploy].
   /// [actions] Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
-  Postdeploy({
+  const Postdeploy({
     this.actions,
   });
 

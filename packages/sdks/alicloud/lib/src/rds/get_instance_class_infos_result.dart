@@ -24,7 +24,7 @@ class GetInstanceClassInfosResult {
   /// [infos] A list of Rds available resource. Each element contains the following attributes:
   /// [orderType] Required.
   /// [outputFile] Optional.
-  GetInstanceClassInfosResult({
+  const GetInstanceClassInfosResult({
     required this.commodityCode,
     this.dbInstanceId,
     required this.id,

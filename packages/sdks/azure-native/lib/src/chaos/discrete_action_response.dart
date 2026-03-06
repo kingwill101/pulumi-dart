@@ -20,7 +20,7 @@ class DiscreteActionResponse {
   /// [parameters] List of key value pairs.
   /// [selectorId] String that represents a selector.
   /// [type] Enum that discriminates between action models.
-  DiscreteActionResponse({
+  const DiscreteActionResponse({
     required this.name,
     required this.parameters,
     required this.selectorId,

@@ -63,7 +63,7 @@ class StreamArgs {
   /// [ruleSets] Rule sets to apply to the stream.
   /// [sourceConfig] Source connection profile configuration.
   /// [streamId] The stream identifier.
-  StreamArgs({
+  const StreamArgs({
     this.backfillAll,
     this.backfillNone,
     this.createWithoutValidation,

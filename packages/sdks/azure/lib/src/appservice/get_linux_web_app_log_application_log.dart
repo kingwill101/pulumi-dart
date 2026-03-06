@@ -12,7 +12,7 @@ class GetLinuxWebAppLogApplicationLog {
   /// Creates a new [GetLinuxWebAppLogApplicationLog].
   /// [azureBlobStorages] A `azure_blob_storage` block as defined above.
   /// [fileSystemLevel] The logging level.
-  GetLinuxWebAppLogApplicationLog({
+  const GetLinuxWebAppLogApplicationLog({
     required this.azureBlobStorages,
     required this.fileSystemLevel,
   });

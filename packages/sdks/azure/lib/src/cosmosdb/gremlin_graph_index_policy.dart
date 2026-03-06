@@ -25,7 +25,7 @@ class GremlinGraphIndexPolicy {
   /// [includedPaths] List of paths to include in the indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
   /// [indexingMode] Indicates the indexing mode. Possible values include: `Consistent`, `Lazy`, `None`.
   /// [spatialIndices] One or more `spatial_index` blocks as defined below.
-  GremlinGraphIndexPolicy({
+  const GremlinGraphIndexPolicy({
     this.automatic,
     this.compositeIndices,
     this.excludedPaths,

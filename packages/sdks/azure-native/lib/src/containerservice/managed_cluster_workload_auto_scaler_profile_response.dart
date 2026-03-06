@@ -14,7 +14,7 @@ class ManagedClusterWorkloadAutoScalerProfileResponse {
   /// Creates a new [ManagedClusterWorkloadAutoScalerProfileResponse].
   /// [keda] KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
   /// [verticalPodAutoscaler] VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-  ManagedClusterWorkloadAutoScalerProfileResponse({
+  const ManagedClusterWorkloadAutoScalerProfileResponse({
     this.keda,
     this.verticalPodAutoscaler,
   });

@@ -17,7 +17,7 @@ class GetExecutionArgs {
   /// [location] Required.
   /// [metadataStoreId] Required.
   /// [project] Optional.
-  GetExecutionArgs({
+  const GetExecutionArgs({
     required this.executionId,
     required this.location,
     required this.metadataStoreId,

@@ -22,7 +22,7 @@ class IngressConfiguration {
   /// [scale] Scaling configuration for the ingress component. Required.
   /// [terminationGracePeriodSeconds] Time (in seconds) to allow active connections to complete on termination. Must be between 0 and 3600. Defaults to 480 seconds.
   /// [workloadProfileName] Name of the workload profile used by the ingress component. Required.
-  IngressConfiguration({
+  const IngressConfiguration({
     this.headerCountLimit,
     this.requestIdleTimeout,
     this.scale,

@@ -20,7 +20,7 @@ class ServiceTaskSpecContainerSpecHealthcheck {
   /// [startPeriod] Start period for the container to initialize before counting retries towards unstable (ms|s|m|h). Defaults to `0s`.
   /// [tests] The test to perform as list
   /// [timeout] Maximum time to allow one check to run (ms|s|m|h). Defaults to `0s`.
-  ServiceTaskSpecContainerSpecHealthcheck({
+  const ServiceTaskSpecContainerSpecHealthcheck({
     this.interval,
     this.retries,
     this.startPeriod,

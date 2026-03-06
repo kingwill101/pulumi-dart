@@ -27,7 +27,7 @@ class GetChildInstanceRouteEntryToAttachmentsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [serviceType] ServiceType
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
-  GetChildInstanceRouteEntryToAttachmentsArgs({
+  const GetChildInstanceRouteEntryToAttachmentsArgs({
     this.cenId,
     required this.childInstanceRouteTableId,
     this.ids,

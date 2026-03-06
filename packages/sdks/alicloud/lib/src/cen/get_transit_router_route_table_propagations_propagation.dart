@@ -23,7 +23,7 @@ class GetTransitRouterRouteTablePropagationsPropagation {
   /// [status] The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
   /// [transitRouterAttachmentId] The ID of the network instance connection.
   /// [transitRouterRouteTableId] The ID of the route table of the Enterprise Edition transit router.
-  GetTransitRouterRouteTablePropagationsPropagation({
+  const GetTransitRouterRouteTablePropagationsPropagation({
     required this.id,
     required this.resourceId,
     required this.resourceType,

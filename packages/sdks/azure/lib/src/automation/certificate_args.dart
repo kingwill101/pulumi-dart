@@ -27,7 +27,7 @@ class CertificateArgs {
   /// [exportable] The is exportable flag of the certificate.
   /// [name] Specifies the name of the Certificate. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Certificate is created. Changing this forces a new resource to be created.
-  CertificateArgs({
+  const CertificateArgs({
     required this.automationAccountName,
     required this.base64,
     this.description,

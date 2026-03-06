@@ -17,7 +17,7 @@ class AzureResourceResponse {
   /// [id] The Id of azure resource.
   /// [resourceProperties] The azure resource connection related properties.
   /// [type] The target service type.
-  AzureResourceResponse({
+  const AzureResourceResponse({
     this.id,
     this.resourceProperties,
     required this.type,

@@ -27,7 +27,7 @@ class TagOptionResourceAssociationState {
   /// [resourceId] Resource identifier.
   /// [resourceName] Description of the resource.
   /// [tagOptionId] Tag Option identifier.
-  TagOptionResourceAssociationState({
+  const TagOptionResourceAssociationState({
     this.region,
     this.resourceArn,
     this.resourceCreatedTime,

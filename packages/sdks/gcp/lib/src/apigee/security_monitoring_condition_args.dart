@@ -25,7 +25,7 @@ class SecurityMonitoringConditionArgs {
   /// [orgId] The Apigee Organization associated with the Apigee Security Monitoring Condition,
   /// [profile] ID of security profile of the security monitoring condition.
   /// [scope] ID of security profile of the security monitoring condition.
-  SecurityMonitoringConditionArgs({
+  const SecurityMonitoringConditionArgs({
     required this.conditionId,
     this.includeAllResources,
     required this.orgId,

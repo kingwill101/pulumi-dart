@@ -9,7 +9,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicy {
 
   /// Creates a new [GetRegionInstanceGroupManagerInstanceFlexibilityPolicy].
   /// [instanceSelections] Named instance selections configuring properties that the group will use when creating new VMs.
-  GetRegionInstanceGroupManagerInstanceFlexibilityPolicy({
+  const GetRegionInstanceGroupManagerInstanceFlexibilityPolicy({
     required this.instanceSelections,
   });
 

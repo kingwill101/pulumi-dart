@@ -20,7 +20,7 @@ class GetInstanceBackupsResult {
   /// [id] The unique ID of this Backup.
   /// [inProgresses] Required.
   /// [linodeId] Required.
-  GetInstanceBackupsResult({
+  const GetInstanceBackupsResult({
     required this.automatics,
     required this.currents,
     required this.id,

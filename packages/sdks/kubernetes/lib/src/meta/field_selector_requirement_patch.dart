@@ -15,7 +15,7 @@ class FieldSelectorRequirementPatch {
   /// [key] key is the field selector key that the requirement applies to.
   /// [operator] operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. The list of operators may grow in the future.
   /// [values] values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
-  FieldSelectorRequirementPatch({
+  const FieldSelectorRequirementPatch({
     this.key,
     this.operator,
     this.values,

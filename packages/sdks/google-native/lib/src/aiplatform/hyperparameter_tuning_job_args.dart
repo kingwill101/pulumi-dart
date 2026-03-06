@@ -40,7 +40,7 @@ class HyperparameterTuningJobArgs {
   /// [project] Optional.
   /// [studySpec] Study configuration of the HyperparameterTuningJob.
   /// [trialJobSpec] The spec of a trial job. The same spec applies to the CustomJobs created in all the trials.
-  HyperparameterTuningJobArgs({
+  const HyperparameterTuningJobArgs({
     required this.displayName,
     this.encryptionSpec,
     this.labels,

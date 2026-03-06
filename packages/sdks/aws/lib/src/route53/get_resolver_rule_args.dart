@@ -30,7 +30,7 @@ class GetResolverRuleArgs {
   /// [resolverRuleId] ID of the desired resolver rule. Conflicts with `domain_name`, `name`, `resolver_endpoint_id` and `rule_type`.
   /// [ruleType] Rule type of the desired resolver rule. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`. Conflicts with `resolver_rule_id`.
   /// [tags] Map of tags assigned to the resolver rule.
-  GetResolverRuleArgs({
+  const GetResolverRuleArgs({
     this.domainName,
     this.name,
     this.region,

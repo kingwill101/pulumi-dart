@@ -11,7 +11,7 @@ class GetLinuxWebAppStickySetting {
   /// Creates a new [GetLinuxWebAppStickySetting].
   /// [appSettingNames] A list of `app_setting` names that the Linux Web App will not swap between Slots when a swap operation is triggered.
   /// [connectionStringNames] A list of `connection_string` names that the Linux Web App will not swap between Slots when a swap operation is triggered.
-  GetLinuxWebAppStickySetting({
+  const GetLinuxWebAppStickySetting({
     required this.appSettingNames,
     required this.connectionStringNames,
   });

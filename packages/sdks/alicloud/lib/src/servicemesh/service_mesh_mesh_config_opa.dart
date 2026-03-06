@@ -23,7 +23,7 @@ class ServiceMeshMeshConfigOpa {
   /// [logLevel] OPA proxy container log level
   /// [requestCpu] Sidecar injector Pods on the requested resource
   /// [requestMemory] Sidecar injector Pods on the requested resource
-  ServiceMeshMeshConfigOpa({
+  const ServiceMeshMeshConfigOpa({
     this.enabled,
     this.limitCpu,
     this.limitMemory,

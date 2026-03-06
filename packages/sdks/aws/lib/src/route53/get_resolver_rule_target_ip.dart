@@ -17,7 +17,7 @@ class GetResolverRuleTargetIp {
   /// [ipv6] IPv6 address that you want to forward DNS queries to.
   /// [port] Port at the IP address that you want to forward DNS queries to.
   /// [protocol] Protocol for the target IP address. Valid values are `Do53` (DNS over port 53), `DoH` (DNS over HTTPS), and `DoH-FIPS` (DNS over HTTPS with FIPS).
-  GetResolverRuleTargetIp({
+  const GetResolverRuleTargetIp({
     required this.ip,
     required this.ipv6,
     required this.port,

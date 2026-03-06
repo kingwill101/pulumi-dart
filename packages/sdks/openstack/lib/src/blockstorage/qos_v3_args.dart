@@ -25,7 +25,7 @@ class QosV3Args {
   /// [name] Name of the qos.  Changing this creates a new qos.
   /// [region] The region in which to create the qos. If omitted,
   /// [specs] Key/Value pairs of specs for the qos.
-  QosV3Args({
+  const QosV3Args({
     this.consumer,
     this.name,
     this.region,

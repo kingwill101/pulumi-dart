@@ -10,7 +10,7 @@ class BasicAuth {
   /// Creates a new [BasicAuth].
   /// [password] Optional.
   /// [user] Optional.
-  BasicAuth({
+  const BasicAuth({
     this.password,
     this.user,
   });

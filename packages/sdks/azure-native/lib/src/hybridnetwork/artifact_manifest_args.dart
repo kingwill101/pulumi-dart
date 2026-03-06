@@ -31,7 +31,7 @@ class ArtifactManifestArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ArtifactManifestArgs({
+  const ArtifactManifestArgs({
     this.artifactManifestName,
     required this.artifactStoreName,
     this.location,

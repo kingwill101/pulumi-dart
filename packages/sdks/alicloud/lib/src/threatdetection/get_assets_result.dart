@@ -32,7 +32,7 @@ class GetAssetsResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetAssetsResult({
+  const GetAssetsResult({
     required this.assets,
     this.criteria,
     required this.id,

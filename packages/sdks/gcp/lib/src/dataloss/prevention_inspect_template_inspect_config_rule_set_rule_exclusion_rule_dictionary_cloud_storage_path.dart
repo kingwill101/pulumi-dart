@@ -8,7 +8,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCl
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath].
   /// [path] A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-  PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath({
+  const PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath({
     required this.path,
   });
 

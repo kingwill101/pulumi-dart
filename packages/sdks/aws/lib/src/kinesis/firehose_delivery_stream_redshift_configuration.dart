@@ -52,7 +52,7 @@ class FirehoseDeliveryStreamRedshiftConfiguration {
   /// [s3Configuration] The S3 Configuration. See s3_configuration below for details.
   /// [secretsManagerConfiguration] Optional.
   /// [username] The username that the firehose delivery stream will assume. It is strongly recommended that the username and password provided is used exclusively for Amazon Kinesis Firehose purposes, and that the permissions for the account are restricted for Amazon Redshift INSERT permissions. This value is required if `secrets_manager_configuration` is not provided.
-  FirehoseDeliveryStreamRedshiftConfiguration({
+  const FirehoseDeliveryStreamRedshiftConfiguration({
     this.cloudwatchLoggingOptions,
     required this.clusterJdbcurl,
     this.copyOptions,

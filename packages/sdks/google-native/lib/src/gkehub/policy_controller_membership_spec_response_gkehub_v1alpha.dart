@@ -13,7 +13,7 @@ class PolicyControllerMembershipSpecResponseGkehubV1alpha {
   /// Creates a new [PolicyControllerMembershipSpecResponseGkehubV1alpha].
   /// [policyControllerHubConfig] Policy Controller configuration for the cluster.
   /// [version] Version of Policy Controller installed.
-  PolicyControllerMembershipSpecResponseGkehubV1alpha({
+  const PolicyControllerMembershipSpecResponseGkehubV1alpha({
     required this.policyControllerHubConfig,
     required this.version,
   });

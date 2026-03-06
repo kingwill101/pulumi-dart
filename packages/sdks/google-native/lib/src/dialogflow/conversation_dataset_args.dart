@@ -19,7 +19,7 @@ class ConversationDatasetArgs {
   /// [displayName] The display name of the dataset. Maximum of 64 bytes.
   /// [location] Optional.
   /// [project] Optional.
-  ConversationDatasetArgs({
+  const ConversationDatasetArgs({
     this.description,
     required this.displayName,
     this.location,

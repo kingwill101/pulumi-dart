@@ -15,7 +15,7 @@ class GetStandbyVirtualMachinePoolArgs {
   /// Creates a new [GetStandbyVirtualMachinePoolArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [standbyVirtualMachinePoolName] Name of the standby virtual machine pool
-  GetStandbyVirtualMachinePoolArgs({
+  const GetStandbyVirtualMachinePoolArgs({
     required this.resourceGroupName,
     required this.standbyVirtualMachinePoolName,
   });

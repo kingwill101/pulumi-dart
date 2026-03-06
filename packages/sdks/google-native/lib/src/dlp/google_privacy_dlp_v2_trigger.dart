@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2Trigger {
   /// Creates a new [GooglePrivacyDlpV2Trigger].
   /// [manual] For use with hybrid jobs. Jobs must be manually created and finished.
   /// [schedule] Create a job on a repeating basis based on the elapse of time.
-  GooglePrivacyDlpV2Trigger({
+  const GooglePrivacyDlpV2Trigger({
     this.manual,
     this.schedule,
   });

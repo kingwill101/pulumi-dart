@@ -21,7 +21,7 @@ class GetControlPolicyAttachmentsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [policyType] The policy type of control policy. Valid values: `Custom` and `System`.
   /// [targetId] The Id of target.
-  GetControlPolicyAttachmentsArgs({
+  const GetControlPolicyAttachmentsArgs({
     this.language,
     this.outputFile,
     this.policyType,

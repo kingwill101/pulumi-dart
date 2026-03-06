@@ -8,7 +8,7 @@ class DataTransferConfigEmailPreferences {
 
   /// Creates a new [DataTransferConfigEmailPreferences].
   /// [enableFailureEmail] If true, email notifications will be sent on transfer run failures.
-  DataTransferConfigEmailPreferences({
+  const DataTransferConfigEmailPreferences({
     required this.enableFailureEmail,
   });
 

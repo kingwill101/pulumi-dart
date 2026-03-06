@@ -11,7 +11,7 @@ class GetGradientaiAgentsByOpenaiApiKeyArgs {
 
   /// Creates a new [GetGradientaiAgentsByOpenaiApiKeyArgs].
   /// [uuid] Required.
-  GetGradientaiAgentsByOpenaiApiKeyArgs({
+  const GetGradientaiAgentsByOpenaiApiKeyArgs({
     required this.uuid,
   });
 

@@ -23,7 +23,7 @@ class KubernetesNodePoolNode {
   /// [name] A name for the node pool.
   /// [status] A string indicating the current status of the individual node.
   /// [updatedAt] The date and time when the node was last updated.
-  KubernetesNodePoolNode({
+  const KubernetesNodePoolNode({
     this.createdAt,
     this.dropletId,
     this.id,

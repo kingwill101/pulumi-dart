@@ -13,7 +13,7 @@ class NotificationSettingsResponse {
   /// Creates a new [NotificationSettingsResponse].
   /// [activationState] The state of notifications feature.
   /// [azureMonitorWorkspaceProperties] Configuration properties of an Azure Monitor workspace that receives change notifications.
-  NotificationSettingsResponse({
+  const NotificationSettingsResponse({
     this.activationState,
     this.azureMonitorWorkspaceProperties,
   });

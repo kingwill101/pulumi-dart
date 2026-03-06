@@ -11,7 +11,7 @@ class AllocationAggregateReservationReservedResourceInfoAccelerator {
   /// Creates a new [AllocationAggregateReservationReservedResourceInfoAccelerator].
   /// [acceleratorCount] Number of accelerators of specified type.
   /// [acceleratorType] Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
-  AllocationAggregateReservationReservedResourceInfoAccelerator({
+  const AllocationAggregateReservationReservedResourceInfoAccelerator({
     this.acceleratorCount,
     this.acceleratorType,
   });

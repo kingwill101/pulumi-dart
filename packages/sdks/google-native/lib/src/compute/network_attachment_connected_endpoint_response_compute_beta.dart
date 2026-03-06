@@ -27,7 +27,7 @@ class NetworkAttachmentConnectedEndpointResponseComputeBeta {
   /// [status] The status of a connected endpoint to this network attachment.
   /// [subnetwork] The subnetwork used to assign the IP to the producer instance network interface.
   /// [subnetworkCidrRange] The CIDR range of the subnet from which the IPv4 internal IP was allocated from.
-  NetworkAttachmentConnectedEndpointResponseComputeBeta({
+  const NetworkAttachmentConnectedEndpointResponseComputeBeta({
     required this.ipAddress,
     required this.ipv6Address,
     required this.projectIdOrNum,

@@ -43,7 +43,7 @@ class GetADLSGen2FileDataSetResult {
   /// [subscriptionId] Subscription id of storage account
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
-  GetADLSGen2FileDataSetResult({
+  const GetADLSGen2FileDataSetResult({
     required this.azureApiVersion,
     required this.dataSetId,
     required this.filePath,

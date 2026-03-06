@@ -12,7 +12,7 @@ class GetApplicationArgs {
 
   /// Creates a new [GetApplicationArgs].
   /// [applicationId] The security Application key - unique key for the standard application
-  GetApplicationArgs({
+  const GetApplicationArgs({
     required this.applicationId,
   });
 

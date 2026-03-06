@@ -36,7 +36,7 @@ class AccessControlListMatchCondition {
   /// [protocolTypes] List of the protocols that need to be matched.
   /// [ttlValues] List of TTL [Time To Live] values that need to be matched.
   /// [vlanMatchCondition] Vlan match condition that needs to be matched.
-  AccessControlListMatchCondition({
+  const AccessControlListMatchCondition({
     this.dscpMarkings,
     this.etherTypes,
     this.fragments,

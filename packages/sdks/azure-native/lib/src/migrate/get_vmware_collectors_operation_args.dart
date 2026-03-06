@@ -18,7 +18,7 @@ class GetVmwareCollectorsOperationArgs {
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmWareCollectorName] VMware collector ARM name
-  GetVmwareCollectorsOperationArgs({
+  const GetVmwareCollectorsOperationArgs({
     required this.projectName,
     required this.resourceGroupName,
     required this.vmWareCollectorName,

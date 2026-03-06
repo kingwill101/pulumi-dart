@@ -12,7 +12,7 @@ class GetClusterMaintenanceUpdatePolicyMaintenanceWindow {
   /// Creates a new [GetClusterMaintenanceUpdatePolicyMaintenanceWindow].
   /// [day] Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
   /// [startTimes] Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
-  GetClusterMaintenanceUpdatePolicyMaintenanceWindow({
+  const GetClusterMaintenanceUpdatePolicyMaintenanceWindow({
     required this.day,
     required this.startTimes,
   });

@@ -12,7 +12,7 @@ class ListProvisionedClusterInstanceUserKubeconfigArgs {
 
   /// Creates a new [ListProvisionedClusterInstanceUserKubeconfigArgs].
   /// [connectedClusterResourceUri] The fully qualified Azure Resource Manager identifier of the connected cluster resource.
-  ListProvisionedClusterInstanceUserKubeconfigArgs({
+  const ListProvisionedClusterInstanceUserKubeconfigArgs({
     required this.connectedClusterResourceUri,
   });
 

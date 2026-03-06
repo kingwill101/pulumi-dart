@@ -18,7 +18,7 @@ class GetMachineArgs {
   /// [expand] The expand expression to apply on the operation.
   /// [machineName] The name of the hybrid machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMachineArgs({
+  const GetMachineArgs({
     this.expand,
     required this.machineName,
     required this.resourceGroupName,

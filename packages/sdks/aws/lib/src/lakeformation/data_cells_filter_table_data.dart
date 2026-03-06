@@ -31,7 +31,7 @@ class DataCellsFilterTableData {
   /// [tableCatalogId] The ID of the Data Catalog.
   /// [tableName] The name of the table.
   /// [versionId] ID of the data cells filter version.
-  DataCellsFilterTableData({
+  const DataCellsFilterTableData({
     this.columnNames,
     this.columnWildcard,
     required this.databaseName,

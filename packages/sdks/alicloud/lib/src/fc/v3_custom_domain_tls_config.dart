@@ -14,7 +14,7 @@ class V3CustomDomainTlsConfig {
   /// [cipherSuites] List of TLS cipher suites
   /// [maxVersion] The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
   /// [minVersion] TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
-  V3CustomDomainTlsConfig({
+  const V3CustomDomainTlsConfig({
     this.cipherSuites,
     this.maxVersion,
     this.minVersion,

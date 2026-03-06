@@ -9,7 +9,7 @@ class NGroupCGPropertyContainerResponseProperties {
 
   /// Creates a new [NGroupCGPropertyContainerResponseProperties].
   /// [volumeMounts] Optional.
-  NGroupCGPropertyContainerResponseProperties({
+  const NGroupCGPropertyContainerResponseProperties({
     this.volumeMounts,
   });
 

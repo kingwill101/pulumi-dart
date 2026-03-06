@@ -35,7 +35,7 @@ class WebAppBackupConfigurationArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [storageAccountUrl] SAS URL to the container.
-  WebAppBackupConfigurationArgs({
+  const WebAppBackupConfigurationArgs({
     this.backupName,
     this.backupSchedule,
     this.databases,

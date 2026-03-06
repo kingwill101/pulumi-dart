@@ -16,7 +16,7 @@ class WorkloadInquiryDetails {
   /// [inquiryValidation] Inquiry validation such as permissions and other backup validations.
   /// [itemCount] Contains the protectable item Count inside this Container.
   /// [type] Type of the Workload such as SQL, Oracle etc.
-  WorkloadInquiryDetails({
+  const WorkloadInquiryDetails({
     this.inquiryValidation,
     this.itemCount,
     this.type,

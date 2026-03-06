@@ -62,7 +62,7 @@ class GetInstanceV2Result {
   /// [tags] A set of string tags assigned to this server.
   /// [updated] The time when the instance was last updated.
   /// [userData] The user data added when the server was created.
-  GetInstanceV2Result({
+  const GetInstanceV2Result({
     required this.accessIpV4,
     required this.accessIpV6,
     required this.availabilityZone,

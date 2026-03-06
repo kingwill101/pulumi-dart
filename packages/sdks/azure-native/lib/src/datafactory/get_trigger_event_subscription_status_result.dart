@@ -11,7 +11,7 @@ class GetTriggerEventSubscriptionStatusResult {
   /// Creates a new [GetTriggerEventSubscriptionStatusResult].
   /// [status] Event Subscription Status.
   /// [triggerName] Trigger name.
-  GetTriggerEventSubscriptionStatusResult({
+  const GetTriggerEventSubscriptionStatusResult({
     required this.status,
     required this.triggerName,
   });

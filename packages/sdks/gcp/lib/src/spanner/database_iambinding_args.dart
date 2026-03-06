@@ -39,7 +39,7 @@ class DatabaseIAMBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [role] The role that should be applied. Only one
-  DatabaseIAMBindingArgs({
+  const DatabaseIAMBindingArgs({
     this.condition,
     required this.database,
     required this.instance,

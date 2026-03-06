@@ -18,7 +18,7 @@ class SavedQueryArgs {
   /// [description] Query Description.
   /// [expression] Query Expression.
   /// [savedQueryName] The name of the resource.
-  SavedQueryArgs({
+  const SavedQueryArgs({
     this.description,
     required this.expression,
     required this.savedQueryName,

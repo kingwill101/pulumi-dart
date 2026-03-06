@@ -12,7 +12,7 @@ class GetRepositoryMavenConfig {
   /// Creates a new [GetRepositoryMavenConfig].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same
   /// [versionPolicy] Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
-  GetRepositoryMavenConfig({
+  const GetRepositoryMavenConfig({
     required this.allowSnapshotOverwrites,
     required this.versionPolicy,
   });

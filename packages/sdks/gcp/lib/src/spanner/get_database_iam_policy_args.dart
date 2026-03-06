@@ -19,7 +19,7 @@ class GetDatabaseIamPolicyArgs {
   /// [database] The name of the Spanner database.
   /// [instance] The name of the Spanner instance the database belongs to.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetDatabaseIamPolicyArgs({
+  const GetDatabaseIamPolicyArgs({
     required this.database,
     required this.instance,
     this.project,

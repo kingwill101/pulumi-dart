@@ -27,7 +27,7 @@ class EipInstanceAttachmentArgs {
   /// [instanceId] Instance ID
   /// [instanceType] The type of the EIP instance. Value:
   /// [standby] Indicates whether the EIP is a backup EIP. Value:
-  EipInstanceAttachmentArgs({
+  const EipInstanceAttachmentArgs({
     required this.allocationId,
     required this.instanceId,
     this.instanceType,

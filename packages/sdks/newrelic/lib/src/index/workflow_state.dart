@@ -46,7 +46,7 @@ class WorkflowState {
   /// [mutingRulesHandling] How to handle muted issues. See Muting Rules below for details.
   /// [name] The name of the workflow.
   /// [workflowId] The id of the workflow.
-  WorkflowState({
+  const WorkflowState({
     this.accountId,
     this.destinations,
     this.destinationsEnabled,

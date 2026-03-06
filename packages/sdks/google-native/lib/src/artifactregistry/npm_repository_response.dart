@@ -9,7 +9,7 @@ class NpmRepositoryResponse {
 
   /// Creates a new [NpmRepositoryResponse].
   /// [publicRepository] One of the publicly available Npm repositories supported by Artifact Registry.
-  NpmRepositoryResponse({
+  const NpmRepositoryResponse({
     required this.publicRepository,
   });
 

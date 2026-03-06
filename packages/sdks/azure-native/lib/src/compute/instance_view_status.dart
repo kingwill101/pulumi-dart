@@ -22,7 +22,7 @@ class InstanceViewStatus {
   /// [level] The level code.
   /// [message] The detailed status message, including for alerts and error messages.
   /// [time] The time of the status.
-  InstanceViewStatus({
+  const InstanceViewStatus({
     this.code,
     this.displayStatus,
     this.level,

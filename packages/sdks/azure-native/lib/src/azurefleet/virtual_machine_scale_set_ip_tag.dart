@@ -12,7 +12,7 @@ class VirtualMachineScaleSetIpTag {
   /// Creates a new [VirtualMachineScaleSetIpTag].
   /// [ipTagType] IP tag type. Example: FirstPartyUsage.
   /// [tag] IP tag associated with the public IP. Example: SQL, Storage etc.
-  VirtualMachineScaleSetIpTag({
+  const VirtualMachineScaleSetIpTag({
     this.ipTagType,
     this.tag,
   });

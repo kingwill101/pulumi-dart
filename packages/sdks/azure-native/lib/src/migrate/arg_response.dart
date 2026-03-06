@@ -9,7 +9,7 @@ class ArgResponse {
 
   /// Creates a new [ArgResponse].
   /// [query] The query to create workloads within the wave.
-  ArgResponse({
+  const ArgResponse({
     required this.query,
   });
 

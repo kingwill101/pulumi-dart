@@ -13,7 +13,7 @@ class VirtualNetworkDnsForwardingRulesetResponse {
   /// Creates a new [VirtualNetworkDnsForwardingRulesetResponse].
   /// [id] DNS Forwarding Ruleset Resource ID.
   /// [virtualNetworkLink] The reference to the virtual network link.
-  VirtualNetworkDnsForwardingRulesetResponse({
+  const VirtualNetworkDnsForwardingRulesetResponse({
     this.id,
     this.virtualNetworkLink,
   });

@@ -15,7 +15,7 @@ class GetPrefixListGlobalRulestackArgs {
   /// Creates a new [GetPrefixListGlobalRulestackArgs].
   /// [globalRulestackName] GlobalRulestack resource name
   /// [name] Local Rule priority
-  GetPrefixListGlobalRulestackArgs({
+  const GetPrefixListGlobalRulestackArgs({
     required this.globalRulestackName,
     required this.name,
   });

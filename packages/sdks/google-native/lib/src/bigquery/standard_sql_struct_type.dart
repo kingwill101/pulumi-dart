@@ -10,7 +10,7 @@ class StandardSqlStructType {
 
   /// Creates a new [StandardSqlStructType].
   /// [fields] Fields within the struct.
-  StandardSqlStructType({
+  const StandardSqlStructType({
     this.fields,
   });
 

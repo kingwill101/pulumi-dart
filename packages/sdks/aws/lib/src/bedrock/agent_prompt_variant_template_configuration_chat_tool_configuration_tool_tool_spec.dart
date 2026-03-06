@@ -17,7 +17,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec {
   /// [description] Description of the prompt.
   /// [inputSchema] The input schema of the tool. See Tool Input Schema for more information.
   /// [name] Name of the prompt.
-  AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec({
+  const AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec({
     this.description,
     this.inputSchema,
     required this.name,

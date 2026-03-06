@@ -16,7 +16,7 @@ class GetFunctionsResult {
   /// [functionNames] List of Lambda Function names.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetFunctionsResult({
+  const GetFunctionsResult({
     required this.functionArns,
     required this.functionNames,
     required this.id,

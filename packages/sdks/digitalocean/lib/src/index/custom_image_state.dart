@@ -48,7 +48,7 @@ class CustomImageState {
   /// [tags] A list of optional tags for the image.
   /// [type] Describes the kind of image.
   /// [url] A URL from which the custom Linux virtual machine image may be retrieved.
-  CustomImageState({
+  const CustomImageState({
     this.createdAt,
     this.description,
     this.distribution,

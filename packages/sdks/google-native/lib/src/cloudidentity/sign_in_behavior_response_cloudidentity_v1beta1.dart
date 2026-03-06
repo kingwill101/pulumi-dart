@@ -9,7 +9,7 @@ class SignInBehaviorResponseCloudidentityV1beta1 {
 
   /// Creates a new [SignInBehaviorResponseCloudidentityV1beta1].
   /// [redirectCondition] When to redirect sign-ins to the IdP.
-  SignInBehaviorResponseCloudidentityV1beta1({
+  const SignInBehaviorResponseCloudidentityV1beta1({
     required this.redirectCondition,
   });
 

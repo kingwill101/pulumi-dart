@@ -17,7 +17,7 @@ class GetCatalogCatalogAdogit {
   /// [keyVaultKeyUrl] A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
   /// [path] The folder where the catalog items can be found inside the repository.
   /// [uri] The Git URI of the Dev Center Catalog.
-  GetCatalogCatalogAdogit({
+  const GetCatalogCatalogAdogit({
     required this.branch,
     required this.keyVaultKeyUrl,
     required this.path,

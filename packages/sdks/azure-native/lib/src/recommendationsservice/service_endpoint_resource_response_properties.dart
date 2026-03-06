@@ -18,7 +18,7 @@ class ServiceEndpointResourceResponseProperties {
   /// [preAllocatedCapacity] ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity.
   /// [provisioningState] The resource provisioning state.
   /// [url] The URL where the ServiceEndpoint API is accessible at.
-  ServiceEndpointResourceResponseProperties({
+  const ServiceEndpointResourceResponseProperties({
     required this.pairedLocation,
     this.preAllocatedCapacity,
     required this.provisioningState,

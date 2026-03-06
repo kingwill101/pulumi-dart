@@ -12,7 +12,7 @@ class TcpRouteRuleMatch {
   /// Creates a new [TcpRouteRuleMatch].
   /// [address] Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask.
   /// [port] Specifies the destination port to match against.
-  TcpRouteRuleMatch({
+  const TcpRouteRuleMatch({
     required this.address,
     required this.port,
   });

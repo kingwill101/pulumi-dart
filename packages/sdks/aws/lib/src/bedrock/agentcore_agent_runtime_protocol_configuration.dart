@@ -8,7 +8,7 @@ class AgentcoreAgentRuntimeProtocolConfiguration {
 
   /// Creates a new [AgentcoreAgentRuntimeProtocolConfiguration].
   /// [serverProtocol] Server protocol for the agent runtime. Valid values: `HTTP`, `MCP`, `A2A`.
-  AgentcoreAgentRuntimeProtocolConfiguration({
+  const AgentcoreAgentRuntimeProtocolConfiguration({
     this.serverProtocol,
   });
 

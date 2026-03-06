@@ -15,7 +15,7 @@ class GetWebAppAuthSettingsV2WithoutSecretsArgs {
   /// Creates a new [GetWebAppAuthSettingsV2WithoutSecretsArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppAuthSettingsV2WithoutSecretsArgs({
+  const GetWebAppAuthSettingsV2WithoutSecretsArgs({
     required this.name,
     required this.resourceGroupName,
   });

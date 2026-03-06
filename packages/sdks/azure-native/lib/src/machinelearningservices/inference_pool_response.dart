@@ -20,7 +20,7 @@ class InferencePoolResponse {
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [provisioningState] Provisioning state for the pool.
   /// [scaleUnitConfiguration] Gets or sets ScaleUnitConfiguration for the inference pool. Used if PoolType=ScaleUnit.
-  InferencePoolResponse({
+  const InferencePoolResponse({
     this.description,
     this.properties,
     required this.provisioningState,

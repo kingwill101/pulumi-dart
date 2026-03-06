@@ -16,7 +16,7 @@ class GoogleCloudDialogflowCxV3beta1RolloutConfigResponse {
   /// [failureCondition] The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate &lt; 10% OR average_turn_count &lt; 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
   /// [rolloutCondition] The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate &gt; 60% AND callback_rate &lt; 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
   /// [rolloutSteps] Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
-  GoogleCloudDialogflowCxV3beta1RolloutConfigResponse({
+  const GoogleCloudDialogflowCxV3beta1RolloutConfigResponse({
     required this.failureCondition,
     required this.rolloutCondition,
     required this.rolloutSteps,

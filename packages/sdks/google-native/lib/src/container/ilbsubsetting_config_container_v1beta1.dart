@@ -9,7 +9,7 @@ class ILBSubsettingConfigContainerV1beta1 {
 
   /// Creates a new [ILBSubsettingConfigContainerV1beta1].
   /// [enabled] Enables l4 ILB subsetting for this cluster
-  ILBSubsettingConfigContainerV1beta1({
+  const ILBSubsettingConfigContainerV1beta1({
     this.enabled,
   });
 

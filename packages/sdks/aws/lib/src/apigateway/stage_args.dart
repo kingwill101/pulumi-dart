@@ -53,7 +53,7 @@ class StageArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [variables] Map that defines the stage variables.
   /// [xrayTracingEnabled] Whether active tracing with X-ray is enabled. Defaults to `false`.
-  StageArgs({
+  const StageArgs({
     this.accessLogSettings,
     this.cacheClusterEnabled,
     this.cacheClusterSize,

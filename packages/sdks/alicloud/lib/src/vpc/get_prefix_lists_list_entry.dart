@@ -11,7 +11,7 @@ class GetPrefixListsListEntry {
   /// Creates a new [GetPrefixListsListEntry].
   /// [cidr] The CIDR address block of the prefix list.
   /// [description] The description of the cidr entry.
-  GetPrefixListsListEntry({
+  const GetPrefixListsListEntry({
     required this.cidr,
     required this.description,
   });

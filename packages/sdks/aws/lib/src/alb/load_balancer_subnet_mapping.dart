@@ -19,7 +19,7 @@ class LoadBalancerSubnetMapping {
   /// [outpostId] Optional.
   /// [privateIpv4Address] Private IPv4 address for an internal load balancer.
   /// [subnetId] ID of the subnet of which to attach to the load balancer. You can specify only one subnet per Availability Zone.
-  LoadBalancerSubnetMapping({
+  const LoadBalancerSubnetMapping({
     this.allocationId,
     this.ipv6Address,
     this.outpostId,

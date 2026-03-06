@@ -11,7 +11,7 @@ class GetVpcAttachmentsFilter {
   /// Creates a new [GetVpcAttachmentsFilter].
   /// [name] Name of the filter check available value on [official documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayVpcAttachments.html)
   /// [values] List of one or more values for the filter.
-  GetVpcAttachmentsFilter({
+  const GetVpcAttachmentsFilter({
     required this.name,
     required this.values,
   });

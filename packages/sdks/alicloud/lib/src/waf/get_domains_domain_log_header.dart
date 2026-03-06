@@ -11,7 +11,7 @@ class GetDomainsDomainLogHeader {
   /// Creates a new [GetDomainsDomainLogHeader].
   /// [key] The key of label.
   /// [value] The value of label.
-  GetDomainsDomainLogHeader({
+  const GetDomainsDomainLogHeader({
     required this.key,
     required this.value,
   });

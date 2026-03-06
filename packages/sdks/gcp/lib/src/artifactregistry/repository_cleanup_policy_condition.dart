@@ -25,7 +25,7 @@ class RepositoryCleanupPolicyCondition {
   /// [tagPrefixes] Match versions by tag prefix. Applied on any prefix match.
   /// [tagState] Match versions by tag status.
   /// [versionNamePrefixes] Match versions by version name prefix. Applied on any prefix match.
-  RepositoryCleanupPolicyCondition({
+  const RepositoryCleanupPolicyCondition({
     this.newerThan,
     this.olderThan,
     this.packageNamePrefixes,

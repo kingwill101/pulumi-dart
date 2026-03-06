@@ -42,7 +42,7 @@ class StandardAssignmentArgs {
   /// [expiresOn] Expiration date of this assignment as a full ISO date
   /// [resourceId] The identifier of the resource.
   /// [standardAssignmentName] The standard assignments assignment key - unique key for the standard assignment
-  StandardAssignmentArgs({
+  const StandardAssignmentArgs({
     this.assignedStandard,
     this.attestationData,
     this.description,

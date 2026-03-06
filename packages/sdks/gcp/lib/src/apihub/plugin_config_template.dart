@@ -16,7 +16,7 @@ class PluginConfigTemplate {
   /// Creates a new [PluginConfigTemplate].
   /// [additionalConfigTemplates] The list of additional configuration variables for the plugin's
   /// [authConfigTemplate] AuthConfigTemplate represents the authentication template for a plugin.
-  PluginConfigTemplate({
+  const PluginConfigTemplate({
     this.additionalConfigTemplates,
     this.authConfigTemplate,
   });

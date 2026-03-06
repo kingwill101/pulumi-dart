@@ -29,7 +29,7 @@ class GetSpacesBucketObjectsResult {
   /// [owners] List of strings representing object owner IDs
   /// [prefix] Optional.
   /// [region] Required.
-  GetSpacesBucketObjectsResult({
+  const GetSpacesBucketObjectsResult({
     required this.bucket,
     required this.commonPrefixes,
     this.delimiter,

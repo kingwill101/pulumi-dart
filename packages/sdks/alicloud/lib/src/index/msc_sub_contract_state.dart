@@ -20,7 +20,7 @@ class MscSubContractState {
   /// [email] The User's Contact Email Address.
   /// [mobile] The User's Telephone.
   /// [position] The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-  MscSubContractState({
+  const MscSubContractState({
     this.contactName,
     this.email,
     this.mobile,

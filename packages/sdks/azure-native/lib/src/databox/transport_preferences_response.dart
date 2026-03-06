@@ -12,7 +12,7 @@ class TransportPreferencesResponse {
   /// Creates a new [TransportPreferencesResponse].
   /// [isUpdated] Read only property which indicates whether transport preferences has been updated or not after device is prepared.
   /// [preferredShipmentType] Indicates Shipment Logistics type that the customer preferred.
-  TransportPreferencesResponse({
+  const TransportPreferencesResponse({
     required this.isUpdated,
     required this.preferredShipmentType,
   });

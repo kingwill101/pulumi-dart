@@ -50,7 +50,7 @@ class GradientaiAgentChildAgent {
   /// [name] Name of the Agent
   /// [projectId] Project ID of the Agent
   /// [region] Region where the Agent is deployed
-  GradientaiAgentChildAgent({
+  const GradientaiAgentChildAgent({
     this.agentId,
     this.anthropicApiKeys,
     this.apiKeyInfos,

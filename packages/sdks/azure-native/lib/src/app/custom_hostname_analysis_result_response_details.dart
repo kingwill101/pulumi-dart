@@ -15,7 +15,7 @@ class CustomHostnameAnalysisResultResponseDetails {
   /// [code] Standardized string to programmatically identify the error.
   /// [message] Detailed error description and debugging information.
   /// [target] Detailed error description and debugging information.
-  CustomHostnameAnalysisResultResponseDetails({
+  const CustomHostnameAnalysisResultResponseDetails({
     required this.code,
     required this.message,
     required this.target,

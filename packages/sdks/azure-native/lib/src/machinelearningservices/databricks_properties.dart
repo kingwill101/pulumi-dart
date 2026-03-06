@@ -12,7 +12,7 @@ class DatabricksProperties {
   /// Creates a new [DatabricksProperties].
   /// [databricksAccessToken] Databricks access token
   /// [workspaceUrl] Workspace Url
-  DatabricksProperties({
+  const DatabricksProperties({
     this.databricksAccessToken,
     this.workspaceUrl,
   });

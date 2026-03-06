@@ -28,7 +28,7 @@ class ServiceRegionArgs {
   /// [regionName] The name of the Region where you want to add domain controllers for replication.
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcSettings] VPC information in the replicated Region. Detailed below.
-  ServiceRegionArgs({
+  const ServiceRegionArgs({
     this.desiredNumberOfDomainControllers,
     required this.directoryId,
     this.region,

@@ -17,7 +17,7 @@ class GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule {
   /// [priority] The priority for this rule.
   /// [sourceAddressPrefix] The source address prefix or tag to match for the rule.
   /// [sourcePortRanges] The source port ranges to match for the rule.
-  GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule({
+  const GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule({
     required this.access,
     required this.priority,
     required this.sourceAddressPrefix,

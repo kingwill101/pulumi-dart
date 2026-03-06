@@ -11,7 +11,7 @@ class VpcEndpointAssociationSubnetMapping {
   /// Creates a new [VpcEndpointAssociationSubnetMapping].
   /// [ipAddressType] The subnet's IP address type. Valid values: `"DUALSTACK"`, `"IPV4"`.
   /// [subnetId] The unique identifier for the subnet.
-  VpcEndpointAssociationSubnetMapping({
+  const VpcEndpointAssociationSubnetMapping({
     this.ipAddressType,
     required this.subnetId,
   });

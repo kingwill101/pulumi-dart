@@ -23,7 +23,7 @@ class GetWindowsWebAppStorageAccount {
   /// [name] The name of this Windows Web App.
   /// [shareName] The Name of the File Share.
   /// [type] The Azure Storage Type.
-  GetWindowsWebAppStorageAccount({
+  const GetWindowsWebAppStorageAccount({
     required this.accessKey,
     required this.accountName,
     required this.mountPath,

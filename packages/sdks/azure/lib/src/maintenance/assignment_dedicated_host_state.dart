@@ -15,7 +15,7 @@ class AssignmentDedicatedHostState {
   /// [dedicatedHostId] Specifies the Dedicated Host ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [maintenanceConfigurationId] Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
-  AssignmentDedicatedHostState({
+  const AssignmentDedicatedHostState({
     this.dedicatedHostId,
     this.location,
     this.maintenanceConfigurationId,

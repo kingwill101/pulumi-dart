@@ -24,7 +24,7 @@ class ReservedIpAssignmentArgs {
   /// [linodeId] The ID of the Linode to allocate an IPv4 address for.
   /// [public] Whether the IPv4 address is public or private.
   /// [rdns] The reverse DNS assigned to this address.
-  ReservedIpAssignmentArgs({
+  const ReservedIpAssignmentArgs({
     required this.address,
     this.applyImmediately,
     required this.linodeId,

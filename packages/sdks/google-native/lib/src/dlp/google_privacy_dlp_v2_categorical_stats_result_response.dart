@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2CategoricalStatsResultResponse {
 
   /// Creates a new [GooglePrivacyDlpV2CategoricalStatsResultResponse].
   /// [valueFrequencyHistogramBuckets] Histogram of value frequencies in the column.
-  GooglePrivacyDlpV2CategoricalStatsResultResponse({
+  const GooglePrivacyDlpV2CategoricalStatsResultResponse({
     required this.valueFrequencyHistogramBuckets,
   });
 

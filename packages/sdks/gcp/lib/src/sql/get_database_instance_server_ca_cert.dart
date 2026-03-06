@@ -20,7 +20,7 @@ class GetDatabaseInstanceServerCaCert {
   /// [createTime] Creation time of the CA Cert.
   /// [expirationTime] Expiration time of the CA Cert.
   /// [sha1Fingerprint] SHA Fingerprint of the CA Cert.
-  GetDatabaseInstanceServerCaCert({
+  const GetDatabaseInstanceServerCaCert({
     required this.cert,
     required this.commonName,
     required this.createTime,

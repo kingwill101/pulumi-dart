@@ -9,7 +9,7 @@ class TimeBasedRetentionResponseAlloydbV1alpha {
 
   /// Creates a new [TimeBasedRetentionResponseAlloydbV1alpha].
   /// [retentionPeriod] The retention period.
-  TimeBasedRetentionResponseAlloydbV1alpha({
+  const TimeBasedRetentionResponseAlloydbV1alpha({
     required this.retentionPeriod,
   });
 

@@ -39,7 +39,7 @@ class InterceptDeploymentArgs {
   /// [labels] Labels are key/value pairs that help to organize and filter resources.
   /// [location] The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
   /// [project] The ID of the project in which the resource belongs.
-  InterceptDeploymentArgs({
+  const InterceptDeploymentArgs({
     this.description,
     required this.forwardingRule,
     required this.interceptDeploymentGroup,

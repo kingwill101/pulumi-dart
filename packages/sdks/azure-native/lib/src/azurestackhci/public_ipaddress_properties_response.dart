@@ -26,7 +26,7 @@ class PublicIPAddressPropertiesResponse {
   /// [natGateway] natGateway using this public IP
   /// [provisioningState] Provisioning state of the public IP
   /// [publicIPAddressVersion] Whether the public IP is v4 or v6. Defaults to IPv4
-  PublicIPAddressPropertiesResponse({
+  const PublicIPAddressPropertiesResponse({
     this.ipAddress,
     this.ipAllocationScope,
     required this.ipConfiguration,

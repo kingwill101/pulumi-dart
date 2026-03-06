@@ -11,7 +11,7 @@ class GetLogtailConfigsConfig {
   /// Creates a new [GetLogtailConfigsConfig].
   /// [id] The ID of the resource supplied above.
   /// [logtailConfigName] The name of the resource
-  GetLogtailConfigsConfig({
+  const GetLogtailConfigsConfig({
     required this.id,
     required this.logtailConfigName,
   });

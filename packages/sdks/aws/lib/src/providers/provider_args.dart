@@ -125,7 +125,7 @@ class ProviderArgs {
   /// [useDualstackEndpoint] Resolve an endpoint with DualStack capability
   /// [useFipsEndpoint] Resolve an endpoint with FIPS capability
   /// [userAgents] Product details to append to the User-Agent string sent in all AWS API calls.
-  ProviderArgs({
+  const ProviderArgs({
     this.accessKey,
     this.allowedAccountIds,
     this.assumeRoleWithWebIdentity,

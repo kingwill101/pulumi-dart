@@ -15,7 +15,7 @@ class AdxProfileResponse {
   /// [dataIngestionUri] Data Ingestion Uri of Adx Resource
   /// [id] Resource Id of Adx Resource
   /// [uri] Uri of Adx Resource
-  AdxProfileResponse({
+  const AdxProfileResponse({
     required this.dataIngestionUri,
     required this.id,
     required this.uri,

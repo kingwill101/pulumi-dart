@@ -11,7 +11,7 @@ class GetServiceDnsConfigDnsRecord {
   /// Creates a new [GetServiceDnsConfigDnsRecord].
   /// [ttl] Amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
   /// [type] The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
-  GetServiceDnsConfigDnsRecord({
+  const GetServiceDnsConfigDnsRecord({
     required this.ttl,
     required this.type,
   });

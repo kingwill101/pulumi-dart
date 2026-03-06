@@ -9,7 +9,7 @@ class NetworkingConfigResponseComposerV1beta1 {
 
   /// Creates a new [NetworkingConfigResponseComposerV1beta1].
   /// [connectionType] Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
-  NetworkingConfigResponseComposerV1beta1({
+  const NetworkingConfigResponseComposerV1beta1({
     required this.connectionType,
   });
 

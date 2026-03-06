@@ -10,7 +10,7 @@ class CSINodeSpecStorageK8sIoV1beta1 {
 
   /// Creates a new [CSINodeSpecStorageK8sIoV1beta1].
   /// [drivers] drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
-  CSINodeSpecStorageK8sIoV1beta1({
+  const CSINodeSpecStorageK8sIoV1beta1({
     required this.drivers,
   });
 

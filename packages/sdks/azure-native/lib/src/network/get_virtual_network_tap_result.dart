@@ -48,7 +48,7 @@ class GetVirtualNetworkTapResult {
   /// [resourceGuid] The resource GUID property of the virtual network tap resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetVirtualNetworkTapResult({
+  const GetVirtualNetworkTapResult({
     required this.azureApiVersion,
     this.destinationLoadBalancerFrontEndIPConfiguration,
     this.destinationNetworkInterfaceIPConfiguration,

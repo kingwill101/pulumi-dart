@@ -17,7 +17,7 @@ class GetClientTokenResult {
   /// [expiry] Expiry is the optional expiration time of the access token. If zero, TokenSource implementations will reuse the same token forever and RefreshToken or equivalent mechanisms for that TokenSource will not be used.
   /// [refreshToken] RefreshToken is a token that's used by the application (as opposed to the user) to refresh the access token if it expires.
   /// [tokenType] The type of auth token. Possible types are "Bearer", "MAC", "Basic".
-  GetClientTokenResult({
+  const GetClientTokenResult({
     required this.accessToken,
     this.expiry,
     this.refreshToken,

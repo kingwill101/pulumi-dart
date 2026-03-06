@@ -10,7 +10,7 @@ class FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta1 {
 
   /// Creates a new [FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta1].
   /// [conditions] `conditions` is a list of the current states of FlowSchema.
-  FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta1({
+  const FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta1({
     this.conditions,
   });
 

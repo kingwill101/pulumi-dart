@@ -20,7 +20,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig {
   /// [featureConfigs] Configuration of different suggestion features. One feature can have only one config.
   /// [generators] List of various generator resource names used in the conversation profile.
   /// [groupSuggestionResponses] If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
-  ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig({
+  const ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig({
     this.disableHighLatencyFeaturesSyncDelivery,
     this.featureConfigs,
     this.generators,

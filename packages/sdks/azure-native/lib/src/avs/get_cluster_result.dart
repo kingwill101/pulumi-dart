@@ -40,7 +40,7 @@ class GetClusterResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vsanDatastoreName] Name of the vsan datastore associated with the cluster
-  GetClusterResult({
+  const GetClusterResult({
     required this.azureApiVersion,
     required this.clusterId,
     this.clusterSize,

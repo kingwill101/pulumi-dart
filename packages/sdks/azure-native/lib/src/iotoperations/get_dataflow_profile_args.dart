@@ -18,7 +18,7 @@ class GetDataflowProfileArgs {
   /// [dataflowProfileName] Name of Instance dataflowProfile resource
   /// [instanceName] Name of instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDataflowProfileArgs({
+  const GetDataflowProfileArgs({
     required this.dataflowProfileName,
     required this.instanceName,
     required this.resourceGroupName,

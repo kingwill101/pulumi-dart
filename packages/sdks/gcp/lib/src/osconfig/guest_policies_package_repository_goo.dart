@@ -11,7 +11,7 @@ class GuestPoliciesPackageRepositoryGoo {
   /// Creates a new [GuestPoliciesPackageRepositoryGoo].
   /// [name] The name of the repository.
   /// [url] The url of the repository.
-  GuestPoliciesPackageRepositoryGoo({
+  const GuestPoliciesPackageRepositoryGoo({
     required this.name,
     required this.url,
   });

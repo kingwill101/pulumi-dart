@@ -12,7 +12,7 @@ class ActionGroupResponse {
   /// Creates a new [ActionGroupResponse].
   /// [actionGroupId] The resource ID of the Action Group. This cannot be null or empty.
   /// [webhookProperties] the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
-  ActionGroupResponse({
+  const ActionGroupResponse({
     required this.actionGroupId,
     this.webhookProperties,
   });

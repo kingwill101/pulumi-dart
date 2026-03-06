@@ -11,7 +11,7 @@ class AlertProcessingRuleSuppressionConditionMonitorService {
   /// Creates a new [AlertProcessingRuleSuppressionConditionMonitorService].
   /// [operator] The operator for a given condition. Possible values are `Equals` and `NotEquals`.
   /// [values] A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Azure Stack Edge`, `Azure Stack Hub`, `Custom`, `Data Box Gateway`, `Health Platform`, `Log Alerts V2`, `Log Analytics`, `Platform`, `Prometheus`, `Resource Health`, `Smart Detector`, and `VM Insights - Health`.
-  AlertProcessingRuleSuppressionConditionMonitorService({
+  const AlertProcessingRuleSuppressionConditionMonitorService({
     required this.operator,
     required this.values,
   });

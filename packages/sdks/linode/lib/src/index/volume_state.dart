@@ -38,7 +38,7 @@ class VolumeState {
   /// [status] The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
   /// [tags] A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [timeouts] Optional.
-  VolumeState({
+  const VolumeState({
     this.encryption,
     this.filesystemPath,
     this.label,

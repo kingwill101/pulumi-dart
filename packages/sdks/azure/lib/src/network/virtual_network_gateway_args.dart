@@ -89,7 +89,7 @@ class VirtualNetworkGatewayArgs {
   /// [virtualWanTrafficEnabled] Is remote vnet traffic that is used to configure this gateway to accept traffic from remote Virtual WAN networks enabled? Defaults to `false`.
   /// [vpnClientConfiguration] A `vpn_client_configuration` block which is documented below. In this block the Virtual Network Gateway can be configured to accept IPSec point-to-site connections.
   /// [vpnType] The routing type of the Virtual Network Gateway. Valid options are `RouteBased` or `PolicyBased`. Defaults to `RouteBased`. Changing this forces a new resource to be created.
-  VirtualNetworkGatewayArgs({
+  const VirtualNetworkGatewayArgs({
     this.activeActive,
     this.bgpRouteTranslationForNatEnabled,
     this.bgpSettings,

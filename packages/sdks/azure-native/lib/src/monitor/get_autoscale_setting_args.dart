@@ -15,7 +15,7 @@ class GetAutoscaleSettingArgs {
   /// Creates a new [GetAutoscaleSettingArgs].
   /// [autoscaleSettingName] The autoscale setting name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAutoscaleSettingArgs({
+  const GetAutoscaleSettingArgs({
     required this.autoscaleSettingName,
     required this.resourceGroupName,
   });

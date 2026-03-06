@@ -69,7 +69,7 @@ class GetCloudServicesNetworkResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachinesAssociatedIds] Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this cloud services network.
-  GetCloudServicesNetworkResult({
+  const GetCloudServicesNetworkResult({
     this.additionalEgressEndpoints,
     required this.associatedResourceIds,
     required this.azureApiVersion,

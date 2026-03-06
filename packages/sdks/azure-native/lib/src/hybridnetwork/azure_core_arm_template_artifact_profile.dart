@@ -14,7 +14,7 @@ class AzureCoreArmTemplateArtifactProfile {
   /// Creates a new [AzureCoreArmTemplateArtifactProfile].
   /// [artifactStore] The reference to artifact store.
   /// [templateArtifactProfile] Template artifact profile.
-  AzureCoreArmTemplateArtifactProfile({
+  const AzureCoreArmTemplateArtifactProfile({
     this.artifactStore,
     this.templateArtifactProfile,
   });

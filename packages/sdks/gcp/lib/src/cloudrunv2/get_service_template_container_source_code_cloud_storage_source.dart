@@ -14,7 +14,7 @@ class GetServiceTemplateContainerSourceCodeCloudStorageSource {
   /// [bucket] The Cloud Storage bucket name.
   /// [generation] The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
   /// [object_] The Cloud Storage object name.
-  GetServiceTemplateContainerSourceCodeCloudStorageSource({
+  const GetServiceTemplateContainerSourceCodeCloudStorageSource({
     required this.bucket,
     required this.generation,
     required this.object_,

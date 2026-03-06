@@ -60,7 +60,7 @@ class WindowsFunctionAppSlotAuthSettings {
   /// [tokenStoreEnabled] Should the Windows Web App durably store platform-specific security tokens that are obtained during login flows? Defaults to `false`.
   /// [twitter] a `twitter` block as detailed below.
   /// [unauthenticatedClientAction] The action to take when an unauthenticated client attempts to access the app. Possible values include: `RedirectToLoginPage`, `AllowAnonymous`.
-  WindowsFunctionAppSlotAuthSettings({
+  const WindowsFunctionAppSlotAuthSettings({
     this.activeDirectory,
     this.additionalLoginParameters,
     this.allowedExternalRedirectUrls,

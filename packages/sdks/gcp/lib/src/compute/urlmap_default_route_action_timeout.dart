@@ -13,7 +13,7 @@ class URLMapDefaultRouteActionTimeout {
   /// Creates a new [URLMapDefaultRouteActionTimeout].
   /// [nanos] Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
   /// [seconds] Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-  URLMapDefaultRouteActionTimeout({
+  const URLMapDefaultRouteActionTimeout({
     this.nanos,
     this.seconds,
   });

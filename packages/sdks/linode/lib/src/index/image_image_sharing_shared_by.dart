@@ -17,7 +17,7 @@ class ImageImageSharingSharedBy {
   /// [sharegroupLabel] The label from the associated im_ImageShareGroup row.
   /// [sharegroupUuid] The sharegroup_uuid from the im_ImageShare row.
   /// [sourceImageId] The image id of the base image (will only be shown to producers, will be null for consumers).
-  ImageImageSharingSharedBy({
+  const ImageImageSharingSharedBy({
     this.sharegroupId,
     this.sharegroupLabel,
     this.sharegroupUuid,

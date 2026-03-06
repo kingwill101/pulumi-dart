@@ -13,7 +13,7 @@ class AccountCustomDomain {
   /// Creates a new [AccountCustomDomain].
   /// [name] The Custom Domain Name to use for the Storage Account, which will be validated by Azure.
   /// [useSubdomain] Should the Custom Domain Name be validated by using indirect CNAME validation?
-  AccountCustomDomain({
+  const AccountCustomDomain({
     required this.name,
     this.useSubdomain,
   });

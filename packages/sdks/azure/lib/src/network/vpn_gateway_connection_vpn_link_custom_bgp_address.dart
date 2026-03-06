@@ -11,7 +11,7 @@ class VpnGatewayConnectionVpnLinkCustomBgpAddress {
   /// Creates a new [VpnGatewayConnectionVpnLinkCustomBgpAddress].
   /// [ipAddress] The custom bgp ip address which belongs to the IP Configuration.
   /// [ipConfigurationId] The ID of the IP Configuration which belongs to the VPN Gateway.
-  VpnGatewayConnectionVpnLinkCustomBgpAddress({
+  const VpnGatewayConnectionVpnLinkCustomBgpAddress({
     required this.ipAddress,
     required this.ipConfigurationId,
   });

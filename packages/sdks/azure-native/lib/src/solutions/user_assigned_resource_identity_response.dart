@@ -12,7 +12,7 @@ class UserAssignedResourceIdentityResponse {
   /// Creates a new [UserAssignedResourceIdentityResponse].
   /// [principalId] The principal id of user assigned identity.
   /// [tenantId] The tenant id of user assigned identity.
-  UserAssignedResourceIdentityResponse({
+  const UserAssignedResourceIdentityResponse({
     required this.principalId,
     required this.tenantId,
   });

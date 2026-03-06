@@ -30,7 +30,7 @@ class GradientaiFunctionArgs {
   /// [functionName] The creation timestamp of the GradientAI resource.
   /// [inputSchema] The input schema of the GradientAI resource.
   /// [outputSchema] The output schema of the GradientAI resource.
-  GradientaiFunctionArgs({
+  const GradientaiFunctionArgs({
     required this.agentId,
     required this.description,
     this.faasName,

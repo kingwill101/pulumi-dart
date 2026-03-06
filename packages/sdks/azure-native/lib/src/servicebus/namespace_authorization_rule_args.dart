@@ -22,7 +22,7 @@ class NamespaceAuthorizationRuleArgs {
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rights] The rights associated with the rule.
-  NamespaceAuthorizationRuleArgs({
+  const NamespaceAuthorizationRuleArgs({
     this.authorizationRuleName,
     required this.namespaceName,
     required this.resourceGroupName,

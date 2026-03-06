@@ -12,7 +12,7 @@ class UserProperty {
   /// Creates a new [UserProperty].
   /// [name] User property name.
   /// [value] User property value. Type: string (or Expression with resultType string).
-  UserProperty({
+  const UserProperty({
     required this.name,
     required this.value,
   });

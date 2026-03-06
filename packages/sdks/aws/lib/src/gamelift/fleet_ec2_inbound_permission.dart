@@ -17,7 +17,7 @@ class FleetEc2InboundPermission {
   /// [ipRange] Range of allowed IP addresses expressed in CIDR notationE.g., `000.000.000.000/[subnet mask]` or `0.0.0.0/[subnet mask]`.
   /// [protocol] Network communication protocol used by the fleetE.g., `TCP` or `UDP`
   /// [toPort] Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `from_port`.
-  FleetEc2InboundPermission({
+  const FleetEc2InboundPermission({
     required this.fromPort,
     required this.ipRange,
     required this.protocol,

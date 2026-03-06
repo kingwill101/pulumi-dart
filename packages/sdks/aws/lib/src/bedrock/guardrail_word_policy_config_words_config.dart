@@ -20,7 +20,7 @@ class GuardrailWordPolicyConfigWordsConfig {
   /// [outputAction] Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `NONE`.
   /// [outputEnabled] Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
   /// [text] The custom word text.
-  GuardrailWordPolicyConfigWordsConfig({
+  const GuardrailWordPolicyConfigWordsConfig({
     this.inputAction,
     this.inputEnabled,
     this.outputAction,

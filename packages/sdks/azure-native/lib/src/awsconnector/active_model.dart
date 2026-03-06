@@ -9,7 +9,7 @@ class ActiveModel {
 
   /// Creates a new [ActiveModel].
   /// [active] When true, StackSets performs non-conflicting operations concurrently and queues conflicting operations. After conflicting operations finish, StackSets starts queued operations in request order.
-  ActiveModel({
+  const ActiveModel({
     this.active,
   });
 

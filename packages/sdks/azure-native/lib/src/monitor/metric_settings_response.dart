@@ -19,7 +19,7 @@ class MetricSettingsResponse {
   /// [enabled] a value indicating whether this category is enabled.
   /// [retentionPolicy] the retention policy for this category.
   /// [timeGrain] the timegrain of the metric in ISO8601 format.
-  MetricSettingsResponse({
+  const MetricSettingsResponse({
     this.category,
     required this.enabled,
     this.retentionPolicy,

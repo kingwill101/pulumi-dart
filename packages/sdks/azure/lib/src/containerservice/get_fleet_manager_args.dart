@@ -15,7 +15,7 @@ class GetFleetManagerArgs {
   /// Creates a new [GetFleetManagerArgs].
   /// [name] The name of this Kubernetes Fleet Manager.
   /// [resourceGroupName] The name of the Resource Group where the Kubernetes Fleet Manager exists.
-  GetFleetManagerArgs({
+  const GetFleetManagerArgs({
     required this.name,
     required this.resourceGroupName,
   });

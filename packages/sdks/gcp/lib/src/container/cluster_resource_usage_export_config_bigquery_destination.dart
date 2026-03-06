@@ -8,7 +8,7 @@ class ClusterResourceUsageExportConfigBigqueryDestination {
 
   /// Creates a new [ClusterResourceUsageExportConfigBigqueryDestination].
   /// [datasetId] The ID of a BigQuery Dataset.
-  ClusterResourceUsageExportConfigBigqueryDestination({
+  const ClusterResourceUsageExportConfigBigqueryDestination({
     required this.datasetId,
   });
 

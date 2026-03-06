@@ -24,7 +24,7 @@ class IpRestrictionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointIdRestrictionRuleMap] Map of allowed VPC endpoint IDs and descriptions.
   /// [vpcIdRestrictionRuleMap] Map of VPC IDs and descriptions. Traffic from all VPC endpoints that are present in the specified VPC is allowed.
-  IpRestrictionState({
+  const IpRestrictionState({
     this.awsAccountId,
     this.enabled,
     this.ipRestrictionRuleMap,

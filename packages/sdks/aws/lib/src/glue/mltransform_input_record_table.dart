@@ -17,7 +17,7 @@ class MLTransformInputRecordTable {
   /// [connectionName] The name of the connection to the AWS Glue Data Catalog.
   /// [databaseName] A database name in the AWS Glue Data Catalog.
   /// [tableName] A table name in the AWS Glue Data Catalog.
-  MLTransformInputRecordTable({
+  const MLTransformInputRecordTable({
     this.catalogId,
     this.connectionName,
     required this.databaseName,

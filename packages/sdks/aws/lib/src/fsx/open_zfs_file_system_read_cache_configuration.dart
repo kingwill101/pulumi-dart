@@ -11,7 +11,7 @@ class OpenZfsFileSystemReadCacheConfiguration {
   /// Creates a new [OpenZfsFileSystemReadCacheConfiguration].
   /// [size] Size of the file system's SSD read cache, in gibibytes (GiB). Required when `sizing_mode` is set to `USER_PROVISIONED`. Must not be set when any other `sizing_mode` is used.
   /// [sizingMode] Specifies how the provisioned SSD read cache is sized. Valid values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`. See the [AWS API documentation](https://docs.aws.amazon.com/fsx/latest/APIReference/API_OpenZFSReadCacheConfiguration.html) for more information.
-  OpenZfsFileSystemReadCacheConfiguration({
+  const OpenZfsFileSystemReadCacheConfiguration({
     this.size,
     this.sizingMode,
   });

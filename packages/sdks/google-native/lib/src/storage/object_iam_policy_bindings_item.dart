@@ -34,7 +34,7 @@ class ObjectIamPolicyBindingsItem {
   /// [condition] The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
   /// [members] A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
   /// [role] The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
-  ObjectIamPolicyBindingsItem({
+  const ObjectIamPolicyBindingsItem({
     this.condition,
     this.members,
     this.role,

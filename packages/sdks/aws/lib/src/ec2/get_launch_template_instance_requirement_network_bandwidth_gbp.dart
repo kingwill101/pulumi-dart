@@ -9,7 +9,7 @@ class GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp {
   /// Creates a new [GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp].
   /// [max] Required.
   /// [min] Required.
-  GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp({
+  const GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp({
     required this.max,
     required this.min,
   });

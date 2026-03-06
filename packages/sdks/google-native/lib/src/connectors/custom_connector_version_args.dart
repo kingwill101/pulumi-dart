@@ -37,7 +37,7 @@ class CustomConnectorVersionArgs {
   /// [project] Optional.
   /// [specLocation] Optional. Location of the custom connector spec.
   /// [type] Type of the customConnector.
-  CustomConnectorVersionArgs({
+  const CustomConnectorVersionArgs({
     required this.authConfig,
     required this.customConnectorId,
     required this.customConnectorVersionId,

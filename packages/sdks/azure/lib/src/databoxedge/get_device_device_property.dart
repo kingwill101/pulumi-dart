@@ -38,7 +38,7 @@ class GetDeviceDeviceProperty {
   /// [status] The status of the Data Box Edge/Gateway device.
   /// [timeZone] The Data Box Edge/Gateway device timezone.
   /// [type] The type of the Data Box Edge/Gateway device.
-  GetDeviceDeviceProperty({
+  const GetDeviceDeviceProperty({
     required this.capacity,
     required this.configuredRoleTypes,
     required this.culture,

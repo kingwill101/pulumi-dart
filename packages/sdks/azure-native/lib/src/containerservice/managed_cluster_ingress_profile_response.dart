@@ -10,7 +10,7 @@ class ManagedClusterIngressProfileResponse {
 
   /// Creates a new [ManagedClusterIngressProfileResponse].
   /// [webAppRouting] App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
-  ManagedClusterIngressProfileResponse({
+  const ManagedClusterIngressProfileResponse({
     this.webAppRouting,
   });
 

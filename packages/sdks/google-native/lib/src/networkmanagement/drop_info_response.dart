@@ -12,7 +12,7 @@ class DropInfoResponse {
   /// Creates a new [DropInfoResponse].
   /// [cause] Cause that the packet is dropped.
   /// [resourceUri] URI of the resource that caused the drop.
-  DropInfoResponse({
+  const DropInfoResponse({
     required this.cause,
     required this.resourceUri,
   });

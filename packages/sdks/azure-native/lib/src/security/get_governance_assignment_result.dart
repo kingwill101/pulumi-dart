@@ -38,7 +38,7 @@ class GetGovernanceAssignmentResult {
   /// [remediationDueDate] The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
   /// [remediationEta] The ETA (estimated time of arrival) for remediation (optional), see example
   /// [type] Resource type
-  GetGovernanceAssignmentResult({
+  const GetGovernanceAssignmentResult({
     this.additionalData,
     required this.azureApiVersion,
     this.governanceEmailNotification,

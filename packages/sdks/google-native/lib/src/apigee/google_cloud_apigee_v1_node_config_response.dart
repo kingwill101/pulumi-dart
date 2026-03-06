@@ -15,7 +15,7 @@ class GoogleCloudApigeeV1NodeConfigResponse {
   /// [currentAggregateNodeCount] The current total number of gateway nodes that each environment currently has across all instances.
   /// [maxNodeCount] Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
   /// [minNodeCount] Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
-  GoogleCloudApigeeV1NodeConfigResponse({
+  const GoogleCloudApigeeV1NodeConfigResponse({
     required this.currentAggregateNodeCount,
     required this.maxNodeCount,
     required this.minNodeCount,

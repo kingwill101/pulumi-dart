@@ -17,7 +17,7 @@ class ResourceUsageExportConfigContainerV1beta1 {
   /// [bigqueryDestination] Configuration to use BigQuery as usage export destination.
   /// [consumptionMeteringConfig] Configuration to enable resource consumption metering.
   /// [enableNetworkEgressMetering] Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created in the cluster to meter network egress traffic.
-  ResourceUsageExportConfigContainerV1beta1({
+  const ResourceUsageExportConfigContainerV1beta1({
     this.bigqueryDestination,
     this.consumptionMeteringConfig,
     this.enableNetworkEgressMetering,

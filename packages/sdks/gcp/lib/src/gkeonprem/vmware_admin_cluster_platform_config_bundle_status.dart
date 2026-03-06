@@ -19,7 +19,7 @@ class VmwareAdminClusterPlatformConfigBundleStatus {
   /// Creates a new [VmwareAdminClusterPlatformConfigBundleStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  VmwareAdminClusterPlatformConfigBundleStatus({
+  const VmwareAdminClusterPlatformConfigBundleStatus({
     this.conditions,
     this.errorMessage,
   });

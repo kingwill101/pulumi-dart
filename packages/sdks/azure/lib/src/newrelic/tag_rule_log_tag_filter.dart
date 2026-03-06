@@ -14,7 +14,7 @@ class TagRuleLogTagFilter {
   /// [action] Valid actions for a filtering tag. Possible values are `Exclude` and `Include`. Exclusion takes priority over inclusion.
   /// [name] Specifies the name (also known as the key) of the tag.
   /// [value] Specifies the value of the tag.
-  TagRuleLogTagFilter({
+  const TagRuleLogTagFilter({
     required this.action,
     required this.name,
     required this.value,

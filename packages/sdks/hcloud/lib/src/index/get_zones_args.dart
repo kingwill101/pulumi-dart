@@ -12,7 +12,7 @@ class GetZonesArgs {
 
   /// Creates a new [GetZonesArgs].
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetZonesArgs({
+  const GetZonesArgs({
     this.withSelector,
   });
 

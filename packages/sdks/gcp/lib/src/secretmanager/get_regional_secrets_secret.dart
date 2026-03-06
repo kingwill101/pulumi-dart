@@ -69,7 +69,7 @@ class GetRegionalSecretsSecret {
   /// [ttl] The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
   /// [versionAliases] Mapping from version alias to version name.
   /// [versionDestroyTtl] The version destroy ttl for the regional secret version.
-  GetRegionalSecretsSecret({
+  const GetRegionalSecretsSecret({
     required this.annotations,
     required this.createTime,
     required this.customerManagedEncryptions,

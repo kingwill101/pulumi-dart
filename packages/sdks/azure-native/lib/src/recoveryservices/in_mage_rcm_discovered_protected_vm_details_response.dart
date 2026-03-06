@@ -42,7 +42,7 @@ class InMageRcmDiscoveredProtectedVmDetailsResponse {
   /// [vCenterId] The VCenter Id.
   /// [vmFqdn] The VM fqdn.
   /// [vmwareToolsStatus] The VMware tools status.
-  InMageRcmDiscoveredProtectedVmDetailsResponse({
+  const InMageRcmDiscoveredProtectedVmDetailsResponse({
     required this.createdTimestamp,
     required this.datastores,
     required this.ipAddresses,

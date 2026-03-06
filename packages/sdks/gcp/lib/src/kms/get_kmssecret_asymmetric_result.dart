@@ -18,7 +18,7 @@ class GetKMSSecretAsymmetricResult {
   /// [cryptoKeyVersion] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [plaintext] Contains the result of decrypting the provided ciphertext.
-  GetKMSSecretAsymmetricResult({
+  const GetKMSSecretAsymmetricResult({
     required this.ciphertext,
     this.crc32,
     required this.cryptoKeyVersion,

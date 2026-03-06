@@ -26,7 +26,7 @@ class GetQuickConnectArgs {
   /// [quickConnectId] Returns information on a specific Quick Connect by Quick Connect id
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the Quick Connect.
-  GetQuickConnectArgs({
+  const GetQuickConnectArgs({
     required this.instanceId,
     this.name,
     this.quickConnectId,

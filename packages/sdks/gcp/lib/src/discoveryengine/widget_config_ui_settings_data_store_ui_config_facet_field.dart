@@ -11,7 +11,7 @@ class WidgetConfigUiSettingsDataStoreUiConfigFacetField {
   /// Creates a new [WidgetConfigUiSettingsDataStoreUiConfigFacetField].
   /// [displayName] The field name that end users will see.
   /// [field] Registered field name. The format is `field.abc`.
-  WidgetConfigUiSettingsDataStoreUiConfigFacetField({
+  const WidgetConfigUiSettingsDataStoreUiConfigFacetField({
     this.displayName,
     required this.field,
   });

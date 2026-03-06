@@ -12,7 +12,7 @@ class IpAddressRangeResponse {
   /// Creates a new [IpAddressRangeResponse].
   /// [endIp] End IP address.
   /// [startIp] Start IP address.
-  IpAddressRangeResponse({
+  const IpAddressRangeResponse({
     required this.endIp,
     required this.startIp,
   });

@@ -15,7 +15,7 @@ class GetEndpointAttachmentArgs {
   /// [endpointAttachmentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEndpointAttachmentArgs({
+  const GetEndpointAttachmentArgs({
     required this.endpointAttachmentId,
     required this.location,
     this.project,

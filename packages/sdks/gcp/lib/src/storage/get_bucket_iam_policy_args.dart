@@ -12,7 +12,7 @@ class GetBucketIamPolicyArgs {
 
   /// Creates a new [GetBucketIamPolicyArgs].
   /// [bucket] Used to find the parent resource to bind the IAM policy to
-  GetBucketIamPolicyArgs({
+  const GetBucketIamPolicyArgs({
     required this.bucket,
   });
 

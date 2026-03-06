@@ -9,7 +9,7 @@ class GetCustomerGatewayFilter {
   /// Creates a new [GetCustomerGatewayFilter].
   /// [name] Required.
   /// [values] Required.
-  GetCustomerGatewayFilter({
+  const GetCustomerGatewayFilter({
     required this.name,
     required this.values,
   });

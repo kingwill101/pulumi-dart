@@ -12,7 +12,7 @@ class WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookiesMat
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [excludedCookies] Optional.
   /// [includedCookies] Optional.
-  WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookiesMatchPattern({
+  const WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookiesMatchPattern({
     this.all,
     this.excludedCookies,
     this.includedCookies,

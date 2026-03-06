@@ -23,7 +23,7 @@ class GetChartNamespacesNamespace {
   /// [id] The ID of the Chart Namespace.
   /// [instanceId] The ID of the namespace.
   /// [namespaceName] The name of the namespace.
-  GetChartNamespacesNamespace({
+  const GetChartNamespacesNamespace({
     required this.autoCreateRepo,
     required this.chartNamespaceId,
     required this.defaultRepoType,

@@ -22,7 +22,7 @@ class PolicyArgs {
   /// [properties] Policy model properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
-  PolicyArgs({
+  const PolicyArgs({
     this.policyName,
     required this.properties,
     required this.resourceGroupName,

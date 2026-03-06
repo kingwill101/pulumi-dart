@@ -50,7 +50,7 @@ class GetHanaBackupClientsHanaBackupClient {
   /// [statusMessage] The status information.
   /// [useHttps] Indicates whether data is transmitted over HTTPS.
   /// [vaultId] The ID of the backup vault.
-  GetHanaBackupClientsHanaBackupClient({
+  const GetHanaBackupClientsHanaBackupClient({
     required this.alertSetting,
     required this.clientId,
     required this.clientName,

@@ -93,7 +93,7 @@ class ExplainQueryStageResponse {
   /// [writeMsMax] Milliseconds the slowest shard spent on writing output.
   /// [writeRatioAvg] Relative amount of time the average shard spent on writing output.
   /// [writeRatioMax] Relative amount of time the slowest shard spent on writing output.
-  ExplainQueryStageResponse({
+  const ExplainQueryStageResponse({
     required this.completedParallelInputs,
     required this.computeMsAvg,
     required this.computeMsMax,

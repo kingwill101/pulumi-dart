@@ -25,7 +25,7 @@ class PrivateResolverVirtualNetworkLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualNetwork] The reference to the virtual network. This cannot be changed after creation.
   /// [virtualNetworkLinkName] The name of the virtual network link.
-  PrivateResolverVirtualNetworkLinkArgs({
+  const PrivateResolverVirtualNetworkLinkArgs({
     required this.dnsForwardingRulesetName,
     this.metadata,
     required this.resourceGroupName,

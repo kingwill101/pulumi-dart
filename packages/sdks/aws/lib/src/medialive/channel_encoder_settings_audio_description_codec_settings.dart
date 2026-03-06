@@ -29,7 +29,7 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettings {
   /// [mp2Settings] Optional.
   /// [passThroughSettings] Optional.
   /// [wavSettings] Optional.
-  ChannelEncoderSettingsAudioDescriptionCodecSettings({
+  const ChannelEncoderSettingsAudioDescriptionCodecSettings({
     this.aacSettings,
     this.ac3Settings,
     this.eac3AtmosSettings,

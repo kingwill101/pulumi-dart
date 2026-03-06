@@ -28,7 +28,7 @@ class RegistryImageArgs {
   /// [keepRemotely] If true, then the Docker image won't be deleted on destroy operation. If this is false, it will delete the image from the docker registry on destroy operation. Defaults to `false`
   /// [name] The name of the Docker image.
   /// [triggers] A map of arbitrary strings that, when changed, will force the `docker.RegistryImage` resource to be replaced. This can be used to repush a local image
-  RegistryImageArgs({
+  const RegistryImageArgs({
     this.authConfig,
     this.build,
     this.insecureSkipVerify,

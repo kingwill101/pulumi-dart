@@ -9,7 +9,7 @@ class EventEndpointRoutingConfig {
 
   /// Creates a new [EventEndpointRoutingConfig].
   /// [failoverConfig] Parameters used for failover. This includes what triggers failover and what happens when it's triggered. Documented below.
-  EventEndpointRoutingConfig({
+  const EventEndpointRoutingConfig({
     required this.failoverConfig,
   });
 

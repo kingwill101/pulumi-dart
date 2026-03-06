@@ -22,7 +22,7 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule {
   /// [description] A user-defined description that further helps identify the rule.
   /// [edgeLocations] A set of AWS Region codes where this rule applies.
   /// [ruleNumber] An integer from `1` to `65535` indicating the rule's order number. Rules are processed in order from the lowest numbered rule to the highest. Rules stop processing when a rule is matched.
-  GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule({
+  const GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule({
     required this.action,
     required this.conditions,
     this.description,

@@ -42,7 +42,7 @@ class SimpleOfficeSiteArgs {
   /// [mfaEnabled] Whether to Enable Multi-Factor Authentication MFA.
   /// [officeSiteName] The office site name.
   /// [ssoEnabled] Whether to Enable Single Sign-on (SSO) for User-Based SSO.
-  SimpleOfficeSiteArgs({
+  const SimpleOfficeSiteArgs({
     this.bandwidth,
     this.cenId,
     this.cenOwnerId,

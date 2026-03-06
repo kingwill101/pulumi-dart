@@ -14,7 +14,7 @@ class GetGradientaiAgentsByOpenaiApiKeyResult {
   /// [agents] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [uuid] Required.
-  GetGradientaiAgentsByOpenaiApiKeyResult({
+  const GetGradientaiAgentsByOpenaiApiKeyResult({
     required this.agents,
     required this.id,
     required this.uuid,

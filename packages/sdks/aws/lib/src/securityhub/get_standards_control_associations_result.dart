@@ -18,7 +18,7 @@ class GetStandardsControlAssociationsResult {
   /// [region] Required.
   /// [securityControlId] ID of the security control.
   /// [standardsControlAssociations] A list that provides the status and other details for each security control that applies to each enabled standard.
-  GetStandardsControlAssociationsResult({
+  const GetStandardsControlAssociationsResult({
     required this.id,
     required this.region,
     required this.securityControlId,

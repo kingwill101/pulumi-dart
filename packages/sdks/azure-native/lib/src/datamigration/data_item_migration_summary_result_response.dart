@@ -33,7 +33,7 @@ class DataItemMigrationSummaryResultResponse {
   /// [startedOn] Migration start time
   /// [state] Current state of migration
   /// [statusMessage] Status message
-  DataItemMigrationSummaryResultResponse({
+  const DataItemMigrationSummaryResultResponse({
     required this.endedOn,
     required this.errorPrefix,
     required this.itemsCompletedCount,

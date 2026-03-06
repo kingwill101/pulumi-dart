@@ -18,7 +18,7 @@ class GetNodebalancerVpcResult {
   /// [nodebalancerId] Required.
   /// [subnetId] The ID of this configuration's VPC subnet.
   /// [vpcId] The ID of this configuration's VPC.
-  GetNodebalancerVpcResult({
+  const GetNodebalancerVpcResult({
     required this.id,
     required this.ipv4Range,
     required this.nodebalancerId,

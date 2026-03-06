@@ -33,7 +33,7 @@ class NetworkDeviceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serialNumber] Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
   /// [tags] Resource tags.
-  NetworkDeviceArgs({
+  const NetworkDeviceArgs({
     this.annotation,
     this.hostName,
     this.location,

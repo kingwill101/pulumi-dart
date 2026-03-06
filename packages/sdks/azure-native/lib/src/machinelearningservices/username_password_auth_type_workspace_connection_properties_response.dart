@@ -37,7 +37,7 @@ class UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse({
+  const UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

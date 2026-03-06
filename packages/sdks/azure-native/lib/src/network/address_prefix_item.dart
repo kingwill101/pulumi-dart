@@ -12,7 +12,7 @@ class AddressPrefixItem {
   /// Creates a new [AddressPrefixItem].
   /// [addressPrefix] Address prefix.
   /// [addressPrefixType] Address prefix type.
-  AddressPrefixItem({
+  const AddressPrefixItem({
     this.addressPrefix,
     this.addressPrefixType,
   });

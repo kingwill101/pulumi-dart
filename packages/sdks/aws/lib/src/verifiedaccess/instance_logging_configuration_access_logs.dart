@@ -23,7 +23,7 @@ class InstanceLoggingConfigurationAccessLogs {
   /// [kinesisDataFirehose] A block that specifies configures sending Verified Access logs to Kinesis. Detailed below.
   /// [logVersion] The logging version to use. Refer to [VerifiedAccessLogOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogOptions.html) for the allowed values.
   /// [s3] A block that specifies configures sending Verified Access logs to S3. Detailed below.
-  InstanceLoggingConfigurationAccessLogs({
+  const InstanceLoggingConfigurationAccessLogs({
     this.cloudwatchLogs,
     this.includeTrustContext,
     this.kinesisDataFirehose,

@@ -24,7 +24,7 @@ class MongoDBDatabaseGetPropertiesResponseResource {
   /// [restoreParameters] Parameters to indicate the information about the restore
   /// [rid] A system generated property. A unique identifier.
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
-  MongoDBDatabaseGetPropertiesResponseResource({
+  const MongoDBDatabaseGetPropertiesResponseResource({
     this.createMode,
     required this.etag,
     required this.id,

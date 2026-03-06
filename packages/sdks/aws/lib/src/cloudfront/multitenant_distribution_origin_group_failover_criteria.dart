@@ -8,7 +8,7 @@ class MultitenantDistributionOriginGroupFailoverCriteria {
 
   /// Creates a new [MultitenantDistributionOriginGroupFailoverCriteria].
   /// [statusCodes] List of HTTP status codes that trigger a failover to the secondary origin.
-  MultitenantDistributionOriginGroupFailoverCriteria({
+  const MultitenantDistributionOriginGroupFailoverCriteria({
     required this.statusCodes,
   });
 

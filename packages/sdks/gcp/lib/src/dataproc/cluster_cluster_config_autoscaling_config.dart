@@ -16,7 +16,7 @@ class ClusterClusterConfigAutoscalingConfig {
 
   /// Creates a new [ClusterClusterConfigAutoscalingConfig].
   /// [policyUri] The autoscaling policy used by the cluster.
-  ClusterClusterConfigAutoscalingConfig({
+  const ClusterClusterConfigAutoscalingConfig({
     required this.policyUri,
   });
 

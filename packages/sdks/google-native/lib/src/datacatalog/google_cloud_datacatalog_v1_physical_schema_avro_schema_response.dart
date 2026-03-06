@@ -9,7 +9,7 @@ class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse].
   /// [text] JSON source of the Avro schema.
-  GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse({
+  const GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse({
     required this.text,
   });
 

@@ -34,7 +34,7 @@ class GetProjectCmekSettingsResult {
   /// [name] The resource name of the CMEK settings.
   /// [project] Required.
   /// [serviceAccountId] The service account associated with a project for which CMEK will apply.
-  GetProjectCmekSettingsResult({
+  const GetProjectCmekSettingsResult({
     required this.id,
     this.kmsKeyName,
     required this.kmsKeyVersionName,

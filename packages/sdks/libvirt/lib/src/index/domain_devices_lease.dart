@@ -15,7 +15,7 @@ class DomainDevicesLease {
   /// [key] Defines a unique key for identifying the lease within the domain configuration.
   /// [lockspace] Configures the lockspace for the lease, ensuring exclusive access to the leased device.
   /// [target] Specifies the target configuration for the lease, defining where the lease applies.
-  DomainDevicesLease({
+  const DomainDevicesLease({
     this.key,
     required this.lockspace,
     this.target,

@@ -25,7 +25,7 @@ class GetSolutionStackArgs {
   /// [mostRecent] If more than one result is returned, use the most
   /// [nameRegex] Regex string to apply to the solution stack list returned
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetSolutionStackArgs({
+  const GetSolutionStackArgs({
     this.mostRecent,
     required this.nameRegex,
     this.region,

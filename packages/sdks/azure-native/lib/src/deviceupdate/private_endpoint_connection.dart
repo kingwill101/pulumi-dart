@@ -13,7 +13,7 @@ class PrivateEndpointConnection {
   /// Creates a new [PrivateEndpointConnection].
   /// [groupIds] Array of group IDs.
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
-  PrivateEndpointConnection({
+  const PrivateEndpointConnection({
     this.groupIds,
     required this.privateLinkServiceConnectionState,
   });

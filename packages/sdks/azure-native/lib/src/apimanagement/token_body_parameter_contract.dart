@@ -12,7 +12,7 @@ class TokenBodyParameterContract {
   /// Creates a new [TokenBodyParameterContract].
   /// [name] body parameter name.
   /// [value] body parameter value.
-  TokenBodyParameterContract({
+  const TokenBodyParameterContract({
     required this.name,
     required this.value,
   });

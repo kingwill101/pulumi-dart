@@ -38,7 +38,7 @@ class BackupPolicyArgs {
   /// [resourceGroupName] The name of the resource group where the NetApp Backup Policy should be created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [weeklyBackupsToKeep] Provides the number of weekly backups to keep, defaults to `1`. The minimum is `0` and the maximum is `1019`.
-  BackupPolicyArgs({
+  const BackupPolicyArgs({
     required this.accountName,
     this.dailyBackupsToKeep,
     this.enabled,

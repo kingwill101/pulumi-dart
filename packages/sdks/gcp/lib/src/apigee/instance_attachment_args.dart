@@ -16,7 +16,7 @@ class InstanceAttachmentArgs {
   /// Creates a new [InstanceAttachmentArgs].
   /// [environment] The resource ID of the environment.
   /// [instanceId] The Apigee instance associated with the Apigee environment,
-  InstanceAttachmentArgs({
+  const InstanceAttachmentArgs({
     required this.environment,
     required this.instanceId,
   });

@@ -59,7 +59,7 @@ class MongoClusterPropertiesResponse {
   /// [serverVersion] The Mongo DB server version. Defaults to the latest available version if not specified.
   /// [sharding] The sharding properties of the mongo cluster.
   /// [storage] The storage properties of the mongo cluster.
-  MongoClusterPropertiesResponse({
+  const MongoClusterPropertiesResponse({
     this.administrator,
     this.backup,
     required this.clusterStatus,

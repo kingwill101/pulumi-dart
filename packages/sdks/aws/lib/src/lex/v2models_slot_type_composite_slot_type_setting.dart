@@ -10,7 +10,7 @@ class V2modelsSlotTypeCompositeSlotTypeSetting {
 
   /// Creates a new [V2modelsSlotTypeCompositeSlotTypeSetting].
   /// [subSlots] Sub slots in the composite slot.
-  V2modelsSlotTypeCompositeSlotTypeSetting({
+  const V2modelsSlotTypeCompositeSlotTypeSetting({
     this.subSlots,
   });
 

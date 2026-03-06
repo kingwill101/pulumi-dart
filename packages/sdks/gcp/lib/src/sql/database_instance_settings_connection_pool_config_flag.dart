@@ -11,7 +11,7 @@ class DatabaseInstanceSettingsConnectionPoolConfigFlag {
   /// Creates a new [DatabaseInstanceSettingsConnectionPoolConfigFlag].
   /// [name] Name of the flag.
   /// [value] Value of the flag.
-  DatabaseInstanceSettingsConnectionPoolConfigFlag({
+  const DatabaseInstanceSettingsConnectionPoolConfigFlag({
     required this.name,
     required this.value,
   });

@@ -55,7 +55,7 @@ class KubeEnvironmentArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [staticIp] Static IP of the KubeEnvironment
   /// [tags] Resource tags.
-  KubeEnvironmentArgs({
+  const KubeEnvironmentArgs({
     this.aksResourceID,
     this.appLogsConfiguration,
     this.arcConfiguration,

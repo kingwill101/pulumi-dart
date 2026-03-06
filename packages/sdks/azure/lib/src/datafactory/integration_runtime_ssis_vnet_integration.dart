@@ -19,7 +19,7 @@ class IntegrationRuntimeSsisVnetIntegration {
   /// [subnetId] id of the subnet to which the nodes of the Azure-SSIS Integration Runtime will be added.
   /// [subnetName] Name of the subnet to which the nodes of the Azure-SSIS Integration Runtime will be added.
   /// [vnetId] ID of the virtual network to which the nodes of the Azure-SSIS Integration Runtime will be added.
-  IntegrationRuntimeSsisVnetIntegration({
+  const IntegrationRuntimeSsisVnetIntegration({
     this.publicIps,
     this.subnetId,
     this.subnetName,

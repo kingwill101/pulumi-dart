@@ -35,7 +35,7 @@ class ProfilesResourceAssociationState {
   /// [status] Status of the Profile Association. Valid values [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_Profile.html)
   /// [statusMessage] Status message of the Profile Resource Association.
   /// [timeouts] Optional.
-  ProfilesResourceAssociationState({
+  const ProfilesResourceAssociationState({
     this.name,
     this.ownerId,
     this.profileId,

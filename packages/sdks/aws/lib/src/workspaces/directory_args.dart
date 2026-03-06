@@ -65,7 +65,7 @@ class DirectoryArgs {
   /// [workspaceDirectoryDescription] The description of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
   /// [workspaceDirectoryName] The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
   /// [workspaceType] Specifies the type of WorkSpaces directory. Valid values are `PERSONAL` and `POOLS`. Default is `PERSONAL`.
-  DirectoryArgs({
+  const DirectoryArgs({
     this.activeDirectoryConfig,
     this.certificateBasedAuthProperties,
     this.directoryId,

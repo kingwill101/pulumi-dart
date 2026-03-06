@@ -31,7 +31,7 @@ class NotificationChannelArgs {
   /// [product] The type of product.  One of: `DISCUSSIONS`, `ERROR_TRACKING` or `IINT` (workflows).
   /// [properties] A nested block that describes a notification channel property. See Nested property blocks below for details.
   /// [type] The type of channel.  One of: `EMAIL`, `SERVICENOW_INCIDENTS`, `SERVICE_NOW_APP`, `WEBHOOK`, `JIRA_CLASSIC`, `MOBILE_PUSH`, `EVENT_BRIDGE`, `SLACK` and `SLACK_COLLABORATION`, `PAGERDUTY_ACCOUNT_INTEGRATION`, `PAGERDUTY_SERVICE_INTEGRATION`, `MICROSOFT_TEAMS` or `WORKFLOW_AUTOMATION`.
-  NotificationChannelArgs({
+  const NotificationChannelArgs({
     this.accountId,
     this.active,
     required this.destinationId,

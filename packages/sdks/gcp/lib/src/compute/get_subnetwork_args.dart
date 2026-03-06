@@ -25,7 +25,7 @@ class GetSubnetworkArgs {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [region] The region this subnetwork has been created in. If
   /// [selfLink] The self link of the subnetwork. If `self_link` is
-  GetSubnetworkArgs({
+  const GetSubnetworkArgs({
     this.name,
     this.project,
     this.region,

@@ -15,7 +15,7 @@ class VmwareF5BigIpConfig {
   /// [address] The load balancer's IP address.
   /// [partition] The preexisting partition to be used by the load balancer. This partition is usually created for the admin cluster for example: 'my-f5-admin-partition'.
   /// [snatPool] The pool name. Only necessary, if using SNAT.
-  VmwareF5BigIpConfig({
+  const VmwareF5BigIpConfig({
     this.address,
     this.partition,
     this.snatPool,

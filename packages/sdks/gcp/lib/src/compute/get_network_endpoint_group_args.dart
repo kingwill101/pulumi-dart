@@ -23,7 +23,7 @@ class GetNetworkEndpointGroupArgs {
   /// [project] The ID of the project to list versions in.
   /// [selfLink] The Network Endpoint Group self_link.
   /// [zone] The Network Endpoint Group availability zone.
-  GetNetworkEndpointGroupArgs({
+  const GetNetworkEndpointGroupArgs({
     this.name,
     this.project,
     this.selfLink,

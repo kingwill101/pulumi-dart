@@ -10,7 +10,7 @@ class GetContactsRotationRecurrenceShiftCoverage {
   /// Creates a new [GetContactsRotationRecurrenceShiftCoverage].
   /// [coverageTimes] Required.
   /// [mapBlockKey] Required.
-  GetContactsRotationRecurrenceShiftCoverage({
+  const GetContactsRotationRecurrenceShiftCoverage({
     required this.coverageTimes,
     required this.mapBlockKey,
   });

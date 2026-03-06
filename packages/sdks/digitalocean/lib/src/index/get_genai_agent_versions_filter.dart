@@ -13,7 +13,7 @@ class GetGenaiAgentVersionsFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGenaiAgentVersionsFilter({
+  const GetGenaiAgentVersionsFilter({
     this.all,
     required this.key,
     this.matchBy,

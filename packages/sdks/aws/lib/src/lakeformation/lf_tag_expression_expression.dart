@@ -11,7 +11,7 @@ class LfTagExpressionExpression {
   /// Creates a new [LfTagExpressionExpression].
   /// [tagKey] The key-name for the LF-Tag.
   /// [tagValues] A list of possible values for the LF-Tag
-  LfTagExpressionExpression({
+  const LfTagExpressionExpression({
     required this.tagKey,
     required this.tagValues,
   });

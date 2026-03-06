@@ -20,7 +20,7 @@ class DataConnectorMicrosoftThreatIntelligenceState {
   /// [microsoftEmergingThreatFeedLookbackDate] The lookback date for the Microsoft Emerging Threat Feed in RFC3339. Changing this forces a new Data Connector to be created.
   /// [name] The name which should be used for this Microsoft Threat Intelligence Data Connector. Changing this forces a new Microsoft Threat Intelligence Data Connector to be created.
   /// [tenantId] The ID of the tenant that this Microsoft Threat Intelligence Data Connector connects to. Changing this forces a new Microsoft Threat Intelligence Data Connector to be created.
-  DataConnectorMicrosoftThreatIntelligenceState({
+  const DataConnectorMicrosoftThreatIntelligenceState({
     this.logAnalyticsWorkspaceId,
     this.microsoftEmergingThreatFeedLookbackDate,
     this.name,

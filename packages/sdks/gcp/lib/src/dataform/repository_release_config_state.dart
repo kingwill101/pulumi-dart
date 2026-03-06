@@ -38,7 +38,7 @@ class RepositoryReleaseConfigState {
   /// [region] A reference to the region
   /// [repository] A reference to the Dataform repository
   /// [timeZone] Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
-  RepositoryReleaseConfigState({
+  const RepositoryReleaseConfigState({
     this.codeCompilationConfig,
     this.cronSchedule,
     this.gitCommitish,

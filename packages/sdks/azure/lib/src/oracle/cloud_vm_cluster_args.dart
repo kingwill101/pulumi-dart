@@ -101,7 +101,7 @@ class CloudVmClusterArgs {
   /// [timeZone] The time zone of the Cloud VM Cluster. For details, see [Exadata Infrastructure Time Zones](https://docs.cloud.oracle.com/iaas/Content/Database/References/timezones.htm). Changing this forces a new Cloud VM Cluster to be created.
   /// [virtualNetworkId] The ID of the Virtual Network associated with the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   /// [zoneId] The OCID of the OCI Private DNS Zone to be associated with the Cloud VM Cluster. This is required for specifying your own private domain name. Changing this forces a new Cloud VM Cluster to be created.
-  CloudVmClusterArgs({
+  const CloudVmClusterArgs({
     this.backupSubnetCidr,
     required this.cloudExadataInfrastructureId,
     this.clusterName,

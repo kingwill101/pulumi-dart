@@ -97,7 +97,7 @@ class GetAdConnectorOfficeSitesSite {
   /// [trustPassword] The AD Trust Password.
   /// [vpcId] Security Office VPC ID.
   /// [vswitchIds] The vswitch ids.
-  GetAdConnectorOfficeSitesSite({
+  const GetAdConnectorOfficeSitesSite({
     required this.adConnectorOfficeSiteName,
     required this.adConnectors,
     required this.bandwidth,

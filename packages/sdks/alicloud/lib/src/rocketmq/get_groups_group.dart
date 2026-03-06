@@ -29,7 +29,7 @@ class GetGroupsGroup {
   /// [owner] The ID of the group owner, which is the Alibaba Cloud UID.
   /// [remark] Remark of the group.
   /// [tags] A map of tags assigned to the Ons instance.
-  GetGroupsGroup({
+  const GetGroupsGroup({
     required this.groupName,
     required this.groupType,
     required this.id,

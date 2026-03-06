@@ -13,7 +13,7 @@ class MonitoringTagRulesProperties {
   /// Creates a new [MonitoringTagRulesProperties].
   /// [logRules] Rules for sending logs.
   /// [provisioningState] Provisioning state of the monitoring tag rules.
-  MonitoringTagRulesProperties({
+  const MonitoringTagRulesProperties({
     this.logRules,
     this.provisioningState,
   });

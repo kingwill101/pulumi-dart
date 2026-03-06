@@ -37,7 +37,7 @@ class ArtifactArgs {
   /// [project] Optional.
   /// [specId] Required.
   /// [versionId] Required.
-  ArtifactArgs({
+  const ArtifactArgs({
     this.annotations,
     required this.apiId,
     required this.artifactId,

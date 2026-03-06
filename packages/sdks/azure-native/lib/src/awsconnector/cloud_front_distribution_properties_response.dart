@@ -34,7 +34,7 @@ class CloudFrontDistributionPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CloudFrontDistributionPropertiesResponse({
+  const CloudFrontDistributionPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

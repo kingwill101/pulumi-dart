@@ -31,7 +31,7 @@ class LoadBalancerTargetState {
   /// [serverId] ID of the server which should be a
   /// [type] Type of the target. Possible values
   /// [usePrivateIp] use the private IP to connect to
-  LoadBalancerTargetState({
+  const LoadBalancerTargetState({
     this.ip,
     this.labelSelector,
     this.loadBalancerId,

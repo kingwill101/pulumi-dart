@@ -23,7 +23,7 @@ class GetSnapshotFileV1beta1Result {
   /// [labels] Resource labels to represent user provided metadata.
   /// [name] The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
   /// [state] The snapshot state.
-  GetSnapshotFileV1beta1Result({
+  const GetSnapshotFileV1beta1Result({
     required this.createTime,
     required this.description,
     required this.filesystemUsedBytes,

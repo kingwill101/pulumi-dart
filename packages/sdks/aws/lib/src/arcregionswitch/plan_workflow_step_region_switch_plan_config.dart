@@ -14,7 +14,7 @@ class PlanWorkflowStepRegionSwitchPlanConfig {
   /// [arn] ARN of the nested region switch plan.
   /// [crossAccountRole] ARN of the cross-account role to assume.
   /// [externalId] External ID for cross-account role assumption.
-  PlanWorkflowStepRegionSwitchPlanConfig({
+  const PlanWorkflowStepRegionSwitchPlanConfig({
     required this.arn,
     this.crossAccountRole,
     this.externalId,

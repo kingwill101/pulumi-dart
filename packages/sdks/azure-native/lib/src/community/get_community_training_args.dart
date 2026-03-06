@@ -15,7 +15,7 @@ class GetCommunityTrainingArgs {
   /// Creates a new [GetCommunityTrainingArgs].
   /// [communityTrainingName] The name of the Community Training Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCommunityTrainingArgs({
+  const GetCommunityTrainingArgs({
     required this.communityTrainingName,
     required this.resourceGroupName,
   });

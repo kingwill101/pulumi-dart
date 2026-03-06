@@ -16,7 +16,7 @@ class GetVersionsVersion {
   /// [edition] The edition of the ASM instance. Valid values:
   /// [id] The ASM version id. It formats as `&lt;edition&gt;:&lt;version&gt;`.
   /// [version] A list of Service Mesh Service Meshes. Each element contains the following attributes:
-  GetVersionsVersion({
+  const GetVersionsVersion({
     required this.edition,
     required this.id,
     required this.version,

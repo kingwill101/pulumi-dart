@@ -16,7 +16,7 @@ class DomainCpuTuneMemoryTune {
   /// [monitors] Configures monitoring options for memory tuning, allowing observation of memory usage trends and patterns.
   /// [nodes] Configures specific nodes for memory tuning, allowing targeted adjustments to the memory configuration.
   /// [vcpus] Configures the virtual CPUs associated with memory tuning, indicating which CPUs' memory performance should be adjusted.
-  DomainCpuTuneMemoryTune({
+  const DomainCpuTuneMemoryTune({
     this.monitors,
     this.nodes,
     required this.vcpus,

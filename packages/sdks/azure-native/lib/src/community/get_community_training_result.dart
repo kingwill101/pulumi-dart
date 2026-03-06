@@ -56,7 +56,7 @@ class GetCommunityTrainingResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zoneRedundancyEnabled] To indicate whether the Community Training instance has Zone Redundancy enabled
-  GetCommunityTrainingResult({
+  const GetCommunityTrainingResult({
     required this.azureApiVersion,
     required this.disasterRecoveryEnabled,
     required this.id,

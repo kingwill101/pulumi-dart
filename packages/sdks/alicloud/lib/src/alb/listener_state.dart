@@ -78,7 +78,7 @@ class ListenerState {
   /// [status] The Current IP Address of the Listened State
   /// [tags] The tag of the resource
   /// [xForwardedForConfig] xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
-  ListenerState({
+  const ListenerState({
     this.accessLogRecordCustomizedHeadersEnabled,
     this.accessLogTracingConfig,
     this.aclConfig,

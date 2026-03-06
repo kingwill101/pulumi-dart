@@ -39,7 +39,7 @@ class NetworkConnectionMonitorArgs {
   /// [tags] A mapping of tags which should be assigned to the Network Connection Monitor.
   /// [testConfigurations] A `test_configuration` block as defined below.
   /// [testGroups] A `test_group` block as defined below.
-  NetworkConnectionMonitorArgs({
+  const NetworkConnectionMonitorArgs({
     required this.endpoints,
     this.location,
     this.name,

@@ -8,7 +8,7 @@ class JobDefinitionEksPropertiesPodPropertiesImagePullSecret {
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesImagePullSecret].
   /// [name] Unique identifier.
-  JobDefinitionEksPropertiesPodPropertiesImagePullSecret({
+  const JobDefinitionEksPropertiesPodPropertiesImagePullSecret({
     required this.name,
   });
 

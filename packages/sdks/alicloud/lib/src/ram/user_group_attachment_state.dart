@@ -12,7 +12,7 @@ class UserGroupAttachmentState {
   /// Creates a new [UserGroupAttachmentState].
   /// [groupName] The name of group.
   /// [userName] The name of user.
-  UserGroupAttachmentState({
+  const UserGroupAttachmentState({
     this.groupName,
     this.userName,
   });

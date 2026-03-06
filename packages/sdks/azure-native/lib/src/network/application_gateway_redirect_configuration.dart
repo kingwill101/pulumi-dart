@@ -37,7 +37,7 @@ class ApplicationGatewayRedirectConfiguration {
   /// [targetListener] Reference to a listener to redirect the request to.
   /// [targetUrl] Url to redirect the request to.
   /// [urlPathMaps] Url path maps specifying default redirect configuration.
-  ApplicationGatewayRedirectConfiguration({
+  const ApplicationGatewayRedirectConfiguration({
     this.id,
     this.includePath,
     this.includeQueryString,

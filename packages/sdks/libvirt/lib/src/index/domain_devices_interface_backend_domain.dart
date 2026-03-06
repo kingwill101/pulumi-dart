@@ -8,7 +8,7 @@ class DomainDevicesInterfaceBackendDomain {
 
   /// Creates a new [DomainDevicesInterfaceBackendDomain].
   /// [name] Sets the name of the backend domain associated with the interface, which links the interface to a specific backend configuration.
-  DomainDevicesInterfaceBackendDomain({
+  const DomainDevicesInterfaceBackendDomain({
     required this.name,
   });
 

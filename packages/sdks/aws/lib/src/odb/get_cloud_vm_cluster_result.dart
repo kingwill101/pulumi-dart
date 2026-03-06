@@ -135,7 +135,7 @@ class GetCloudVmClusterResult {
   /// [tags] Required.
   /// [timezone] The time zone of the VM cluster.
   /// [vipIds] The virtual IP (VIP) addresses that are associated with the VM cluster. Oracle's Cluster Ready Services (CRS) creates and maintains one VIP address for each node in the VM cluster to enable failover. If one node fails, the VIP is reassigned to another active node in the cluster.
-  GetCloudVmClusterResult({
+  const GetCloudVmClusterResult({
     required this.arn,
     required this.cloudExadataInfrastructureArn,
     required this.cloudExadataInfrastructureId,

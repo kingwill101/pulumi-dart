@@ -84,7 +84,7 @@ class CommandJob {
   /// [resources] Compute Resource configuration for the job.
   /// [services] List of JobEndpoints.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  CommandJob({
+  const CommandJob({
     this.codeId,
     required this.command,
     this.componentId,

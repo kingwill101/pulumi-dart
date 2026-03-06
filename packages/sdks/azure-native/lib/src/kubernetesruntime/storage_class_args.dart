@@ -49,7 +49,7 @@ class StorageClassArgs {
   /// [storageClassName] The name of the the storage class
   /// [typeProperties] Properties of the StorageClass
   /// [volumeBindingMode] Binding mode of volumes: Immediate, WaitForFirstConsumer
-  StorageClassArgs({
+  const StorageClassArgs({
     this.accessModes,
     this.allowVolumeExpansion,
     this.dataResilience,

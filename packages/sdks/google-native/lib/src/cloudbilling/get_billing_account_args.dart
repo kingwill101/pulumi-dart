@@ -11,7 +11,7 @@ class GetBillingAccountArgs {
 
   /// Creates a new [GetBillingAccountArgs].
   /// [billingAccountId] Required.
-  GetBillingAccountArgs({
+  const GetBillingAccountArgs({
     required this.billingAccountId,
   });
 

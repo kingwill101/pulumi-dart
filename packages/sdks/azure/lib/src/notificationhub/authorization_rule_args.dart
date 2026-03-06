@@ -32,7 +32,7 @@ class AuthorizationRuleArgs {
   /// [notificationHubName] The name of the Notification Hub for which the Authorization Rule should be created. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group in which the Notification Hub Namespace exists. Changing this forces a new resource to be created.
   /// [send] Does this Authorization Rule have Send access to the Notification Hub? Defaults to `false`.
-  AuthorizationRuleArgs({
+  const AuthorizationRuleArgs({
     this.listen,
     this.manage,
     this.name,

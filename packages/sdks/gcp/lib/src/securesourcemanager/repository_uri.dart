@@ -17,7 +17,7 @@ class RepositoryUri {
   /// [api] (Output)
   /// [gitHttps] (Output)
   /// [html] (Output)
-  RepositoryUri({
+  const RepositoryUri({
     this.api,
     this.gitHttps,
     this.html,

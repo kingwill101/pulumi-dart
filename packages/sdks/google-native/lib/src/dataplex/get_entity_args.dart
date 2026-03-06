@@ -21,7 +21,7 @@ class GetEntityArgs {
   /// [project] Optional.
   /// [view] Optional.
   /// [zone] Required.
-  GetEntityArgs({
+  const GetEntityArgs({
     required this.entityId,
     required this.lakeId,
     required this.location,

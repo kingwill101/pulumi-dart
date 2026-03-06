@@ -23,7 +23,7 @@ class AlexaChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Alexa channel resource
   /// [provisioningState] Provisioning state of the resource
-  AlexaChannelResponse({
+  const AlexaChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

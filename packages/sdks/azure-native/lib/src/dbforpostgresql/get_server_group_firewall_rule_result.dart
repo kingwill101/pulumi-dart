@@ -30,7 +30,7 @@ class GetServerGroupFirewallRuleResult {
   /// [startIpAddress] The start IP address of the cluster firewall rule. Must be IPv4 format.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetServerGroupFirewallRuleResult({
+  const GetServerGroupFirewallRuleResult({
     required this.azureApiVersion,
     required this.endIpAddress,
     required this.id,

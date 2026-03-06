@@ -15,7 +15,7 @@ class AdditionalWorkspacesPropertiesResponse {
   /// [dataTypes] List of data types sent to workspace
   /// [type] Workspace type.
   /// [workspace] Workspace resource id
-  AdditionalWorkspacesPropertiesResponse({
+  const AdditionalWorkspacesPropertiesResponse({
     this.dataTypes,
     this.type,
     this.workspace,

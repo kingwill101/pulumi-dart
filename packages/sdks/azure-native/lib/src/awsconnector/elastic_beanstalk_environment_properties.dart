@@ -31,7 +31,7 @@ class ElasticBeanstalkEnvironmentProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  ElasticBeanstalkEnvironmentProperties({
+  const ElasticBeanstalkEnvironmentProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

@@ -80,7 +80,7 @@ class GetDropletsDroplet {
   /// [vcpus] The number of the Droplet's virtual CPUs.
   /// [volumeIds] List of the IDs of each volumes attached to the Droplet.
   /// [vpcUuid] The ID of the VPC where the Droplet is located.
-  GetDropletsDroplet({
+  const GetDropletsDroplet({
     required this.backups,
     required this.createdAt,
     required this.disk,

@@ -14,7 +14,7 @@ class HelmMappingRuleProfileResponseOptions {
   /// Creates a new [HelmMappingRuleProfileResponseOptions].
   /// [installOptions] The helm deployment install options
   /// [upgradeOptions] The helm deployment upgrade options
-  HelmMappingRuleProfileResponseOptions({
+  const HelmMappingRuleProfileResponseOptions({
     this.installOptions,
     this.upgradeOptions,
   });

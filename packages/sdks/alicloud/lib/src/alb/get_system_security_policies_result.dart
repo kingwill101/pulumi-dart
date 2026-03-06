@@ -20,7 +20,7 @@ class GetSystemSecurityPoliciesResult {
   /// [outputFile] Optional.
   /// [policies] A list of ALB Security Policies. Each element contains the following attributes:
   /// [tags] Optional.
-  GetSystemSecurityPoliciesResult({
+  const GetSystemSecurityPoliciesResult({
     required this.id,
     required this.ids,
     this.outputFile,

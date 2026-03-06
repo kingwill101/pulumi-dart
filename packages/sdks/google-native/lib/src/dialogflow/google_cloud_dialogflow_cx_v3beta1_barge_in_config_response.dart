@@ -12,7 +12,7 @@ class GoogleCloudDialogflowCxV3beta1BargeInConfigResponse {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1BargeInConfigResponse].
   /// [noBargeInDuration] Duration that is not eligible for barge-in at the beginning of the input audio.
   /// [totalDuration] Total duration for the playback at the beginning of the input audio.
-  GoogleCloudDialogflowCxV3beta1BargeInConfigResponse({
+  const GoogleCloudDialogflowCxV3beta1BargeInConfigResponse({
     required this.noBargeInDuration,
     required this.totalDuration,
   });

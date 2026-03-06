@@ -18,7 +18,7 @@ class GetNamespaceIpFilterRuleArgs {
   /// [ipFilterRuleName] The IP Filter Rule name.
   /// [namespaceName] The namespace name
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
-  GetNamespaceIpFilterRuleArgs({
+  const GetNamespaceIpFilterRuleArgs({
     required this.ipFilterRuleName,
     required this.namespaceName,
     required this.resourceGroupName,

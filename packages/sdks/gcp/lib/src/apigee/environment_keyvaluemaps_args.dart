@@ -16,7 +16,7 @@ class EnvironmentKeyvaluemapsArgs {
   /// Creates a new [EnvironmentKeyvaluemapsArgs].
   /// [envId] The Apigee environment group associated with the Apigee environment,
   /// [name] Required. ID of the key value map.
-  EnvironmentKeyvaluemapsArgs({
+  const EnvironmentKeyvaluemapsArgs({
     required this.envId,
     this.name,
   });

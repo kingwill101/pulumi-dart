@@ -18,7 +18,7 @@ class UnitOutputVariable {
   /// [type] Name of a supported variable type. Supported types are string, int, bool.
   /// [value] String encoded value for the variable.
   /// [variable] Name of the variable from actuation configs.
-  UnitOutputVariable({
+  const UnitOutputVariable({
     this.type,
     this.value,
     required this.variable,

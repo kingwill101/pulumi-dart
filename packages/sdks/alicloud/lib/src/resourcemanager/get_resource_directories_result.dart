@@ -15,7 +15,7 @@ class GetResourceDirectoriesResult {
   /// [directories] A list of resource directories. Each element contains the following attributes:
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
-  GetResourceDirectoriesResult({
+  const GetResourceDirectoriesResult({
     required this.directories,
     required this.id,
     this.outputFile,

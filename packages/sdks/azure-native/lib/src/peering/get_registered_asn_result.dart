@@ -26,7 +26,7 @@ class GetRegisteredAsnResult {
   /// [peeringServicePrefixKey] The peering service prefix key that is to be shared with the customer.
   /// [provisioningState] The provisioning state of the resource.
   /// [type] The type of the resource.
-  GetRegisteredAsnResult({
+  const GetRegisteredAsnResult({
     this.asn,
     required this.azureApiVersion,
     required this.id,

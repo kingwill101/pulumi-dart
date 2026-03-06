@@ -12,7 +12,7 @@ class PluginInstanceAuthConfigOauth2ClientCredentialsConfig {
   /// Creates a new [PluginInstanceAuthConfigOauth2ClientCredentialsConfig].
   /// [clientId] The client identifier.
   /// [clientSecret] Secret provides a reference to entries in Secret Manager.
-  PluginInstanceAuthConfigOauth2ClientCredentialsConfig({
+  const PluginInstanceAuthConfigOauth2ClientCredentialsConfig({
     required this.clientId,
     required this.clientSecret,
   });

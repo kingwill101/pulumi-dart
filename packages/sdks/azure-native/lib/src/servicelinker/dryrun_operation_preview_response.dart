@@ -21,7 +21,7 @@ class DryrunOperationPreviewResponse {
   /// [name] The operation name
   /// [operationType] The operation type
   /// [scope] The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview
-  DryrunOperationPreviewResponse({
+  const DryrunOperationPreviewResponse({
     this.action,
     this.description,
     this.name,

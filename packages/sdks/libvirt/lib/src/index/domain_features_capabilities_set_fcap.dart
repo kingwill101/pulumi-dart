@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSetFCap {
 
   /// Creates a new [DomainFeaturesCapabilitiesSetFCap].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSetFCap({
+  const DomainFeaturesCapabilitiesSetFCap({
     this.state,
   });
 

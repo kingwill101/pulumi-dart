@@ -21,7 +21,7 @@ class GlobalSecurityIpGroupArgs {
   /// Creates a new [GlobalSecurityIpGroupArgs].
   /// [globalIpGroupName] The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
   /// [globalIpList] The IP address in the whitelist template.
-  GlobalSecurityIpGroupArgs({
+  const GlobalSecurityIpGroupArgs({
     required this.globalIpGroupName,
     required this.globalIpList,
   });

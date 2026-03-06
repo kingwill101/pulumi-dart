@@ -13,7 +13,7 @@ class GoogleCloudDialogflowCxV3ExperimentResultResponse {
   /// Creates a new [GoogleCloudDialogflowCxV3ExperimentResultResponse].
   /// [lastUpdateTime] The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
   /// [versionMetrics] Version variants and metrics.
-  GoogleCloudDialogflowCxV3ExperimentResultResponse({
+  const GoogleCloudDialogflowCxV3ExperimentResultResponse({
     required this.lastUpdateTime,
     required this.versionMetrics,
   });

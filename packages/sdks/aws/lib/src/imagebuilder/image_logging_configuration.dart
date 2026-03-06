@@ -8,7 +8,7 @@ class ImageLoggingConfiguration {
 
   /// Creates a new [ImageLoggingConfiguration].
   /// [logGroupName] Name of the CloudWatch Log Group to send logs to.
-  ImageLoggingConfiguration({
+  const ImageLoggingConfiguration({
     required this.logGroupName,
   });
 

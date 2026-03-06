@@ -21,7 +21,7 @@ class ZoneRecordState {
   /// [type] Type of the Zone Record.
   /// [value] Value of the Zone Record.
   /// [zone] ID or Name of the parent Zone.
-  ZoneRecordState({
+  const ZoneRecordState({
     this.comment,
     this.name,
     this.type,

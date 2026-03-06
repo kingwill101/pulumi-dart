@@ -17,7 +17,7 @@ class ShareDirectoryState {
   /// [name] The name (or path) of the Directory that should be created within this File Share. Changing this forces a new resource to be created.
   /// [storageShareId] Optional.
   /// [storageShareUrl] The Storage Share URL in which this file will be placed into. Changing this forces a new resource to be created.
-  ShareDirectoryState({
+  const ShareDirectoryState({
     this.metadata,
     this.name,
     this.storageShareId,

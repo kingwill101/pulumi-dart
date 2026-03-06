@@ -21,7 +21,7 @@ class GetAppGroupsGroupQuota {
   /// [computeResource] Computing resources. Unit: LCU.
   /// [docSize] Storage Size. Unit: GB.
   /// [spec] Specification. Valid values:
-  GetAppGroupsGroupQuota({
+  const GetAppGroupsGroupQuota({
     required this.computeResource,
     required this.docSize,
     required this.spec,

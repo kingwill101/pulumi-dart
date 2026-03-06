@@ -21,7 +21,7 @@ class ActivityPolicyResponse {
   /// [secureInput] When set to true, Input from activity is considered as secure and will not be logged to monitoring.
   /// [secureOutput] When set to true, Output from activity is considered as secure and will not be logged to monitoring.
   /// [timeout] Specifies the timeout for the activity to run. The default timeout is 7 days. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  ActivityPolicyResponse({
+  const ActivityPolicyResponse({
     this.retry,
     this.retryIntervalInSeconds,
     this.secureInput,

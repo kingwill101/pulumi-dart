@@ -16,7 +16,7 @@ class LabelCategory {
   /// [classes] Dictionary of label classes in this category.
   /// [displayName] Display name of the label category.
   /// [multiSelect] Indicates whether it is allowed to select multiple classes in this category.
-  LabelCategory({
+  const LabelCategory({
     this.classes,
     this.displayName,
     this.multiSelect,

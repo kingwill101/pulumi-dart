@@ -39,7 +39,7 @@ class GetDocumentDialogflowV2beta1Result {
   /// [name] Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
   /// [rawContent] The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
   /// [state] The current state of the document.
-  GetDocumentDialogflowV2beta1Result({
+  const GetDocumentDialogflowV2beta1Result({
     required this.content,
     required this.contentUri,
     required this.displayName,

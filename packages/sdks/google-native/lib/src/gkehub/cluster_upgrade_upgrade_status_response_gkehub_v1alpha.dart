@@ -15,7 +15,7 @@ class ClusterUpgradeUpgradeStatusResponseGkehubV1alpha {
   /// [code] Status code of the upgrade.
   /// [reason] Reason for this status.
   /// [updateTime] Last timestamp the status was updated.
-  ClusterUpgradeUpgradeStatusResponseGkehubV1alpha({
+  const ClusterUpgradeUpgradeStatusResponseGkehubV1alpha({
     required this.code,
     required this.reason,
     required this.updateTime,

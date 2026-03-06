@@ -33,7 +33,7 @@ class SslCertSqladminV1beta4 {
   /// [kind] This is always `sql#sslCert`.
   /// [selfLink] The URI of this resource.
   /// [sha1Fingerprint] Sha1 Fingerprint.
-  SslCertSqladminV1beta4({
+  const SslCertSqladminV1beta4({
     this.cert,
     this.certSerialNumber,
     this.commonName,

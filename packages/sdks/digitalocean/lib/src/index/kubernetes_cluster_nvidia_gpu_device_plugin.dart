@@ -9,7 +9,7 @@ class KubernetesClusterNvidiaGpuDevicePlugin {
 
   /// Creates a new [KubernetesClusterNvidiaGpuDevicePlugin].
   /// [enabled] Boolean flag whether the component should be enabled or not.
-  KubernetesClusterNvidiaGpuDevicePlugin({
+  const KubernetesClusterNvidiaGpuDevicePlugin({
     required this.enabled,
   });
 

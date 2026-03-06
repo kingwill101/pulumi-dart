@@ -78,7 +78,7 @@ class FirehoseDeliveryStreamArgs {
   /// [splunkConfiguration] Configuration options when `destination` is `splunk`. See `splunk_configuration` block below for details.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [versionId] Optional.
-  FirehoseDeliveryStreamArgs({
+  const FirehoseDeliveryStreamArgs({
     this.arn,
     required this.destination,
     this.destinationId,

@@ -21,7 +21,7 @@ class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings {
   /// [displayName] The unique repository display name for the GitHub repository.
   /// [repositoryUri] The GitHub repository URI related to the agent.
   /// [trackingBranch] The branch of the GitHub repository tracked for this agent.
-  GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings({
+  const GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings({
     this.accessToken,
     this.branches,
     this.displayName,

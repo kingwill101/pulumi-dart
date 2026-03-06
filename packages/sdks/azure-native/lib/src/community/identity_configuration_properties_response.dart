@@ -33,7 +33,7 @@ class IdentityConfigurationPropertiesResponse {
   /// [identityType] The identity type of the Community Training Resource
   /// [teamsEnabled] To indicate whether the Community Training Resource has Teams enabled
   /// [tenantId] The tenantId of the selected identity provider for the Community Training Resource
-  IdentityConfigurationPropertiesResponse({
+  const IdentityConfigurationPropertiesResponse({
     this.b2cAuthenticationPolicy,
     this.b2cPasswordResetPolicy,
     required this.clientId,

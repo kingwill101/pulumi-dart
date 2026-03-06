@@ -21,7 +21,7 @@ class GetServiceDatabaseTableIamPolicyArgs {
   /// [project] Optional.
   /// [serviceId] Required.
   /// [tableId] Required.
-  GetServiceDatabaseTableIamPolicyArgs({
+  const GetServiceDatabaseTableIamPolicyArgs({
     required this.databaseId,
     required this.location,
     this.optionsRequestedPolicyVersion,

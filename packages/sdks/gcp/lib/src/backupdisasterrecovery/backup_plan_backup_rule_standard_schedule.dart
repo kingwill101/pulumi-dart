@@ -38,7 +38,7 @@ class BackupPlanBackupRuleStandardSchedule {
   /// [recurrenceType] RecurrenceType enumerates the applicable periodicity for the schedule.
   /// [timeZone] The time zone to be used when interpreting the schedule.
   /// [weekDayOfMonth] Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
-  BackupPlanBackupRuleStandardSchedule({
+  const BackupPlanBackupRuleStandardSchedule({
     this.backupWindow,
     this.daysOfMonths,
     this.daysOfWeeks,

@@ -28,7 +28,7 @@ class RuleArgs {
   /// [ruleName] The name of the event rule.
   /// [status] The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
   /// [targets] The targets of rule. See `targets` below.
-  RuleArgs({
+  const RuleArgs({
     this.description,
     required this.eventBusName,
     required this.filterPattern,

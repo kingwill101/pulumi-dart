@@ -22,7 +22,7 @@ class InstanceIamBindingArgs {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Required.
-  InstanceIamBindingArgs({
+  const InstanceIamBindingArgs({
     this.condition,
     this.location,
     required this.members,

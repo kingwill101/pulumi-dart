@@ -10,7 +10,7 @@ class VirtualMachineInstanceManagedDiskParameters {
 
   /// Creates a new [VirtualMachineInstanceManagedDiskParameters].
   /// [securityProfile] Specifies the security profile for the managed disk.
-  VirtualMachineInstanceManagedDiskParameters({
+  const VirtualMachineInstanceManagedDiskParameters({
     this.securityProfile,
   });
 

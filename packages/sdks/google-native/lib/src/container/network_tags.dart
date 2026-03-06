@@ -9,7 +9,7 @@ class NetworkTags {
 
   /// Creates a new [NetworkTags].
   /// [tags] List of network tags.
-  NetworkTags({
+  const NetworkTags({
     this.tags,
   });
 

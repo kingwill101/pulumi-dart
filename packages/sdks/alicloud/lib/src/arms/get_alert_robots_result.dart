@@ -28,7 +28,7 @@ class GetAlertRobotsResult {
   /// [outputFile] Optional.
   /// [robotType] The type of the robot.
   /// [robots] A list of Arms Alert Robots. Each element contains the following attributes:
-  GetAlertRobotsResult({
+  const GetAlertRobotsResult({
     this.alertRobotName,
     required this.id,
     required this.ids,

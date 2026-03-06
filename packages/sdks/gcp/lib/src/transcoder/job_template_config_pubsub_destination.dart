@@ -8,7 +8,7 @@ class JobTemplateConfigPubsubDestination {
 
   /// Creates a new [JobTemplateConfigPubsubDestination].
   /// [topic] The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
-  JobTemplateConfigPubsubDestination({
+  const JobTemplateConfigPubsubDestination({
     this.topic,
   });
 

@@ -11,7 +11,7 @@ class GetRegionResolver {
   /// Creates a new [GetRegionResolver].
   /// [ipv4] The IPv4 addresses for this region’s DNS resolvers, separated by commas.
   /// [ipv6] The IPv6 addresses for this region’s DNS resolvers, separated by commas.
-  GetRegionResolver({
+  const GetRegionResolver({
     required this.ipv4,
     required this.ipv6,
   });

@@ -8,7 +8,7 @@ class StatefulPolicyResponseComputeV1 {
 
   /// Creates a new [StatefulPolicyResponseComputeV1].
   /// [preservedState] Required.
-  StatefulPolicyResponseComputeV1({
+  const StatefulPolicyResponseComputeV1({
     required this.preservedState,
   });
 

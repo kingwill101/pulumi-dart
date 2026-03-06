@@ -23,7 +23,7 @@ class MHSMPrivateEndpointConnectionItemResponse {
   /// [privateEndpoint] Properties of the private endpoint object.
   /// [privateLinkServiceConnectionState] Approval state of the private link connection.
   /// [provisioningState] Provisioning state of the private endpoint connection.
-  MHSMPrivateEndpointConnectionItemResponse({
+  const MHSMPrivateEndpointConnectionItemResponse({
     this.etag,
     this.id,
     this.privateEndpoint,

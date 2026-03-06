@@ -19,7 +19,7 @@ class GetFeedbackMessageArgs {
   /// [feedbackMessageId] Required.
   /// [feedbackThreadId] Required.
   /// [project] Optional.
-  GetFeedbackMessageArgs({
+  const GetFeedbackMessageArgs({
     required this.annotatedDatasetId,
     required this.datasetId,
     required this.feedbackMessageId,

@@ -101,7 +101,7 @@ class WindowsFileSystemState {
   /// [throughputCapacity] Throughput (megabytes per second) of the file system. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/performance.html).
   /// [vpcId] Identifier of the Virtual Private Cloud for the file system.
   /// [weeklyMaintenanceStartTime] The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-  WindowsFileSystemState({
+  const WindowsFileSystemState({
     this.activeDirectoryId,
     this.aliases,
     this.arn,

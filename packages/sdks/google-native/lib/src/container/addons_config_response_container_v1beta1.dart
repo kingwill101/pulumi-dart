@@ -58,7 +58,7 @@ class AddonsConfigResponseContainerV1beta1 {
   /// [kalmConfig] Configuration for the KALM addon, which manages the lifecycle of k8s applications.
   /// [kubernetesDashboard] Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
   /// [networkPolicyConfig] Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
-  AddonsConfigResponseContainerV1beta1({
+  const AddonsConfigResponseContainerV1beta1({
     required this.cloudRunConfig,
     required this.configConnectorConfig,
     required this.dnsCacheConfig,

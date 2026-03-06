@@ -27,7 +27,7 @@ class MigrationValidationDatabaseSummaryResultResponse {
   /// [startedOn] Validation start time
   /// [status] Current status of validation at the database level
   /// [targetDatabaseName] Name of the target database
-  MigrationValidationDatabaseSummaryResultResponse({
+  const MigrationValidationDatabaseSummaryResultResponse({
     required this.endedOn,
     required this.id,
     required this.migrationId,

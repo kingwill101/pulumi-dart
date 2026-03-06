@@ -24,7 +24,7 @@ class GatewayVcoRouteState {
   /// [status] The status of the vpn route entry.
   /// [vpnConnectionId] The id of the vpn attachment.
   /// [weight] The weight value of the destination route. Valid values: `0`, `100`.
-  GatewayVcoRouteState({
+  const GatewayVcoRouteState({
     this.nextHop,
     this.overlayMode,
     this.routeDest,

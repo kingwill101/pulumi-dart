@@ -12,7 +12,7 @@ class RestrictedExportConfig {
   /// Creates a new [RestrictedExportConfig].
   /// [enabled] Optional. If true, enable restricted export.
   /// [restrictQueryResult] Optional. If true, restrict export of query result derived from restricted linked dataset table.
-  RestrictedExportConfig({
+  const RestrictedExportConfig({
     this.enabled,
     this.restrictQueryResult,
   });

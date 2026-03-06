@@ -17,7 +17,7 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
   /// [expirationSec] Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
   /// [impactedBaselineThreshold] Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
   /// [loadThreshold] Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
-  SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig({
+  const SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig({
     this.confidenceThreshold,
     this.expirationSec,
     this.impactedBaselineThreshold,

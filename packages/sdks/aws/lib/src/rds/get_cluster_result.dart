@@ -87,7 +87,7 @@ class GetClusterResult {
   /// [tags] A map of tags assigned to the resource.
   /// [upgradeRolloutOrder] Required.
   /// [vpcSecurityGroupIds] Required.
-  GetClusterResult({
+  const GetClusterResult({
     required this.arn,
     required this.availabilityZones,
     required this.backtrackWindow,

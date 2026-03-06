@@ -9,7 +9,7 @@ class ServiceEnterprisePublicState {
 
   /// Creates a new [ServiceEnterprisePublicState].
   /// [createTime] The creation time of the resource.
-  ServiceEnterprisePublicState({
+  const ServiceEnterprisePublicState({
     this.createTime,
   });
 

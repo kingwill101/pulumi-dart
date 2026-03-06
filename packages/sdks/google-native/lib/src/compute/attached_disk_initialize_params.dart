@@ -83,7 +83,7 @@ class AttachedDiskInitializeParams {
   /// [sourceSnapshot] The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
   /// [sourceSnapshotEncryptionKey] The customer-supplied encryption key of the source snapshot.
   /// [storagePool] The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
-  AttachedDiskInitializeParams({
+  const AttachedDiskInitializeParams({
     this.architecture,
     this.description,
     this.diskName,

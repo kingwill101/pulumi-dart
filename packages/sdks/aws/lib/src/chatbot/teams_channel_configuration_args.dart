@@ -53,7 +53,7 @@ class TeamsChannelConfigurationArgs {
   /// [tenantId] ID of the Microsoft Teams tenant.
   /// [timeouts] Optional.
   /// [userAuthorizationRequired] Enables use of a user role requirement in your chat configuration.
-  TeamsChannelConfigurationArgs({
+  const TeamsChannelConfigurationArgs({
     required this.channelId,
     this.channelName,
     required this.configurationName,

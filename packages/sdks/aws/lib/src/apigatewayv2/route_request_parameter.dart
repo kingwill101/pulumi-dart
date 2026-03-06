@@ -11,7 +11,7 @@ class RouteRequestParameter {
   /// Creates a new [RouteRequestParameter].
   /// [requestParameterKey] Request parameter key. This is a [request data mapping parameter](https://docs.aws.amazon.com/apigateway/latest/developerguide/websocket-api-data-mapping.html#websocket-mapping-request-parameters).
   /// [required] Boolean whether or not the parameter is required.
-  RouteRequestParameter({
+  const RouteRequestParameter({
     required this.requestParameterKey,
     required this.required,
   });

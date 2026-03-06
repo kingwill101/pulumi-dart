@@ -15,7 +15,7 @@ class GetResourcePoolArgs {
   /// Creates a new [GetResourcePoolArgs].
   /// [resourceGroupName] The Resource Group Name.
   /// [resourcePoolName] Name of the resourcePool.
-  GetResourcePoolArgs({
+  const GetResourcePoolArgs({
     required this.resourceGroupName,
     required this.resourcePoolName,
   });

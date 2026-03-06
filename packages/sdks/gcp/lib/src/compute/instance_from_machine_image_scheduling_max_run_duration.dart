@@ -15,7 +15,7 @@ class InstanceFromMachineImageSchedulingMaxRunDuration {
   /// Creates a new [InstanceFromMachineImageSchedulingMaxRunDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  InstanceFromMachineImageSchedulingMaxRunDuration({
+  const InstanceFromMachineImageSchedulingMaxRunDuration({
     this.nanos,
     required this.seconds,
   });

@@ -91,7 +91,7 @@ class OccurrenceContaineranalysisV1alpha1Args {
   /// [spdxRelationship] Describes a specific relationship between SPDX elements.
   /// [upgrade] Describes an upgrade.
   /// [vulnerabilityDetails] Details of a security vulnerability note.
-  OccurrenceContaineranalysisV1alpha1Args({
+  const OccurrenceContaineranalysisV1alpha1Args({
     this.attestation,
     this.buildDetails,
     this.compliance,

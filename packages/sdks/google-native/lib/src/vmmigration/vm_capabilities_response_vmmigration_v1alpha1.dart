@@ -12,7 +12,7 @@ class VmCapabilitiesResponseVmmigrationV1alpha1 {
   /// Creates a new [VmCapabilitiesResponseVmmigrationV1alpha1].
   /// [lastOsCapabilitiesUpdateTime] The last time OS capabilities list was updated.
   /// [osCapabilities] Unordered list. List of certain VM OS capabilities needed for some Compute Engine features.
-  VmCapabilitiesResponseVmmigrationV1alpha1({
+  const VmCapabilitiesResponseVmmigrationV1alpha1({
     required this.lastOsCapabilitiesUpdateTime,
     required this.osCapabilities,
   });

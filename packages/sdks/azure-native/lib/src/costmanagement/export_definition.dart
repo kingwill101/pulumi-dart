@@ -20,7 +20,7 @@ class ExportDefinition {
   /// [timePeriod] Has time period for pulling data for the export.
   /// [timeframe] The time frame for pulling data for the export. If custom, then a specific time period must be provided.
   /// [type] The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
-  ExportDefinition({
+  const ExportDefinition({
     this.dataSet,
     this.timePeriod,
     required this.timeframe,

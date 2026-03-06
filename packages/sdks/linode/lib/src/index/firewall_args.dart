@@ -45,7 +45,7 @@ class FirewallArgs {
   /// [outboundPolicy] The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
   /// [outbounds] A firewall rule that specifies what outbound network traffic is allowed.
   /// [tags] A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
-  FirewallArgs({
+  const FirewallArgs({
     this.disabled,
     required this.inboundPolicy,
     this.inbounds,

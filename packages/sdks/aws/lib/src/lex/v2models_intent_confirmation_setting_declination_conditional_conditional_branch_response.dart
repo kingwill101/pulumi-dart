@@ -12,7 +12,7 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchRe
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.
   /// [messageGroups] Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
-  V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponse({
+  const V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponse({
     this.allowInterrupt,
     this.messageGroups,
   });

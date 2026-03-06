@@ -22,7 +22,7 @@ class AllowedImagesSettingsImageCriterion {
   /// [imageNames] Set of AMI name patterns to allow. Maximum of 50 names.
   /// [imageProviders] Set of image providers to allow. Maximum of 200 providers. Valid values include `amazon`, `aws-marketplace`, `aws-backup-vault`, `none`, or a 12-digit AWS account ID.
   /// [marketplaceProductCodes] Set of AWS Marketplace product codes to allow. Maximum of 50 product codes.
-  AllowedImagesSettingsImageCriterion({
+  const AllowedImagesSettingsImageCriterion({
     this.creationDateCondition,
     this.deprecationTimeCondition,
     this.imageNames,

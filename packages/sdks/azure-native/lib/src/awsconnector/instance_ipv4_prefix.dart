@@ -9,7 +9,7 @@ class InstanceIpv4Prefix {
 
   /// Creates a new [InstanceIpv4Prefix].
   /// [ipv4Prefix] &lt;p&gt;One or more IPv4 prefixes assigned to the network interface.&lt;/p&gt;
-  InstanceIpv4Prefix({
+  const InstanceIpv4Prefix({
     this.ipv4Prefix,
   });
 

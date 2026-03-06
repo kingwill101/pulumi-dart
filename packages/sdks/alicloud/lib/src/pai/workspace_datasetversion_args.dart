@@ -59,7 +59,7 @@ class WorkspaceDatasetversionArgs {
   /// [sourceId] The data source ID.
   /// [sourceType] The data source type. The default value is USER.
   /// [uri] The Uri configuration sample is as follows:
-  WorkspaceDatasetversionArgs({
+  const WorkspaceDatasetversionArgs({
     this.dataCount,
     this.dataSize,
     required this.dataSourceType,

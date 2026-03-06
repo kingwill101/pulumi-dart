@@ -34,7 +34,7 @@ class LoadBalancerResourceSettingsResponse {
   /// [targetResourceGroupName] Gets or sets the target resource group name.
   /// [targetResourceName] Gets or sets the target Resource name.
   /// [zones] Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
-  LoadBalancerResourceSettingsResponse({
+  const LoadBalancerResourceSettingsResponse({
     this.backendAddressPools,
     this.frontendIPConfigurations,
     required this.resourceType,

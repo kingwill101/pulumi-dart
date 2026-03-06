@@ -8,7 +8,7 @@ class GrafanaAzureMonitorWorkspaceIntegration {
 
   /// Creates a new [GrafanaAzureMonitorWorkspaceIntegration].
   /// [resourceId] Specifies the resource ID of the connected Azure Monitor Workspace.
-  GrafanaAzureMonitorWorkspaceIntegration({
+  const GrafanaAzureMonitorWorkspaceIntegration({
     required this.resourceId,
   });
 

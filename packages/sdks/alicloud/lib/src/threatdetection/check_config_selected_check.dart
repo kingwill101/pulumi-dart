@@ -11,7 +11,7 @@ class CheckConfigSelectedCheck {
   /// Creates a new [CheckConfigSelectedCheck].
   /// [checkId] The ID of the check item.
   /// [sectionId] The section ID of the check item.
-  CheckConfigSelectedCheck({
+  const CheckConfigSelectedCheck({
     this.checkId,
     this.sectionId,
   });

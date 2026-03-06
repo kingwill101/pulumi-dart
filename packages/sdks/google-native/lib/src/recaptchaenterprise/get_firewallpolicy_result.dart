@@ -22,7 +22,7 @@ class GetFirewallpolicyResult {
   /// [description] Optional. A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
   /// [name] Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
   /// [path] Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
-  GetFirewallpolicyResult({
+  const GetFirewallpolicyResult({
     required this.actions,
     required this.condition,
     required this.description,

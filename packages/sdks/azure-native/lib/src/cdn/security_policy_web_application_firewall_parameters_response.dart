@@ -18,7 +18,7 @@ class SecurityPolicyWebApplicationFirewallParametersResponse {
   /// [associations] Waf associations
   /// [type] The type of the Security policy to create.
   /// [wafPolicy] Resource ID.
-  SecurityPolicyWebApplicationFirewallParametersResponse({
+  const SecurityPolicyWebApplicationFirewallParametersResponse({
     this.associations,
     required this.type,
     this.wafPolicy,

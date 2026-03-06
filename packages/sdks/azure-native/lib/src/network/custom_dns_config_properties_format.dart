@@ -12,7 +12,7 @@ class CustomDnsConfigPropertiesFormat {
   /// Creates a new [CustomDnsConfigPropertiesFormat].
   /// [fqdn] Fqdn that resolves to private endpoint ip address.
   /// [ipAddresses] A list of private ip addresses of the private endpoint.
-  CustomDnsConfigPropertiesFormat({
+  const CustomDnsConfigPropertiesFormat({
     this.fqdn,
     this.ipAddresses,
   });

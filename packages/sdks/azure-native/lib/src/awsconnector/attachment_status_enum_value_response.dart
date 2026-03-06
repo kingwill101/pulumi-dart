@@ -9,7 +9,7 @@ class AttachmentStatusEnumValueResponse {
 
   /// Creates a new [AttachmentStatusEnumValueResponse].
   /// [value] Property value
-  AttachmentStatusEnumValueResponse({
+  const AttachmentStatusEnumValueResponse({
     this.value,
   });
 

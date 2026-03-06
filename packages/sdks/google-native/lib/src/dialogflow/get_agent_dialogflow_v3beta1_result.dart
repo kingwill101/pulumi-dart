@@ -65,7 +65,7 @@ class GetAgentDialogflowV3beta1Result {
   /// [supportedLanguageCodes] The list of all languages supported by the agent (except for the `default_language_code`).
   /// [textToSpeechSettings] Settings on instructing the speech synthesizer on how to generate the output audio content.
   /// [timeZone] The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
-  GetAgentDialogflowV3beta1Result({
+  const GetAgentDialogflowV3beta1Result({
     required this.advancedSettings,
     required this.answerFeedbackSettings,
     required this.avatarUri,

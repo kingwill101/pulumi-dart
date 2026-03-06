@@ -21,7 +21,7 @@ class GetStackScriptsResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [stackscripts] Required.
-  GetStackScriptsResult({
+  const GetStackScriptsResult({
     this.filters,
     required this.id,
     this.latest,

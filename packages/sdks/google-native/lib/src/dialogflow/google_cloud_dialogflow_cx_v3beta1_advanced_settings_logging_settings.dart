@@ -12,7 +12,7 @@ class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings].
   /// [enableInteractionLogging] If true, DF Interaction logging is currently enabled.
   /// [enableStackdriverLogging] If true, StackDriver logging is currently enabled.
-  GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings({
+  const GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings({
     this.enableInteractionLogging,
     this.enableStackdriverLogging,
   });

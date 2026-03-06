@@ -34,7 +34,7 @@ class AccountState {
   /// [databaseName] Database name, with the following restrictions:
   /// [dbInstanceId] The Adb pg instance ID.
   /// [status] The status of the resource
-  AccountState({
+  const AccountState({
     this.accountDescription,
     this.accountName,
     this.accountPassword,

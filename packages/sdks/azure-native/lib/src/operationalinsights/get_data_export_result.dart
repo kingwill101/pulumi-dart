@@ -38,7 +38,7 @@ class GetDataExportResult {
   /// [resourceId] The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.
   /// [tableNames] An array of tables to export, for example: [“Heartbeat, SecurityEvent”].
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDataExportResult({
+  const GetDataExportResult({
     required this.azureApiVersion,
     this.createdDate,
     this.dataExportId,

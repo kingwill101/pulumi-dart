@@ -12,7 +12,7 @@ class OsProfile {
   /// Creates a new [OsProfile].
   /// [adminPassword] Admin password of the virtual machine.
   /// [computerName] Gets or sets computer name.
-  OsProfile({
+  const OsProfile({
     this.adminPassword,
     this.computerName,
   });

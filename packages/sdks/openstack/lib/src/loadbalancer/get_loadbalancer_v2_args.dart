@@ -43,7 +43,7 @@ class GetLoadbalancerV2Args {
   /// [tagsNotAnies] A set of tags. The load balancer will be returned
   /// [tagsNots] A set of tags. The load balancer will be returned if
   /// [vipAddress] The IP address of the loadbalancer's virtual IP (VIP).
-  GetLoadbalancerV2Args({
+  const GetLoadbalancerV2Args({
     this.description,
     this.loadbalancerId,
     this.name,

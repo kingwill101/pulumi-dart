@@ -15,7 +15,7 @@ class SpannerIODetails {
   /// [databaseId] DatabaseId accessed in the connection.
   /// [instanceId] InstanceId accessed in the connection.
   /// [project] ProjectId accessed in the connection.
-  SpannerIODetails({
+  const SpannerIODetails({
     this.databaseId,
     this.instanceId,
     this.project,

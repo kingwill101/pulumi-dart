@@ -30,7 +30,7 @@ class GetZoneRrsetsRrset {
   /// [ttl] Time To Live (TTL) of the Zone RRSet.
   /// [type] Type of the Zone RRSet.
   /// [zone] ID or Name of the parent Zone.
-  GetZoneRrsetsRrset({
+  const GetZoneRrsetsRrset({
     required this.changeProtection,
     required this.id,
     required this.labels,

@@ -13,7 +13,7 @@ class GetHubNetworkconnectivityV1alpha1Args {
   /// Creates a new [GetHubNetworkconnectivityV1alpha1Args].
   /// [hubId] Required.
   /// [project] Optional.
-  GetHubNetworkconnectivityV1alpha1Args({
+  const GetHubNetworkconnectivityV1alpha1Args({
     required this.hubId,
     this.project,
   });

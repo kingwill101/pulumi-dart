@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [factoryName] The factory name.
   /// [privateEndpointConnectionName] The private endpoint connection name.
   /// [resourceGroupName] The resource group name.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.factoryName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

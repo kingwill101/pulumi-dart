@@ -84,7 +84,7 @@ class SiteConnectionArgs {
   /// [tenantId] The owner of the connection. Required if admin wants to
   /// [valueSpecs] Map of additional options.
   /// [vpnserviceId] The ID of the VPN service. Changing this creates a new connection.
-  SiteConnectionArgs({
+  const SiteConnectionArgs({
     this.adminStateUp,
     this.description,
     this.dpds,

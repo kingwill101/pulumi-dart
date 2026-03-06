@@ -15,7 +15,7 @@ class CidrLocationState {
   /// [cidrBlocks] CIDR blocks for the location.
   /// [cidrCollectionId] The ID of the CIDR collection to update.
   /// [name] Name for the CIDR location.
-  CidrLocationState({
+  const CidrLocationState({
     this.cidrBlocks,
     this.cidrCollectionId,
     this.name,

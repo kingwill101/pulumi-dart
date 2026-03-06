@@ -13,7 +13,7 @@ class ResourceMetricSourcePatch {
   /// Creates a new [ResourceMetricSourcePatch].
   /// [name] name is the name of the resource in question.
   /// [target] target specifies the target value for the given metric
-  ResourceMetricSourcePatch({
+  const ResourceMetricSourcePatch({
     this.name,
     this.target,
   });

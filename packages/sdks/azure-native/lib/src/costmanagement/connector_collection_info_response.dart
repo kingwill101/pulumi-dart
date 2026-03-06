@@ -22,7 +22,7 @@ class ConnectorCollectionInfoResponse {
   /// [lastRun] Last time the data acquisition process completed (even if no new data was found)
   /// [lastUpdated] Last time the external data was updated into Azure
   /// [sourceLastUpdated] Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
-  ConnectorCollectionInfoResponse({
+  const ConnectorCollectionInfoResponse({
     this.error,
     this.lastChecked,
     required this.lastRun,

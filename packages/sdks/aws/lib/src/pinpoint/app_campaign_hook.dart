@@ -14,7 +14,7 @@ class AppCampaignHook {
   /// [lambdaFunctionName] Lambda function name or ARN to be called for delivery. Conflicts with `web_url`
   /// [mode] What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
   /// [webUrl] Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambda_function_name`
-  AppCampaignHook({
+  const AppCampaignHook({
     this.lambdaFunctionName,
     this.mode,
     this.webUrl,

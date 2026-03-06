@@ -11,7 +11,7 @@ class GetBuildServiceResourceUploadUrlResult {
   /// Creates a new [GetBuildServiceResourceUploadUrlResult].
   /// [relativePath] Source relative path
   /// [uploadUrl] Upload URL
-  GetBuildServiceResourceUploadUrlResult({
+  const GetBuildServiceResourceUploadUrlResult({
     this.relativePath,
     this.uploadUrl,
   });

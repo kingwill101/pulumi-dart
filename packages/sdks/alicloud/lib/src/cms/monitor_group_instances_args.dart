@@ -16,7 +16,7 @@ class MonitorGroupInstancesArgs {
   /// Creates a new [MonitorGroupInstancesArgs].
   /// [groupId] The id of Cms Group.
   /// [instances] Instance information added to the Cms Group. See `instances` below.
-  MonitorGroupInstancesArgs({
+  const MonitorGroupInstancesArgs({
     required this.groupId,
     required this.instances,
   });

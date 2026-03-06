@@ -30,7 +30,7 @@ class GetPolicyAttachmentsArgs {
   /// [principalName] The name of the object to which the policy is attached.
   /// [principalType] The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
   /// [resourceGroupId] The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
-  GetPolicyAttachmentsArgs({
+  const GetPolicyAttachmentsArgs({
     this.language,
     this.outputFile,
     this.policyName,

@@ -13,7 +13,7 @@ class GetPatchDeploymentArgs {
   /// Creates a new [GetPatchDeploymentArgs].
   /// [patchDeploymentId] Required.
   /// [project] Optional.
-  GetPatchDeploymentArgs({
+  const GetPatchDeploymentArgs({
     required this.patchDeploymentId,
     this.project,
   });

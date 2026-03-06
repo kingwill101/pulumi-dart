@@ -30,7 +30,7 @@ class DomainDevicesTpmBackendEmulator {
   /// [profile] Sets the profile configuration for the emulator TPM backend.
   /// [source] Configures the source settings for the emulator TPM backend.
   /// [version] Configures the version attributes for the emulator TPM backend.
-  DomainDevicesTpmBackendEmulator({
+  const DomainDevicesTpmBackendEmulator({
     this.activePcrBanks,
     this.debug,
     this.encryption,

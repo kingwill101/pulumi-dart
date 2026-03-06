@@ -8,7 +8,7 @@ class GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
 
   /// Creates a new [GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig].
   /// [contentTypes] A list of custom Content-Type header values to apply the JSON parsing.
-  GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig({
+  const GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig({
     required this.contentTypes,
   });
 

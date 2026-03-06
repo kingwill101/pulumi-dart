@@ -28,7 +28,7 @@ class GetCertificateResult {
   /// [state] the current state of the certificate.
   /// [type] The type of the certificate.
   /// [uuid] The ID of the certificate.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.domains,
     required this.id,
     required this.name,

@@ -23,7 +23,7 @@ class GetRoutingProfileQueueConfig {
   /// [queueArn] ARN for the queue.
   /// [queueId] Identifier for the queue.
   /// [queueName] Name for the queue.
-  GetRoutingProfileQueueConfig({
+  const GetRoutingProfileQueueConfig({
     required this.channel,
     required this.delay,
     required this.priority,

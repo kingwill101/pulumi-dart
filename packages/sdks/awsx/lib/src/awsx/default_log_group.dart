@@ -17,7 +17,7 @@ class DefaultLogGroup {
   /// [args] Arguments to use instead of the default values during creation.
   /// [existing] Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
   /// [skip] Skip creation of the log group.
-  DefaultLogGroup({
+  const DefaultLogGroup({
     this.args,
     this.existing,
     this.skip,

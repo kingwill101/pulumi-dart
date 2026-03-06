@@ -34,7 +34,7 @@ class GetVolumeSnapshotResult {
   /// [size] The billable size of the volume snapshot in gigabytes.
   /// [tags] A list of the tags associated to the volume snapshot.
   /// [volumeId] The ID of the volume from which the volume snapshot originated.
-  GetVolumeSnapshotResult({
+  const GetVolumeSnapshotResult({
     required this.createdAt,
     required this.id,
     required this.minDiskSize,

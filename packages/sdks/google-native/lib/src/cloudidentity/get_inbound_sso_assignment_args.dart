@@ -11,7 +11,7 @@ class GetInboundSsoAssignmentArgs {
 
   /// Creates a new [GetInboundSsoAssignmentArgs].
   /// [inboundSsoAssignmentId] Required.
-  GetInboundSsoAssignmentArgs({
+  const GetInboundSsoAssignmentArgs({
     required this.inboundSsoAssignmentId,
   });
 

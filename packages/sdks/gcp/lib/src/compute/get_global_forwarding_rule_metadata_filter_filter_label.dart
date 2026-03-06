@@ -14,7 +14,7 @@ class GetGlobalForwardingRuleMetadataFilterFilterLabel {
   /// Creates a new [GetGlobalForwardingRuleMetadataFilterFilterLabel].
   /// [name] The name of the global forwarding rule.
   /// [value] The value that the label must match. The value has a maximum
-  GetGlobalForwardingRuleMetadataFilterFilterLabel({
+  const GetGlobalForwardingRuleMetadataFilterFilterLabel({
     required this.name,
     required this.value,
   });

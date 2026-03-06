@@ -29,7 +29,7 @@ class ClusterMasterInstanceFleet {
   /// [provisionedSpotCapacity] Optional.
   /// [targetOnDemandCapacity] Target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision.
   /// [targetSpotCapacity] Target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision.
-  ClusterMasterInstanceFleet({
+  const ClusterMasterInstanceFleet({
     this.id,
     this.instanceTypeConfigs,
     this.launchSpecifications,

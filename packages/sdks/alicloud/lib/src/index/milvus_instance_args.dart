@@ -81,7 +81,7 @@ class MilvusInstanceArgs {
   /// [vpcId] The VPC network ID. vpc-xxx.
   /// [vswitchIds] Switch list, configure the switch and zone. See `vswitch_ids` below.
   /// [zoneId] The zone id. When multi-zone is enabled, it represents the primary zone.
-  MilvusInstanceArgs({
+  const MilvusInstanceArgs({
     this.autoBackup,
     this.components,
     this.configuration,

@@ -13,7 +13,7 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWaterma
   /// [cbetCheckDigitString] Required.
   /// [cbetStepaside] Determines the method of CBET insertion mode when prior encoding is detected on the same layer.
   /// [csid] CBET source ID to use in the watermark.
-  ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings({
+  const ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings({
     required this.cbetCheckDigitString,
     required this.cbetStepaside,
     required this.csid,

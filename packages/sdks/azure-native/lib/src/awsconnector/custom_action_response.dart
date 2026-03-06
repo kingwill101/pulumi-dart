@@ -13,7 +13,7 @@ class CustomActionResponse {
   /// Creates a new [CustomActionResponse].
   /// [actionDefinition] Property actionDefinition
   /// [actionName] Property actionName
-  CustomActionResponse({
+  const CustomActionResponse({
     this.actionDefinition,
     this.actionName,
   });

@@ -12,7 +12,7 @@ class GetIAMPolicyAuditConfig {
   /// Creates a new [GetIAMPolicyAuditConfig].
   /// [auditLogConfigs] A nested block that defines the operations you'd like to log.
   /// [service] Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  GetIAMPolicyAuditConfig({
+  const GetIAMPolicyAuditConfig({
     required this.auditLogConfigs,
     required this.service,
   });

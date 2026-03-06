@@ -38,7 +38,7 @@ class TargetTCPProxyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [proxyBind] This field only applies when the forwarding rule that references
   /// [proxyHeader] Specifies the type of proxy header to append before sending data to
-  TargetTCPProxyArgs({
+  const TargetTCPProxyArgs({
     required this.backendService,
     this.description,
     this.name,

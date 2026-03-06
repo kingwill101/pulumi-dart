@@ -49,7 +49,7 @@ class AzureDataLakeStoreReadSettings {
   /// [type] The read setting type.
   /// [wildcardFileName] ADLS wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] ADLS wildcardFolderPath. Type: string (or Expression with resultType string).
-  AzureDataLakeStoreReadSettings({
+  const AzureDataLakeStoreReadSettings({
     this.deleteFilesAfterCompletion,
     this.disableMetricsCollection,
     this.enablePartitionDiscovery,

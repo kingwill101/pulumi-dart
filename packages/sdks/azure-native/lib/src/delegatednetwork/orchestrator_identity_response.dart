@@ -14,7 +14,7 @@ class OrchestratorIdentityResponse {
   /// [principalId] The principal id of the system assigned identity which is used by orchestrator.
   /// [tenantId] The tenant id of the system assigned identity which is used by orchestrator.
   /// [type] The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
-  OrchestratorIdentityResponse({
+  const OrchestratorIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

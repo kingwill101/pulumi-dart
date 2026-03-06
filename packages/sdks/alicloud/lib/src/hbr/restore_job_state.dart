@@ -85,7 +85,7 @@ class RestoreJobState {
   /// [targetTime] The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
   /// [udmDetail] The full machine backup details.
   /// [vaultId] The ID of backup vault.
-  RestoreJobState({
+  const RestoreJobState({
     this.crossAccountRoleName,
     this.crossAccountType,
     this.crossAccountUserId,

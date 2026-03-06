@@ -15,7 +15,7 @@ class Indexes {
   /// [dataType] The datatype for which the indexing behavior is applied to.
   /// [kind] Indicates the type of index.
   /// [precision] The precision of the index. -1 is maximum precision.
-  Indexes({
+  const Indexes({
     this.dataType,
     this.kind,
     this.precision,

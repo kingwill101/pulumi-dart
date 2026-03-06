@@ -36,7 +36,7 @@ class InMageRcmMobilityAgentDetailsResponse {
   /// [latestVersion] The latest agent version available.
   /// [reasonsBlockingUpgrade] The whether update is possible or not.
   /// [version] The agent version.
-  InMageRcmMobilityAgentDetailsResponse({
+  const InMageRcmMobilityAgentDetailsResponse({
     required this.agentVersionExpiryDate,
     required this.driverVersion,
     required this.driverVersionExpiryDate,

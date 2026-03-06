@@ -18,7 +18,7 @@ class GetContactArgs {
   /// [communicationsGatewayName] Unique identifier for this deployment
   /// [contactName] Unique identifier for this contact
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetContactArgs({
+  const GetContactArgs({
     required this.communicationsGatewayName,
     required this.contactName,
     required this.resourceGroupName,

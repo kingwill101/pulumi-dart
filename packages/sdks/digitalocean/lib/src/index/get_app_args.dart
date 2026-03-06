@@ -16,7 +16,7 @@ class GetAppArgs {
   /// Creates a new [GetAppArgs].
   /// [appId] The ID of the app to retrieve information about.
   /// [dedicatedIps] A list of dedicated egress IP addresses associated with the app.
-  GetAppArgs({
+  const GetAppArgs({
     required this.appId,
     this.dedicatedIps,
   });

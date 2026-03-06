@@ -18,7 +18,7 @@ class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
   /// [minValue] Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
   /// [strictMaxEnabled] Optional. Whether each value needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
   /// [strictMinEnabled] Optional. Whether each value needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
-  GoogleCloudDataplexV1DataQualityRuleRangeExpectation({
+  const GoogleCloudDataplexV1DataQualityRuleRangeExpectation({
     this.maxValue,
     this.minValue,
     this.strictMaxEnabled,

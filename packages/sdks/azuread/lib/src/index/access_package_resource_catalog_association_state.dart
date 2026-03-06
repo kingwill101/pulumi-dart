@@ -15,7 +15,7 @@ class AccessPackageResourceCatalogAssociationState {
   /// [catalogId] The unique ID of the access package catalog. Changing this forces a new resource to be created.
   /// [resourceOriginId] The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
   /// [resourceOriginSystem] The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
-  AccessPackageResourceCatalogAssociationState({
+  const AccessPackageResourceCatalogAssociationState({
     this.catalogId,
     this.resourceOriginId,
     this.resourceOriginSystem,

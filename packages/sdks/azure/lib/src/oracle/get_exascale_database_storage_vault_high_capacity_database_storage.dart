@@ -11,7 +11,7 @@ class GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage {
   /// Creates a new [GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage].
   /// [availableSizeInGb] Available capacity in gigabytes.
   /// [totalSizeInGb] Total capacity in gigabytes.
-  GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage({
+  const GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage({
     required this.availableSizeInGb,
     required this.totalSizeInGb,
   });

@@ -20,7 +20,7 @@ class GetRoleManagementPolicyActiveAssignmentRule {
   /// [requireJustification] (Boolean) Is a justification required to create new assignments.
   /// [requireMultifactorAuthentication] (Boolean) Is multi-factor authentication required to create new assignments.
   /// [requireTicketInfo] (Boolean) Is ticket information required to create new assignments.
-  GetRoleManagementPolicyActiveAssignmentRule({
+  const GetRoleManagementPolicyActiveAssignmentRule({
     required this.expirationRequired,
     required this.expireAfter,
     required this.requireJustification,

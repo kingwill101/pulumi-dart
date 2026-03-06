@@ -15,7 +15,7 @@ class GetCassandraClusterArgs {
   /// Creates a new [GetCassandraClusterArgs].
   /// [clusterName] Managed Cassandra cluster name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCassandraClusterArgs({
+  const GetCassandraClusterArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

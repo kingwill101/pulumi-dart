@@ -15,7 +15,7 @@ class ShardingNetworkPublicAddressArgs {
   /// Creates a new [ShardingNetworkPublicAddressArgs].
   /// [dbInstanceId] The ID of the instance.
   /// [nodeId] The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
-  ShardingNetworkPublicAddressArgs({
+  const ShardingNetworkPublicAddressArgs({
     required this.dbInstanceId,
     required this.nodeId,
   });

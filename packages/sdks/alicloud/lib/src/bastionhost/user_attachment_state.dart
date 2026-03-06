@@ -15,7 +15,7 @@ class UserAttachmentState {
   /// [instanceId] Specifies the user group to add the user's bastion host ID of.
   /// [userGroupId] Specifies the user group to which you want to add the user ID.
   /// [userId] Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
-  UserAttachmentState({
+  const UserAttachmentState({
     this.instanceId,
     this.userGroupId,
     this.userId,

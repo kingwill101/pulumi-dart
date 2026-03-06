@@ -43,7 +43,7 @@ class CacheUsernameDownloadSettingsResponse {
   /// [userFileURI] The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
   /// [usernameDownloaded] Indicates whether or not the HPC Cache has performed the username download successfully.
   /// [usernameSource] This setting determines how the cache gets username and group names for clients.
-  CacheUsernameDownloadSettingsResponse({
+  const CacheUsernameDownloadSettingsResponse({
     this.autoDownloadCertificate,
     this.caCertificateURI,
     this.credentials,

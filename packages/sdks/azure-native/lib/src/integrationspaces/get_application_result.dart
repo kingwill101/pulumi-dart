@@ -38,7 +38,7 @@ class GetApplicationResult {
   /// [tags] Resource tags.
   /// [trackingDataStores] The tracking data stores.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

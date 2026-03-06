@@ -62,7 +62,7 @@ class CustomIPPrefixArgs {
   /// [signedMessage] Signed message for WAN validation.
   /// [tags] Resource tags.
   /// [zones] A list of availability zones denoting the IP allocated for the resource needs to come from.
-  CustomIPPrefixArgs({
+  const CustomIPPrefixArgs({
     this.asn,
     this.authorizationMessage,
     this.cidr,

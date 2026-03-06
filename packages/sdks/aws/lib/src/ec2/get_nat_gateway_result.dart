@@ -68,7 +68,7 @@ class GetNatGatewayResult {
   /// [subnetId] Required.
   /// [tags] Required.
   /// [vpcId] Required.
-  GetNatGatewayResult({
+  const GetNatGatewayResult({
     required this.allocationId,
     required this.associationId,
     required this.autoProvisionZones,

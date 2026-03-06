@@ -22,7 +22,7 @@ class GetIpSetsResult {
   /// [outputFile] Optional.
   /// [sets] A list of Ga Ip Sets. Each element contains the following attributes:
   /// [status] The status of the acceleration region.
-  GetIpSetsResult({
+  const GetIpSetsResult({
     required this.acceleratorId,
     required this.id,
     required this.ids,

@@ -41,7 +41,7 @@ class ForwardEntryState {
   /// [name] Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
   /// [portBreak] Specifies whether to remove limits on the port range. Default value is `false`.
   /// [status] (Available since v1.119.1) The status of forward entry.
-  ForwardEntryState({
+  const ForwardEntryState({
     this.externalIp,
     this.externalPort,
     this.forwardEntryId,

@@ -35,7 +35,7 @@ class IpamIpamPoolAllocationState {
   /// [ipamPoolId] The ID of the IPAM Pool.
   /// [regionId] When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
   /// [status] The status of the instance. Value:
-  IpamIpamPoolAllocationState({
+  const IpamIpamPoolAllocationState({
     this.cidr,
     this.cidrMask,
     this.createTime,

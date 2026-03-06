@@ -11,7 +11,7 @@ class GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory {
   /// Creates a new [GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory].
   /// [limits] Memory resource limit.
   /// [numaNode] The NUMA node.
-  GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory({
+  const GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory({
     required this.limits,
     required this.numaNode,
   });

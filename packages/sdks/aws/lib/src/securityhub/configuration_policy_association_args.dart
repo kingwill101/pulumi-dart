@@ -18,7 +18,7 @@ class ConfigurationPolicyAssociationArgs {
   /// [policyId] The universally unique identifier (UUID) of the configuration policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetId] The identifier of the target account, organizational unit, or the root to associate with the specified configuration.
-  ConfigurationPolicyAssociationArgs({
+  const ConfigurationPolicyAssociationArgs({
     required this.policyId,
     this.region,
     required this.targetId,

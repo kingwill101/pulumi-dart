@@ -17,7 +17,7 @@ class GetFirewallsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [mostRecent] Optional.
   /// [withSelector] Optional.
-  GetFirewallsResult({
+  const GetFirewallsResult({
     required this.firewalls,
     required this.id,
     this.mostRecent,

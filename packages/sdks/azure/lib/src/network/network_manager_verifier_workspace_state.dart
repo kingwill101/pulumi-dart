@@ -21,7 +21,7 @@ class NetworkManagerVerifierWorkspaceState {
   /// [name] The name which should be used for this Network Manager Verifier Workspace. Changing this forces a new Network Manager Verifier Workspace to be created.
   /// [networkManagerId] The ID of the Network Manager. Changing this forces a new Network Manager Verifier Workspace to be created.
   /// [tags] A mapping of tags which should be assigned to the Network Manager Verifier Workspace.
-  NetworkManagerVerifierWorkspaceState({
+  const NetworkManagerVerifierWorkspaceState({
     this.description,
     this.location,
     this.name,

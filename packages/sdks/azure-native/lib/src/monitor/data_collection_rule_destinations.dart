@@ -37,7 +37,7 @@ class DataCollectionRuleDestinations {
   /// [storageAccounts] List of storage accounts destinations.
   /// [storageBlobsDirect] List of Storage Blob Direct destinations. To be used only for sending data directly to store from the agent.
   /// [storageTablesDirect] List of Storage Table Direct destinations.
-  DataCollectionRuleDestinations({
+  const DataCollectionRuleDestinations({
     this.azureMonitorMetrics,
     this.eventHubs,
     this.eventHubsDirect,

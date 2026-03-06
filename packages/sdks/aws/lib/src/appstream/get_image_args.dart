@@ -27,7 +27,7 @@ class GetImageArgs {
   /// [nameRegex] Regular expression name of the image being searched for. Cannot be used with `arn` or `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] The type of image which must be (`PUBLIC`, `PRIVATE`, or `SHARED`).
-  GetImageArgs({
+  const GetImageArgs({
     this.arn,
     this.mostRecent,
     this.name,

@@ -8,7 +8,7 @@ class GetDataSetLogicalTableMapDataTransformCreateColumnsOperation {
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformCreateColumnsOperation].
   /// [columns] Required.
-  GetDataSetLogicalTableMapDataTransformCreateColumnsOperation({
+  const GetDataSetLogicalTableMapDataTransformCreateColumnsOperation({
     required this.columns,
   });
 

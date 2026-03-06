@@ -17,7 +17,7 @@ class GetRegionsResult {
   /// [filters] Optional.
   /// [id] Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   /// [names] Names of regions that meets the criteria.
-  GetRegionsResult({
+  const GetRegionsResult({
     this.allRegions,
     this.filters,
     required this.id,

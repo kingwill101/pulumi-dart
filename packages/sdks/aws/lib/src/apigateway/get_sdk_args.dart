@@ -24,7 +24,7 @@ class GetSdkArgs {
   /// [restApiId] Identifier of the associated REST API.
   /// [sdkType] Language for the generated SDK. Currently `java`, `javascript`, `android`, `objectivec` (for iOS), `swift` (for iOS), and `ruby` are supported.
   /// [stageName] Name of the Stage that will be exported.
-  GetSdkArgs({
+  const GetSdkArgs({
     this.parameters,
     this.region,
     required this.restApiId,

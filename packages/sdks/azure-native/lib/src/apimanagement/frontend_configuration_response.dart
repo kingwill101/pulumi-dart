@@ -9,7 +9,7 @@ class FrontendConfigurationResponse {
 
   /// Creates a new [FrontendConfigurationResponse].
   /// [defaultHostname] The default hostname of the data-plane gateway to which requests can be sent. This is only applicable for API gateway with Standard SKU.
-  FrontendConfigurationResponse({
+  const FrontendConfigurationResponse({
     required this.defaultHostname,
   });
 

@@ -28,7 +28,7 @@ class RoleManagementPolicyArgs {
   /// [roleManagementPolicyName] The name (guid) of the role management policy to upsert.
   /// [rules] The rule applied to the policy.
   /// [scope] The role management policy scope.
-  RoleManagementPolicyArgs({
+  const RoleManagementPolicyArgs({
     this.description,
     this.displayName,
     this.isOrganizationDefault,

@@ -56,7 +56,7 @@ class HttpsHealthCheckArgs {
   /// [requestPath] The request path of the HTTPS health check request.
   /// [timeoutSec] How long (in seconds) to wait before claiming failure.
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many
-  HttpsHealthCheckArgs({
+  const HttpsHealthCheckArgs({
     this.checkIntervalSec,
     this.description,
     this.healthyThreshold,

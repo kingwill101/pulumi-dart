@@ -13,7 +13,7 @@ class ReplicationSecretmanagerV1beta1 {
   /// Creates a new [ReplicationSecretmanagerV1beta1].
   /// [automatic] The Secret will automatically be replicated without any restrictions.
   /// [userManaged] The Secret will only be replicated into the locations specified.
-  ReplicationSecretmanagerV1beta1({
+  const ReplicationSecretmanagerV1beta1({
     this.automatic,
     this.userManaged,
   });

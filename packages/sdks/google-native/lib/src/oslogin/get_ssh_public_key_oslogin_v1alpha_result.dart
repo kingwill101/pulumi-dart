@@ -17,7 +17,7 @@ class GetSshPublicKeyOsloginV1alphaResult {
   /// [fingerprint] The SHA-256 fingerprint of the SSH public key.
   /// [key] Public key text in SSH format, defined by RFC4253 section 6.6.
   /// [name] The canonical resource name.
-  GetSshPublicKeyOsloginV1alphaResult({
+  const GetSshPublicKeyOsloginV1alphaResult({
     required this.expirationTimeUsec,
     required this.fingerprint,
     required this.key,

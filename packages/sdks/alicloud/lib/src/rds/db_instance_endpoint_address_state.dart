@@ -27,7 +27,7 @@ class DbInstanceEndpointAddressState {
   /// [ipAddress] The IP address of the endpoint.
   /// [ipType] The type of the IP address.
   /// [port] The port number of the public endpoint.
-  DbInstanceEndpointAddressState({
+  const DbInstanceEndpointAddressState({
     this.connectionString,
     this.connectionStringPrefix,
     this.dbInstanceEndpointId,

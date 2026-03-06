@@ -41,7 +41,7 @@ class GetDatabaseInstancesInstanceReplicaConfiguration {
   /// [sslCipher] Permissible ciphers for use in SSL encryption.
   /// [username] Username for replication connection.
   /// [verifyServerCertificate] True if the master's common name value is checked during the SSL handshake.
-  GetDatabaseInstancesInstanceReplicaConfiguration({
+  const GetDatabaseInstancesInstanceReplicaConfiguration({
     required this.caCertificate,
     required this.cascadableReplica,
     required this.clientCertificate,

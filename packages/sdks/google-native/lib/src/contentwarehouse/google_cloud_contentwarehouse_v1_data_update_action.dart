@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1DataUpdateAction {
 
   /// Creates a new [GoogleCloudContentwarehouseV1DataUpdateAction].
   /// [entries] Map of (K, V) -&gt; (valid name of the field, new value of the field) E.g., ("age", "60") entry triggers update of field age with a value of 60. If the field is not present then new entry is added. During update action execution, value strings will be casted to appropriate types.
-  GoogleCloudContentwarehouseV1DataUpdateAction({
+  const GoogleCloudContentwarehouseV1DataUpdateAction({
     this.entries,
   });
 

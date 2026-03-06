@@ -10,7 +10,7 @@ class IntentRejectionStatement {
   /// Creates a new [IntentRejectionStatement].
   /// [messages] Required.
   /// [responseCard] Optional.
-  IntentRejectionStatement({
+  const IntentRejectionStatement({
     required this.messages,
     this.responseCard,
   });

@@ -43,7 +43,7 @@ class GetEndpointKafkaSetting {
   /// [sslClientKeyArn] Required.
   /// [sslClientKeyPassword] Required.
   /// [topic] Required.
-  GetEndpointKafkaSetting({
+  const GetEndpointKafkaSetting({
     required this.broker,
     required this.includeControlDetails,
     required this.includeNullAndEmpty,

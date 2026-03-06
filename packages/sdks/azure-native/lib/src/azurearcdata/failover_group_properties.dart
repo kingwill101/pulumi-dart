@@ -16,7 +16,7 @@ class FailoverGroupProperties {
   /// [partnerManagedInstanceId] The resource ID of the partner SQL managed instance.
   /// [spec] The specifications of the failover group resource.
   /// [status] The status of the failover group custom resource.
-  FailoverGroupProperties({
+  const FailoverGroupProperties({
     required this.partnerManagedInstanceId,
     required this.spec,
     this.status,

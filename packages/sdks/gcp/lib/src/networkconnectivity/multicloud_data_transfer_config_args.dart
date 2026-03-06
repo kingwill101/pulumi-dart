@@ -34,7 +34,7 @@ class MulticloudDataTransferConfigArgs {
   /// [name] The name of the MulticloudDataTransferConfig resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [services] Maps services to their current or planned states. Service names are keys,
-  MulticloudDataTransferConfigArgs({
+  const MulticloudDataTransferConfigArgs({
     this.description,
     this.labels,
     required this.location,

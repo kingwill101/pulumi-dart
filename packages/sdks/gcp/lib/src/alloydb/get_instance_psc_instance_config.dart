@@ -27,7 +27,7 @@ class GetInstancePscInstanceConfig {
   /// [pscDnsName] The DNS name of the instance for PSC connectivity.
   /// [pscInterfaceConfigs] Configurations for setting up PSC interfaces attached to the instance
   /// [serviceAttachmentLink] The service attachment created when Private Service Connect (PSC) is enabled for the instance.
-  GetInstancePscInstanceConfig({
+  const GetInstancePscInstanceConfig({
     required this.allowedConsumerProjects,
     required this.pscAutoConnections,
     required this.pscDnsName,

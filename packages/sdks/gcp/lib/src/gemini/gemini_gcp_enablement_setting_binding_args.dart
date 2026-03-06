@@ -33,7 +33,7 @@ class GeminiGcpEnablementSettingBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [settingBindingId] Id of the setting binding.
   /// [target] Target of the binding.
-  GeminiGcpEnablementSettingBindingArgs({
+  const GeminiGcpEnablementSettingBindingArgs({
     required this.geminiGcpEnablementSettingId,
     this.labels,
     this.location,

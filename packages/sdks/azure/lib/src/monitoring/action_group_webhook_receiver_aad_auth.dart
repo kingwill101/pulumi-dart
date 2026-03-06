@@ -14,7 +14,7 @@ class ActionGroupWebhookReceiverAadAuth {
   /// [identifierUri] The identifier URI for AAD auth.
   /// [objectId] The webhook application object Id for AAD auth.
   /// [tenantId] The tenant id for AAD auth.
-  ActionGroupWebhookReceiverAadAuth({
+  const ActionGroupWebhookReceiverAadAuth({
     this.identifierUri,
     required this.objectId,
     this.tenantId,

@@ -21,7 +21,7 @@ class ConditionResponseComputeV1 {
   /// [svc] This is deprecated and has no effect. Do not use.
   /// [sys] This is deprecated and has no effect. Do not use.
   /// [values] This is deprecated and has no effect. Do not use.
-  ConditionResponseComputeV1({
+  const ConditionResponseComputeV1({
     required this.iam,
     required this.op,
     required this.svc,

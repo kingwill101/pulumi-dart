@@ -8,7 +8,7 @@ class GetSystemTopicEventSubscriptionFullUrlResult {
 
   /// Creates a new [GetSystemTopicEventSubscriptionFullUrlResult].
   /// [endpointUrl] The URL that represents the endpoint of the destination of an event subscription.
-  GetSystemTopicEventSubscriptionFullUrlResult({
+  const GetSystemTopicEventSubscriptionFullUrlResult({
     this.endpointUrl,
   });
 

@@ -8,7 +8,7 @@ class IntegrationRuntimeSsisExpressVnetIntegration {
 
   /// Creates a new [IntegrationRuntimeSsisExpressVnetIntegration].
   /// [subnetId] id of the subnet to which the nodes of the Azure-SSIS Integration Runtime will be added.
-  IntegrationRuntimeSsisExpressVnetIntegration({
+  const IntegrationRuntimeSsisExpressVnetIntegration({
     required this.subnetId,
   });
 

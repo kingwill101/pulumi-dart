@@ -11,7 +11,7 @@ class ResourceConfigurationResourceConfigurationDefinitionDnsResource {
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinitionDnsResource].
   /// [domainName] The hostname of the Resource for this configuration.
   /// [ipAddressType] The IP Address type either `IPV4` or `IPV6`
-  ResourceConfigurationResourceConfigurationDefinitionDnsResource({
+  const ResourceConfigurationResourceConfigurationDefinitionDnsResource({
     required this.domainName,
     required this.ipAddressType,
   });

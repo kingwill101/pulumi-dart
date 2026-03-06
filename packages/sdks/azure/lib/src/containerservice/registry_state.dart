@@ -87,7 +87,7 @@ class RegistryState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [trustPolicyEnabled] Boolean value that indicated whether trust policy is enabled. Defaults to `false`.
   /// [zoneRedundancyEnabled] Whether zone redundancy is enabled for this Container Registry? Changing this forces a new resource to be created. Defaults to `false`.
-  RegistryState({
+  const RegistryState({
     this.adminEnabled,
     this.adminPassword,
     this.adminUsername,

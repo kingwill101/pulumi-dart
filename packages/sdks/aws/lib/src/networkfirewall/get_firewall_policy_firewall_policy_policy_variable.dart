@@ -8,7 +8,7 @@ class GetFirewallPolicyFirewallPolicyPolicyVariable {
 
   /// Creates a new [GetFirewallPolicyFirewallPolicyPolicyVariable].
   /// [ruleVariables] Required.
-  GetFirewallPolicyFirewallPolicyPolicyVariable({
+  const GetFirewallPolicyFirewallPolicyPolicyVariable({
     required this.ruleVariables,
   });
 

@@ -17,7 +17,7 @@ class GetArtifactAiplatformV1beta1Args {
   /// [location] Required.
   /// [metadataStoreId] Required.
   /// [project] Optional.
-  GetArtifactAiplatformV1beta1Args({
+  const GetArtifactAiplatformV1beta1Args({
     required this.artifactId,
     required this.location,
     required this.metadataStoreId,

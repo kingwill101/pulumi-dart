@@ -13,7 +13,7 @@ class GetGenaiAgentsFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGenaiAgentsFilter({
+  const GetGenaiAgentsFilter({
     this.all,
     required this.key,
     this.matchBy,

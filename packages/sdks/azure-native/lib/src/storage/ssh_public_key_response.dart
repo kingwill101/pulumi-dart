@@ -11,7 +11,7 @@ class SshPublicKeyResponse {
   /// Creates a new [SshPublicKeyResponse].
   /// [description] Optional. It is used to store the function/usage of the key
   /// [key] Ssh public key base64 encoded. The format should be: '&lt;keyType&gt; &lt;keyData&gt;', e.g. ssh-rsa AAAABBBB
-  SshPublicKeyResponse({
+  const SshPublicKeyResponse({
     this.description,
     this.key,
   });

@@ -11,7 +11,7 @@ class ConnectorSftpConfig {
   /// Creates a new [ConnectorSftpConfig].
   /// [trustedHostKeys] A list of public portion of the host key, or keys, that are used to authenticate the user to the external server to which you are connecting.(https://docs.aws.amazon.com/transfer/latest/userguide/API_SftpConnectorConfig.html)
   /// [userSecretId] The identifier for the secret (in AWS Secrets Manager) that contains the SFTP user's private key, password, or both. The identifier can be either the Amazon Resource Name (ARN) or the name of the secret.
-  ConnectorSftpConfig({
+  const ConnectorSftpConfig({
     this.trustedHostKeys,
     this.userSecretId,
   });

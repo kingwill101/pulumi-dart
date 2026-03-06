@@ -12,7 +12,7 @@ class SamplingSettingsResponse {
   /// Creates a new [SamplingSettingsResponse].
   /// [percentage] Rate of sampling for fixed-rate sampling.
   /// [samplingType] Sampling type.
-  SamplingSettingsResponse({
+  const SamplingSettingsResponse({
     this.percentage,
     this.samplingType,
   });

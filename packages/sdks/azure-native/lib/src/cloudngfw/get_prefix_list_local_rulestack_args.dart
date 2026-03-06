@@ -18,7 +18,7 @@ class GetPrefixListLocalRulestackArgs {
   /// [localRulestackName] LocalRulestack resource name
   /// [name] Local Rule priority
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrefixListLocalRulestackArgs({
+  const GetPrefixListLocalRulestackArgs({
     required this.localRulestackName,
     required this.name,
     required this.resourceGroupName,

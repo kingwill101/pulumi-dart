@@ -11,7 +11,7 @@ class GetEntityTag {
   /// Creates a new [GetEntityTag].
   /// [key] The tag key.
   /// [value] The tag value.
-  GetEntityTag({
+  const GetEntityTag({
     required this.key,
     required this.value,
   });

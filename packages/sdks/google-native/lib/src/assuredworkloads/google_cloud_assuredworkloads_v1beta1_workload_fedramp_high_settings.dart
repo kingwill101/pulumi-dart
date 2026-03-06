@@ -10,7 +10,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings {
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings].
   /// [kmsSettings] Input only. Immutable. Settings used to create a CMEK crypto key.
-  GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings({
+  const GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings({
     this.kmsSettings,
   });
 

@@ -17,7 +17,7 @@ class NodePoolNodeConfigContainerdConfig {
   /// [privateRegistryAccessConfig] Parameters for private container registries configuration.
   /// [registryHosts] Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
   /// [writableCgroups] Parameters for writable cgroups configuration.
-  NodePoolNodeConfigContainerdConfig({
+  const NodePoolNodeConfigContainerdConfig({
     this.privateRegistryAccessConfig,
     this.registryHosts,
     this.writableCgroups,

@@ -98,5 +98,5 @@ class DigitaloceanConfig {
 
 }
 
-final config = DigitaloceanConfig();
+const config = DigitaloceanConfig();
 

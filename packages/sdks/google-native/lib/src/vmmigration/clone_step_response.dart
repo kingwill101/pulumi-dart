@@ -21,7 +21,7 @@ class CloneStepResponse {
   /// [instantiatingMigratedVm] Instantiating migrated VM step.
   /// [preparingVmDisks] Preparing VM disks step.
   /// [startTime] The time the step has started.
-  CloneStepResponse({
+  const CloneStepResponse({
     required this.adaptingOs,
     required this.endTime,
     required this.instantiatingMigratedVm,

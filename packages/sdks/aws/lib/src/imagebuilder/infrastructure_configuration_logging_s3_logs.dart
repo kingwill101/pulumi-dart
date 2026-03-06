@@ -13,7 +13,7 @@ class InfrastructureConfigurationLoggingS3Logs {
   /// Creates a new [InfrastructureConfigurationLoggingS3Logs].
   /// [s3BucketName] Name of the S3 Bucket.
   /// [s3KeyPrefix] Prefix to use for S3 logs. Defaults to `/`.
-  InfrastructureConfigurationLoggingS3Logs({
+  const InfrastructureConfigurationLoggingS3Logs({
     required this.s3BucketName,
     this.s3KeyPrefix,
   });

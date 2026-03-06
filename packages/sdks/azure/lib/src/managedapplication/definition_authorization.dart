@@ -11,7 +11,7 @@ class DefinitionAuthorization {
   /// Creates a new [DefinitionAuthorization].
   /// [roleDefinitionId] Specifies a role definition identifier for the provider. This role will define all the permissions that the provider must have on the managed application's container resource group. This role definition cannot have permission to delete the resource group.
   /// [servicePrincipalId] Specifies a service principal identifier for the provider. This is the identity that the provider will use to call ARM to manage the managed application resources.
-  DefinitionAuthorization({
+  const DefinitionAuthorization({
     required this.roleDefinitionId,
     required this.servicePrincipalId,
   });

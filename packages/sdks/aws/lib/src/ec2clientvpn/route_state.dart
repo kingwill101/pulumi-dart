@@ -27,7 +27,7 @@ class RouteState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetVpcSubnetId] The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
   /// [type] The type of the route.
-  RouteState({
+  const RouteState({
     this.clientVpnEndpointId,
     this.description,
     this.destinationCidrBlock,

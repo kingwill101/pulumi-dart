@@ -12,7 +12,7 @@ class UsernamePasswordCredentials {
   /// Creates a new [UsernamePasswordCredentials].
   /// [passwordSecretVersion] The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
   /// [username] The username to access the remote repository.
-  UsernamePasswordCredentials({
+  const UsernamePasswordCredentials({
     this.passwordSecretVersion,
     this.username,
   });

@@ -29,7 +29,7 @@ class InstanceArgs {
   /// [protectionLevel] The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
   /// [resourceGroupId] The ID of the resource group
   /// [tags] The tags of the CEN instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.cenInstanceName,
     this.description,
     this.name,

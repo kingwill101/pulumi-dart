@@ -27,7 +27,7 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
   /// [day] The day of week that maintenance updates occur.
   /// [duration] Duration of the maintenance window.
   /// [startTimes] Start time of the window in UTC time.
-  GetInstanceMaintenancePolicyWeeklyMaintenanceWindow({
+  const GetInstanceMaintenancePolicyWeeklyMaintenanceWindow({
     required this.day,
     required this.duration,
     required this.startTimes,

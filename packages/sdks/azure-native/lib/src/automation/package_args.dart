@@ -29,7 +29,7 @@ class PackageArgs {
   /// [packageName] The name of Package.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [runtimeEnvironmentName] The name of the Runtime Environment.
-  PackageArgs({
+  const PackageArgs({
     this.allOf,
     required this.automationAccountName,
     required this.contentLink,

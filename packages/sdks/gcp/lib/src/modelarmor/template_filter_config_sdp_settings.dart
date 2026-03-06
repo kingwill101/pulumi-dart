@@ -15,7 +15,7 @@ class TemplateFilterConfigSdpSettings {
   /// Creates a new [TemplateFilterConfigSdpSettings].
   /// [advancedConfig] Sensitive Data Protection Advanced configuration.
   /// [basicConfig] Sensitive Data Protection basic configuration.
-  TemplateFilterConfigSdpSettings({
+  const TemplateFilterConfigSdpSettings({
     this.advancedConfig,
     this.basicConfig,
   });

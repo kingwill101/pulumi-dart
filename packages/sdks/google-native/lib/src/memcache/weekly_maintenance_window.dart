@@ -17,7 +17,7 @@ class WeeklyMaintenanceWindow {
   /// [day] Allows to define schedule that runs specified day of the week.
   /// [duration] Duration of the time window.
   /// [startTime] Start time of the window in UTC.
-  WeeklyMaintenanceWindow({
+  const WeeklyMaintenanceWindow({
     required this.day,
     required this.duration,
     required this.startTime,

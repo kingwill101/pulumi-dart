@@ -13,7 +13,7 @@ class CxPlaybookInstruction {
   /// Creates a new [CxPlaybookInstruction].
   /// [guidelines] General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
   /// [steps] Ordered list of step by step execution instructions to accomplish target goal.
-  CxPlaybookInstruction({
+  const CxPlaybookInstruction({
     this.guidelines,
     this.steps,
   });

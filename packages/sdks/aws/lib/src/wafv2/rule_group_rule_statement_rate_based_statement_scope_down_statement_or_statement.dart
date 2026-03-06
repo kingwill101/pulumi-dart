@@ -9,7 +9,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementOrStatement {
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementOrStatement].
   /// [statements] The statements to combine.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementOrStatement({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementOrStatement({
     required this.statements,
   });
 

@@ -33,7 +33,7 @@ class ClientUserArgs {
   /// [sagId] The ID of the SAG instance created for the SAG APP.
   /// [userMail] The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
   /// [userName] The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
-  ClientUserArgs({
+  const ClientUserArgs({
     required this.bandwidth,
     this.clientIp,
     this.kmsEncryptedPassword,

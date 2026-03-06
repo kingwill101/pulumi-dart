@@ -28,7 +28,7 @@ class HypervCollectorsOperationArgs {
   /// [projectName] Assessment Project Name
   /// [provisioningState] The status of the last operation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  HypervCollectorsOperationArgs({
+  const HypervCollectorsOperationArgs({
     this.agentProperties,
     this.discoverySiteId,
     this.hypervCollectorName,

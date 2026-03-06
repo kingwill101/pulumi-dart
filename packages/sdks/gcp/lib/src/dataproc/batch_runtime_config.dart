@@ -26,7 +26,7 @@ class BatchRuntimeConfig {
   /// [effectiveProperties] (Output)
   /// [properties] A mapping of property names to values, which are used to configure workload execution.
   /// [version] Version of the batch runtime.
-  BatchRuntimeConfig({
+  const BatchRuntimeConfig({
     this.autotuningConfig,
     this.cohort,
     this.containerImage,

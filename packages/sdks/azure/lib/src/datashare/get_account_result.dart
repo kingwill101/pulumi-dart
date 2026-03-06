@@ -20,7 +20,7 @@ class GetAccountResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Data Share Account.
-  GetAccountResult({
+  const GetAccountResult({
     required this.id,
     required this.identities,
     required this.name,

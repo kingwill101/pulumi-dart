@@ -24,7 +24,7 @@ class VpcEndpointServiceResourceState {
   /// [resourceType] Service resource type, value:
   /// [serviceId] The endpoint service ID.
   /// [zoneId] The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
-  VpcEndpointServiceResourceState({
+  const VpcEndpointServiceResourceState({
     this.dryRun,
     this.regionId,
     this.resourceId,

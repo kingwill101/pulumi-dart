@@ -45,7 +45,7 @@ class EntryTypeArgs {
   /// [requiredAspects] AspectInfo for the entry type.
   /// [system] The system that Entries of this type belongs to.
   /// [typeAliases] Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
-  EntryTypeArgs({
+  const EntryTypeArgs({
     this.description,
     this.displayName,
     this.entryTypeId,

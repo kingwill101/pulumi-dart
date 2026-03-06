@@ -53,7 +53,7 @@ class GetPrivateStoreCollectionResult {
   /// [subscriptionsList] Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request
   /// [systemData] Metadata pertaining to creation and last modification of the resource
   /// [type] The type of the resource.
-  GetPrivateStoreCollectionResult({
+  const GetPrivateStoreCollectionResult({
     this.allSubscriptions,
     required this.appliedRules,
     required this.approveAllItems,

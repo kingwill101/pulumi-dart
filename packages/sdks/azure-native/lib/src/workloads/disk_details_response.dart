@@ -28,7 +28,7 @@ class DiskDetailsResponse {
   /// [minimumSupportedDiskCount] The minimum supported disk count.
   /// [sizeGB] The disk size in GB.
   /// [sku] The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
-  DiskDetailsResponse({
+  const DiskDetailsResponse({
     this.diskTier,
     this.iopsReadWrite,
     this.maximumSupportedDiskCount,

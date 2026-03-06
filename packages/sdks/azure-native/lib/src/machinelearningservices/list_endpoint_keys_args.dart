@@ -18,7 +18,7 @@ class ListEndpointKeysArgs {
   /// [endpointName] Name of the endpoint resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
-  ListEndpointKeysArgs({
+  const ListEndpointKeysArgs({
     required this.endpointName,
     required this.resourceGroupName,
     required this.workspaceName,

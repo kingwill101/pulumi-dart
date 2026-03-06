@@ -9,7 +9,7 @@ class AllocationAggregateReservationReservedResourceInfoResponse {
 
   /// Creates a new [AllocationAggregateReservationReservedResourceInfoResponse].
   /// [accelerator] Properties of accelerator resources in this reservation.
-  AllocationAggregateReservationReservedResourceInfoResponse({
+  const AllocationAggregateReservationReservedResourceInfoResponse({
     required this.accelerator,
   });
 

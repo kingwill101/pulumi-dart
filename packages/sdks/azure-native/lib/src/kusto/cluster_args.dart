@@ -96,7 +96,7 @@ class ClusterArgs {
   /// [virtualClusterGraduationProperties] Virtual Cluster graduation properties
   /// [virtualNetworkConfiguration] Virtual network definition.
   /// [zones] The availability zones of the cluster.
-  ClusterArgs({
+  const ClusterArgs({
     this.acceptedAudiences,
     this.allowedFqdnList,
     this.allowedIpRangeList,

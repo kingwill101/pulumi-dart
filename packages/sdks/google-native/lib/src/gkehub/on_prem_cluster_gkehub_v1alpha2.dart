@@ -16,7 +16,7 @@ class OnPremClusterGkehubV1alpha2 {
   /// [adminCluster] Immutable. Whether the cluster is an admin cluster.
   /// [clusterType] Immutable. The on prem cluster's type.
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
-  OnPremClusterGkehubV1alpha2({
+  const OnPremClusterGkehubV1alpha2({
     this.adminCluster,
     this.clusterType,
     this.resourceLink,

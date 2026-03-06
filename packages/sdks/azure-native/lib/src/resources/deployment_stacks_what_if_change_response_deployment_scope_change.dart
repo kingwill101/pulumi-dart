@@ -12,7 +12,7 @@ class DeploymentStacksWhatIfChangeResponseDeploymentScopeChange {
   /// Creates a new [DeploymentStacksWhatIfChangeResponseDeploymentScopeChange].
   /// [after] The predicted value after the deployment is executed.
   /// [before] The predicted value before the deployment is executed.
-  DeploymentStacksWhatIfChangeResponseDeploymentScopeChange({
+  const DeploymentStacksWhatIfChangeResponseDeploymentScopeChange({
     this.after,
     this.before,
   });

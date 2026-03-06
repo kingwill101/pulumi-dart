@@ -9,7 +9,7 @@ class DscConfigurationAssociationPropertyResponse {
 
   /// Creates a new [DscConfigurationAssociationPropertyResponse].
   /// [name] Gets or sets the name of the Dsc configuration.
-  DscConfigurationAssociationPropertyResponse({
+  const DscConfigurationAssociationPropertyResponse({
     this.name,
   });
 

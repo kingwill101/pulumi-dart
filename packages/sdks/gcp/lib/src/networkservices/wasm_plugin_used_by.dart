@@ -8,7 +8,7 @@ class WasmPluginUsedBy {
 
   /// Creates a new [WasmPluginUsedBy].
   /// [name] Identifier. Name of the WasmPlugin resource.
-  WasmPluginUsedBy({
+  const WasmPluginUsedBy({
     this.name,
   });
 

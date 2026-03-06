@@ -19,7 +19,7 @@ class DomainMatchingAutoMerging {
   /// [consolidation] A block that specifies a list of matching attributes that represent matching criteria. If two profiles meet at least one of the requirements in the matching attributes list, they will be merged. Documented below.
   /// [enabled] The flag that enables the auto-merging of duplicate profiles.
   /// [minAllowedConfidenceScoreForMerging] Optional.
-  DomainMatchingAutoMerging({
+  const DomainMatchingAutoMerging({
     this.conflictResolution,
     this.consolidation,
     required this.enabled,

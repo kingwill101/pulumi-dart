@@ -22,7 +22,7 @@ class TriggerBuildArtifactsObjects {
   /// [location] Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
   /// [paths] Path globs used to match files in the build's workspace.
   /// [timings] (Output)
-  TriggerBuildArtifactsObjects({
+  const TriggerBuildArtifactsObjects({
     this.location,
     this.paths,
     this.timings,

@@ -115,7 +115,7 @@ class ReservationArgs {
   /// [scalingMode] The scaling mode for the reservation. If the field is present but maxSlots is not present,
   /// [secondaryLocation] The current location of the reservation's secondary replica. This field is only set for
   /// [slotCapacity] Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
-  ReservationArgs({
+  const ReservationArgs({
     this.autoscale,
     this.concurrency,
     this.edition,

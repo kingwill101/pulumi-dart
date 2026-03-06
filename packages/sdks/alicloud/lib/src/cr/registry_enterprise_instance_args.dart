@@ -89,7 +89,7 @@ class RegistryEnterpriseInstanceArgs {
   /// [repoQuota] The number of additional repositories to purchase. The value is an integral multiple of `1000`.
   /// [resourceGroupId] The ID of the resource group
   /// [vpcQuota] The number of VPC access controls.
-  RegistryEnterpriseInstanceArgs({
+  const RegistryEnterpriseInstanceArgs({
     this.customOssBucket,
     this.defaultOssBucket,
     this.imageScanner,

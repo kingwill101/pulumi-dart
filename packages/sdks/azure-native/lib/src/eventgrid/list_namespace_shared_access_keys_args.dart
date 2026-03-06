@@ -15,7 +15,7 @@ class ListNamespaceSharedAccessKeysArgs {
   /// Creates a new [ListNamespaceSharedAccessKeysArgs].
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  ListNamespaceSharedAccessKeysArgs({
+  const ListNamespaceSharedAccessKeysArgs({
     required this.namespaceName,
     required this.resourceGroupName,
   });

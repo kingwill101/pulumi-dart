@@ -11,7 +11,7 @@ class DomainDevicesChannelTargetGuestFwd {
   /// Creates a new [DomainDevicesChannelTargetGuestFwd].
   /// [address] This field specifies the address to which the guest forwarding will connect.
   /// [port] This field sets the port number for the guest forwarding connection.
-  DomainDevicesChannelTargetGuestFwd({
+  const DomainDevicesChannelTargetGuestFwd({
     this.address,
     this.port,
   });

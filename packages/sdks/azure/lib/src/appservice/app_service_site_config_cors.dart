@@ -11,7 +11,7 @@ class AppServiceSiteConfigCors {
   /// Creates a new [AppServiceSiteConfigCors].
   /// [allowedOrigins] A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
   /// [supportCredentials] Are credentials supported?
-  AppServiceSiteConfigCors({
+  const AppServiceSiteConfigCors({
     required this.allowedOrigins,
     this.supportCredentials,
   });

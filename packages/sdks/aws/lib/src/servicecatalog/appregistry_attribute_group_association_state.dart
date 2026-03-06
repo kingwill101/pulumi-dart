@@ -15,7 +15,7 @@ class AppregistryAttributeGroupAssociationState {
   /// [applicationId] ID of the application.
   /// [attributeGroupId] ID of the attribute group to associate with the application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AppregistryAttributeGroupAssociationState({
+  const AppregistryAttributeGroupAssociationState({
     this.applicationId,
     this.attributeGroupId,
     this.region,

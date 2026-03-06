@@ -30,7 +30,7 @@ class BgpPeerStatusResponse {
   /// [neighbor] The remote BGP peer.
   /// [routesReceived] The number of routes learned from this peer.
   /// [state] The BGP peer state.
-  BgpPeerStatusResponse({
+  const BgpPeerStatusResponse({
     required this.asn,
     required this.connectedDuration,
     required this.localAddress,

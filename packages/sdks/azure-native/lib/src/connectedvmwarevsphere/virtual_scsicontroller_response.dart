@@ -21,7 +21,7 @@ class VirtualSCSIControllerResponse {
   /// [scsiCtlrUnitNumber] Gets or sets the SCSI controller unit number.
   /// [sharing] Gets or sets the sharing mode.
   /// [type] Gets or sets the controller type.
-  VirtualSCSIControllerResponse({
+  const VirtualSCSIControllerResponse({
     this.busNumber,
     this.controllerKey,
     this.scsiCtlrUnitNumber,

@@ -12,7 +12,7 @@ class GoogleFirestoreAdminV1beta1IndexFieldResponse {
   /// Creates a new [GoogleFirestoreAdminV1beta1IndexFieldResponse].
   /// [fieldPath] The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
   /// [mode] The field's mode.
-  GoogleFirestoreAdminV1beta1IndexFieldResponse({
+  const GoogleFirestoreAdminV1beta1IndexFieldResponse({
     required this.fieldPath,
     required this.mode,
   });

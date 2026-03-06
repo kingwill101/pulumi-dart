@@ -22,7 +22,7 @@ class ResolverInboundEndpointState {
   /// [name] Specifies the name which should be used for this Private DNS Resolver Inbound Endpoint. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
   /// [privateDnsResolverId] Specifies the ID of the Private DNS Resolver Inbound Endpoint. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
   /// [tags] A mapping of tags which should be assigned to the Private DNS Resolver Inbound Endpoint.
-  ResolverInboundEndpointState({
+  const ResolverInboundEndpointState({
     this.ipConfigurations,
     this.location,
     this.name,

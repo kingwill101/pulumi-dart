@@ -17,7 +17,7 @@ class GetPermissionsLfTagPolicy {
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
   /// [expressions] List of tag conditions that apply to the resource's tag policy. Configuration block for tag conditions that apply to the policy. See `expression` below.
   /// [resourceType] Resource type for which the tag policy applies. Valid values are `DATABASE` and `TABLE`.
-  GetPermissionsLfTagPolicy({
+  const GetPermissionsLfTagPolicy({
     required this.catalogId,
     required this.expressions,
     required this.resourceType,

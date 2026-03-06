@@ -11,7 +11,7 @@ class LifecyclePolicyPolicyDetailsScheduleDeprecateRule {
   /// [count] Optional.
   /// [interval] Optional.
   /// [intervalUnit] Optional.
-  LifecyclePolicyPolicyDetailsScheduleDeprecateRule({
+  const LifecyclePolicyPolicyDetailsScheduleDeprecateRule({
     this.count,
     this.interval,
     this.intervalUnit,

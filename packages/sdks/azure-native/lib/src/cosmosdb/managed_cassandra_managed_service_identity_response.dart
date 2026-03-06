@@ -15,7 +15,7 @@ class ManagedCassandraManagedServiceIdentityResponse {
   /// [principalId] The object id of the identity resource.
   /// [tenantId] The tenant id of the resource.
   /// [type] The type of the resource.
-  ManagedCassandraManagedServiceIdentityResponse({
+  const ManagedCassandraManagedServiceIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

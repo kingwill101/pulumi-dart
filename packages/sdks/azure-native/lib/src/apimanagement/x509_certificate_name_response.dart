@@ -12,7 +12,7 @@ class X509CertificateNameResponse {
   /// Creates a new [X509CertificateNameResponse].
   /// [issuerCertificateThumbprint] Thumbprint for the Issuer of the Certificate.
   /// [name] Common Name of the Certificate.
-  X509CertificateNameResponse({
+  const X509CertificateNameResponse({
     this.issuerCertificateThumbprint,
     this.name,
   });

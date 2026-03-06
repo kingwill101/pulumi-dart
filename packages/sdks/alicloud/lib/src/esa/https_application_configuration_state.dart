@@ -68,7 +68,7 @@ class HttpsApplicationConfigurationState {
   /// [sequence] The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   /// [siteId] The site ID, which can be obtained by calling the ListSites API.
   /// [siteVersion] The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
-  HttpsApplicationConfigurationState({
+  const HttpsApplicationConfigurationState({
     this.altSvc,
     this.altSvcClear,
     this.altSvcMa,

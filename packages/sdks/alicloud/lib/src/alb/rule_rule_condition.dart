@@ -53,7 +53,7 @@ class RuleRuleCondition {
   /// [responseStatusCodeConfig] The configuration of the header field. See `response_status_code_config` below.
   /// [sourceIpConfig] The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
   /// [type] The type of the forwarding rule. Valid values:
-  RuleRuleCondition({
+  const RuleRuleCondition({
     this.cookieConfig,
     this.headerConfig,
     this.hostConfig,

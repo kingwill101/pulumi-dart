@@ -28,7 +28,7 @@ class OidcIssuerArgs {
   /// [policies] The auth policies for this Oidc Issuer.
   /// [thumbprints] The thumbprints of issuer's TLS certificates. By default, Pulumi will store the thumbprint of the certificate used to serve the OpenID configuration. If the provider uses multiple certificates to serve content, it is required to manually configure these.
   /// [url] The OIDC issuer URL.
-  OidcIssuerArgs({
+  const OidcIssuerArgs({
     this.maxExpirationSeconds,
     required this.name,
     required this.organization,

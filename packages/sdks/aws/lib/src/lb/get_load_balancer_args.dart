@@ -23,7 +23,7 @@ class GetLoadBalancerArgs {
   /// [name] Unique name of the load balancer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Mapping of tags, each pair of which must exactly match a pair on the desired load balancer.
-  GetLoadBalancerArgs({
+  const GetLoadBalancerArgs({
     this.arn,
     this.name,
     this.region,

@@ -20,7 +20,7 @@ class ConfigSignInHashConfig {
   /// [rounds] How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
   /// [saltSeparator] Non-printable character to be inserted between the salt and plain text password in base64.
   /// [signerKey] Signer key in base64.
-  ConfigSignInHashConfig({
+  const ConfigSignInHashConfig({
     this.algorithm,
     this.memoryCost,
     this.rounds,

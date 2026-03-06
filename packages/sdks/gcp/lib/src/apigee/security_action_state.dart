@@ -68,7 +68,7 @@ class SecurityActionState {
   /// [state] Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
   /// [ttl] The TTL for this SecurityAction.
   /// [updateTime] The update time for this SecurityAction. This reflects when this SecurityAction changed states.
-  SecurityActionState({
+  const SecurityActionState({
     this.allow,
     this.apiProxies,
     this.conditionConfig,

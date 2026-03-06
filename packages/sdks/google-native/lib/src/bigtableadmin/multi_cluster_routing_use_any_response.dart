@@ -9,7 +9,7 @@ class MultiClusterRoutingUseAnyResponse {
 
   /// Creates a new [MultiClusterRoutingUseAnyResponse].
   /// [clusterIds] The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
-  MultiClusterRoutingUseAnyResponse({
+  const MultiClusterRoutingUseAnyResponse({
     required this.clusterIds,
   });
 

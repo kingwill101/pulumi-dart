@@ -52,7 +52,7 @@ class ProxyArgs {
   /// [targetConnectionNetworkType] Network type that the proxy uses to connect to the target database. Valid values are `IPV4` and `IPV6`. Defaults to `IPV4`.
   /// [vpcSecurityGroupIds] One or more VPC security group IDs to associate with the new proxy.
   /// [vpcSubnetIds] One or more VPC subnet IDs to associate with the new proxy.
-  ProxyArgs({
+  const ProxyArgs({
     this.auths,
     this.debugLogging,
     this.defaultAuthScheme,

@@ -39,7 +39,7 @@ class GetConfigurationResult {
   /// [tags] A mapping of tags assigned to the resource.
   /// [visibility] The visibility of the Maintenance Configuration.
   /// [windows] A `window` block as defined below.
-  GetConfigurationResult({
+  const GetConfigurationResult({
     required this.id,
     required this.inGuestUserPatchMode,
     required this.installPatches,

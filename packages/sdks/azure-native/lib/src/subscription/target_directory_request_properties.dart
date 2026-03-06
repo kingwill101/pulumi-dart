@@ -12,7 +12,7 @@ class TargetDirectoryRequestProperties {
   /// Creates a new [TargetDirectoryRequestProperties].
   /// [destinationOwnerId] The destination OwnerId, can be object id or email address
   /// [destinationTenantId] The destination Tenant id where subscription needs to be accepted
-  TargetDirectoryRequestProperties({
+  const TargetDirectoryRequestProperties({
     this.destinationOwnerId,
     this.destinationTenantId,
   });

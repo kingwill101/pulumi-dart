@@ -16,7 +16,7 @@ class ConfigurationAggregatorOrganizationAggregationSource {
   /// [allRegions] If true, aggregate existing AWS Config regions and future regions.
   /// [regions] List of source regions being aggregated.
   /// [roleArn] ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
-  ConfigurationAggregatorOrganizationAggregationSource({
+  const ConfigurationAggregatorOrganizationAggregationSource({
     this.allRegions,
     this.regions,
     required this.roleArn,

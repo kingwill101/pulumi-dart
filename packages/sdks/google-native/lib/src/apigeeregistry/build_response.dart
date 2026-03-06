@@ -15,7 +15,7 @@ class BuildResponse {
   /// [commitId] Commit ID of the latest commit in the build.
   /// [commitTime] Commit time of the latest commit in the build.
   /// [repo] Path of the open source repository: github.com/apigee/registry.
-  BuildResponse({
+  const BuildResponse({
     required this.commitId,
     required this.commitTime,
     required this.repo,

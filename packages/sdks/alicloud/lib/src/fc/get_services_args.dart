@@ -18,7 +18,7 @@ class GetServicesArgs {
   /// [ids] A list of FC services ids.
   /// [nameRegex] A regex string to filter results by FC service name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetServicesArgs({
+  const GetServicesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

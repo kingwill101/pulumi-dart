@@ -8,7 +8,7 @@ class PoolFeaturesCow {
 
   /// Creates a new [PoolFeaturesCow].
   /// [state] Configures the state of the copy-on-write feature within the storage pool.
-  PoolFeaturesCow({
+  const PoolFeaturesCow({
     required this.state,
   });
 

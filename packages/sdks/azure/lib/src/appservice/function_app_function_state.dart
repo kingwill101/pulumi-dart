@@ -51,7 +51,7 @@ class FunctionAppFunctionState {
   /// [testData] The test data for the function.
   /// [testDataUrl] The Test data URL.
   /// [url] The function URL.
-  FunctionAppFunctionState({
+  const FunctionAppFunctionState({
     this.configJson,
     this.configUrl,
     this.enabled,

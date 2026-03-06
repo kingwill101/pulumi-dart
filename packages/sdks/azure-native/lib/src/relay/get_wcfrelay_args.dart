@@ -18,7 +18,7 @@ class GetWCFRelayArgs {
   /// [namespaceName] The namespace name
   /// [relayName] The relay name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetWCFRelayArgs({
+  const GetWCFRelayArgs({
     required this.namespaceName,
     required this.relayName,
     required this.resourceGroupName,

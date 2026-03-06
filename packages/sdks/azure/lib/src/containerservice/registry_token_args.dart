@@ -24,7 +24,7 @@ class RegistryTokenArgs {
   /// [name] Specifies the name of the token. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Container Registry token. Changing this forces a new resource to be created.
   /// [scopeMapId] The ID of the Container Registry Scope Map associated with the token.
-  RegistryTokenArgs({
+  const RegistryTokenArgs({
     required this.containerRegistryName,
     this.enabled,
     this.name,

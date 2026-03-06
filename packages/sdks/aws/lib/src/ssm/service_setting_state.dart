@@ -21,7 +21,7 @@ class ServiceSettingState {
   /// [settingId] ID of the service setting. Valid values are shown in the [AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_GetServiceSetting.html#API_GetServiceSetting_RequestSyntax).
   /// [settingValue] Value of the service setting.
   /// [status] Status of the service setting. Value can be `Default`, `Customized` or `PendingUpdate`.
-  ServiceSettingState({
+  const ServiceSettingState({
     this.arn,
     this.region,
     this.settingId,

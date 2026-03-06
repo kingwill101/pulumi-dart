@@ -18,7 +18,7 @@ class GetDeployGroupsArgs {
   /// [appId] ID of the EDAS application.
   /// [nameRegex] A regex string to filter results by the deploy group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetDeployGroupsArgs({
+  const GetDeployGroupsArgs({
     required this.appId,
     this.nameRegex,
     this.outputFile,

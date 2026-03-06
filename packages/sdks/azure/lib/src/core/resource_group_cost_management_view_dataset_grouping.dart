@@ -11,7 +11,7 @@ class ResourceGroupCostManagementViewDatasetGrouping {
   /// Creates a new [ResourceGroupCostManagementViewDatasetGrouping].
   /// [name] The name of the column to group.
   /// [type] The type of the column. Possible values are `Dimension` and `TagKey`.
-  ResourceGroupCostManagementViewDatasetGrouping({
+  const ResourceGroupCostManagementViewDatasetGrouping({
     required this.name,
     required this.type,
   });

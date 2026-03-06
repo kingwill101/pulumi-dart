@@ -11,7 +11,7 @@ class TrafficManagerAzureEndpointCustomHeader {
   /// Creates a new [TrafficManagerAzureEndpointCustomHeader].
   /// [name] The name of the custom header.
   /// [value] The value of custom header. Applicable for HTTP and HTTPS protocol.
-  TrafficManagerAzureEndpointCustomHeader({
+  const TrafficManagerAzureEndpointCustomHeader({
     required this.name,
     required this.value,
   });

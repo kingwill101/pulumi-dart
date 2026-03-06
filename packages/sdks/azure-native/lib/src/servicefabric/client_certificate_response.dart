@@ -18,7 +18,7 @@ class ClientCertificateResponse {
   /// [isAdmin] Indicates if the client certificate has admin access to the cluster. Non admin clients can perform only read only operations on the cluster.
   /// [issuerThumbprint] Issuer thumbprint for the certificate. Only used together with CommonName.
   /// [thumbprint] Certificate thumbprint.
-  ClientCertificateResponse({
+  const ClientCertificateResponse({
     this.commonName,
     required this.isAdmin,
     this.issuerThumbprint,

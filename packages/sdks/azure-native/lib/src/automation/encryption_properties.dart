@@ -18,7 +18,7 @@ class EncryptionProperties {
   /// [identity] User identity used for CMK.
   /// [keySource] Encryption Key Source
   /// [keyVaultProperties] Key vault properties.
-  EncryptionProperties({
+  const EncryptionProperties({
     this.identity,
     this.keySource,
     this.keyVaultProperties,

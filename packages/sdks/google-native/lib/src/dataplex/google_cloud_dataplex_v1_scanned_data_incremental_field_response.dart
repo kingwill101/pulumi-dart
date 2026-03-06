@@ -15,7 +15,7 @@ class GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse {
   /// [end] Value that marks the end of the range.
   /// [field] The field that contains values which monotonically increases over time (e.g. a timestamp column).
   /// [start] Value that marks the start of the range.
-  GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse({
+  const GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse({
     required this.end,
     required this.field,
     required this.start,

@@ -9,7 +9,7 @@ class HttpSettingsRoutes {
 
   /// Creates a new [HttpSettingsRoutes].
   /// [apiPrefix] The prefix that should precede all the authentication/authorization paths.
-  HttpSettingsRoutes({
+  const HttpSettingsRoutes({
     this.apiPrefix,
   });
 

@@ -37,7 +37,7 @@ class LoadBalancerArgs {
   /// [resourceName] The name of the managed cluster resource.
   /// [serviceLabelSelector] Only services that must match this selector can be placed on this load balancer.
   /// [serviceNamespaceSelector] Services created in namespaces that match the selector can be placed on this load balancer.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     this.allowServicePlacement,
     this.loadBalancerName,
     required this.name,

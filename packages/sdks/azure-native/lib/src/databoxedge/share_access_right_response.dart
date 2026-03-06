@@ -12,7 +12,7 @@ class ShareAccessRightResponse {
   /// Creates a new [ShareAccessRightResponse].
   /// [accessType] Type of access to be allowed on the share for this user.
   /// [shareId] The share ID.
-  ShareAccessRightResponse({
+  const ShareAccessRightResponse({
     required this.accessType,
     required this.shareId,
   });

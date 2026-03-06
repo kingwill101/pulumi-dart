@@ -115,7 +115,7 @@ class GetBucketResult {
   /// [updated] The modification time of the bucket in RFC 3339 format.
   /// [versioning] The bucket's versioning configuration.
   /// [website] The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
-  GetBucketResult({
+  const GetBucketResult({
     required this.acl,
     required this.autoclass,
     required this.billing,

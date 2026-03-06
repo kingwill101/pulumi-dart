@@ -10,7 +10,7 @@ class DefaultResourceProperties {
 
   /// Creates a new [DefaultResourceProperties].
   /// [objectType] Type of the specific object - used for deserializing
-  DefaultResourceProperties({
+  const DefaultResourceProperties({
     required this.objectType,
   });
 

@@ -13,7 +13,7 @@ class WorkspaceServerlessCompute {
   /// Creates a new [WorkspaceServerlessCompute].
   /// [publicIpEnabled] Should serverless compute nodes deployed in a custom Virtual Network have public IP addresses enabled for a workspace with private endpoint? Defaults to `false`.
   /// [subnetId] The ID of an existing Virtual Network Subnet in which the serverless compute nodes should be deployed to.
-  WorkspaceServerlessCompute({
+  const WorkspaceServerlessCompute({
     this.publicIpEnabled,
     this.subnetId,
   });

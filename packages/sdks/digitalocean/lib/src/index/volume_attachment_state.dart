@@ -12,7 +12,7 @@ class VolumeAttachmentState {
   /// Creates a new [VolumeAttachmentState].
   /// [dropletId] ID of the Droplet to attach the volume to.
   /// [volumeId] ID of the Volume to be attached to the Droplet.
-  VolumeAttachmentState({
+  const VolumeAttachmentState({
     this.dropletId,
     this.volumeId,
   });

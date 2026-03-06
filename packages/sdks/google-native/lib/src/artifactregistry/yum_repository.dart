@@ -10,7 +10,7 @@ class YumRepository {
 
   /// Creates a new [YumRepository].
   /// [publicRepository] One of the publicly available Yum repositories supported by Artifact Registry.
-  YumRepository({
+  const YumRepository({
     this.publicRepository,
   });
 

@@ -17,7 +17,7 @@ class GetBareMetalClusterArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetBareMetalClusterArgs({
+  const GetBareMetalClusterArgs({
     required this.bareMetalClusterId,
     required this.location,
     this.project,

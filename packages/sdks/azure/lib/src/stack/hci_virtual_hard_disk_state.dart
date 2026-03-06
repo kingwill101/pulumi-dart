@@ -47,7 +47,7 @@ class HciVirtualHardDiskState {
   /// [resourceGroupName] The name of the Resource Group where the Azure Stack HCI Virtual Hard Disk should exist. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   /// [storagePathId] The ID of the Azure Stack HCI Storage Path used for this Virtual Hard Disk. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Stack HCI Virtual Hard Disk.
-  HciVirtualHardDiskState({
+  const HciVirtualHardDiskState({
     this.blockSizeInBytes,
     this.customLocationId,
     this.diskFileFormat,

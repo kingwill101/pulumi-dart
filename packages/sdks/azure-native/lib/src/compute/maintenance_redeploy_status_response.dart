@@ -27,7 +27,7 @@ class MaintenanceRedeployStatusResponse {
   /// [maintenanceWindowStartTime] Start Time for the Maintenance Window.
   /// [preMaintenanceWindowEndTime] End Time for the Pre Maintenance Window.
   /// [preMaintenanceWindowStartTime] Start Time for the Pre Maintenance Window.
-  MaintenanceRedeployStatusResponse({
+  const MaintenanceRedeployStatusResponse({
     this.isCustomerInitiatedMaintenanceAllowed,
     this.lastOperationMessage,
     this.lastOperationResultCode,

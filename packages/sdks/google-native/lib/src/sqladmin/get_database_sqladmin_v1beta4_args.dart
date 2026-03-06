@@ -15,7 +15,7 @@ class GetDatabaseSqladminV1beta4Args {
   /// [database] Required.
   /// [instance] Required.
   /// [project] Optional.
-  GetDatabaseSqladminV1beta4Args({
+  const GetDatabaseSqladminV1beta4Args({
     required this.database,
     required this.instance,
     this.project,

@@ -37,7 +37,7 @@ class ResourcePoolArgs {
   /// [resourcePoolName] Name of the resourcePool.
   /// [tags] Gets or sets the Resource tags.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
-  ResourcePoolArgs({
+  const ResourcePoolArgs({
     this.extendedLocation,
     this.inventoryItemId,
     this.kind,

@@ -28,7 +28,7 @@ class GetCertificateMapResult {
   /// [project] Optional.
   /// [pulumiLabels] Required.
   /// [updateTime] Required.
-  GetCertificateMapResult({
+  const GetCertificateMapResult({
     required this.createTime,
     required this.description,
     required this.effectiveLabels,

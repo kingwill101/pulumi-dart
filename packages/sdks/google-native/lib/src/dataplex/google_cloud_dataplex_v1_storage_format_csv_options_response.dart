@@ -18,7 +18,7 @@ class GoogleCloudDataplexV1StorageFormatCsvOptionsResponse {
   /// [encoding] Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8", and "ISO-8859-1". Defaults to UTF-8 if unspecified.
   /// [headerRows] Optional. The number of rows to interpret as header rows that should be skipped when reading data rows. Defaults to 0.
   /// [quote] Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
-  GoogleCloudDataplexV1StorageFormatCsvOptionsResponse({
+  const GoogleCloudDataplexV1StorageFormatCsvOptionsResponse({
     required this.delimiter,
     required this.encoding,
     required this.headerRows,

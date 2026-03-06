@@ -11,7 +11,7 @@ class GetServiceOrderedPlacementStrategy {
   /// Creates a new [GetServiceOrderedPlacementStrategy].
   /// [field] Field to apply placement strategy against
   /// [type] Constraint type
-  GetServiceOrderedPlacementStrategy({
+  const GetServiceOrderedPlacementStrategy({
     required this.field,
     required this.type,
   });

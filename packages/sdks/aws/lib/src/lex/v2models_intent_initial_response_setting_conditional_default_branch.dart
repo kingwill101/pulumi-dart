@@ -13,7 +13,7 @@ class V2modelsIntentInitialResponseSettingConditionalDefaultBranch {
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `next_step`.
   /// [response] Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  V2modelsIntentInitialResponseSettingConditionalDefaultBranch({
+  const V2modelsIntentInitialResponseSettingConditionalDefaultBranch({
     this.nextStep,
     this.response,
   });

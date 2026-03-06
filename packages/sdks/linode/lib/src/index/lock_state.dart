@@ -21,7 +21,7 @@ class LockState {
   /// [entityType] The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
   /// [entityUrl] The URL of the locked entity.
   /// [lockType] The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
-  LockState({
+  const LockState({
     this.entityId,
     this.entityLabel,
     this.entityType,

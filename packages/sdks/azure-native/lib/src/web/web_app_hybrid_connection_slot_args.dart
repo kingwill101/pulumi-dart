@@ -49,7 +49,7 @@ class WebAppHybridConnectionSlotArgs {
   /// [serviceBusNamespace] The name of the Service Bus namespace.
   /// [serviceBusSuffix] The suffix for the service bus endpoint. By default this is .servicebus.windows.net
   /// [slot] The name of the slot for the web app.
-  WebAppHybridConnectionSlotArgs({
+  const WebAppHybridConnectionSlotArgs({
     this.hostname,
     this.kind,
     required this.name,

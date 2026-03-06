@@ -19,7 +19,7 @@ class AccessLevelsAccessLevelBasic {
   /// Creates a new [AccessLevelsAccessLevelBasic].
   /// [combiningFunction] How the conditions list should be combined to determine if a request
   /// [conditions] A set of requirements for the AccessLevel to be granted.
-  AccessLevelsAccessLevelBasic({
+  const AccessLevelsAccessLevelBasic({
     this.combiningFunction,
     required this.conditions,
   });

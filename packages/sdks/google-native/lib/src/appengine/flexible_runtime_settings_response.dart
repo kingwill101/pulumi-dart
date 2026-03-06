@@ -12,7 +12,7 @@ class FlexibleRuntimeSettingsResponse {
   /// Creates a new [FlexibleRuntimeSettingsResponse].
   /// [operatingSystem] The operating system of the application runtime.
   /// [runtimeVersion] The runtime version of an App Engine flexible application.
-  FlexibleRuntimeSettingsResponse({
+  const FlexibleRuntimeSettingsResponse({
     required this.operatingSystem,
     required this.runtimeVersion,
   });

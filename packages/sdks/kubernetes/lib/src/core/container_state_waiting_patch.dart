@@ -12,7 +12,7 @@ class ContainerStateWaitingPatch {
   /// Creates a new [ContainerStateWaitingPatch].
   /// [message] Message regarding why the container is not yet running.
   /// [reason] (brief) reason the container is not yet running.
-  ContainerStateWaitingPatch({
+  const ContainerStateWaitingPatch({
     this.message,
     this.reason,
   });

@@ -14,7 +14,7 @@ class ConditionalAccessPolicyConditionsApplications {
   /// [excludedApplications] A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
   /// [includedApplications] A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
   /// [includedUserActions] A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
-  ConditionalAccessPolicyConditionsApplications({
+  const ConditionalAccessPolicyConditionsApplications({
     this.excludedApplications,
     this.includedApplications,
     this.includedUserActions,

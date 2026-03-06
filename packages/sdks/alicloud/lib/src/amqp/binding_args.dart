@@ -38,7 +38,7 @@ class BindingArgs {
   /// [instanceId] The ID of the instance.
   /// [sourceExchange] The name of the source exchange.
   /// [virtualHostName] The name of the vhost.
-  BindingArgs({
+  const BindingArgs({
     this.argument,
     required this.bindingKey,
     required this.bindingType,

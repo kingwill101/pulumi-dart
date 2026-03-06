@@ -25,7 +25,7 @@ class ProjectConnectionArgs {
   /// [projectName] The name of Cognitive Services account's project.
   /// [properties] Connection property base schema.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ProjectConnectionArgs({
+  const ProjectConnectionArgs({
     required this.accountName,
     this.connectionName,
     required this.projectName,

@@ -76,7 +76,7 @@ class RegistrationState {
   /// [state] Output only. The current state of the Registration.
   /// [supportedPrivacies] Output only. Set of options for the contactSettings.privacy field that this Registration supports.
   /// [yearlyPrice] Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
-  RegistrationState({
+  const RegistrationState({
     this.contactNotices,
     this.contactSettings,
     this.createTime,

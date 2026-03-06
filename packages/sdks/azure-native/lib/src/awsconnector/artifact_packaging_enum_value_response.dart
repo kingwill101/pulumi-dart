@@ -9,7 +9,7 @@ class ArtifactPackagingEnumValueResponse {
 
   /// Creates a new [ArtifactPackagingEnumValueResponse].
   /// [value] Property value
-  ArtifactPackagingEnumValueResponse({
+  const ArtifactPackagingEnumValueResponse({
     this.value,
   });
 

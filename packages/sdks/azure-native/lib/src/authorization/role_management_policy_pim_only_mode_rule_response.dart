@@ -21,7 +21,7 @@ class RoleManagementPolicyPimOnlyModeRuleResponse {
   /// [pimOnlyModeSettings] The PIM Only Mode settings
   /// [ruleType] The type of rule
   /// [target] The target of the current rule.
-  RoleManagementPolicyPimOnlyModeRuleResponse({
+  const RoleManagementPolicyPimOnlyModeRuleResponse({
     this.id,
     this.pimOnlyModeSettings,
     required this.ruleType,

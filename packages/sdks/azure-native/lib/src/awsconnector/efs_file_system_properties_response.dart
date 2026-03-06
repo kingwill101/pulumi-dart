@@ -34,7 +34,7 @@ class EfsFileSystemPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  EfsFileSystemPropertiesResponse({
+  const EfsFileSystemPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

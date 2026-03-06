@@ -21,7 +21,7 @@ class SuppressionState {
   /// [resourceId] The ID of the Resource to suppress the Advisor recommendation for. Changing this forces a new Advisor suppression to be created.
   /// [suppressionId] The GUID of the suppression.
   /// [ttl] A optional time to live value. If omitted, the suppression will not expire. Changing this forces a new Advisor suppression to be created.
-  SuppressionState({
+  const SuppressionState({
     this.name,
     this.recommendationId,
     this.resourceId,

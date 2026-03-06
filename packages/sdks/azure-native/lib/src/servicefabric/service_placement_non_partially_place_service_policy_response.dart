@@ -10,7 +10,7 @@ class ServicePlacementNonPartiallyPlaceServicePolicyResponse {
 
   /// Creates a new [ServicePlacementNonPartiallyPlaceServicePolicyResponse].
   /// [type] The type of placement policy for a service fabric service. Following are the possible values.
-  ServicePlacementNonPartiallyPlaceServicePolicyResponse({
+  const ServicePlacementNonPartiallyPlaceServicePolicyResponse({
     required this.type,
   });
 

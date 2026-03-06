@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlMaxAllowedPacket {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlMaxAllowedPacket({
+  const GetDatabaseMysqlConfigMysqlMaxAllowedPacket({
     required this.description,
     required this.example,
     required this.maximum,

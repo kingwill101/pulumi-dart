@@ -11,7 +11,7 @@ class V2OrganizationSourceIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  V2OrganizationSourceIamMemberCondition({
+  const V2OrganizationSourceIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

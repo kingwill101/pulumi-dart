@@ -15,7 +15,7 @@ class GetPreRuleArgs {
   /// Creates a new [GetPreRuleArgs].
   /// [globalRulestackName] GlobalRulestack resource name
   /// [priority] Pre Rule priority
-  GetPreRuleArgs({
+  const GetPreRuleArgs({
     required this.globalRulestackName,
     required this.priority,
   });

@@ -21,7 +21,7 @@ class ResourceGroupArgs {
   /// [managedBy] The ID of the resource that manages this resource group.
   /// [resourceGroupName] The name of the resource group to create or update. Can include alphanumeric, underscore, parentheses, hyphen, period (except at end), and Unicode characters that match the allowed characters.
   /// [tags] The tags attached to the resource group.
-  ResourceGroupArgs({
+  const ResourceGroupArgs({
     this.location,
     this.managedBy,
     this.resourceGroupName,

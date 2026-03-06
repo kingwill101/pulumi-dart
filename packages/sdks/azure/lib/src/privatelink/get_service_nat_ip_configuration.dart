@@ -20,7 +20,7 @@ class GetServiceNatIpConfiguration {
   /// [privateIpAddress] The private IP address of the NAT IP configuration.
   /// [privateIpAddressVersion] The version of the IP Protocol.
   /// [subnetId] The ID of the subnet to be used by the service.
-  GetServiceNatIpConfiguration({
+  const GetServiceNatIpConfiguration({
     required this.name,
     required this.primary,
     required this.privateIpAddress,

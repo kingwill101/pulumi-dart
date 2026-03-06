@@ -14,7 +14,7 @@ class GetMainVersionsMainVersion {
   /// [clusterTypes] A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
   /// [emrVersion] The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
   /// [imageId] The image id of the emr cluster instance.
-  GetMainVersionsMainVersion({
+  const GetMainVersionsMainVersion({
     required this.clusterTypes,
     required this.emrVersion,
     required this.imageId,

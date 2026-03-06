@@ -13,7 +13,7 @@ class OpenAuthenticationAccessPolicyResponse {
   /// Creates a new [OpenAuthenticationAccessPolicyResponse].
   /// [claims] The access policy claims.
   /// [type] Type of provider for OAuth.
-  OpenAuthenticationAccessPolicyResponse({
+  const OpenAuthenticationAccessPolicyResponse({
     this.claims,
     this.type,
   });

@@ -15,7 +15,7 @@ class GetInstanceGroupManagerComputeBetaArgs {
   /// [instanceGroupManager] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetInstanceGroupManagerComputeBetaArgs({
+  const GetInstanceGroupManagerComputeBetaArgs({
     required this.instanceGroupManager,
     this.project,
     required this.zone,

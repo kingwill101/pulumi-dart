@@ -14,7 +14,7 @@ class SelfSubjectAccessReviewSpec {
   /// Creates a new [SelfSubjectAccessReviewSpec].
   /// [nonResourceAttributes] NonResourceAttributes describes information for a non-resource access request
   /// [resourceAttributes] ResourceAuthorizationAttributes describes information for a resource access request
-  SelfSubjectAccessReviewSpec({
+  const SelfSubjectAccessReviewSpec({
     this.nonResourceAttributes,
     this.resourceAttributes,
   });

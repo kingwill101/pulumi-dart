@@ -18,7 +18,7 @@ class GetIotConnectorArgs {
   /// [iotConnectorName] The name of IoT Connector resource.
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
-  GetIotConnectorArgs({
+  const GetIotConnectorArgs({
     required this.iotConnectorName,
     required this.resourceGroupName,
     required this.workspaceName,

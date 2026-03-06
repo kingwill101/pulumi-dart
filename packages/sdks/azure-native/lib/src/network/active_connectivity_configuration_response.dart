@@ -48,7 +48,7 @@ class ActiveConnectivityConfigurationResponse {
   /// [provisioningState] The provisioning state of the connectivity configuration resource.
   /// [region] Deployment region.
   /// [resourceGuid] Unique identifier for this resource.
-  ActiveConnectivityConfigurationResponse({
+  const ActiveConnectivityConfigurationResponse({
     required this.appliesToGroups,
     this.commitTime,
     this.configurationGroups,

@@ -51,7 +51,7 @@ class FutureReservationComputeBetaArgs {
   /// [specificSkuProperties] Future Reservation configuration to indicate instance properties and total count.
   /// [timeWindow] Time window for this Future Reservation.
   /// [zone] Optional.
-  FutureReservationComputeBetaArgs({
+  const FutureReservationComputeBetaArgs({
     this.autoCreatedReservationsDeleteTime,
     this.autoCreatedReservationsDuration,
     this.autoDeleteAutoCreatedReservations,

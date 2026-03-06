@@ -8,7 +8,7 @@ class MonitoringScheduleMonitoringScheduleConfigScheduleConfig {
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigScheduleConfig].
   /// [scheduleExpression] A cron expression that describes details about the monitoring schedule. For example, and hourly schedule would be `cron(0 * ? * * *)`.
-  MonitoringScheduleMonitoringScheduleConfigScheduleConfig({
+  const MonitoringScheduleMonitoringScheduleConfigScheduleConfig({
     required this.scheduleExpression,
   });
 

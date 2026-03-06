@@ -22,7 +22,7 @@ class UserState {
   /// [emailId] The email ID of the user to be created.
   /// [name] The name of the user to be created.
   /// [userType] The tier to which the user to be created would belong. Accepted values for this argument are `BASIC_USER_TIER`, `CORE_USER_TIER`, or `FULL_USER_TIER`. If not specified in the configuration, the argument would default to `BASIC_USER_TIER`.
-  UserState({
+  const UserState({
     this.authenticationDomainId,
     this.emailId,
     this.name,

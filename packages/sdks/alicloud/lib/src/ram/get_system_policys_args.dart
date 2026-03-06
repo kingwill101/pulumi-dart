@@ -18,7 +18,7 @@ class GetSystemPolicysArgs {
   /// [ids] A list of System Policy IDs.
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetSystemPolicysArgs({
+  const GetSystemPolicysArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

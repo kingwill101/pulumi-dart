@@ -40,7 +40,7 @@ class DataExchangeSubscriptionArgs {
   /// [refreshPolicy] Optional.
   /// [subscriberContact] Email of the subscriber.
   /// [subscriptionId] Name of the subscription to create.
-  DataExchangeSubscriptionArgs({
+  const DataExchangeSubscriptionArgs({
     required this.dataExchangeId,
     required this.dataExchangeLocation,
     required this.dataExchangeProject,

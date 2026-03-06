@@ -15,7 +15,7 @@ class GetDatasetDataLakeGen2Args {
   /// Creates a new [GetDatasetDataLakeGen2Args].
   /// [name] The name of this Data Share Data Lake Gen2 Dataset.
   /// [shareId] The resource ID of the Data Share where this Data Share Data Lake Gen2 Dataset should be created.
-  GetDatasetDataLakeGen2Args({
+  const GetDatasetDataLakeGen2Args({
     required this.name,
     required this.shareId,
   });

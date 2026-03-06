@@ -12,7 +12,7 @@ class FileContentBufferComputeBeta {
   /// Creates a new [FileContentBufferComputeBeta].
   /// [content] The raw content in the secure keys file.
   /// [fileType] The file type of source file.
-  FileContentBufferComputeBeta({
+  const FileContentBufferComputeBeta({
     this.content,
     this.fileType,
   });

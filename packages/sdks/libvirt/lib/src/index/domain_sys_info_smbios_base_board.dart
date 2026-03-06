@@ -9,7 +9,7 @@ class DomainSysInfoSmbiosBaseBoard {
 
   /// Creates a new [DomainSysInfoSmbiosBaseBoard].
   /// [entries] Defines individual entries for the base board information.
-  DomainSysInfoSmbiosBaseBoard({
+  const DomainSysInfoSmbiosBaseBoard({
     this.entries,
   });
 

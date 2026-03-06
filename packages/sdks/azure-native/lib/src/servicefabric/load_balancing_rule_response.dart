@@ -27,7 +27,7 @@ class LoadBalancingRuleResponse {
   /// [probeProtocol] the reference to the load balancer probe used by the load balancing rule.
   /// [probeRequestPath] The probe request path. Only supported for HTTP/HTTPS probes.
   /// [protocol] The reference to the transport protocol used by the load balancing rule.
-  LoadBalancingRuleResponse({
+  const LoadBalancingRuleResponse({
     required this.backendPort,
     required this.frontendPort,
     this.loadDistribution,

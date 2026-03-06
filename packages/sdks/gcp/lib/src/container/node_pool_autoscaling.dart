@@ -30,7 +30,7 @@ class NodePoolAutoscaling {
   /// [minNodeCount] Minimum number of nodes per zone in the NodePool.
   /// [totalMaxNodeCount] Total maximum number of nodes in the NodePool.
   /// [totalMinNodeCount] Total minimum number of nodes in the NodePool.
-  NodePoolAutoscaling({
+  const NodePoolAutoscaling({
     this.locationPolicy,
     this.maxNodeCount,
     this.minNodeCount,

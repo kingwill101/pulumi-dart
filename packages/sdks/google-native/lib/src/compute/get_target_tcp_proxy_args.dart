@@ -13,7 +13,7 @@ class GetTargetTcpProxyArgs {
   /// Creates a new [GetTargetTcpProxyArgs].
   /// [project] Optional.
   /// [targetTcpProxy] Required.
-  GetTargetTcpProxyArgs({
+  const GetTargetTcpProxyArgs({
     this.project,
     required this.targetTcpProxy,
   });

@@ -17,7 +17,7 @@ class RouteConfigurationOverrideActionParameters {
   /// [cacheConfiguration] The caching configuration associated with this rule. To disable caching, do not provide a cacheConfiguration object.
   /// [originGroupOverride] A reference to the origin group override configuration. Leave empty to use the default origin group on route.
   /// [typeName] Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
-  RouteConfigurationOverrideActionParameters({
+  const RouteConfigurationOverrideActionParameters({
     this.cacheConfiguration,
     this.originGroupOverride,
     required this.typeName,

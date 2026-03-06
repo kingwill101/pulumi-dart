@@ -9,7 +9,7 @@ class IdcApplicationServiceIntegrationRedshift {
 
   /// Creates a new [IdcApplicationServiceIntegrationRedshift].
   /// [connect] Amazon Redshift connect service integration scope.
-  IdcApplicationServiceIntegrationRedshift({
+  const IdcApplicationServiceIntegrationRedshift({
     this.connect,
   });
 

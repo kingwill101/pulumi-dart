@@ -21,7 +21,7 @@ class SCMetadataEntityResponse {
   /// [resourceName] Resource name of the record
   /// [self] Self lookup url
   /// [updatedTimestamp] Updated Date time
-  SCMetadataEntityResponse({
+  const SCMetadataEntityResponse({
     this.createdTimestamp,
     this.deletedTimestamp,
     this.resourceName,

@@ -31,7 +31,7 @@ class ApplicationGatewayListener {
   /// [protocol] Protocol of the listener.
   /// [sslCertificate] SSL certificate resource of an application gateway.
   /// [sslProfile] SSL profile resource of the application gateway.
-  ApplicationGatewayListener({
+  const ApplicationGatewayListener({
     this.frontendIPConfiguration,
     this.frontendPort,
     this.hostNames,

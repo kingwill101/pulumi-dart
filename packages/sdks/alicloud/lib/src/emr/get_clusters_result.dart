@@ -48,7 +48,7 @@ class GetClustersResult {
   /// [statusLists] Optional.
   /// [totalCount] Required.
   /// [vpcId] Optional.
-  GetClustersResult({
+  const GetClustersResult({
     this.clusterName,
     this.clusterTypeLists,
     required this.clusters,

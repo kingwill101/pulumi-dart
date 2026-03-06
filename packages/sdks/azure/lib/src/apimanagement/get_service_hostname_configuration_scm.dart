@@ -16,7 +16,7 @@ class GetServiceHostnameConfigurationScm {
   /// [keyVaultCertificateId] The ID of the Key Vault Secret which contains the SSL Certificate.
   /// [keyVaultId] Required.
   /// [negotiateClientCertificate] Is Client Certificate Negotiation enabled?
-  GetServiceHostnameConfigurationScm({
+  const GetServiceHostnameConfigurationScm({
     required this.hostName,
     required this.keyVaultCertificateId,
     required this.keyVaultId,

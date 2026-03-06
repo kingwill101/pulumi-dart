@@ -43,7 +43,7 @@ class GenaiAgentTemplate {
   /// [topP] Top P sampling parameter
   /// [updatedAt] Updated At timestamp for the Agent Template
   /// [uuid] uuid of the Agent Template
-  GenaiAgentTemplate({
+  const GenaiAgentTemplate({
     this.createdAt,
     this.description,
     this.instruction,

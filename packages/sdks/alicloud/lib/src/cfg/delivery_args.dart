@@ -63,7 +63,7 @@ class DeliveryArgs {
   /// [nonCompliantNotification] Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
   /// [oversizedDataOssTargetArn] The oss ARN of the delivery channel when the value data oversized limit.  The value must be in one of the following formats:  acs:oss:{RegionId}:{Aliuid}:{bucketName} if your delivery destination is an Object Storage Service (OSS) bucket.
   /// [status] The status of the delivery channel. Valid values:
-  DeliveryArgs({
+  const DeliveryArgs({
     this.configurationItemChangeNotification,
     this.configurationSnapshot,
     this.deliveryChannelCondition,

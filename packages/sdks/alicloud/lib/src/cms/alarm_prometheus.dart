@@ -17,7 +17,7 @@ class AlarmPrometheus {
   /// [level] The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
   /// [promQl] The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
   /// [times] The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
-  AlarmPrometheus({
+  const AlarmPrometheus({
     this.annotations,
     this.level,
     this.promQl,

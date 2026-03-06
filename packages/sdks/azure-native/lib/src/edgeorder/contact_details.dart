@@ -21,7 +21,7 @@ class ContactDetails {
   /// [mobile] Mobile number of the contact person.
   /// [phone] Phone number of the contact person.
   /// [phoneExtension] Phone extension number of the contact person.
-  ContactDetails({
+  const ContactDetails({
     this.contactName,
     this.emailList,
     this.mobile,

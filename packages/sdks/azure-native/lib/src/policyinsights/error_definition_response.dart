@@ -22,7 +22,7 @@ class ErrorDefinitionResponse {
   /// [details] Internal error details.
   /// [message] Description of the error.
   /// [target] The target of the error.
-  ErrorDefinitionResponse({
+  const ErrorDefinitionResponse({
     required this.additionalInfo,
     required this.code,
     required this.details,

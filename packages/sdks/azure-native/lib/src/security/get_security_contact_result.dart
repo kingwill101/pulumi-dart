@@ -35,7 +35,7 @@ class GetSecurityContactResult {
   /// [notificationsSources] A collection of sources types which evaluate the email notification.
   /// [phone] The security contact's phone number
   /// [type] Resource type
-  GetSecurityContactResult({
+  const GetSecurityContactResult({
     required this.azureApiVersion,
     this.emails,
     required this.id,

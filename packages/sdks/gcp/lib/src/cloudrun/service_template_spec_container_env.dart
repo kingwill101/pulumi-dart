@@ -16,7 +16,7 @@ class ServiceTemplateSpecContainerEnv {
   /// [name] Name of the environment variable.
   /// [value] Defaults to "".
   /// [valueFrom] Source for the environment variable's value. Only supports secret_key_ref.
-  ServiceTemplateSpecContainerEnv({
+  const ServiceTemplateSpecContainerEnv({
     this.name,
     this.value,
     this.valueFrom,

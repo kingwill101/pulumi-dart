@@ -12,7 +12,7 @@ class IntegrationServiceEnvironmentSku {
   /// Creates a new [IntegrationServiceEnvironmentSku].
   /// [capacity] The sku capacity.
   /// [name] The sku name.
-  IntegrationServiceEnvironmentSku({
+  const IntegrationServiceEnvironmentSku({
     this.capacity,
     this.name,
   });

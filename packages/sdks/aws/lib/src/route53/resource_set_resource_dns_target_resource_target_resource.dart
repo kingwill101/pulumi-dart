@@ -13,7 +13,7 @@ class ResourceSetResourceDnsTargetResourceTargetResource {
   /// Creates a new [ResourceSetResourceDnsTargetResourceTargetResource].
   /// [nlbResource] NLB resource a DNS Target Resource points to. Required if `r53_resource` is not set.
   /// [r53Resource] Route53 resource a DNS Target Resource record points to.
-  ResourceSetResourceDnsTargetResourceTargetResource({
+  const ResourceSetResourceDnsTargetResourceTargetResource({
     this.nlbResource,
     this.r53Resource,
   });

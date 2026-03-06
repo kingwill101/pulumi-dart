@@ -8,7 +8,7 @@ class ConnectivityTestSourceAppEngineVersion {
 
   /// Creates a new [ConnectivityTestSourceAppEngineVersion].
   /// [uri] An App Engine service version name.
-  ConnectivityTestSourceAppEngineVersion({
+  const ConnectivityTestSourceAppEngineVersion({
     this.uri,
   });
 

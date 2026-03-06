@@ -79,7 +79,7 @@ class ActionGroupArgs {
   /// [tags] Resource tags
   /// [voiceReceivers] The list of voice receivers that are part of this action group.
   /// [webhookReceivers] The list of webhook receivers that are part of this action group.
-  ActionGroupArgs({
+  const ActionGroupArgs({
     this.actionGroupName,
     this.armRoleReceivers,
     this.automationRunbookReceivers,

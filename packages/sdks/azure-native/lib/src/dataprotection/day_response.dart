@@ -12,7 +12,7 @@ class DayResponse {
   /// Creates a new [DayResponse].
   /// [date] Date of the month
   /// [isLast] Whether Date is last date of month
-  DayResponse({
+  const DayResponse({
     this.date,
     this.isLast,
   });

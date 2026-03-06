@@ -62,7 +62,7 @@ class GetCertificateAuthorityResult {
   /// [tier] The CaPool.Tier of the CaPool that includes this CertificateAuthority.
   /// [type] Immutable. The Type of this CertificateAuthority.
   /// [updateTime] The time at which this CertificateAuthority was last updated.
-  GetCertificateAuthorityResult({
+  const GetCertificateAuthorityResult({
     required this.accessUrls,
     required this.caCertificateDescriptions,
     required this.config,

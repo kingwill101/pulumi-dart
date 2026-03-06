@@ -12,7 +12,7 @@ class DataDiskImageResponse {
   /// Creates a new [DataDiskImageResponse].
   /// [lun] The LUN.
   /// [sourceBlobSasUri] SAS key for source blob.
-  DataDiskImageResponse({
+  const DataDiskImageResponse({
     required this.lun,
     required this.sourceBlobSasUri,
   });

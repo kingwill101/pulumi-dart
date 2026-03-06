@@ -24,7 +24,7 @@ class NetworkPacketBrokerArgs {
   /// [networkPacketBrokerName] Name of the Network Packet Broker.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NetworkPacketBrokerArgs({
+  const NetworkPacketBrokerArgs({
     this.location,
     required this.networkFabricId,
     this.networkPacketBrokerName,

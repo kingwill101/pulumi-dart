@@ -11,7 +11,7 @@ class AnalyticsApplicationInputsKinesisStream {
   /// Creates a new [AnalyticsApplicationInputsKinesisStream].
   /// [resourceArn] The ARN of the Kinesis Stream.
   /// [roleArn] The ARN of the IAM Role used to access the stream.
-  AnalyticsApplicationInputsKinesisStream({
+  const AnalyticsApplicationInputsKinesisStream({
     required this.resourceArn,
     required this.roleArn,
   });

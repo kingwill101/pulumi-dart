@@ -10,7 +10,7 @@ class GetComputeAllowedResizeSizesResult {
 
   /// Creates a new [GetComputeAllowedResizeSizesResult].
   /// [value] The list of virtual machine sizes supported by AmlCompute.
-  GetComputeAllowedResizeSizesResult({
+  const GetComputeAllowedResizeSizesResult({
     this.value,
   });
 

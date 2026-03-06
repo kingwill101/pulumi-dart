@@ -13,7 +13,7 @@ class BasisResponse {
   /// Creates a new [BasisResponse].
   /// [fingerprint] The fingerprint of the base image.
   /// [resourceUrl] The resource_url for the resource representing the basis of associated occurrence images.
-  BasisResponse({
+  const BasisResponse({
     required this.fingerprint,
     required this.resourceUrl,
   });

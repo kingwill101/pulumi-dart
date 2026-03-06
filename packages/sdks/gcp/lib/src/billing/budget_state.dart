@@ -47,7 +47,7 @@ class BudgetState {
   /// [name] Resource name of the budget. The resource name
   /// [ownershipScope] The ownership scope of the budget. The ownership scope and users'
   /// [thresholdRules] Rules that trigger alerts (notifications of thresholds being
-  BudgetState({
+  const BudgetState({
     this.allUpdatesRule,
     this.amount,
     this.billingAccount,

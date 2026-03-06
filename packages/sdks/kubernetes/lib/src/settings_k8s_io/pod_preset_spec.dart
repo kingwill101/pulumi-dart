@@ -26,7 +26,7 @@ class PodPresetSpec {
   /// [selector] Selector is a label query over a set of resources, in this case pods. Required.
   /// [volumeMounts] VolumeMounts defines the collection of VolumeMount to inject into containers.
   /// [volumes] Volumes defines the collection of Volume to inject into the pod.
-  PodPresetSpec({
+  const PodPresetSpec({
     this.env,
     this.envFrom,
     this.selector,

@@ -15,7 +15,7 @@ class SkuRecommendationResultsMonthlyCostResponse {
   /// [computeCost] Represents the Cost of Compute.
   /// [storageCost] Represents the Cost of Storage.
   /// [totalCost] Represents the Total Cost.
-  SkuRecommendationResultsMonthlyCostResponse({
+  const SkuRecommendationResultsMonthlyCostResponse({
     this.computeCost,
     this.storageCost,
     this.totalCost,

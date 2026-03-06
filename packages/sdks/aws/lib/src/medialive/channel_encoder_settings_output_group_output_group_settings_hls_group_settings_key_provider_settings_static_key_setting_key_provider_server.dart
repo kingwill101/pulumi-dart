@@ -11,7 +11,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyPro
   /// [passwordParam] Optional.
   /// [uri] Required.
   /// [username] Optional.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySettingKeyProviderServer({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySettingKeyProviderServer({
     this.passwordParam,
     required this.uri,
     this.username,

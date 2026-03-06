@@ -11,7 +11,7 @@ class ActivityLogAlertAction {
   /// Creates a new [ActivityLogAlertAction].
   /// [actionGroupId] The ID of the Action Group can be sourced from the `azure.monitoring.ActionGroup` resource.
   /// [webhookProperties] The map of custom string properties to include with the post operation. These data are appended to the webhook payload.
-  ActivityLogAlertAction({
+  const ActivityLogAlertAction({
     required this.actionGroupId,
     this.webhookProperties,
   });

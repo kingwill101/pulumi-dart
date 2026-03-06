@@ -17,7 +17,7 @@ class UserPropertiesResponse {
   /// [identityProvider] The user's identity provider definition.
   /// [provisioningState] The provisioning state of the user.
   /// [roles] Database roles that are assigned to the user.
-  UserPropertiesResponse({
+  const UserPropertiesResponse({
     this.identityProvider,
     required this.provisioningState,
     this.roles,

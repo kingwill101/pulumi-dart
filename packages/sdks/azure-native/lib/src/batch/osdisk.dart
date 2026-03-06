@@ -23,7 +23,7 @@ class OSDisk {
   /// [ephemeralOSDiskSettings] Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
   /// [managedDisk] Optional.
   /// [writeAcceleratorEnabled] Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  OSDisk({
+  const OSDisk({
     this.caching,
     this.diskSizeGB,
     this.ephemeralOSDiskSettings,

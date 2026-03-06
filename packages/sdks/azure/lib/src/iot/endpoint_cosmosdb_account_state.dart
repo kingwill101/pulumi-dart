@@ -53,7 +53,7 @@ class EndpointCosmosdbAccountState {
   /// [resourceGroupName] The name of the resource group under which the Cosmos DB Account has been created. Changing this forces a new resource to be created.
   /// [secondaryKey] The secondary key of the Cosmos DB Account.
   /// [subscriptionId] The subscription ID for the endpoint.
-  EndpointCosmosdbAccountState({
+  const EndpointCosmosdbAccountState({
     this.authenticationType,
     this.containerName,
     this.databaseName,

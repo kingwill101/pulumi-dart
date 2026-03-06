@@ -47,7 +47,7 @@ class EnterpriseSnapshotPolicyState {
   /// [storageRule] Snapshot storage policy. See `storage_rule` below.
   /// [tags] The tag of the resource.
   /// [targetType] Represents the target type of resource binding.
-  EnterpriseSnapshotPolicyState({
+  const EnterpriseSnapshotPolicyState({
     this.createTime,
     this.crossRegionCopyInfo,
     this.desc,

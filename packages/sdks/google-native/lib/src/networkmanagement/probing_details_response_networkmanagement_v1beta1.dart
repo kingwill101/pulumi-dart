@@ -37,7 +37,7 @@ class ProbingDetailsResponseNetworkmanagementV1beta1 {
   /// [sentProbeCount] Number of probes sent.
   /// [successfulProbeCount] Number of probes that reached the destination.
   /// [verifyTime] The time that reachability was assessed through active probing.
-  ProbingDetailsResponseNetworkmanagementV1beta1({
+  const ProbingDetailsResponseNetworkmanagementV1beta1({
     required this.abortCause,
     required this.destinationEgressLocation,
     required this.endpointInfo,

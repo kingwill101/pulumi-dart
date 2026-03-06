@@ -18,7 +18,7 @@ class GetResourceArgs {
   /// [path] Full path of the resource.  If no path is found, an error will be returned.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] REST API id that owns the resource. If no REST API is found, an error will be returned.
-  GetResourceArgs({
+  const GetResourceArgs({
     required this.path,
     this.region,
     required this.restApiId,

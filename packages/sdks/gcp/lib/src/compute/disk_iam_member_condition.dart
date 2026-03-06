@@ -11,7 +11,7 @@ class DiskIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  DiskIamMemberCondition({
+  const DiskIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

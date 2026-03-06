@@ -69,7 +69,7 @@ class CloudVmClusterArgs {
   /// [odbSubnet] The name of the OdbSubnet associated with the VM Cluster for
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] Various properties and settings associated with Exadata VM cluster.
-  CloudVmClusterArgs({
+  const CloudVmClusterArgs({
     this.backupOdbSubnet,
     this.backupSubnetCidr,
     this.cidr,

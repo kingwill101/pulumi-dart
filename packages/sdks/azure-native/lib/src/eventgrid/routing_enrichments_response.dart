@@ -11,7 +11,7 @@ class RoutingEnrichmentsResponse {
   /// Creates a new [RoutingEnrichmentsResponse].
   /// [dynamic_] Optional.
   /// [static] Optional.
-  RoutingEnrichmentsResponse({
+  const RoutingEnrichmentsResponse({
     this.dynamic_,
     this.static,
   });

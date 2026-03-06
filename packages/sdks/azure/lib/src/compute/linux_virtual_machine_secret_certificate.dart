@@ -10,7 +10,7 @@ class LinuxVirtualMachineSecretCertificate {
 
   /// Creates a new [LinuxVirtualMachineSecretCertificate].
   /// [url] The Secret URL of a Key Vault Certificate.
-  LinuxVirtualMachineSecretCertificate({
+  const LinuxVirtualMachineSecretCertificate({
     required this.url,
   });
 

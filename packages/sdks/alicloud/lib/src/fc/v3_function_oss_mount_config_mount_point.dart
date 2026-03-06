@@ -19,7 +19,7 @@ class V3FunctionOssMountConfigMountPoint {
   /// [endpoint] OSS access endpoint
   /// [mountDir] Optional.
   /// [readOnly] Read-only
-  V3FunctionOssMountConfigMountPoint({
+  const V3FunctionOssMountConfigMountPoint({
     this.bucketName,
     this.bucketPath,
     this.endpoint,

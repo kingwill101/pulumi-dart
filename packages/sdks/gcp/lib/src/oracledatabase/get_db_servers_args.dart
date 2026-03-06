@@ -19,7 +19,7 @@ class GetDbServersArgs {
   /// [cloudExadataInfrastructure] The Exadata Infrastructure id.
   /// [location] The location of resource.
   /// [project] The project to which the resource belongs. If it
-  GetDbServersArgs({
+  const GetDbServersArgs({
     required this.cloudExadataInfrastructure,
     required this.location,
     this.project,

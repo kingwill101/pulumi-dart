@@ -29,7 +29,7 @@ class DatasetState {
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The fully qualified name of this dataset
   /// [timeZone] The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
-  DatasetState({
+  const DatasetState({
     this.encryptionSpec,
     this.location,
     this.name,

@@ -22,7 +22,7 @@ class EnvironmentContainerArgs {
   /// [name] Container name. This is case-sensitive.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  EnvironmentContainerArgs({
+  const EnvironmentContainerArgs({
     required this.environmentContainerProperties,
     this.name,
     required this.resourceGroupName,

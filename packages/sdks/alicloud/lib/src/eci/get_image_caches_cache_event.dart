@@ -22,7 +22,7 @@ class GetImageCachesCacheEvent {
   /// [message] Required.
   /// [name] The name of event.
   /// [type] The type of event.
-  GetImageCachesCacheEvent({
+  const GetImageCachesCacheEvent({
     required this.count,
     required this.firstTimestamp,
     required this.lastTimestamp,

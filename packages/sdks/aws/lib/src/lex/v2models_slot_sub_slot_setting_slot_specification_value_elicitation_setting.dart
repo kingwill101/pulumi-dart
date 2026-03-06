@@ -23,7 +23,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting {
   /// [promptSpecification] Prompt that Amazon Lex uses to elicit the slot value from the user.
   /// [sampleUtterances] Optional.
   /// [waitAndContinueSpecifications] Specifies the prompts that Amazon Lex uses while a bot is waiting for customer input.
-  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting({
+  const V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting({
     this.defaultValueSpecifications,
     this.promptSpecification,
     this.sampleUtterances,

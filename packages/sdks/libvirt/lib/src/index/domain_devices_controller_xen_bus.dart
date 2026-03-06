@@ -11,7 +11,7 @@ class DomainDevicesControllerXenBus {
   /// Creates a new [DomainDevicesControllerXenBus].
   /// [maxEventChannels] Sets the maximum number of event channels supported by the Xen bus controller device.
   /// [maxGrantFrames] Configures the maximum number of grant frames allowed for the Xen bus controller device.
-  DomainDevicesControllerXenBus({
+  const DomainDevicesControllerXenBus({
     this.maxEventChannels,
     this.maxGrantFrames,
   });

@@ -33,7 +33,7 @@ class ApiOperationRequestRepresentationFormParameter {
   /// [type] The Type of this Form Parameter, such as a `string`.
   /// [typeName] The type name defined by the Schema.
   /// [values] One or more acceptable values for this Form Parameter.
-  ApiOperationRequestRepresentationFormParameter({
+  const ApiOperationRequestRepresentationFormParameter({
     this.defaultValue,
     this.description,
     this.examples,

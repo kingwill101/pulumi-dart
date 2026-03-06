@@ -21,7 +21,7 @@ class AwsEfsMountTargetProperties {
   /// [ipAddress] Valid IPv4 address within the address range of the specified subnet.
   /// [securityGroups] Up to five VPC security group IDs, of the form ``sg-xxxxxxxx``. These must be for the same VPC as subnet specified.
   /// [subnetId] The ID of the subnet to add the mount target in. For One Zone file systems, use the subnet that is associated with the file system's Availability Zone.
-  AwsEfsMountTargetProperties({
+  const AwsEfsMountTargetProperties({
     this.fileSystemId,
     this.id,
     this.ipAddress,

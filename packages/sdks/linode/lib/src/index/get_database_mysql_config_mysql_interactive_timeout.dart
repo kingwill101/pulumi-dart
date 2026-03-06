@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInteractiveTimeout {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInteractiveTimeout({
+  const GetDatabaseMysqlConfigMysqlInteractiveTimeout({
     required this.description,
     required this.example,
     required this.maximum,

@@ -25,7 +25,7 @@ class DeidentifyConfig {
   /// [image] Configures de-identification of image pixels wherever they are found in the source_dataset.
   /// [text] Configures de-identification of text wherever it is found in the source_dataset.
   /// [useRegionalDataProcessing] Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
-  DeidentifyConfig({
+  const DeidentifyConfig({
     this.dicom,
     this.fhir,
     this.image,

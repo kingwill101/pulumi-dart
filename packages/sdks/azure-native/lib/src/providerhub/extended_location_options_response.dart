@@ -10,7 +10,7 @@ class ExtendedLocationOptionsResponse {
   /// Creates a new [ExtendedLocationOptionsResponse].
   /// [supportedPolicy] Optional.
   /// [type] The type.
-  ExtendedLocationOptionsResponse({
+  const ExtendedLocationOptionsResponse({
     this.supportedPolicy,
     this.type,
   });

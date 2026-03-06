@@ -30,7 +30,7 @@ class GetTableResult {
   /// [name] The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id}
   /// [type] The table type.
   /// [updateTime] The last modification time of the table.
-  GetTableResult({
+  const GetTableResult({
     required this.createTime,
     required this.deleteTime,
     required this.etag,

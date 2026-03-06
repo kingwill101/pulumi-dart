@@ -14,7 +14,7 @@ class GroupContainerVolumeGitRepo {
   /// [directory] Specifies the directory into which the repository should be cloned. Changing this forces a new resource to be created.
   /// [revision] Specifies the commit hash of the revision to be cloned. If unspecified, the HEAD revision is cloned. Changing this forces a new resource to be created.
   /// [url] Specifies the Git repository to be cloned. Changing this forces a new resource to be created.
-  GroupContainerVolumeGitRepo({
+  const GroupContainerVolumeGitRepo({
     this.directory,
     this.revision,
     required this.url,

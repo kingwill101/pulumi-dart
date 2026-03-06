@@ -10,7 +10,7 @@ class CustomServiceTelemetry {
 
   /// Creates a new [CustomServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  CustomServiceTelemetry({
+  const CustomServiceTelemetry({
     this.resourceName,
   });
 

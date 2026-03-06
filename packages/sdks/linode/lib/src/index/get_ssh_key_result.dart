@@ -16,7 +16,7 @@ class GetSshKeyResult {
   /// [id] The ID of the SSH Key
   /// [label] Required.
   /// [sshKey] The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-  GetSshKeyResult({
+  const GetSshKeyResult({
     required this.created,
     this.id,
     required this.label,

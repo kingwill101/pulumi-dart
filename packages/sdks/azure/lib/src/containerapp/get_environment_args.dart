@@ -15,7 +15,7 @@ class GetEnvironmentArgs {
   /// Creates a new [GetEnvironmentArgs].
   /// [name] The name of the Container Apps Managed Environment.
   /// [resourceGroupName] The name of the Resource Group where this Container App Environment exists.
-  GetEnvironmentArgs({
+  const GetEnvironmentArgs({
     required this.name,
     required this.resourceGroupName,
   });

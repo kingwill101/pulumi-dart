@@ -44,7 +44,7 @@ class LabelingJobHumanTaskConfig {
   /// [taskTitle] Title for the task.
   /// [uiConfig] Information about the user interface that workers use to complete the labeling task. Fields are documented below.
   /// [workteamArn] ARN of the work team assigned to complete the tasks.
-  LabelingJobHumanTaskConfig({
+  const LabelingJobHumanTaskConfig({
     this.annotationConsolidationConfig,
     this.maxConcurrentTaskCount,
     required this.numberOfHumanWorkersPerDataObject,

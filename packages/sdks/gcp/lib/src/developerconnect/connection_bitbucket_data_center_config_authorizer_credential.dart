@@ -14,7 +14,7 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredential {
   /// Creates a new [ConnectionBitbucketDataCenterConfigAuthorizerCredential].
   /// [userTokenSecretVersion] Required. A SecretManager resource containing the user token that authorizes
   /// [username] (Output)
-  ConnectionBitbucketDataCenterConfigAuthorizerCredential({
+  const ConnectionBitbucketDataCenterConfigAuthorizerCredential({
     required this.userTokenSecretVersion,
     this.username,
   });

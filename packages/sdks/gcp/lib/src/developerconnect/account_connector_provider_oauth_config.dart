@@ -21,7 +21,7 @@ class AccountConnectorProviderOauthConfig {
   /// Creates a new [AccountConnectorProviderOauthConfig].
   /// [scopes] Required. User selected scopes to apply to the Oauth config
   /// [systemProviderId] List of providers that are owned by Developer Connect.
-  AccountConnectorProviderOauthConfig({
+  const AccountConnectorProviderOauthConfig({
     required this.scopes,
     this.systemProviderId,
   });

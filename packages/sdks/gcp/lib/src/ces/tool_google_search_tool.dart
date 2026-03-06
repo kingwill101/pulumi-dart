@@ -30,7 +30,7 @@ class ToolGoogleSearchTool {
   /// [excludeDomains] List of domains to be excluded from the search results.
   /// [name] The name of the tool.
   /// [preferredDomains] Specifies domain names to guide the search.
-  ToolGoogleSearchTool({
+  const ToolGoogleSearchTool({
     this.contextUrls,
     this.description,
     this.excludeDomains,

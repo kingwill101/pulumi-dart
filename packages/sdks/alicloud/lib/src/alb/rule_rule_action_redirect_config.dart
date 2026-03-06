@@ -23,7 +23,7 @@ class RuleRuleActionRedirectConfig {
   /// [port] The port of the destination to which requests are redirected. Valid values: `1` to `63335`. Default value: ${port}. You cannot use this value together with other characters at the same time.
   /// [protocol] The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
   /// [query] The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | &lt; &gt; &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
-  RuleRuleActionRedirectConfig({
+  const RuleRuleActionRedirectConfig({
     this.host,
     this.httpCode,
     this.path,

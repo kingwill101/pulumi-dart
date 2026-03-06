@@ -21,7 +21,7 @@ class SnapshotArgs {
   /// [desktopId] The ID of the Desktop.
   /// [snapshotName] The name of the Snapshot.
   /// [sourceDiskType] The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
-  SnapshotArgs({
+  const SnapshotArgs({
     this.description,
     required this.desktopId,
     required this.snapshotName,

@@ -9,7 +9,7 @@ class ComputeInstanceVersionResponse {
 
   /// Creates a new [ComputeInstanceVersionResponse].
   /// [runtime] Runtime of compute instance.
-  ComputeInstanceVersionResponse({
+  const ComputeInstanceVersionResponse({
     this.runtime,
   });
 

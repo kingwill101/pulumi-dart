@@ -8,7 +8,7 @@ class FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles {
 
   /// Creates a new [FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles].
   /// [items] Optional.
-  FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles({
+  const FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles({
     this.items,
   });
 

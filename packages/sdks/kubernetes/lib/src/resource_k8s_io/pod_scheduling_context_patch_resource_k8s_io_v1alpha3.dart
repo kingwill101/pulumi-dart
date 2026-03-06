@@ -26,7 +26,7 @@ class PodSchedulingContextPatchResourceK8sIoV1alpha3 {
   /// [metadata] Standard object metadata
   /// [spec] Spec describes where resources for the Pod are needed.
   /// [status] Status describes where resources for the Pod can be allocated.
-  PodSchedulingContextPatchResourceK8sIoV1alpha3({
+  const PodSchedulingContextPatchResourceK8sIoV1alpha3({
     this.apiVersion,
     this.kind,
     this.metadata,

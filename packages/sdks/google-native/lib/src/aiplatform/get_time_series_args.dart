@@ -21,7 +21,7 @@ class GetTimeSeriesArgs {
   /// [runId] Required.
   /// [tensorboardId] Required.
   /// [timeSeriesId] Required.
-  GetTimeSeriesArgs({
+  const GetTimeSeriesArgs({
     required this.experimentId,
     required this.location,
     this.project,

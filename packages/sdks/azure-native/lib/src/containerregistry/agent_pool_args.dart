@@ -36,7 +36,7 @@ class AgentPoolArgs {
   /// [tags] The tags of the resource.
   /// [tier] The Tier of agent machine
   /// [virtualNetworkSubnetResourceId] The Virtual Network Subnet Resource Id of the agent machine
-  AgentPoolArgs({
+  const AgentPoolArgs({
     this.agentPoolName,
     this.count,
     this.location,

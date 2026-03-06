@@ -15,7 +15,7 @@ class GetProfileArgs {
   /// Creates a new [GetProfileArgs].
   /// [profileName] The name of the Traffic Manager profile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProfileArgs({
+  const GetProfileArgs({
     required this.profileName,
     required this.resourceGroupName,
   });

@@ -10,7 +10,7 @@ class SlsaCheckResponse {
 
   /// Creates a new [SlsaCheckResponse].
   /// [rules] Specifies a list of verification rules for the SLSA attestations. An image is considered compliant with the SlsaCheck if any of the rules are satisfied.
-  SlsaCheckResponse({
+  const SlsaCheckResponse({
     required this.rules,
   });
 

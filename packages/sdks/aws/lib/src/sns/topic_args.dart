@@ -96,7 +96,7 @@ class TopicArgs {
   /// [sqsSuccessFeedbackSampleRate] Percentage of success to sample
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tracingConfig] Tracing mode of an Amazon SNS topic. Valid values: `"PassThrough"`, `"Active"`.
-  TopicArgs({
+  const TopicArgs({
     this.applicationFailureFeedbackRoleArn,
     this.applicationSuccessFeedbackRoleArn,
     this.applicationSuccessFeedbackSampleRate,

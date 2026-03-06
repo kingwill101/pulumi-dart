@@ -18,7 +18,7 @@ class AclEntryAttachmentArgs {
   /// [aclId] The ID of the ACL that the entry will be attached to.
   /// [comment] The comment for the entry.
   /// [entry] The CIDR block of the entry to attach.
-  AclEntryAttachmentArgs({
+  const AclEntryAttachmentArgs({
     required this.aclId,
     this.comment,
     required this.entry,

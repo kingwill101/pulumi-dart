@@ -37,7 +37,7 @@ class GetWafSignaturesResult {
   /// [systemSignatureId] System generated ID of the signature.
   /// [tag] Required.
   /// [type] Type of the signature.
-  GetWafSignaturesResult({
+  const GetWafSignaturesResult({
     required this.accuracy,
     this.description,
     this.enabled,

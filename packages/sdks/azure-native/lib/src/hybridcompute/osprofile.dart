@@ -14,7 +14,7 @@ class OSProfile {
   /// Creates a new [OSProfile].
   /// [linuxConfiguration] Specifies the linux configuration for update management.
   /// [windowsConfiguration] Specifies the windows configuration for update management.
-  OSProfile({
+  const OSProfile({
     this.linuxConfiguration,
     this.windowsConfiguration,
   });

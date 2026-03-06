@@ -10,7 +10,7 @@ class AuthorizationLoggingOptionsGameservicesV1beta {
 
   /// Creates a new [AuthorizationLoggingOptionsGameservicesV1beta].
   /// [permissionType] The type of the permission that was checked.
-  AuthorizationLoggingOptionsGameservicesV1beta({
+  const AuthorizationLoggingOptionsGameservicesV1beta({
     this.permissionType,
   });
 

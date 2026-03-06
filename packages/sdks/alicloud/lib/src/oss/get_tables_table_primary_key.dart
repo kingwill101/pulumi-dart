@@ -9,7 +9,7 @@ class GetTablesTablePrimaryKey {
   /// Creates a new [GetTablesTablePrimaryKey].
   /// [name] Required.
   /// [type] Required.
-  GetTablesTablePrimaryKey({
+  const GetTablesTablePrimaryKey({
     required this.name,
     required this.type,
   });

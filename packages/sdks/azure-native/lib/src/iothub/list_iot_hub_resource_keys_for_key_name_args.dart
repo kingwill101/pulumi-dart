@@ -18,7 +18,7 @@ class ListIotHubResourceKeysForKeyNameArgs {
   /// [keyName] The name of the shared access policy.
   /// [resourceGroupName] The name of the resource group that contains the IoT hub.
   /// [resourceName] The name of the IoT hub.
-  ListIotHubResourceKeysForKeyNameArgs({
+  const ListIotHubResourceKeysForKeyNameArgs({
     required this.keyName,
     required this.resourceGroupName,
     required this.resourceName,

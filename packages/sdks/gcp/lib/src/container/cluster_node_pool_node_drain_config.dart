@@ -8,7 +8,7 @@ class ClusterNodePoolNodeDrainConfig {
 
   /// Creates a new [ClusterNodePoolNodeDrainConfig].
   /// [respectPdbDuringNodePoolDeletion] Whether to respect PodDisruptionBudget policy during node pool deletion.
-  ClusterNodePoolNodeDrainConfig({
+  const ClusterNodePoolNodeDrainConfig({
     this.respectPdbDuringNodePoolDeletion,
   });
 

@@ -15,7 +15,7 @@ class GetOutpostInstanceTypesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceTypes] Set of instance types.
   /// [region] Required.
-  GetOutpostInstanceTypesResult({
+  const GetOutpostInstanceTypesResult({
     required this.arn,
     required this.id,
     required this.instanceTypes,

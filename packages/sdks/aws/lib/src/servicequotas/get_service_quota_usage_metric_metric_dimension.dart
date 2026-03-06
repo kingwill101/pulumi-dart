@@ -13,7 +13,7 @@ class GetServiceQuotaUsageMetricMetricDimension {
   /// [resource] Required.
   /// [service] Required.
   /// [type] Required.
-  GetServiceQuotaUsageMetricMetricDimension({
+  const GetServiceQuotaUsageMetricMetricDimension({
     required this.class_,
     required this.resource,
     required this.service,

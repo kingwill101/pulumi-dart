@@ -41,7 +41,7 @@ class WorkspaceCodeSourceState {
   /// [displayName] Code source configuration name.
   /// [mountPath] The local Mount Directory of the code.
   /// [workspaceId] The ID of the workspace.
-  WorkspaceCodeSourceState({
+  const WorkspaceCodeSourceState({
     this.accessibility,
     this.codeBranch,
     this.codeCommit,

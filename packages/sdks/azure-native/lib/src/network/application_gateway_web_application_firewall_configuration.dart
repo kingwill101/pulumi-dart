@@ -38,7 +38,7 @@ class ApplicationGatewayWebApplicationFirewallConfiguration {
   /// [requestBodyCheck] Whether allow WAF to check request Body.
   /// [ruleSetType] The type of the web application firewall rule set. Possible values are: 'OWASP'.
   /// [ruleSetVersion] The version of the rule set type.
-  ApplicationGatewayWebApplicationFirewallConfiguration({
+  const ApplicationGatewayWebApplicationFirewallConfiguration({
     this.disabledRuleGroups,
     required this.enabled,
     this.exclusions,

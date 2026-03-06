@@ -22,7 +22,7 @@ class GetSqlDatabaseResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [throughput] The throughput of SQL database (RU/s).
-  GetSqlDatabaseResult({
+  const GetSqlDatabaseResult({
     required this.accountName,
     required this.autoscaleSettings,
     required this.id,

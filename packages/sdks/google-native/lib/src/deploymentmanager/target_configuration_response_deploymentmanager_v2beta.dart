@@ -13,7 +13,7 @@ class TargetConfigurationResponseDeploymentmanagerV2beta {
   /// Creates a new [TargetConfigurationResponseDeploymentmanagerV2beta].
   /// [config] The configuration to use for this deployment.
   /// [imports] Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template.
-  TargetConfigurationResponseDeploymentmanagerV2beta({
+  const TargetConfigurationResponseDeploymentmanagerV2beta({
     required this.config,
     required this.imports,
   });

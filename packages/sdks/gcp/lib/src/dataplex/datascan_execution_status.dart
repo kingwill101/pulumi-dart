@@ -13,7 +13,7 @@ class DatascanExecutionStatus {
   /// Creates a new [DatascanExecutionStatus].
   /// [latestJobEndTime] (Output)
   /// [latestJobStartTime] (Output)
-  DatascanExecutionStatus({
+  const DatascanExecutionStatus({
     this.latestJobEndTime,
     this.latestJobStartTime,
   });

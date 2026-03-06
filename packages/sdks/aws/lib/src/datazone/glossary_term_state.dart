@@ -42,7 +42,7 @@ class GlossaryTermState {
   /// [status] If glossary term is ENABLED or DISABLED.
   /// [termRelations] Object classifying the term relations through the following attributes:
   /// [timeouts] Optional.
-  GlossaryTermState({
+  const GlossaryTermState({
     this.createdAt,
     this.createdBy,
     this.domainIdentifier,

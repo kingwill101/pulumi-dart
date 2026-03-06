@@ -9,7 +9,7 @@ class MitigationInEffectEnumEnumValue {
 
   /// Creates a new [MitigationInEffectEnumEnumValue].
   /// [value] Property value
-  MitigationInEffectEnumEnumValue({
+  const MitigationInEffectEnumEnumValue({
     this.value,
   });
 

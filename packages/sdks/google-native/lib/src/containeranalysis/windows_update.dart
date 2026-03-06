@@ -29,7 +29,7 @@ class WindowsUpdate {
   /// [lastPublishedTimestamp] The last published timestamp of the update.
   /// [supportUrl] The hyperlink to the support information for the update.
   /// [title] The localized title of the update.
-  WindowsUpdate({
+  const WindowsUpdate({
     this.categories,
     this.description,
     this.identity,

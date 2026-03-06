@@ -19,7 +19,7 @@ class BucketLifecycleConfigurationS3ControlArgs {
   /// [bucket] Amazon Resource Name (ARN) of the bucket.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] Configuration block(s) containing lifecycle rules for the bucket.
-  BucketLifecycleConfigurationS3ControlArgs({
+  const BucketLifecycleConfigurationS3ControlArgs({
     required this.bucket,
     this.region,
     required this.rules,

@@ -7,7 +7,7 @@ class GetLaunchTemplateMonitoring {
 
   /// Creates a new [GetLaunchTemplateMonitoring].
   /// [enabled] Required.
-  GetLaunchTemplateMonitoring({
+  const GetLaunchTemplateMonitoring({
     required this.enabled,
   });
 

@@ -18,7 +18,7 @@ class GetDatasetIamPolicyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyData] (Computed) The policy data
   /// [project] Required.
-  GetDatasetIamPolicyResult({
+  const GetDatasetIamPolicyResult({
     required this.datasetId,
     required this.etag,
     required this.id,

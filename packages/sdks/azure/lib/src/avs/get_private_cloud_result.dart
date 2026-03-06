@@ -60,7 +60,7 @@ class GetPrivateCloudResult {
   /// [vcenterCertificateThumbprint] The thumbprint of the VMware vCenter Server SSL certificate.
   /// [vcsaEndpoint] The endpoint for VMware vCenter Server Appliance.
   /// [vmotionSubnetCidr] The network which is used for live migration of virtual machines.
-  GetPrivateCloudResult({
+  const GetPrivateCloudResult({
     required this.circuits,
     required this.hcxCloudManagerEndpoint,
     required this.id,

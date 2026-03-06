@@ -60,7 +60,7 @@ class InfraAlertConditionArgs {
   /// [violationCloseTimer] Determines how much time will pass (in hours) before an incident is automatically closed. Valid values are `1 2 4 8 12 24 48 72`. Defaults to 24. If `0` is provided, default of `24` is used and will have configuration drift during the apply phase until a valid value is provided.
   /// [warning] Identifies the threshold parameters for opening a warning alert incident. See Thresholds below for details.
   /// [where] If applicable, this identifies any Infrastructure host filters used; for example: `hostname LIKE '%cassandra%'`.
-  InfraAlertConditionArgs({
+  const InfraAlertConditionArgs({
     this.comparison,
     this.critical,
     this.description,

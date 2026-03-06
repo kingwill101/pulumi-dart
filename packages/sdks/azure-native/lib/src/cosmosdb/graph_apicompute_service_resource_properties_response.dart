@@ -29,7 +29,7 @@ class GraphAPIComputeServiceResourcePropertiesResponse {
   /// [locations] An array that contains all of the locations for the service.
   /// [serviceType] ServiceType for the service.
   /// [status] Describes the status of a service.
-  GraphAPIComputeServiceResourcePropertiesResponse({
+  const GraphAPIComputeServiceResourcePropertiesResponse({
     required this.creationTime,
     this.graphApiComputeEndpoint,
     this.instanceCount,

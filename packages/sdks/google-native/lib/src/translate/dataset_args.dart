@@ -25,7 +25,7 @@ class DatasetArgs {
   /// [project] Optional.
   /// [sourceLanguageCode] The BCP-47 language code of the source language.
   /// [targetLanguageCode] The BCP-47 language code of the target language.
-  DatasetArgs({
+  const DatasetArgs({
     this.displayName,
     this.location,
     this.name,

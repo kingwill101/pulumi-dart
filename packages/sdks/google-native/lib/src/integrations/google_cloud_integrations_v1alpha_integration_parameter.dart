@@ -36,7 +36,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameter {
   /// [key] Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
   /// [producer] The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
   /// [searchable] Searchable in the execution log or not.
-  GoogleCloudIntegrationsV1alphaIntegrationParameter({
+  const GoogleCloudIntegrationsV1alphaIntegrationParameter({
     this.dataType,
     this.defaultValue,
     this.displayName,

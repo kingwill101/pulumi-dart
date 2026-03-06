@@ -23,7 +23,7 @@ class DatasetBinaryAzureBlobStorageLocation {
   /// [dynamicPathEnabled] Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   /// [filename] The filename of the file in the blob container.
   /// [path] The folder path to the file in the blob container.
-  DatasetBinaryAzureBlobStorageLocation({
+  const DatasetBinaryAzureBlobStorageLocation({
     required this.container,
     this.dynamicContainerEnabled,
     this.dynamicFilenameEnabled,

@@ -13,7 +13,7 @@ class AppImageConfigJupyterLabImageConfig {
   /// Creates a new [AppImageConfigJupyterLabImageConfig].
   /// [containerConfig] The configuration used to run the application image container. See Container Config details below.
   /// [fileSystemConfig] The URL where the Git repository is located. See File System Config details below.
-  AppImageConfigJupyterLabImageConfig({
+  const AppImageConfigJupyterLabImageConfig({
     this.containerConfig,
     this.fileSystemConfig,
   });

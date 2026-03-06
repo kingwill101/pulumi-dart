@@ -34,7 +34,7 @@ class NetworkFirewallFirewallPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  NetworkFirewallFirewallPropertiesResponse({
+  const NetworkFirewallFirewallPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

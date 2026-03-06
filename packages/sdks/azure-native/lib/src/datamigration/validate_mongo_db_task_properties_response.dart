@@ -32,7 +32,7 @@ class ValidateMongoDbTaskPropertiesResponse {
   /// [output] An array containing a single MongoDbMigrationProgress object
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskType] Task type.
-  ValidateMongoDbTaskPropertiesResponse({
+  const ValidateMongoDbTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

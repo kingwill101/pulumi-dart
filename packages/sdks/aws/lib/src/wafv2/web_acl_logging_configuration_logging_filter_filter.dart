@@ -15,7 +15,7 @@ class WebAclLoggingConfigurationLoggingFilterFilter {
   /// [behavior] Parameter that determines how to handle logs that meet the conditions and requirements of the filter. The valid values for `behavior` are `KEEP` or `DROP`.
   /// [conditions] Match condition(s) for the filter. See Condition below for more details.
   /// [requirement] Logic to apply to the filtering conditions. You can specify that a log must match all conditions or at least one condition in order to satisfy the filter. Valid values for `requirement` are `MEETS_ALL` or `MEETS_ANY`.
-  WebAclLoggingConfigurationLoggingFilterFilter({
+  const WebAclLoggingConfigurationLoggingFilterFilter({
     required this.behavior,
     required this.conditions,
     required this.requirement,

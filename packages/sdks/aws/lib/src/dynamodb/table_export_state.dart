@@ -63,7 +63,7 @@ class TableExportState {
   /// [s3SseKmsKeyId] ID of the AWS KMS managed key used to encrypt the S3 bucket where export data will be stored (if applicable).
   /// [startTime] Time at which the export task began.
   /// [tableArn] ARN associated with the table to export.
-  TableExportState({
+  const TableExportState({
     this.arn,
     this.billedSizeInBytes,
     this.endTime,

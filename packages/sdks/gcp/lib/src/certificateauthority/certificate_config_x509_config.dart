@@ -40,7 +40,7 @@ class CertificateConfigX509Config {
   /// [keyUsage] (Output)
   /// [nameConstraints] (Output)
   /// [policyIds] (Output)
-  CertificateConfigX509Config({
+  const CertificateConfigX509Config({
     this.additionalExtensions,
     this.aiaOcspServers,
     this.caOptions,

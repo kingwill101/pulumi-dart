@@ -12,7 +12,7 @@ class ScheduleWebsecurityscannerV1beta {
   /// Creates a new [ScheduleWebsecurityscannerV1beta].
   /// [intervalDurationDays] The duration of time between executions in days.
   /// [scheduleTime] A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
-  ScheduleWebsecurityscannerV1beta({
+  const ScheduleWebsecurityscannerV1beta({
     required this.intervalDurationDays,
     this.scheduleTime,
   });

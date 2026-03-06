@@ -115,7 +115,7 @@ class FlexibleServerState {
   /// [tags] A mapping of tags which should be assigned to the MySQL Flexible Server.
   /// [version] The version of the MySQL Flexible Server to use. Possible values are `5.7`, `8.0.21` and `8.4`.
   /// [zone] Specifies the Availability Zone in which this MySQL Flexible Server should be located. Possible values are `1`, `2` and `3`.
-  FlexibleServerState({
+  const FlexibleServerState({
     this.administratorLogin,
     this.administratorPassword,
     this.administratorPasswordWoVersion,

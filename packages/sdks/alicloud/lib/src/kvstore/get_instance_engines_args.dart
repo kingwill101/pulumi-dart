@@ -24,7 +24,7 @@ class GetInstanceEnginesArgs {
   /// [instanceChargeType] Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
   /// [outputFile] File name where to save data source results (after running `pulumi up`).
   /// [zoneId] The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
-  GetInstanceEnginesArgs({
+  const GetInstanceEnginesArgs({
     this.engine,
     this.engineVersion,
     this.instanceChargeType,

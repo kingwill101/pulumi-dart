@@ -27,7 +27,7 @@ class SqlSitesControllerArgs {
   /// [siteAppliancePropertiesCollection] Gets or sets the appliance details used by service to communicate
   /// [siteName] Site name
   /// [sqlSiteName] SQL site name.
-  SqlSitesControllerArgs({
+  const SqlSitesControllerArgs({
     this.discoveryScenario,
     required this.resourceGroupName,
     this.siteAppliancePropertiesCollection,

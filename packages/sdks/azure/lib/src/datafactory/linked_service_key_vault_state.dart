@@ -30,7 +30,7 @@ class LinkedServiceKeyVaultState {
   /// [keyVaultId] The ID the Azure Key Vault resource.
   /// [name] Specifies the name of the Data Factory Linked Service Key Vault. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service Key Vault.
-  LinkedServiceKeyVaultState({
+  const LinkedServiceKeyVaultState({
     this.additionalProperties,
     this.annotations,
     this.dataFactoryId,

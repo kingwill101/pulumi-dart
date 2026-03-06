@@ -27,7 +27,7 @@ class VpcIpamPoolCidrAllocationArgs {
   /// [ipamPoolId] The ID of the pool to which you want to assign a CIDR.
   /// [netmaskLength] The netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  VpcIpamPoolCidrAllocationArgs({
+  const VpcIpamPoolCidrAllocationArgs({
     this.cidr,
     this.description,
     this.disallowedCidrs,

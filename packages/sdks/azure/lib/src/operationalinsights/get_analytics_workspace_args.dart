@@ -15,7 +15,7 @@ class GetAnalyticsWorkspaceArgs {
   /// Creates a new [GetAnalyticsWorkspaceArgs].
   /// [name] Specifies the name of the Log Analytics Workspace.
   /// [resourceGroupName] The name of the resource group in which the Log Analytics workspace is located in.
-  GetAnalyticsWorkspaceArgs({
+  const GetAnalyticsWorkspaceArgs({
     required this.name,
     required this.resourceGroupName,
   });

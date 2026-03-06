@@ -100,7 +100,7 @@ class JobJobsV4Args {
   /// [tenantId] Required.
   /// [title] The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
   /// [visibility] Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
-  JobJobsV4Args({
+  const JobJobsV4Args({
     this.addresses,
     this.applicationInfo,
     required this.company,

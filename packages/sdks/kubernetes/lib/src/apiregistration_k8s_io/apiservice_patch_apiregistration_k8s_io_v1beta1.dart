@@ -23,7 +23,7 @@ class APIServicePatchApiregistrationK8sIoV1beta1 {
   /// [metadata] Optional.
   /// [spec] Spec contains information for locating and communicating with a server
   /// [status] Status contains derived information about an API server
-  APIServicePatchApiregistrationK8sIoV1beta1({
+  const APIServicePatchApiregistrationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

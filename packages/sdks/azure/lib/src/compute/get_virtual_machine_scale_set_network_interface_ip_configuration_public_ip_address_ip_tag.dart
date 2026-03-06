@@ -11,7 +11,7 @@ class GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpT
   /// Creates a new [GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag].
   /// [tag] The IP Tag associated with the Public IP.
   /// [type] The Type of IP Tag.
-  GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag({
+  const GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag({
     required this.tag,
     required this.type,
   });

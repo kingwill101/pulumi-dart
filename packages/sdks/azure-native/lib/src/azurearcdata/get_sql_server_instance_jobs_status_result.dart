@@ -10,7 +10,7 @@ class GetSqlServerInstanceJobsStatusResult {
 
   /// Creates a new [GetSqlServerInstanceJobsStatusResult].
   /// [jobsStatus] The list of jobs status running on the SQL Server instance.
-  GetSqlServerInstanceJobsStatusResult({
+  const GetSqlServerInstanceJobsStatusResult({
     this.jobsStatus,
   });
 

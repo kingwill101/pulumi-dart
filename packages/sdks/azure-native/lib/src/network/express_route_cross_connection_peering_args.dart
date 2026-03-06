@@ -56,7 +56,7 @@ class ExpressRouteCrossConnectionPeeringArgs {
   /// [sharedKey] The shared key.
   /// [state] The peering state.
   /// [vlanId] The VLAN ID.
-  ExpressRouteCrossConnectionPeeringArgs({
+  const ExpressRouteCrossConnectionPeeringArgs({
     required this.crossConnectionName,
     this.gatewayManagerEtag,
     this.id,

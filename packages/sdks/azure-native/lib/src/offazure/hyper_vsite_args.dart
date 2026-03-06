@@ -30,7 +30,7 @@ class HyperVSiteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name.
   /// [tags] Optional.
-  HyperVSiteArgs({
+  const HyperVSiteArgs({
     this.eTag,
     this.location,
     this.name,

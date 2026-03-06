@@ -14,7 +14,7 @@ class DataSourceParametersSnowflake {
   /// [database] The database to which to connect.
   /// [host] The host to which to connect.
   /// [warehouse] The warehouse to which to connect.
-  DataSourceParametersSnowflake({
+  const DataSourceParametersSnowflake({
     required this.database,
     required this.host,
     required this.warehouse,

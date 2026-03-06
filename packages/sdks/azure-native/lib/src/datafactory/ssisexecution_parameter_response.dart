@@ -9,7 +9,7 @@ class SSISExecutionParameterResponse {
 
   /// Creates a new [SSISExecutionParameterResponse].
   /// [value] SSIS package execution parameter value. Type: string (or Expression with resultType string).
-  SSISExecutionParameterResponse({
+  const SSISExecutionParameterResponse({
     required this.value,
   });
 

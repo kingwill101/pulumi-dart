@@ -9,7 +9,7 @@ class GetRulesRuleForwardIp {
   /// Creates a new [GetRulesRuleForwardIp].
   /// [ip] Required.
   /// [port] Required.
-  GetRulesRuleForwardIp({
+  const GetRulesRuleForwardIp({
     required this.ip,
     required this.port,
   });

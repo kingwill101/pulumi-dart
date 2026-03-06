@@ -20,7 +20,7 @@ class GetGroupsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetGroupsResult({
+  const GetGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

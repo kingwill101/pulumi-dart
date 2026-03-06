@@ -28,7 +28,7 @@ class ClusterClusterConfigPreemptibleWorkerConfig {
   /// [instanceNames] List of preemptible instance names which have been assigned
   /// [numInstances] Specifies the number of preemptible nodes to create.
   /// [preemptibility] Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
-  ClusterClusterConfigPreemptibleWorkerConfig({
+  const ClusterClusterConfigPreemptibleWorkerConfig({
     this.diskConfig,
     this.instanceFlexibilityPolicy,
     this.instanceNames,

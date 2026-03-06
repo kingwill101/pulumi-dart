@@ -90,7 +90,7 @@ class SysctlConfigResponse {
   /// [vmMaxMapCount] Sysctl setting vm.max_map_count.
   /// [vmSwappiness] Sysctl setting vm.swappiness.
   /// [vmVfsCachePressure] Sysctl setting vm.vfs_cache_pressure.
-  SysctlConfigResponse({
+  const SysctlConfigResponse({
     this.fsAioMaxNr,
     this.fsFileMax,
     this.fsInotifyMaxUserWatches,

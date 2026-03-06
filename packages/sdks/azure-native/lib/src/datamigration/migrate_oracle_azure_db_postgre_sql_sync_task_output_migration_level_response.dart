@@ -30,7 +30,7 @@ class MigrateOracleAzureDbPostgreSqlSyncTaskOutputMigrationLevelResponse {
   /// [startedOn] Migration start time
   /// [targetServer] Target server name
   /// [targetServerVersion] Target server version
-  MigrateOracleAzureDbPostgreSqlSyncTaskOutputMigrationLevelResponse({
+  const MigrateOracleAzureDbPostgreSqlSyncTaskOutputMigrationLevelResponse({
     required this.endedOn,
     required this.id,
     required this.resultType,

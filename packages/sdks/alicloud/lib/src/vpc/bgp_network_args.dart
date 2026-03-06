@@ -18,7 +18,7 @@ class BgpNetworkArgs {
   /// [dstCidrBlock] The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
   /// [routerId] The region ID of the virtual border router (VBR) group.
   /// [vpcId] The ID of the VPC.
-  BgpNetworkArgs({
+  const BgpNetworkArgs({
     required this.dstCidrBlock,
     required this.routerId,
     this.vpcId,

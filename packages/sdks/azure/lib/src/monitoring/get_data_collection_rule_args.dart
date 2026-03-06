@@ -15,7 +15,7 @@ class GetDataCollectionRuleArgs {
   /// Creates a new [GetDataCollectionRuleArgs].
   /// [name] Specifies the name of the Data Collection Rule.
   /// [resourceGroupName] Specifies the name of the resource group the Data Collection Rule is located in.
-  GetDataCollectionRuleArgs({
+  const GetDataCollectionRuleArgs({
     required this.name,
     required this.resourceGroupName,
   });

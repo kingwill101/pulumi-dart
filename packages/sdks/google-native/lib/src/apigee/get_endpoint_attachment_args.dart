@@ -13,7 +13,7 @@ class GetEndpointAttachmentArgs {
   /// Creates a new [GetEndpointAttachmentArgs].
   /// [endpointAttachmentId] Required.
   /// [organizationId] Required.
-  GetEndpointAttachmentArgs({
+  const GetEndpointAttachmentArgs({
     required this.endpointAttachmentId,
     required this.organizationId,
   });

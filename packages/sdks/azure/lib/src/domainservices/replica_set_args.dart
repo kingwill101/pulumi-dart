@@ -18,7 +18,7 @@ class ReplicaSetArgs {
   /// [domainServiceId] The ID of the Domain Service for which to create this Replica Set. Changing this forces a new resource to be created.
   /// [location] The Azure location where this Replica Set should exist. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet in which to place this Replica Set. Changing this forces a new resource to be created.
-  ReplicaSetArgs({
+  const ReplicaSetArgs({
     required this.domainServiceId,
     this.location,
     required this.subnetId,

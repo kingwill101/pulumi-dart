@@ -8,7 +8,7 @@ class AccountEncryption {
 
   /// Creates a new [AccountEncryption].
   /// [keyVaultKeyId] The full URL path to the Azure key vault key id that should be used to encrypt data, as documented [here](https://docs.microsoft.com/azure/batch/batch-customer-managed-key). Both versioned and versionless keys are supported.
-  AccountEncryption({
+  const AccountEncryption({
     required this.keyVaultKeyId,
   });
 

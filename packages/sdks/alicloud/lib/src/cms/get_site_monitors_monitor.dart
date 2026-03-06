@@ -23,7 +23,7 @@ class GetSiteMonitorsMonitor {
   /// [taskId] Task ID.
   /// [taskName] Task Name.
   /// [taskType] Task Type.
-  GetSiteMonitorsMonitor({
+  const GetSiteMonitorsMonitor({
     required this.address,
     required this.createTime,
     required this.interval,

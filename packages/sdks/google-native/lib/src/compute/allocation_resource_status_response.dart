@@ -10,7 +10,7 @@ class AllocationResourceStatusResponse {
 
   /// Creates a new [AllocationResourceStatusResponse].
   /// [specificSkuAllocation] Allocation Properties of this reservation.
-  AllocationResourceStatusResponse({
+  const AllocationResourceStatusResponse({
     required this.specificSkuAllocation,
   });
 

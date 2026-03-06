@@ -15,7 +15,7 @@ class GetPrivateCloudArgs {
   /// Creates a new [GetPrivateCloudArgs].
   /// [name] The name of this Azure VMware Solution Private Cloud.
   /// [resourceGroupName] The name of the Resource Group where the Azure VMware Solution Private Cloud exists.
-  GetPrivateCloudArgs({
+  const GetPrivateCloudArgs({
     required this.name,
     required this.resourceGroupName,
   });

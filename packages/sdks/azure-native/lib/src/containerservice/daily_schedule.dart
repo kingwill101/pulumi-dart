@@ -9,7 +9,7 @@ class DailySchedule {
 
   /// Creates a new [DailySchedule].
   /// [intervalDays] Specifies the number of days between each set of occurrences.
-  DailySchedule({
+  const DailySchedule({
     required this.intervalDays,
   });
 

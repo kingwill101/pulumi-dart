@@ -73,7 +73,7 @@ class GetClusterAddonsConfig {
   /// [podSnapshotConfigs] Configuration for the Pod Snapshot feature.
   /// [rayOperatorConfigs] The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
   /// [statefulHaConfigs] The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
-  GetClusterAddonsConfig({
+  const GetClusterAddonsConfig({
     required this.cloudrunConfigs,
     required this.configConnectorConfigs,
     required this.dnsCacheConfigs,

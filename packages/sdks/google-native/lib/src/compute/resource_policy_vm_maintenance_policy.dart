@@ -12,7 +12,7 @@ class ResourcePolicyVmMaintenancePolicy {
   /// Creates a new [ResourcePolicyVmMaintenancePolicy].
   /// [concurrencyControlGroup] Optional.
   /// [maintenanceWindow] Maintenance windows that are applied to VMs covered by this policy.
-  ResourcePolicyVmMaintenancePolicy({
+  const ResourcePolicyVmMaintenancePolicy({
     this.concurrencyControlGroup,
     this.maintenanceWindow,
   });

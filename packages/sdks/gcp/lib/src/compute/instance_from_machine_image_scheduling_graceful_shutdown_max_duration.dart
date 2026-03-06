@@ -15,7 +15,7 @@ class InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration {
   /// Creates a new [InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration({
+  const InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration({
     this.nanos,
     required this.seconds,
   });

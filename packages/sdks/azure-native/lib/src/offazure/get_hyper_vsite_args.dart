@@ -15,7 +15,7 @@ class GetHyperVSiteArgs {
   /// Creates a new [GetHyperVSiteArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name.
-  GetHyperVSiteArgs({
+  const GetHyperVSiteArgs({
     required this.resourceGroupName,
     required this.siteName,
   });

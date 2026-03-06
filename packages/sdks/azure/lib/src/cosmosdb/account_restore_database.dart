@@ -11,7 +11,7 @@ class AccountRestoreDatabase {
   /// Creates a new [AccountRestoreDatabase].
   /// [collectionNames] A list of the collection names for the restore request. Changing this forces a new resource to be created.
   /// [name] The database name for the restore request. Changing this forces a new resource to be created.
-  AccountRestoreDatabase({
+  const AccountRestoreDatabase({
     this.collectionNames,
     required this.name,
   });

@@ -21,7 +21,7 @@ class InstanceAutoscalingConfigAutoscalingTargets {
   /// [highPriorityCpuUtilizationPercent] Specifies the target high priority cpu utilization percentage that the autoscaler
   /// [storageUtilizationPercent] Specifies the target storage utilization percentage that the autoscaler
   /// [totalCpuUtilizationPercent] The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
-  InstanceAutoscalingConfigAutoscalingTargets({
+  const InstanceAutoscalingConfigAutoscalingTargets({
     this.highPriorityCpuUtilizationPercent,
     this.storageUtilizationPercent,
     this.totalCpuUtilizationPercent,

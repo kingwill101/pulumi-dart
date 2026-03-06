@@ -11,7 +11,7 @@ class GetBucketsBucketLifecycleRuleExpiration {
   /// Creates a new [GetBucketsBucketLifecycleRuleExpiration].
   /// [date] Date after which the rule to take effect. The format is like 2017-03-09.
   /// [days] Indicate the number of days after the last object update until the rules take effect.
-  GetBucketsBucketLifecycleRuleExpiration({
+  const GetBucketsBucketLifecycleRuleExpiration({
     required this.date,
     required this.days,
   });

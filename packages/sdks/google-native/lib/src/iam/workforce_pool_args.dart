@@ -33,7 +33,7 @@ class WorkforcePoolArgs {
   /// [parent] Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
   /// [sessionDuration] Duration that the Google Cloud access tokens, console sign-in sessions, and `gcloud` sign-in sessions from this pool are valid. Must be greater than 15 minutes (900s) and less than 12 hours (43200s). If `session_duration` is not configured, minted credentials have a default duration of one hour (3600s). For SAML providers, the lifetime of the token is the minimum of the `session_duration` and the `SessionNotOnOrAfter` claim in the SAML assertion.
   /// [workforcePoolId] The ID to use for the pool, which becomes the final component of the resource name. The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-  WorkforcePoolArgs({
+  const WorkforcePoolArgs({
     this.accessRestrictions,
     this.description,
     this.disabled,

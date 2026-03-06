@@ -18,7 +18,7 @@ class GetNotificationsArgs {
   /// [ids] A list of notification ids.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [scalingGroupId] Scaling group id the notifications belong to.
-  GetNotificationsArgs({
+  const GetNotificationsArgs({
     this.ids,
     this.outputFile,
     required this.scalingGroupId,

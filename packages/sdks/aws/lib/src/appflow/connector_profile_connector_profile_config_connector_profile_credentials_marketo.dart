@@ -14,7 +14,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo {
   /// [clientId] Required.
   /// [clientSecret] Required.
   /// [oauthRequest] Optional.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo({
     this.accessToken,
     required this.clientId,
     required this.clientSecret,

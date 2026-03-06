@@ -12,7 +12,7 @@ class MongoConnectionInformationResponse {
   /// Creates a new [MongoConnectionInformationResponse].
   /// [host] Host of mongo connection.
   /// [port] Port of mongo connection.
-  MongoConnectionInformationResponse({
+  const MongoConnectionInformationResponse({
     this.host,
     this.port,
   });

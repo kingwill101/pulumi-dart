@@ -9,7 +9,7 @@ class ApplicationGatewayBackendAddressPool {
 
   /// Creates a new [ApplicationGatewayBackendAddressPool].
   /// [resource] The application gateway backend address pool ARM resource Id.
-  ApplicationGatewayBackendAddressPool({
+  const ApplicationGatewayBackendAddressPool({
     this.resource,
   });
 

@@ -85,7 +85,7 @@ class Target {
   /// [passthroughBehaviour] Specifies how the method request body of an unmapped content type will be passed through the
   /// [type] Specifies an API method integration type. The valid value is one of the following:
   /// [uri] Specifies Uniform Resource Identifier (URI) of the integration endpoint.
-  Target({
+  const Target({
     this.connectionId,
     this.connectionType,
     this.httpMethod,

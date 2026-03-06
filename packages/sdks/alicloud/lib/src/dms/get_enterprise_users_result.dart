@@ -32,7 +32,7 @@ class GetEnterpriseUsersResult {
   /// [status] The status of the user.
   /// [tid] Optional.
   /// [users] A list of DMS Enterprise Users. Each element contains the following attributes:
-  GetEnterpriseUsersResult({
+  const GetEnterpriseUsersResult({
     required this.id,
     required this.ids,
     this.nameRegex,

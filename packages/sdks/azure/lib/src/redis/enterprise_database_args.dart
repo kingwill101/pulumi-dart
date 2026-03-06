@@ -41,7 +41,7 @@ class EnterpriseDatabaseArgs {
   /// [modules] A `module` block as defined below. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Redis Enterprise Database. Currently the acceptable value for this argument is `default`. Defaults to `default`. Changing this forces a new Redis Enterprise Database to be created.
   /// [port] TCP port of the database endpoint. Specified at create time. Defaults to an available port. Changing this forces a new Redis Enterprise Database to be created. Defaults to `10000`.
-  EnterpriseDatabaseArgs({
+  const EnterpriseDatabaseArgs({
     this.clientProtocol,
     required this.clusterId,
     this.clusteringPolicy,

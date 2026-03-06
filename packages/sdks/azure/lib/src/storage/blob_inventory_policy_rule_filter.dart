@@ -31,7 +31,7 @@ class BlobInventoryPolicyRuleFilter {
   /// [includeDeleted] Includes deleted blobs in blob inventory or not? Defaults to `false`.
   /// [includeSnapshots] Includes blob snapshots in blob inventory or not? Defaults to `false`.
   /// [prefixMatches] A set of strings for blob prefixes to be matched. Maximum of 10 blob prefixes.
-  BlobInventoryPolicyRuleFilter({
+  const BlobInventoryPolicyRuleFilter({
     required this.blobTypes,
     this.excludePrefixes,
     this.includeBlobVersions,

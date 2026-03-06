@@ -13,7 +13,7 @@ class ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1 {
   /// Creates a new [ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1].
   /// [allocatedAssetCount] Count of assets allocated to this machine series.
   /// [machineSeries] The Machine Series (e.g. "E2", "N2")
-  ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1({
+  const ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1({
     required this.allocatedAssetCount,
     required this.machineSeries,
   });

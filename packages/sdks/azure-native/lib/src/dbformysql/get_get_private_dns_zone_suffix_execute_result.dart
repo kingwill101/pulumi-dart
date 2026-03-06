@@ -8,7 +8,7 @@ class GetGetPrivateDnsZoneSuffixExecuteResult {
 
   /// Creates a new [GetGetPrivateDnsZoneSuffixExecuteResult].
   /// [privateDnsZoneSuffix] Represents the private DNS zone suffix.
-  GetGetPrivateDnsZoneSuffixExecuteResult({
+  const GetGetPrivateDnsZoneSuffixExecuteResult({
     this.privateDnsZoneSuffix,
   });
 

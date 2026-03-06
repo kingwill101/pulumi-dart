@@ -63,7 +63,7 @@ class CertificateIssuanceConfigState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [rotationWindowPercentage] It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
   /// [updateTime] The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
-  CertificateIssuanceConfigState({
+  const CertificateIssuanceConfigState({
     this.certificateAuthorityConfig,
     this.createTime,
     this.description,

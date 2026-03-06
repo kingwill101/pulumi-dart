@@ -11,7 +11,7 @@ class OneDashboardPageWidgetHistogramNullValueSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetHistogramNullValueSeriesOverride].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
   /// [seriesName] Series name
-  OneDashboardPageWidgetHistogramNullValueSeriesOverride({
+  const OneDashboardPageWidgetHistogramNullValueSeriesOverride({
     this.nullValue,
     this.seriesName,
   });

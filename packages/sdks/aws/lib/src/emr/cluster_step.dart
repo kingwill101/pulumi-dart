@@ -15,7 +15,7 @@ class ClusterStep {
   /// [actionOnFailure] Action to take if the step fails. Valid values: `TERMINATE_JOB_FLOW`, `TERMINATE_CLUSTER`, `CANCEL_AND_WAIT`, and `CONTINUE`
   /// [hadoopJarStep] JAR file used for the step. See below.
   /// [name] Name of the step.
-  ClusterStep({
+  const ClusterStep({
     required this.actionOnFailure,
     required this.hadoopJarStep,
     required this.name,

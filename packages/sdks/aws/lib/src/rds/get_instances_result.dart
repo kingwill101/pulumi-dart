@@ -22,7 +22,7 @@ class GetInstancesResult {
   /// [instanceIdentifiers] Identifiers of the matched RDS instances.
   /// [region] Required.
   /// [tags] Required.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.filters,
     required this.id,
     required this.instanceArns,

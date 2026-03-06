@@ -62,7 +62,7 @@ class WorkspaceDatasetversionState {
   /// [sourceType] The data source type. The default value is USER.
   /// [uri] The Uri configuration sample is as follows:
   /// [versionName] The name of the resource
-  WorkspaceDatasetversionState({
+  const WorkspaceDatasetversionState({
     this.createTime,
     this.dataCount,
     this.dataSize,

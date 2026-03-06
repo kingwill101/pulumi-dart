@@ -12,7 +12,7 @@ class MigrationEligibilityInfoResponse {
   /// Creates a new [MigrationEligibilityInfoResponse].
   /// [isEligibleForMigration] Whether object is eligible for migration or not.
   /// [validationMessages] Information about eligibility failure for the server object.
-  MigrationEligibilityInfoResponse({
+  const MigrationEligibilityInfoResponse({
     required this.isEligibleForMigration,
     required this.validationMessages,
   });

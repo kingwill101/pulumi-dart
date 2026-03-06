@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariation
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationCustomPayload({
+  const V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationCustomPayload({
     required this.value,
   });
 

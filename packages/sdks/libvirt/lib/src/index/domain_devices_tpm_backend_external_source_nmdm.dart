@@ -11,7 +11,7 @@ class DomainDevicesTpmBackendExternalSourceNmdm {
   /// Creates a new [DomainDevicesTpmBackendExternalSourceNmdm].
   /// [master] Specifies the master device in a master-slave NMDM configuration for the EGD backend.
   /// [slave] Specifies the slave device in a master-slave NMDM configuration for the EGD backend.
-  DomainDevicesTpmBackendExternalSourceNmdm({
+  const DomainDevicesTpmBackendExternalSourceNmdm({
     required this.master,
     required this.slave,
   });

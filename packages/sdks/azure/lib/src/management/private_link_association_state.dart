@@ -23,7 +23,7 @@ class PrivateLinkAssociationState {
   /// [publicNetworkAccessEnabled] Whether public network access is allowed. Changing this forces a new Private Link Association to be created.
   /// [resourceManagementPrivateLinkId] The Resource ID of Resource Management Private Link. Changing this forces a new Private Link Association to be created.
   /// [tenantId] The Tenant ID.
-  PrivateLinkAssociationState({
+  const PrivateLinkAssociationState({
     this.managementGroupId,
     this.name,
     this.publicNetworkAccessEnabled,

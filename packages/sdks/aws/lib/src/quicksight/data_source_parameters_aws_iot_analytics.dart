@@ -8,7 +8,7 @@ class DataSourceParametersAwsIotAnalytics {
 
   /// Creates a new [DataSourceParametersAwsIotAnalytics].
   /// [dataSetName] The name of the data set to which to connect.
-  DataSourceParametersAwsIotAnalytics({
+  const DataSourceParametersAwsIotAnalytics({
     required this.dataSetName,
   });
 

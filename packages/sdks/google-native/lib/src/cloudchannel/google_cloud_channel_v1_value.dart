@@ -21,7 +21,7 @@ class GoogleCloudChannelV1Value {
   /// [int64Value] Represents an int64 value.
   /// [protoValue] Represents an 'Any' proto value.
   /// [stringValue] Represents a string value.
-  GoogleCloudChannelV1Value({
+  const GoogleCloudChannelV1Value({
     this.boolValue,
     this.doubleValue,
     this.int64Value,

@@ -30,7 +30,7 @@ class GetLoadTestProfileMappingResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [testProfileId] Mapped Azure Load Test resource test-profile-id.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLoadTestProfileMappingResult({
+  const GetLoadTestProfileMappingResult({
     required this.azureApiVersion,
     this.azureLoadTestingResourceId,
     required this.id,

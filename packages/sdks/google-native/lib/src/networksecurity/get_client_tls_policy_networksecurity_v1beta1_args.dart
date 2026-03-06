@@ -15,7 +15,7 @@ class GetClientTlsPolicyNetworksecurityV1beta1Args {
   /// [clientTlsPolicyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetClientTlsPolicyNetworksecurityV1beta1Args({
+  const GetClientTlsPolicyNetworksecurityV1beta1Args({
     required this.clientTlsPolicyId,
     required this.location,
     this.project,

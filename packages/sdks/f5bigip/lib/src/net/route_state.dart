@@ -21,7 +21,7 @@ class RouteState {
   /// [network] The destination subnet and netmask for the route.
   /// [reject] reject route
   /// [tunnelRef] tunnel_ref to route traffic
-  RouteState({
+  const RouteState({
     this.gw,
     this.name,
     this.network,

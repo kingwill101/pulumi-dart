@@ -111,7 +111,7 @@ class GdcSparkApplicationState {
   /// [uid] System generated unique identifier for this application, formatted as UUID4.
   /// [updateTime] The timestamp when the resource was most recently updated.
   /// [version] The Dataproc version of this application.
-  GdcSparkApplicationState({
+  const GdcSparkApplicationState({
     this.annotations,
     this.applicationEnvironment,
     this.createTime,

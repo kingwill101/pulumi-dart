@@ -17,7 +17,7 @@ class ListenerRuleMatchHttpMatchHeaderMatch {
   /// [caseSensitive] Indicates whether the match is case sensitive.
   /// [match] The header match type.
   /// [name] The name of the header.
-  ListenerRuleMatchHttpMatchHeaderMatch({
+  const ListenerRuleMatchHttpMatchHeaderMatch({
     this.caseSensitive,
     required this.match,
     required this.name,

@@ -21,7 +21,7 @@ class AggregateFunctionProperties {
   /// [inputs] Optional.
   /// [output] Describes the output of a function.
   /// [type] Indicates the type of function.
-  AggregateFunctionProperties({
+  const AggregateFunctionProperties({
     this.binding,
     this.inputs,
     this.output,

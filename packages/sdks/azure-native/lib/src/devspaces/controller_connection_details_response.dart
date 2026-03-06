@@ -9,7 +9,7 @@ class ControllerConnectionDetailsResponse {
 
   /// Creates a new [ControllerConnectionDetailsResponse].
   /// [orchestratorSpecificConnectionDetails] Base class for types that supply values used to connect to container orchestrators
-  ControllerConnectionDetailsResponse({
+  const ControllerConnectionDetailsResponse({
     this.orchestratorSpecificConnectionDetails,
   });
 

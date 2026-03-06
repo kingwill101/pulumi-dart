@@ -12,7 +12,7 @@ class CustomDomainResponse {
   /// Creates a new [CustomDomainResponse].
   /// [domain] Domain name.
   /// [state] Domain state.
-  CustomDomainResponse({
+  const CustomDomainResponse({
     required this.domain,
     required this.state,
   });

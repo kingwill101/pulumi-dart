@@ -11,7 +11,7 @@ class DomainDomainSettingsDockerSettings {
   /// Creates a new [DomainDomainSettingsDockerSettings].
   /// [enableDockerAccess] Indicates whether the domain can access Docker. Valid values are `ENABLED` and `DISABLED`.
   /// [vpcOnlyTrustedAccounts] The list of Amazon Web Services accounts that are trusted when the domain is created in VPC-only mode.
-  DomainDomainSettingsDockerSettings({
+  const DomainDomainSettingsDockerSettings({
     this.enableDockerAccess,
     this.vpcOnlyTrustedAccounts,
   });

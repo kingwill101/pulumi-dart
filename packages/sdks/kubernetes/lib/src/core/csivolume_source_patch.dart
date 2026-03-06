@@ -22,7 +22,7 @@ class CSIVolumeSourcePatch {
   /// [nodePublishSecretRef] nodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secret references are passed.
   /// [readOnly] readOnly specifies a read-only configuration for the volume. Defaults to false (read/write).
   /// [volumeAttributes] volumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values.
-  CSIVolumeSourcePatch({
+  const CSIVolumeSourcePatch({
     this.driver,
     this.fsType,
     this.nodePublishSecretRef,

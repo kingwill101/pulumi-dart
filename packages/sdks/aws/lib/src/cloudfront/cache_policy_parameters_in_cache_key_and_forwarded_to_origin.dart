@@ -23,7 +23,7 @@ class CachePolicyParametersInCacheKeyAndForwardedToOrigin {
   /// [enableAcceptEncodingGzip] Whether the Accept-Encoding HTTP header is included in the cache key and in requests sent to the origin by CloudFront.
   /// [headersConfig] Whether any HTTP headers are included in the cache key and automatically included in requests that CloudFront sends to the origin. See Headers Config for more information.
   /// [queryStringsConfig] Whether any URL query strings in viewer requests are included in the cache key. It also automatically includes these query strings in requests that CloudFront sends to the origin. Please refer to the Query String Config for more information.
-  CachePolicyParametersInCacheKeyAndForwardedToOrigin({
+  const CachePolicyParametersInCacheKeyAndForwardedToOrigin({
     required this.cookiesConfig,
     this.enableAcceptEncodingBrotli,
     this.enableAcceptEncodingGzip,

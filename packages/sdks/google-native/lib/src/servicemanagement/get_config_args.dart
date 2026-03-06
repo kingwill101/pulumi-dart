@@ -15,7 +15,7 @@ class GetConfigArgs {
   /// [configId] Required.
   /// [serviceName] Required.
   /// [view] Optional.
-  GetConfigArgs({
+  const GetConfigArgs({
     required this.configId,
     required this.serviceName,
     this.view,

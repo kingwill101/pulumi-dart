@@ -13,7 +13,7 @@ class InputEndpointResponse {
   /// [privatePort] Optional.
   /// [protocol] Optional.
   /// [publicPort] Optional.
-  InputEndpointResponse({
+  const InputEndpointResponse({
     this.endpointName,
     this.privatePort,
     this.protocol,

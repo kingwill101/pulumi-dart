@@ -30,7 +30,7 @@ class GetWebLockConfigsResult {
   /// [remark] Optional.
   /// [sourceIp] Optional.
   /// [status] Optional.
-  GetWebLockConfigsResult({
+  const GetWebLockConfigsResult({
     required this.configs,
     required this.id,
     required this.ids,

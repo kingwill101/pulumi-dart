@@ -48,7 +48,7 @@ class GuestArgs {
   /// [numberOfSlots] Specifies the number of slots for the system to use when creating the guest.
   /// [state] Specifies the state of the vCMP guest on the system. options : [`configured`,`provisioned`,`deployed`].
   /// [vlans] Specifies the list of VLANs the vCMP guest uses to communicate with other guests, the host, and with the external network. The naming format must be the combination of the partition + name. For example /Common/my-vlan
-  GuestArgs({
+  const GuestArgs({
     this.allowedSlots,
     this.coresPerSlot,
     this.deleteVirtualDisk,

@@ -26,7 +26,7 @@ class GetGatewaysResult {
   /// [outputFile] Optional.
   /// [searchKey] Optional.
   /// [status] Optional.
-  GetGatewaysResult({
+  const GetGatewaysResult({
     this.enableDetails,
     required this.gateways,
     required this.id,

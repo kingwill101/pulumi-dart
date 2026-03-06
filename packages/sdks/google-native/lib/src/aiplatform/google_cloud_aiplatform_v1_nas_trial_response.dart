@@ -19,7 +19,7 @@ class GoogleCloudAiplatformV1NasTrialResponse {
   /// [finalMeasurement] The final measurement containing the objective value.
   /// [startTime] Time when the NasTrial was started.
   /// [state] The detailed state of the NasTrial.
-  GoogleCloudAiplatformV1NasTrialResponse({
+  const GoogleCloudAiplatformV1NasTrialResponse({
     required this.endTime,
     required this.finalMeasurement,
     required this.startTime,

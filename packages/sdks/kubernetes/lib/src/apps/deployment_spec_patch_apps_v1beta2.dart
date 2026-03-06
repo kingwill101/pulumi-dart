@@ -33,7 +33,7 @@ class DeploymentSpecPatchAppsV1beta2 {
   /// [selector] Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment. It must match the pod template's labels.
   /// [strategy] The deployment strategy to use to replace existing pods with new ones.
   /// [template] Template describes the pods that will be created.
-  DeploymentSpecPatchAppsV1beta2({
+  const DeploymentSpecPatchAppsV1beta2({
     this.minReadySeconds,
     this.paused,
     this.progressDeadlineSeconds,

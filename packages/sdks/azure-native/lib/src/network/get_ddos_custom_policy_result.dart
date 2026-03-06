@@ -32,7 +32,7 @@ class GetDdosCustomPolicyResult {
   /// [resourceGuid] The resource GUID property of the DDoS custom policy resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetDdosCustomPolicyResult({
+  const GetDdosCustomPolicyResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

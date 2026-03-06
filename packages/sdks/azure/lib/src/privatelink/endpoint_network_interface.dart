@@ -11,7 +11,7 @@ class EndpointNetworkInterface {
   /// Creates a new [EndpointNetworkInterface].
   /// [id] The ID of the Private DNS Zone Config.
   /// [name] Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-  EndpointNetworkInterface({
+  const EndpointNetworkInterface({
     this.id,
     this.name,
   });

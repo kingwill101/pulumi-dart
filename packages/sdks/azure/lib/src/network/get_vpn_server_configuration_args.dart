@@ -15,7 +15,7 @@ class GetVpnServerConfigurationArgs {
   /// Creates a new [GetVpnServerConfigurationArgs].
   /// [name] The Name of the VPN Server Configuration.
   /// [resourceGroupName] The name of the Resource Group where the VPN Server Configuration exists.
-  GetVpnServerConfigurationArgs({
+  const GetVpnServerConfigurationArgs({
     required this.name,
     required this.resourceGroupName,
   });

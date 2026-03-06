@@ -15,7 +15,7 @@ class GetEmployeeArgs {
   /// Creates a new [GetEmployeeArgs].
   /// [employeeName] The name of the Employee
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEmployeeArgs({
+  const GetEmployeeArgs({
     required this.employeeName,
     required this.resourceGroupName,
   });

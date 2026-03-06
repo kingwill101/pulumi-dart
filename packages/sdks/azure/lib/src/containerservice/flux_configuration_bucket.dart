@@ -29,7 +29,7 @@ class FluxConfigurationBucket {
   /// [timeoutInSeconds] Specifies the maximum time to attempt to reconcile the cluster git repository source with the remote. Defaults to `600`.
   /// [tlsEnabled] Specify whether to communicate with a bucket using TLS is enabled. Defaults to `true`.
   /// [url] Specifies the URL to sync for the flux configuration S3 bucket. It must start with `http://` or `https://`.
-  FluxConfigurationBucket({
+  const FluxConfigurationBucket({
     this.accessKey,
     required this.bucketName,
     this.localAuthReference,

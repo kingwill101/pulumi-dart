@@ -9,7 +9,7 @@ class StandardComponentPropertiesResponse {
 
   /// Creates a new [StandardComponentPropertiesResponse].
   /// [key] Component Key matching componentMetadata
-  StandardComponentPropertiesResponse({
+  const StandardComponentPropertiesResponse({
     this.key,
   });
 

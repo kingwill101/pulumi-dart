@@ -45,7 +45,7 @@ class CloudEndpointChangeEnumerationActivityResponse {
   /// [totalDirectoriesCount] Total count of directories enumerated
   /// [totalFilesCount] Total count of files enumerated
   /// [totalSizeBytes] Total enumerated size in bytes
-  CloudEndpointChangeEnumerationActivityResponse({
+  const CloudEndpointChangeEnumerationActivityResponse({
     required this.deletesProgressPercent,
     required this.lastUpdatedTimestamp,
     required this.minutesRemaining,

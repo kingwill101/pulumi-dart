@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionProxyArgs {
   /// [privateEndpointConnectionProxyName] The private endpoint connection proxy name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
-  GetPrivateEndpointConnectionProxyArgs({
+  const GetPrivateEndpointConnectionProxyArgs({
     required this.privateEndpointConnectionProxyName,
     required this.resourceGroupName,
     required this.vaultName,

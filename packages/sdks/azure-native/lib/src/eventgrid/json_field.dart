@@ -9,7 +9,7 @@ class JsonField {
 
   /// Creates a new [JsonField].
   /// [sourceField] Name of a field in the input event schema that's to be used as the source of a mapping.
-  JsonField({
+  const JsonField({
     this.sourceField,
   });
 

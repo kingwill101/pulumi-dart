@@ -56,7 +56,7 @@ class GatewaySecurityPolicyRuleState {
   /// [sessionMatcher] CEL expression for matching on session criteria.
   /// [tlsInspectionEnabled] Flag to enable TLS inspection of traffic matching on. Can only be true if the
   /// [updateTime] The timestamp when the resource was updated.
-  GatewaySecurityPolicyRuleState({
+  const GatewaySecurityPolicyRuleState({
     this.applicationMatcher,
     this.basicProfile,
     this.createTime,

@@ -17,7 +17,7 @@ class MonitorPlan {
   /// [effectiveDate] Date when plan was applied.
   /// [plan] Plan id as published by Dynatrace.
   /// [usageType] Different usage type. Possible values are `PAYG` and `COMMITTED`.
-  MonitorPlan({
+  const MonitorPlan({
     this.billingCycle,
     this.effectiveDate,
     required this.plan,

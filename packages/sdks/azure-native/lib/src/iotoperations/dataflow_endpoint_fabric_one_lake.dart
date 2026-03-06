@@ -24,7 +24,7 @@ class DataflowEndpointFabricOneLake {
   /// [host] Host of the Microsoft Fabric in the form of https://&lt;host&gt;.fabric.microsoft.com.
   /// [names] Names of the workspace and lakehouse.
   /// [oneLakePathType] Type of location of the data in the workspace. Can be either tables or files.
-  DataflowEndpointFabricOneLake({
+  const DataflowEndpointFabricOneLake({
     required this.authentication,
     this.batching,
     required this.host,

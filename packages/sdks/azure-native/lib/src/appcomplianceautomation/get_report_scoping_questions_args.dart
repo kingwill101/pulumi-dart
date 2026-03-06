@@ -12,7 +12,7 @@ class GetReportScopingQuestionsArgs {
 
   /// Creates a new [GetReportScopingQuestionsArgs].
   /// [reportName] Report Name.
-  GetReportScopingQuestionsArgs({
+  const GetReportScopingQuestionsArgs({
     required this.reportName,
   });
 

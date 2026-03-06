@@ -9,7 +9,7 @@ class ApplicationBillingDetailsDefinitionResponse {
 
   /// Creates a new [ApplicationBillingDetailsDefinitionResponse].
   /// [resourceUsageId] The managed application resource usage Id.
-  ApplicationBillingDetailsDefinitionResponse({
+  const ApplicationBillingDetailsDefinitionResponse({
     this.resourceUsageId,
   });
 

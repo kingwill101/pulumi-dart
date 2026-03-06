@@ -40,7 +40,7 @@ class CompositeAlarmArgs {
   /// [okActions] The set of actions to execute when this alarm transitions to an `OK` state from any other state. Each action is specified as an ARN. Up to 5 actions are allowed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to associate with the alarm. Up to 50 tags are allowed. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  CompositeAlarmArgs({
+  const CompositeAlarmArgs({
     this.actionsEnabled,
     this.actionsSuppressor,
     this.alarmActions,

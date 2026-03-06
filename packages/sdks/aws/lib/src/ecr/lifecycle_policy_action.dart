@@ -9,7 +9,7 @@ class LifecyclePolicyAction {
 
   /// Creates a new [LifecyclePolicyAction].
   /// [type] The type of action to take. Currently only 'expire' is supported.
-  LifecyclePolicyAction({
+  const LifecyclePolicyAction({
     required this.type,
   });
 

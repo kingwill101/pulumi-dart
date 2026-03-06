@@ -49,7 +49,7 @@ class GetAnalyticsConnectorResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] The resource type.
-  GetAnalyticsConnectorResult({
+  const GetAnalyticsConnectorResult({
     required this.azureApiVersion,
     required this.dataDestinationConfiguration,
     required this.dataMappingConfiguration,

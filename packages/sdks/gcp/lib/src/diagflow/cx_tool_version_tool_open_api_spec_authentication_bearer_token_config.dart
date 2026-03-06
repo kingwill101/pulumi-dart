@@ -14,7 +14,7 @@ class CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig {
   /// Creates a new [CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig].
   /// [secretVersionForToken] Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
   /// [token] Optional. The text token appended to the text Bearer to the request Authorization header.
-  CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig({
+  const CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig({
     this.secretVersionForToken,
     this.token,
   });

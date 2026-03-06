@@ -36,7 +36,7 @@ class ProfileArgs {
   /// [roleArns] A list of IAM roles that this profile can assume
   /// [sessionPolicy] A session policy that applies to the trust boundary of the vended session credentials.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ProfileArgs({
+  const ProfileArgs({
     this.acceptRoleSessionName,
     this.durationSeconds,
     this.enabled,

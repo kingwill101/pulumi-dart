@@ -9,7 +9,7 @@ class AutomationRuleCriteriaResourceApplicationArn {
   /// Creates a new [AutomationRuleCriteriaResourceApplicationArn].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaResourceApplicationArn({
+  const AutomationRuleCriteriaResourceApplicationArn({
     required this.comparison,
     required this.value,
   });

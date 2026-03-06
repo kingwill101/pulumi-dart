@@ -26,7 +26,7 @@ class GetAscriptsArgs {
   /// [listenerId] Listener ID of script attribution
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAscriptsArgs({
+  const GetAscriptsArgs({
     this.ascriptName,
     this.enableDetails,
     this.ids,

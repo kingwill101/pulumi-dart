@@ -30,7 +30,7 @@ class GetClusterResult {
   /// [stretchedClusterConfig] Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
-  GetClusterResult({
+  const GetClusterResult({
     required this.createTime,
     required this.management,
     required this.name,

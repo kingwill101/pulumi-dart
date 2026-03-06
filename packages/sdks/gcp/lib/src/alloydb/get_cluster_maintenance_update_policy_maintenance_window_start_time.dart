@@ -17,7 +17,7 @@ class GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
   /// [minutes] Minutes of hour of day. Currently, only the value 0 is supported.
   /// [nanos] Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
   /// [seconds] Seconds of minutes of the time. Currently, only the value 0 is supported.
-  GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime({
+  const GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime({
     required this.hours,
     required this.minutes,
     required this.nanos,

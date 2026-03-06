@@ -29,7 +29,7 @@ class GetSecGroupResult {
   /// [stateful] See Argument Reference above.
   /// [tags] Optional.
   /// [tenantId] Required.
-  GetSecGroupResult({
+  const GetSecGroupResult({
     required this.allTags,
     this.description,
     required this.id,

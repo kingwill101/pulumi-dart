@@ -25,7 +25,7 @@ class WorkspaceManagerAssignmentArgs {
   /// [targetResourceName] The resource name of the workspace manager group targeted by the workspace manager assignment
   /// [workspaceManagerAssignmentName] The name of the workspace manager assignment
   /// [workspaceName] The name of the workspace.
-  WorkspaceManagerAssignmentArgs({
+  const WorkspaceManagerAssignmentArgs({
     required this.items,
     required this.resourceGroupName,
     required this.targetResourceName,

@@ -36,7 +36,7 @@ class ToolsetOpenApiToolset {
   /// [serviceDirectoryConfig] Configuration for tools using Service Directory.
   /// [tlsConfig] The TLS configuration.
   /// [url] (Output)
-  ToolsetOpenApiToolset({
+  const ToolsetOpenApiToolset({
     this.apiAuthentication,
     this.ignoreUnknownFields,
     required this.openApiSchema,

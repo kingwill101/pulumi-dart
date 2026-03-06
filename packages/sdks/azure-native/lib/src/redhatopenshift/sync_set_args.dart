@@ -21,7 +21,7 @@ class SyncSetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the OpenShift cluster resource.
   /// [resources] Resources represents the SyncSets configuration.
-  SyncSetArgs({
+  const SyncSetArgs({
     this.childResourceName,
     required this.resourceGroupName,
     required this.resourceName,

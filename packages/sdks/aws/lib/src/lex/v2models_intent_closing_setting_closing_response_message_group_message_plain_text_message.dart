@@ -8,7 +8,7 @@ class V2modelsIntentClosingSettingClosingResponseMessageGroupMessagePlainTextMes
 
   /// Creates a new [V2modelsIntentClosingSettingClosingResponseMessageGroupMessagePlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentClosingSettingClosingResponseMessageGroupMessagePlainTextMessage({
+  const V2modelsIntentClosingSettingClosingResponseMessageGroupMessagePlainTextMessage({
     required this.value,
   });
 

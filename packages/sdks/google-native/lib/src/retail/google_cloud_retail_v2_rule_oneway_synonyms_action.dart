@@ -15,7 +15,7 @@ class GoogleCloudRetailV2RuleOnewaySynonymsAction {
   /// [onewayTerms] Will be [deprecated = true] post migration;
   /// [queryTerms] Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
   /// [synonyms] Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
-  GoogleCloudRetailV2RuleOnewaySynonymsAction({
+  const GoogleCloudRetailV2RuleOnewaySynonymsAction({
     this.onewayTerms,
     this.queryTerms,
     this.synonyms,

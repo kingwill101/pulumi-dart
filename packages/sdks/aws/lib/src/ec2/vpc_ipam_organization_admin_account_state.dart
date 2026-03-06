@@ -20,7 +20,7 @@ class VpcIpamOrganizationAdminAccountState {
   /// [email] The Organizations email for the delegate account.
   /// [name] The Organizations name for the delegate account.
   /// [servicePrincipal] The AWS service principal.
-  VpcIpamOrganizationAdminAccountState({
+  const VpcIpamOrganizationAdminAccountState({
     this.arn,
     this.delegatedAdminAccountId,
     this.email,

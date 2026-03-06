@@ -8,7 +8,7 @@ class SparkPoolAutoPause {
 
   /// Creates a new [SparkPoolAutoPause].
   /// [delayInMinutes] Number of minutes of idle time before the Spark Pool is automatically paused. Must be between `5` and `10080`.
-  SparkPoolAutoPause({
+  const SparkPoolAutoPause({
     required this.delayInMinutes,
   });
 

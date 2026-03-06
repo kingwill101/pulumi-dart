@@ -21,7 +21,7 @@ class GetReachabilityAnalysisRunArgs {
   /// [reachabilityAnalysisRunName] Reachability Analysis Run name.
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceName] Workspace name.
-  GetReachabilityAnalysisRunArgs({
+  const GetReachabilityAnalysisRunArgs({
     required this.networkManagerName,
     required this.reachabilityAnalysisRunName,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class GetOpenSearchDomainStatusArgs {
   /// Creates a new [GetOpenSearchDomainStatusArgs].
   /// [name] Name of OpenSearchDomainStatus
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetOpenSearchDomainStatusArgs({
+  const GetOpenSearchDomainStatusArgs({
     required this.name,
     required this.resourceGroupName,
   });

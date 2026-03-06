@@ -56,7 +56,7 @@ class GetApplicationResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   /// [unhealthyEvaluation] When the application's health state is not 'Ok', this additional details from service fabric Health Manager for the user to know why the application is marked unhealthy.
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.azureApiVersion,
     this.debugParams,
     this.description,

@@ -23,7 +23,7 @@ class PodDisruptionBudgetArgs {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Specification of the desired behavior of the PodDisruptionBudget.
-  PodDisruptionBudgetArgs({
+  const PodDisruptionBudgetArgs({
     this.apiVersion,
     this.kind,
     this.metadata,

@@ -21,7 +21,7 @@ class AccountQueueProperties {
   /// [hourMetrics] A `hour_metrics` block as defined below.
   /// [logging] A `logging` block as defined below.
   /// [minuteMetrics] A `minute_metrics` block as defined below.
-  AccountQueueProperties({
+  const AccountQueueProperties({
     this.corsRules,
     this.hourMetrics,
     this.logging,

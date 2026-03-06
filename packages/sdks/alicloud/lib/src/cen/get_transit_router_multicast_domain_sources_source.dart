@@ -23,7 +23,7 @@ class GetTransitRouterMulticastDomainSourcesSource {
   /// [status] The status of the resource.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast source belongs.
   /// [vpcId] The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
-  GetTransitRouterMulticastDomainSourcesSource({
+  const GetTransitRouterMulticastDomainSourcesSource({
     required this.groupIpAddress,
     required this.id,
     required this.networkInterfaceId,

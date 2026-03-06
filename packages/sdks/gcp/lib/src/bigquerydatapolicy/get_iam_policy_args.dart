@@ -22,7 +22,7 @@ class GetIamPolicyArgs {
   /// [dataPolicyId] Used to find the parent resource to bind the IAM policy to
   /// [location] The name of the location of the data policy.
   /// [project] The ID of the project in which the resource belongs.
-  GetIamPolicyArgs({
+  const GetIamPolicyArgs({
     required this.dataPolicyId,
     this.location,
     this.project,

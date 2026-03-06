@@ -20,7 +20,7 @@ class MultiplePipelineTrigger {
   /// [description] Trigger description.
   /// [pipelines] Pipelines that need to be started.
   /// [type] Trigger type.
-  MultiplePipelineTrigger({
+  const MultiplePipelineTrigger({
     this.annotations,
     this.description,
     this.pipelines,

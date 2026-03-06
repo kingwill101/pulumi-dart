@@ -9,7 +9,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig].
   /// [namespacedGkeDeploymentTarget] A target for the deployment.
-  WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig({
+  const WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig({
     this.namespacedGkeDeploymentTarget,
   });
 

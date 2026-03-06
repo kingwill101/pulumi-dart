@@ -25,7 +25,7 @@ class RestorePointCollectionArgs {
   /// [restorePointCollectionName] The name of the restore point collection.
   /// [source] The properties of the source resource that this restore point collection is created from.
   /// [tags] Resource tags.
-  RestorePointCollectionArgs({
+  const RestorePointCollectionArgs({
     this.location,
     required this.resourceGroupName,
     this.restorePointCollectionName,

@@ -20,7 +20,7 @@ class ListWebAppApplicationSettingsResult {
   /// [name] Resource Name.
   /// [properties] Settings.
   /// [type] Resource type.
-  ListWebAppApplicationSettingsResult({
+  const ListWebAppApplicationSettingsResult({
     required this.id,
     this.kind,
     required this.name,

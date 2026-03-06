@@ -26,7 +26,7 @@ class NamespaceState {
   /// [ownerAccountId] Account ID of the account that owns the namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableBucketArn] ARN referencing the Table Bucket that contains this Namespace.
-  NamespaceState({
+  const NamespaceState({
     this.createdAt,
     this.createdBy,
     this.namespace,

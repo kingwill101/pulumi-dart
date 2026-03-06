@@ -18,7 +18,7 @@ class SourceConfigResponse {
   /// [crowdingConfig] The crowding configuration for the source.
   /// [scoringConfig] The scoring configuration for the source.
   /// [source] The source for which this configuration is to be used.
-  SourceConfigResponse({
+  const SourceConfigResponse({
     required this.crowdingConfig,
     required this.scoringConfig,
     required this.source,

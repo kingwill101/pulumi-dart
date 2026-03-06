@@ -11,7 +11,7 @@ class KxVolumeNas1Configuration {
   /// Creates a new [KxVolumeNas1Configuration].
   /// [size] The size of the network attached storage.
   /// [type] The type of the network attached storage.
-  KxVolumeNas1Configuration({
+  const KxVolumeNas1Configuration({
     required this.size,
     required this.type,
   });

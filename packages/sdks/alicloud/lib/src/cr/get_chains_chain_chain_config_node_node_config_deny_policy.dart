@@ -17,7 +17,7 @@ class GetChainsChainChainConfigNodeNodeConfigDenyPolicy {
   /// [issueCount] The count of scanning vulnerabilities that triggers blocking.
   /// [issueLevel] The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
   /// [logic] The logic of trigger blocking. Valid values: `AND`, `OR`.
-  GetChainsChainChainConfigNodeNodeConfigDenyPolicy({
+  const GetChainsChainChainConfigNodeNodeConfigDenyPolicy({
     this.action,
     required this.issueCount,
     required this.issueLevel,

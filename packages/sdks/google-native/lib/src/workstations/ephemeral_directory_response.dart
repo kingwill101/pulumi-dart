@@ -13,7 +13,7 @@ class EphemeralDirectoryResponse {
   /// Creates a new [EphemeralDirectoryResponse].
   /// [gcePd] An EphemeralDirectory backed by a Compute Engine persistent disk.
   /// [mountPath] Location of this directory in the running workstation.
-  EphemeralDirectoryResponse({
+  const EphemeralDirectoryResponse({
     required this.gcePd,
     required this.mountPath,
   });

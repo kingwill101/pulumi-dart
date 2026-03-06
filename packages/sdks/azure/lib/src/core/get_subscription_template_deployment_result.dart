@@ -13,7 +13,7 @@ class GetSubscriptionTemplateDeploymentResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [outputContent] The JSON Content of the Outputs of the ARM Template Deployment.
-  GetSubscriptionTemplateDeploymentResult({
+  const GetSubscriptionTemplateDeploymentResult({
     required this.id,
     required this.name,
     required this.outputContent,

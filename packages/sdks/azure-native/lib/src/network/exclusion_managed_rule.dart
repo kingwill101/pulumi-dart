@@ -9,7 +9,7 @@ class ExclusionManagedRule {
 
   /// Creates a new [ExclusionManagedRule].
   /// [ruleId] Identifier for the managed rule.
-  ExclusionManagedRule({
+  const ExclusionManagedRule({
     required this.ruleId,
   });
 

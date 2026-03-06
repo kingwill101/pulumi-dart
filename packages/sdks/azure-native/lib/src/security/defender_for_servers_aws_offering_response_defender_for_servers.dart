@@ -9,7 +9,7 @@ class DefenderForServersAwsOfferingResponseDefenderForServers {
 
   /// Creates a new [DefenderForServersAwsOfferingResponseDefenderForServers].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
-  DefenderForServersAwsOfferingResponseDefenderForServers({
+  const DefenderForServersAwsOfferingResponseDefenderForServers({
     this.cloudRoleArn,
   });
 

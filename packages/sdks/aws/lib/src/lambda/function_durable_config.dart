@@ -11,7 +11,7 @@ class FunctionDurableConfig {
   /// Creates a new [FunctionDurableConfig].
   /// [executionTimeout] Maximum execution time in seconds for the durable function. Valid value between 1 and 31622400 (366 days).
   /// [retentionPeriod] Number of days to retain the function's execution state. Valid value between 1 and 90. If not specified, the function's execution state is not retained. Defaults to 14.
-  FunctionDurableConfig({
+  const FunctionDurableConfig({
     required this.executionTimeout,
     this.retentionPeriod,
   });

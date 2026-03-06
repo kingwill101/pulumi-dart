@@ -9,7 +9,7 @@ class GatewayRouteConfigOpenApiProperties {
 
   /// Creates a new [GatewayRouteConfigOpenApiProperties].
   /// [uri] The URI of OpenAPI specification.
-  GatewayRouteConfigOpenApiProperties({
+  const GatewayRouteConfigOpenApiProperties({
     this.uri,
   });
 

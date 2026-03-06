@@ -15,7 +15,7 @@ class GetNetworksResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [networks] (list) List of all matching networks. See `data.hcloud_network` for schema.
   /// [withSelector] Optional.
-  GetNetworksResult({
+  const GetNetworksResult({
     required this.id,
     required this.networks,
     this.withSelector,

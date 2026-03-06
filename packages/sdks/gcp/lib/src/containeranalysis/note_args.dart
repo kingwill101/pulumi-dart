@@ -46,7 +46,7 @@ class NoteArgs {
   /// [relatedNoteNames] Names of other notes related to this note.
   /// [relatedUrls] URLs associated with this note and related metadata.
   /// [shortDescription] A one sentence description of the note.
-  NoteArgs({
+  const NoteArgs({
     required this.attestationAuthority,
     this.expirationTime,
     this.longDescription,

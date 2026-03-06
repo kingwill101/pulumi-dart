@@ -11,7 +11,7 @@ class GetProjectsProjectPropertiesTableLifecycle {
   /// Creates a new [GetProjectsProjectPropertiesTableLifecycle].
   /// [type] Project type
   /// [value] The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
-  GetProjectsProjectPropertiesTableLifecycle({
+  const GetProjectsProjectPropertiesTableLifecycle({
     required this.type,
     required this.value,
   });

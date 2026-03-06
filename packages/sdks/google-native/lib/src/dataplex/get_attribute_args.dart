@@ -17,7 +17,7 @@ class GetAttributeArgs {
   /// [dataTaxonomyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAttributeArgs({
+  const GetAttributeArgs({
     required this.attributeId,
     required this.dataTaxonomyId,
     required this.location,

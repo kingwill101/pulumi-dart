@@ -23,7 +23,7 @@ class GroupPolicyArgs {
   /// [name] The name of the policy. If omitted, the provider will
   /// [namePrefix] Creates a unique name beginning with the specified
   /// [policy] The policy document. This is a JSON formatted string.
-  GroupPolicyArgs({
+  const GroupPolicyArgs({
     required this.group,
     this.name,
     this.namePrefix,

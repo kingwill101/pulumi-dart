@@ -13,7 +13,7 @@ class LocalTimestampResponse {
   /// Creates a new [LocalTimestampResponse].
   /// [format] An enum that represents the format of the local timestamp property that needs to be set.
   /// [timeZoneOffset] An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded.
-  LocalTimestampResponse({
+  const LocalTimestampResponse({
     this.format,
     this.timeZoneOffset,
   });

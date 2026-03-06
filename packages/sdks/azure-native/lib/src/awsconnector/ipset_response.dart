@@ -9,7 +9,7 @@ class IPSetResponse {
 
   /// Creates a new [IPSetResponse].
   /// [definition] Property definition
-  IPSetResponse({
+  const IPSetResponse({
     this.definition,
   });
 

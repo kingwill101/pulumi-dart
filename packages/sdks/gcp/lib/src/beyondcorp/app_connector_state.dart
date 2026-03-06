@@ -40,7 +40,7 @@ class AppConnectorState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region of the AppConnector.
   /// [state] Represents the different states of a AppConnector.
-  AppConnectorState({
+  const AppConnectorState({
     this.displayName,
     this.effectiveLabels,
     this.labels,

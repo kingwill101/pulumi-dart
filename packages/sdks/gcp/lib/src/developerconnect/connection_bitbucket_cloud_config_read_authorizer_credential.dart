@@ -14,7 +14,7 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredential {
   /// Creates a new [ConnectionBitbucketCloudConfigReadAuthorizerCredential].
   /// [userTokenSecretVersion] Required. A SecretManager resource containing the user token that authorizes
   /// [username] (Output)
-  ConnectionBitbucketCloudConfigReadAuthorizerCredential({
+  const ConnectionBitbucketCloudConfigReadAuthorizerCredential({
     required this.userTokenSecretVersion,
     this.username,
   });

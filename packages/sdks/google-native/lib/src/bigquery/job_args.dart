@@ -21,7 +21,7 @@ class JobArgs {
   /// [jobReference] [Optional] Reference describing the unique-per-user name of the job.
   /// [project] Optional.
   /// [source] Optional.
-  JobArgs({
+  const JobArgs({
     this.configuration,
     this.jobReference,
     this.project,

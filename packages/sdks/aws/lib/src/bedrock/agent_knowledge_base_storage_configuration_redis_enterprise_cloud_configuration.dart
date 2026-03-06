@@ -18,7 +18,7 @@ class AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration {
   /// [endpoint] Endpoint URL of the Redis Enterprise Cloud database.
   /// [fieldMapping] The names of the fields to which to map information about the vector store. This block supports the following arguments:
   /// [vectorIndexName] Name of the vector index.
-  AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration({
+  const AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration({
     required this.credentialsSecretArn,
     required this.endpoint,
     required this.fieldMapping,

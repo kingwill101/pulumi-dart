@@ -14,7 +14,7 @@ class TableCapacitySpecification {
   /// [readCapacityUnits] The throughput capacity specified for read operations defined in read capacity units (RCUs).
   /// [throughputMode] The read/write throughput capacity mode for a table. Valid values: `PAY_PER_REQUEST`, `PROVISIONED`. The default value is `PAY_PER_REQUEST`.
   /// [writeCapacityUnits] The throughput capacity specified for write operations defined in write capacity units (WCUs).
-  TableCapacitySpecification({
+  const TableCapacitySpecification({
     this.readCapacityUnits,
     this.throughputMode,
     this.writeCapacityUnits,

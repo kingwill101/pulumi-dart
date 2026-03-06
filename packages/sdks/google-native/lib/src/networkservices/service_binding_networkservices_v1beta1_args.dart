@@ -28,7 +28,7 @@ class ServiceBindingNetworkservicesV1beta1Args {
   /// [project] Optional.
   /// [service] The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
   /// [serviceBindingId] Required. Short name of the ServiceBinding resource to be created.
-  ServiceBindingNetworkservicesV1beta1Args({
+  const ServiceBindingNetworkservicesV1beta1Args({
     this.description,
     this.labels,
     this.location,

@@ -17,7 +17,7 @@ class GetFirewallPolicyArgs {
   /// [name] The name of the Web Application Firewall Policy
   /// [resourceGroupName] The name of the Resource Group where the Web Application Firewall Policy exists.
   /// [tags] Optional.
-  GetFirewallPolicyArgs({
+  const GetFirewallPolicyArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

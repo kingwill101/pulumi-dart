@@ -21,7 +21,7 @@ class P2SVpnServerConfigVpnClientRevokedCertificateResponse {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the VPN client revoked certificate resource.
   /// [thumbprint] The revoked VPN client certificate thumbprint.
-  P2SVpnServerConfigVpnClientRevokedCertificateResponse({
+  const P2SVpnServerConfigVpnClientRevokedCertificateResponse({
     this.etag,
     this.id,
     this.name,

@@ -20,7 +20,7 @@ class GetTransparentDataEncryptionResult {
   /// [name] Resource name.
   /// [state] Specifies the state of the transparent data encryption.
   /// [type] Resource type.
-  GetTransparentDataEncryptionResult({
+  const GetTransparentDataEncryptionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

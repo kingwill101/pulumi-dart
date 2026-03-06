@@ -24,7 +24,7 @@ class WorkflowTemplateJobHiveJob {
   /// [queryFileUri] The HCFS URI of the script that contains Hive queries.
   /// [queryList] A list of queries.
   /// [scriptVariables] Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
-  WorkflowTemplateJobHiveJob({
+  const WorkflowTemplateJobHiveJob({
     this.continueOnFailure,
     this.jarFileUris,
     this.properties,

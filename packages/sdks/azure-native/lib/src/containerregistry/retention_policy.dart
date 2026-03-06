@@ -12,7 +12,7 @@ class RetentionPolicy {
   /// Creates a new [RetentionPolicy].
   /// [days] The number of days to retain an untagged manifest after which it gets purged.
   /// [status] The value that indicates whether the policy is enabled or not.
-  RetentionPolicy({
+  const RetentionPolicy({
     this.days,
     this.status,
   });

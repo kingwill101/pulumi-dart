@@ -11,7 +11,7 @@ class AlertConfigurationAnnotation {
   /// Creates a new [AlertConfigurationAnnotation].
   /// [key] Field name.
   /// [value] Field value.
-  AlertConfigurationAnnotation({
+  const AlertConfigurationAnnotation({
     this.key,
     this.value,
   });

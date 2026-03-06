@@ -72,7 +72,7 @@ class GetCommonBandwidthPackagesPackage {
   /// [resourceGroupId] The Id of resource group which the common bandwidth package belongs.
   /// [serviceManaged] The service managed.
   /// [status] The status of bandwidth package. Valid values: `Available` and `Pending`.
-  GetCommonBandwidthPackagesPackage({
+  const GetCommonBandwidthPackagesPackage({
     required this.bandwidth,
     required this.bandwidthPackageId,
     required this.bandwidthPackageName,

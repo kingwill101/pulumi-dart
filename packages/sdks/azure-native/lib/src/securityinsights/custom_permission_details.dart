@@ -12,7 +12,7 @@ class CustomPermissionDetails {
   /// Creates a new [CustomPermissionDetails].
   /// [description] Gets or sets the custom permissions description.
   /// [name] Gets or sets the custom permissions name.
-  CustomPermissionDetails({
+  const CustomPermissionDetails({
     required this.description,
     required this.name,
   });

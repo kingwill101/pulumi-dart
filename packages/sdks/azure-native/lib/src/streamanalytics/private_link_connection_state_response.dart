@@ -15,7 +15,7 @@ class PrivateLinkConnectionStateResponse {
   /// [actionsRequired] A message indicating if changes on the service provider require any updates on the consumer.
   /// [description] The reason for approval/rejection of the connection.
   /// [status] Indicates whether the connection has been Approved/Rejected/Removed by the owner of the remote resource/service.
-  PrivateLinkConnectionStateResponse({
+  const PrivateLinkConnectionStateResponse({
     required this.actionsRequired,
     required this.description,
     required this.status,

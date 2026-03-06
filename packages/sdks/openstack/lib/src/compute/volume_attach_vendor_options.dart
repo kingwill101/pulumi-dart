@@ -10,7 +10,7 @@ class VolumeAttachVendorOptions {
 
   /// Creates a new [VolumeAttachVendorOptions].
   /// [ignoreVolumeConfirmation] Boolean to control whether
-  VolumeAttachVendorOptions({
+  const VolumeAttachVendorOptions({
     this.ignoreVolumeConfirmation,
   });
 

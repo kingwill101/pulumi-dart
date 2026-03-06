@@ -28,7 +28,7 @@ class MemberDetectorFeatureArgs {
   /// [name] The name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] The status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
-  MemberDetectorFeatureArgs({
+  const MemberDetectorFeatureArgs({
     required this.accountId,
     this.additionalConfigurations,
     required this.detectorId,

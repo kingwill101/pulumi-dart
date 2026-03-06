@@ -11,7 +11,7 @@ class ClusterNetworksIpAllocationPolicyNodePolicy {
   /// Creates a new [ClusterNetworksIpAllocationPolicyNodePolicy].
   /// [bonds] Bond information See `bonds` below.
   /// [nodeId] Optional.
-  ClusterNetworksIpAllocationPolicyNodePolicy({
+  const ClusterNetworksIpAllocationPolicyNodePolicy({
     this.bonds,
     this.nodeId,
   });

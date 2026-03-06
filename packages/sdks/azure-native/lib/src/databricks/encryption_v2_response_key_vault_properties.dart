@@ -15,7 +15,7 @@ class EncryptionV2ResponseKeyVaultProperties {
   /// [keyName] The name of KeyVault key.
   /// [keyVaultUri] The Uri of KeyVault.
   /// [keyVersion] The version of KeyVault key.
-  EncryptionV2ResponseKeyVaultProperties({
+  const EncryptionV2ResponseKeyVaultProperties({
     required this.keyName,
     required this.keyVaultUri,
     required this.keyVersion,

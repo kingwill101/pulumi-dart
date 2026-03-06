@@ -38,7 +38,7 @@ class SpotInstanceRequestRootBlockDevice {
   /// [volumeId] Optional.
   /// [volumeSize] Size of the volume in gibibytes (GiB).
   /// [volumeType] Type of volume. Valid values include `standard`, `gp2`, `gp3`, `io1`, `io2`, `sc1`, or `st1`. Defaults to the volume type that the AMI uses.
-  SpotInstanceRequestRootBlockDevice({
+  const SpotInstanceRequestRootBlockDevice({
     this.deleteOnTermination,
     this.deviceName,
     this.encrypted,

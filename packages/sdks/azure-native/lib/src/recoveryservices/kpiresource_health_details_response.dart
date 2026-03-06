@@ -13,7 +13,7 @@ class KPIResourceHealthDetailsResponse {
   /// Creates a new [KPIResourceHealthDetailsResponse].
   /// [resourceHealthDetails] Resource Health Status
   /// [resourceHealthStatus] Resource Health Status
-  KPIResourceHealthDetailsResponse({
+  const KPIResourceHealthDetailsResponse({
     this.resourceHealthDetails,
     this.resourceHealthStatus,
   });

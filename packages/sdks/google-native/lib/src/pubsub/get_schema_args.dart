@@ -15,7 +15,7 @@ class GetSchemaArgs {
   /// [project] Optional.
   /// [schemaId] Required.
   /// [view] Optional.
-  GetSchemaArgs({
+  const GetSchemaArgs({
     this.project,
     required this.schemaId,
     this.view,

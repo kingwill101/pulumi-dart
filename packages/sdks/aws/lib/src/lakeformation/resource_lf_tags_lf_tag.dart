@@ -16,7 +16,7 @@ class ResourceLfTagsLfTag {
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
   /// [key] Key name for an existing LF-tag.
   /// [value] Value from the possible values for the LF-tag.
-  ResourceLfTagsLfTag({
+  const ResourceLfTagsLfTag({
     this.catalogId,
     required this.key,
     required this.value,

@@ -11,7 +11,7 @@ class StarRocksInstanceVswitch {
   /// Creates a new [StarRocksInstanceVswitch].
   /// [vswitchId] ID of VSwitch.
   /// [zoneId] Zone ID of VSwitch.
-  StarRocksInstanceVswitch({
+  const StarRocksInstanceVswitch({
     required this.vswitchId,
     this.zoneId,
   });

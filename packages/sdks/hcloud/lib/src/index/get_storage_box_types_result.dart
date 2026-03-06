@@ -12,7 +12,7 @@ class GetStorageBoxTypesResult {
   /// Creates a new [GetStorageBoxTypesResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [storageBoxTypes] Required.
-  GetStorageBoxTypesResult({
+  const GetStorageBoxTypesResult({
     required this.id,
     required this.storageBoxTypes,
   });

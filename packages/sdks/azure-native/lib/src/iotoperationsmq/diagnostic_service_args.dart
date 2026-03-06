@@ -53,7 +53,7 @@ class DiagnosticServiceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [staleDataTimeoutSeconds] Metric inactivity timeout.
   /// [tags] Resource tags.
-  DiagnosticServiceArgs({
+  const DiagnosticServiceArgs({
     this.dataExportFrequencySeconds,
     this.diagnosticServiceName,
     required this.extendedLocation,

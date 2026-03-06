@@ -27,7 +27,7 @@ class RoleAliasState {
   /// [roleArn] The identity of the role to which the alias refers.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  RoleAliasState({
+  const RoleAliasState({
     this.alias,
     this.arn,
     this.credentialDuration,

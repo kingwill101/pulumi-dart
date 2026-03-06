@@ -12,7 +12,7 @@ class StandbyContainerGroupPoolElasticityProfileResponse {
   /// Creates a new [StandbyContainerGroupPoolElasticityProfileResponse].
   /// [maxReadyCapacity] Specifies maximum number of standby container groups in the standby pool.
   /// [refillPolicy] Specifies refill policy of the pool.
-  StandbyContainerGroupPoolElasticityProfileResponse({
+  const StandbyContainerGroupPoolElasticityProfileResponse({
     required this.maxReadyCapacity,
     this.refillPolicy,
   });

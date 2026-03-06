@@ -18,7 +18,7 @@ class TrafficWeight {
   /// [latestRevision] Indicates that the traffic weight belongs to a latest stable revision
   /// [revisionName] Name of a revision
   /// [weight] Traffic weight assigned to a revision
-  TrafficWeight({
+  const TrafficWeight({
     this.label,
     this.latestRevision,
     this.revisionName,

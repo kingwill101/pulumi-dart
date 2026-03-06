@@ -8,7 +8,7 @@ class DomainOsNvRamSourceVhostVdpa {
 
   /// Creates a new [DomainOsNvRamSourceVhostVdpa].
   /// [dev] Specifies the device to be used for the VHostVDPA source in the backing store.
-  DomainOsNvRamSourceVhostVdpa({
+  const DomainOsNvRamSourceVhostVdpa({
     required this.dev,
   });
 

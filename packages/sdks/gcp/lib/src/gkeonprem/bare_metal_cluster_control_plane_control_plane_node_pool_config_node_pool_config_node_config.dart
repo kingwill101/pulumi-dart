@@ -21,7 +21,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
   /// Creates a new [BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig].
   /// [labels] The map of Kubernetes labels (key/value pairs) to be applied to
   /// [nodeIp] The default IPv4 address for SSH access and Kubernetes node.
-  BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig({
+  const BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig({
     this.labels,
     this.nodeIp,
   });

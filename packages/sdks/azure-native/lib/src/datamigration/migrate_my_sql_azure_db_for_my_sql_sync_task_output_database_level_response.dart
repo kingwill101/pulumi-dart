@@ -57,7 +57,7 @@ class MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseLevelResponse {
   /// [migrationState] Migration state that this database is in
   /// [resultType] Result type
   /// [startedOn] Migration start time
-  MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseLevelResponse({
+  const MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseLevelResponse({
     required this.appliedChanges,
     required this.cdcDeleteCounter,
     required this.cdcInsertCounter,

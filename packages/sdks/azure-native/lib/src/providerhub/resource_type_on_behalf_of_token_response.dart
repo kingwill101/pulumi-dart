@@ -11,7 +11,7 @@ class ResourceTypeOnBehalfOfTokenResponse {
   /// Creates a new [ResourceTypeOnBehalfOfTokenResponse].
   /// [actionName] The action name.
   /// [lifeTime] This is a TimeSpan property.
-  ResourceTypeOnBehalfOfTokenResponse({
+  const ResourceTypeOnBehalfOfTokenResponse({
     this.actionName,
     this.lifeTime,
   });

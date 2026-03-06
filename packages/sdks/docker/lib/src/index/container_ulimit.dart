@@ -14,7 +14,7 @@ class ContainerUlimit {
   /// [hard] The hard limit
   /// [name] The name of the ulimit
   /// [soft] The soft limit
-  ContainerUlimit({
+  const ContainerUlimit({
     required this.hard,
     required this.name,
     required this.soft,

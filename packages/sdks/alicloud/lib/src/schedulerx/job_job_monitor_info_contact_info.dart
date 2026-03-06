@@ -17,7 +17,7 @@ class JobJobMonitorInfoContactInfo {
   /// [userMail] User Email Address
   /// [userName] The user name
   /// [userPhone] The user's mobile phone number
-  JobJobMonitorInfoContactInfo({
+  const JobJobMonitorInfoContactInfo({
     this.ding,
     this.userMail,
     this.userName,

@@ -16,7 +16,7 @@ class ScaleSetPacketCaptureStorageLocation {
   /// [filePath] A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For Linux virtual machine it must start with `/var/captures`.
   /// [storageAccountId] The ID of the storage account to save the packet capture session
   /// [storagePath] The URI of the storage path where the packet capture sessions are saved to.
-  ScaleSetPacketCaptureStorageLocation({
+  const ScaleSetPacketCaptureStorageLocation({
     this.filePath,
     this.storageAccountId,
     this.storagePath,

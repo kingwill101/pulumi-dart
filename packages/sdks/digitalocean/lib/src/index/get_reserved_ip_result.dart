@@ -19,7 +19,7 @@ class GetReservedIpResult {
   /// [ipAddress] Required.
   /// [region] The region that the reserved IP is reserved to.
   /// [urn] The uniform resource name of the reserved IP.
-  GetReservedIpResult({
+  const GetReservedIpResult({
     required this.dropletId,
     required this.id,
     required this.ipAddress,

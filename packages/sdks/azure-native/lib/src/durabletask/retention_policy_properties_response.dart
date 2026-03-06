@@ -13,7 +13,7 @@ class RetentionPolicyPropertiesResponse {
   /// Creates a new [RetentionPolicyPropertiesResponse].
   /// [provisioningState] The status of the last operation
   /// [retentionPolicies] The orchestration retention policies
-  RetentionPolicyPropertiesResponse({
+  const RetentionPolicyPropertiesResponse({
     required this.provisioningState,
     this.retentionPolicies,
   });

@@ -12,7 +12,7 @@ class ResourceIdCloudresourcemanagerV1beta1 {
   /// Creates a new [ResourceIdCloudresourcemanagerV1beta1].
   /// [id] Required field for the type-specific id. This should correspond to the id used in the type-specific API's.
   /// [type] Required field representing the resource type this id is for. At present, the valid types are "project", "folder", and "organization".
-  ResourceIdCloudresourcemanagerV1beta1({
+  const ResourceIdCloudresourcemanagerV1beta1({
     this.id,
     this.type,
   });

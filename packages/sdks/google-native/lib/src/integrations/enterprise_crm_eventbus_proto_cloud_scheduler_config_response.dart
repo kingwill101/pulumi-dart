@@ -18,7 +18,7 @@ class EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse {
   /// [errorMessage] Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations
   /// [location] The location where associated cloud scheduler job will be created
   /// [serviceAccountEmail] Service account used by Cloud Scheduler to trigger the integration at scheduled time
-  EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse({
+  const EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse({
     required this.cronTab,
     required this.errorMessage,
     required this.location,

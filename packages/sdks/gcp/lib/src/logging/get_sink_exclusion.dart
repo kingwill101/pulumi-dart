@@ -17,7 +17,7 @@ class GetSinkExclusion {
   /// [disabled] Whether this exclusion is disabled and it does not exclude any log entries.
   /// [filter] An advanced logs filter that matches the log entries to be excluded.
   /// [name] A client-assigned identifier, such as `load-balancer-exclusion`.
-  GetSinkExclusion({
+  const GetSinkExclusion({
     required this.description,
     required this.disabled,
     required this.filter,

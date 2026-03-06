@@ -30,7 +30,7 @@ class GetTlsCipherPoliciesPolicy {
   /// [tlsCipherPolicyId] The ID of TLS cipher policy.
   /// [tlsCipherPolicyName] TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
   /// [tlsVersions] The version of TLS protocol.
-  GetTlsCipherPoliciesPolicy({
+  const GetTlsCipherPoliciesPolicy({
     required this.ciphers,
     required this.createTime,
     required this.id,

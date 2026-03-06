@@ -24,7 +24,7 @@ class UserState {
   /// [name] A unique name for the resource.
   /// [password] User's password.
   /// [region] The region in which to create the db user. Changing
-  UserState({
+  const UserState({
     this.databases,
     this.host,
     this.instanceId,

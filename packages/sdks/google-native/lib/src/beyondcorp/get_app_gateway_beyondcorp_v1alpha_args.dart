@@ -15,7 +15,7 @@ class GetAppGatewayBeyondcorpV1alphaArgs {
   /// [appGatewayId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAppGatewayBeyondcorpV1alphaArgs({
+  const GetAppGatewayBeyondcorpV1alphaArgs({
     required this.appGatewayId,
     required this.location,
     this.project,

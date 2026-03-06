@@ -31,7 +31,7 @@ class WebLinkedService {
   /// [type] Type of linked service.
   /// [typeProperties] Web linked service properties.
   /// [version] Version of the linked service.
-  WebLinkedService({
+  const WebLinkedService({
     this.annotations,
     this.connectVia,
     this.description,

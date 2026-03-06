@@ -15,7 +15,7 @@ class ApplicationLivenessV2HttpGet {
   /// [path] Optional.
   /// [port] Optional.
   /// [scheme] Optional.
-  ApplicationLivenessV2HttpGet({
+  const ApplicationLivenessV2HttpGet({
     this.isContainKeyWord,
     this.keyWord,
     this.path,

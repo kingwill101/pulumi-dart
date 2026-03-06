@@ -12,7 +12,7 @@ class ExperimentExecutionActionTargetDetailsErrorResponse {
   /// Creates a new [ExperimentExecutionActionTargetDetailsErrorResponse].
   /// [code] The error code.
   /// [message] The error message
-  ExperimentExecutionActionTargetDetailsErrorResponse({
+  const ExperimentExecutionActionTargetDetailsErrorResponse({
     required this.code,
     required this.message,
   });

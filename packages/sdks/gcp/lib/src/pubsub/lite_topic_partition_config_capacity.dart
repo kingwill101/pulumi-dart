@@ -11,7 +11,7 @@ class LiteTopicPartitionConfigCapacity {
   /// Creates a new [LiteTopicPartitionConfigCapacity].
   /// [publishMibPerSec] Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
   /// [subscribeMibPerSec] Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
-  LiteTopicPartitionConfigCapacity({
+  const LiteTopicPartitionConfigCapacity({
     required this.publishMibPerSec,
     required this.subscribeMibPerSec,
   });

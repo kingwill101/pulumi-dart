@@ -21,7 +21,7 @@ class GetFeatureSpec {
   /// [fleetobservabilities] Fleet Observability feature spec.
   /// [multiclusteringresses] Multicluster Ingress-specific spec.
   /// [rbacrolebindingactuations] RBACRolebinding Actuation feature spec.
-  GetFeatureSpec({
+  const GetFeatureSpec({
     required this.clusterupgrades,
     required this.fleetobservabilities,
     required this.multiclusteringresses,

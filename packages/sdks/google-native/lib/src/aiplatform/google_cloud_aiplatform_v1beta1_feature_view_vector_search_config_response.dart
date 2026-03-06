@@ -28,7 +28,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse {
   /// [embeddingDimension] Optional. The number of dimensions of the input embedding.
   /// [filterColumns] Optional. Columns of features that're used to filter vector search results.
   /// [treeAhConfig] Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
-  GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse({
+  const GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse({
     required this.bruteForceConfig,
     required this.crowdingColumn,
     required this.distanceMeasureType,

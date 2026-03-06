@@ -10,7 +10,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet {
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet].
   /// [key] Optional.
   /// [value] Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
-  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet({
+  const BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet({
     this.key,
     this.value,
   });

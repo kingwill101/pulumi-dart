@@ -11,7 +11,7 @@ class ServerlessCacheEndpoint {
   /// Creates a new [ServerlessCacheEndpoint].
   /// [address] The DNS hostname of the cache node.
   /// [port] The port number that the cache engine is listening on. Set as integer.
-  ServerlessCacheEndpoint({
+  const ServerlessCacheEndpoint({
     required this.address,
     required this.port,
   });

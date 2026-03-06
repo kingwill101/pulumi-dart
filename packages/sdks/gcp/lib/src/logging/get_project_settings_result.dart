@@ -34,7 +34,7 @@ class GetProjectSettingsResult {
   /// [name] The resource name of the settings.
   /// [project] Required.
   /// [storageLocation] The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
-  GetProjectSettingsResult({
+  const GetProjectSettingsResult({
     required this.disableDefaultSink,
     required this.id,
     required this.kmsKeyName,

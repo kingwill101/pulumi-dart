@@ -9,7 +9,7 @@ class PermissionEnumValueResponse {
 
   /// Creates a new [PermissionEnumValueResponse].
   /// [value] Property value
-  PermissionEnumValueResponse({
+  const PermissionEnumValueResponse({
     this.value,
   });
 

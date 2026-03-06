@@ -8,7 +8,7 @@ class SecurityGatewayApplicationUpstreamEgressPolicy {
 
   /// Creates a new [SecurityGatewayApplicationUpstreamEgressPolicy].
   /// [regions] Required. List of regions where the application sends traffic to.
-  SecurityGatewayApplicationUpstreamEgressPolicy({
+  const SecurityGatewayApplicationUpstreamEgressPolicy({
     required this.regions,
   });
 

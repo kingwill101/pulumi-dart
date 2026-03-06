@@ -9,7 +9,7 @@ class ResourceGroupPropertiesResponse {
 
   /// Creates a new [ResourceGroupPropertiesResponse].
   /// [provisioningState] The provisioning state.
-  ResourceGroupPropertiesResponse({
+  const ResourceGroupPropertiesResponse({
     required this.provisioningState,
   });
 

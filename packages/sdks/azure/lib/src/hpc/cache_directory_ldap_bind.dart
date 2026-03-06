@@ -11,7 +11,7 @@ class CacheDirectoryLdapBind {
   /// Creates a new [CacheDirectoryLdapBind].
   /// [dn] The Bind Distinguished Name (DN) identity to be used in the secure LDAP connection.
   /// [password] The Bind password to be used in the secure LDAP connection.
-  CacheDirectoryLdapBind({
+  const CacheDirectoryLdapBind({
     required this.dn,
     required this.password,
   });

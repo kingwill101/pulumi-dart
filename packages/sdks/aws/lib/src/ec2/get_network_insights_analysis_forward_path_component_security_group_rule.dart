@@ -18,7 +18,7 @@ class GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRule {
   /// [prefixListId] Required.
   /// [protocol] Required.
   /// [securityGroupId] Required.
-  GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRule({
+  const GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRule({
     required this.cidr,
     required this.direction,
     required this.portRanges,

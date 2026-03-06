@@ -33,7 +33,7 @@ class DeviceArgs {
   /// [resourceGroupName] The resource group name.
   /// [sku] The SKU type.
   /// [tags] The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
-  DeviceArgs({
+  const DeviceArgs({
     this.dataResidency,
     this.deviceName,
     this.identity,

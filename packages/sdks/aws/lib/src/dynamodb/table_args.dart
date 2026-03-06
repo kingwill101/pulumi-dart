@@ -107,7 +107,7 @@ class TableArgs {
   /// [ttl] Configuration block for TTL. See below.
   /// [warmThroughput] Sets the number of warm read and write units for the specified table. See below.
   /// [writeCapacity] Number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
-  TableArgs({
+  const TableArgs({
     this.attributes,
     this.billingMode,
     this.deletionProtectionEnabled,

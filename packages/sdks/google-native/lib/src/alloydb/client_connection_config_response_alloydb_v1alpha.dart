@@ -13,7 +13,7 @@ class ClientConnectionConfigResponseAlloydbV1alpha {
   /// Creates a new [ClientConnectionConfigResponseAlloydbV1alpha].
   /// [requireConnectors] Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
   /// [sslConfig] Optional. SSL config option for this instance.
-  ClientConnectionConfigResponseAlloydbV1alpha({
+  const ClientConnectionConfigResponseAlloydbV1alpha({
     required this.requireConnectors,
     required this.sslConfig,
   });

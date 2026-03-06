@@ -17,7 +17,7 @@ class MigrateMongoDbTaskProperties {
   /// [clientData] Key value pairs of client data to attach meta data information to task
   /// [input] Describes how a MongoDB data migration should be performed
   /// [taskType] Task type.
-  MigrateMongoDbTaskProperties({
+  const MigrateMongoDbTaskProperties({
     this.clientData,
     this.input,
     required this.taskType,

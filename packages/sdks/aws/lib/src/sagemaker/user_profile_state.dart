@@ -37,7 +37,7 @@ class UserProfileState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userProfileName] The name for the User Profile.
   /// [userSettings] The user settings. See User Settings below.
-  UserProfileState({
+  const UserProfileState({
     this.arn,
     this.domainId,
     this.homeEfsFileSystemUid,

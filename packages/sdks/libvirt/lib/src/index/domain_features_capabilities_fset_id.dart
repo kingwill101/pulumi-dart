@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesFsetId {
 
   /// Creates a new [DomainFeaturesCapabilitiesFsetId].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesFsetId({
+  const DomainFeaturesCapabilitiesFsetId({
     this.state,
   });
 

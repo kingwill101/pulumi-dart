@@ -12,7 +12,7 @@ class GetImageArgs {
 
   /// Creates a new [GetImageArgs].
   /// [id] The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-  GetImageArgs({
+  const GetImageArgs({
     required this.id,
   });
 

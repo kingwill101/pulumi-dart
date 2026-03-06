@@ -12,7 +12,7 @@ class MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed {
   /// Creates a new [MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed].
   /// [lookbackPeriod] The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
   /// [state] Describe whether this data type connection is enabled or not.
-  MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed({
+  const MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed({
     required this.lookbackPeriod,
     required this.state,
   });

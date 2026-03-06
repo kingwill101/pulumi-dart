@@ -40,7 +40,7 @@ class GetCryptoKeyResult {
   /// [purpose] Immutable. The immutable purpose of this CryptoKey.
   /// [rotationPeriod] next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
   /// [versionTemplate] A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
-  GetCryptoKeyResult({
+  const GetCryptoKeyResult({
     required this.createTime,
     required this.cryptoKeyBackend,
     required this.destroyScheduledDuration,

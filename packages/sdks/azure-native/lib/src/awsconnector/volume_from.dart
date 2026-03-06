@@ -12,7 +12,7 @@ class VolumeFrom {
   /// Creates a new [VolumeFrom].
   /// [readOnly] If this value is ``true``, the container has read-only access to the volume. If this value is ``false``, then the container can write to the volume. The default value is ``false``.
   /// [sourceContainer] The name of another container within the same task definition to mount volumes from.
-  VolumeFrom({
+  const VolumeFrom({
     this.readOnly,
     this.sourceContainer,
   });

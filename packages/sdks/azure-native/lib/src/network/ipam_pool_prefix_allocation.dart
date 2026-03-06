@@ -12,7 +12,7 @@ class IpamPoolPrefixAllocation {
   /// Creates a new [IpamPoolPrefixAllocation].
   /// [id] Resource id of the associated Azure IpamPool resource.
   /// [numberOfIpAddresses] Number of IP addresses to allocate.
-  IpamPoolPrefixAllocation({
+  const IpamPoolPrefixAllocation({
     this.id,
     this.numberOfIpAddresses,
   });

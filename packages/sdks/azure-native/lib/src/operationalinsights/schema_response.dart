@@ -40,7 +40,7 @@ class SchemaResponse {
   /// [standardColumns] A list of table standard columns.
   /// [tableSubType] The subtype describes what APIs can be used to interact with the table, and what features are available against it.
   /// [tableType] Table's creator.
-  SchemaResponse({
+  const SchemaResponse({
     required this.categories,
     this.columns,
     this.description,

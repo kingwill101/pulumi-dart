@@ -32,7 +32,7 @@ class NetworkSecurityGroupArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [securityRules] A collection of security rules of the network security group.
   /// [tags] Resource tags.
-  NetworkSecurityGroupArgs({
+  const NetworkSecurityGroupArgs({
     this.flushConnection,
     this.id,
     this.location,

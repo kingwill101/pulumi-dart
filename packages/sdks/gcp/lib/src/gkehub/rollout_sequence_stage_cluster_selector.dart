@@ -9,7 +9,7 @@ class RolloutSequenceStageClusterSelector {
 
   /// Creates a new [RolloutSequenceStageClusterSelector].
   /// [labelSelector] The label selector must be a valid CEL (Common Expression Language) expression which
-  RolloutSequenceStageClusterSelector({
+  const RolloutSequenceStageClusterSelector({
     required this.labelSelector,
   });
 

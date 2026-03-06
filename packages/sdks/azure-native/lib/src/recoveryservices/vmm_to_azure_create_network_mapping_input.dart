@@ -10,7 +10,7 @@ class VmmToAzureCreateNetworkMappingInput {
 
   /// Creates a new [VmmToAzureCreateNetworkMappingInput].
   /// [instanceType] The instance type.
-  VmmToAzureCreateNetworkMappingInput({
+  const VmmToAzureCreateNetworkMappingInput({
     required this.instanceType,
   });
 

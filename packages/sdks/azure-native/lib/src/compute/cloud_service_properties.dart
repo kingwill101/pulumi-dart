@@ -46,7 +46,7 @@ class CloudServiceProperties {
   /// [roleProfile] Describes the role profile for the cloud service.
   /// [startCloudService] (Optional) Indicates whether to start the cloud service immediately after it is created. The default value is `true`.
   /// [upgradeMode] Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.
-  CloudServiceProperties({
+  const CloudServiceProperties({
     this.allowModelOverride,
     this.configuration,
     this.configurationUrl,

@@ -15,7 +15,7 @@ class NFSMountConfigurationResponse {
   /// [mountOptions] These are 'net use' options in Windows and 'mount' options in Linux.
   /// [relativeMountPath] All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
   /// [source] The URI of the file system to mount.
-  NFSMountConfigurationResponse({
+  const NFSMountConfigurationResponse({
     this.mountOptions,
     required this.relativeMountPath,
     required this.source,

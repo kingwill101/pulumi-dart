@@ -15,7 +15,7 @@ class GetIspCustomerArgs {
   /// Creates a new [GetIspCustomerArgs].
   /// [customerResourceName] Name of the Customer resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIspCustomerArgs({
+  const GetIspCustomerArgs({
     required this.customerResourceName,
     required this.resourceGroupName,
   });

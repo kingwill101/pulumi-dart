@@ -18,7 +18,7 @@ class GetQueueArgs {
   /// [id] Unique identifier of the queue. The same as `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  GetQueueArgs({
+  const GetQueueArgs({
     required this.id,
     this.region,
     this.tags,

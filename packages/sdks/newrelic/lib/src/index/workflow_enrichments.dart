@@ -9,7 +9,7 @@ class WorkflowEnrichments {
 
   /// Creates a new [WorkflowEnrichments].
   /// [nrqls] (Required) Nrql type Enrichments.
-  WorkflowEnrichments({
+  const WorkflowEnrichments({
     required this.nrqls,
   });
 

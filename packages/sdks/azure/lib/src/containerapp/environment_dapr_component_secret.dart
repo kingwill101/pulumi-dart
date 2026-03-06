@@ -17,7 +17,7 @@ class EnvironmentDaprComponentSecret {
   /// [keyVaultSecretId] The Key Vault Secret ID.
   /// [name] The Secret name.
   /// [value] The value for this secret.
-  EnvironmentDaprComponentSecret({
+  const EnvironmentDaprComponentSecret({
     this.identity,
     this.keyVaultSecretId,
     required this.name,

@@ -52,7 +52,7 @@ class SpringCloudAppState {
   /// [serviceName] Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
   /// [tlsEnabled] Is End to End TLS Enabled? Defaults to `false`.
   /// [url] The public endpoint of the Spring Cloud Application.
-  SpringCloudAppState({
+  const SpringCloudAppState({
     this.addonJson,
     this.customPersistentDisks,
     this.fqdn,

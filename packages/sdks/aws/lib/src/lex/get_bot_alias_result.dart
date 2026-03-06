@@ -34,7 +34,7 @@ class GetBotAliasResult {
   /// [lastUpdatedDate] Date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.
   /// [name] Name of the alias. The name is not case sensitive.
   /// [region] Required.
-  GetBotAliasResult({
+  const GetBotAliasResult({
     required this.arn,
     required this.botName,
     required this.botVersion,

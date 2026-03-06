@@ -22,7 +22,7 @@ class NamedLocationArgs {
   /// [country] A `country` block as documented below, which configures a country-based named location.
   /// [displayName] The friendly name for this named location.
   /// [ip] An `ip` block as documented below, which configures an IP-based named location.
-  NamedLocationArgs({
+  const NamedLocationArgs({
     this.country,
     required this.displayName,
     this.ip,

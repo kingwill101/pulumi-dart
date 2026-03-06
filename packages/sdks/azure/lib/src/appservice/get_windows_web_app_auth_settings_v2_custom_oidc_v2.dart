@@ -38,7 +38,7 @@ class GetWindowsWebAppAuthSettingsV2CustomOidcV2 {
   /// [openidConfigurationEndpoint] The endpoint used for OpenID Connect Discovery. For example `https://example.com/.well-known/openid-configuration`.
   /// [scopes] The list of the scopes that are requested while authenticating.
   /// [tokenEndpoint] The endpoint used to request a Token as supplied by `openid_configuration_endpoint` response.
-  GetWindowsWebAppAuthSettingsV2CustomOidcV2({
+  const GetWindowsWebAppAuthSettingsV2CustomOidcV2({
     required this.authorisationEndpoint,
     required this.certificationUri,
     required this.clientCredentialMethod,

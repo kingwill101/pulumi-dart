@@ -9,7 +9,7 @@ class NoteAttestationAuthorityHint {
 
   /// Creates a new [NoteAttestationAuthorityHint].
   /// [humanReadableName] The human readable name of this Attestation Authority, for
-  NoteAttestationAuthorityHint({
+  const NoteAttestationAuthorityHint({
     required this.humanReadableName,
   });
 

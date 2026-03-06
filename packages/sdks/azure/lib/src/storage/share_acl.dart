@@ -12,7 +12,7 @@ class ShareAcl {
   /// Creates a new [ShareAcl].
   /// [accessPolicies] An `access_policy` block as defined below.
   /// [id] The ID which should be used for this Shared Identifier.
-  ShareAcl({
+  const ShareAcl({
     this.accessPolicies,
     required this.id,
   });

@@ -17,7 +17,7 @@ class CollectionPolicyCentralizeConfig {
   /// [destProject] Destination project for centralized forwarding. Its region must match destRegion.
   /// [destRegion] Destination region for centralized forwarding.
   /// [destTtl] Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
-  CollectionPolicyCentralizeConfig({
+  const CollectionPolicyCentralizeConfig({
     this.destLogstore,
     this.destProject,
     this.destRegion,

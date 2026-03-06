@@ -51,7 +51,7 @@ class CollaborationState {
   /// [tags] Key value pairs which tag the collaboration.
   /// [tagsAll] Optional.
   /// [updateTime] Date and time the collaboration was last updated.
-  CollaborationState({
+  const CollaborationState({
     this.analyticsEngine,
     this.arn,
     this.createTime,

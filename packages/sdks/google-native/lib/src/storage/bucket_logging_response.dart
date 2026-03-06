@@ -12,7 +12,7 @@ class BucketLoggingResponse {
   /// Creates a new [BucketLoggingResponse].
   /// [logBucket] The destination bucket where the current bucket's logs should be placed.
   /// [logObjectPrefix] A prefix for log object names.
-  BucketLoggingResponse({
+  const BucketLoggingResponse({
     required this.logBucket,
     required this.logObjectPrefix,
   });

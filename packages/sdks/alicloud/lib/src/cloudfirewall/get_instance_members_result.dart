@@ -24,7 +24,7 @@ class GetInstanceMembersResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetInstanceMembersResult({
+  const GetInstanceMembersResult({
     this.currentPage,
     required this.id,
     required this.ids,

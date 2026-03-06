@@ -11,7 +11,7 @@ class SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
   /// Creates a new [SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory].
   /// [availableVmSkus] Available VM SKUs for the Azure SQL Virtual Machine.
   /// [virtualMachineFamily] The virtual machine family of the target SKU.
-  SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory({
+  const SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory({
     this.availableVmSkus,
     this.virtualMachineFamily,
   });

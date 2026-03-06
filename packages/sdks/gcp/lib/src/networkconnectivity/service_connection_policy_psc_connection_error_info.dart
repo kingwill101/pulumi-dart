@@ -14,7 +14,7 @@ class ServiceConnectionPolicyPscConnectionErrorInfo {
   /// [domain] The logical grouping to which the "reason" belongs.
   /// [metadata] Additional structured details about this error.
   /// [reason] The reason of the error.
-  ServiceConnectionPolicyPscConnectionErrorInfo({
+  const ServiceConnectionPolicyPscConnectionErrorInfo({
     this.domain,
     this.metadata,
     this.reason,

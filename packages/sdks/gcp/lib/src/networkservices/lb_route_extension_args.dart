@@ -46,7 +46,7 @@ class LbRouteExtensionArgs {
   /// [location] The location of the route extension
   /// [name] Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
   /// [project] The ID of the project in which the resource belongs.
-  LbRouteExtensionArgs({
+  const LbRouteExtensionArgs({
     this.description,
     required this.extensionChains,
     required this.forwardingRules,

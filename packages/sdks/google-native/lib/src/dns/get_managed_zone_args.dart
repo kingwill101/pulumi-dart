@@ -15,7 +15,7 @@ class GetManagedZoneArgs {
   /// [clientOperationId] Optional.
   /// [managedZone] Required.
   /// [project] Optional.
-  GetManagedZoneArgs({
+  const GetManagedZoneArgs({
     this.clientOperationId,
     required this.managedZone,
     this.project,

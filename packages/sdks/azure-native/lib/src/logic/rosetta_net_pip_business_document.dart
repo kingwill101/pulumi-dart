@@ -15,7 +15,7 @@ class RosettaNetPipBusinessDocument {
   /// [description] The business document description.
   /// [name] The business document name.
   /// [version] The business document version.
-  RosettaNetPipBusinessDocument({
+  const RosettaNetPipBusinessDocument({
     this.description,
     required this.name,
     required this.version,

@@ -16,7 +16,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
   /// [enableEachUniqueValue] If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
   /// [type] The type of this configuration, a granular traffic unit can be one of the following:
   /// [value] Requests that match this value constitute a granular traffic unit.
-  SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig({
+  const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig({
     this.enableEachUniqueValue,
     required this.type,
     this.value,

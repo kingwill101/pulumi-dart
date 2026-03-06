@@ -22,7 +22,7 @@ class GetMetastoreFederationIamPolicyArgs {
   /// [federationId] Used to find the parent resource to bind the IAM policy to
   /// [location] The location where the metastore federation should reside.
   /// [project] The ID of the project in which the resource belongs.
-  GetMetastoreFederationIamPolicyArgs({
+  const GetMetastoreFederationIamPolicyArgs({
     required this.federationId,
     this.location,
     this.project,

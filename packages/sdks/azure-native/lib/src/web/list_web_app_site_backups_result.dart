@@ -13,7 +13,7 @@ class ListWebAppSiteBackupsResult {
   /// Creates a new [ListWebAppSiteBackupsResult].
   /// [nextLink] Link to next page of resources.
   /// [value] Collection of resources.
-  ListWebAppSiteBackupsResult({
+  const ListWebAppSiteBackupsResult({
     required this.nextLink,
     required this.value,
   });

@@ -64,7 +64,7 @@ class NotificationResponse {
   /// [operator] The comparison operator.
   /// [threshold] Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
   /// [thresholdType] The type of threshold.
-  NotificationResponse({
+  const NotificationResponse({
     required this.contactEmails,
     this.contactGroups,
     this.contactRoles,

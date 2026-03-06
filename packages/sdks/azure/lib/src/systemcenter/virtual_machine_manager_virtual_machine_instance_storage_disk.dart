@@ -29,7 +29,7 @@ class VirtualMachineManagerVirtualMachineInstanceStorageDisk {
   /// [storageQosPolicyName] The name of the Storage QoS policy.
   /// [templateDiskId] The disk ID in the System Center Virtual Machine Manager Virtual Machine Template. Changing this forces a new resource to be created.
   /// [vhdType] The disk vhd type. Possible values are `Dynamic` and `Fixed`.
-  VirtualMachineManagerVirtualMachineInstanceStorageDisk({
+  const VirtualMachineManagerVirtualMachineInstanceStorageDisk({
     this.bus,
     this.busType,
     this.diskSizeGb,

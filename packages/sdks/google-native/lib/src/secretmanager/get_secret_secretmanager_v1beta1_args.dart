@@ -13,7 +13,7 @@ class GetSecretSecretmanagerV1beta1Args {
   /// Creates a new [GetSecretSecretmanagerV1beta1Args].
   /// [project] Optional.
   /// [secretId] Required.
-  GetSecretSecretmanagerV1beta1Args({
+  const GetSecretSecretmanagerV1beta1Args({
     this.project,
     required this.secretId,
   });

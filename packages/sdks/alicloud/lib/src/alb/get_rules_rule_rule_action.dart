@@ -39,7 +39,7 @@ class GetRulesRuleRuleAction {
   /// [trafficLimitConfigs] The Flow speed limit.
   /// [trafficMirrorConfigs] The Traffic mirroring.
   /// [type] The type of the forwarding rule.
-  GetRulesRuleRuleAction({
+  const GetRulesRuleRuleAction({
     required this.fixedResponseConfigs,
     required this.forwardGroupConfigs,
     required this.insertHeaderConfigs,

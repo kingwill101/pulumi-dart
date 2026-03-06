@@ -24,7 +24,7 @@ class DataflowBuiltInTransformationSettingsResponse {
   /// [map] Maps input to output message.
   /// [schemaRef] Reference to the schema that describes the output of the transformation.
   /// [serializationFormat] Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-  DataflowBuiltInTransformationSettingsResponse({
+  const DataflowBuiltInTransformationSettingsResponse({
     this.datasets,
     this.filter,
     this.map,

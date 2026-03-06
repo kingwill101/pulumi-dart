@@ -40,7 +40,7 @@ class SavedSearchArgs {
   /// [tags] The tags attached to the saved search.
   /// [version] The version number of the query language. The current version is 2 and is the default.
   /// [workspaceName] The name of the workspace.
-  SavedSearchArgs({
+  const SavedSearchArgs({
     required this.category,
     required this.displayName,
     this.functionAlias,

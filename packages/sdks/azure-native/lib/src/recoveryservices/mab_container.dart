@@ -51,7 +51,7 @@ class MabContainer {
   /// [protectableObjectType] Type of the protectable object associated with this container
   /// [protectedItemCount] Number of items backed up in this container.
   /// [registrationStatus] Status of registration of the container with the Recovery Services Vault.
-  MabContainer({
+  const MabContainer({
     this.agentVersion,
     this.backupManagementType,
     this.canReRegister,

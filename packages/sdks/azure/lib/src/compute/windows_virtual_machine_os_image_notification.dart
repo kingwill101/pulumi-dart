@@ -8,7 +8,7 @@ class WindowsVirtualMachineOsImageNotification {
 
   /// Creates a new [WindowsVirtualMachineOsImageNotification].
   /// [timeout] Length of time a notification to be sent to the VM on the instance metadata server till the VM gets OS upgraded. The only possible value is `PT15M`. Defaults to `PT15M`.
-  WindowsVirtualMachineOsImageNotification({
+  const WindowsVirtualMachineOsImageNotification({
     this.timeout,
   });
 

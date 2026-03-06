@@ -19,7 +19,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadI
   /// [items] Nested items definition for arrays of arrays.
   /// [properties] Set of property definitions for arrays of objects. See `property` below.
   /// [type] Data type of the array items.
-  AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItems({
+  const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItems({
     this.description,
     this.items,
     this.properties,

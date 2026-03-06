@@ -18,7 +18,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
   /// [bigQueryField] Field in a BigQuery table where each cell represents a dictionary phrase.
   /// [cloudStorageFileSet] Set of files containing newline-delimited lists of dictionary phrases.
   /// [outputPath] Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
-  GooglePrivacyDlpV2LargeCustomDictionaryConfig({
+  const GooglePrivacyDlpV2LargeCustomDictionaryConfig({
     this.bigQueryField,
     this.cloudStorageFileSet,
     this.outputPath,

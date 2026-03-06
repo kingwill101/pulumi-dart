@@ -12,7 +12,7 @@ class GetTagArgs {
 
   /// Creates a new [GetTagArgs].
   /// [name] The name of the tag.
-  GetTagArgs({
+  const GetTagArgs({
     required this.name,
   });
 

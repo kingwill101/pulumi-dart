@@ -18,7 +18,7 @@ class GlobalValidation {
   /// [excludedPaths] The paths for which unauthenticated flow would not be redirected to the login page.
   /// [redirectToProvider] The default authentication provider to use when multiple providers are configured.
   /// [unauthenticatedClientAction] The action to take when an unauthenticated client attempts to access the app.
-  GlobalValidation({
+  const GlobalValidation({
     this.excludedPaths,
     this.redirectToProvider,
     this.unauthenticatedClientAction,

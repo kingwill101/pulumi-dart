@@ -9,7 +9,7 @@ class AuthTypeEnumValue {
 
   /// Creates a new [AuthTypeEnumValue].
   /// [value] Property value
-  AuthTypeEnumValue({
+  const AuthTypeEnumValue({
     this.value,
   });
 

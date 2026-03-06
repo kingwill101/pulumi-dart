@@ -9,7 +9,7 @@ class MpegCommonEncryption {
 
   /// Creates a new [MpegCommonEncryption].
   /// [scheme] Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
-  MpegCommonEncryption({
+  const MpegCommonEncryption({
     required this.scheme,
   });
 

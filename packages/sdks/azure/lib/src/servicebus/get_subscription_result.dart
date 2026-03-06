@@ -50,7 +50,7 @@ class GetSubscriptionResult {
   /// [resourceGroupName] Optional.
   /// [topicId] Optional.
   /// [topicName] Optional.
-  GetSubscriptionResult({
+  const GetSubscriptionResult({
     required this.autoDeleteOnIdle,
     required this.batchedOperationsEnabled,
     required this.deadLetteringOnFilterEvaluationError,

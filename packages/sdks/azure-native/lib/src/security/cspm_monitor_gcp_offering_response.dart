@@ -17,7 +17,7 @@ class CspmMonitorGcpOfferingResponse {
   /// [description] The offering description.
   /// [nativeCloudConnection] The native cloud connection configuration
   /// [offeringType] The type of the security offering.
-  CspmMonitorGcpOfferingResponse({
+  const CspmMonitorGcpOfferingResponse({
     required this.description,
     this.nativeCloudConnection,
     required this.offeringType,

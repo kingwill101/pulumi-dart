@@ -54,7 +54,7 @@ class RedisCommonPropertiesRedisConfiguration {
   /// [rdbBackupMaxSnapshotCount] Specifies the maximum number of snapshots for rdb backup
   /// [rdbStorageConnectionString] The storage account connection string for storing rdb file
   /// [storageSubscriptionId] SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
-  RedisCommonPropertiesRedisConfiguration({
+  const RedisCommonPropertiesRedisConfiguration({
     this.aadEnabled,
     this.aofBackupEnabled,
     this.aofStorageConnectionString0,

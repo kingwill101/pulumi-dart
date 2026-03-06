@@ -11,7 +11,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate {
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate].
   /// [files] Required.
   /// [sds] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate({
     required this.files,
     required this.sds,
   });

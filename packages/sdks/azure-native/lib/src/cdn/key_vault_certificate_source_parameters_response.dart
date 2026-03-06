@@ -30,7 +30,7 @@ class KeyVaultCertificateSourceParametersResponse {
   /// [typeName] Expected value is 'KeyVaultCertificateSourceParameters'.
   /// [updateRule] Describes the action that shall be taken when the certificate is updated in Key Vault.
   /// [vaultName] The name of the user's Key Vault containing the SSL certificate
-  KeyVaultCertificateSourceParametersResponse({
+  const KeyVaultCertificateSourceParametersResponse({
     required this.deleteRule,
     required this.resourceGroupName,
     required this.secretName,

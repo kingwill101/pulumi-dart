@@ -29,7 +29,7 @@ class InstanceState {
   /// [renewalStatus] Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
   /// [versionCode] Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
   /// [versionName] Paid package version name.
-  InstanceState({
+  const InstanceState({
     this.dnsSecurity,
     this.domainNumbers,
     this.paymentType,

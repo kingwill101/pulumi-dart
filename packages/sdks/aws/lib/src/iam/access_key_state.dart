@@ -33,7 +33,7 @@ class AccessKeyState {
   /// [sesSmtpPasswordV4] Secret access key converted into an SES SMTP password by applying [AWS's documented Sigv4 conversion algorithm](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.html#smtp-credentials-convert). This attribute is not available for imported resources. As SigV4 is region specific, valid Provider regions are `ap-south-1`, `ap-southeast-2`, `eu-central-1`, `eu-west-1`, `us-east-1` and `us-west-2`. See current [AWS SES regions](https://docs.aws.amazon.com/general/latest/gr/rande.html#ses_region).
   /// [status] Access key status to apply. Defaults to `Active`. Valid values are `Active` and `Inactive`.
   /// [user] IAM user to associate with this access key.
-  AccessKeyState({
+  const AccessKeyState({
     this.createDate,
     this.encryptedSecret,
     this.encryptedSesSmtpPasswordV4,

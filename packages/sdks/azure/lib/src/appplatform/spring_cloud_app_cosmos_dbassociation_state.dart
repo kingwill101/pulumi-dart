@@ -36,7 +36,7 @@ class SpringCloudAppCosmosDBAssociationState {
   /// [cosmosdbSqlDatabaseName] Specifies the name of the SQL Database which the Spring Cloud App should be associated with. Should only be set when `api_type` is `sql`.
   /// [name] Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
   /// [springCloudAppId] Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
-  SpringCloudAppCosmosDBAssociationState({
+  const SpringCloudAppCosmosDBAssociationState({
     this.apiType,
     this.cosmosdbAccessKey,
     this.cosmosdbAccountId,

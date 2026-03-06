@@ -46,7 +46,7 @@ class PolicySetDefinitionVersionResponse {
   /// [systemData] The system metadata relating to this resource.
   /// [type] The type of the resource (Microsoft.Authorization/policySetDefinitions/versions).
   /// [version] The policy set definition version in #.#.# format.
-  PolicySetDefinitionVersionResponse({
+  const PolicySetDefinitionVersionResponse({
     this.description,
     this.displayName,
     required this.id,

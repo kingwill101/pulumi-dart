@@ -47,7 +47,7 @@ class QuotaArgs {
   /// [pool] Quota value for pools. Changing this updates the
   /// [projectId] ID of the project to manage quotas. Changing this
   /// [region] Region in which to manage quotas. Changing this
-  QuotaArgs({
+  const QuotaArgs({
     this.healthMonitor,
     this.l7Policy,
     this.l7Rule,

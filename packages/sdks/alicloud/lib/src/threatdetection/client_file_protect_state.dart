@@ -30,7 +30,7 @@ class ClientFileProtectState {
   /// [ruleName] ruleName.
   /// [status] rule status 0 is disable 1 is enable.
   /// [switchId] switch id.
-  ClientFileProtectState({
+  const ClientFileProtectState({
     this.alertLevel,
     this.fileOps,
     this.filePaths,

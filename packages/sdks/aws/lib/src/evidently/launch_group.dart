@@ -17,7 +17,7 @@ class LaunchGroup {
   /// [feature] Specifies the name of the feature that the launch is using.
   /// [name] Specifies the name of the lahnch group.
   /// [variation] Specifies the feature variation to use for this launch group.
-  LaunchGroup({
+  const LaunchGroup({
     this.description,
     required this.feature,
     required this.name,

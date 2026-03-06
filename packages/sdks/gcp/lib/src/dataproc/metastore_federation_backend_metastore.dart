@@ -15,7 +15,7 @@ class MetastoreFederationBackendMetastore {
   /// [metastoreType] The type of the backend metastore.
   /// [name] The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
   /// [rank] The identifier for this object. Format specified above.
-  MetastoreFederationBackendMetastore({
+  const MetastoreFederationBackendMetastore({
     required this.metastoreType,
     required this.name,
     required this.rank,

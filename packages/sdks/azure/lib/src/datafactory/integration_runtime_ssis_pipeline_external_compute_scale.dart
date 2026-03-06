@@ -14,7 +14,7 @@ class IntegrationRuntimeSsisPipelineExternalComputeScale {
   /// [numberOfExternalNodes] Specifies the number of the external nodes, which should be greater than `0` and less than `11`.
   /// [numberOfPipelineNodes] Specifies the number of the pipeline nodes, which should be greater than `0` and less than `11`.
   /// [timeToLive] Specifies the time to live (in minutes) setting of integration runtime which will execute copy activity. Possible values are at least `5`.
-  IntegrationRuntimeSsisPipelineExternalComputeScale({
+  const IntegrationRuntimeSsisPipelineExternalComputeScale({
     this.numberOfExternalNodes,
     this.numberOfPipelineNodes,
     this.timeToLive,

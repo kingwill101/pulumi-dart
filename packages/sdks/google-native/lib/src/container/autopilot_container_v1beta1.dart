@@ -16,7 +16,7 @@ class AutopilotContainerV1beta1 {
   /// [conversionStatus] ConversionStatus shows conversion status.
   /// [enabled] Enable Autopilot
   /// [workloadPolicyConfig] Workload policy configuration for Autopilot.
-  AutopilotContainerV1beta1({
+  const AutopilotContainerV1beta1({
     this.conversionStatus,
     this.enabled,
     this.workloadPolicyConfig,

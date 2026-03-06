@@ -19,7 +19,7 @@ class AiIndexEndpointDeployedIndexPrivateEndpoint {
   /// [matchGrpcAddress] (Output)
   /// [pscAutomatedEndpoints] (Output)
   /// [serviceAttachment] (Output)
-  AiIndexEndpointDeployedIndexPrivateEndpoint({
+  const AiIndexEndpointDeployedIndexPrivateEndpoint({
     this.matchGrpcAddress,
     this.pscAutomatedEndpoints,
     this.serviceAttachment,

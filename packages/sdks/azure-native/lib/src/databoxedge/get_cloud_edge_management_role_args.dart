@@ -18,7 +18,7 @@ class GetCloudEdgeManagementRoleArgs {
   /// [deviceName] The device name.
   /// [name] The role name.
   /// [resourceGroupName] The resource group name.
-  GetCloudEdgeManagementRoleArgs({
+  const GetCloudEdgeManagementRoleArgs({
     required this.deviceName,
     required this.name,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class ChannelTypeDescriptionResponse {
   /// [channelDescription] Text description for the channel
   /// [channelFunctions] All the available functions for the channel
   /// [channelType] Channel type
-  ChannelTypeDescriptionResponse({
+  const ChannelTypeDescriptionResponse({
     this.channelDescription,
     this.channelFunctions,
     this.channelType,

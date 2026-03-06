@@ -14,7 +14,7 @@ class FrontdoorFirewallPolicyLogScrubbing {
   /// Creates a new [FrontdoorFirewallPolicyLogScrubbing].
   /// [enabled] Is log scrubbing enabled? Possible values are `true` or `false`. Defaults to `true`.
   /// [scrubbingRules] One or more `scrubbing_rule` blocks as defined below.
-  FrontdoorFirewallPolicyLogScrubbing({
+  const FrontdoorFirewallPolicyLogScrubbing({
     this.enabled,
     required this.scrubbingRules,
   });

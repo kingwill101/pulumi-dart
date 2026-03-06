@@ -18,7 +18,7 @@ class GetSrvRecordArgs {
   /// [name] The name of the DNS SRV Record.
   /// [resourceGroupName] Specifies the resource group where the DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the DNS Zone where the resource exists.
-  GetSrvRecordArgs({
+  const GetSrvRecordArgs({
     required this.name,
     required this.resourceGroupName,
     required this.zoneName,

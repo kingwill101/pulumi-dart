@@ -20,7 +20,7 @@ class VMDiskSecurityProfile {
   /// Creates a new [VMDiskSecurityProfile].
   /// [diskEncryptionSet] Specifies the customer managed disk encryption set resource id for the managed
   /// [securityEncryptionType] Specifies the EncryptionType of the managed disk. It is set to
-  VMDiskSecurityProfile({
+  const VMDiskSecurityProfile({
     this.diskEncryptionSet,
     this.securityEncryptionType,
   });

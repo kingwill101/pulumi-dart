@@ -57,7 +57,7 @@ class PrivateConnectionState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] State of the PrivateConnection.
   /// [vpcPeeringConfig] The VPC Peering configuration is used to create VPC peering
-  PrivateConnectionState({
+  const PrivateConnectionState({
     this.createWithoutValidation,
     this.displayName,
     this.effectiveLabels,

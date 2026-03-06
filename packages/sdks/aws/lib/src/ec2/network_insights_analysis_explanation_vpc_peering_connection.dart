@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationVpcPeeringConnection {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationVpcPeeringConnection({
+  const NetworkInsightsAnalysisExplanationVpcPeeringConnection({
     this.arn,
     this.id,
     this.name,

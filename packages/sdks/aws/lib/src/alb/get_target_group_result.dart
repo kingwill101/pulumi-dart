@@ -56,7 +56,7 @@ class GetTargetGroupResult {
   /// [targetControlPort] Required.
   /// [targetType] Required.
   /// [vpcId] Required.
-  GetTargetGroupResult({
+  const GetTargetGroupResult({
     required this.arn,
     required this.arnSuffix,
     required this.connectionTermination,

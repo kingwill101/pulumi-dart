@@ -13,7 +13,7 @@ class DataConnectorCredentialMapResponse {
   /// Creates a new [DataConnectorCredentialMapResponse].
   /// [key] The key representing the credential.
   /// [value] The data connector credential value.
-  DataConnectorCredentialMapResponse({
+  const DataConnectorCredentialMapResponse({
     required this.key,
     required this.value,
   });

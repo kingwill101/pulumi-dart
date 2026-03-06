@@ -16,7 +16,7 @@ class NetworkRuleSetPropertiesResponse {
   /// [applyToBuiltInEventHubEndpoint] If True, then Network Rule Set is also applied to BuiltIn EventHub EndPoint of IotHub
   /// [defaultAction] Default Action for Network Rule Set
   /// [ipRules] List of IP Rules
-  NetworkRuleSetPropertiesResponse({
+  const NetworkRuleSetPropertiesResponse({
     required this.applyToBuiltInEventHubEndpoint,
     this.defaultAction,
     required this.ipRules,

@@ -46,7 +46,7 @@ class DeviceState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] Type of device.
   /// [vendor] Vendor of the device.
-  DeviceState({
+  const DeviceState({
     this.arn,
     this.awsLocation,
     this.description,

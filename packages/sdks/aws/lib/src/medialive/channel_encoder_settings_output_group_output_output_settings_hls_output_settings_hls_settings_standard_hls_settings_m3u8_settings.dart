@@ -40,7 +40,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
   /// [timedMetadataPid] Optional.
   /// [transportStreamId] Optional.
   /// [videoPid] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings({
     this.audioFramesPerPes,
     this.audioPids,
     this.ecmPid,

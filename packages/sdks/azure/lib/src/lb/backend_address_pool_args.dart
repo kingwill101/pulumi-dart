@@ -27,7 +27,7 @@ class BackendAddressPoolArgs {
   /// [synchronousMode] The backend address synchronous mode for the Backend Address Pool. Possible values are `Automatic` and `Manual`. This is required with `virtual_network_id`. Changing this forces a new resource to be created.
   /// [tunnelInterfaces] One or more `tunnel_interface` blocks as defined below.
   /// [virtualNetworkId] The ID of the Virtual Network within which the Backend Address Pool should exist.
-  BackendAddressPoolArgs({
+  const BackendAddressPoolArgs({
     required this.loadbalancerId,
     this.name,
     this.synchronousMode,

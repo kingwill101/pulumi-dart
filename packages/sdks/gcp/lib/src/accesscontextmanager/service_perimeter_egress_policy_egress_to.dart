@@ -28,7 +28,7 @@ class ServicePerimeterEgressPolicyEgressTo {
   /// [operations] A list of `ApiOperations` that this egress rule applies to. A request matches
   /// [resources] A list of resources, currently only projects in the form
   /// [roles] A list of IAM roles that represent the set of operations that the sources
-  ServicePerimeterEgressPolicyEgressTo({
+  const ServicePerimeterEgressPolicyEgressTo({
     this.externalResources,
     this.operations,
     this.resources,

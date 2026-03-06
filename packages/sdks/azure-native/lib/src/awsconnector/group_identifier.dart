@@ -12,7 +12,7 @@ class GroupIdentifier {
   /// Creates a new [GroupIdentifier].
   /// [groupId] &lt;p&gt;The ID of the security group.&lt;/p&gt;
   /// [groupName] &lt;p&gt;The name of the security group.&lt;/p&gt;
-  GroupIdentifier({
+  const GroupIdentifier({
     this.groupId,
     this.groupName,
   });

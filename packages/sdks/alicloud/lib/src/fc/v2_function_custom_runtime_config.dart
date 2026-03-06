@@ -11,7 +11,7 @@ class V2FunctionCustomRuntimeConfig {
   /// Creates a new [V2FunctionCustomRuntimeConfig].
   /// [args] Parameters received by the start entry command.
   /// [commands] List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
-  V2FunctionCustomRuntimeConfig({
+  const V2FunctionCustomRuntimeConfig({
     this.args,
     this.commands,
   });

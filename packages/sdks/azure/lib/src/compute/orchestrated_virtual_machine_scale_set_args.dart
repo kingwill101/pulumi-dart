@@ -158,7 +158,7 @@ class OrchestratedVirtualMachineScaleSetArgs {
   /// [userDataBase64] The Base64-Encoded User Data which should be used for this Virtual Machine Scale Set.
   /// [zoneBalance] Should the Virtual Machines in this Scale Set be strictly evenly distributed across Availability Zones? Defaults to `false`. Changing this forces a new resource to be created.
   /// [zones] Specifies a list of Availability Zones across which the Virtual Machine Scale Set will create instances.
-  OrchestratedVirtualMachineScaleSetArgs({
+  const OrchestratedVirtualMachineScaleSetArgs({
     this.additionalCapabilities,
     this.automaticInstanceRepair,
     this.bootDiagnostics,

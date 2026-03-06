@@ -48,7 +48,7 @@ class SupabaseProjectState {
   /// [vpcId] The VPC ID.
   /// [vswitchId] The vSwitch ID.
   /// [zoneId] The Zone ID.
-  SupabaseProjectState({
+  const SupabaseProjectState({
     this.accountPassword,
     this.createTime,
     this.diskPerformanceLevel,

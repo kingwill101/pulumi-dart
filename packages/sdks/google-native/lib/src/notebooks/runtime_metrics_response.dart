@@ -9,7 +9,7 @@ class RuntimeMetricsResponse {
 
   /// Creates a new [RuntimeMetricsResponse].
   /// [systemMetrics] The system metrics.
-  RuntimeMetricsResponse({
+  const RuntimeMetricsResponse({
     required this.systemMetrics,
   });
 

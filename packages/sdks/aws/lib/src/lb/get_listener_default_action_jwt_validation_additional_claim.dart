@@ -11,7 +11,7 @@ class GetListenerDefaultActionJwtValidationAdditionalClaim {
   /// [format] Required.
   /// [name] Required.
   /// [values] Required.
-  GetListenerDefaultActionJwtValidationAdditionalClaim({
+  const GetListenerDefaultActionJwtValidationAdditionalClaim({
     required this.format,
     required this.name,
     required this.values,

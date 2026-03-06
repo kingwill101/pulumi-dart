@@ -32,7 +32,7 @@ class GetRouteFilterRuleResult {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the route filter rule resource.
   /// [routeFilterRuleType] The rule type of the rule.
-  GetRouteFilterRuleResult({
+  const GetRouteFilterRuleResult({
     required this.access,
     required this.azureApiVersion,
     required this.communities,

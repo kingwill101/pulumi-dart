@@ -41,7 +41,7 @@ class ConfiguredTableState {
   /// [tags] Key value pairs which tag the configured table.
   /// [tagsAll] Optional.
   /// [updateTime] The date and time the configured table was last updated.
-  ConfiguredTableState({
+  const ConfiguredTableState({
     this.allowedColumns,
     this.analysisMethod,
     this.arn,

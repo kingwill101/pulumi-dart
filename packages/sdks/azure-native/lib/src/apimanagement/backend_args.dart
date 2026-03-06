@@ -53,7 +53,7 @@ class BackendArgs {
   /// [title] Backend Title.
   /// [tls] Backend TLS Properties
   /// [url] Runtime Url of the Backend.
-  BackendArgs({
+  const BackendArgs({
     this.backendId,
     this.circuitBreaker,
     this.credentials,

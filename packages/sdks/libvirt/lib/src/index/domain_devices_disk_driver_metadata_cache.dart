@@ -9,7 +9,7 @@ class DomainDevicesDiskDriverMetadataCache {
 
   /// Creates a new [DomainDevicesDiskDriverMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.
-  DomainDevicesDiskDriverMetadataCache({
+  const DomainDevicesDiskDriverMetadataCache({
     this.maxSize,
   });
 

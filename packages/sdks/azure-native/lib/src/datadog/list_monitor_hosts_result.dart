@@ -13,7 +13,7 @@ class ListMonitorHostsResult {
   /// Creates a new [ListMonitorHostsResult].
   /// [nextLink] Link to the next set of results, if any.
   /// [value] Results of a list operation.
-  ListMonitorHostsResult({
+  const ListMonitorHostsResult({
     this.nextLink,
     this.value,
   });

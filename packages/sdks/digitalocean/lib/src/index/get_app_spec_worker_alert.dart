@@ -23,7 +23,7 @@ class GetAppSpecWorkerAlert {
   /// [rule] The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
   /// [value] The threshold for the type of the warning.
   /// [window] The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
-  GetAppSpecWorkerAlert({
+  const GetAppSpecWorkerAlert({
     this.destinations,
     this.disabled,
     required this.operator,

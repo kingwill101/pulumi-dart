@@ -24,7 +24,7 @@ class NetworkSecurityPerimeterArgs {
   /// [networkSecurityPerimeterName] The name of the network security perimeter.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  NetworkSecurityPerimeterArgs({
+  const NetworkSecurityPerimeterArgs({
     this.id,
     this.location,
     this.networkSecurityPerimeterName,

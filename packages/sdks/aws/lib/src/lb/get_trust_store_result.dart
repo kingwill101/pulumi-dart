@@ -14,7 +14,7 @@ class GetTrustStoreResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetTrustStoreResult({
+  const GetTrustStoreResult({
     required this.arn,
     required this.id,
     required this.name,

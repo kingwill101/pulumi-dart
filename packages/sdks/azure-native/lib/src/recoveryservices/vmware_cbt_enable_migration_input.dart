@@ -93,7 +93,7 @@ class VMwareCbtEnableMigrationInput {
   /// [testSubnetName] The selected test subnet name.
   /// [userSelectedOSName] The OS name selected by user.
   /// [vmwareMachineId] The ARM Id of the VM discovered in VMware.
-  VMwareCbtEnableMigrationInput({
+  const VMwareCbtEnableMigrationInput({
     this.confidentialVmKeyVaultId,
     required this.dataMoverRunAsAccountId,
     required this.disksToInclude,

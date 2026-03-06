@@ -15,7 +15,7 @@ class SessionStateEventResponse {
   /// [eventTime] The time that the session_state first encountered that state.
   /// [sessionState] The session_state tracked by this event
   /// [stateMessage] A human-readable message to explain the state.
-  SessionStateEventResponse({
+  const SessionStateEventResponse({
     required this.eventTime,
     required this.sessionState,
     required this.stateMessage,

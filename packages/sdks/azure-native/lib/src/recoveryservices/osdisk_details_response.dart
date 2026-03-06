@@ -15,7 +15,7 @@ class OSDiskDetailsResponse {
   /// [osType] The type of the OS on the VM.
   /// [osVhdId] The id of the disk containing the OS.
   /// [vhdName] The OS disk VHD name.
-  OSDiskDetailsResponse({
+  const OSDiskDetailsResponse({
     this.osType,
     this.osVhdId,
     this.vhdName,

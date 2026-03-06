@@ -8,7 +8,7 @@ class NlpVerticalFeaturizationSettings {
 
   /// Creates a new [NlpVerticalFeaturizationSettings].
   /// [datasetLanguage] Dataset language, useful for the text data.
-  NlpVerticalFeaturizationSettings({
+  const NlpVerticalFeaturizationSettings({
     this.datasetLanguage,
   });
 

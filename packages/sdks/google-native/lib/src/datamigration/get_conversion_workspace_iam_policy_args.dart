@@ -17,7 +17,7 @@ class GetConversionWorkspaceIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetConversionWorkspaceIamPolicyArgs({
+  const GetConversionWorkspaceIamPolicyArgs({
     required this.conversionWorkspaceId,
     required this.location,
     this.optionsRequestedPolicyVersion,

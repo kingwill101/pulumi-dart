@@ -60,7 +60,7 @@ class GetDatabasesDatabase {
   /// [type] The Linode Instance type used for the nodes of the  Managed Database instance.
   /// [updated] When this Managed Database was last updated.
   /// [version] The Managed Database engine version.
-  GetDatabasesDatabase({
+  const GetDatabasesDatabase({
     required this.allowLists,
     required this.clusterSize,
     required this.created,

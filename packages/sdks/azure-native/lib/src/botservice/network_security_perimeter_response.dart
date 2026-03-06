@@ -15,7 +15,7 @@ class NetworkSecurityPerimeterResponse {
   /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [location] Location of the Network Security Perimeter
   /// [perimeterGuid] Guid of the Network Security Perimeter
-  NetworkSecurityPerimeterResponse({
+  const NetworkSecurityPerimeterResponse({
     required this.id,
     this.location,
     this.perimeterGuid,

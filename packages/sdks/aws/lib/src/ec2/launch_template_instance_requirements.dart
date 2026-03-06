@@ -141,7 +141,7 @@ class LaunchTemplateInstanceRequirements {
   /// [spotMaxPricePercentageOverLowestPrice] The price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Default is 100. Conflicts with `max_spot_price_as_percentage_of_optimal_on_demand_price`
   /// [totalLocalStorageGb] Block describing the minimum and maximum total local storage (GB). Default is no minimum or maximum.
   /// [vcpuCount] Block describing the minimum and maximum number of vCPUs. Default is no maximum.
-  LaunchTemplateInstanceRequirements({
+  const LaunchTemplateInstanceRequirements({
     this.acceleratorCount,
     this.acceleratorManufacturers,
     this.acceleratorNames,

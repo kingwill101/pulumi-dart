@@ -25,7 +25,7 @@ class Node {
   /// [nodeId] &lt;p&gt;A system-generated identifier for the node.&lt;/p&gt;
   /// [nodeStatus] &lt;p&gt;The current status of the node. For example: &lt;code&gt;available&lt;/code&gt;.&lt;/p&gt;
   /// [parameterGroupStatus] &lt;p&gt;The status of the parameter group associated with this node. For example, &lt;code&gt;in-sync&lt;/code&gt;.&lt;/p&gt;
-  Node({
+  const Node({
     this.availabilityZone,
     this.endpoint,
     this.nodeCreateTime,

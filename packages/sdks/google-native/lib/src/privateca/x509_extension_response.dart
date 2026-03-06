@@ -16,7 +16,7 @@ class X509ExtensionResponse {
   /// [critical] Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
   /// [objectId] The OID for this X.509 extension.
   /// [value] The value of this X.509 extension.
-  X509ExtensionResponse({
+  const X509ExtensionResponse({
     required this.critical,
     required this.objectId,
     required this.value,

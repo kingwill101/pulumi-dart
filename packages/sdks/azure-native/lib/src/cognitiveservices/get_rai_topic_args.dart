@@ -18,7 +18,7 @@ class GetRaiTopicArgs {
   /// [accountName] The name of Cognitive Services account.
   /// [raiTopicName] The name of the Rai Topic associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRaiTopicArgs({
+  const GetRaiTopicArgs({
     required this.accountName,
     required this.raiTopicName,
     required this.resourceGroupName,

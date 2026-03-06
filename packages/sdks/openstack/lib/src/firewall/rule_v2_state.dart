@@ -78,7 +78,7 @@ class RuleV2State {
   /// [sourceIpAddress] The source IP address on which the firewall
   /// [sourcePort] The source port on which the firewall
   /// [tenantId] This argument conflicts and is interchangeable
-  RuleV2State({
+  const RuleV2State({
     this.action,
     this.description,
     this.destinationIpAddress,

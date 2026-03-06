@@ -36,7 +36,7 @@ class OriginGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [responseBasedOriginErrorDetectionSettings] The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
   /// [trafficRestorationTimeToHealedOrNewEndpointsInMinutes] Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
-  OriginGroupArgs({
+  const OriginGroupArgs({
     required this.endpointName,
     this.healthProbeSettings,
     this.originGroupName,

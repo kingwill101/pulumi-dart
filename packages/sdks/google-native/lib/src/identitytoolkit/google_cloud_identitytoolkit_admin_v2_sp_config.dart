@@ -12,7 +12,7 @@ class GoogleCloudIdentitytoolkitAdminV2SpConfig {
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2SpConfig].
   /// [callbackUri] Callback URI where responses from IDP are handled.
   /// [spEntityId] Unique identifier for all SAML entities.
-  GoogleCloudIdentitytoolkitAdminV2SpConfig({
+  const GoogleCloudIdentitytoolkitAdminV2SpConfig({
     this.callbackUri,
     this.spEntityId,
   });

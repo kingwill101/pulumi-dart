@@ -13,7 +13,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig].
   /// [genericWebService] Generic Service configuration of this webhook.
   /// [service] The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
-  GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig({
+  const GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig({
     this.genericWebService,
     required this.service,
   });

@@ -10,7 +10,7 @@ class ResourceClaimSpec {
 
   /// Creates a new [ResourceClaimSpec].
   /// [devices] Devices defines how to request devices.
-  ResourceClaimSpec({
+  const ResourceClaimSpec({
     this.devices,
   });
 

@@ -17,7 +17,7 @@ class FirewallSettingsDefaultFirewallIds {
   /// [nodebalancer] The NodeBalancer's default firewall.
   /// [publicInterface] The public interface's default firewall.
   /// [vpcInterface] The VPC interface's default firewall.
-  FirewallSettingsDefaultFirewallIds({
+  const FirewallSettingsDefaultFirewallIds({
     this.linode,
     this.nodebalancer,
     this.publicInterface,

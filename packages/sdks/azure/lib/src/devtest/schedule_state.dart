@@ -46,7 +46,7 @@ class ScheduleState {
   /// [taskType] The task type of the schedule. Possible values include `LabVmsShutdownTask` and `LabVmAutoStart`.
   /// [timeZoneId] The time zone ID (e.g. Pacific Standard time).
   /// [weeklyRecurrence] The properties of a weekly schedule. If the schedule occurs only some days of the week, specify the weekly recurrence. A `weekly_recurrence` block as defined below.
-  ScheduleState({
+  const ScheduleState({
     this.dailyRecurrence,
     this.hourlyRecurrence,
     this.labName,

@@ -17,7 +17,7 @@ class GetPlanResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [stages] List of stages. A contact has an engagement plan with stages that contact specified contact channels. An escalation plan uses stages that contact specified contacts.
-  GetPlanResult({
+  const GetPlanResult({
     required this.contactId,
     required this.id,
     required this.region,

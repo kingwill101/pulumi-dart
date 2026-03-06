@@ -11,7 +11,7 @@ class AlertProcessingRuleSuppressionConditionTargetResourceType {
   /// Creates a new [AlertProcessingRuleSuppressionConditionTargetResourceType].
   /// [operator] The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
   /// [values] A list of values to match for a given condition. The values should be valid resource types. (e.g. Microsoft.Compute/VirtualMachines)
-  AlertProcessingRuleSuppressionConditionTargetResourceType({
+  const AlertProcessingRuleSuppressionConditionTargetResourceType({
     required this.operator,
     required this.values,
   });

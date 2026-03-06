@@ -11,7 +11,7 @@ class InteractiveQueryClusterComputeIsolation {
   /// Creates a new [InteractiveQueryClusterComputeIsolation].
   /// [computeIsolationEnabled] This field indicates whether enable compute isolation or not. Possible values are `true` or `false`.
   /// [hostSku] The name of the host SKU.
-  InteractiveQueryClusterComputeIsolation({
+  const InteractiveQueryClusterComputeIsolation({
     this.computeIsolationEnabled,
     this.hostSku,
   });

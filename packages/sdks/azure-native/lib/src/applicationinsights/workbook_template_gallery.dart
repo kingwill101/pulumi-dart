@@ -21,7 +21,7 @@ class WorkbookTemplateGallery {
   /// [order] Order of the template within the gallery.
   /// [resourceType] Azure resource type supported by the gallery.
   /// [type] Type of workbook supported by the workbook template.
-  WorkbookTemplateGallery({
+  const WorkbookTemplateGallery({
     this.category,
     this.name,
     this.order,

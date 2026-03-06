@@ -68,7 +68,7 @@ class AwsEc2SubnetPropertiesResponse {
   /// [subnetId] Property subnetId
   /// [tags] Any tags assigned to the subnet.
   /// [vpcId] The ID of the VPC the subnet is in. If you update this property, you must also update the ``CidrBlock`` property.
-  AwsEc2SubnetPropertiesResponse({
+  const AwsEc2SubnetPropertiesResponse({
     this.assignIpv6AddressOnCreation,
     this.availabilityZone,
     this.availabilityZoneId,

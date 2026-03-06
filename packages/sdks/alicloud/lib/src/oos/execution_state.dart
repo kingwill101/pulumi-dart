@@ -69,7 +69,7 @@ class ExecutionState {
   /// [templateName] The name of execution template.
   /// [templateVersion] The version of execution template.
   /// [updateDate] The time when the execution was updated.
-  ExecutionState({
+  const ExecutionState({
     this.counters,
     this.createDate,
     this.description,

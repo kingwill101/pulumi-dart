@@ -8,7 +8,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse {
 
   /// Creates a new [CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse].
   /// [texts] A collection of text responses.
-  CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse({
+  const CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse({
     this.texts,
   });
 

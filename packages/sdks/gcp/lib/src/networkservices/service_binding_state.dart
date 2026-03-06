@@ -38,7 +38,7 @@ class ServiceBindingState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [service] The full Service Directory Service name of the format
   /// [updateTime] Time the ServiceBinding was updated in UTC.
-  ServiceBindingState({
+  const ServiceBindingState({
     this.createTime,
     this.description,
     this.effectiveLabels,

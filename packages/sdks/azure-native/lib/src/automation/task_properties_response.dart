@@ -12,7 +12,7 @@ class TaskPropertiesResponse {
   /// Creates a new [TaskPropertiesResponse].
   /// [parameters] Gets or sets the parameters of the task.
   /// [source] Gets or sets the name of the runbook.
-  TaskPropertiesResponse({
+  const TaskPropertiesResponse({
     this.parameters,
     this.source,
   });

@@ -15,7 +15,7 @@ class GetEnvironmentArgs {
   /// [environmentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEnvironmentArgs({
+  const GetEnvironmentArgs({
     required this.environmentId,
     required this.location,
     this.project,

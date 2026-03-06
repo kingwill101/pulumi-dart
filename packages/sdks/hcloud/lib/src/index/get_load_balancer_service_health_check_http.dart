@@ -20,7 +20,7 @@ class GetLoadBalancerServiceHealthCheckHttp {
   /// [response] (string) Response we expect to be included in the Target response when a Health Check was performed.
   /// [statusCodes] (list[int]) We expect that the target answers with these status codes. If not the target is marked as `unhealthy`.
   /// [tls] (bool) Enable TLS certificate checking.
-  GetLoadBalancerServiceHealthCheckHttp({
+  const GetLoadBalancerServiceHealthCheckHttp({
     required this.domain,
     required this.path,
     required this.response,

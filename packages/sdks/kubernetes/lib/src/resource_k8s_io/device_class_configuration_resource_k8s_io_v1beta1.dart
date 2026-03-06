@@ -10,7 +10,7 @@ class DeviceClassConfigurationResourceK8sIoV1beta1 {
 
   /// Creates a new [DeviceClassConfigurationResourceK8sIoV1beta1].
   /// [opaque] Opaque provides driver-specific configuration parameters.
-  DeviceClassConfigurationResourceK8sIoV1beta1({
+  const DeviceClassConfigurationResourceK8sIoV1beta1({
     this.opaque,
   });
 

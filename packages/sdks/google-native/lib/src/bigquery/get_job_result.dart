@@ -36,7 +36,7 @@ class GetJobResult {
   /// [statistics] Information about the job, including starting time and ending time of the job.
   /// [status] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
   /// [userEmail] Email address of the user who ran the job.
-  GetJobResult({
+  const GetJobResult({
     required this.configuration,
     required this.etag,
     required this.jobCreationReason,

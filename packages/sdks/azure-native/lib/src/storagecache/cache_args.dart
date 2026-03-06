@@ -58,7 +58,7 @@ class CacheArgs {
   /// [tags] Resource tags.
   /// [upgradeSettings] Upgrade settings of the cache.
   /// [zones] Availability zones for resources. This field should only contain a single element in the array.
-  CacheArgs({
+  const CacheArgs({
     this.cacheName,
     this.cacheSizeGB,
     this.directoryServicesSettings,

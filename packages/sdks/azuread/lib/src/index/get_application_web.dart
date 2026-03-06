@@ -18,7 +18,7 @@ class GetApplicationWeb {
   /// [implicitGrants] An `implicit_grant` block as documented above.
   /// [logoutUrl] The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
   /// [redirectUris] A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
-  GetApplicationWeb({
+  const GetApplicationWeb({
     required this.homepageUrl,
     required this.implicitGrants,
     required this.logoutUrl,

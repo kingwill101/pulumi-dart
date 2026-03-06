@@ -28,7 +28,7 @@ class OssExportSinkState {
   /// [jobName] The unique identifier of the OSS data shipping job.
   /// [project] The name of the project.
   /// [status] The status of the post task. Example value: RUNNING
-  OssExportSinkState({
+  const OssExportSinkState({
     this.configuration,
     this.createTime,
     this.description,

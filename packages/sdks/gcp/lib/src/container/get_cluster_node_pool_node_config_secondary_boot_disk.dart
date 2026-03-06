@@ -11,7 +11,7 @@ class GetClusterNodePoolNodeConfigSecondaryBootDisk {
   /// Creates a new [GetClusterNodePoolNodeConfigSecondaryBootDisk].
   /// [diskImage] Disk image to create the secondary boot disk from
   /// [mode] Mode for how the secondary boot disk is used.
-  GetClusterNodePoolNodeConfigSecondaryBootDisk({
+  const GetClusterNodePoolNodeConfigSecondaryBootDisk({
     required this.diskImage,
     required this.mode,
   });

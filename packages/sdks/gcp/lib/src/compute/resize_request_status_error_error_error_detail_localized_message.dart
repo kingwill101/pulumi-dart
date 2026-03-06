@@ -13,7 +13,7 @@ class ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage {
   /// Creates a new [ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage].
   /// [locale] (Output)
   /// [message] (Output)
-  ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage({
+  const ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage({
     this.locale,
     this.message,
   });

@@ -33,7 +33,7 @@ class GetBackupResult {
   /// [sourceTable] Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
   /// [startTime] `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp.
   /// [state] The current state of the backup.
-  GetBackupResult({
+  const GetBackupResult({
     required this.encryptionInfo,
     required this.endTime,
     required this.expireTime,

@@ -13,7 +13,7 @@ class ProvisioningIssueResponse {
   /// Creates a new [ProvisioningIssueResponse].
   /// [name] Name of the issue
   /// [properties] Properties of Provisioning Issue
-  ProvisioningIssueResponse({
+  const ProvisioningIssueResponse({
     this.name,
     required this.properties,
   });

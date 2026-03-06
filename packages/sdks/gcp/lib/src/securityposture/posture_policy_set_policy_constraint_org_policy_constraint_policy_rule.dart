@@ -27,7 +27,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule {
   /// [denyAll] Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
   /// [enforce] If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
   /// [values] List of values to be used for this policy rule. This field can be set only in policies for list constraints.
-  PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule({
+  const PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule({
     this.allowAll,
     this.condition,
     this.denyAll,

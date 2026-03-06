@@ -15,7 +15,7 @@ class GetDeploymentStacksWhatIfResultsAtResourceGroupArgs {
   /// Creates a new [GetDeploymentStacksWhatIfResultsAtResourceGroupArgs].
   /// [deploymentStacksWhatIfResultName] Name of the deployment stack what-if result.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDeploymentStacksWhatIfResultsAtResourceGroupArgs({
+  const GetDeploymentStacksWhatIfResultsAtResourceGroupArgs({
     required this.deploymentStacksWhatIfResultName,
     required this.resourceGroupName,
   });

@@ -11,7 +11,7 @@ class GetClustersClusterHostPoolInfo {
   /// Creates a new [GetClustersClusterHostPoolInfo].
   /// [hpBizId] Machine pool ID.
   /// [hpName] The name of the machine pool.
-  GetClustersClusterHostPoolInfo({
+  const GetClustersClusterHostPoolInfo({
     required this.hpBizId,
     required this.hpName,
   });

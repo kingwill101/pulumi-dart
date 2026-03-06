@@ -30,7 +30,7 @@ class Rule {
   /// [logConfigs] This is deprecated and has no effect. Do not use.
   /// [notIns] This is deprecated and has no effect. Do not use.
   /// [permissions] This is deprecated and has no effect. Do not use.
-  Rule({
+  const Rule({
     this.action,
     this.conditions,
     this.description,

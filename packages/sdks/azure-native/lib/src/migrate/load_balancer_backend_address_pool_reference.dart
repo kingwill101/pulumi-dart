@@ -12,7 +12,7 @@ class LoadBalancerBackendAddressPoolReference {
   /// Creates a new [LoadBalancerBackendAddressPoolReference].
   /// [name] Gets the name of the proxy resource on the target side.
   /// [sourceArmResourceId] Gets the ARM resource ID of the tracked resource being referenced.
-  LoadBalancerBackendAddressPoolReference({
+  const LoadBalancerBackendAddressPoolReference({
     this.name,
     required this.sourceArmResourceId,
   });

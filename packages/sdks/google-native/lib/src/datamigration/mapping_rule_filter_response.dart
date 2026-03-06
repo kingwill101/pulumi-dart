@@ -21,7 +21,7 @@ class MappingRuleFilterResponse {
   /// [entityNamePrefix] Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
   /// [entityNameSuffix] Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
   /// [parentEntity] Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
-  MappingRuleFilterResponse({
+  const MappingRuleFilterResponse({
     required this.entities,
     required this.entityNameContains,
     required this.entityNamePrefix,

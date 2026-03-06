@@ -27,7 +27,7 @@ class ApplicationGatewayTrustedRootCertificateResponse {
   /// [name] Name of the trusted root certificate that is unique within an Application Gateway.
   /// [provisioningState] The provisioning state of the trusted root certificate resource.
   /// [type] Type of the resource.
-  ApplicationGatewayTrustedRootCertificateResponse({
+  const ApplicationGatewayTrustedRootCertificateResponse({
     this.data,
     required this.etag,
     this.id,

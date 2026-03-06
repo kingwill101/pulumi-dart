@@ -14,7 +14,7 @@ class GetDeviceLocation {
   /// [address] Physical address.
   /// [latitude] Latitude.
   /// [longitude] Longitude.
-  GetDeviceLocation({
+  const GetDeviceLocation({
     required this.address,
     required this.latitude,
     required this.longitude,

@@ -34,7 +34,7 @@ class SecretsManagerResourcePolicyPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  SecretsManagerResourcePolicyPropertiesResponse({
+  const SecretsManagerResourcePolicyPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

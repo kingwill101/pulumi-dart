@@ -31,7 +31,7 @@ class TransitHubArgs {
   /// [tags] Resource tags.
   /// [transitHubName] The name of the TransitHub Resource
   /// [transitOption] The TransitOption of the transitHub.
-  TransitHubArgs({
+  const TransitHubArgs({
     required this.communityName,
     this.location,
     required this.resourceGroupName,

@@ -50,7 +50,7 @@ class GetProductResult {
   /// [supportUrl] Contact URL for product support.
   /// [tags] Tags applied to the product.
   /// [type] Type of product.
-  GetProductResult({
+  const GetProductResult({
     this.acceptLanguage,
     required this.arn,
     required this.createdTime,

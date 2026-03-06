@@ -11,7 +11,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSetti
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings].
   /// [destination] Required.
   /// [frameCaptureCdnSettings] Optional.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings({
     required this.destination,
     this.frameCaptureCdnSettings,
   });

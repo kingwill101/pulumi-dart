@@ -68,7 +68,7 @@ class ProjectsPolicyBindingArgs {
   /// [policyKind] Immutable. The kind of the policy to attach in this binding. This
   /// [project] The ID of the project in which the resource belongs.
   /// [target] Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
-  ProjectsPolicyBindingArgs({
+  const ProjectsPolicyBindingArgs({
     this.annotations,
     this.condition,
     this.displayName,

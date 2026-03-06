@@ -20,7 +20,7 @@ class DomainCpuNumaInterconnectsLatency {
   /// [target] Defines the latency settings for the target in interconnects between NUMA cells.
   /// [type] Indicates the type of latency being configured for NUMA interconnections.
   /// [value] Sets the actual latency value for NUMA interconnecting communication, defined by the type.
-  DomainCpuNumaInterconnectsLatency({
+  const DomainCpuNumaInterconnectsLatency({
     this.cache,
     required this.initiator,
     required this.target,

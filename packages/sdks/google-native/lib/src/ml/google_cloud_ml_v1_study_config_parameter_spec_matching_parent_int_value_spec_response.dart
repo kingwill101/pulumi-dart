@@ -9,7 +9,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse 
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse].
   /// [values] Matches values of the parent parameter with type 'INTEGER'. All values must lie in `integer_value_spec` of parent parameter.
-  GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse({
+  const GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpecResponse({
     required this.values,
   });
 

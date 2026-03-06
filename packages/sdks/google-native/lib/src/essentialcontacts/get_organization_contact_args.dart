@@ -13,7 +13,7 @@ class GetOrganizationContactArgs {
   /// Creates a new [GetOrganizationContactArgs].
   /// [contactId] Required.
   /// [organizationId] Required.
-  GetOrganizationContactArgs({
+  const GetOrganizationContactArgs({
     required this.contactId,
     required this.organizationId,
   });

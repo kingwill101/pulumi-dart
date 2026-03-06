@@ -15,7 +15,7 @@ class GetRegistryArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [registryId] Required.
-  GetRegistryArgs({
+  const GetRegistryArgs({
     required this.location,
     this.project,
     required this.registryId,

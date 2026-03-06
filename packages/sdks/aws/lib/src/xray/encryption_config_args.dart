@@ -18,7 +18,7 @@ class EncryptionConfigArgs {
   /// [keyId] An AWS KMS customer master key (CMK) ARN.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
-  EncryptionConfigArgs({
+  const EncryptionConfigArgs({
     this.keyId,
     this.region,
     required this.type,

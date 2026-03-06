@@ -19,7 +19,7 @@ class InstancePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [schemaRegistryRef] The reference to the Schema Registry for this AIO Instance.
   /// [version] The Azure IoT Operations version.
-  InstancePropertiesResponse({
+  const InstancePropertiesResponse({
     this.description,
     required this.provisioningState,
     required this.schemaRegistryRef,

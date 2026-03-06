@@ -24,7 +24,7 @@ class EnvironmentVersionTagArgs {
   /// [project] Project name.
   /// [revision] Revision number.
   /// [tagName] Tag name.
-  EnvironmentVersionTagArgs({
+  const EnvironmentVersionTagArgs({
     required this.environment,
     required this.organization,
     this.project,

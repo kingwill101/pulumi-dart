@@ -23,7 +23,7 @@ class GetEndpointConnectionResult {
   /// [networkInterfaces] Required.
   /// [privateServiceConnections] Required.
   /// [resourceGroupName] Required.
-  GetEndpointConnectionResult({
+  const GetEndpointConnectionResult({
     required this.id,
     required this.location,
     required this.name,

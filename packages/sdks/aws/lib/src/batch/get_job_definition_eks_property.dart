@@ -9,7 +9,7 @@ class GetJobDefinitionEksProperty {
 
   /// Creates a new [GetJobDefinitionEksProperty].
   /// [podProperties] The properties for the Kubernetes pod resources of a job.
-  GetJobDefinitionEksProperty({
+  const GetJobDefinitionEksProperty({
     required this.podProperties,
   });
 

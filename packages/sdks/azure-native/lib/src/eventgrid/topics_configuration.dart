@@ -10,7 +10,7 @@ class TopicsConfiguration {
 
   /// Creates a new [TopicsConfiguration].
   /// [customDomains] List of custom domain configurations for the namespace.
-  TopicsConfiguration({
+  const TopicsConfiguration({
     this.customDomains,
   });
 

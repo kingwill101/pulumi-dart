@@ -10,7 +10,7 @@ class NamespaceActuationFeatureSpec {
 
   /// Creates a new [NamespaceActuationFeatureSpec].
   /// [actuationMode] actuation_mode controls the behavior of the controller
-  NamespaceActuationFeatureSpec({
+  const NamespaceActuationFeatureSpec({
     this.actuationMode,
   });
 

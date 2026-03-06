@@ -36,7 +36,7 @@ class AccessReviewHistoryDefinitionByIdArgs {
   /// [range] Access Review History Definition recurrence settings.
   /// [scopes] A collection of scopes used when selecting review history data
   /// [type] The recurrence type : weekly, monthly, etc.
-  AccessReviewHistoryDefinitionByIdArgs({
+  const AccessReviewHistoryDefinitionByIdArgs({
     this.decisions,
     this.displayName,
     this.historyDefinitionId,

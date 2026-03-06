@@ -14,7 +14,7 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMa
   /// [partitionKeys] Partition key used for partitioning, which can be a default measure_name or a customer defined partition key.
   /// [tableArn] ARN of the table which is queried with the largest time range.
   /// [value] Maximum duration in nanoseconds between the start and end of the query.
-  ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis({
+  const ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis({
     this.partitionKeys,
     this.tableArn,
     this.value,

@@ -9,7 +9,7 @@ class AutomationRuleCriteriaResourceId {
   /// Creates a new [AutomationRuleCriteriaResourceId].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaResourceId({
+  const AutomationRuleCriteriaResourceId({
     required this.comparison,
     required this.value,
   });

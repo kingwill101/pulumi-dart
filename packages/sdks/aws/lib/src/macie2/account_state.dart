@@ -24,7 +24,7 @@ class AccountState {
   /// [serviceRole] The Amazon Resource Name (ARN) of the service-linked role that allows Macie to monitor and analyze data in AWS resources for the account.
   /// [status] Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   /// [updatedAt] The date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the Macie account.
-  AccountState({
+  const AccountState({
     this.createdAt,
     this.findingPublishingFrequency,
     this.region,

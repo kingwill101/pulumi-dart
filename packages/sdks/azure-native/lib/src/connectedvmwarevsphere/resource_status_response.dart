@@ -24,7 +24,7 @@ class ResourceStatusResponse {
   /// [severity] Severity with which to treat failures of this type of condition.
   /// [status] Status of the condition.
   /// [type] The type of the condition.
-  ResourceStatusResponse({
+  const ResourceStatusResponse({
     required this.lastUpdatedAt,
     required this.message,
     required this.reason,

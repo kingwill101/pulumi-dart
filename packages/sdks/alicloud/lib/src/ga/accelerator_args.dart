@@ -63,7 +63,7 @@ class AcceleratorArgs {
   /// [resourceGroupId] The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
   /// [spec] The instance type of the GA instance. Specification of global acceleration instance. Valid values:
   /// [tags] A mapping of tags to assign to the resource.
-  AcceleratorArgs({
+  const AcceleratorArgs({
     this.acceleratorName,
     this.autoRenewDuration,
     this.autoUseCoupon,

@@ -27,7 +27,7 @@ class GetGatewayVpnAttachmentsArgs {
   /// [pageNumber] Current page number.
   /// [pageSize] Number of records per page.
   /// [status] The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
-  GetGatewayVpnAttachmentsArgs({
+  const GetGatewayVpnAttachmentsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -9,7 +9,7 @@ class ContainerProbeSettings {
 
   /// Creates a new [ContainerProbeSettings].
   /// [disableProbe] Indicates whether disable the liveness and readiness probe
-  ContainerProbeSettings({
+  const ContainerProbeSettings({
     this.disableProbe,
   });
 

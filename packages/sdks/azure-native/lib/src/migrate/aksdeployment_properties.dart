@@ -18,7 +18,7 @@ class AKSDeploymentProperties {
   /// [resourceGroup] Gets or sets the resource group of the resource.
   /// [subscriptionId] Gets or sets the subscription id of the resource.
   /// [tenantId] Gets or sets the tenant id.
-  AKSDeploymentProperties({
+  const AKSDeploymentProperties({
     this.aksClusterName,
     this.resourceGroup,
     this.subscriptionId,

@@ -12,7 +12,7 @@ class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion {
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion].
   /// [comparator] The operator to use in the condition. Valid combination and values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)
   /// [tagValues] The  tag key and value pairs to use in the condition. One or more blocks are allowed. (documented below)
-  ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion({
+  const ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion({
     this.comparator,
     this.tagValues,
   });

@@ -20,7 +20,7 @@ class Breakdown {
   /// [column] The name of the column in the dataset containing the breakdown values.
   /// [limit] A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
   /// [sortOrder] The sort order is applied to the values of the breakdown column.
-  Breakdown({
+  const Breakdown({
     required this.aggregationFunction,
     required this.column,
     required this.limit,

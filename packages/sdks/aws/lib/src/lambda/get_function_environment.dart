@@ -8,7 +8,7 @@ class GetFunctionEnvironment {
 
   /// Creates a new [GetFunctionEnvironment].
   /// [variables] Map of environment variables that are accessible from the function code during execution.
-  GetFunctionEnvironment({
+  const GetFunctionEnvironment({
     required this.variables,
   });
 

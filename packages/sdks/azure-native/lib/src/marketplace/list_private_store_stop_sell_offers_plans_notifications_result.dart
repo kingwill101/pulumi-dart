@@ -9,7 +9,7 @@ class ListPrivateStoreStopSellOffersPlansNotificationsResult {
 
   /// Creates a new [ListPrivateStoreStopSellOffersPlansNotificationsResult].
   /// [stopSellNotifications] Optional.
-  ListPrivateStoreStopSellOffersPlansNotificationsResult({
+  const ListPrivateStoreStopSellOffersPlansNotificationsResult({
     this.stopSellNotifications,
   });
 

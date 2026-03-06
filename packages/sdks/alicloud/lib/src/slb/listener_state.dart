@@ -94,7 +94,7 @@ class ListenerState {
   /// [tlsCipherPolicy] Optional.
   /// [unhealthyThreshold] Optional.
   /// [xForwardedFor] Whether to set additional HTTP Header field "X-Forwarded-For".
-  ListenerState({
+  const ListenerState({
     this.aclId,
     this.aclIds,
     this.aclStatus,

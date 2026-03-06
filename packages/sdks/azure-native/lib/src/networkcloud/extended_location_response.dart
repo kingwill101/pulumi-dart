@@ -11,7 +11,7 @@ class ExtendedLocationResponse {
   /// Creates a new [ExtendedLocationResponse].
   /// [name] The resource ID of the extended location on which the resource will be created.
   /// [type] The extended location type, for example, CustomLocation.
-  ExtendedLocationResponse({
+  const ExtendedLocationResponse({
     required this.name,
     required this.type,
   });

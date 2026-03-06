@@ -91,7 +91,7 @@ class InstancePropertiesResponseComputeBeta {
   /// [shieldedInstanceConfig] Note that for MachineImage, this is not supported yet.
   /// [shieldedVmConfig] Specifies the Shielded VM options for the instances that are created from these properties.
   /// [tags] A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
-  InstancePropertiesResponseComputeBeta({
+  const InstancePropertiesResponseComputeBeta({
     required this.advancedMachineFeatures,
     required this.canIpForward,
     required this.confidentialInstanceConfig,

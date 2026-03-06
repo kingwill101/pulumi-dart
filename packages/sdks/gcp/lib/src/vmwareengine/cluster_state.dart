@@ -45,7 +45,7 @@ class ClusterState {
   /// [state] State of the Cluster.
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last updated time of this resource.
-  ClusterState({
+  const ClusterState({
     this.autoscalingSettings,
     this.createTime,
     this.management,

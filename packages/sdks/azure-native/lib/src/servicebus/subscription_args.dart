@@ -65,7 +65,7 @@ class SubscriptionArgs {
   /// [status] Enumerates the possible values for the status of a messaging entity.
   /// [subscriptionName] The subscription name.
   /// [topicName] The topic name.
-  SubscriptionArgs({
+  const SubscriptionArgs({
     this.autoDeleteOnIdle,
     this.clientAffineProperties,
     this.deadLetteringOnFilterEvaluationExceptions,

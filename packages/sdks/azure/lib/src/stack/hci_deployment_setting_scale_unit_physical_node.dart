@@ -11,7 +11,7 @@ class HciDeploymentSettingScaleUnitPhysicalNode {
   /// Creates a new [HciDeploymentSettingScaleUnitPhysicalNode].
   /// [ipv4Address] Specifies the IPv4 address assigned to each physical server on your Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [name] The NETBIOS name of each physical server on your Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitPhysicalNode({
+  const HciDeploymentSettingScaleUnitPhysicalNode({
     required this.ipv4Address,
     required this.name,
   });

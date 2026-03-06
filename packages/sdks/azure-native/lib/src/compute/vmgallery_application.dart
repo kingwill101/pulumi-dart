@@ -24,7 +24,7 @@ class VMGalleryApplication {
   /// [packageReferenceId] Specifies the GalleryApplicationVersion resource id on the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
   /// [tags] Optional, Specifies a passthrough value for more generic context.
   /// [treatFailureAsDeploymentFailure] Optional, If true, any failure for any operation in the VmApplication will fail the deployment
-  VMGalleryApplication({
+  const VMGalleryApplication({
     this.configurationReference,
     this.enableAutomaticUpgrade,
     this.order,

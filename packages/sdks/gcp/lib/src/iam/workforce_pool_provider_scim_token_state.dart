@@ -36,7 +36,7 @@ class WorkforcePoolProviderScimTokenState {
   /// [securityToken] The token string provided to the IdP for authentication and will be set only during creation.
   /// [state] The current state of the scim token.
   /// [workforcePoolId] The ID of the Workforce Pool.
-  WorkforcePoolProviderScimTokenState({
+  const WorkforcePoolProviderScimTokenState({
     this.displayName,
     this.location,
     this.name,

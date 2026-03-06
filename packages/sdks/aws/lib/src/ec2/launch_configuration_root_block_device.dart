@@ -17,7 +17,7 @@ class LaunchConfigurationRootBlockDevice {
   /// [throughput] Optional.
   /// [volumeSize] Optional.
   /// [volumeType] Optional.
-  LaunchConfigurationRootBlockDevice({
+  const LaunchConfigurationRootBlockDevice({
     this.deleteOnTermination,
     this.encrypted,
     this.iops,

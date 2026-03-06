@@ -15,7 +15,7 @@ class V3FunctionVersionArgs {
   /// Creates a new [V3FunctionVersionArgs].
   /// [description] Description of the function version
   /// [functionName] Function Name
-  V3FunctionVersionArgs({
+  const V3FunctionVersionArgs({
     this.description,
     required this.functionName,
   });

@@ -13,7 +13,7 @@ class GetNotificationConfigArgs {
   /// Creates a new [GetNotificationConfigArgs].
   /// [notificationConfigId] Required.
   /// [project] Optional.
-  GetNotificationConfigArgs({
+  const GetNotificationConfigArgs({
     required this.notificationConfigId,
     this.project,
   });

@@ -12,7 +12,7 @@ class GetDirectoryObjectArgs {
 
   /// Creates a new [GetDirectoryObjectArgs].
   /// [objectId] Specifies the Object ID of the directory object to look up.
-  GetDirectoryObjectArgs({
+  const GetDirectoryObjectArgs({
     required this.objectId,
   });
 

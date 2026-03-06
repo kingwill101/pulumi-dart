@@ -9,7 +9,7 @@ class SelfSubjectRulesReviewSpecPatch {
 
   /// Creates a new [SelfSubjectRulesReviewSpecPatch].
   /// [namespace] Namespace to evaluate rules for. Required.
-  SelfSubjectRulesReviewSpecPatch({
+  const SelfSubjectRulesReviewSpecPatch({
     this.namespace,
   });
 

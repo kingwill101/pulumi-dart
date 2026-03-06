@@ -46,7 +46,7 @@ class ZendeskLinkedService {
   /// [url] The url to connect Zendesk source. Type: string (or Expression with resultType string).
   /// [userName] The username of the Zendesk source. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  ZendeskLinkedService({
+  const ZendeskLinkedService({
     this.annotations,
     this.apiToken,
     required this.authenticationType,

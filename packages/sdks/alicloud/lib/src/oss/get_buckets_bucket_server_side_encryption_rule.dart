@@ -11,7 +11,7 @@ class GetBucketsBucketServerSideEncryptionRule {
   /// Creates a new [GetBucketsBucketServerSideEncryptionRule].
   /// [kmsMasterKeyId] The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
   /// [sseAlgorithm] The server-side encryption algorithm to use.
-  GetBucketsBucketServerSideEncryptionRule({
+  const GetBucketsBucketServerSideEncryptionRule({
     required this.kmsMasterKeyId,
     required this.sseAlgorithm,
   });

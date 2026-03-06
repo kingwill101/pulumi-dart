@@ -12,7 +12,7 @@ class OAuthCredentialResponse {
   /// Creates a new [OAuthCredentialResponse].
   /// [oauthTokenSecretVersion] A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   /// [username] The username associated to this token.
-  OAuthCredentialResponse({
+  const OAuthCredentialResponse({
     required this.oauthTokenSecretVersion,
     required this.username,
   });

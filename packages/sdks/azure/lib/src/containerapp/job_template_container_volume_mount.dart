@@ -14,7 +14,7 @@ class JobTemplateContainerVolumeMount {
   /// [name] The name of the volume to mount. This must match the name of a volume defined in the `volume` block.
   /// [path] The path within the container at which the volume should be mounted. Must not contain `:`.
   /// [subPath] The sub path of the volume to be mounted in the container.
-  JobTemplateContainerVolumeMount({
+  const JobTemplateContainerVolumeMount({
     required this.name,
     required this.path,
     this.subPath,

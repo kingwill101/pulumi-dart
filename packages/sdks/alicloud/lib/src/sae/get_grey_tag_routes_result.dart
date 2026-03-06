@@ -22,7 +22,7 @@ class GetGreyTagRoutesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [routes] Required.
-  GetGreyTagRoutesResult({
+  const GetGreyTagRoutesResult({
     required this.appId,
     required this.id,
     required this.ids,

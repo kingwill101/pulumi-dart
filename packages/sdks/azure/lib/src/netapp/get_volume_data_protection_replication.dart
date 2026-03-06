@@ -17,7 +17,7 @@ class GetVolumeDataProtectionReplication {
   /// [remoteVolumeLocation] Location of the primary volume.
   /// [remoteVolumeResourceId] Resource ID of the primary volume.
   /// [replicationFrequency] Frequency of replication.
-  GetVolumeDataProtectionReplication({
+  const GetVolumeDataProtectionReplication({
     required this.endpointType,
     required this.remoteVolumeLocation,
     required this.remoteVolumeResourceId,

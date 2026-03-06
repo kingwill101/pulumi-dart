@@ -14,7 +14,7 @@ class InstanceEffectiveReplication {
   /// Creates a new [InstanceEffectiveReplication].
   /// [replicas] The replication role.
   /// [role] (Output)
-  InstanceEffectiveReplication({
+  const InstanceEffectiveReplication({
     this.replicas,
     this.role,
   });

@@ -36,7 +36,7 @@ class ImportPipelineArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [source] The source properties of the import pipeline.
   /// [trigger] The properties that describe the trigger of the import pipeline.
-  ImportPipelineArgs({
+  const ImportPipelineArgs({
     this.identity,
     this.importPipelineName,
     this.location,

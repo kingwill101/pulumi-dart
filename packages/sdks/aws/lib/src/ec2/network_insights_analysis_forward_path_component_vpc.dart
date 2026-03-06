@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisForwardPathComponentVpc {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisForwardPathComponentVpc({
+  const NetworkInsightsAnalysisForwardPathComponentVpc({
     this.arn,
     this.id,
     this.name,

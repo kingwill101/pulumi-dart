@@ -27,7 +27,7 @@ class ChildInstanceRouteEntryToAttachmentState {
   /// [serviceType] ServiceType
   /// [status] The status of the resource
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
-  ChildInstanceRouteEntryToAttachmentState({
+  const ChildInstanceRouteEntryToAttachmentState({
     this.cenId,
     this.childInstanceRouteTableId,
     this.destinationCidrBlock,

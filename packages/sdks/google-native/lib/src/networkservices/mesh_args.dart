@@ -28,7 +28,7 @@ class MeshArgs {
   /// [meshId] Required. Short name of the Mesh resource to be created.
   /// [name] Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
   /// [project] Optional.
-  MeshArgs({
+  const MeshArgs({
     this.description,
     this.interceptionPort,
     this.labels,

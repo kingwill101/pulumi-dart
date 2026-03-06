@@ -14,7 +14,7 @@ class RepairModeResponse {
   /// Creates a new [RepairModeResponse].
   /// [retry] Optional. Retries a failed job.
   /// [rollback] Optional. Rolls back a `Rollout`.
-  RepairModeResponse({
+  const RepairModeResponse({
     required this.retry,
     required this.rollback,
   });

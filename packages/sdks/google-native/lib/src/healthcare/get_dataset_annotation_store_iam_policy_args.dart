@@ -19,7 +19,7 @@ class GetDatasetAnnotationStoreIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDatasetAnnotationStoreIamPolicyArgs({
+  const GetDatasetAnnotationStoreIamPolicyArgs({
     required this.annotationStoreId,
     required this.datasetId,
     required this.location,

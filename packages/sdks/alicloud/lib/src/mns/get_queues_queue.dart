@@ -26,7 +26,7 @@ class GetQueuesQueue {
   /// [name] The name of the queue
   /// [pollingWaitSeconds] Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out.
   /// [visibilityTimeouts] Dequeued messages change from active (visible) status to inactive (invisible) status. This attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period.
-  GetQueuesQueue({
+  const GetQueuesQueue({
     required this.delaySeconds,
     required this.id,
     required this.maximumMessageSize,

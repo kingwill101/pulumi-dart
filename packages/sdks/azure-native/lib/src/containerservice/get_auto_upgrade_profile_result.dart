@@ -43,7 +43,7 @@ class GetAutoUpgradeProfileResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updateStrategyId] The resource id of the UpdateStrategy resource to reference. If not specified, the auto upgrade will run on all clusters which are members of the fleet.
-  GetAutoUpgradeProfileResult({
+  const GetAutoUpgradeProfileResult({
     required this.azureApiVersion,
     required this.channel,
     this.disabled,

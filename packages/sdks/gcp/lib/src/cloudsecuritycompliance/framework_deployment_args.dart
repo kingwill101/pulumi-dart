@@ -40,7 +40,7 @@ class FrameworkDeploymentArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [organization] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [targetResourceConfig] TargetResourceConfig contains either the name of the target_resource or
-  FrameworkDeploymentArgs({
+  const FrameworkDeploymentArgs({
     required this.cloudControlMetadatas,
     this.description,
     required this.framework,

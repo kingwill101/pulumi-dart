@@ -76,7 +76,7 @@ class NodeArgs {
   /// [readonlyReplicas] The number of read-only nodes in the Shard.
   /// [shardDirect] Whether to apply for the direct connection address of the Shard node. Value description:
   /// [switchTime] Optional.
-  NodeArgs({
+  const NodeArgs({
     this.accountName,
     this.accountPassword,
     this.autoPay,

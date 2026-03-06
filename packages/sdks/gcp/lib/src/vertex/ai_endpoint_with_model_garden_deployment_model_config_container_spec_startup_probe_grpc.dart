@@ -14,7 +14,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrp
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc].
   /// [port] Port number of the gRPC service. Number must be in the range 1 to 65535.
   /// [service] Service is the name of the service to place in the gRPC
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc({
     this.port,
     this.service,
   });

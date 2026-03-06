@@ -15,7 +15,7 @@ class GetNamespaceIamPolicyServicedirectoryV1beta1Args {
   /// [location] Required.
   /// [namespaceId] Required.
   /// [project] Optional.
-  GetNamespaceIamPolicyServicedirectoryV1beta1Args({
+  const GetNamespaceIamPolicyServicedirectoryV1beta1Args({
     required this.location,
     required this.namespaceId,
     this.project,

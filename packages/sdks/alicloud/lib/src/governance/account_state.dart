@@ -46,7 +46,7 @@ class AccountState {
   /// [folderId] The ID of the parent resource folder.
   /// [payerAccountId] The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
   /// [status] Account registration status. Value:
-  AccountState({
+  const AccountState({
     this.accountId,
     this.accountNamePrefix,
     this.accountTags,

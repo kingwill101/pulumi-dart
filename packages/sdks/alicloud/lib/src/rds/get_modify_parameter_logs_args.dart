@@ -21,7 +21,7 @@ class GetModifyParameterLogsArgs {
   /// [endTime] The end time.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [startTime] The start time.
-  GetModifyParameterLogsArgs({
+  const GetModifyParameterLogsArgs({
     required this.dbInstanceId,
     required this.endTime,
     this.outputFile,

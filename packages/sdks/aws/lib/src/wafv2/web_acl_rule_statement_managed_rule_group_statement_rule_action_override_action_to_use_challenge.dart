@@ -9,7 +9,7 @@ class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseC
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
-  WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge({
+  const WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge({
     this.customRequestHandling,
   });
 

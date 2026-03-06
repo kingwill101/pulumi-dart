@@ -22,7 +22,7 @@ class GetSchedulingPolicyResult {
   /// [name] Name of the scheduling policy.
   /// [region] Required.
   /// [tags] Key-value map of resource tags
-  GetSchedulingPolicyResult({
+  const GetSchedulingPolicyResult({
     required this.arn,
     required this.fairSharePolicies,
     required this.id,

@@ -29,7 +29,7 @@ class GetDpsResult {
   /// [resourceGroupName] Required.
   /// [serviceOperationsHostName] The service endpoint of the IoT Device Provisioning Service.
   /// [tags] Optional.
-  GetDpsResult({
+  const GetDpsResult({
     required this.allocationPolicy,
     required this.deviceProvisioningHostName,
     required this.id,

@@ -18,7 +18,7 @@ class VpnClientConnectionHealthResponse {
   /// [totalEgressBytesTransferred] Total of the Egress Bytes Transferred in this connection.
   /// [totalIngressBytesTransferred] Total of the Ingress Bytes Transferred in this P2S Vpn connection.
   /// [vpnClientConnectionsCount] The total of p2s vpn clients connected at this time to this P2SVpnGateway.
-  VpnClientConnectionHealthResponse({
+  const VpnClientConnectionHealthResponse({
     this.allocatedIpAddresses,
     required this.totalEgressBytesTransferred,
     required this.totalIngressBytesTransferred,

@@ -11,7 +11,7 @@ class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta {
   /// Creates a new [SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta].
   /// [actionTokenSiteKeys] A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
   /// [sessionTokenSiteKeys] A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
-  SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta({
+  const SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta({
     this.actionTokenSiteKeys,
     this.sessionTokenSiteKeys,
   });

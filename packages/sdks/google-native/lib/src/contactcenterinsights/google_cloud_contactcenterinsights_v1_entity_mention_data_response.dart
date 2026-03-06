@@ -16,7 +16,7 @@ class GoogleCloudContactcenterinsightsV1EntityMentionDataResponse {
   /// [entityUniqueId] The key of this entity in conversation entities. Can be used to retrieve the exact `Entity` this mention is attached to.
   /// [sentiment] Sentiment expressed for this mention of the entity.
   /// [type] The type of the entity mention.
-  GoogleCloudContactcenterinsightsV1EntityMentionDataResponse({
+  const GoogleCloudContactcenterinsightsV1EntityMentionDataResponse({
     required this.entityUniqueId,
     required this.sentiment,
     required this.type,

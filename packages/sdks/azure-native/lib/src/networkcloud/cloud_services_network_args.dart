@@ -32,7 +32,7 @@ class CloudServicesNetworkArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  CloudServicesNetworkArgs({
+  const CloudServicesNetworkArgs({
     this.additionalEgressEndpoints,
     this.cloudServicesNetworkName,
     this.enableDefaultEgressEndpoints,

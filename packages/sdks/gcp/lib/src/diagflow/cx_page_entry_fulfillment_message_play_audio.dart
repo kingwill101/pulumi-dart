@@ -14,7 +14,7 @@ class CxPageEntryFulfillmentMessagePlayAudio {
   /// Creates a new [CxPageEntryFulfillmentMessagePlayAudio].
   /// [allowPlaybackInterruption] (Output)
   /// [audioUri] URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-  CxPageEntryFulfillmentMessagePlayAudio({
+  const CxPageEntryFulfillmentMessagePlayAudio({
     this.allowPlaybackInterruption,
     required this.audioUri,
   });

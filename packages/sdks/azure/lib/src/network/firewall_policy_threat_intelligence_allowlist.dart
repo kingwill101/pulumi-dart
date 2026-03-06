@@ -11,7 +11,7 @@ class FirewallPolicyThreatIntelligenceAllowlist {
   /// Creates a new [FirewallPolicyThreatIntelligenceAllowlist].
   /// [fqdns] A list of FQDNs that will be skipped for threat detection.
   /// [ipAddresses] A list of IP addresses or CIDR ranges that will be skipped for threat detection.
-  FirewallPolicyThreatIntelligenceAllowlist({
+  const FirewallPolicyThreatIntelligenceAllowlist({
     this.fqdns,
     this.ipAddresses,
   });

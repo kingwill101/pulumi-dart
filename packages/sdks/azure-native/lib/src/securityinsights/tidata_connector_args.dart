@@ -32,7 +32,7 @@ class TIDataConnectorArgs {
   /// [tenantId] The tenant id to connect to, and get the data from.
   /// [tipLookbackPeriod] The lookback period for the feed to be imported.
   /// [workspaceName] The name of the workspace.
-  TIDataConnectorArgs({
+  const TIDataConnectorArgs({
     this.dataConnectorId,
     required this.dataTypes,
     required this.kind,

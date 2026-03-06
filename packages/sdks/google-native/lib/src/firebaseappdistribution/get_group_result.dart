@@ -20,7 +20,7 @@ class GetGroupResult {
   /// [name] The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}`
   /// [releaseCount] The number of releases this group is permitted to access.
   /// [testerCount] The number of testers who are members of this group.
-  GetGroupResult({
+  const GetGroupResult({
     required this.displayName,
     required this.inviteLinkCount,
     required this.name,

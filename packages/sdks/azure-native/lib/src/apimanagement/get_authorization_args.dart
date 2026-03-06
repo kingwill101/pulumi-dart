@@ -21,7 +21,7 @@ class GetAuthorizationArgs {
   /// [authorizationProviderId] Identifier of the authorization provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetAuthorizationArgs({
+  const GetAuthorizationArgs({
     required this.authorizationId,
     required this.authorizationProviderId,
     required this.resourceGroupName,

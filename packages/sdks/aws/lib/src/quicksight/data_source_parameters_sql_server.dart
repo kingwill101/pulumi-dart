@@ -14,7 +14,7 @@ class DataSourceParametersSqlServer {
   /// [database] The database to which to connect.
   /// [host] The host to which to connect.
   /// [port] The warehouse to which to connect.
-  DataSourceParametersSqlServer({
+  const DataSourceParametersSqlServer({
     required this.database,
     required this.host,
     required this.port,

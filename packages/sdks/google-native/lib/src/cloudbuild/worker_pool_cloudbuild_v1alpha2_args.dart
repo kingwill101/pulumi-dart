@@ -25,7 +25,7 @@ class WorkerPoolCloudbuildV1alpha2Args {
   /// [region] Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
   /// [workerConfig] Worker configuration for the `WorkerPool`.
   /// [workerPoolId] Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-  WorkerPoolCloudbuildV1alpha2Args({
+  const WorkerPoolCloudbuildV1alpha2Args({
     this.networkConfig,
     this.project,
     required this.region,

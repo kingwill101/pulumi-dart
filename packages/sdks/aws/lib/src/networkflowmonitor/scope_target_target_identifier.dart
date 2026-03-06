@@ -12,7 +12,7 @@ class ScopeTargetTargetIdentifier {
   /// Creates a new [ScopeTargetTargetIdentifier].
   /// [targetId] The identifier for a target, which is currently always an account ID.
   /// [targetType] The type of a target. A target type is currently always `ACCOUNT`.
-  ScopeTargetTargetIdentifier({
+  const ScopeTargetTargetIdentifier({
     required this.targetId,
     required this.targetType,
   });

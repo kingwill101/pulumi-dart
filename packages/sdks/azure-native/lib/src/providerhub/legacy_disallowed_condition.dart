@@ -11,7 +11,7 @@ class LegacyDisallowedCondition {
   /// Creates a new [LegacyDisallowedCondition].
   /// [disallowedLegacyOperations] The disallowed legacy operations.
   /// [feature] Feature string.
-  LegacyDisallowedCondition({
+  const LegacyDisallowedCondition({
     this.disallowedLegacyOperations,
     this.feature,
   });

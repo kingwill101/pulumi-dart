@@ -39,7 +39,7 @@ class SlackChannelPropertiesResponse {
   /// [scopes] The Slack permission scopes.
   /// [signingSecret] The Slack signing secret.
   /// [verificationToken] The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
-  SlackChannelPropertiesResponse({
+  const SlackChannelPropertiesResponse({
     this.clientId,
     this.clientSecret,
     required this.isEnabled,

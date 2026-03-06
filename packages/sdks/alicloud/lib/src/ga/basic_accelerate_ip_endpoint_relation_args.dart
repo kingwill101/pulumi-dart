@@ -18,7 +18,7 @@ class BasicAccelerateIpEndpointRelationArgs {
   /// [accelerateIpId] The ID of the Basic Accelerate IP.
   /// [acceleratorId] The ID of the Basic GA instance.
   /// [endpointId] The ID of the Basic Endpoint.
-  BasicAccelerateIpEndpointRelationArgs({
+  const BasicAccelerateIpEndpointRelationArgs({
     required this.accelerateIpId,
     required this.acceleratorId,
     required this.endpointId,

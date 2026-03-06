@@ -23,7 +23,7 @@ class ConnectionBgpConfig {
   /// [localBgpIp] the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
   /// [status] The negotiation status of Tunnel.
   /// [tunnelCidr] The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
-  ConnectionBgpConfig({
+  const ConnectionBgpConfig({
     this.enable,
     this.localAsn,
     this.localBgpIp,

@@ -14,7 +14,7 @@ class LifecyclePolicyPolicyDetailsScheduleShareRule {
   /// [targetAccounts] The IDs of the AWS accounts with which to share the snapshots.
   /// [unshareInterval] The period after which snapshots that are shared with other AWS accounts are automatically unshared.
   /// [unshareIntervalUnit] The unit of time for the automatic unsharing interval. Valid values are `DAYS`, `WEEKS`, `MONTHS`, `YEARS`.
-  LifecyclePolicyPolicyDetailsScheduleShareRule({
+  const LifecyclePolicyPolicyDetailsScheduleShareRule({
     required this.targetAccounts,
     this.unshareInterval,
     this.unshareIntervalUnit,

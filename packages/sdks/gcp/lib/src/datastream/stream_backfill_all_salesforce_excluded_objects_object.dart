@@ -13,7 +13,7 @@ class StreamBackfillAllSalesforceExcludedObjectsObject {
   /// Creates a new [StreamBackfillAllSalesforceExcludedObjectsObject].
   /// [fields] Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
   /// [objectName] Name of object in Salesforce Org.
-  StreamBackfillAllSalesforceExcludedObjectsObject({
+  const StreamBackfillAllSalesforceExcludedObjectsObject({
     this.fields,
     this.objectName,
   });

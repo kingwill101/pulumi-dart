@@ -14,7 +14,7 @@ class KeyVersionState {
   /// Creates a new [KeyVersionState].
   /// [keyId] The id of the master key (CMK).
   /// [keyVersionId] The id of the Alikms key version.
-  KeyVersionState({
+  const KeyVersionState({
     this.keyId,
     this.keyVersionId,
   });

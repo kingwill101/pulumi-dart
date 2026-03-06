@@ -12,7 +12,7 @@ class AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfig
   /// [exclusionFilters] Optional.
   /// [inclusionFilters] Optional.
   /// [objectType] The supported object type or content type of the data source.
-  AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter({
+  const AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter({
     this.exclusionFilters,
     this.inclusionFilters,
     required this.objectType,

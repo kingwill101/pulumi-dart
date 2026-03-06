@@ -18,7 +18,7 @@ class GetPlanArgs {
   /// [planId] Backup plan ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Metadata that you can assign to help organize the plans you create.
-  GetPlanArgs({
+  const GetPlanArgs({
     required this.planId,
     this.region,
     this.tags,

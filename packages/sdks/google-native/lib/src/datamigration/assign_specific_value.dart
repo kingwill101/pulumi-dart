@@ -9,7 +9,7 @@ class AssignSpecificValue {
 
   /// Creates a new [AssignSpecificValue].
   /// [value] Specific value to be assigned
-  AssignSpecificValue({
+  const AssignSpecificValue({
     required this.value,
   });
 

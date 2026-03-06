@@ -14,7 +14,7 @@ class GetBackendServersBackendServer {
   /// [id] backend server ID.
   /// [serverType] Type of the backend server.
   /// [weight] Weight associated to the ECS instance.
-  GetBackendServersBackendServer({
+  const GetBackendServersBackendServer({
     required this.id,
     required this.serverType,
     required this.weight,

@@ -24,7 +24,7 @@ class ElasticBackupPolicyPropertiesResponse {
   /// [policyState] The property to identify whether Backup Policy is enabled or not
   /// [provisioningState] Azure lifecycle management.
   /// [weeklyBackupsToKeep] Weekly backups count to keep
-  ElasticBackupPolicyPropertiesResponse({
+  const ElasticBackupPolicyPropertiesResponse({
     required this.assignedVolumesCount,
     this.dailyBackupsToKeep,
     this.monthlyBackupsToKeep,

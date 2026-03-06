@@ -18,7 +18,7 @@ class VpcEndpointConnectionAccepterState {
   /// [vpcEndpointId] AWS VPC Endpoint ID.
   /// [vpcEndpointServiceId] AWS VPC Endpoint Service ID.
   /// [vpcEndpointState] State of the VPC Endpoint.
-  VpcEndpointConnectionAccepterState({
+  const VpcEndpointConnectionAccepterState({
     this.region,
     this.vpcEndpointId,
     this.vpcEndpointServiceId,

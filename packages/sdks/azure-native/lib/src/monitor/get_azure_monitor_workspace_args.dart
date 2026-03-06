@@ -15,7 +15,7 @@ class GetAzureMonitorWorkspaceArgs {
   /// Creates a new [GetAzureMonitorWorkspaceArgs].
   /// [azureMonitorWorkspaceName] The name of the Azure Monitor Workspace. The name is case insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAzureMonitorWorkspaceArgs({
+  const GetAzureMonitorWorkspaceArgs({
     required this.azureMonitorWorkspaceName,
     required this.resourceGroupName,
   });

@@ -23,7 +23,7 @@ class ListingBigqueryDataset {
   /// [effectiveReplicas] (Output, Beta)
   /// [replicaLocations] A list of regions where the publisher has created shared dataset replicas.
   /// [selectedResources] Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
-  ListingBigqueryDataset({
+  const ListingBigqueryDataset({
     required this.dataset,
     this.effectiveReplicas,
     this.replicaLocations,

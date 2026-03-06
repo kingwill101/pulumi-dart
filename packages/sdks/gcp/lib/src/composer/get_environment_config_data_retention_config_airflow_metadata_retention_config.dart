@@ -11,7 +11,7 @@ class GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
   /// Creates a new [GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig].
   /// [retentionDays] How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.
   /// [retentionMode] Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.
-  GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig({
+  const GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig({
     required this.retentionDays,
     required this.retentionMode,
   });

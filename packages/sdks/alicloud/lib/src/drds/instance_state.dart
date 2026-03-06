@@ -47,7 +47,7 @@ class InstanceState {
   /// [vpcId] The id of the VPC.
   /// [vswitchId] The VSwitch ID to launch in.
   /// [zoneId] The Zone to launch the DRDS instance.
-  InstanceState({
+  const InstanceState({
     this.connectionString,
     this.description,
     this.instanceChargeType,

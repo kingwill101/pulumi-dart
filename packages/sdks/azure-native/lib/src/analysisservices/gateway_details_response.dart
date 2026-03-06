@@ -15,7 +15,7 @@ class GatewayDetailsResponse {
   /// [dmtsClusterUri] Uri of the DMTS cluster.
   /// [gatewayObjectId] Gateway object id from in the DMTS cluster for the gateway resource.
   /// [gatewayResourceId] Gateway resource to be associated with the server.
-  GatewayDetailsResponse({
+  const GatewayDetailsResponse({
     required this.dmtsClusterUri,
     required this.gatewayObjectId,
     this.gatewayResourceId,

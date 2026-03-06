@@ -18,7 +18,7 @@ class GetKeyValueArgs {
   /// [configStoreName] The name of the configuration store.
   /// [keyValueName] Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
-  GetKeyValueArgs({
+  const GetKeyValueArgs({
     required this.configStoreName,
     required this.keyValueName,
     required this.resourceGroupName,

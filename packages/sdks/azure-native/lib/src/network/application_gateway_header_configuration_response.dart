@@ -16,7 +16,7 @@ class ApplicationGatewayHeaderConfigurationResponse {
   /// [headerName] Header name of the header configuration.
   /// [headerValue] Header value of the header configuration.
   /// [headerValueMatcher] An optional field under "Rewrite Action". It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud
-  ApplicationGatewayHeaderConfigurationResponse({
+  const ApplicationGatewayHeaderConfigurationResponse({
     this.headerName,
     this.headerValue,
     this.headerValueMatcher,

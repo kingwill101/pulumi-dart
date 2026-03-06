@@ -48,7 +48,7 @@ class AzureMLBatchExecutionActivity {
   /// [userProperties] Activity user properties.
   /// [webServiceInputs] Key,Value pairs, mapping the names of Azure ML endpoint's Web Service Inputs to AzureMLWebServiceFile objects specifying the input Blob locations.. This information will be passed in the WebServiceInputs property of the Azure ML batch execution request.
   /// [webServiceOutputs] Key,Value pairs, mapping the names of Azure ML endpoint's Web Service Outputs to AzureMLWebServiceFile objects specifying the output Blob locations. This information will be passed in the WebServiceOutputs property of the Azure ML batch execution request.
-  AzureMLBatchExecutionActivity({
+  const AzureMLBatchExecutionActivity({
     this.dependsOn,
     this.description,
     this.globalParameters,

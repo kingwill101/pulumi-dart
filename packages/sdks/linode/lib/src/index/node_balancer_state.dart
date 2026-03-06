@@ -55,7 +55,7 @@ class NodeBalancerState {
   /// [transfers] Information about the amount of transfer this NodeBalancer has had so far this month.
   /// [updated] When this firewall was last updated.
   /// [vpcs] A list of VPCs to be assigned to this NodeBalancer.
-  NodeBalancerState({
+  const NodeBalancerState({
     this.clientConnThrottle,
     this.clientUdpSessThrottle,
     this.created,

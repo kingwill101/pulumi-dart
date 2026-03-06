@@ -15,7 +15,7 @@ class AssessmentStatus {
   /// [cause] Programmatic code for the cause of the assessment status
   /// [code] Programmatic code for the status of the assessment
   /// [description] Human readable description of the assessment status
-  AssessmentStatus({
+  const AssessmentStatus({
     this.cause,
     required this.code,
     this.description,

@@ -20,7 +20,7 @@ class DataSetPhysicalTableMapS3SourceUploadSettings {
   /// [format] File format. Valid values are `CSV`, `TSV`, `CLF`, `ELF`, `XLSX`, and `JSON`.
   /// [startFromRow] A row number to start reading data from.
   /// [textQualifier] Text qualifier. Valid values are `DOUBLE_QUOTE` and `SINGLE_QUOTE`.
-  DataSetPhysicalTableMapS3SourceUploadSettings({
+  const DataSetPhysicalTableMapS3SourceUploadSettings({
     this.containsHeader,
     this.delimiter,
     this.format,

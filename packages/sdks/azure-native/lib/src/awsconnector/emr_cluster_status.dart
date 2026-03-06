@@ -22,7 +22,7 @@ class EmrClusterStatus {
   /// [state] &lt;p&gt;The current state of the cluster.&lt;/p&gt;
   /// [stateChangeReason] &lt;p&gt;The reason for the cluster status change.&lt;/p&gt;
   /// [timeline] &lt;p&gt;A timeline that represents the status of a cluster over the lifetime of the cluster.&lt;/p&gt;
-  EmrClusterStatus({
+  const EmrClusterStatus({
     this.errorDetails,
     this.state,
     this.stateChangeReason,

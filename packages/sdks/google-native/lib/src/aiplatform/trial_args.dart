@@ -15,7 +15,7 @@ class TrialArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [studyId] Required.
-  TrialArgs({
+  const TrialArgs({
     this.location,
     this.project,
     required this.studyId,

@@ -28,7 +28,7 @@ class ChangeArgs {
   /// [kind] Optional.
   /// [managedZone] Required.
   /// [project] Optional.
-  ChangeArgs({
+  const ChangeArgs({
     this.additions,
     this.clientOperationId,
     this.deletions,

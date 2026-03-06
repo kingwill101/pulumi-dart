@@ -57,7 +57,7 @@ class Environment {
   /// [workerPools] The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
   /// [workerRegion] The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
   /// [workerZone] The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity.
-  Environment({
+  const Environment({
     this.clusterManagerApiService,
     this.dataset,
     this.debugOptions,

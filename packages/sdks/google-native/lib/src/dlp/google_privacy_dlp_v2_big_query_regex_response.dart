@@ -15,7 +15,7 @@ class GooglePrivacyDlpV2BigQueryRegexResponse {
   /// [datasetIdRegex] If unset, this property matches all datasets.
   /// [projectIdRegex] For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
   /// [tableIdRegex] If unset, this property matches all tables.
-  GooglePrivacyDlpV2BigQueryRegexResponse({
+  const GooglePrivacyDlpV2BigQueryRegexResponse({
     required this.datasetIdRegex,
     required this.projectIdRegex,
     required this.tableIdRegex,

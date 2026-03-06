@@ -45,7 +45,7 @@ class GetTaskCloudtasksV2beta3Result {
   /// [responseCount] The number of attempts which have received a response.
   /// [scheduleTime] The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
   /// [view] The view specifies which subset of the Task has been returned.
-  GetTaskCloudtasksV2beta3Result({
+  const GetTaskCloudtasksV2beta3Result({
     required this.appEngineHttpRequest,
     required this.createTime,
     required this.dispatchCount,

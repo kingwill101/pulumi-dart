@@ -30,7 +30,7 @@ class EipArgs {
   /// [internetChargeType] The metering method of the EIP. Valid value: `95BandwidthByMonth`.
   /// [isp] The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
   /// [paymentType] The billing method of the EIP. Valid value: `PayAsYouGo`.
-  EipArgs({
+  const EipArgs({
     this.bandwidth,
     this.description,
     this.eipName,

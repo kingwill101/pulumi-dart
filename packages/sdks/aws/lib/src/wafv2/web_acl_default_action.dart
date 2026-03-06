@@ -13,7 +13,7 @@ class WebAclDefaultAction {
   /// Creates a new [WebAclDefaultAction].
   /// [allow] Specifies that AWS WAF should allow requests by default. See `allow` below for details.
   /// [block] Specifies that AWS WAF should block requests by default. See `block` below for details.
-  WebAclDefaultAction({
+  const WebAclDefaultAction({
     this.allow,
     this.block,
   });

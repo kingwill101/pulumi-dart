@@ -35,7 +35,7 @@ class ServiceTaskSpec {
   /// [resources] Resource requirements which apply to each individual container created as part of the service
   /// [restartPolicy] Specification for the restart policy which applies to containers created as part of this service.
   /// [runtime] Runtime is the type of runtime specified for the task executor. See the [types](https://github.com/moby/moby/blob/master/api/types/swarm/runtime.go).
-  ServiceTaskSpec({
+  const ServiceTaskSpec({
     required this.containerSpec,
     this.forceUpdate,
     this.logDriver,

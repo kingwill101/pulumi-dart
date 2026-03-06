@@ -17,7 +17,7 @@ class LinuxFunctionAppSlotAuthSettingsGoogle {
   /// [clientSecret] The client secret associated with the Google web application. Cannot be specified with `client_secret_setting_name`.
   /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for Google login. Cannot be specified with `client_secret`.
   /// [oauthScopes] Specifies a list of OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. If not specified, `openid`, `profile`, and `email` are used as default scopes.
-  LinuxFunctionAppSlotAuthSettingsGoogle({
+  const LinuxFunctionAppSlotAuthSettingsGoogle({
     required this.clientId,
     this.clientSecret,
     this.clientSecretSettingName,

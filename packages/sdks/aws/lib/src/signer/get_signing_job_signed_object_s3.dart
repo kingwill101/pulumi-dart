@@ -9,7 +9,7 @@ class GetSigningJobSignedObjectS3 {
   /// Creates a new [GetSigningJobSignedObjectS3].
   /// [bucket] Required.
   /// [key] Required.
-  GetSigningJobSignedObjectS3({
+  const GetSigningJobSignedObjectS3({
     required this.bucket,
     required this.key,
   });

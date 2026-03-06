@@ -12,7 +12,7 @@ class ConversationProfileNotificationConfig {
   /// Creates a new [ConversationProfileNotificationConfig].
   /// [messageFormat] Format of the message
   /// [topic] Name of the Pub/Sub topic to publish conversation events
-  ConversationProfileNotificationConfig({
+  const ConversationProfileNotificationConfig({
     this.messageFormat,
     this.topic,
   });

@@ -15,7 +15,7 @@ class GetBackupVaultArgs {
   /// Creates a new [GetBackupVaultArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The name of the backup vault.
-  GetBackupVaultArgs({
+  const GetBackupVaultArgs({
     required this.resourceGroupName,
     required this.vaultName,
   });

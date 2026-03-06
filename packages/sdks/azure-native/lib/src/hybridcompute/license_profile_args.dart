@@ -40,7 +40,7 @@ class LicenseProfileArgs {
   /// [softwareAssuranceCustomer] Specifies if this machine is licensed as part of a Software Assurance agreement.
   /// [subscriptionStatus] Indicates the subscription status of the product.
   /// [tags] Resource tags.
-  LicenseProfileArgs({
+  const LicenseProfileArgs({
     this.assignedLicense,
     this.licenseProfileName,
     this.location,

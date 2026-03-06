@@ -46,7 +46,7 @@ class ServiceLbPoliciesArgs {
   /// [location] The location of the service lb policy.
   /// [name] Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
   /// [project] The ID of the project in which the resource belongs.
-  ServiceLbPoliciesArgs({
+  const ServiceLbPoliciesArgs({
     this.autoCapacityDrain,
     this.description,
     this.failoverConfig,

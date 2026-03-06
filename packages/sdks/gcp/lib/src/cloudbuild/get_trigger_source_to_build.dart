@@ -27,7 +27,7 @@ class GetTriggerSourceToBuild {
   /// [repoType] The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
   /// [repository] The qualified resource name of the Repo API repository.
   /// [uri] The URI of the repo.
-  GetTriggerSourceToBuild({
+  const GetTriggerSourceToBuild({
     required this.bitbucketServerConfig,
     required this.githubEnterpriseConfig,
     required this.ref,

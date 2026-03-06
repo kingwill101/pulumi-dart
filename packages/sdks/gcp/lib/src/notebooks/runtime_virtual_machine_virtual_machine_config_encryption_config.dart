@@ -12,7 +12,7 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
 
   /// Creates a new [RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig].
   /// [kmsKey] The Cloud KMS resource identifier of the customer-managed
-  RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig({
+  const RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig({
     this.kmsKey,
   });
 

@@ -51,7 +51,7 @@ class VpnClientConfigurationResponse {
   /// [vpnClientProtocols] VpnClientProtocols for Virtual network gateway.
   /// [vpnClientRevokedCertificates] VpnClientRevokedCertificate for Virtual network gateway.
   /// [vpnClientRootCertificates] VpnClientRootCertificate for virtual network gateway.
-  VpnClientConfigurationResponse({
+  const VpnClientConfigurationResponse({
     this.aadAudience,
     this.aadIssuer,
     this.aadTenant,

@@ -10,7 +10,7 @@ class GetEcsPrefixListsListEntry {
   /// Creates a new [GetEcsPrefixListsListEntry].
   /// [cidr] Required.
   /// [description] The description of the prefix list.
-  GetEcsPrefixListsListEntry({
+  const GetEcsPrefixListsListEntry({
     required this.cidr,
     required this.description,
   });

@@ -14,7 +14,7 @@ class PolicyInfoResponse {
   /// [policyId] Required.
   /// [policyParameters] Policy parameters for the backup instance
   /// [policyVersion] Required.
-  PolicyInfoResponse({
+  const PolicyInfoResponse({
     required this.policyId,
     this.policyParameters,
     required this.policyVersion,

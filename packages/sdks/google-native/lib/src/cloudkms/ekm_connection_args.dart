@@ -30,7 +30,7 @@ class EkmConnectionArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [serviceResolvers] A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
-  EkmConnectionArgs({
+  const EkmConnectionArgs({
     this.cryptoSpacePath,
     this.ekmConnectionId,
     this.etag,

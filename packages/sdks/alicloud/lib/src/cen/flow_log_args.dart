@@ -46,7 +46,7 @@ class FlowLogArgs {
   /// [tags] The tag of the resource
   /// [transitRouterAttachmentId] Cross-region Connection ID or VBR connection ID.
   /// [transitRouterId] Transit Router ID
-  FlowLogArgs({
+  const FlowLogArgs({
     required this.cenId,
     this.description,
     this.flowLogName,

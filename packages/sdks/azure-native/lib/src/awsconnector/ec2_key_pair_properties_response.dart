@@ -34,7 +34,7 @@ class Ec2KeyPairPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2KeyPairPropertiesResponse({
+  const Ec2KeyPairPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

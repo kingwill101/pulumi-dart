@@ -13,7 +13,7 @@ class GetAppTemplateTcpScaleRule {
   /// [authentications] Required.
   /// [concurrentRequests] Required.
   /// [name] The name of the Container App.
-  GetAppTemplateTcpScaleRule({
+  const GetAppTemplateTcpScaleRule({
     required this.authentications,
     required this.concurrentRequests,
     required this.name,

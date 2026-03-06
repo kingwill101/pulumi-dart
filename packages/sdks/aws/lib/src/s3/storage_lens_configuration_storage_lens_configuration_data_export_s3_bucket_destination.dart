@@ -24,7 +24,7 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
   /// [format] The export format. Valid values: `CSV`, `Parquet`.
   /// [outputSchemaVersion] The schema version of the export file. Valid values: `V_1`.
   /// [prefix] The prefix of the destination bucket where the metrics export will be delivered.
-  StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination({
+  const StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination({
     required this.accountId,
     required this.arn,
     this.encryption,

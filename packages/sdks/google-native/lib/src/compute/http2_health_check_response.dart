@@ -29,7 +29,7 @@ class HTTP2HealthCheckResponse {
   /// [requestPath] The request path of the HTTP/2 health check request. The default value is /.
   /// [response] Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
   /// [weightReportMode] Weight report mode. used for weighted Load Balancing.
-  HTTP2HealthCheckResponse({
+  const HTTP2HealthCheckResponse({
     required this.host,
     required this.port,
     required this.portName,

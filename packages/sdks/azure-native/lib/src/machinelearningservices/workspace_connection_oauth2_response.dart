@@ -31,7 +31,7 @@ class WorkspaceConnectionOAuth2Response {
   /// [refreshToken] Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
   /// [tenantId] Required by QuickBooks and Xero connection categories
   /// [username] Concur, ServiceNow auth server AccessToken grant type is 'Password'
-  WorkspaceConnectionOAuth2Response({
+  const WorkspaceConnectionOAuth2Response({
     this.authUrl,
     this.clientId,
     this.clientSecret,

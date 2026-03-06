@@ -12,7 +12,7 @@ class IDRangePatch {
   /// Creates a new [IDRangePatch].
   /// [max] max is the end of the range, inclusive.
   /// [min] min is the start of the range, inclusive.
-  IDRangePatch({
+  const IDRangePatch({
     this.max,
     this.min,
   });

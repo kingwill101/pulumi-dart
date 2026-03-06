@@ -8,7 +8,7 @@ class PacketMirroringNetwork {
 
   /// Creates a new [PacketMirroringNetwork].
   /// [url] The full self_link URL of the network where this rule is active.
-  PacketMirroringNetwork({
+  const PacketMirroringNetwork({
     required this.url,
   });
 

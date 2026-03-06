@@ -15,7 +15,7 @@ class GetDependencyOfRelationshipArgs {
   /// Creates a new [GetDependencyOfRelationshipArgs].
   /// [name] Name of dependencyOf relationship.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetDependencyOfRelationshipArgs({
+  const GetDependencyOfRelationshipArgs({
     required this.name,
     required this.resourceUri,
   });

@@ -14,7 +14,7 @@ class GetBucketObjectLockConfigurationRuleDefaultRetention {
   /// [days] Default retention period in days.
   /// [mode] Default object lock retention mode. Valid values are `GOVERNANCE` and `COMPLIANCE`.
   /// [years] Default retention period in years.
-  GetBucketObjectLockConfigurationRuleDefaultRetention({
+  const GetBucketObjectLockConfigurationRuleDefaultRetention({
     required this.days,
     required this.mode,
     required this.years,

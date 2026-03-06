@@ -20,7 +20,7 @@ class StatementActionPropertiesResponse {
   /// [ipCommunityProperties] IP Community Properties.
   /// [ipExtendedCommunityProperties] IP Extended Community Properties.
   /// [localPreference] Local Preference of the route policy.
-  StatementActionPropertiesResponse({
+  const StatementActionPropertiesResponse({
     required this.actionType,
     this.ipCommunityProperties,
     this.ipExtendedCommunityProperties,

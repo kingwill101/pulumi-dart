@@ -12,7 +12,7 @@ class MultiCloudClusterResponse {
   /// Creates a new [MultiCloudClusterResponse].
   /// [clusterMissing] If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
-  MultiCloudClusterResponse({
+  const MultiCloudClusterResponse({
     required this.clusterMissing,
     required this.resourceLink,
   });

@@ -28,7 +28,7 @@ class ElasticSnapshotPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [snapshotPolicyName] The name of the ElasticSnapshotPolicy
   /// [tags] Resource tags.
-  ElasticSnapshotPolicyArgs({
+  const ElasticSnapshotPolicyArgs({
     required this.accountName,
     this.location,
     this.properties,

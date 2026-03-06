@@ -10,7 +10,7 @@ class AccessLevelsAccessLevelBasicConditionVpcNetworkSource {
 
   /// Creates a new [AccessLevelsAccessLevelBasicConditionVpcNetworkSource].
   /// [vpcSubnetwork] Sub networks within a VPC network.
-  AccessLevelsAccessLevelBasicConditionVpcNetworkSource({
+  const AccessLevelsAccessLevelBasicConditionVpcNetworkSource({
     this.vpcSubnetwork,
   });
 

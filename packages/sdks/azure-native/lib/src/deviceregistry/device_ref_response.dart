@@ -12,7 +12,7 @@ class DeviceRefResponse {
   /// Creates a new [DeviceRefResponse].
   /// [deviceName] Name of the device resource
   /// [endpointName] The name of endpoint to use
-  DeviceRefResponse({
+  const DeviceRefResponse({
     required this.deviceName,
     required this.endpointName,
   });

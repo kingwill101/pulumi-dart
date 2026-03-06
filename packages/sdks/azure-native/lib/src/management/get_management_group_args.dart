@@ -21,7 +21,7 @@ class GetManagementGroupArgs {
   /// [filter] A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription')
   /// [groupId] Management Group ID.
   /// [recurse] The $recurse=true query string parameter allows clients to request inclusion of entire hierarchy in the response payload. Note that  $expand=children must be passed up if $recurse is set to true.
-  GetManagementGroupArgs({
+  const GetManagementGroupArgs({
     this.expand,
     this.filter,
     required this.groupId,

@@ -10,7 +10,7 @@ class GetLaunchTemplateTagSpecification {
   /// Creates a new [GetLaunchTemplateTagSpecification].
   /// [resourceType] Required.
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired Launch Template.
-  GetLaunchTemplateTagSpecification({
+  const GetLaunchTemplateTagSpecification({
     required this.resourceType,
     required this.tags,
   });

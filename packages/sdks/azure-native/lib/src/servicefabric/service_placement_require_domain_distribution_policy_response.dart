@@ -21,7 +21,7 @@ class ServicePlacementRequireDomainDistributionPolicyResponse {
   /// Creates a new [ServicePlacementRequireDomainDistributionPolicyResponse].
   /// [domainName] The name of the domain that should used for placement as per this policy.
   /// [type] The type of placement policy for a service fabric service. Following are the possible values.
-  ServicePlacementRequireDomainDistributionPolicyResponse({
+  const ServicePlacementRequireDomainDistributionPolicyResponse({
     required this.domainName,
     required this.type,
   });

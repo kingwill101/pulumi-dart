@@ -55,7 +55,7 @@ class AppGroupState {
   /// [namespaceName] The namespace name.
   /// [namespaceSource] Not supported for the time being, no need to fill in.
   /// [scheduleBusyWorkers] Whether to schedule a busy machine.
-  AppGroupState({
+  const AppGroupState({
     this.appName,
     this.appType,
     this.appVersion,

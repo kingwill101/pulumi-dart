@@ -15,7 +15,7 @@ class ArgumentResponse {
   /// [isSecret] Flag to indicate whether the argument represents a secret and want to be removed from build logs.
   /// [name] The name of the argument.
   /// [value] The value of the argument.
-  ArgumentResponse({
+  const ArgumentResponse({
     this.isSecret,
     required this.name,
     required this.value,

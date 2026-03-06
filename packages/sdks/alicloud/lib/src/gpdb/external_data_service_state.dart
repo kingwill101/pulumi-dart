@@ -27,7 +27,7 @@ class ExternalDataServiceState {
   /// [serviceName] Service Name
   /// [serviceSpec] Service Specifications
   /// [status] The status of the resource
-  ExternalDataServiceState({
+  const ExternalDataServiceState({
     this.createTime,
     this.dbInstanceId,
     this.serviceDescription,

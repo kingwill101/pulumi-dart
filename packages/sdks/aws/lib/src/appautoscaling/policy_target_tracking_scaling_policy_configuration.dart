@@ -25,7 +25,7 @@ class PolicyTargetTrackingScalingPolicyConfiguration {
   /// [scaleInCooldown] Amount of time, in seconds, after a scale in activity completes before another scale in activity can start.
   /// [scaleOutCooldown] Amount of time, in seconds, after a scale out activity completes before another scale out activity can start.
   /// [targetValue] Target value for the metric.
-  PolicyTargetTrackingScalingPolicyConfiguration({
+  const PolicyTargetTrackingScalingPolicyConfiguration({
     this.customizedMetricSpecification,
     this.disableScaleIn,
     this.predefinedMetricSpecification,

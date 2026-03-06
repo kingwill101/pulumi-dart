@@ -21,7 +21,7 @@ class IngressClassParametersReference {
   /// [name] name is the name of resource being referenced.
   /// [namespace] namespace is the namespace of the resource being referenced. This field is required when scope is set to "Namespace" and must be unset when scope is set to "Cluster".
   /// [scope] scope represents if this refers to a cluster or namespace scoped resource. This may be set to "Cluster" (default) or "Namespace".
-  IngressClassParametersReference({
+  const IngressClassParametersReference({
     this.apiGroup,
     required this.kind,
     required this.name,

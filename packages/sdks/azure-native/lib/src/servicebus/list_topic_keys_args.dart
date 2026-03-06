@@ -21,7 +21,7 @@ class ListTopicKeysArgs {
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [topicName] The topic name.
-  ListTopicKeysArgs({
+  const ListTopicKeysArgs({
     required this.authorizationRuleName,
     required this.namespaceName,
     required this.resourceGroupName,

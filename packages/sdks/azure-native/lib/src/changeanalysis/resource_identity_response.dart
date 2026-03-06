@@ -15,7 +15,7 @@ class ResourceIdentityResponse {
   /// [principalId] The principal id of the identity. This property will only be provided for a system-assigned identity.
   /// [tenantId] The tenant id associated with the resource's identity. This property will only be provided for a system-assigned identity.
   /// [type] The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
-  ResourceIdentityResponse({
+  const ResourceIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

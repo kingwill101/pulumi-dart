@@ -30,7 +30,7 @@ class GetSAPSupportedSkuArgs {
   /// [highAvailabilityType] The high availability type.
   /// [location] The name of Azure region.
   /// [sapProduct] Defines the SAP Product type.
-  GetSAPSupportedSkuArgs({
+  const GetSAPSupportedSkuArgs({
     required this.appLocation,
     required this.databaseType,
     required this.deploymentType,

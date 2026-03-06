@@ -17,7 +17,7 @@ class GetFeatureViewAiplatformV1beta1Args {
   /// [featureViewId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeatureViewAiplatformV1beta1Args({
+  const GetFeatureViewAiplatformV1beta1Args({
     required this.featureOnlineStoreId,
     required this.featureViewId,
     required this.location,

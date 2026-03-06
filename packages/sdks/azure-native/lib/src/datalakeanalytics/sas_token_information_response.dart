@@ -9,7 +9,7 @@ class SasTokenInformationResponse {
 
   /// Creates a new [SasTokenInformationResponse].
   /// [accessToken] The access token for the associated Azure Storage Container.
-  SasTokenInformationResponse({
+  const SasTokenInformationResponse({
     required this.accessToken,
   });
 

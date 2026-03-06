@@ -11,7 +11,7 @@ class ServiceDeploymentConfigurationCanaryConfiguration {
   /// Creates a new [ServiceDeploymentConfigurationCanaryConfiguration].
   /// [canaryBakeTimeInMinutes] Number of minutes to wait before shifting all traffic to the new deployment. Valid range: 0-1440 minutes.
   /// [canaryPercent] Percentage of traffic to route to the canary deployment. Valid range: 0.1-100.0.
-  ServiceDeploymentConfigurationCanaryConfiguration({
+  const ServiceDeploymentConfigurationCanaryConfiguration({
     this.canaryBakeTimeInMinutes,
     this.canaryPercent,
   });

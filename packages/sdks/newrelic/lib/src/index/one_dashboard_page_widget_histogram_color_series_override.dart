@@ -11,7 +11,7 @@ class OneDashboardPageWidgetHistogramColorSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetHistogramColorSeriesOverride].
   /// [color] (Optional) Choose a color to customize the color of your charts per series in area, bar, line, pie, and stacked bar charts. Accepted values are RGB, HEX, or HSL code.
   /// [seriesName] Series name
-  OneDashboardPageWidgetHistogramColorSeriesOverride({
+  const OneDashboardPageWidgetHistogramColorSeriesOverride({
     this.color,
     this.seriesName,
   });

@@ -34,7 +34,7 @@ class CodeBuildProjectPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CodeBuildProjectPropertiesResponse({
+  const CodeBuildProjectPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

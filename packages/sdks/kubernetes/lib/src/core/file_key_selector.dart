@@ -20,7 +20,7 @@ class FileKeySelector {
   /// [optional] Specify whether the file or its key must be defined. If the file or key does not exist, then the env var is not published. If optional is set to true and the specified key does not exist, the environment variable will not be set in the Pod's containers.
   /// [path] The path within the volume from which to select the file. Must be relative and may not contain the '..' path or start with '..'.
   /// [volumeName] The name of the volume mount containing the env file.
-  FileKeySelector({
+  const FileKeySelector({
     required this.key,
     this.optional,
     required this.path,

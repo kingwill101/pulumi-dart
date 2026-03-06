@@ -23,7 +23,7 @@ class GetQosBandwidthLimitRuleArgs {
   /// [maxKbps] The maximum kilobits per second of a QoS bandwidth limit rule.
   /// [qosPolicyId] The QoS policy reference.
   /// [region] The region in which to obtain the V2 Networking client.
-  GetQosBandwidthLimitRuleArgs({
+  const GetQosBandwidthLimitRuleArgs({
     this.maxBurstKbps,
     this.maxKbps,
     required this.qosPolicyId,

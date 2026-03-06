@@ -14,7 +14,7 @@ class EndpointDeliveryRuleRequestSchemeCondition {
   /// [matchValues] Valid values are `HTTP` and `HTTPS`.
   /// [negateCondition] Defaults to `false`.
   /// [operator] Valid values are `Equal`. Defaults to `Equal`.
-  EndpointDeliveryRuleRequestSchemeCondition({
+  const EndpointDeliveryRuleRequestSchemeCondition({
     required this.matchValues,
     this.negateCondition,
     this.operator,

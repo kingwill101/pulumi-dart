@@ -7,7 +7,7 @@ class ContainerGroupInitContainerSecurityContextCapability {
 
   /// Creates a new [ContainerGroupInitContainerSecurityContextCapability].
   /// [adds] Optional.
-  ContainerGroupInitContainerSecurityContextCapability({
+  const ContainerGroupInitContainerSecurityContextCapability({
     this.adds,
   });
 

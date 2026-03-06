@@ -12,7 +12,7 @@ class SeverityOverrideResponse {
   /// Creates a new [SeverityOverrideResponse].
   /// [action] Threat action override.
   /// [severity] Severity level to match.
-  SeverityOverrideResponse({
+  const SeverityOverrideResponse({
     required this.action,
     required this.severity,
   });

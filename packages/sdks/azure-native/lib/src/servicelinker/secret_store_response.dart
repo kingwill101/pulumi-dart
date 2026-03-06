@@ -12,7 +12,7 @@ class SecretStoreResponse {
   /// Creates a new [SecretStoreResponse].
   /// [keyVaultId] The key vault id to store secret
   /// [keyVaultSecretName] The key vault secret name to store secret, only valid when storing one secret
-  SecretStoreResponse({
+  const SecretStoreResponse({
     this.keyVaultId,
     this.keyVaultSecretName,
   });

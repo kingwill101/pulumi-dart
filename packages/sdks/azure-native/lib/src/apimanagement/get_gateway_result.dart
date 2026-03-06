@@ -24,7 +24,7 @@ class GetGatewayResult {
   /// [locationData] Gateway location.
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetGatewayResult({
+  const GetGatewayResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

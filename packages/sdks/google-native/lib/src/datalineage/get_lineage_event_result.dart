@@ -19,7 +19,7 @@ class GetLineageEventResult {
   /// [links] Optional. List of source-target pairs. Can't contain more than 100 tuples.
   /// [name] Immutable. The resource name of the lineage event. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`. Can be specified or auto-assigned. {lineage_event} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
   /// [startTime] The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
-  GetLineageEventResult({
+  const GetLineageEventResult({
     required this.endTime,
     required this.links,
     required this.name,

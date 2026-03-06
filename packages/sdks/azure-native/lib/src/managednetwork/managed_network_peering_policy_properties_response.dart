@@ -25,7 +25,7 @@ class ManagedNetworkPeeringPolicyPropertiesResponse {
   /// [provisioningState] Provisioning state of the ManagedNetwork resource.
   /// [spokes] Gets or sets the spokes group IDs
   /// [type] Gets or sets the connectivity type of a network structure policy
-  ManagedNetworkPeeringPolicyPropertiesResponse({
+  const ManagedNetworkPeeringPolicyPropertiesResponse({
     required this.etag,
     this.hub,
     this.mesh,

@@ -14,7 +14,7 @@ class AddonsConfigState {
   /// Creates a new [AddonsConfigState].
   /// [addonsConfig] Addon configurations of the Apigee organization.
   /// [org] Name of the Apigee organization.
-  AddonsConfigState({
+  const AddonsConfigState({
     this.addonsConfig,
     this.org,
   });

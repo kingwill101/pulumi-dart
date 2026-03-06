@@ -12,7 +12,7 @@ class ErrorAdditionalInfoResponse {
   /// Creates a new [ErrorAdditionalInfoResponse].
   /// [info] The additional info.
   /// [type] The additional info type.
-  ErrorAdditionalInfoResponse({
+  const ErrorAdditionalInfoResponse({
     required this.info,
     required this.type,
   });

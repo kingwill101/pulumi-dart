@@ -8,7 +8,7 @@ class FirewallPolicyRuleSecureTagComputeBeta {
 
   /// Creates a new [FirewallPolicyRuleSecureTagComputeBeta].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
-  FirewallPolicyRuleSecureTagComputeBeta({
+  const FirewallPolicyRuleSecureTagComputeBeta({
     this.name,
   });
 

@@ -58,7 +58,7 @@ class FlavorArgs {
   /// [rxTxFactor] RX/TX bandwith factor. The default is 1. Changing
   /// [swap] The amount of disk space in megabytes to use. If
   /// [vcpus] The number of virtual CPUs to use. Changing this creates
-  FlavorArgs({
+  const FlavorArgs({
     this.description,
     required this.disk,
     this.ephemeral,

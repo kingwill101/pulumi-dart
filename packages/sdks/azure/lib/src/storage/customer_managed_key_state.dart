@@ -28,7 +28,7 @@ class CustomerManagedKeyState {
   /// [managedHsmKeyId] Optional.
   /// [storageAccountId] The ID of the Storage Account. Changing this forces a new resource to be created.
   /// [userAssignedIdentityId] The ID of a user assigned identity.
-  CustomerManagedKeyState({
+  const CustomerManagedKeyState({
     this.federatedIdentityClientId,
     this.keyName,
     this.keyVaultId,

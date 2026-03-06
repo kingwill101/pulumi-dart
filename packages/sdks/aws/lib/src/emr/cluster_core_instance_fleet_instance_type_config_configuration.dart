@@ -11,7 +11,7 @@ class ClusterCoreInstanceFleetInstanceTypeConfigConfiguration {
   /// Creates a new [ClusterCoreInstanceFleetInstanceTypeConfigConfiguration].
   /// [classification] Classification within a configuration.
   /// [properties] Map of properties specified within a configuration classification.
-  ClusterCoreInstanceFleetInstanceTypeConfigConfiguration({
+  const ClusterCoreInstanceFleetInstanceTypeConfigConfiguration({
     this.classification,
     this.properties,
   });

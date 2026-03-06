@@ -12,7 +12,7 @@ class IngressProfile {
   /// Creates a new [IngressProfile].
   /// [name] The ingress profile name.
   /// [visibility] Ingress visibility.
-  IngressProfile({
+  const IngressProfile({
     this.name,
     this.visibility,
   });

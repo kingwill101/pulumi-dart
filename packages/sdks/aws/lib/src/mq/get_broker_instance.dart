@@ -14,7 +14,7 @@ class GetBrokerInstance {
   /// [consoleUrl] URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on `engine_type`.
   /// [endpoints] Broker's wire-level protocol endpoints.
   /// [ipAddress] IP Address of the broker.
-  GetBrokerInstance({
+  const GetBrokerInstance({
     required this.consoleUrl,
     required this.endpoints,
     required this.ipAddress,

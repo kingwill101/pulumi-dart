@@ -37,7 +37,7 @@ class GetLinkResult {
   /// [resourceTypes] Types of data that the source account shares with the monitoring account.
   /// [sinkArn] ARN of the sink that is used for this link.
   /// [tags] Required.
-  GetLinkResult({
+  const GetLinkResult({
     required this.arn,
     required this.id,
     required this.label,

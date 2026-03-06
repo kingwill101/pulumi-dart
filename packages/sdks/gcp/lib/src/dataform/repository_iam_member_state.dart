@@ -21,7 +21,7 @@ class RepositoryIamMemberState {
   /// [region] Optional.
   /// [repository] Optional.
   /// [role] Optional.
-  RepositoryIamMemberState({
+  const RepositoryIamMemberState({
     this.condition,
     this.etag,
     this.member,

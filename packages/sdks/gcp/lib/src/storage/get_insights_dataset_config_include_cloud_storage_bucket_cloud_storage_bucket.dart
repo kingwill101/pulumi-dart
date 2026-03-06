@@ -14,7 +14,7 @@ class GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket {
   /// Creates a new [GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket].
   /// [bucketName] The list of cloud storage bucket names to include in the DatasetConfig.
   /// [bucketPrefixRegex] The list of regex patterns for bucket names matching the regex.
-  GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket({
+  const GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket({
     required this.bucketName,
     required this.bucketPrefixRegex,
   });

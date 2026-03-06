@@ -11,7 +11,7 @@ class GetMulticastDomainFilter {
   /// Creates a new [GetMulticastDomainFilter].
   /// [name] Name of the field to filter by, as defined by [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayMulticastDomains.html).
   /// [values] Set of values that are accepted for the given field. A multicast domain will be selected if any one of the given values matches.
-  GetMulticastDomainFilter({
+  const GetMulticastDomainFilter({
     required this.name,
     required this.values,
   });

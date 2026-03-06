@@ -17,7 +17,7 @@ class CustomActionTypeSettings {
   /// [executionUrlTemplate] The URL returned to the AWS CodePipeline console that contains a link to the top-level landing page for the external system.
   /// [revisionUrlTemplate] The URL returned to the AWS CodePipeline console that contains a link to the page where customers can update or change the configuration of the external action.
   /// [thirdPartyConfigurationUrl] The URL of a sign-up page where users can sign up for an external service and perform initial configuration of the action provided by that service.
-  CustomActionTypeSettings({
+  const CustomActionTypeSettings({
     this.entityUrlTemplate,
     this.executionUrlTemplate,
     this.revisionUrlTemplate,

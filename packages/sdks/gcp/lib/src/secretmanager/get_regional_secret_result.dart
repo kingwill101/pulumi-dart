@@ -50,7 +50,7 @@ class GetRegionalSecretResult {
   /// [ttl] Required.
   /// [versionAliases] Required.
   /// [versionDestroyTtl] Required.
-  GetRegionalSecretResult({
+  const GetRegionalSecretResult({
     required this.annotations,
     required this.createTime,
     required this.customerManagedEncryptions,

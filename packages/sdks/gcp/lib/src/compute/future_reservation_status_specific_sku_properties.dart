@@ -8,7 +8,7 @@ class FutureReservationStatusSpecificSkuProperties {
 
   /// Creates a new [FutureReservationStatusSpecificSkuProperties].
   /// [sourceInstanceTemplateId] ID of the instance template used to populate the Future Reservation properties.
-  FutureReservationStatusSpecificSkuProperties({
+  const FutureReservationStatusSpecificSkuProperties({
     this.sourceInstanceTemplateId,
   });
 

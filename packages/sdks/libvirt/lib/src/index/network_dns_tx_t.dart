@@ -11,7 +11,7 @@ class NetworkDnsTxT {
   /// Creates a new [NetworkDnsTxT].
   /// [name] Specifies the name for the TXT record.
   /// [value] Sets the value associated with the TXT record.
-  NetworkDnsTxT({
+  const NetworkDnsTxT({
     required this.name,
     required this.value,
   });

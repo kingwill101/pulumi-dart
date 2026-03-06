@@ -9,7 +9,7 @@ class LogTransformerTransformerConfigSplitString {
 
   /// Creates a new [LogTransformerTransformerConfigSplitString].
   /// [entries] Objects containing the information about the fields to split. You must include at least one entry, and ten at most. See `split_string` `entry` below for details.
-  LogTransformerTransformerConfigSplitString({
+  const LogTransformerTransformerConfigSplitString({
     required this.entries,
   });
 

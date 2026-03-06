@@ -20,7 +20,7 @@ class KeyRingArgs {
   /// [location] The location for the KeyRing.
   /// [name] The resource name for the KeyRing.
   /// [project] The ID of the project in which the resource belongs.
-  KeyRingArgs({
+  const KeyRingArgs({
     required this.location,
     this.name,
     this.project,

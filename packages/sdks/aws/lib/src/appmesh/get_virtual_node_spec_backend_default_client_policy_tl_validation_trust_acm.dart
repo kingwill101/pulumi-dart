@@ -7,7 +7,7 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm {
 
   /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm].
   /// [certificateAuthorityArns] Required.
-  GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm({
+  const GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustAcm({
     required this.certificateAuthorityArns,
   });
 

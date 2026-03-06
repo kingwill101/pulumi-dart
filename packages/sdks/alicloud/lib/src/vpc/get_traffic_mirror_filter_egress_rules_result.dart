@@ -20,7 +20,7 @@ class GetTrafficMirrorFilterEgressRulesResult {
   /// [rules] Required.
   /// [status] Optional.
   /// [trafficMirrorFilterId] Required.
-  GetTrafficMirrorFilterEgressRulesResult({
+  const GetTrafficMirrorFilterEgressRulesResult({
     required this.id,
     required this.ids,
     this.outputFile,

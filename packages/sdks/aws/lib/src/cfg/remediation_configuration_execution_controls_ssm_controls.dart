@@ -11,7 +11,7 @@ class RemediationConfigurationExecutionControlsSsmControls {
   /// Creates a new [RemediationConfigurationExecutionControlsSsmControls].
   /// [concurrentExecutionRatePercentage] Maximum percentage of remediation actions allowed to run in parallel on the non-compliant resources for that specific rule. The default value is 10%.
   /// [errorPercentage] Percentage of errors that are allowed before SSM stops running automations on non-compliant resources for that specific rule. The default is 50%.
-  RemediationConfigurationExecutionControlsSsmControls({
+  const RemediationConfigurationExecutionControlsSsmControls({
     this.concurrentExecutionRatePercentage,
     this.errorPercentage,
   });

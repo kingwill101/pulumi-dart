@@ -11,7 +11,7 @@ class SystemTopicEventSubscriptionRetryPolicy {
   /// Creates a new [SystemTopicEventSubscriptionRetryPolicy].
   /// [eventTimeToLive] Specifies the time to live (in minutes) for events. Supported range is `1` to `1440`. See [official documentation](https://docs.microsoft.com/azure/event-grid/manage-event-delivery#set-retry-policy) for more details.
   /// [maxDeliveryAttempts] Specifies the maximum number of delivery retry attempts for events.
-  SystemTopicEventSubscriptionRetryPolicy({
+  const SystemTopicEventSubscriptionRetryPolicy({
     required this.eventTimeToLive,
     required this.maxDeliveryAttempts,
   });

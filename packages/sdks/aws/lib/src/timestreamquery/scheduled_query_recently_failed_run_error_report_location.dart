@@ -9,7 +9,7 @@ class ScheduledQueryRecentlyFailedRunErrorReportLocation {
 
   /// Creates a new [ScheduledQueryRecentlyFailedRunErrorReportLocation].
   /// [s3ReportLocations] S3 location where error reports are written.
-  ScheduledQueryRecentlyFailedRunErrorReportLocation({
+  const ScheduledQueryRecentlyFailedRunErrorReportLocation({
     this.s3ReportLocations,
   });
 

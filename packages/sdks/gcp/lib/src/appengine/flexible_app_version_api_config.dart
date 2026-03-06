@@ -25,7 +25,7 @@ class FlexibleAppVersionApiConfig {
   /// [script] Path to the script from the application root directory.
   /// [securityLevel] Security (HTTPS) enforcement for this URL.
   /// [url] URL to serve the endpoint at.
-  FlexibleAppVersionApiConfig({
+  const FlexibleAppVersionApiConfig({
     this.authFailAction,
     this.login,
     required this.script,

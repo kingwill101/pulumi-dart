@@ -20,7 +20,7 @@ class ProfileClientSslCertKeyChain {
   /// [key] Specifies the file name of the SSL key. The default is `default`
   /// [name] Name of Cert-key-chain
   /// [passphrase] Type the name of the pass phrase used to encrypt the key.
-  ProfileClientSslCertKeyChain({
+  const ProfileClientSslCertKeyChain({
     this.cert,
     this.chain,
     this.key,

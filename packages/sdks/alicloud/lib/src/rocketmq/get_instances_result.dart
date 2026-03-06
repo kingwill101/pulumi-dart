@@ -31,7 +31,7 @@ class GetInstancesResult {
   /// [outputFile] Optional.
   /// [status] The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
   /// [tags] A map of tags assigned to the Ons instance.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

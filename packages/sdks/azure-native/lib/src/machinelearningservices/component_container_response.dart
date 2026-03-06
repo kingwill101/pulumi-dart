@@ -28,7 +28,7 @@ class ComponentContainerResponse {
   /// [properties] The asset property dictionary.
   /// [provisioningState] Provisioning state for the component container.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  ComponentContainerResponse({
+  const ComponentContainerResponse({
     this.description,
     this.isArchived,
     required this.latestVersion,

@@ -17,7 +17,7 @@ class RegistryRegionArmDetails {
   /// [acrDetails] List of ACR accounts
   /// [location] The location where the registry exists
   /// [storageAccountDetails] List of storage accounts
-  RegistryRegionArmDetails({
+  const RegistryRegionArmDetails({
     this.acrDetails,
     this.location,
     this.storageAccountDetails,

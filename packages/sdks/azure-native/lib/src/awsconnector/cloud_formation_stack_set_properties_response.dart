@@ -34,7 +34,7 @@ class CloudFormationStackSetPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CloudFormationStackSetPropertiesResponse({
+  const CloudFormationStackSetPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

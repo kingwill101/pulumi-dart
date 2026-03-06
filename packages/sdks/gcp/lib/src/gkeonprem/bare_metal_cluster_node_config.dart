@@ -13,7 +13,7 @@ class BareMetalClusterNodeConfig {
   /// Creates a new [BareMetalClusterNodeConfig].
   /// [containerRuntime] The available runtimes that can be used to run containers in a Bare Metal User Cluster.
   /// [maxPodsPerNode] The maximum number of pods a node can run. The size of the CIDR range
-  BareMetalClusterNodeConfig({
+  const BareMetalClusterNodeConfig({
     this.containerRuntime,
     this.maxPodsPerNode,
   });

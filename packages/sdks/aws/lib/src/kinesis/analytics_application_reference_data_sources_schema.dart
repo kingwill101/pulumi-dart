@@ -18,7 +18,7 @@ class AnalyticsApplicationReferenceDataSourcesSchema {
   /// [recordColumns] The Record Column mapping for the streaming source data element.
   /// [recordEncoding] The Encoding of the record in the streaming source.
   /// [recordFormat] The Record Format and mapping information to schematize a record.
-  AnalyticsApplicationReferenceDataSourcesSchema({
+  const AnalyticsApplicationReferenceDataSourcesSchema({
     required this.recordColumns,
     this.recordEncoding,
     required this.recordFormat,

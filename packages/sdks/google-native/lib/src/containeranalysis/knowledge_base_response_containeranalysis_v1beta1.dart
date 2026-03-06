@@ -11,7 +11,7 @@ class KnowledgeBaseResponseContaineranalysisV1beta1 {
   /// Creates a new [KnowledgeBaseResponseContaineranalysisV1beta1].
   /// [name] The KB name (generally of the form KB[0-9]+ i.e. KB123456).
   /// [url] A link to the KB in the Windows update catalog - https://www.catalog.update.microsoft.com/
-  KnowledgeBaseResponseContaineranalysisV1beta1({
+  const KnowledgeBaseResponseContaineranalysisV1beta1({
     required this.name,
     required this.url,
   });

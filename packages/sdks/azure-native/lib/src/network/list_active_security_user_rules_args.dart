@@ -21,7 +21,7 @@ class ListActiveSecurityUserRulesArgs {
   /// [regions] List of regions.
   /// [resourceGroupName] The name of the resource group.
   /// [skipToken] When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
-  ListActiveSecurityUserRulesArgs({
+  const ListActiveSecurityUserRulesArgs({
     required this.networkManagerName,
     this.regions,
     required this.resourceGroupName,

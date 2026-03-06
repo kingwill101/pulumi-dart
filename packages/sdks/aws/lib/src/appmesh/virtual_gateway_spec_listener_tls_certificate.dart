@@ -17,7 +17,7 @@ class VirtualGatewaySpecListenerTlsCertificate {
   /// [acm] An AWS Certificate Manager (ACM) certificate.
   /// [file] Local file certificate.
   /// [sds] A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  VirtualGatewaySpecListenerTlsCertificate({
+  const VirtualGatewaySpecListenerTlsCertificate({
     this.acm,
     this.file,
     this.sds,

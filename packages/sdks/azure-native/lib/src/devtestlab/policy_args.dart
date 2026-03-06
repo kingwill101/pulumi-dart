@@ -45,7 +45,7 @@ class PolicyArgs {
   /// [status] The status of the policy.
   /// [tags] The tags of the resource.
   /// [threshold] The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
-  PolicyArgs({
+  const PolicyArgs({
     this.description,
     this.evaluatorType,
     this.factData,

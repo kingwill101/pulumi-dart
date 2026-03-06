@@ -29,7 +29,7 @@ class GetServiceDeployment {
   /// [status] Task set status
   /// [taskDefinition] Task definition ARN
   /// [updatedAt] Time when task set was last updated (RFC3339 format)
-  GetServiceDeployment({
+  const GetServiceDeployment({
     required this.createdAt,
     required this.desiredCount,
     required this.id,

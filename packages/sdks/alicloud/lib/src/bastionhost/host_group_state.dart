@@ -18,7 +18,7 @@ class HostGroupState {
   /// [hostGroupId] Host Group ID.
   /// [hostGroupName] Specify the New Host Group Name, Supports up to 128 Characters.
   /// [instanceId] Specify the New Host Group Where the Bastion Host ID of.
-  HostGroupState({
+  const HostGroupState({
     this.comment,
     this.hostGroupId,
     this.hostGroupName,

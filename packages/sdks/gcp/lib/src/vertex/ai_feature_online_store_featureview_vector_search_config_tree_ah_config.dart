@@ -8,7 +8,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
 
   /// Creates a new [AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig].
   /// [leafNodeEmbeddingCount] Number of embeddings on each leaf node. The default value is 1000 if not set.
-  AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig({
+  const AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig({
     this.leafNodeEmbeddingCount,
   });
 

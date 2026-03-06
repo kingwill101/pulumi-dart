@@ -15,7 +15,7 @@ class RegistrationInfo {
   /// [expirationTime] Expiration time of registration token.
   /// [registrationTokenOperation] The type of resetting the token.
   /// [token] The registration token base64 encoded string.
-  RegistrationInfo({
+  const RegistrationInfo({
     this.expirationTime,
     this.registrationTokenOperation,
     this.token,

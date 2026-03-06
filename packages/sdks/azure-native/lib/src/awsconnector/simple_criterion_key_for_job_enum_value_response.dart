@@ -9,7 +9,7 @@ class SimpleCriterionKeyForJobEnumValueResponse {
 
   /// Creates a new [SimpleCriterionKeyForJobEnumValueResponse].
   /// [value] Property value
-  SimpleCriterionKeyForJobEnumValueResponse({
+  const SimpleCriterionKeyForJobEnumValueResponse({
     this.value,
   });
 

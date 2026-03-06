@@ -13,7 +13,7 @@ class GetHostSecurityReportArgs {
   /// Creates a new [GetHostSecurityReportArgs].
   /// [hostSecurityReportId] Required.
   /// [organizationId] Required.
-  GetHostSecurityReportArgs({
+  const GetHostSecurityReportArgs({
     required this.hostSecurityReportId,
     required this.organizationId,
   });

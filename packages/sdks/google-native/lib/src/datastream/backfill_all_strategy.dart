@@ -18,7 +18,7 @@ class BackfillAllStrategy {
   /// [mysqlExcludedObjects] MySQL data source objects to avoid backfilling.
   /// [oracleExcludedObjects] Oracle data source objects to avoid backfilling.
   /// [postgresqlExcludedObjects] PostgreSQL data source objects to avoid backfilling.
-  BackfillAllStrategy({
+  const BackfillAllStrategy({
     this.mysqlExcludedObjects,
     this.oracleExcludedObjects,
     this.postgresqlExcludedObjects,

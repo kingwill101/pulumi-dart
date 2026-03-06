@@ -18,7 +18,7 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse {
   /// [batchProvisioningSupport] Batch provisioning support.
   /// [deleteDependencies] Delete dependencies.
   /// [nestedProvisioningSupport] Nested provisioning support.
-  ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse({
+  const ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse({
     this.batchProvisioningSupport,
     this.deleteDependencies,
     this.nestedProvisioningSupport,

@@ -9,7 +9,7 @@ class GcePersistentDiskCsiDriverConfigResponse {
 
   /// Creates a new [GcePersistentDiskCsiDriverConfigResponse].
   /// [enabled] Whether the Compute Engine PD CSI driver is enabled for this cluster.
-  GcePersistentDiskCsiDriverConfigResponse({
+  const GcePersistentDiskCsiDriverConfigResponse({
     required this.enabled,
   });
 

@@ -20,7 +20,7 @@ class LocalUserPermissionScopePermissions {
   /// [list] Specifies if the Local User has the list permission for this scope. Defaults to `false`.
   /// [read] Specifies if the Local User has the read permission for this scope. Defaults to `false`.
   /// [write] Specifies if the Local User has the write permission for this scope. Defaults to `false`.
-  LocalUserPermissionScopePermissions({
+  const LocalUserPermissionScopePermissions({
     this.create,
     this.delete,
     this.list,

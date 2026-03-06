@@ -21,7 +21,7 @@ class ObfuscationExpressionArgs {
   /// [description] Description of expression.
   /// [name] Name of expression.
   /// [regex] Regex of expression. Must be wrapped in parentheses, e.g. (regex.*).
-  ObfuscationExpressionArgs({
+  const ObfuscationExpressionArgs({
     this.accountId,
     this.description,
     this.name,

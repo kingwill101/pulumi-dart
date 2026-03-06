@@ -15,7 +15,7 @@ class KubernetesRoleComputeResponse {
   /// [memoryInBytes] Memory in bytes
   /// [processorCount] Processor count
   /// [vmProfile] VM profile
-  KubernetesRoleComputeResponse({
+  const KubernetesRoleComputeResponse({
     required this.memoryInBytes,
     required this.processorCount,
     required this.vmProfile,

@@ -31,7 +31,7 @@ class GetWorkerPoolCloudbuildV1alpha2Result {
   /// [state] WorkerPool state.
   /// [updateTime] Time at which the request to update the `WorkerPool` was received.
   /// [workerConfig] Worker configuration for the `WorkerPool`.
-  GetWorkerPoolCloudbuildV1alpha2Result({
+  const GetWorkerPoolCloudbuildV1alpha2Result({
     required this.createTime,
     required this.deleteTime,
     required this.name,

@@ -20,7 +20,7 @@ class NodePoolRollingPolicy {
   /// [maxParallelism] The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
   /// [nodeNames] Specify the list of nodes to be upgraded.
   /// [pausePolicy] The auto-pause policy during node upgrade. Valid values:
-  NodePoolRollingPolicy({
+  const NodePoolRollingPolicy({
     this.batchInterval,
     this.maxParallelism,
     this.nodeNames,

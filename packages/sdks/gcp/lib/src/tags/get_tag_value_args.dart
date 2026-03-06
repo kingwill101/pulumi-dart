@@ -15,7 +15,7 @@ class GetTagValueArgs {
   /// Creates a new [GetTagValueArgs].
   /// [parent] The resource name of the parent tagKey in format `tagKey/{name}`.
   /// [shortName] The tag value's short_name.
-  GetTagValueArgs({
+  const GetTagValueArgs({
     required this.parent,
     required this.shortName,
   });

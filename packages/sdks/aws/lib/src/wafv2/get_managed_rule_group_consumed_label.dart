@@ -8,7 +8,7 @@ class GetManagedRuleGroupConsumedLabel {
 
   /// Creates a new [GetManagedRuleGroupConsumedLabel].
   /// [name] Managed rule group name.
-  GetManagedRuleGroupConsumedLabel({
+  const GetManagedRuleGroupConsumedLabel({
     required this.name,
   });
 

@@ -35,7 +35,7 @@ class EndpointKinesisSettings {
   /// [serviceAccessRoleArn] ARN of the IAM Role with permissions to write to the Kinesis data stream.
   /// [streamArn] ARN of the Kinesis data stream.
   /// [useLargeIntegerValue] Use up to 18 digit int instead of casting ints as doubles, available from AWS DMS version 3.5.4. Default is `false`.
-  EndpointKinesisSettings({
+  const EndpointKinesisSettings({
     this.includeControlDetails,
     this.includeNullAndEmpty,
     this.includePartitionValue,

@@ -118,7 +118,7 @@ class GcpIntegrationsState {
   /// [storage] Storage integration. See Integration blocks below for details.
   /// [virtualMachines] Virtual machines integration. See Integration blocks below for details.
   /// [vpcAccess] VPC Access integration. See Integration blocks below for details.
-  GcpIntegrationsState({
+  const GcpIntegrationsState({
     this.accountId,
     this.alloyDb,
     this.appEngine,

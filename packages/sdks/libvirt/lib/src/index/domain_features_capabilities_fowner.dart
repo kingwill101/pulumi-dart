@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesFowner {
 
   /// Creates a new [DomainFeaturesCapabilitiesFowner].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesFowner({
+  const DomainFeaturesCapabilitiesFowner({
     this.state,
   });
 

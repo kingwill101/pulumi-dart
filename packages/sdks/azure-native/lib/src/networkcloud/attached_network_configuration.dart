@@ -17,7 +17,7 @@ class AttachedNetworkConfiguration {
   /// [l2Networks] The list of Layer 2 Networks and related configuration for attachment.
   /// [l3Networks] The list of Layer 3 Networks and related configuration for attachment.
   /// [trunkedNetworks] The list of Trunked Networks and related configuration for attachment.
-  AttachedNetworkConfiguration({
+  const AttachedNetworkConfiguration({
     this.l2Networks,
     this.l3Networks,
     this.trunkedNetworks,

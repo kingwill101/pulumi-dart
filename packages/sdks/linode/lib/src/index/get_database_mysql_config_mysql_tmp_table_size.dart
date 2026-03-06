@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlTmpTableSize {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlTmpTableSize({
+  const GetDatabaseMysqlConfigMysqlTmpTableSize({
     required this.description,
     required this.example,
     required this.maximum,

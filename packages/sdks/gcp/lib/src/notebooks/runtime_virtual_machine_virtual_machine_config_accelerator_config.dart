@@ -13,7 +13,7 @@ class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
   /// Creates a new [RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Accelerator model. For valid values, see
-  RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig({
+  const RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig({
     this.coreCount,
     this.type,
   });

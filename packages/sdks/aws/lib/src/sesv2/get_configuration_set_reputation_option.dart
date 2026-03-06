@@ -11,7 +11,7 @@ class GetConfigurationSetReputationOption {
   /// Creates a new [GetConfigurationSetReputationOption].
   /// [lastFreshStart] The date and time (in Unix time) when the reputation metrics were last given a fresh start.
   /// [reputationMetricsEnabled] Specifies whether tracking of reputation metrics is enabled.
-  GetConfigurationSetReputationOption({
+  const GetConfigurationSetReputationOption({
     required this.lastFreshStart,
     required this.reputationMetricsEnabled,
   });

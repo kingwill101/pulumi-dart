@@ -37,7 +37,7 @@ class DomainDevicesGraphic {
   /// [sdl] Configures the SDL display settings for graphics output.
   /// [spice] Configures the SPICE settings for graphical interaction with the guest.
   /// [vnc] Configures the VNC graphical interface settings for the virtual machine.
-  DomainDevicesGraphic({
+  const DomainDevicesGraphic({
     this.audio,
     this.dbus,
     this.desktop,

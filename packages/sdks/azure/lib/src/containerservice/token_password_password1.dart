@@ -11,7 +11,7 @@ class TokenPasswordPassword1 {
   /// Creates a new [TokenPasswordPassword1].
   /// [expiry] The expiration date of the password in RFC3339 format. If not specified, the password never expires. Changing this forces a new resource to be created.
   /// [value] The value of the password (Sensitive).
-  TokenPasswordPassword1({
+  const TokenPasswordPassword1({
     this.expiry,
     this.value,
   });

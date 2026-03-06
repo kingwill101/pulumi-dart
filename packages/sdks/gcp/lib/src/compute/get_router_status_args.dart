@@ -20,7 +20,7 @@ class GetRouterStatusArgs {
   /// [name] The name of the router.
   /// [project] The ID of the project in which the resource
   /// [region] The region this router has been created in. If
-  GetRouterStatusArgs({
+  const GetRouterStatusArgs({
     required this.name,
     this.project,
     this.region,

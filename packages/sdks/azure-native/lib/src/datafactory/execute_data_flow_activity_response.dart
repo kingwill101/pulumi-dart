@@ -70,7 +70,7 @@ class ExecuteDataFlowActivityResponse {
   /// [traceLevel] Trace level setting used for data flow monitoring output. Supported values are: 'coarse', 'fine', and 'none'. Type: string (or Expression with resultType string)
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  ExecuteDataFlowActivityResponse({
+  const ExecuteDataFlowActivityResponse({
     this.compute,
     this.continuationSettings,
     this.continueOnError,

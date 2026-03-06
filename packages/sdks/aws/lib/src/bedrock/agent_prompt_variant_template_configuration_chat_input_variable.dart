@@ -8,7 +8,7 @@ class AgentPromptVariantTemplateConfigurationChatInputVariable {
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatInputVariable].
   /// [name] The name of the variable.
-  AgentPromptVariantTemplateConfigurationChatInputVariable({
+  const AgentPromptVariantTemplateConfigurationChatInputVariable({
     required this.name,
   });
 

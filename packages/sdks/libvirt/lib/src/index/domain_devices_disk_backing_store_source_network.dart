@@ -52,7 +52,7 @@ class DomainDevicesDiskBackingStoreSourceNetwork {
   /// [snapshot] Enables snapshot capabilities for the network storage source, allowing for point-in-time volumes.
   /// [tls] Controls whether TLS is used for secure connections to the network storage.
   /// [tlsHostname] Sets the expected hostname for the TLS certificate validation during secure network access.
-  DomainDevicesDiskBackingStoreSourceNetwork({
+  const DomainDevicesDiskBackingStoreSourceNetwork({
     this.auth,
     this.config,
     this.hosts,

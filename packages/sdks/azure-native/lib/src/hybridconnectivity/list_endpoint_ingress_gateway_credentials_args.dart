@@ -21,7 +21,7 @@ class ListEndpointIngressGatewayCredentialsArgs {
   /// [expiresin] The is how long the endpoint access token is valid (in seconds).
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [serviceName] The name of the service. If not provided, the request will by pass the generation of service configuration token.
-  ListEndpointIngressGatewayCredentialsArgs({
+  const ListEndpointIngressGatewayCredentialsArgs({
     required this.endpointName,
     this.expiresin,
     required this.resourceUri,

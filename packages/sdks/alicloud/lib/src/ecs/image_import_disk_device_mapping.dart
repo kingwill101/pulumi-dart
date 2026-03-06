@@ -20,7 +20,7 @@ class ImageImportDiskDeviceMapping {
   /// [format] The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
   /// [ossBucket] The OSS bucket where the image file is stored.
   /// [ossObject] The name (key) of the object that the uploaded image is stored as in the OSS bucket.
-  ImageImportDiskDeviceMapping({
+  const ImageImportDiskDeviceMapping({
     this.device,
     this.diskImageSize,
     this.format,

@@ -31,7 +31,7 @@ class RoleDefinitionArgs {
   /// [roleName] The role name.
   /// [roleType] The role type.
   /// [scope] The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  RoleDefinitionArgs({
+  const RoleDefinitionArgs({
     this.assignableScopes,
     this.description,
     this.permissions,

@@ -23,7 +23,7 @@ class DirectorySamlServiceProvider {
   /// [encodedMetadataDocument] SP metadata document (Base64 encoding).
   /// [entityId] SP identity.
   /// [supportEncryptedAssertion] Whether IdP-side encryption of Assertion is supported.
-  DirectorySamlServiceProvider({
+  const DirectorySamlServiceProvider({
     this.acsUrl,
     this.authnSignAlgo,
     this.certificateType,

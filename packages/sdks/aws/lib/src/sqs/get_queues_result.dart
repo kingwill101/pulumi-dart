@@ -15,7 +15,7 @@ class GetQueuesResult {
   /// [queueNamePrefix] Optional.
   /// [queueUrls] A list of queue URLs.
   /// [region] Required.
-  GetQueuesResult({
+  const GetQueuesResult({
     required this.id,
     this.queueNamePrefix,
     required this.queueUrls,

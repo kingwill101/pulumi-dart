@@ -39,7 +39,7 @@ class DataflowEndpointKafka {
   /// [kafkaAcks] Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
   /// [partitionStrategy] Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
   /// [tls] TLS configuration.
-  DataflowEndpointKafka({
+  const DataflowEndpointKafka({
     required this.authentication,
     this.batching,
     this.cloudEventAttributes,

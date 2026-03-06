@@ -18,7 +18,7 @@ class GetRoutingIntentArgs {
   /// [resourceGroupName] The resource group name of the RoutingIntent.
   /// [routingIntentName] The name of the RoutingIntent.
   /// [virtualHubName] The name of the VirtualHub.
-  GetRoutingIntentArgs({
+  const GetRoutingIntentArgs({
     required this.resourceGroupName,
     required this.routingIntentName,
     required this.virtualHubName,

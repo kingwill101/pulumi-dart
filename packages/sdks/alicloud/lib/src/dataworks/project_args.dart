@@ -36,7 +36,7 @@ class ProjectArgs {
   /// [resourceGroupId] Aliyun Resource Group Id
   /// [status] Workspace Status
   /// [tags] Aliyun Resource Tag
-  ProjectArgs({
+  const ProjectArgs({
     this.description,
     this.devEnvironmentEnabled,
     this.devRoleDisabled,

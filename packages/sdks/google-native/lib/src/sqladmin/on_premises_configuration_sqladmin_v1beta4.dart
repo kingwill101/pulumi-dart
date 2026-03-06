@@ -34,7 +34,7 @@ class OnPremisesConfigurationSqladminV1beta4 {
   /// [password] The password for connecting to on-premises instance.
   /// [sourceInstance] The reference to Cloud SQL instance if the source is Cloud SQL.
   /// [username] The username for connecting to on-premises instance.
-  OnPremisesConfigurationSqladminV1beta4({
+  const OnPremisesConfigurationSqladminV1beta4({
     this.caCertificate,
     this.clientCertificate,
     this.clientKey,

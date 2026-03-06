@@ -9,7 +9,7 @@ class AppProfileDataBoostIsolationReadOnly {
 
   /// Creates a new [AppProfileDataBoostIsolationReadOnly].
   /// [computeBillingOwner] The Compute Billing Owner for this Data Boost App Profile.
-  AppProfileDataBoostIsolationReadOnly({
+  const AppProfileDataBoostIsolationReadOnly({
     required this.computeBillingOwner,
   });
 

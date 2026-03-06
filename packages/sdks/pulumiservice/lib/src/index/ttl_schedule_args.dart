@@ -24,7 +24,7 @@ class TtlScheduleArgs {
   /// [project] Project name.
   /// [stack] Stack name.
   /// [timestamp] The time at which the schedule should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z.
-  TtlScheduleArgs({
+  const TtlScheduleArgs({
     this.deleteAfterDestroy,
     required this.organization,
     required this.project,

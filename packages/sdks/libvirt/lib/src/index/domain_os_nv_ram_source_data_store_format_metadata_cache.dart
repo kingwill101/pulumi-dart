@@ -9,7 +9,7 @@ class DomainOsNvRamSourceDataStoreFormatMetadataCache {
 
   /// Creates a new [DomainOsNvRamSourceDataStoreFormatMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.
-  DomainOsNvRamSourceDataStoreFormatMetadataCache({
+  const DomainOsNvRamSourceDataStoreFormatMetadataCache({
     this.maxSize,
   });
 

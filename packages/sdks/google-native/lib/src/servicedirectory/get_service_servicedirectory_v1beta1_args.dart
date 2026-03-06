@@ -17,7 +17,7 @@ class GetServiceServicedirectoryV1beta1Args {
   /// [namespaceId] Required.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetServiceServicedirectoryV1beta1Args({
+  const GetServiceServicedirectoryV1beta1Args({
     required this.location,
     required this.namespaceId,
     this.project,

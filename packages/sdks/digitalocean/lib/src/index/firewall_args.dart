@@ -30,7 +30,7 @@ class FirewallArgs {
   /// [name] The Firewall name
   /// [outboundRules] The outbound access rule block for the Firewall.
   /// [tags] The names of the Tags assigned to the Firewall (max. 5).
-  FirewallArgs({
+  const FirewallArgs({
     this.dropletIds,
     this.inboundRules,
     this.name,

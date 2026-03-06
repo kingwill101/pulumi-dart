@@ -9,7 +9,7 @@ class GoogleCloudApigeeV1SecurityActionDenyResponse {
 
   /// Creates a new [GoogleCloudApigeeV1SecurityActionDenyResponse].
   /// [responseCode] Optional. The HTTP response code if the Action = DENY.
-  GoogleCloudApigeeV1SecurityActionDenyResponse({
+  const GoogleCloudApigeeV1SecurityActionDenyResponse({
     required this.responseCode,
   });
 

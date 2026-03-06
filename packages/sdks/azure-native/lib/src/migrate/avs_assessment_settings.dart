@@ -67,7 +67,7 @@ class AvsAssessmentSettings {
   /// [scalingFactor] Percentage of buffer that user wants on performance metrics when recommending
   /// [sizingCriterion] Assessment sizing criterion.
   /// [vcpuOversubscription] VCPU over subscription.
-  AvsAssessmentSettings({
+  const AvsAssessmentSettings({
     this.avsAssessmentScenario,
     this.azureLocation,
     this.billingSettings,

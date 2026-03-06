@@ -29,7 +29,7 @@ class GetMedtechServiceResult {
   /// [identities] The `identity` block as defined below.
   /// [name] Required.
   /// [workspaceId] Required.
-  GetMedtechServiceResult({
+  const GetMedtechServiceResult({
     required this.deviceMappingJson,
     required this.eventhubConsumerGroupName,
     required this.eventhubName,

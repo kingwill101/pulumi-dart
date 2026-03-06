@@ -36,7 +36,7 @@ class GetDotNetComponentResult {
   /// [serviceBinds] List of .NET Components that are bound to the .NET component
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDotNetComponentResult({
+  const GetDotNetComponentResult({
     required this.azureApiVersion,
     this.componentType,
     this.configurations,

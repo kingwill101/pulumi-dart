@@ -20,7 +20,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition {
   /// [expression] Textual representation of an expression in Common Expression Language syntax.
   /// [location] String indicating the location of the expression for error reporting,
   /// [title] Title for the expression, i.e. a short string describing its purpose.
-  AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition({
+  const AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition({
     this.description,
     required this.expression,
     this.location,

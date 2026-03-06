@@ -114,7 +114,7 @@ class GetSnapshotResult {
   /// [timeCreated] The time when the snapshot was created.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueId] Unique Guid identifying the resource.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.azureApiVersion,
     this.completionPercent,
     this.copyCompletionError,

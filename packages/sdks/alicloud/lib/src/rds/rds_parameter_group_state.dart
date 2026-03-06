@@ -22,7 +22,7 @@ class RdsParameterGroupState {
   /// [paramDetails] Parameter list. See `param_detail` below.
   /// [parameterGroupDesc] The description of the parameter template.
   /// [parameterGroupName] The name of the parameter template.
-  RdsParameterGroupState({
+  const RdsParameterGroupState({
     this.engine,
     this.engineVersion,
     this.paramDetails,

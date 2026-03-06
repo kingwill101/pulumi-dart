@@ -24,7 +24,7 @@ class GetPrivateEndpointConnectionResult {
   /// [name] Name of the private endpoint endpoint connection.
   /// [properties] Properties of the private endpoint endpoint connection.
   /// [type] Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
-  GetPrivateEndpointConnectionResult({
+  const GetPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

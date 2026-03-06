@@ -66,7 +66,7 @@ class BranchArgs {
   /// [stage] Describes the current stage for the branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [ttl] Content Time To Live (TTL) for the website in seconds.
-  BranchArgs({
+  const BranchArgs({
     required this.appId,
     this.backendEnvironmentArn,
     this.basicAuthCredentials,

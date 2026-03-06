@@ -12,7 +12,7 @@ class CidrBlock {
   /// Creates a new [CidrBlock].
   /// [cidrBlock] cidr_block must be specified in CIDR notation.
   /// [displayName] display_name is an optional field for users to identify CIDR blocks.
-  CidrBlock({
+  const CidrBlock({
     this.cidrBlock,
     this.displayName,
   });

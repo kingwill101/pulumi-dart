@@ -12,7 +12,7 @@ class EnvironmentVariableResponse {
   /// Creates a new [EnvironmentVariableResponse].
   /// [type] Type of the Environment Variable. Possible values are: local - For local variable
   /// [value] Value of the Environment variable
-  EnvironmentVariableResponse({
+  const EnvironmentVariableResponse({
     this.type,
     this.value,
   });

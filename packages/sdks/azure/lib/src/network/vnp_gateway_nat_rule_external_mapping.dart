@@ -11,7 +11,7 @@ class VnpGatewayNatRuleExternalMapping {
   /// Creates a new [VnpGatewayNatRuleExternalMapping].
   /// [addressSpace] The string CIDR representing the address space for the VPN Gateway Nat Rule external mapping.
   /// [portRange] The single port range for the VPN Gateway Nat Rule external mapping.
-  VnpGatewayNatRuleExternalMapping({
+  const VnpGatewayNatRuleExternalMapping({
     required this.addressSpace,
     this.portRange,
   });

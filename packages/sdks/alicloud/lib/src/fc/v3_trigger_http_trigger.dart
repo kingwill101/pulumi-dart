@@ -11,7 +11,7 @@ class V3TriggerHttpTrigger {
   /// Creates a new [V3TriggerHttpTrigger].
   /// [urlInternet] The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
   /// [urlIntranet] The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
-  V3TriggerHttpTrigger({
+  const V3TriggerHttpTrigger({
     this.urlInternet,
     this.urlIntranet,
   });

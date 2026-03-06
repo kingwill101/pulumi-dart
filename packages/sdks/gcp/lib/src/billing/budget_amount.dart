@@ -18,7 +18,7 @@ class BudgetAmount {
   /// Creates a new [BudgetAmount].
   /// [lastPeriodAmount] Configures a budget amount that is automatically set to 100% of
   /// [specifiedAmount] A specified amount to use as the budget. currencyCode is
-  BudgetAmount({
+  const BudgetAmount({
     this.lastPeriodAmount,
     this.specifiedAmount,
   });

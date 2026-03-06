@@ -17,7 +17,7 @@ class ClusterV2Addon {
   /// [resourcesSpec] Customize the resource configuration of the service component.
   /// [servicesSpec] Customize the service configuration of the service component.
   /// [version] Customize the service component version.
-  ClusterV2Addon({
+  const ClusterV2Addon({
     required this.name,
     this.resourcesSpec,
     this.servicesSpec,

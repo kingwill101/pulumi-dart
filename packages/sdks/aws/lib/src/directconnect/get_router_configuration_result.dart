@@ -25,7 +25,7 @@ class GetRouterConfigurationResult {
   /// [routers] Block of the router type details
   /// [virtualInterfaceId] Required.
   /// [virtualInterfaceName] Required.
-  GetRouterConfigurationResult({
+  const GetRouterConfigurationResult({
     required this.customerRouterConfig,
     required this.id,
     required this.region,

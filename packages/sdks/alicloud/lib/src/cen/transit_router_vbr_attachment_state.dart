@@ -50,7 +50,7 @@ class TransitRouterVbrAttachmentState {
   /// [transitRouterId] The ID of the transit router.
   /// [vbrId] The ID of the VBR.
   /// [vbrOwnerId] The owner id of the vbr.
-  TransitRouterVbrAttachmentState({
+  const TransitRouterVbrAttachmentState({
     this.autoPublishRouteEnabled,
     this.cenId,
     this.dryRun,

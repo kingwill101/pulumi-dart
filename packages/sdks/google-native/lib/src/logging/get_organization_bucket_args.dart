@@ -15,7 +15,7 @@ class GetOrganizationBucketArgs {
   /// [bucketId] Required.
   /// [location] Required.
   /// [organizationId] Required.
-  GetOrganizationBucketArgs({
+  const GetOrganizationBucketArgs({
     required this.bucketId,
     required this.location,
     required this.organizationId,

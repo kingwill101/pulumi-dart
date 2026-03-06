@@ -7,7 +7,7 @@ class GetDataSetLogicalTableMapDataTransformFilterOperation {
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformFilterOperation].
   /// [conditionExpression] Required.
-  GetDataSetLogicalTableMapDataTransformFilterOperation({
+  const GetDataSetLogicalTableMapDataTransformFilterOperation({
     required this.conditionExpression,
   });
 

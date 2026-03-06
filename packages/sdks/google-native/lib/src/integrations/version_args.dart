@@ -88,7 +88,7 @@ class VersionArgs {
   /// [triggerConfigs] Optional. Trigger configurations.
   /// [triggerConfigsInternal] Optional. Trigger configurations.
   /// [userLabel] Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
-  VersionArgs({
+  const VersionArgs({
     this.cloudLoggingDetails,
     this.createSampleIntegrations,
     this.databasePersistencePolicy,

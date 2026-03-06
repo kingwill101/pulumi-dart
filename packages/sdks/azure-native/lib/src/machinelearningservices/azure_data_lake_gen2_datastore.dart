@@ -44,7 +44,7 @@ class AzureDataLakeGen2Datastore {
   /// [serviceDataAccessAuthIdentity] Indicates which identity to use to authenticate service data access to customer's storage.
   /// [subscriptionId] Azure Subscription Id
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  AzureDataLakeGen2Datastore({
+  const AzureDataLakeGen2Datastore({
     required this.accountName,
     required this.credentials,
     required this.datastoreType,

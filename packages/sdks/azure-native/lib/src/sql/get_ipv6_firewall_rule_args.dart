@@ -18,7 +18,7 @@ class GetIPv6FirewallRuleArgs {
   /// [firewallRuleName] The name of the firewall rule.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetIPv6FirewallRuleArgs({
+  const GetIPv6FirewallRuleArgs({
     required this.firewallRuleName,
     required this.resourceGroupName,
     required this.serverName,

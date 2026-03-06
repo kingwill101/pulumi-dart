@@ -37,7 +37,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInput {
   /// [kinesisFirehoseInput] If the streaming source is a Kinesis Data Firehose delivery stream, identifies the delivery stream's ARN.
   /// [kinesisStreamsInput] If the streaming source is a Kinesis data stream, identifies the stream's Amazon Resource Name (ARN).
   /// [namePrefix] The name prefix to use when creating an in-application stream.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInput({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInput({
     this.inAppStreamNames,
     this.inputId,
     this.inputParallelism,

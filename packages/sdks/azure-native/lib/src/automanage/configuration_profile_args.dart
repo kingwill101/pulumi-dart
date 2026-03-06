@@ -25,7 +25,7 @@ class ConfigurationProfileArgs {
   /// [properties] Properties of the configuration profile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ConfigurationProfileArgs({
+  const ConfigurationProfileArgs({
     this.configurationProfileName,
     this.location,
     this.properties,

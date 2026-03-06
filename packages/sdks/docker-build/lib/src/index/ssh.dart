@@ -21,7 +21,7 @@ class SSH {
   /// Creates a new [SSH].
   /// [id] Useful for distinguishing different servers that are part of the same
   /// [paths] SSH agent socket or private keys to expose to the build under the given
-  SSH({
+  const SSH({
     required this.id,
     this.paths,
   });

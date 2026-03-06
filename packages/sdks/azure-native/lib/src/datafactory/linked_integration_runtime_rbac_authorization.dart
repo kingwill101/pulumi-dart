@@ -17,7 +17,7 @@ class LinkedIntegrationRuntimeRbacAuthorization {
   /// [authorizationType] The authorization type for integration runtime sharing.
   /// [credential] The credential reference containing authentication information.
   /// [resourceId] The resource identifier of the integration runtime to be shared.
-  LinkedIntegrationRuntimeRbacAuthorization({
+  const LinkedIntegrationRuntimeRbacAuthorization({
     required this.authorizationType,
     this.credential,
     required this.resourceId,

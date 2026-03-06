@@ -17,7 +17,7 @@ class OptInResourceDataDataCellsFilter {
   /// [name] Name of the table.
   /// [tableCatalogId] ID of the catalog to which the table belongs.
   /// [tableName] Name of the table.
-  OptInResourceDataDataCellsFilter({
+  const OptInResourceDataDataCellsFilter({
     this.databaseName,
     this.name,
     this.tableCatalogId,

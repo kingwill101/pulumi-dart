@@ -24,7 +24,7 @@ class AppSpecFunctionLogDestination {
   /// [name] Name of the log destination. Minimum length: 2. Maximum length: 42.
   /// [openSearch] OpenSearch configuration.
   /// [papertrail] Papertrail configuration.
-  AppSpecFunctionLogDestination({
+  const AppSpecFunctionLogDestination({
     this.datadog,
     this.logtail,
     required this.name,

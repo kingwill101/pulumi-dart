@@ -14,7 +14,7 @@ class FrontdoorRuleConditionsIsDeviceCondition {
   /// [matchValues] Which device should this rule match on? Possible values `Mobile` or `Desktop`.
   /// [negateCondition] If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
   /// [operator] Possible value `Equal`. Defaults to `Equal`.
-  FrontdoorRuleConditionsIsDeviceCondition({
+  const FrontdoorRuleConditionsIsDeviceCondition({
     this.matchValues,
     this.negateCondition,
     this.operator,

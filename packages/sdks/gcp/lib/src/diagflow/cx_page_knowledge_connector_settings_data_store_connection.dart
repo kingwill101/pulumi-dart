@@ -21,7 +21,7 @@ class CxPageKnowledgeConnectorSettingsDataStoreConnection {
   /// [dataStore] The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
   /// [dataStoreType] The type of the connected data store.
   /// [documentProcessingMode] The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
-  CxPageKnowledgeConnectorSettingsDataStoreConnection({
+  const CxPageKnowledgeConnectorSettingsDataStoreConnection({
     this.dataStore,
     this.dataStoreType,
     this.documentProcessingMode,

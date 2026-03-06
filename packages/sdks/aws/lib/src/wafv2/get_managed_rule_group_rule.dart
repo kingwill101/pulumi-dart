@@ -12,7 +12,7 @@ class GetManagedRuleGroupRule {
   /// Creates a new [GetManagedRuleGroupRule].
   /// [actions] Action taken on a web request when it matches a rule's statement. See `action_to_use` for details.
   /// [name] Managed rule group name.
-  GetManagedRuleGroupRule({
+  const GetManagedRuleGroupRule({
     required this.actions,
     required this.name,
   });

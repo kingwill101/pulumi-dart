@@ -24,7 +24,7 @@ class ApiProductGraphqlOperationGroupOperationConfig {
   /// [attributes] Custom attributes associated with the operation.
   /// [operations] Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
   /// [quota] Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
-  ApiProductGraphqlOperationGroupOperationConfig({
+  const ApiProductGraphqlOperationGroupOperationConfig({
     this.apiSource,
     this.attributes,
     this.operations,

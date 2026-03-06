@@ -45,7 +45,7 @@ class GetServerlessInstancesArgs {
   /// [vpcId] The ID of the VPC network.
   /// [vswitchId] The id of the vswitch.
   /// [zoneId] The ID of the zone.
-  GetServerlessInstancesArgs({
+  const GetServerlessInstancesArgs({
     this.dbInstanceClass,
     this.dbInstanceDescription,
     this.enableDetails,

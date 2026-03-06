@@ -15,7 +15,7 @@ class GetResolverInboundEndpointArgs {
   /// Creates a new [GetResolverInboundEndpointArgs].
   /// [name] Name of the Private DNS Resolver Inbound Endpoint.
   /// [privateDnsResolverId] ID of the Private DNS Resolver.
-  GetResolverInboundEndpointArgs({
+  const GetResolverInboundEndpointArgs({
     required this.name,
     required this.privateDnsResolverId,
   });

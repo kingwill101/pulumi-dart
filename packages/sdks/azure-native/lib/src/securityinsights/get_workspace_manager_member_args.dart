@@ -18,7 +18,7 @@ class GetWorkspaceManagerMemberArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceManagerMemberName] The name of the workspace manager member
   /// [workspaceName] The name of the workspace.
-  GetWorkspaceManagerMemberArgs({
+  const GetWorkspaceManagerMemberArgs({
     required this.resourceGroupName,
     required this.workspaceManagerMemberName,
     required this.workspaceName,

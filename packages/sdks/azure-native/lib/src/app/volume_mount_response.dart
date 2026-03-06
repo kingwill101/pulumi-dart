@@ -15,7 +15,7 @@ class VolumeMountResponse {
   /// [mountPath] Path within the container at which the volume should be mounted.Must not contain ':'.
   /// [subPath] Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
   /// [volumeName] This must match the Name of a Volume.
-  VolumeMountResponse({
+  const VolumeMountResponse({
     this.mountPath,
     this.subPath,
     this.volumeName,

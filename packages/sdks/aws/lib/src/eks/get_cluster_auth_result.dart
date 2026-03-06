@@ -15,7 +15,7 @@ class GetClusterAuthResult {
   /// [name] Required.
   /// [region] Required.
   /// [token] Token to use to authenticate with the cluster.
-  GetClusterAuthResult({
+  const GetClusterAuthResult({
     required this.id,
     required this.name,
     required this.region,

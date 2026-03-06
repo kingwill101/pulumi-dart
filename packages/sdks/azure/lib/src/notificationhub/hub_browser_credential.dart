@@ -14,7 +14,7 @@ class HubBrowserCredential {
   /// [subject] The subject name of web push.
   /// [vapidPrivateKey] The Voluntary Application Server Identification (VAPID) private key.
   /// [vapidPublicKey] The Voluntary Application Server Identification (VAPID) public key.
-  HubBrowserCredential({
+  const HubBrowserCredential({
     required this.subject,
     required this.vapidPrivateKey,
     required this.vapidPublicKey,

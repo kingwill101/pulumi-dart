@@ -35,7 +35,7 @@ class GetListenerRuleResult {
   /// [region] Required.
   /// [tags] Tags assigned to the Listener Rule.
   /// [transforms] Block for transform to apply to requests that match this rule. Detailed below.
-  GetListenerRuleResult({
+  const GetListenerRuleResult({
     this.actions,
     required this.arn,
     this.conditions,

@@ -31,7 +31,7 @@ class GetVaultResult {
   /// [systemData] System metadata for the key vault.
   /// [tags] Tags assigned to the key vault resource.
   /// [type] Resource type of the key vault resource.
-  GetVaultResult({
+  const GetVaultResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

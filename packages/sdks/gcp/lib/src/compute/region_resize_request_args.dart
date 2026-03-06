@@ -33,7 +33,7 @@ class RegionResizeRequestArgs {
   /// [region] The reference of the compute region scoping this request. If it is not provided, the provider region is used.
   /// [requestedRunDuration] Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
   /// [resizeBy] The number of instances to be created by this resize request. The group's target size will be increased by this number.
-  RegionResizeRequestArgs({
+  const RegionResizeRequestArgs({
     this.description,
     required this.instanceGroupManager,
     this.name,

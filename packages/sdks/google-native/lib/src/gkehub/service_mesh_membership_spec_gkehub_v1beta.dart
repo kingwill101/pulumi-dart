@@ -14,7 +14,7 @@ class ServiceMeshMembershipSpecGkehubV1beta {
   /// Creates a new [ServiceMeshMembershipSpecGkehubV1beta].
   /// [controlPlane] Deprecated: use `management` instead Enables automatic control plane management.
   /// [management] Enables automatic Service Mesh management.
-  ServiceMeshMembershipSpecGkehubV1beta({
+  const ServiceMeshMembershipSpecGkehubV1beta({
     this.controlPlane,
     this.management,
   });

@@ -28,7 +28,7 @@ class ProvisioningRequest {
   /// [osProfile] Operating system profile.
   /// [target] Target operating system to support polymorphic resource.
   /// [userDetails] User configuration.
-  ProvisioningRequest({
+  const ProvisioningRequest({
     this.customConfiguration,
     this.deviceConfiguration,
     this.onboardingConfiguration,

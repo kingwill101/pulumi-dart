@@ -18,7 +18,7 @@ class AuthorizedCertificateAppengineV1betaArgs {
   /// [appId] Required.
   /// [certificateRawData] The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
   /// [displayName] The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
-  AuthorizedCertificateAppengineV1betaArgs({
+  const AuthorizedCertificateAppengineV1betaArgs({
     required this.appId,
     this.certificateRawData,
     this.displayName,

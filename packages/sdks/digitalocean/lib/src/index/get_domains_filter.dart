@@ -22,7 +22,7 @@ class GetDomainsFilter {
   /// [key] Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] A list of values to match against the `key` field. Only retrieves domains
-  GetDomainsFilter({
+  const GetDomainsFilter({
     this.all,
     required this.key,
     this.matchBy,

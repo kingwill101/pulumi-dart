@@ -24,7 +24,7 @@ class VpcAttachmentAccepterArgs {
   /// [transitGatewayAttachmentId] The ID of the EC2 Transit Gateway Attachment to manage.
   /// [transitGatewayDefaultRouteTableAssociation] Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. Default value: `true`.
   /// [transitGatewayDefaultRouteTablePropagation] Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. Default value: `true`.
-  VpcAttachmentAccepterArgs({
+  const VpcAttachmentAccepterArgs({
     this.region,
     this.tags,
     required this.transitGatewayAttachmentId,

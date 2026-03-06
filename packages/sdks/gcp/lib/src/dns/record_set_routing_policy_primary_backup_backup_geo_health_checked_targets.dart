@@ -13,7 +13,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
   /// Creates a new [RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets].
   /// [externalEndpoints] The list of external endpoint addresses to health check.
   /// [internalLoadBalancers] The list of internal load balancers to health check.
-  RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets({
+  const RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets({
     this.externalEndpoints,
     this.internalLoadBalancers,
   });

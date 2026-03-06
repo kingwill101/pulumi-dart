@@ -17,7 +17,7 @@ class FlexibleServerHighAvailability {
   /// Creates a new [FlexibleServerHighAvailability].
   /// [mode] The high availability mode for the MySQL Flexible Server. Possibles values are `SameZone` and `ZoneRedundant`.
   /// [standbyAvailabilityZone] Specifies the Availability Zone in which the standby Flexible Server should be located. Possible values are `1`, `2` and `3`.
-  FlexibleServerHighAvailability({
+  const FlexibleServerHighAvailability({
     required this.mode,
     this.standbyAvailabilityZone,
   });

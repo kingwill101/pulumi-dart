@@ -9,7 +9,7 @@ class SpotFleetRequestLaunchSpecificationEphemeralBlockDevice {
   /// Creates a new [SpotFleetRequestLaunchSpecificationEphemeralBlockDevice].
   /// [deviceName] Required.
   /// [virtualName] Required.
-  SpotFleetRequestLaunchSpecificationEphemeralBlockDevice({
+  const SpotFleetRequestLaunchSpecificationEphemeralBlockDevice({
     required this.deviceName,
     required this.virtualName,
   });

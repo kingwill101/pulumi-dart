@@ -23,7 +23,7 @@ class GetTopicSubscriptionsResult {
   /// [outputFile] Optional.
   /// [subscriptions] A list of subscriptions. Each element contains the following attributes:
   /// [topicName] The topic which The subscription belongs to was named with the name.
-  GetTopicSubscriptionsResult({
+  const GetTopicSubscriptionsResult({
     required this.id,
     this.namePrefix,
     required this.names,

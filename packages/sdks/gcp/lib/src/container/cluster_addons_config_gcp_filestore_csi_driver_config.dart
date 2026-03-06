@@ -7,7 +7,7 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
 
   /// Creates a new [ClusterAddonsConfigGcpFilestoreCsiDriverConfig].
   /// [enabled] Required.
-  ClusterAddonsConfigGcpFilestoreCsiDriverConfig({
+  const ClusterAddonsConfigGcpFilestoreCsiDriverConfig({
     required this.enabled,
   });
 

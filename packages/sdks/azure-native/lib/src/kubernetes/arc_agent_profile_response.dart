@@ -20,7 +20,7 @@ class ArcAgentProfileResponse {
   /// [agentErrors] List of system extensions can be installed on the cluster resource.
   /// [desiredAgentVersion] Version of the Arc agents to be installed on the cluster resource
   /// [systemComponents] List of system extensions can be installed on the cluster resource.
-  ArcAgentProfileResponse({
+  const ArcAgentProfileResponse({
     this.agentAutoUpgrade,
     this.agentErrors,
     this.desiredAgentVersion,

@@ -11,7 +11,7 @@ class ContainerGroupContainerVolumeMount {
   /// [mountPath] Optional.
   /// [name] Optional.
   /// [readOnly] Optional.
-  ContainerGroupContainerVolumeMount({
+  const ContainerGroupContainerVolumeMount({
     this.mountPath,
     this.name,
     this.readOnly,

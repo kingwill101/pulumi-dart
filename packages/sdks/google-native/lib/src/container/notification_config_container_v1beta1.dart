@@ -10,7 +10,7 @@ class NotificationConfigContainerV1beta1 {
 
   /// Creates a new [NotificationConfigContainerV1beta1].
   /// [pubsub] Notification config for Pub/Sub.
-  NotificationConfigContainerV1beta1({
+  const NotificationConfigContainerV1beta1({
     this.pubsub,
   });
 

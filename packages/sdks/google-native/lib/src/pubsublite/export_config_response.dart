@@ -19,7 +19,7 @@ class ExportConfigResponse {
   /// [deadLetterTopic] Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
   /// [desiredState] The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
   /// [pubsubConfig] Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
-  ExportConfigResponse({
+  const ExportConfigResponse({
     required this.currentState,
     required this.deadLetterTopic,
     required this.desiredState,

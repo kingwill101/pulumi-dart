@@ -8,7 +8,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsD
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination].
   /// [destinationRefId] Reference ID for the destination.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination({
     required this.destinationRefId,
   });
 

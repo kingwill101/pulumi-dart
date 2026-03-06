@@ -49,7 +49,7 @@ class ExternalNetworkArgs {
   /// [optionBProperties] option B properties object
   /// [peeringOption] Peering option list.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ExternalNetworkArgs({
+  const ExternalNetworkArgs({
     this.annotation,
     this.exportRoutePolicy,
     this.exportRoutePolicyId,

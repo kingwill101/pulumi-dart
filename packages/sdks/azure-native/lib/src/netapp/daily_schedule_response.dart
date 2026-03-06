@@ -18,7 +18,7 @@ class DailyScheduleResponse {
   /// [minute] Indicates which minute snapshot should be taken
   /// [snapshotsToKeep] Daily snapshot count to keep
   /// [usedBytes] Resource size in bytes, current storage usage for the volume in bytes
-  DailyScheduleResponse({
+  const DailyScheduleResponse({
     this.hour,
     this.minute,
     this.snapshotsToKeep,

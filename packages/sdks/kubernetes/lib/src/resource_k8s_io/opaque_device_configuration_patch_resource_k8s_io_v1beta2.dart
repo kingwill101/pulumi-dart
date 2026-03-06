@@ -18,7 +18,7 @@ class OpaqueDeviceConfigurationPatchResourceK8sIoV1beta2 {
   /// Creates a new [OpaqueDeviceConfigurationPatchResourceK8sIoV1beta2].
   /// [driver] Driver is used to determine which kubelet plugin needs to be passed these configuration parameters.
   /// [parameters] Parameters can contain arbitrary data. It is the responsibility of the driver developer to handle validation and versioning. Typically this includes self-identification and a version ("kind" + "apiVersion" for Kubernetes types), with conversion between different versions.
-  OpaqueDeviceConfigurationPatchResourceK8sIoV1beta2({
+  const OpaqueDeviceConfigurationPatchResourceK8sIoV1beta2({
     this.driver,
     this.parameters,
   });

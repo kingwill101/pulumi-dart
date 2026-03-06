@@ -21,7 +21,7 @@ class GetKeyHandlesResult {
   /// [location] The location of the KMS Key and KeyHandle.
   /// [project] The identifier of the project where KMS KeyHandle is created.
   /// [resourceTypeSelector] Indicates the resource type that the resulting CryptoKey is meant to protect, e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
-  GetKeyHandlesResult({
+  const GetKeyHandlesResult({
     required this.id,
     required this.keyHandles,
     required this.location,

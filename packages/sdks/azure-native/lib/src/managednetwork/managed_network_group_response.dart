@@ -40,7 +40,7 @@ class ManagedNetworkGroupResponse {
   /// [subscriptions] The collection of subscriptions covered by the Managed Network
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   /// [virtualNetworks] The collection of virtual nets covered by the Managed Network
-  ManagedNetworkGroupResponse({
+  const ManagedNetworkGroupResponse({
     required this.etag,
     required this.id,
     this.kind,

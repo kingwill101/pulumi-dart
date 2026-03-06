@@ -31,7 +31,7 @@ class BastionHostIPConfigurationResponse {
   /// [publicIPAddress] Reference of the PublicIP resource. Null for private only bastion
   /// [subnet] Reference of the subnet resource.
   /// [type] Ip configuration type.
-  BastionHostIPConfigurationResponse({
+  const BastionHostIPConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

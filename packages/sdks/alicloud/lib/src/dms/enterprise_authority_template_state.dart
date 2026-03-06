@@ -21,7 +21,7 @@ class EnterpriseAuthorityTemplateState {
   /// [createTime] The creation time of the resource.
   /// [description] Permission template description information.
   /// [tid] Tenant ID.
-  EnterpriseAuthorityTemplateState({
+  const EnterpriseAuthorityTemplateState({
     this.authorityTemplateId,
     this.authorityTemplateName,
     this.createTime,

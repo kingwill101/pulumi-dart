@@ -35,7 +35,7 @@ class MonitorConfig {
   /// [protocol] The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
   /// [timeoutInSeconds] The monitor timeout for endpoints in this profile. This is the time that Traffic Manager allows endpoints in this profile to response to the health check.
   /// [toleratedNumberOfFailures] The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.
-  MonitorConfig({
+  const MonitorConfig({
     this.customHeaders,
     this.expectedStatusCodeRanges,
     this.intervalInSeconds,

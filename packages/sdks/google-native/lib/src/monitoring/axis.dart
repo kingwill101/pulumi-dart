@@ -13,7 +13,7 @@ class Axis {
   /// Creates a new [Axis].
   /// [label] The label of the axis.
   /// [scale] The axis scale. By default, a linear scale is used.
-  Axis({
+  const Axis({
     this.label,
     this.scale,
   });

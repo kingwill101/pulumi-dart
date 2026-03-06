@@ -15,7 +15,7 @@ class GetTargetArgs {
   /// Creates a new [GetTargetArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [targetName] Name of the target
-  GetTargetArgs({
+  const GetTargetArgs({
     required this.resourceGroupName,
     required this.targetName,
   });

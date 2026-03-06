@@ -15,7 +15,7 @@ class UsersOrServicePrincipalSet {
   /// [displayName] The display Name of the entity.
   /// [id] The object id of the entity.
   /// [type] The type of user.
-  UsersOrServicePrincipalSet({
+  const UsersOrServicePrincipalSet({
     this.displayName,
     this.id,
     this.type,

@@ -12,7 +12,7 @@ class LoadTestEncryption {
   /// Creates a new [LoadTestEncryption].
   /// [identity] An `identity` block as defined below. Changing this forces a new Load Test to be created.
   /// [keyUrl] The URI specifying the Key vault and key to be used to encrypt data in this resource. The URI should include the key version. Changing this forces a new Load Test to be created.
-  LoadTestEncryption({
+  const LoadTestEncryption({
     required this.identity,
     required this.keyUrl,
   });

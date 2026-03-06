@@ -12,7 +12,7 @@ class QuotaPlanQuotaSubQuotaInfoList {
   /// Creates a new [QuotaPlanQuotaSubQuotaInfoList].
   /// [nickName] The nickname of the level-2 quota.
   /// [parameter] The parameters of level-1 quota.
-  QuotaPlanQuotaSubQuotaInfoList({
+  const QuotaPlanQuotaSubQuotaInfoList({
     required this.nickName,
     this.parameter,
   });

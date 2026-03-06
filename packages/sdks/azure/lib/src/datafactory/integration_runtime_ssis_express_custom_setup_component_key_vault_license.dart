@@ -16,7 +16,7 @@ class IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense {
   /// [parameters] A map of parameters to associate with the Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the secret name in Azure Key Vault.
   /// [secretVersion] Specifies the secret version in Azure Key Vault.
-  IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense({
+  const IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense({
     required this.linkedServiceName,
     this.parameters,
     required this.secretName,

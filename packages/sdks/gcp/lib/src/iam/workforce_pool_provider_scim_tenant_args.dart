@@ -33,7 +33,7 @@ class WorkforcePoolProviderScimTenantArgs {
   /// [providerId] The ID of the provider.
   /// [scimTenantId] The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   /// [workforcePoolId] The ID of the workforce pool.
-  WorkforcePoolProviderScimTenantArgs({
+  const WorkforcePoolProviderScimTenantArgs({
     this.claimMapping,
     this.description,
     this.displayName,

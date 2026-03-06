@@ -35,7 +35,7 @@ class GetRegistryEnterpriseSyncRulesResult {
   /// [repoName] Name of Container Registry Enterprise Edition local repo.
   /// [rules] A list of matched Container Registry Enterprise Edition sync rules. Each element contains the following attributes:
   /// [targetInstanceId] ID of Container Registry Enterprise Edition target instance.
-  GetRegistryEnterpriseSyncRulesResult({
+  const GetRegistryEnterpriseSyncRulesResult({
     required this.id,
     required this.ids,
     required this.instanceId,

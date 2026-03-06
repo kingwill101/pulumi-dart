@@ -9,7 +9,7 @@ class AmdSevSnpSpecificationEnumValue {
 
   /// Creates a new [AmdSevSnpSpecificationEnumValue].
   /// [value] Property value
-  AmdSevSnpSpecificationEnumValue({
+  const AmdSevSnpSpecificationEnumValue({
     this.value,
   });
 

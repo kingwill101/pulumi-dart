@@ -25,7 +25,7 @@ class DomainConfigState {
   /// [functionName] The name of the domain config.
   /// [parentId] By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
   /// [status] (Available since v1.132.0) The Status of the function.
-  DomainConfigState({
+  const DomainConfigState({
     this.configId,
     this.domainName,
     this.functionArgs,

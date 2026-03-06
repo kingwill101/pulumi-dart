@@ -51,7 +51,7 @@ class IntegrationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetArn] ARN of the Redshift data warehouse to use as the target for replication.
   /// [timeouts] Optional.
-  IntegrationState({
+  const IntegrationState({
     this.additionalEncryptionContext,
     this.arn,
     this.dataFilter,

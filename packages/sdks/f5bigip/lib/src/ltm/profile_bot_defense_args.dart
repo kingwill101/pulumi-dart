@@ -24,7 +24,7 @@ class ProfileBotDefenseArgs {
   /// [enforcementMode] Select the enforcement mode, possible values are `transparent` and `blocking`.
   /// [name] Name of the Bot Defense profile
   /// [template] Profile templates specify Mitigation and Verification Settings default values. possible ptions `balanced`,`relaxed` and `strict`
-  ProfileBotDefenseArgs({
+  const ProfileBotDefenseArgs({
     this.defaultsFrom,
     this.description,
     this.enforcementMode,

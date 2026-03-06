@@ -8,7 +8,7 @@ class OneDashboardPageWidgetStackedBarTooltip {
 
   /// Creates a new [OneDashboardPageWidgetStackedBarTooltip].
   /// [mode] (Required) The tooltip display mode. Valid values are:
-  OneDashboardPageWidgetStackedBarTooltip({
+  const OneDashboardPageWidgetStackedBarTooltip({
     required this.mode,
   });
 

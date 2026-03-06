@@ -27,7 +27,7 @@ class FirewallpolicyArgs {
   /// [name] Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
   /// [path] Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
   /// [project] Optional.
-  FirewallpolicyArgs({
+  const FirewallpolicyArgs({
     this.actions,
     this.condition,
     this.description,

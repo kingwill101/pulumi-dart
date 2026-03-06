@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1TraceSamplingConfigResponse {
   /// Creates a new [GoogleCloudApigeeV1TraceSamplingConfigResponse].
   /// [sampler] Sampler of distributed tracing. OFF is the default value.
   /// [samplingRate] Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are &gt; 0 and &lt;= 0.5.
-  GoogleCloudApigeeV1TraceSamplingConfigResponse({
+  const GoogleCloudApigeeV1TraceSamplingConfigResponse({
     required this.sampler,
     required this.samplingRate,
   });

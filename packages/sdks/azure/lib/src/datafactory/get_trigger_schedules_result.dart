@@ -13,7 +13,7 @@ class GetTriggerSchedulesResult {
   /// [dataFactoryId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [items] A list of trigger schedule names available in this Azure Data Factory.
-  GetTriggerSchedulesResult({
+  const GetTriggerSchedulesResult({
     required this.dataFactoryId,
     required this.id,
     required this.items,

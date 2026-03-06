@@ -20,7 +20,7 @@ class GoogleCloudAiplatformV1ExamplesResponse {
   /// [nearestNeighborSearchConfig] The full configuration for the generated index, the semantics are the same as metadata and should match [NearestNeighborSearchConfig](https://cloud.google.com/vertex-ai/docs/explainable-ai/configuring-explanations-example-based#nearest-neighbor-search-config).
   /// [neighborCount] The number of neighbors to return when querying for examples.
   /// [presets] Simplified preset configuration, which automatically sets configuration values based on the desired query speed-precision trade-off and modality.
-  GoogleCloudAiplatformV1ExamplesResponse({
+  const GoogleCloudAiplatformV1ExamplesResponse({
     required this.exampleGcsSource,
     required this.nearestNeighborSearchConfig,
     required this.neighborCount,

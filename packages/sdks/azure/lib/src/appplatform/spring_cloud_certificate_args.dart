@@ -27,7 +27,7 @@ class SpringCloudCertificateArgs {
   /// [name] Specifies the name of the Spring Cloud Certificate. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the name of the resource group in which to create the Spring Cloud Certificate. Changing this forces a new resource to be created.
   /// [serviceName] Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
-  SpringCloudCertificateArgs({
+  const SpringCloudCertificateArgs({
     this.certificateContent,
     this.excludePrivateKey,
     this.keyVaultCertificateId,

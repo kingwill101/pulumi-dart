@@ -10,7 +10,7 @@ class ImageFeatures {
 
   /// Creates a new [ImageFeatures].
   /// [nvmeSupport] Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
-  ImageFeatures({
+  const ImageFeatures({
     this.nvmeSupport,
   });
 

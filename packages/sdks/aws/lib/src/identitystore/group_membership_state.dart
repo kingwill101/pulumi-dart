@@ -21,7 +21,7 @@ class GroupMembershipState {
   /// [memberId] The identifier for a user in the Identity Store.
   /// [membershipId] The identifier of the newly created group membership in the Identity Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GroupMembershipState({
+  const GroupMembershipState({
     this.groupId,
     this.identityStoreId,
     this.memberId,

@@ -13,7 +13,7 @@ class NamedPartitionSchemeResponse {
   /// Creates a new [NamedPartitionSchemeResponse].
   /// [names] Array for the names of the partitions.
   /// [partitionScheme] Enumerates the ways that a service can be partitioned.
-  NamedPartitionSchemeResponse({
+  const NamedPartitionSchemeResponse({
     required this.names,
     required this.partitionScheme,
   });

@@ -11,7 +11,7 @@ class AgentcoreMemoryStrategyConfigurationConsolidation {
   /// Creates a new [AgentcoreMemoryStrategyConfigurationConsolidation].
   /// [appendToPrompt] Additional text to append to the model prompt for consolidation processing.
   /// [modelId] ID of the foundation model to use for consolidation processing.
-  AgentcoreMemoryStrategyConfigurationConsolidation({
+  const AgentcoreMemoryStrategyConfigurationConsolidation({
     required this.appendToPrompt,
     required this.modelId,
   });

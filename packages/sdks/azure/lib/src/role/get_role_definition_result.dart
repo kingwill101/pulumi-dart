@@ -28,7 +28,7 @@ class GetRoleDefinitionResult {
   /// [roleDefinitionId] Required.
   /// [scope] Optional.
   /// [type] The Type of the Role.
-  GetRoleDefinitionResult({
+  const GetRoleDefinitionResult({
     required this.assignableScopes,
     required this.description,
     required this.id,

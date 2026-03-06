@@ -19,7 +19,7 @@ class TableState {
   /// [name] The name of the storage table. Only Alphanumeric characters allowed, starting with a letter. Must be unique within the storage account the table is located. Changing this forces a new resource to be created.
   /// [resourceManagerId] The Resource Manager ID of this Storage Table.
   /// [storageAccountName] Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
-  TableState({
+  const TableState({
     this.acls,
     this.name,
     this.resourceManagerId,

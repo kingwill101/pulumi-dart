@@ -11,7 +11,7 @@ class GetWindowsWebAppLogHttpLogAzureBlobStorage {
   /// Creates a new [GetWindowsWebAppLogHttpLogAzureBlobStorage].
   /// [retentionInDays] The retention period in days.
   /// [sasUrl] The SAS url to the Azure Blob container.
-  GetWindowsWebAppLogHttpLogAzureBlobStorage({
+  const GetWindowsWebAppLogHttpLogAzureBlobStorage({
     required this.retentionInDays,
     required this.sasUrl,
   });

@@ -14,7 +14,7 @@ class ExecutionTrigger {
   /// Creates a new [ExecutionTrigger].
   /// [parameters] The trigger parameters of the storage task assignment execution
   /// [type] The trigger type of the storage task assignment execution
-  ExecutionTrigger({
+  const ExecutionTrigger({
     required this.parameters,
     required this.type,
   });

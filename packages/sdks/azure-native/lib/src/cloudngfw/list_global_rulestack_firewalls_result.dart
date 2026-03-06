@@ -11,7 +11,7 @@ class ListGlobalRulestackFirewallsResult {
   /// Creates a new [ListGlobalRulestackFirewallsResult].
   /// [nextLink] next link
   /// [value] firewalls list
-  ListGlobalRulestackFirewallsResult({
+  const ListGlobalRulestackFirewallsResult({
     this.nextLink,
     required this.value,
   });

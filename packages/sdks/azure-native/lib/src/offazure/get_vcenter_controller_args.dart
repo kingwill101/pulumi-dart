@@ -18,7 +18,7 @@ class GetVcenterControllerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
   /// [vcenterName] VCenters name
-  GetVcenterControllerArgs({
+  const GetVcenterControllerArgs({
     required this.resourceGroupName,
     required this.siteName,
     required this.vcenterName,

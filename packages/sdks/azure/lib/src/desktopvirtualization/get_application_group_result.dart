@@ -33,7 +33,7 @@ class GetApplicationGroupResult {
   /// [tags] A mapping of tags assigned to the Application Group.
   /// [type] The type of Application Group (`RemoteApp` or `Desktop`).
   /// [workspaceId] The Virtual Desktop Workspace ID the Application Group is associated to.
-  GetApplicationGroupResult({
+  const GetApplicationGroupResult({
     required this.description,
     required this.friendlyName,
     required this.hostPoolId,

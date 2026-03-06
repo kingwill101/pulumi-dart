@@ -13,7 +13,7 @@ class V2FunctionInstanceLifecycleConfig {
   /// Creates a new [V2FunctionInstanceLifecycleConfig].
   /// [preFreeze] PreFreeze function configuration. See `pre_freeze` below.
   /// [preStop] PreStop function configuration. See `pre_stop` below.
-  V2FunctionInstanceLifecycleConfig({
+  const V2FunctionInstanceLifecycleConfig({
     this.preFreeze,
     this.preStop,
   });

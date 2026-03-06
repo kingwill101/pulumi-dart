@@ -45,7 +45,7 @@ class DataCollectionRuleDataSources {
   /// [syslogs] One or more `syslog` blocks as defined below.
   /// [windowsEventLogs] One or more `windows_event_log` blocks as defined below.
   /// [windowsFirewallLogs] One or more `windows_firewall_log` blocks as defined below.
-  DataCollectionRuleDataSources({
+  const DataCollectionRuleDataSources({
     this.dataImport,
     this.extensions,
     this.iisLogs,

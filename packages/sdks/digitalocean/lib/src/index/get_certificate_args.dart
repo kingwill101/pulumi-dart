@@ -12,7 +12,7 @@ class GetCertificateArgs {
 
   /// Creates a new [GetCertificateArgs].
   /// [name] The name of certificate.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.name,
   });
 

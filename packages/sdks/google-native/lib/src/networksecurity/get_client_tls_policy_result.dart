@@ -32,7 +32,7 @@ class GetClientTlsPolicyResult {
   /// [serverValidationCa] Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
   /// [sni] Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
   /// [updateTime] The timestamp when the resource was updated.
-  GetClientTlsPolicyResult({
+  const GetClientTlsPolicyResult({
     required this.clientCertificate,
     required this.createTime,
     required this.description,

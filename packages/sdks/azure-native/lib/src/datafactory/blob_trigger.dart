@@ -30,7 +30,7 @@ class BlobTrigger {
   /// [maxConcurrency] The max number of parallel files to handle when it is triggered.
   /// [pipelines] Pipelines that need to be started.
   /// [type] Trigger type.
-  BlobTrigger({
+  const BlobTrigger({
     this.annotations,
     this.description,
     required this.folderPath,

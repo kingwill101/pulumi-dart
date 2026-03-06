@@ -36,7 +36,7 @@ class GetDeploymentSafeguardResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [systemExcludedNamespaces] System defined list of namespaces excluded from Deployment Safeguards. These are determined by the underlying provider (such as AKS), and cannot be changed. Deployments in these namespaces will not be checked
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDeploymentSafeguardResult({
+  const GetDeploymentSafeguardResult({
     required this.azureApiVersion,
     required this.eTag,
     this.excludedNamespaces,

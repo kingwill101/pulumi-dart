@@ -16,7 +16,7 @@ class AppServiceLogsApplicationLogsAzureBlobStorage {
   /// [level] The level at which to log. Possible values include `Error`, `Warning`, `Information`, `Verbose` and `Off`. **NOTE:** this field is not available for `http_logs`
   /// [retentionInDays] The number of days to retain logs for.
   /// [sasUrl] The URL to the storage container with a shared access signature token appended.
-  AppServiceLogsApplicationLogsAzureBlobStorage({
+  const AppServiceLogsApplicationLogsAzureBlobStorage({
     required this.level,
     required this.retentionInDays,
     required this.sasUrl,

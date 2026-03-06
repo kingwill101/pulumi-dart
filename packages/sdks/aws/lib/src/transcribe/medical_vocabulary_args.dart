@@ -26,7 +26,7 @@ class MedicalVocabularyArgs {
   /// [tags] A map of tags to assign to the MedicalVocabulary. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vocabularyFileUri] The Amazon S3 location (URI) of the text file that contains your custom medical vocabulary.
   /// [vocabularyName] The name of the Medical Vocabulary.
-  MedicalVocabularyArgs({
+  const MedicalVocabularyArgs({
     required this.languageCode,
     this.region,
     this.tags,

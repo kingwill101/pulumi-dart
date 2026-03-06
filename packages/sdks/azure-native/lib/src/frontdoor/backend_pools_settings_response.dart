@@ -12,7 +12,7 @@ class BackendPoolsSettingsResponse {
   /// Creates a new [BackendPoolsSettingsResponse].
   /// [enforceCertificateNameCheck] Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
   /// [sendRecvTimeoutSeconds] Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
-  BackendPoolsSettingsResponse({
+  const BackendPoolsSettingsResponse({
     this.enforceCertificateNameCheck,
     this.sendRecvTimeoutSeconds,
   });

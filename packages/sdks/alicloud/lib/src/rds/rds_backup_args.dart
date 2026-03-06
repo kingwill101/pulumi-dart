@@ -31,7 +31,7 @@ class RdsBackupArgs {
   /// [dbInstanceId] The db instance id.
   /// [dbName] The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
   /// [removeFromState] Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
-  RdsBackupArgs({
+  const RdsBackupArgs({
     this.backupMethod,
     this.backupStrategy,
     this.backupType,

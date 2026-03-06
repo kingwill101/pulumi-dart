@@ -18,7 +18,7 @@ class TruncationSelectionPolicy {
   /// [evaluationInterval] Interval (number of runs) between policy evaluations.
   /// [policyType] Expected value is 'TruncationSelection'.
   /// [truncationPercentage] The percentage of runs to cancel at each evaluation interval.
-  TruncationSelectionPolicy({
+  const TruncationSelectionPolicy({
     this.delayEvaluation,
     this.evaluationInterval,
     required this.policyType,

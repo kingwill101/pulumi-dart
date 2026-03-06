@@ -11,7 +11,7 @@ class ServiceTaskSpecContainerSpecLabel {
   /// Creates a new [ServiceTaskSpecContainerSpecLabel].
   /// [label] Name of the label
   /// [value] Value of the label
-  ServiceTaskSpecContainerSpecLabel({
+  const ServiceTaskSpecContainerSpecLabel({
     required this.label,
     required this.value,
   });

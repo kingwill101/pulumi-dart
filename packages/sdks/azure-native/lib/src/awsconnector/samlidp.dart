@@ -12,7 +12,7 @@ class SAMLIdp {
   /// Creates a new [SAMLIdp].
   /// [entityId] &lt;p&gt;The unique entity ID of the application in the SAML identity provider.&lt;/p&gt;
   /// [metadataContent] &lt;p&gt;The metadata of the SAML application, in XML format.&lt;/p&gt;
-  SAMLIdp({
+  const SAMLIdp({
     this.entityId,
     this.metadataContent,
   });

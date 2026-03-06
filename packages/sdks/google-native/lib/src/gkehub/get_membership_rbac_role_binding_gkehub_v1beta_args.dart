@@ -17,7 +17,7 @@ class GetMembershipRbacRoleBindingGkehubV1betaArgs {
   /// [membershipId] Required.
   /// [project] Optional.
   /// [rbacrolebindingId] Required.
-  GetMembershipRbacRoleBindingGkehubV1betaArgs({
+  const GetMembershipRbacRoleBindingGkehubV1betaArgs({
     required this.location,
     required this.membershipId,
     this.project,

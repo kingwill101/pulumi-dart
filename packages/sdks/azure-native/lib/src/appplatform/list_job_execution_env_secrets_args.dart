@@ -21,7 +21,7 @@ class ListJobExecutionEnvSecretsArgs {
   /// [jobName] The name of the Job resource.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  ListJobExecutionEnvSecretsArgs({
+  const ListJobExecutionEnvSecretsArgs({
     required this.jobExecutionName,
     required this.jobName,
     required this.resourceGroupName,

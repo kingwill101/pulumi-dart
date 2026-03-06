@@ -10,7 +10,7 @@ class WorkspacePropertiesResponseEncryption {
 
   /// Creates a new [WorkspacePropertiesResponseEncryption].
   /// [entities] Encryption entities definition for the workspace.
-  WorkspacePropertiesResponseEncryption({
+  const WorkspacePropertiesResponseEncryption({
     required this.entities,
   });
 

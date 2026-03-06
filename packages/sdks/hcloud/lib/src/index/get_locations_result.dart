@@ -18,7 +18,7 @@ class GetLocationsResult {
   /// [locationIds] Required.
   /// [locations] Required.
   /// [names] Required.
-  GetLocationsResult({
+  const GetLocationsResult({
     required this.descriptions,
     required this.id,
     required this.locationIds,

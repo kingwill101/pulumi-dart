@@ -11,7 +11,7 @@ class ImageWorkflowParameter {
   /// Creates a new [ImageWorkflowParameter].
   /// [name] The name of the Workflow parameter.
   /// [value] The value of the Workflow parameter.
-  ImageWorkflowParameter({
+  const ImageWorkflowParameter({
     required this.name,
     required this.value,
   });

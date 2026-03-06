@@ -36,7 +36,7 @@ class InstanceArgs {
   /// [name] Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
   /// [organizationId] Required.
   /// [peeringCidrRange] Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
-  InstanceArgs({
+  const InstanceArgs({
     this.consumerAcceptList,
     this.description,
     this.diskEncryptionKeyName,

@@ -12,7 +12,7 @@ class GoogleCloudContactcenterinsightsV1SentimentDataResponse {
   /// Creates a new [GoogleCloudContactcenterinsightsV1SentimentDataResponse].
   /// [magnitude] A non-negative number from 0 to infinity which represents the abolute magnitude of sentiment regardless of score.
   /// [score] The sentiment score between -1.0 (negative) and 1.0 (positive).
-  GoogleCloudContactcenterinsightsV1SentimentDataResponse({
+  const GoogleCloudContactcenterinsightsV1SentimentDataResponse({
     required this.magnitude,
     required this.score,
   });

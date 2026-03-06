@@ -53,7 +53,7 @@ class MaintenanceWindowTaskState {
   /// [taskType] The type of task being registered. Valid values: `AUTOMATION`, `LAMBDA`, `RUN_COMMAND` or `STEP_FUNCTIONS`.
   /// [windowId] The Id of the maintenance window to register the task with.
   /// [windowTaskId] The ID of the maintenance window task.
-  MaintenanceWindowTaskState({
+  const MaintenanceWindowTaskState({
     this.arn,
     this.cutoffBehavior,
     this.description,

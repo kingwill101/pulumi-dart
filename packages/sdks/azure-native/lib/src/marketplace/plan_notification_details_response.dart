@@ -12,7 +12,7 @@ class PlanNotificationDetailsResponse {
   /// Creates a new [PlanNotificationDetailsResponse].
   /// [planDisplayName] Gets or sets the plan display name
   /// [planId] Gets or sets the plan id
-  PlanNotificationDetailsResponse({
+  const PlanNotificationDetailsResponse({
     this.planDisplayName,
     this.planId,
   });

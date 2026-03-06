@@ -10,7 +10,7 @@ class ListListAssociatedTrafficFilterResult {
 
   /// Creates a new [ListListAssociatedTrafficFilterResult].
   /// [rulesets] List of elastic traffic filters in the account
-  ListListAssociatedTrafficFilterResult({
+  const ListListAssociatedTrafficFilterResult({
     this.rulesets,
   });
 

@@ -25,7 +25,7 @@ class KubernetesClusterServiceMeshProfile {
   /// [internalIngressGatewayEnabled] Is Istio Internal Ingress Gateway enabled?
   /// [mode] The mode of the service mesh. Possible value is `Istio`.
   /// [revisions] Specify 1 or 2 Istio control plane revisions for managing minor upgrades using the canary upgrade process. For example, create the resource with `revisions` set to `["asm-1-25"]`, or leave it empty (the `revisions` will only be known after apply). To start the canary upgrade, change `revisions` to `["asm-1-25", "asm-1-26"]`. To roll back the canary upgrade, revert to `["asm-1-25"]`. To confirm the upgrade, change to `["asm-1-26"]`.
-  KubernetesClusterServiceMeshProfile({
+  const KubernetesClusterServiceMeshProfile({
     this.certificateAuthority,
     this.externalIngressGatewayEnabled,
     this.internalIngressGatewayEnabled,

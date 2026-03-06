@@ -9,7 +9,7 @@ class GetClusterManagedServerCa {
 
   /// Creates a new [GetClusterManagedServerCa].
   /// [caCerts] The PEM encoded CA certificate chains for redis managed server authentication
-  GetClusterManagedServerCa({
+  const GetClusterManagedServerCa({
     required this.caCerts,
   });
 

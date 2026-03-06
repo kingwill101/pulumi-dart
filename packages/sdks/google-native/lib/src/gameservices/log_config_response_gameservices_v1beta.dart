@@ -18,7 +18,7 @@ class LogConfigResponseGameservicesV1beta {
   /// [cloudAudit] Cloud audit options.
   /// [counter] Counter options.
   /// [dataAccess] Data access options.
-  LogConfigResponseGameservicesV1beta({
+  const LogConfigResponseGameservicesV1beta({
     required this.cloudAudit,
     required this.counter,
     required this.dataAccess,

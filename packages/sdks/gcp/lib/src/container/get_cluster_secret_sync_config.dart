@@ -12,7 +12,7 @@ class GetClusterSecretSyncConfig {
   /// Creates a new [GetClusterSecretSyncConfig].
   /// [enabled] Enable the Sync as k8s secret add-on.
   /// [rotationConfigs] Configuration for Secret Sync auto rotation.
-  GetClusterSecretSyncConfig({
+  const GetClusterSecretSyncConfig({
     required this.enabled,
     required this.rotationConfigs,
   });

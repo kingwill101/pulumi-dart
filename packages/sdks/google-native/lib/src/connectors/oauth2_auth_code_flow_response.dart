@@ -31,7 +31,7 @@ class Oauth2AuthCodeFlowResponse {
   /// [pkceVerifier] PKCE verifier to be used during the auth code exchange.
   /// [redirectUri] Redirect URI to be provided during the auth code exchange.
   /// [scopes] Scopes the connection will request when the user performs the auth code flow.
-  Oauth2AuthCodeFlowResponse({
+  const Oauth2AuthCodeFlowResponse({
     required this.authCode,
     required this.authUri,
     required this.clientId,

@@ -11,7 +11,7 @@ class ListAdminKeyResult {
   /// Creates a new [ListAdminKeyResult].
   /// [primaryKey] The primary admin API key of the search service.
   /// [secondaryKey] The secondary admin API key of the search service.
-  ListAdminKeyResult({
+  const ListAdminKeyResult({
     required this.primaryKey,
     required this.secondaryKey,
   });

@@ -12,7 +12,7 @@ class PscConfig {
   /// Creates a new [PscConfig].
   /// [limit] Optional. Max number of PSC connections for this policy.
   /// [subnetworks] The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
-  PscConfig({
+  const PscConfig({
     this.limit,
     this.subnetworks,
   });

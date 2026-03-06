@@ -13,7 +13,7 @@ class GetLocalGatewayRouteTableFilter {
   /// Creates a new [GetLocalGatewayRouteTableFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetLocalGatewayRouteTableFilter({
+  const GetLocalGatewayRouteTableFilter({
     required this.name,
     required this.values,
   });

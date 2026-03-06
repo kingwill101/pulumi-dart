@@ -17,7 +17,7 @@ class GetExperimentAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [tensorboardId] Required.
-  GetExperimentAiplatformV1beta1Args({
+  const GetExperimentAiplatformV1beta1Args({
     required this.experimentId,
     required this.location,
     this.project,

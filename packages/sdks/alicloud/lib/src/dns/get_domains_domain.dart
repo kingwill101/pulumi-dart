@@ -71,7 +71,7 @@ class GetDomainsDomain {
   /// [tags] A mapping of tags to assign to the resource.
   /// [versionCode] Cloud analysis version code.
   /// [versionName] Required.
-  GetDomainsDomain({
+  const GetDomainsDomain({
     required this.aliDomain,
     required this.availableTtls,
     required this.dnsServers,

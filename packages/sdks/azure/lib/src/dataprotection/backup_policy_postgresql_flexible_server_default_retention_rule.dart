@@ -9,7 +9,7 @@ class BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule {
 
   /// Creates a new [BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule].
   /// [lifeCycles] A `life_cycle` block as defined below. Changing this forces a new resource to be created.
-  BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule({
+  const BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule({
     required this.lifeCycles,
   });
 

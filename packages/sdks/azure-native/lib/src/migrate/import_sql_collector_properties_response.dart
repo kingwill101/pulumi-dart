@@ -18,7 +18,7 @@ class ImportSqlCollectorPropertiesResponse {
   /// [discoverySiteId] The sql db extended details.
   /// [provisioningState] The status of the last operation.
   /// [updatedTimestamp] When was import SQL collector last updated.
-  ImportSqlCollectorPropertiesResponse({
+  const ImportSqlCollectorPropertiesResponse({
     required this.createdTimestamp,
     this.discoverySiteId,
     required this.provisioningState,

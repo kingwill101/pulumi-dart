@@ -45,7 +45,7 @@ class GetPlanResult {
   /// [tags] Map of tags assigned to the resource.
   /// [updatedAt] Timestamp when the plan was last updated (RFC3339 format).
   /// [version] Version of the plan.
-  GetPlanResult({
+  const GetPlanResult({
     required this.arn,
     required this.description,
     required this.executionRole,

@@ -26,7 +26,7 @@ class AzureDataLakeStoreWriteSettings {
   /// [maxConcurrentConnections] The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   /// [metadata] Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
   /// [type] The write setting type.
-  AzureDataLakeStoreWriteSettings({
+  const AzureDataLakeStoreWriteSettings({
     this.copyBehavior,
     this.disableMetricsCollection,
     this.expiryDateTime,

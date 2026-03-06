@@ -23,7 +23,7 @@ class DatabaseInstanceSettingsPasswordValidationPolicy {
   /// [minLength] Specifies the minimum number of characters that the password must have.
   /// [passwordChangeInterval] Specifies the minimum duration after which you can change the password.
   /// [reuseInterval] Specifies the number of previous passwords that you can't reuse.
-  DatabaseInstanceSettingsPasswordValidationPolicy({
+  const DatabaseInstanceSettingsPasswordValidationPolicy({
     this.complexity,
     this.disallowUsernameSubstring,
     required this.enablePasswordPolicy,

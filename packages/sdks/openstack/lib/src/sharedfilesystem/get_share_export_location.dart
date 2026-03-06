@@ -9,7 +9,7 @@ class GetShareExportLocation {
   /// Creates a new [GetShareExportLocation].
   /// [path] Required.
   /// [preferred] Required.
-  GetShareExportLocation({
+  const GetShareExportLocation({
     required this.path,
     required this.preferred,
   });

@@ -8,7 +8,7 @@ class AutoscaleSettingsResponse {
 
   /// Creates a new [AutoscaleSettingsResponse].
   /// [maxThroughput] Represents maximum throughput, the resource can scale up to.
-  AutoscaleSettingsResponse({
+  const AutoscaleSettingsResponse({
     this.maxThroughput,
   });
 

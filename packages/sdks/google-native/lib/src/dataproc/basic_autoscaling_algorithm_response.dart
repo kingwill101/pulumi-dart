@@ -17,7 +17,7 @@ class BasicAutoscalingAlgorithmResponse {
   /// [cooldownPeriod] Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
   /// [sparkStandaloneConfig] Optional. Spark Standalone autoscaling configuration
   /// [yarnConfig] Optional. YARN autoscaling configuration.
-  BasicAutoscalingAlgorithmResponse({
+  const BasicAutoscalingAlgorithmResponse({
     required this.cooldownPeriod,
     required this.sparkStandaloneConfig,
     required this.yarnConfig,

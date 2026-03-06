@@ -86,7 +86,7 @@ class GatewayState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [tapeDriveType] Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.
-  GatewayState({
+  const GatewayState({
     this.activationKey,
     this.arn,
     this.averageDownloadRateLimitInBitsPerSec,

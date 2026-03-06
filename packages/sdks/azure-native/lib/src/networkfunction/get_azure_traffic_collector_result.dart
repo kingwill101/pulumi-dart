@@ -41,7 +41,7 @@ class GetAzureTrafficCollectorResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [virtualHub] The virtualHub to which the Azure Traffic Collector belongs.
-  GetAzureTrafficCollectorResult({
+  const GetAzureTrafficCollectorResult({
     required this.azureApiVersion,
     required this.collectorPolicies,
     required this.etag,

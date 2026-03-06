@@ -83,7 +83,7 @@ class AlertConfiguration {
   /// [threshold] Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
   /// [type] Template Type.
   /// [version] Template Version.
-  AlertConfiguration({
+  const AlertConfiguration({
     this.annotations,
     this.autoAnnotation,
     this.conditionConfiguration,

@@ -17,7 +17,7 @@ class ConnectionIpsecConfig {
   /// [ipsecEncAlg] the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
   /// [ipsecLifetime] the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
   /// [ipsecPfs] the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
-  ConnectionIpsecConfig({
+  const ConnectionIpsecConfig({
     this.ipsecAuthAlg,
     this.ipsecEncAlg,
     this.ipsecLifetime,

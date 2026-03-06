@@ -153,7 +153,7 @@ class ErEnvConf {
   /// [presetCanaryZhejiang] The configuration of a presetCanaryZhejiang environment. See `staging` below.
   /// [production] The configuration of a production environment. See `staging` below.
   /// [staging] The configuration of a staging environment. See `staging` below.
-  ErEnvConf({
+  const ErEnvConf({
     this.presetCanaryAnhui,
     this.presetCanaryBeijing,
     this.presetCanaryChongqing,

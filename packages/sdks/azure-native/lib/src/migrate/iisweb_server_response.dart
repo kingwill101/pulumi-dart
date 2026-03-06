@@ -39,7 +39,7 @@ class IISWebServerResponse {
   /// [serverName] Gets or sets the web server name.
   /// [version] Gets or sets the server version.
   /// [webApplications] Gets or sets the list of web applications.
-  IISWebServerResponse({
+  const IISWebServerResponse({
     this.displayName,
     this.ipAddresses,
     this.machines,

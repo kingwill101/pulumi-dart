@@ -25,7 +25,7 @@ class GetFleetTierResult {
   /// [properties] A Fleet tier properties.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetFleetTierResult({
+  const GetFleetTierResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

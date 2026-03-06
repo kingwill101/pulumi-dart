@@ -15,7 +15,7 @@ class GetSqsQueueArgs {
   /// Creates a new [GetSqsQueueArgs].
   /// [name] Name of SqsQueue
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSqsQueueArgs({
+  const GetSqsQueueArgs({
     required this.name,
     required this.resourceGroupName,
   });

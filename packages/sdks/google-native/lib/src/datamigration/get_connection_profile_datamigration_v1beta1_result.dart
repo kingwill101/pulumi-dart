@@ -38,7 +38,7 @@ class GetConnectionProfileDatamigrationV1beta1Result {
   /// [provider] The database provider.
   /// [state] The current connection profile state (e.g. DRAFT, READY, or FAILED).
   /// [updateTime] The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  GetConnectionProfileDatamigrationV1beta1Result({
+  const GetConnectionProfileDatamigrationV1beta1Result({
     required this.cloudsql,
     required this.createTime,
     required this.displayName,

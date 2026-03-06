@@ -39,7 +39,7 @@ class GoogleCloudAiplatformV1StudySpecResponse {
   /// [observationNoise] The observation noise level of the study. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
   /// [parameters] The set of parameters to tune.
   /// [studyStoppingConfig] Conditions for automated stopping of a Study. Enable automated stopping by configuring at least one condition.
-  GoogleCloudAiplatformV1StudySpecResponse({
+  const GoogleCloudAiplatformV1StudySpecResponse({
     required this.algorithm,
     required this.convexAutomatedStoppingSpec,
     required this.decayCurveStoppingSpec,

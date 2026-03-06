@@ -17,7 +17,7 @@ class JobAppEngineHttpTargetAppEngineRouting {
   /// [instance] App instance.
   /// [service] App service.
   /// [version] App version.
-  JobAppEngineHttpTargetAppEngineRouting({
+  const JobAppEngineHttpTargetAppEngineRouting({
     this.instance,
     this.service,
     this.version,

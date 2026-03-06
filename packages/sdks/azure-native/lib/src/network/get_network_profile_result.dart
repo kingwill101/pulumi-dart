@@ -41,7 +41,7 @@ class GetNetworkProfileResult {
   /// [resourceGuid] The resource GUID property of the network profile resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNetworkProfileResult({
+  const GetNetworkProfileResult({
     required this.azureApiVersion,
     this.containerNetworkInterfaceConfigurations,
     required this.containerNetworkInterfaces,

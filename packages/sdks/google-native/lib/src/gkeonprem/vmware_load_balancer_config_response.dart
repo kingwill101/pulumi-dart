@@ -26,7 +26,7 @@ class VmwareLoadBalancerConfigResponse {
   /// [metalLbConfig] Configuration for MetalLB typed load balancers.
   /// [seesawConfig] Configuration for Seesaw typed load balancers.
   /// [vipConfig] The VIPs used by the load balancer.
-  VmwareLoadBalancerConfigResponse({
+  const VmwareLoadBalancerConfigResponse({
     required this.f5Config,
     required this.manualLbConfig,
     required this.metalLbConfig,

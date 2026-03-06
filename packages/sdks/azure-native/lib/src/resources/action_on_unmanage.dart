@@ -18,7 +18,7 @@ class ActionOnUnmanage {
   /// [resourceGroups] Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
   /// [resources] Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
   /// [resourcesWithoutDeleteSupport] Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
-  ActionOnUnmanage({
+  const ActionOnUnmanage({
     this.managementGroups,
     this.resourceGroups,
     required this.resources,

@@ -21,7 +21,7 @@ class DataflowBuiltInTransformationMap {
   /// [inputs] List of fields for mapping in JSON path expression.
   /// [output] Where and how the input fields to be organized in the output record.
   /// [type] Type of transformation.
-  DataflowBuiltInTransformationMap({
+  const DataflowBuiltInTransformationMap({
     this.description,
     this.expression,
     required this.inputs,

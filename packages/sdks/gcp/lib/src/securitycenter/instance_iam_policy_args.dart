@@ -21,7 +21,7 @@ class InstanceIamPolicyArgs {
   /// [policyData] Required.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the Data Fusion instance.
-  InstanceIamPolicyArgs({
+  const InstanceIamPolicyArgs({
     this.name,
     required this.policyData,
     this.project,

@@ -18,7 +18,7 @@ class GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs {
   /// [migrationName] Name of the migration.
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [targetResourceName] The name of the target resource/account.
-  GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs({
+  const GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs({
     required this.migrationName,
     required this.resourceGroupName,
     required this.targetResourceName,

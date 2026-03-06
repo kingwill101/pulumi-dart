@@ -18,7 +18,7 @@ class GetComputePolicyArgs {
   /// [accountName] The name of the Data Lake Analytics account.
   /// [computePolicyName] The name of the compute policy to retrieve.
   /// [resourceGroupName] The name of the Azure resource group.
-  GetComputePolicyArgs({
+  const GetComputePolicyArgs({
     required this.accountName,
     required this.computePolicyName,
     required this.resourceGroupName,

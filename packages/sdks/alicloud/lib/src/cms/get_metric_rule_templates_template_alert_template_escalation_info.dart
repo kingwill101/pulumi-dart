@@ -18,7 +18,7 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo {
   /// [statistics] The statistical aggregation method for info-level alerts.
   /// [threshold] The threshold for info-level alerts.
   /// [times] The consecutive number of times for which the metric value is measured before an info-level
-  GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo({
+  const GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo({
     required this.comparisonOperator,
     required this.statistics,
     required this.threshold,

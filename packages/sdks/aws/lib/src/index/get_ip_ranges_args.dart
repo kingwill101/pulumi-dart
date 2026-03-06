@@ -29,7 +29,7 @@ class GetIpRangesArgs {
   /// [regions] Filter IP ranges by regions (or include all regions, if
   /// [services] Filter IP ranges by services. Valid items are `amazon`
   /// [url] Custom URL for source JSON file. Syntax must match [AWS IP Address Ranges documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html). Defaults to `https://ip-ranges.amazonaws.com/ip-ranges.json`.
-  GetIpRangesArgs({
+  const GetIpRangesArgs({
     this.id,
     this.regions,
     required this.services,

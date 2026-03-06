@@ -11,7 +11,7 @@ class ExtensionProtectedSettingsFromKeyVault {
   /// Creates a new [ExtensionProtectedSettingsFromKeyVault].
   /// [secretUrl] The URL to the Key Vault Secret which stores the protected settings.
   /// [sourceVaultId] The ID of the source Key Vault.
-  ExtensionProtectedSettingsFromKeyVault({
+  const ExtensionProtectedSettingsFromKeyVault({
     required this.secretUrl,
     required this.sourceVaultId,
   });

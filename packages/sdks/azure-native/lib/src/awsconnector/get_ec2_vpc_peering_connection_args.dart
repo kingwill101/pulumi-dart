@@ -15,7 +15,7 @@ class GetEc2VpcPeeringConnectionArgs {
   /// Creates a new [GetEc2VpcPeeringConnectionArgs].
   /// [name] Name of Ec2VPCPeeringConnection
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2VpcPeeringConnectionArgs({
+  const GetEc2VpcPeeringConnectionArgs({
     required this.name,
     required this.resourceGroupName,
   });

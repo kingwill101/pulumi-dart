@@ -13,7 +13,7 @@ class GuardrailSensitiveInformationPolicyConfig {
   /// Creates a new [GuardrailSensitiveInformationPolicyConfig].
   /// [piiEntitiesConfigs] List of entities. See PII Entities Config for more information.
   /// [regexesConfigs] List of regex. See Regexes Config for more information.
-  GuardrailSensitiveInformationPolicyConfig({
+  const GuardrailSensitiveInformationPolicyConfig({
     this.piiEntitiesConfigs,
     this.regexesConfigs,
   });

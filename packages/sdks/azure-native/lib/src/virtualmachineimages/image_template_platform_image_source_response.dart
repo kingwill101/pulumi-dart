@@ -29,7 +29,7 @@ class ImageTemplatePlatformImageSourceResponse {
   /// [sku] Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
   /// [type] Specifies the type of source image you want to start with.
   /// [version] Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.
-  ImageTemplatePlatformImageSourceResponse({
+  const ImageTemplatePlatformImageSourceResponse({
     required this.exactVersion,
     this.offer,
     this.planInfo,

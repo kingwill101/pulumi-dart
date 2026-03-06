@@ -13,7 +13,7 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetForma
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormat].
   /// [csv] The CSV dataset used in the monitoring job. Fields are documented below.
   /// [json] The JSON dataset used in the monitoring job. Fields are documented below.
-  DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormat({
+  const DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormat({
     this.csv,
     this.json,
   });

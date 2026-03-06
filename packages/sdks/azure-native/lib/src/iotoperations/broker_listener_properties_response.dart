@@ -19,7 +19,7 @@ class BrokerListenerPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [serviceName] Kubernetes Service name of this listener.
   /// [serviceType] Kubernetes Service type of this listener.
-  BrokerListenerPropertiesResponse({
+  const BrokerListenerPropertiesResponse({
     required this.ports,
     required this.provisioningState,
     this.serviceName,

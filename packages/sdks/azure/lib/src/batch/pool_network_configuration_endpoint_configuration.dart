@@ -21,7 +21,7 @@ class PoolNetworkConfigurationEndpointConfiguration {
   /// [name] The name of the endpoint. The name must be unique within a Batch pool, can contain letters, numbers, underscores, periods, and hyphens. Names must start with a letter or number, must end with a letter, number, or underscore, and cannot exceed 77 characters. Changing this forces a new resource to be created.
   /// [networkSecurityGroupRules] A list of `network_security_group_rules` blocks as defined below that will be applied to the endpoint. The maximum number of rules that can be specified across all the endpoints on a Batch pool is `25`. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. Set as documented in the network_security_group_rules block below. Changing this forces a new resource to be created.
   /// [protocol] The protocol of the endpoint. Acceptable values are `TCP` and `UDP`. Changing this forces a new resource to be created.
-  PoolNetworkConfigurationEndpointConfiguration({
+  const PoolNetworkConfigurationEndpointConfiguration({
     required this.backendPort,
     required this.frontendPortRange,
     required this.name,

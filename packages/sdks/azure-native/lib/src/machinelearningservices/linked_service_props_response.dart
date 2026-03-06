@@ -18,7 +18,7 @@ class LinkedServicePropsResponse {
   /// [linkType] Type of the link target.
   /// [linkedServiceResourceId] ResourceId of the link target of the linked service.
   /// [modifiedTime] The last modified time of the linked service.
-  LinkedServicePropsResponse({
+  const LinkedServicePropsResponse({
     this.createdTime,
     this.linkType,
     required this.linkedServiceResourceId,

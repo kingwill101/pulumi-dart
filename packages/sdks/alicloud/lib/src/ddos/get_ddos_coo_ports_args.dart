@@ -24,7 +24,7 @@ class GetDdosCooPortsArgs {
   /// [ids] A list of Port IDs.
   /// [instanceId] The DdosCoo instance ID.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetDdosCooPortsArgs({
+  const GetDdosCooPortsArgs({
     this.frontendPort,
     this.frontendProtocol,
     this.ids,

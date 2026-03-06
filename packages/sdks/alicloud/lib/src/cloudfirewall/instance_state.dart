@@ -77,7 +77,7 @@ class InstanceState {
   /// [spec] Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
   /// [status] The status of Cloud Firewall Instance.
   /// [userStatus] (Available since v1.232.0) The user status of Cloud Firewall Instance.
-  InstanceState({
+  const InstanceState({
     this.accountNumber,
     this.bandWidth,
     this.cfwAccount,

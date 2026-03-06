@@ -11,7 +11,7 @@ class IotHubDpsSku {
   /// Creates a new [IotHubDpsSku].
   /// [capacity] The number of provisioned IoT Device Provisioning Service units.
   /// [name] The name of the sku. Currently can only be set to `S1`.
-  IotHubDpsSku({
+  const IotHubDpsSku({
     required this.capacity,
     required this.name,
   });

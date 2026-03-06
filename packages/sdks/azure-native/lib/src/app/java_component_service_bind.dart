@@ -12,7 +12,7 @@ class JavaComponentServiceBind {
   /// Creates a new [JavaComponentServiceBind].
   /// [name] Name of the service bind
   /// [serviceId] Resource id of the target service
-  JavaComponentServiceBind({
+  const JavaComponentServiceBind({
     this.name,
     this.serviceId,
   });

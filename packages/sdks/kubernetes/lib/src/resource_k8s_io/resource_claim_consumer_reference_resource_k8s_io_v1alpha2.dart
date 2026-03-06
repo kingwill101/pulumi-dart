@@ -18,7 +18,7 @@ class ResourceClaimConsumerReferenceResourceK8sIoV1alpha2 {
   /// [name] Name is the name of resource being referenced.
   /// [resource] Resource is the type of resource being referenced, for example "pods".
   /// [uid] UID identifies exactly one incarnation of the resource.
-  ResourceClaimConsumerReferenceResourceK8sIoV1alpha2({
+  const ResourceClaimConsumerReferenceResourceK8sIoV1alpha2({
     this.apiGroup,
     required this.name,
     required this.resource,

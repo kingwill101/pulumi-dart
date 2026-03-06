@@ -25,7 +25,7 @@ class OpenZfsFileSystemRootVolumeConfiguration {
   /// [readOnly] specifies whether the volume is read-only. Default is false.
   /// [recordSizeKib] Specifies the record size of an OpenZFS root volume, in kibibytes (KiB). Valid values are `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, or `1024` KiB. The default is `128` KiB.
   /// [userAndGroupQuotas] Specify how much storage users or groups can use on the volume. Maximum of 100 items. See `user_and_group_quotas` Block for details.
-  OpenZfsFileSystemRootVolumeConfiguration({
+  const OpenZfsFileSystemRootVolumeConfiguration({
     this.copyTagsToSnapshots,
     this.dataCompressionType,
     this.nfsExports,

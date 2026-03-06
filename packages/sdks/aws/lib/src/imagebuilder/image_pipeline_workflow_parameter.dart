@@ -11,7 +11,7 @@ class ImagePipelineWorkflowParameter {
   /// Creates a new [ImagePipelineWorkflowParameter].
   /// [name] The name of the Workflow parameter.
   /// [value] The value of the Workflow parameter.
-  ImagePipelineWorkflowParameter({
+  const ImagePipelineWorkflowParameter({
     required this.name,
     required this.value,
   });

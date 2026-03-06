@@ -15,7 +15,7 @@ class OSPolicyResourceRepositoryResourceYumRepositoryResponse {
   /// [baseUrl] The location of the repository directory.
   /// [displayName] The display name of the repository.
   /// [gpgKeys] URIs of GPG keys.
-  OSPolicyResourceRepositoryResourceYumRepositoryResponse({
+  const OSPolicyResourceRepositoryResourceYumRepositoryResponse({
     required this.baseUrl,
     required this.displayName,
     required this.gpgKeys,

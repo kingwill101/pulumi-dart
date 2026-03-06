@@ -16,7 +16,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroup {
   /// [name] The Node group resource name.
   /// [nodeGroupConfig] The node group instance group configuration.
   /// [roles] Node group roles.
-  ClusterClusterConfigAuxiliaryNodeGroupNodeGroup({
+  const ClusterClusterConfigAuxiliaryNodeGroupNodeGroup({
     this.name,
     this.nodeGroupConfig,
     required this.roles,

@@ -77,7 +77,7 @@ class LinkedServiceSftpState {
   /// [privateKeyPath] The absolute path to the private key file that the self-hosted integration runtime can access.
   /// [skipHostKeyValidation] Whether to validate host key fingerprint while connecting. If set to `false`, `host_key_fingerprint` must also be set.
   /// [username] The username used to log on to the SFTP server.
-  LinkedServiceSftpState({
+  const LinkedServiceSftpState({
     this.additionalProperties,
     this.annotations,
     this.authenticationType,

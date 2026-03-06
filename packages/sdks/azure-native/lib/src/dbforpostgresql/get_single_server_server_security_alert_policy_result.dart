@@ -38,7 +38,7 @@ class GetSingleServerServerSecurityAlertPolicyResult {
   /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSingleServerServerSecurityAlertPolicyResult({
+  const GetSingleServerServerSecurityAlertPolicyResult({
     required this.azureApiVersion,
     this.disabledAlerts,
     this.emailAccountAdmins,

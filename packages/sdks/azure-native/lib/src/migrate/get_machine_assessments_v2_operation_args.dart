@@ -18,7 +18,7 @@ class GetMachineAssessmentsV2OperationArgs {
   /// [assessmentName] Machine Assessment V2 ARM name
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMachineAssessmentsV2OperationArgs({
+  const GetMachineAssessmentsV2OperationArgs({
     required this.assessmentName,
     required this.projectName,
     required this.resourceGroupName,

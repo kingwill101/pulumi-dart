@@ -9,7 +9,7 @@ class NetworkProfileResponseOutboundIPs {
 
   /// Creates a new [NetworkProfileResponseOutboundIPs].
   /// [publicIPs] A list of public IP addresses.
-  NetworkProfileResponseOutboundIPs({
+  const NetworkProfileResponseOutboundIPs({
     required this.publicIPs,
   });
 

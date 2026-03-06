@@ -59,7 +59,7 @@ class GroupArgs {
   /// [periodUnit] The unit of time for purchasing resources.
   /// [policyGroupId] The policy ID. You can query the list of policies by calling ListPolicyGroups.
   /// [vswitchId] The vSwitch ID.
-  GroupArgs({
+  const GroupArgs({
     this.amount,
     this.autoPay,
     this.autoRenew,

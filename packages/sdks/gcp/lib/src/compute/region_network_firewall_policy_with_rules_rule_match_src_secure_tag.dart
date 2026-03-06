@@ -15,7 +15,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag {
   /// Creates a new [RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
   /// [state] (Output)
-  RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag({
+  const RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag({
     this.name,
     this.state,
   });

@@ -28,7 +28,7 @@ class ArtifactInstallProperties {
   /// [parameters] The parameters of the artifact.
   /// [status] The status of the artifact.
   /// [vmExtensionStatusMessage] The status message from the virtual machine extension.
-  ArtifactInstallProperties({
+  const ArtifactInstallProperties({
     this.artifactId,
     this.artifactTitle,
     this.deploymentStatusMessage,

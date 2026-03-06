@@ -14,7 +14,7 @@ class DiskResourceStatusResponse {
   /// [asyncPrimaryDisk] Required.
   /// [asyncSecondaryDisks] Key: disk, value: AsyncReplicationStatus message
   /// [usedBytes] Space used by data stored in the disk (in bytes). Note that this field is set only when the disk is in a storage pool.
-  DiskResourceStatusResponse({
+  const DiskResourceStatusResponse({
     required this.asyncPrimaryDisk,
     required this.asyncSecondaryDisks,
     required this.usedBytes,

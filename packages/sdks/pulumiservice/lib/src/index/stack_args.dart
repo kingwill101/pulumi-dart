@@ -21,7 +21,7 @@ class StackArgs {
   /// [organizationName] The name of the organization.
   /// [projectName] The name of the project.
   /// [stackName] The name of the stack.
-  StackArgs({
+  const StackArgs({
     this.forceDestroy,
     required this.organizationName,
     required this.projectName,

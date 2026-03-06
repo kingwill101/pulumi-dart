@@ -33,7 +33,7 @@ class GetVirtualMachineScaleSetNetworkInterface {
   /// [name] The name of this Virtual Machine Scale Set.
   /// [networkSecurityGroupId] The identifier for the network security group.
   /// [primary] If this ip_configuration is the primary one.
-  GetVirtualMachineScaleSetNetworkInterface({
+  const GetVirtualMachineScaleSetNetworkInterface({
     required this.auxiliaryMode,
     required this.auxiliarySku,
     required this.dnsServers,

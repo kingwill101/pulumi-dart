@@ -12,7 +12,7 @@ class SlsaProvenanceV1 {
   /// Creates a new [SlsaProvenanceV1].
   /// [buildDefinition] Optional.
   /// [runDetails] Optional.
-  SlsaProvenanceV1({
+  const SlsaProvenanceV1({
     this.buildDefinition,
     this.runDetails,
   });

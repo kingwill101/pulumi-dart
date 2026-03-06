@@ -17,7 +17,7 @@ class VolumeGroupOracleVolumeDataProtectionReplication {
   /// [remoteVolumeLocation] Location of the primary volume.
   /// [remoteVolumeResourceId] Resource ID of the primary volume. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [replicationFrequency] Replication frequency. Possible values are `10minutes`, `daily` and `hourly`. Changing this forces a new Application Volume Group to be created and data will be lost.
-  VolumeGroupOracleVolumeDataProtectionReplication({
+  const VolumeGroupOracleVolumeDataProtectionReplication({
     this.endpointType,
     required this.remoteVolumeLocation,
     required this.remoteVolumeResourceId,

@@ -15,7 +15,7 @@ class GetMonitorArgs {
   /// Creates a new [GetMonitorArgs].
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMonitorArgs({
+  const GetMonitorArgs({
     required this.monitorName,
     required this.resourceGroupName,
   });

@@ -36,7 +36,7 @@ class GetNatGatewayResult {
   /// [skuName] The SKU used by the NAT Gateway.
   /// [tags] A mapping of tags assigned to the resource.
   /// [zones] A list of Availability Zones which the NAT Gateway exists in.
-  GetNatGatewayResult({
+  const GetNatGatewayResult({
     required this.id,
     required this.idleTimeoutInMinutes,
     required this.location,

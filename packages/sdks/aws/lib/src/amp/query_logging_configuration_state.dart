@@ -21,7 +21,7 @@ class QueryLoggingConfigurationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   /// [workspaceId] The ID of the AMP workspace for which to configure query logging.
-  QueryLoggingConfigurationState({
+  const QueryLoggingConfigurationState({
     this.destinations,
     this.region,
     this.timeouts,

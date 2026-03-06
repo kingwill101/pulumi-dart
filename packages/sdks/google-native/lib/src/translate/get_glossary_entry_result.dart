@@ -19,7 +19,7 @@ class GetGlossaryEntryResult {
   /// [name] The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
   /// [termsPair] Used for an unidirectional glossary.
   /// [termsSet] Used for an equivalent term sets glossary.
-  GetGlossaryEntryResult({
+  const GetGlossaryEntryResult({
     required this.description,
     required this.name,
     required this.termsPair,

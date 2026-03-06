@@ -15,7 +15,7 @@ class RulesetArgs {
   /// Creates a new [RulesetArgs].
   /// [project] Optional.
   /// [source] `Source` for the `Ruleset`.
-  RulesetArgs({
+  const RulesetArgs({
     this.project,
     required this.source,
   });

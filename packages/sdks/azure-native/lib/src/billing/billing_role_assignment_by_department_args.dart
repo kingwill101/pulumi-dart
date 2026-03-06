@@ -25,7 +25,7 @@ class BillingRoleAssignmentByDepartmentArgs {
   /// [departmentName] The name of the department.
   /// [properties] The properties of the billing role assignment.
   /// [tags] Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
-  BillingRoleAssignmentByDepartmentArgs({
+  const BillingRoleAssignmentByDepartmentArgs({
     required this.billingAccountName,
     this.billingRoleAssignmentName,
     required this.departmentName,

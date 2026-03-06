@@ -31,7 +31,7 @@ class EcsServiceProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  EcsServiceProperties({
+  const EcsServiceProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

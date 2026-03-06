@@ -24,7 +24,7 @@ class TransitRouterGrantAttachmentArgs {
   /// [instanceId] The ID of the network instance.
   /// [instanceType] The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
   /// [orderType] The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
-  TransitRouterGrantAttachmentArgs({
+  const TransitRouterGrantAttachmentArgs({
     required this.cenId,
     required this.cenOwnerId,
     required this.instanceId,

@@ -67,7 +67,7 @@ class DomainState {
   /// [status] The status of the domain name. Valid values:
   /// [tags] The tag of the resource
   /// [topLevelDomain] The top-level domain.
-  DomainState({
+  const DomainState({
     this.certId,
     this.certName,
     this.certRegion,

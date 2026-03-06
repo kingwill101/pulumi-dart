@@ -15,7 +15,7 @@ class BigTableIODetails {
   /// [instanceId] InstanceId accessed in the connection.
   /// [project] ProjectId accessed in the connection.
   /// [tableId] TableId accessed in the connection.
-  BigTableIODetails({
+  const BigTableIODetails({
     this.instanceId,
     this.project,
     this.tableId,

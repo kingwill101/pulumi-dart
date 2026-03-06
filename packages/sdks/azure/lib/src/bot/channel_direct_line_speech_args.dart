@@ -33,7 +33,7 @@ class ChannelDirectLineSpeechArgs {
   /// [customVoiceDeploymentId] The custom voice deployment id for the Direct Line Speech Channel.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the Direct Line Speech Channel should be created. Changing this forces a new resource to be created.
-  ChannelDirectLineSpeechArgs({
+  const ChannelDirectLineSpeechArgs({
     required this.botName,
     this.cognitiveAccountId,
     required this.cognitiveServiceAccessKey,

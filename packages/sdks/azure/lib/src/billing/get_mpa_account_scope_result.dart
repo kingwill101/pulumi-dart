@@ -12,7 +12,7 @@ class GetMpaAccountScopeResult {
   /// [billingAccountName] Required.
   /// [customerName] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetMpaAccountScopeResult({
+  const GetMpaAccountScopeResult({
     required this.billingAccountName,
     required this.customerName,
     required this.id,

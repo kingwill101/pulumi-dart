@@ -16,7 +16,7 @@ class GetServiceTemplateContainerStartupProbeHttpGet {
   /// [httpHeaders] Custom headers to set in the request. HTTP allows repeated headers.
   /// [path] Path to access on the HTTP server. Defaults to '/'.
   /// [port] Port number to access on the container. Must be in the range 1 to 65535.
-  GetServiceTemplateContainerStartupProbeHttpGet({
+  const GetServiceTemplateContainerStartupProbeHttpGet({
     required this.httpHeaders,
     required this.path,
     required this.port,

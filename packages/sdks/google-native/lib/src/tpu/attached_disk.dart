@@ -13,7 +13,7 @@ class AttachedDisk {
   /// Creates a new [AttachedDisk].
   /// [mode] The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
   /// [sourceDisk] Specifies the full path to an existing disk. For example: "projects/my-project/zones/us-central1-c/disks/my-disk".
-  AttachedDisk({
+  const AttachedDisk({
     this.mode,
     this.sourceDisk,
   });

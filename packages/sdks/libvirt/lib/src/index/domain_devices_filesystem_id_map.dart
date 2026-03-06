@@ -13,7 +13,7 @@ class DomainDevicesFilesystemIdMap {
   /// Creates a new [DomainDevicesFilesystemIdMap].
   /// [gids] Configures group ID mapping for the filesystem.
   /// [uids] Configures user ID mapping for the filesystem.
-  DomainDevicesFilesystemIdMap({
+  const DomainDevicesFilesystemIdMap({
     this.gids,
     this.uids,
   });

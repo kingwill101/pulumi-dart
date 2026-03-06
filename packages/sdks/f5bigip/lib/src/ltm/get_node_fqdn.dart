@@ -20,7 +20,7 @@ class GetNodeFqdn {
   /// [downinterval] The number of attempts to resolve a domain name.
   /// [interval] The amount of time before sending the next DNS query.
   /// [name] Name of the node.
-  GetNodeFqdn({
+  const GetNodeFqdn({
     this.addressFamily,
     required this.autopopulate,
     required this.downinterval,

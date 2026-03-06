@@ -9,7 +9,7 @@ class ProviderSignVersion {
   /// Creates a new [ProviderSignVersion].
   /// [oss] Optional.
   /// [sls] Optional.
-  ProviderSignVersion({
+  const ProviderSignVersion({
     this.oss,
     this.sls,
   });

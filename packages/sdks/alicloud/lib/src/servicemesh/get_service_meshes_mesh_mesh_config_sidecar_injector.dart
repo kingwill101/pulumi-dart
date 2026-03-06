@@ -30,7 +30,7 @@ class GetServiceMeshesMeshMeshConfigSidecarInjector {
   /// [requestCpu] The requested cpu the Sidecar injector Pods.
   /// [requestMemory] The requested memory the Sidecar injector Pods.
   /// [sidecarInjectorWebhookAsYaml] Other automatic injection Sidecar configuration (in YAML format).
-  GetServiceMeshesMeshMeshConfigSidecarInjector({
+  const GetServiceMeshesMeshMeshConfigSidecarInjector({
     required this.autoInjectionPolicyEnabled,
     required this.enableNamespacesByDefault,
     required this.initCniConfigurations,

@@ -64,7 +64,7 @@ class TaskSetArgs {
   /// [taskDefinition] The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
   /// [waitUntilStable] Whether the provider should wait until the task set has reached `STEADY_STATE`.
   /// [waitUntilStableTimeout] Wait timeout for task set to reach `STEADY_STATE`. Valid time units include `ns`, `us` (or `µs`), `ms`, `s`, `m`, and `h`. Default `10m`.
-  TaskSetArgs({
+  const TaskSetArgs({
     this.capacityProviderStrategies,
     required this.cluster,
     this.externalId,

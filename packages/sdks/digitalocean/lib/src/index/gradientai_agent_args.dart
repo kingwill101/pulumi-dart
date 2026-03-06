@@ -134,7 +134,7 @@ class GradientaiAgentArgs {
   /// [topP] Top P sampling parameter
   /// [url] URL for the Agent
   /// [userId] User ID linked with the Agent
-  GradientaiAgentArgs({
+  const GradientaiAgentArgs({
     this.agentGuardrails,
     this.anthropicApiKeys,
     this.anthropicKeyUuid,

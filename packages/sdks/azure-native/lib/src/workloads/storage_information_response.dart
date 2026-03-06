@@ -9,7 +9,7 @@ class StorageInformationResponse {
 
   /// Creates a new [StorageInformationResponse].
   /// [id] Fully qualified resource ID for the storage account.
-  StorageInformationResponse({
+  const StorageInformationResponse({
     required this.id,
   });
 

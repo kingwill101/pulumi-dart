@@ -51,7 +51,7 @@ class DatabaseValkeyConfigArgs {
   /// [timeout] The Valkey idle connection timeout in seconds.
   /// [valkeyActiveExpireEffort] Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
   /// [valkeyMaxmemoryPolicy] Eviction policy model
-  DatabaseValkeyConfigArgs({
+  const DatabaseValkeyConfigArgs({
     this.aclChannelsDefault,
     required this.clusterId,
     this.frequentSnapshots,

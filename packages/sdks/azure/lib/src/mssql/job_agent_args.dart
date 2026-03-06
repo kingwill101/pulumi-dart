@@ -28,7 +28,7 @@ class JobAgentArgs {
   /// [name] The name which should be used for this Elastic Job Agent. Changing this forces a new Elastic Job Agent to be created.
   /// [sku] The name of the SKU to use for this Elastic Job Agent. Possible values are `JA100`, `JA200`, `JA400`, and `JA800`. Defaults to `JA100`.
   /// [tags] A mapping of tags which should be assigned to this Elastic Job Agent.
-  JobAgentArgs({
+  const JobAgentArgs({
     required this.databaseId,
     this.identity,
     this.location,

@@ -13,7 +13,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostClient {
   /// Creates a new [NodePoolNodeConfigContainerdConfigRegistryHostHostClient].
   /// [cert] Configures the client certificate.
   /// [key] Configures the client private key.
-  NodePoolNodeConfigContainerdConfigRegistryHostHostClient({
+  const NodePoolNodeConfigContainerdConfigRegistryHostHostClient({
     required this.cert,
     this.key,
   });

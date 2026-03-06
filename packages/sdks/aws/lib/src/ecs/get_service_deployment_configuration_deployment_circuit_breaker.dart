@@ -11,7 +11,7 @@ class GetServiceDeploymentConfigurationDeploymentCircuitBreaker {
   /// Creates a new [GetServiceDeploymentConfigurationDeploymentCircuitBreaker].
   /// [enable] Whether circuit breaker is enabled
   /// [rollback] Whether to rollback on failure
-  GetServiceDeploymentConfigurationDeploymentCircuitBreaker({
+  const GetServiceDeploymentConfigurationDeploymentCircuitBreaker({
     required this.enable,
     required this.rollback,
   });

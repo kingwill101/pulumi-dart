@@ -43,7 +43,7 @@ class PersistentResourceArgs {
   /// [reservedIpRanges] Optional. A list of names for the reserved IP ranges under the VPC network that can be used for this persistent resource. If set, we will deploy the persistent resource within the provided IP ranges. Otherwise, the persistent resource is deployed to any IP ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
   /// [resourcePools] The spec of the pools of different resources.
   /// [resourceRuntimeSpec] Optional. Persistent Resource runtime spec. For example, used for Ray cluster configuration.
-  PersistentResourceArgs({
+  const PersistentResourceArgs({
     this.displayName,
     this.encryptionSpec,
     this.labels,

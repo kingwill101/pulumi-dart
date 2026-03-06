@@ -15,7 +15,7 @@ class GetModelDeploymentMonitoringJobArgs {
   /// [location] Required.
   /// [modelDeploymentMonitoringJobId] Required.
   /// [project] Optional.
-  GetModelDeploymentMonitoringJobArgs({
+  const GetModelDeploymentMonitoringJobArgs({
     required this.location,
     required this.modelDeploymentMonitoringJobId,
     this.project,

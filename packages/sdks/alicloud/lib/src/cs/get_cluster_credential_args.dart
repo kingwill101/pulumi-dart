@@ -18,7 +18,7 @@ class GetClusterCredentialArgs {
   /// [clusterId] The id of target cluster.
   /// [outputFile] File name where to save the returned KubeConfig (after running `pulumi preview`).
   /// [temporaryDurationMinutes] Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
-  GetClusterCredentialArgs({
+  const GetClusterCredentialArgs({
     required this.clusterId,
     this.outputFile,
     this.temporaryDurationMinutes,

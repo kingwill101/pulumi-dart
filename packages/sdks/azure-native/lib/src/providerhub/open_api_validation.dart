@@ -8,7 +8,7 @@ class OpenApiValidation {
 
   /// Creates a new [OpenApiValidation].
   /// [allowNoncompliantCollectionResponse] Indicates whether a non compliance response is allowed for a LIST call
-  OpenApiValidation({
+  const OpenApiValidation({
     this.allowNoncompliantCollectionResponse,
   });
 

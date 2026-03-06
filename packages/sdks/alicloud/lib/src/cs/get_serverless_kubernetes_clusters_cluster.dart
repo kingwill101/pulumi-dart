@@ -36,7 +36,7 @@ class GetServerlessKubernetesClustersCluster {
   /// [tags] A map of tags assigned to the kubernetes cluster.
   /// [vpcId] The ID of VPC where the current cluster is located.
   /// [vswitchId] The ID of vSwitch where the current cluster is located.
-  GetServerlessKubernetesClustersCluster({
+  const GetServerlessKubernetesClustersCluster({
     required this.connections,
     required this.deletionProtection,
     required this.endpointPublicAccessEnabled,

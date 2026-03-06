@@ -15,7 +15,7 @@ class GetTagTemplateIamPolicyDatacatalogV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [tagTemplateId] Required.
-  GetTagTemplateIamPolicyDatacatalogV1beta1Args({
+  const GetTagTemplateIamPolicyDatacatalogV1beta1Args({
     required this.location,
     this.project,
     required this.tagTemplateId,

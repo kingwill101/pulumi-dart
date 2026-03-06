@@ -11,7 +11,7 @@ class RoleInlinePolicy {
   /// Creates a new [RoleInlinePolicy].
   /// [name] Name of the role policy.
   /// [policy] Policy document as a JSON formatted string.
-  RoleInlinePolicy({
+  const RoleInlinePolicy({
     this.name,
     this.policy,
   });

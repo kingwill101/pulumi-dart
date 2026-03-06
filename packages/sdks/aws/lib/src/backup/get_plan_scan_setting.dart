@@ -11,7 +11,7 @@ class GetPlanScanSetting {
   /// [malwareScanner] Required.
   /// [resourceTypes] Required.
   /// [scannerRoleArn] Required.
-  GetPlanScanSetting({
+  const GetPlanScanSetting({
     required this.malwareScanner,
     required this.resourceTypes,
     required this.scannerRoleArn,

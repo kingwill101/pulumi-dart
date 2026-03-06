@@ -21,7 +21,7 @@ class GetInterRegionTrafficQosQueuesArgs {
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [trafficQosPolicyId] The ID of the traffic scheduling policy.
-  GetInterRegionTrafficQosQueuesArgs({
+  const GetInterRegionTrafficQosQueuesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

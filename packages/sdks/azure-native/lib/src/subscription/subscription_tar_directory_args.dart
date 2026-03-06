@@ -16,7 +16,7 @@ class SubscriptionTarDirectoryArgs {
   /// Creates a new [SubscriptionTarDirectoryArgs].
   /// [properties] Target Directory request properties.
   /// [subscriptionId] Subscription Id.
-  SubscriptionTarDirectoryArgs({
+  const SubscriptionTarDirectoryArgs({
     this.properties,
     this.subscriptionId,
   });

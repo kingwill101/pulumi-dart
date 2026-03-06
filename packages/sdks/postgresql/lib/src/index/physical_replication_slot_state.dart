@@ -9,7 +9,7 @@ class PhysicalReplicationSlotState {
 
   /// Creates a new [PhysicalReplicationSlotState].
   /// [name] The name of the replication slot.
-  PhysicalReplicationSlotState({
+  const PhysicalReplicationSlotState({
     this.name,
   });
 

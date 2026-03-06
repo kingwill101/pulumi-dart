@@ -13,7 +13,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTc
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket].
   /// [host] Optional: Host name to connect to, defaults to the model serving
   /// [port] Number of the port to access on the container.
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket({
     this.host,
     this.port,
   });

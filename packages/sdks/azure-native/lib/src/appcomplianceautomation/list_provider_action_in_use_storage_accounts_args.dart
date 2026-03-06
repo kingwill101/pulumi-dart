@@ -12,7 +12,7 @@ class ListProviderActionInUseStorageAccountsArgs {
 
   /// Creates a new [ListProviderActionInUseStorageAccountsArgs].
   /// [subscriptionIds] List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user.
-  ListProviderActionInUseStorageAccountsArgs({
+  const ListProviderActionInUseStorageAccountsArgs({
     this.subscriptionIds,
   });
 

@@ -13,7 +13,7 @@ class GetRouteSpecGrpcRouteMatchMetadata {
   /// [invert] Required.
   /// [matches] Required.
   /// [name] Name of the route.
-  GetRouteSpecGrpcRouteMatchMetadata({
+  const GetRouteSpecGrpcRouteMatchMetadata({
     required this.invert,
     required this.matches,
     required this.name,

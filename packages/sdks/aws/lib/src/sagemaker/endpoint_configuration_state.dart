@@ -46,7 +46,7 @@ class EndpointConfigurationState {
   /// [shadowProductionVariants] Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `production_variants`. If you use this field, you can only specify one variant for `production_variants` and one variant for `shadow_production_variants`. See below (same arguments as `production_variants`).
   /// [tags] Mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  EndpointConfigurationState({
+  const EndpointConfigurationState({
     this.arn,
     this.asyncInferenceConfig,
     this.dataCaptureConfig,

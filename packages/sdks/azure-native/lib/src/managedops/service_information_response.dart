@@ -30,7 +30,7 @@ class ServiceInformationResponse {
   /// [changeTrackingAndInventory] Change Tracking and Inventory service information.
   /// [defenderCspm] Defender for Cloud's Cloud security posture management (CSPM) service information.
   /// [defenderForServers] Defender for Servers service information.
-  ServiceInformationResponse({
+  const ServiceInformationResponse({
     required this.azureMonitorInsights,
     required this.azurePolicyAndMachineConfiguration,
     required this.azureUpdateManager,

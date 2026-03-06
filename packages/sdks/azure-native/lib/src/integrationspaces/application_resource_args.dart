@@ -30,7 +30,7 @@ class ApplicationResourceArgs {
   /// [resourceName] The name of the application resource.
   /// [resourceType] The type of the application resource.
   /// [spaceName] The name of the space
-  ApplicationResourceArgs({
+  const ApplicationResourceArgs({
     required this.applicationName,
     required this.resourceGroupName,
     required this.resourceId,

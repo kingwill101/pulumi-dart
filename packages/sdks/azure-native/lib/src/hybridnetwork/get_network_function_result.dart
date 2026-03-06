@@ -38,7 +38,7 @@ class GetNetworkFunctionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetNetworkFunctionResult({
+  const GetNetworkFunctionResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

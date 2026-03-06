@@ -11,7 +11,7 @@ class TableIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  TableIamMemberCondition({
+  const TableIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -13,7 +13,7 @@ class BudgetResourceGroupFilter {
   /// Creates a new [BudgetResourceGroupFilter].
   /// [dimensions] One or more `dimension` blocks as defined below to filter the budget on.
   /// [tags] One or more `tag` blocks as defined below to filter the budget on.
-  BudgetResourceGroupFilter({
+  const BudgetResourceGroupFilter({
     this.dimensions,
     this.tags,
   });

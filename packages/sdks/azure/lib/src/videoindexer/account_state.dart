@@ -29,7 +29,7 @@ class AccountState {
   /// [resourceGroupName] The name of the Resource Group that the Video Indexer Account will be associated with. Changing the name forces a new resource to be created.
   /// [storage] A `storage` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  AccountState({
+  const AccountState({
     this.identity,
     this.location,
     this.name,

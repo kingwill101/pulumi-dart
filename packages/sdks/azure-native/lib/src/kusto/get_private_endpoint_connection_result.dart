@@ -35,7 +35,7 @@ class GetPrivateEndpointConnectionResult {
   /// [provisioningState] Provisioning state of the private endpoint.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateEndpointConnectionResult({
+  const GetPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.groupId,
     required this.id,

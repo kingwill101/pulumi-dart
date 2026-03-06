@@ -13,7 +13,7 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage 
   /// Creates a new [RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage].
   /// [locale] (Output)
   /// [message] (Output)
-  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage({
+  const RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage({
     this.locale,
     this.message,
   });

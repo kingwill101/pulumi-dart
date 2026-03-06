@@ -19,7 +19,7 @@ class BranchStatusResponse {
   /// [branchId] The id of the branch status.
   /// [branchName] The name of the branch status.
   /// [status] The status of the branch.
-  BranchStatusResponse({
+  const BranchStatusResponse({
     required this.actions,
     required this.branchId,
     required this.branchName,

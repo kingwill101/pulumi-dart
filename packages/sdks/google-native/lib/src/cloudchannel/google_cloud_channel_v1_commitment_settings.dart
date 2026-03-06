@@ -10,7 +10,7 @@ class GoogleCloudChannelV1CommitmentSettings {
 
   /// Creates a new [GoogleCloudChannelV1CommitmentSettings].
   /// [renewalSettings] Optional. Renewal settings applicable for a commitment-based Offer.
-  GoogleCloudChannelV1CommitmentSettings({
+  const GoogleCloudChannelV1CommitmentSettings({
     this.renewalSettings,
   });
 

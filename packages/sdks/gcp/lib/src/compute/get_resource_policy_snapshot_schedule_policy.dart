@@ -17,7 +17,7 @@ class GetResourcePolicySnapshotSchedulePolicy {
   /// [retentionPolicies] Retention policy applied to snapshots created by this resource policy.
   /// [schedules] Contains one of an 'hourlySchedule', 'dailySchedule', or 'weeklySchedule'.
   /// [snapshotProperties] Properties with which the snapshots are created, such as labels.
-  GetResourcePolicySnapshotSchedulePolicy({
+  const GetResourcePolicySnapshotSchedulePolicy({
     required this.retentionPolicies,
     required this.schedules,
     required this.snapshotProperties,

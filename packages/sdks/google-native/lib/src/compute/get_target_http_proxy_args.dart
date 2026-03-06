@@ -13,7 +13,7 @@ class GetTargetHttpProxyArgs {
   /// Creates a new [GetTargetHttpProxyArgs].
   /// [project] Optional.
   /// [targetHttpProxy] Required.
-  GetTargetHttpProxyArgs({
+  const GetTargetHttpProxyArgs({
     this.project,
     required this.targetHttpProxy,
   });

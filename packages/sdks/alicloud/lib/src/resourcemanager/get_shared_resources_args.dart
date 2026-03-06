@@ -21,7 +21,7 @@ class GetSharedResourcesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceShareId] The resource share ID of resource manager.
   /// [status] The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
-  GetSharedResourcesArgs({
+  const GetSharedResourcesArgs({
     this.ids,
     this.outputFile,
     this.resourceShareId,

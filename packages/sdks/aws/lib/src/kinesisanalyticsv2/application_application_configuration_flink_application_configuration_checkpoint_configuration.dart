@@ -20,7 +20,7 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpoint
   /// [checkpointingEnabled] Describes whether checkpointing is enabled for a Flink-based Kinesis Data Analytics application.
   /// [configurationType] Describes whether the application uses Kinesis Data Analytics' default checkpointing behavior. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `checkpointing_enabled`, `checkpoint_interval`, or `min_pause_between_checkpoints` attribute values to be effective. If this attribute is set to `DEFAULT`, the application will always use the following values:
   /// [minPauseBetweenCheckpoints] Describes the minimum time in milliseconds after a checkpoint operation completes that a new checkpoint operation can start.
-  ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration({
+  const ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration({
     this.checkpointInterval,
     this.checkpointingEnabled,
     required this.configurationType,

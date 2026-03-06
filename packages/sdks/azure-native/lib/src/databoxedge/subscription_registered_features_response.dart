@@ -9,7 +9,7 @@ class SubscriptionRegisteredFeaturesResponse {
   /// Creates a new [SubscriptionRegisteredFeaturesResponse].
   /// [name] Optional.
   /// [state] Optional.
-  SubscriptionRegisteredFeaturesResponse({
+  const SubscriptionRegisteredFeaturesResponse({
     this.name,
     this.state,
   });

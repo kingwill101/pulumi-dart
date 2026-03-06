@@ -51,7 +51,7 @@ class JobStepState {
   /// [retryIntervalBackoffMultiplier] The multiplier for time between retries. Defaults to `2.0`.
   /// [sqlScript] The T-SQL script to be executed by this Elastic Job Step.
   /// [timeoutSeconds] The execution timeout in seconds for this Elastic Job Step. Defaults to `43200`.
-  JobStepState({
+  const JobStepState({
     this.initialRetryIntervalSeconds,
     this.jobCredentialId,
     this.jobId,

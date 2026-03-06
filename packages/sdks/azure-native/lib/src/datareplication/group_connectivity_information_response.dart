@@ -24,7 +24,7 @@ class GroupConnectivityInformationResponse {
   /// [memberName] Gets or sets member name.
   /// [privateLinkServiceArmRegion] Gets or sets the private link service arm region.
   /// [redirectMapId] Gets or sets the redirect map id.
-  GroupConnectivityInformationResponse({
+  const GroupConnectivityInformationResponse({
     this.customerVisibleFqdns,
     this.groupId,
     this.internalFqdn,

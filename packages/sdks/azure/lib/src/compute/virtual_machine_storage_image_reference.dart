@@ -22,7 +22,7 @@ class VirtualMachineStorageImageReference {
   /// [publisher] Specifies the publisher of the image used to create the virtual machine. Changing this forces a new resource to be created.
   /// [sku] Specifies the SKU of the image used to create the virtual machine. Changing this forces a new resource to be created.
   /// [version] Specifies the version of the image used to create the virtual machine. Changing this forces a new resource to be created.
-  VirtualMachineStorageImageReference({
+  const VirtualMachineStorageImageReference({
     this.id,
     this.offer,
     this.publisher,

@@ -13,7 +13,7 @@ class DataCollectionEndpointResponseFailoverConfiguration {
   /// Creates a new [DataCollectionEndpointResponseFailoverConfiguration].
   /// [activeLocation] Active location where data flow will occur.
   /// [locations] Locations that are configured for failover.
-  DataCollectionEndpointResponseFailoverConfiguration({
+  const DataCollectionEndpointResponseFailoverConfiguration({
     this.activeLocation,
     this.locations,
   });

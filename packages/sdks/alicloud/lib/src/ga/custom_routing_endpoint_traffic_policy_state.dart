@@ -31,7 +31,7 @@ class CustomRoutingEndpointTrafficPolicyState {
   /// [listenerId] The ID of the listener.
   /// [portRanges] Port rangeSee the following. See `port_ranges` below.
   /// [status] The status of the Custom Routing Endpoint Traffic Policy.
-  CustomRoutingEndpointTrafficPolicyState({
+  const CustomRoutingEndpointTrafficPolicyState({
     this.acceleratorId,
     this.address,
     this.customRoutingEndpointTrafficPolicyId,

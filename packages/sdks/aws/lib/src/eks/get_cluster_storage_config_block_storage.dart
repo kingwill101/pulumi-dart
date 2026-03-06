@@ -8,7 +8,7 @@ class GetClusterStorageConfigBlockStorage {
 
   /// Creates a new [GetClusterStorageConfigBlockStorage].
   /// [enabled] Whether zonal shift is enabled.
-  GetClusterStorageConfigBlockStorage({
+  const GetClusterStorageConfigBlockStorage({
     required this.enabled,
   });
 

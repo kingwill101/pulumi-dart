@@ -17,7 +17,7 @@ class Credential {
   /// [basicAuth] Basic Auth Credential, only used by TypeProvider.
   /// [serviceAccount] Service Account Credential, only used by Deployment.
   /// [useProjectDefault] Specify to use the project default credential, only supported by Deployment.
-  Credential({
+  const Credential({
     this.basicAuth,
     this.serviceAccount,
     this.useProjectDefault,

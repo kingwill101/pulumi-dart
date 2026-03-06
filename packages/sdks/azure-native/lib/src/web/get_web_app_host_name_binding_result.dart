@@ -47,7 +47,7 @@ class GetWebAppHostNameBindingResult {
   /// [thumbprint] SSL certificate thumbprint
   /// [type] Resource type.
   /// [virtualIP] Virtual IP address assigned to the hostname if IP based SSL is enabled.
-  GetWebAppHostNameBindingResult({
+  const GetWebAppHostNameBindingResult({
     required this.azureApiVersion,
     this.azureResourceName,
     this.azureResourceType,

@@ -40,7 +40,7 @@ class EnvironmentState {
   /// [postStartupScript] Path to a Bash script that automatically runs after a notebook instance fully boots up.
   /// [project] The ID of the project in which the resource belongs.
   /// [vmImage] Use a Compute Engine VM image to start the notebook instance.
-  EnvironmentState({
+  const EnvironmentState({
     this.containerImage,
     this.createTime,
     this.description,

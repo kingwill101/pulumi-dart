@@ -27,7 +27,7 @@ class GetAccountResult {
   /// [sku] The SKU of the resource
   /// [tags] The tags of the resource
   /// [type] The fully qualified type of the resource
-  GetAccountResult({
+  const GetAccountResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

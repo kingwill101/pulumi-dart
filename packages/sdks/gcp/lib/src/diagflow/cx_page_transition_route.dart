@@ -30,7 +30,7 @@ class CxPageTransitionRoute {
   /// [targetFlow] The target flow to transition to.
   /// [targetPage] The target page to transition to.
   /// [triggerFulfillment] The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
-  CxPageTransitionRoute({
+  const CxPageTransitionRoute({
     this.condition,
     this.intent,
     this.name,

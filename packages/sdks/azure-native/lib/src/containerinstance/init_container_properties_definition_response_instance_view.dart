@@ -20,7 +20,7 @@ class InitContainerPropertiesDefinitionResponseInstanceView {
   /// [events] The events of the init container.
   /// [previousState] The previous state of the init container.
   /// [restartCount] The number of times that the init container has been restarted.
-  InitContainerPropertiesDefinitionResponseInstanceView({
+  const InitContainerPropertiesDefinitionResponseInstanceView({
     required this.currentState,
     required this.events,
     required this.previousState,

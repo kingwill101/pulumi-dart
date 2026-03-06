@@ -9,7 +9,7 @@ class DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceS
   /// Creates a new [DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec].
   /// [cpu] Optional.
   /// [memory] Optional.
-  DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec({
+  const DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec({
     this.cpu,
     this.memory,
   });

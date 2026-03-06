@@ -14,7 +14,7 @@ class GetImagesImageDiskDeviceMapping {
   /// [device] The device information of the created disk: such as /dev/xvdb.
   /// [size] The size of the created disk.
   /// [snapshotId] The ID of the snapshot used to create the custom image.
-  GetImagesImageDiskDeviceMapping({
+  const GetImagesImageDiskDeviceMapping({
     required this.device,
     required this.size,
     required this.snapshotId,

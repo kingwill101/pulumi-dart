@@ -9,7 +9,7 @@ class ManagementResourcePreferences {
 
   /// Creates a new [ManagementResourcePreferences].
   /// [preferredManagementResourceId] Customer preferred Management resource ARM ID.
-  ManagementResourcePreferences({
+  const ManagementResourcePreferences({
     this.preferredManagementResourceId,
   });
 

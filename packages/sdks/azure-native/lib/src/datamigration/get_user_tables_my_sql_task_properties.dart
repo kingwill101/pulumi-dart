@@ -17,7 +17,7 @@ class GetUserTablesMySqlTaskProperties {
   /// [clientData] Key value pairs of client data to attach meta data information to task
   /// [input] Task input
   /// [taskType] Task type.
-  GetUserTablesMySqlTaskProperties({
+  const GetUserTablesMySqlTaskProperties({
     this.clientData,
     this.input,
     required this.taskType,

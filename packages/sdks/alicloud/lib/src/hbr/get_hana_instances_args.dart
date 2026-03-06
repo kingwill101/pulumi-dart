@@ -32,7 +32,7 @@ class GetHanaInstancesArgs {
   /// [pageSize] Optional.
   /// [status] The status of the SAP HANA instance. Valid values:
   /// [vaultId] The id of the vault.
-  GetHanaInstancesArgs({
+  const GetHanaInstancesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

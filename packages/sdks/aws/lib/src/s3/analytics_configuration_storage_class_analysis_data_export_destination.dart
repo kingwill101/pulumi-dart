@@ -9,7 +9,7 @@ class AnalyticsConfigurationStorageClassAnalysisDataExportDestination {
 
   /// Creates a new [AnalyticsConfigurationStorageClassAnalysisDataExportDestination].
   /// [s3BucketDestination] Analytics data export currently only supports an S3 bucket destination (documented below).
-  AnalyticsConfigurationStorageClassAnalysisDataExportDestination({
+  const AnalyticsConfigurationStorageClassAnalysisDataExportDestination({
     required this.s3BucketDestination,
   });
 

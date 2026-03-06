@@ -12,7 +12,7 @@ class GetImageRecipeComponent {
   /// Creates a new [GetImageRecipeComponent].
   /// [componentArn] ARN of the Image Builder Component.
   /// [parameters] Set of parameters that are used to configure the component.
-  GetImageRecipeComponent({
+  const GetImageRecipeComponent({
     required this.componentArn,
     required this.parameters,
   });

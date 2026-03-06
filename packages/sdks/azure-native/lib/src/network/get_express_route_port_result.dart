@@ -69,7 +69,7 @@ class GetExpressRoutePortResult {
   /// [resourceGuid] The resource GUID property of the express route port resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetExpressRoutePortResult({
+  const GetExpressRoutePortResult({
     required this.allocationDate,
     required this.azureApiVersion,
     this.bandwidthInGbps,

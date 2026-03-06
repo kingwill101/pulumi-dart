@@ -8,7 +8,7 @@ class CustomRolloutSpecificationCanary {
 
   /// Creates a new [CustomRolloutSpecificationCanary].
   /// [regions] Optional.
-  CustomRolloutSpecificationCanary({
+  const CustomRolloutSpecificationCanary({
     this.regions,
   });
 

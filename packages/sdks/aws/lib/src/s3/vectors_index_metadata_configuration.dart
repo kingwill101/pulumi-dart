@@ -8,7 +8,7 @@ class VectorsIndexMetadataConfiguration {
 
   /// Creates a new [VectorsIndexMetadataConfiguration].
   /// [nonFilterableMetadataKeys] List of non-filterable metadata keys.
-  VectorsIndexMetadataConfiguration({
+  const VectorsIndexMetadataConfiguration({
     required this.nonFilterableMetadataKeys,
   });
 

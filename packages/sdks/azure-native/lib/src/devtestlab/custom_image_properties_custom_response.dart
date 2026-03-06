@@ -15,7 +15,7 @@ class CustomImagePropertiesCustomResponse {
   /// [imageName] The image name.
   /// [osType] The OS type of the custom image (i.e. Windows, Linux)
   /// [sysPrep] Indicates whether sysprep has been run on the VHD.
-  CustomImagePropertiesCustomResponse({
+  const CustomImagePropertiesCustomResponse({
     this.imageName,
     required this.osType,
     this.sysPrep,

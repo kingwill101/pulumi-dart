@@ -48,7 +48,7 @@ class InMageRcmNicDetailsResponse {
   /// [testIPAddress] The test IP address.
   /// [testIPAddressType] The test IP address type.
   /// [testSubnetName] Test subnet name.
-  InMageRcmNicDetailsResponse({
+  const InMageRcmNicDetailsResponse({
     this.isPrimaryNic,
     this.isSelectedForFailover,
     required this.nicId,

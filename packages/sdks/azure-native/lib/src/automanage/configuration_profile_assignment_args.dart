@@ -22,7 +22,7 @@ class ConfigurationProfileAssignmentArgs {
   /// [properties] Properties of the configuration profile assignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmName] The name of the virtual machine.
-  ConfigurationProfileAssignmentArgs({
+  const ConfigurationProfileAssignmentArgs({
     this.configurationProfileAssignmentName,
     this.properties,
     required this.resourceGroupName,

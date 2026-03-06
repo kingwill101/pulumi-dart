@@ -34,7 +34,7 @@ class PolicyStatement {
   /// [principal] Indicate the account, user, role, or federated user to which you would like to allow or deny access. If you are creating a policy to attach to a user or role, you cannot include this element. The principal is implied as that user or role.
   /// [resource] A list of resources to which the actions apply.
   /// [sid] An optional statement ID to differentiate between your statements.
-  PolicyStatement({
+  const PolicyStatement({
     this.action,
     this.condition,
     required this.effect,

@@ -40,7 +40,7 @@ class ProviderArgs {
   /// [sgxEnclavePolicyBase64] Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
   /// [tags] A mapping of tags which should be assigned to the Attestation Provider.
   /// [tpmPolicyBase64] Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
-  ProviderArgs({
+  const ProviderArgs({
     this.location,
     this.name,
     this.openEnclavePolicyBase64,

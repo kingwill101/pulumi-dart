@@ -21,7 +21,7 @@ class GetBlobContainerImmutabilityPolicyArgs {
   /// [containerName] The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   /// [immutabilityPolicyName] The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetBlobContainerImmutabilityPolicyArgs({
+  const GetBlobContainerImmutabilityPolicyArgs({
     required this.accountName,
     required this.containerName,
     required this.immutabilityPolicyName,

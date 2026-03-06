@@ -19,7 +19,7 @@ class ResourcePolicyAssignmentIdentity {
   /// [principalId] The Principal ID of the Policy Assignment for this Resource.
   /// [tenantId] The Tenant ID of the Policy Assignment for this Resource.
   /// [type] The Type of Managed Identity which should be added to this Policy Definition. Possible values are `SystemAssigned` and `UserAssigned`.
-  ResourcePolicyAssignmentIdentity({
+  const ResourcePolicyAssignmentIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

@@ -28,7 +28,7 @@ class CloudServiceArgs {
   /// [resourceGroupName] Name of the resource group.
   /// [tags] Resource tags.
   /// [zones] List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
-  CloudServiceArgs({
+  const CloudServiceArgs({
     this.cloudServiceName,
     this.location,
     this.properties,

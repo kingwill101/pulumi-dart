@@ -9,7 +9,7 @@ class WebhookBuildTypeEnumValueResponse {
 
   /// Creates a new [WebhookBuildTypeEnumValueResponse].
   /// [value] Property value
-  WebhookBuildTypeEnumValueResponse({
+  const WebhookBuildTypeEnumValueResponse({
     this.value,
   });
 

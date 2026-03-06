@@ -19,7 +19,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig {
   /// [asn] BGP autonomous system number (ASN) for the network that contains the
   /// [controlPlaneNodes] The IP address of the control plane node that connects to the external
   /// [ipAddress] The IP address of the external peer device.
-  BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig({
+  const BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig({
     required this.asn,
     this.controlPlaneNodes,
     required this.ipAddress,

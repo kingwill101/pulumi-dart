@@ -28,7 +28,7 @@ class CredentialServicePrincipalState {
   /// [servicePrincipalId] The Client ID of the Service Principal.
   /// [servicePrincipalKey] A `service_principal_key` block as defined below.
   /// [tenantId] The Tenant ID of the Service Principal.
-  CredentialServicePrincipalState({
+  const CredentialServicePrincipalState({
     this.annotations,
     this.dataFactoryId,
     this.description,

@@ -17,7 +17,7 @@ class NodeGroupNodeRepairConfigNodeRepairConfigOverride {
   /// [nodeMonitoringCondition] Unhealthy condition reported by the node monitoring agent that this override applies to.
   /// [nodeUnhealthyReason] Reason reported by the node monitoring agent that this override applies to.
   /// [repairAction] Repair action to take for nodes when all of the specified conditions are met. Valid values are defined by the EKS API.
-  NodeGroupNodeRepairConfigNodeRepairConfigOverride({
+  const NodeGroupNodeRepairConfigNodeRepairConfigOverride({
     required this.minRepairWaitTimeMins,
     required this.nodeMonitoringCondition,
     required this.nodeUnhealthyReason,

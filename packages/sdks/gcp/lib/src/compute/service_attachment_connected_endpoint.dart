@@ -30,7 +30,7 @@ class ServiceAttachmentConnectedEndpoint {
   /// [propagatedConnectionCount] (Output)
   /// [pscConnectionId] (Output)
   /// [status] (Output)
-  ServiceAttachmentConnectedEndpoint({
+  const ServiceAttachmentConnectedEndpoint({
     this.consumerNetwork,
     this.endpoint,
     this.natIps,

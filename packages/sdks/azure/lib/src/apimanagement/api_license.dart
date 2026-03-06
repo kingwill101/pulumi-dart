@@ -11,7 +11,7 @@ class ApiLicense {
   /// Creates a new [ApiLicense].
   /// [name] The name of the license .
   /// [url] Absolute URL of the license.
-  ApiLicense({
+  const ApiLicense({
     this.name,
     this.url,
   });

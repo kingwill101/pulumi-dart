@@ -12,7 +12,7 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse {
   /// Creates a new [GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse].
   /// [cryptoKeyName] The resource name of the KMS CryptoKey to use for unwrapping.
   /// [wrappedKey] The wrapped data crypto key.
-  GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse({
+  const GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse({
     required this.cryptoKeyName,
     required this.wrappedKey,
   });

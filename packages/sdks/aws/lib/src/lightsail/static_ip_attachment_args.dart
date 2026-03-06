@@ -20,7 +20,7 @@ class StaticIpAttachmentArgs {
   /// [instanceName] Name of the Lightsail instance to attach the IP to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [staticIpName] Name of the allocated static IP.
-  StaticIpAttachmentArgs({
+  const StaticIpAttachmentArgs({
     required this.instanceName,
     this.region,
     required this.staticIpName,

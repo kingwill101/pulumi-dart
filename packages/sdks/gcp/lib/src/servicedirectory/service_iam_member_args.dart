@@ -34,7 +34,7 @@ class ServiceIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
-  ServiceIamMemberArgs({
+  const ServiceIamMemberArgs({
     this.condition,
     required this.member,
     this.name,

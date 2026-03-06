@@ -12,7 +12,7 @@ class GetReservedIpArgs {
 
   /// Creates a new [GetReservedIpArgs].
   /// [ipAddress] The allocated IP address of the specific reserved IP to retrieve.
-  GetReservedIpArgs({
+  const GetReservedIpArgs({
     required this.ipAddress,
   });
 

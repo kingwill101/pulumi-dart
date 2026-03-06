@@ -9,7 +9,7 @@ class ReplicationSyncResponse {
 
   /// Creates a new [ReplicationSyncResponse].
   /// [lastSyncTime] The most updated snapshot created time in the source that finished replication.
-  ReplicationSyncResponse({
+  const ReplicationSyncResponse({
     required this.lastSyncTime,
   });
 

@@ -29,7 +29,7 @@ class GetStudioApplicationsApplication {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the Application. Valid values: `success`, `release`.
   /// [topoUrl] The topo url of the Application.
-  GetStudioApplicationsApplication({
+  const GetStudioApplicationsApplication({
     required this.applicationId,
     required this.applicationName,
     required this.createTime,

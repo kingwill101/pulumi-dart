@@ -10,7 +10,7 @@ class GetRouterParam {
 
   /// Creates a new [GetRouterParam].
   /// [resourceManagerTags] Resource manager tags to be bound to the router. Tag keys and values have the
-  GetRouterParam({
+  const GetRouterParam({
     required this.resourceManagerTags,
   });
 

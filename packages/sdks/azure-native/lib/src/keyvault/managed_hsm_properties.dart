@@ -36,7 +36,7 @@ class ManagedHsmProperties {
   /// [regions] List of all regions associated with the managed hsm pool.
   /// [softDeleteRetentionInDays] Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
-  ManagedHsmProperties({
+  const ManagedHsmProperties({
     this.createMode,
     this.enablePurgeProtection,
     this.enableSoftDelete,

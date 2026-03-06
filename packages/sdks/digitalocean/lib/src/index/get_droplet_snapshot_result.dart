@@ -31,7 +31,7 @@ class GetDropletSnapshotResult {
   /// [region] Optional.
   /// [regions] A list of DigitalOcean region "slugs" indicating where the Droplet snapshot is available.
   /// [size] The billable size of the Droplet snapshot in gigabytes.
-  GetDropletSnapshotResult({
+  const GetDropletSnapshotResult({
     required this.createdAt,
     required this.dropletId,
     required this.id,

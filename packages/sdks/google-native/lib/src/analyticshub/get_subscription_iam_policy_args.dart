@@ -15,7 +15,7 @@ class GetSubscriptionIamPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [subscriptionId] Required.
-  GetSubscriptionIamPolicyArgs({
+  const GetSubscriptionIamPolicyArgs({
     required this.location,
     this.project,
     required this.subscriptionId,

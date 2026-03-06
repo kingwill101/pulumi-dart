@@ -9,7 +9,7 @@ class DataSourceLevelMetricsBehaviorEnumValue {
 
   /// Creates a new [DataSourceLevelMetricsBehaviorEnumValue].
   /// [value] Property value
-  DataSourceLevelMetricsBehaviorEnumValue({
+  const DataSourceLevelMetricsBehaviorEnumValue({
     this.value,
   });
 

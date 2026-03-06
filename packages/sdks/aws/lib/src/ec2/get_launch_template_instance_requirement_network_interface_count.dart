@@ -9,7 +9,7 @@ class GetLaunchTemplateInstanceRequirementNetworkInterfaceCount {
   /// Creates a new [GetLaunchTemplateInstanceRequirementNetworkInterfaceCount].
   /// [max] Required.
   /// [min] Required.
-  GetLaunchTemplateInstanceRequirementNetworkInterfaceCount({
+  const GetLaunchTemplateInstanceRequirementNetworkInterfaceCount({
     required this.max,
     required this.min,
   });

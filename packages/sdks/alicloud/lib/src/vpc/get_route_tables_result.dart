@@ -53,7 +53,7 @@ class GetRouteTablesResult {
   /// [tags] A mapping of tags to assign to the resource.
   /// [totalCount] Required.
   /// [vpcId] The VPC ID.
-  GetRouteTablesResult({
+  const GetRouteTablesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

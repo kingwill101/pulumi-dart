@@ -15,7 +15,7 @@ class SequencerActionResponse {
   /// [actionId] The unique identifier of the sequencer action.
   /// [result] The result of the sequencer action.
   /// [state] The state of the sequencer action.
-  SequencerActionResponse({
+  const SequencerActionResponse({
     this.actionId,
     this.result,
     this.state,

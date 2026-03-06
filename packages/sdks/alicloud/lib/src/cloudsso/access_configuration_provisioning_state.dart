@@ -21,7 +21,7 @@ class AccessConfigurationProvisioningState {
   /// [status] The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
   /// [targetId] The ID of the target to create the resource range.
   /// [targetType] The type of the resource range target to be accessed. Valid values: `RD-Account`.
-  AccessConfigurationProvisioningState({
+  const AccessConfigurationProvisioningState({
     this.accessConfigurationId,
     this.directoryId,
     this.status,

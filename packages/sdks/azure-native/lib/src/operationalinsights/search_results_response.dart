@@ -27,7 +27,7 @@ class SearchResultsResponse {
   /// [query] Search job query.
   /// [sourceTable] The table used in the search job.
   /// [startSearchTime] The timestamp to start the search from (UTC)
-  SearchResultsResponse({
+  const SearchResultsResponse({
     required this.azureAsyncOperationId,
     this.description,
     this.endSearchTime,

@@ -14,7 +14,7 @@ class ApplicationVersionLifecycleConfigResponse {
   /// Creates a new [ApplicationVersionLifecycleConfigResponse].
   /// [maxAgeRule] Specify a max age rule to restrict the length of time that application versions are retained for an application.
   /// [maxCountRule] Specify a max count rule to restrict the number of application versions that are retained for an application.
-  ApplicationVersionLifecycleConfigResponse({
+  const ApplicationVersionLifecycleConfigResponse({
     this.maxAgeRule,
     this.maxCountRule,
   });

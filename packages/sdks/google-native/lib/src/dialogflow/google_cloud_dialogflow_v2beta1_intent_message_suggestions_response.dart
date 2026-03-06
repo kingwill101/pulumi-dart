@@ -10,7 +10,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse].
   /// [suggestions] The list of suggested replies.
-  GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse({
     required this.suggestions,
   });
 

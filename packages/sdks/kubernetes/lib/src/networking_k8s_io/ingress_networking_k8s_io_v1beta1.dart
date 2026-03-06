@@ -38,7 +38,7 @@ class IngressNetworkingK8sIoV1beta1 {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   /// [status] Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  IngressNetworkingK8sIoV1beta1({
+  const IngressNetworkingK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

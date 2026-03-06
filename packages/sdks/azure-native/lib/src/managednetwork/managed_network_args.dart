@@ -25,7 +25,7 @@ class ManagedNetworkArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [scope] The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
   /// [tags] Resource tags
-  ManagedNetworkArgs({
+  const ManagedNetworkArgs({
     this.location,
     this.managedNetworkName,
     required this.resourceGroupName,

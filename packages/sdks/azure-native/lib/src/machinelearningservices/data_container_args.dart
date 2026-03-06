@@ -22,7 +22,7 @@ class DataContainerArgs {
   /// [name] Container name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  DataContainerArgs({
+  const DataContainerArgs({
     required this.dataContainerProperties,
     this.name,
     required this.resourceGroupName,

@@ -26,7 +26,7 @@ class GetRegionBackendServiceHaPolicy {
   /// Creates a new [GetRegionBackendServiceHaPolicy].
   /// [fastIpMove] Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
   /// [leaders] Selects one of the network endpoints attached to the backend NEGs of this service as the
-  GetRegionBackendServiceHaPolicy({
+  const GetRegionBackendServiceHaPolicy({
     required this.fastIpMove,
     required this.leaders,
   });

@@ -15,7 +15,7 @@ class GetCompanyJobsV4Args {
   /// [companyId] Required.
   /// [project] Optional.
   /// [tenantId] Required.
-  GetCompanyJobsV4Args({
+  const GetCompanyJobsV4Args({
     required this.companyId,
     this.project,
     required this.tenantId,

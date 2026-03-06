@@ -12,7 +12,7 @@ class GetAuthenticationDomainArgs {
 
   /// Creates a new [GetAuthenticationDomainArgs].
   /// [name] The name of the authentication domain to be searched for. An error is thrown, if no authentication domain is found with the specified name.
-  GetAuthenticationDomainArgs({
+  const GetAuthenticationDomainArgs({
     required this.name,
   });
 

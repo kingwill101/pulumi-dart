@@ -12,7 +12,7 @@ class DomainDevicesParallelSourcePipe {
   /// Creates a new [DomainDevicesParallelSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainDevicesParallelSourcePipe({
+  const DomainDevicesParallelSourcePipe({
     required this.path,
     this.secLabels,
   });

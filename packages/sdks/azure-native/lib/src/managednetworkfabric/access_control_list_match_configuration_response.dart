@@ -23,7 +23,7 @@ class AccessControlListMatchConfigurationResponse {
   /// [matchConditions] List of the match conditions.
   /// [matchConfigurationName] The name of the match configuration.
   /// [sequenceNumber] Sequence Number of the match configuration.
-  AccessControlListMatchConfigurationResponse({
+  const AccessControlListMatchConfigurationResponse({
     this.actions,
     this.ipAddressType,
     this.matchConditions,

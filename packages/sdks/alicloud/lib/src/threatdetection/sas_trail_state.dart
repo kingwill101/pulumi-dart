@@ -13,7 +13,7 @@ class SasTrailState {
   /// Creates a new [SasTrailState].
   /// [createTime] The service trace creation timestamp, in milliseconds.
   /// [serviceTrail] Service trace configuration information.
-  SasTrailState({
+  const SasTrailState({
     this.createTime,
     this.serviceTrail,
   });

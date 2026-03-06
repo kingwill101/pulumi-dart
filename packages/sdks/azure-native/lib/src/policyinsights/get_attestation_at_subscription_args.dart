@@ -12,7 +12,7 @@ class GetAttestationAtSubscriptionArgs {
 
   /// Creates a new [GetAttestationAtSubscriptionArgs].
   /// [attestationName] The name of the attestation.
-  GetAttestationAtSubscriptionArgs({
+  const GetAttestationAtSubscriptionArgs({
     required this.attestationName,
   });
 

@@ -18,7 +18,7 @@ class GetNbTypesResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [types] Required.
-  GetNbTypesResult({
+  const GetNbTypesResult({
     this.filters,
     required this.id,
     this.order,

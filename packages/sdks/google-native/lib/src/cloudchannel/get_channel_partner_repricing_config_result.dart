@@ -15,7 +15,7 @@ class GetChannelPartnerRepricingConfigResult {
   /// [name] Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
   /// [repricingConfig] The configuration for bill modifications made by a reseller before sending it to ChannelPartner.
   /// [updateTime] Timestamp of an update to the repricing rule. If `update_time` is after RepricingConfig.effective_invoice_month then it indicates this was set mid-month.
-  GetChannelPartnerRepricingConfigResult({
+  const GetChannelPartnerRepricingConfigResult({
     required this.name,
     required this.repricingConfig,
     required this.updateTime,

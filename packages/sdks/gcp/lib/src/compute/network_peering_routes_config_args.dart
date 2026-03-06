@@ -35,7 +35,7 @@ class NetworkPeeringRoutesConfigArgs {
   /// [network] The name of the primary network for the peering.
   /// [peering] Name of the peering.
   /// [project] The ID of the project in which the resource belongs.
-  NetworkPeeringRoutesConfigArgs({
+  const NetworkPeeringRoutesConfigArgs({
     required this.exportCustomRoutes,
     this.exportSubnetRoutesWithPublicIp,
     required this.importCustomRoutes,

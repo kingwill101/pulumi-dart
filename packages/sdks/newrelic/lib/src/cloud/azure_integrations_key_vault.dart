@@ -11,7 +11,7 @@ class AzureIntegrationsKeyVault {
   /// Creates a new [AzureIntegrationsKeyVault].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsKeyVault({
+  const AzureIntegrationsKeyVault({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

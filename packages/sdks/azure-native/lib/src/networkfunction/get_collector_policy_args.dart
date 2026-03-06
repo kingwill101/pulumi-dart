@@ -18,7 +18,7 @@ class GetCollectorPolicyArgs {
   /// [azureTrafficCollectorName] Azure Traffic Collector name
   /// [collectorPolicyName] Collector Policy Name
   /// [resourceGroupName] The name of the resource group.
-  GetCollectorPolicyArgs({
+  const GetCollectorPolicyArgs({
     required this.azureTrafficCollectorName,
     required this.collectorPolicyName,
     required this.resourceGroupName,

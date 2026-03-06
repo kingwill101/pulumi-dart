@@ -10,7 +10,7 @@ class BucketReplicationPrefixSet {
 
   /// Creates a new [BucketReplicationPrefixSet].
   /// [prefixes] The list of object key name prefix identifying one or more objects to which the rule applies.
-  BucketReplicationPrefixSet({
+  const BucketReplicationPrefixSet({
     required this.prefixes,
   });
 

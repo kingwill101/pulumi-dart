@@ -18,7 +18,7 @@ class DevToolPortalSsoPropertiesResponse {
   /// [clientSecret] The secret known only to the application and the authorization server
   /// [metadataUrl] The URI of a JSON file with generic OIDC provider configuration.
   /// [scopes] It defines the specific actions applications can be allowed to do on a user's behalf
-  DevToolPortalSsoPropertiesResponse({
+  const DevToolPortalSsoPropertiesResponse({
     this.clientId,
     this.clientSecret,
     this.metadataUrl,

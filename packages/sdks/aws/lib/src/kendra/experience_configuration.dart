@@ -13,7 +13,7 @@ class ExperienceConfiguration {
   /// Creates a new [ExperienceConfiguration].
   /// [contentSourceConfiguration] The identifiers of your data sources and FAQs. Or, you can specify that you want to use documents indexed via the `BatchPutDocument API`. The provider will only perform drift detection of its value when present in a configuration. Detailed below.
   /// [userIdentityConfiguration] The AWS SSO field name that contains the identifiers of your users, such as their emails. Detailed below.
-  ExperienceConfiguration({
+  const ExperienceConfiguration({
     this.contentSourceConfiguration,
     this.userIdentityConfiguration,
   });

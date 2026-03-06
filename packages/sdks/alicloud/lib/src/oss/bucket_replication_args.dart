@@ -45,7 +45,7 @@ class BucketReplicationArgs {
   /// [rtc] Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
   /// [sourceSelectionCriteria] Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
   /// [syncRole] Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
-  BucketReplicationArgs({
+  const BucketReplicationArgs({
     this.action,
     required this.bucket,
     required this.destination,

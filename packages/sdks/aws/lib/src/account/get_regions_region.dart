@@ -11,7 +11,7 @@ class GetRegionsRegion {
   /// Creates a new [GetRegionsRegion].
   /// [regionName] The Region code of a given Region
   /// [regionOptStatus] The opt-in status of the region. Possible values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
-  GetRegionsRegion({
+  const GetRegionsRegion({
     required this.regionName,
     required this.regionOptStatus,
   });

@@ -30,7 +30,7 @@ class ApplicationTypeVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [version] The application type version.
-  ApplicationTypeVersionArgs({
+  const ApplicationTypeVersionArgs({
     required this.appPackageUrl,
     required this.applicationTypeName,
     required this.clusterName,

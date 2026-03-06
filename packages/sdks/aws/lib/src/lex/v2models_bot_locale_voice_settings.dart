@@ -11,7 +11,7 @@ class V2modelsBotLocaleVoiceSettings {
   /// Creates a new [V2modelsBotLocaleVoiceSettings].
   /// [engine] Indicates the type of Amazon Polly voice that Amazon Lex should use for voice interaction with the user. Valid values are `standard` and `neural`. If not specified, the default is `standard`.
   /// [voiceId] Identifier of the Amazon Polly voice to use.
-  V2modelsBotLocaleVoiceSettings({
+  const V2modelsBotLocaleVoiceSettings({
     this.engine,
     required this.voiceId,
   });

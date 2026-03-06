@@ -21,7 +21,7 @@ class LiftrBaseSingleSignOnPropertiesV2 {
   /// [state] State of the Single Sign On for the resource
   /// [type] Type of Single Sign-On mechanism being used
   /// [url] URL for SSO to be used by the partner to redirect the user to their system
-  LiftrBaseSingleSignOnPropertiesV2({
+  const LiftrBaseSingleSignOnPropertiesV2({
     this.aadDomains,
     this.enterpriseAppId,
     this.state,

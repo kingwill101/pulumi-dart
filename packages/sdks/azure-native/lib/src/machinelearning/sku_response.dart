@@ -12,7 +12,7 @@ class SkuResponse {
   /// Creates a new [SkuResponse].
   /// [name] Name of the sku
   /// [tier] Tier of the sku like Basic or Enterprise
-  SkuResponse({
+  const SkuResponse({
     this.name,
     this.tier,
   });

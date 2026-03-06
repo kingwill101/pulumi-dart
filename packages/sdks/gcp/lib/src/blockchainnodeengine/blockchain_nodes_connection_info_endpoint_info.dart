@@ -13,7 +13,7 @@ class BlockchainNodesConnectionInfoEndpointInfo {
   /// Creates a new [BlockchainNodesConnectionInfoEndpointInfo].
   /// [jsonRpcApiEndpoint] (Output)
   /// [websocketsApiEndpoint] (Output)
-  BlockchainNodesConnectionInfoEndpointInfo({
+  const BlockchainNodesConnectionInfoEndpointInfo({
     this.jsonRpcApiEndpoint,
     this.websocketsApiEndpoint,
   });

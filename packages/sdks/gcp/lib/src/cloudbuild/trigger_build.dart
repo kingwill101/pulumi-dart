@@ -65,7 +65,7 @@ class TriggerBuild {
   /// [substitutions] Substitutions data for Build resource.
   /// [tags] Tags for annotation of a Build. These are not docker tags.
   /// [timeout] Amount of time that this build should be allowed to run, to second granularity.
-  TriggerBuild({
+  const TriggerBuild({
     this.artifacts,
     this.availableSecrets,
     this.images,

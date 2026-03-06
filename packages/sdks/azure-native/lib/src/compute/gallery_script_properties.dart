@@ -25,7 +25,7 @@ class GalleryScriptProperties {
   /// [privacyStatementUri] The privacy statement uri.
   /// [releaseNoteUri] The release note uri.
   /// [supportedOSType] This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
-  GalleryScriptProperties({
+  const GalleryScriptProperties({
     this.description,
     this.endOfLifeDate,
     this.eula,

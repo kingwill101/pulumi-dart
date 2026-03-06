@@ -15,7 +15,7 @@ class GetFeatureFleetDefaultMemberConfigConfigmanagement {
   /// [configSyncs] ConfigSync configuration for the cluster
   /// [management] Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades. Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
   /// [version] Version of Config Sync installed
-  GetFeatureFleetDefaultMemberConfigConfigmanagement({
+  const GetFeatureFleetDefaultMemberConfigConfigmanagement({
     required this.configSyncs,
     required this.management,
     required this.version,

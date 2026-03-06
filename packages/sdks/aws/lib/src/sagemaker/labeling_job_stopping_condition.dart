@@ -11,7 +11,7 @@ class LabelingJobStoppingCondition {
   /// Creates a new [LabelingJobStoppingCondition].
   /// [maxHumanLabeledObjectCount] Maximum number of objects that can be labeled by human workers.
   /// [maxPercentageOfInputDatasetLabeled] Maximum number of input data objects that should be labeled.
-  LabelingJobStoppingCondition({
+  const LabelingJobStoppingCondition({
     required this.maxHumanLabeledObjectCount,
     required this.maxPercentageOfInputDatasetLabeled,
   });

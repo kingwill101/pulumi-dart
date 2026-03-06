@@ -14,7 +14,7 @@ class KeyVaultSecretPropertiesResponse {
   /// Creates a new [KeyVaultSecretPropertiesResponse].
   /// [vault] KeyVault properties.
   /// [vaultSecret] KeyVault secret details.
-  KeyVaultSecretPropertiesResponse({
+  const KeyVaultSecretPropertiesResponse({
     required this.vault,
     required this.vaultSecret,
   });

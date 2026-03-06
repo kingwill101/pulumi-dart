@@ -15,7 +15,7 @@ class ServiceCosmosDbConfigurationInfo {
   /// [crossTenantCmkApplicationId] The multi-tenant application id used to enable CMK access for services in a data sovereign region.
   /// [keyVaultKeyUri] The URI of the customer-managed key for the backing database.
   /// [offerThroughput] The provisioned throughput for the backing database.
-  ServiceCosmosDbConfigurationInfo({
+  const ServiceCosmosDbConfigurationInfo({
     this.crossTenantCmkApplicationId,
     this.keyVaultKeyUri,
     this.offerThroughput,

@@ -15,7 +15,7 @@ class CrossVersionObjectReferencePatch {
   /// [apiVersion] apiVersion is the API version of the referent
   /// [kind] kind is the kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [name] name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-  CrossVersionObjectReferencePatch({
+  const CrossVersionObjectReferencePatch({
     this.apiVersion,
     this.kind,
     this.name,

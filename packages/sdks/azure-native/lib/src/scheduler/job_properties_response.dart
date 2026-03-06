@@ -23,7 +23,7 @@ class JobPropertiesResponse {
   /// [startTime] Gets or sets the job start time.
   /// [state] Gets or set the job state.
   /// [status] Gets the job status.
-  JobPropertiesResponse({
+  const JobPropertiesResponse({
     this.action,
     this.recurrence,
     this.startTime,

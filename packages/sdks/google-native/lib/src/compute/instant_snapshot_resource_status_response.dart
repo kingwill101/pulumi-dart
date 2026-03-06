@@ -8,7 +8,7 @@ class InstantSnapshotResourceStatusResponse {
 
   /// Creates a new [InstantSnapshotResourceStatusResponse].
   /// [storageSizeBytes] The storage size of this instant snapshot.
-  InstantSnapshotResourceStatusResponse({
+  const InstantSnapshotResourceStatusResponse({
     required this.storageSizeBytes,
   });
 

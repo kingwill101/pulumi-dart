@@ -26,7 +26,7 @@ class ChangeProgressDetailsResponse {
   /// [lastUpdatedTime] &lt;p&gt;The last time that the configuration change was updated.&lt;/p&gt;
   /// [message] &lt;p&gt;A message corresponding to the status of the configuration change.&lt;/p&gt;
   /// [startTime] &lt;p&gt;The time that the configuration change was initiated, in Universal Coordinated Time (UTC).&lt;/p&gt;
-  ChangeProgressDetailsResponse({
+  const ChangeProgressDetailsResponse({
     this.changeId,
     this.configChangeStatus,
     this.initiatedBy,

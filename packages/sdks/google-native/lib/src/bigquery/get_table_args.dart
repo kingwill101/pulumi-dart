@@ -19,7 +19,7 @@ class GetTableArgs {
   /// [selectedFields] Optional.
   /// [tableId] Required.
   /// [view] Optional.
-  GetTableArgs({
+  const GetTableArgs({
     required this.datasetId,
     this.project,
     this.selectedFields,

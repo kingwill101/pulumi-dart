@@ -43,7 +43,7 @@ class InstanceGroupArgs {
   /// [network] The URL of the network the instance group is in. If
   /// [project] The ID of the project in which the resource belongs. If it
   /// [zone] The zone that this instance group should be created in.
-  InstanceGroupArgs({
+  const InstanceGroupArgs({
     this.description,
     this.instances,
     this.name,

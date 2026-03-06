@@ -28,7 +28,7 @@ class GetChangeSetsResult {
   /// [sets] Required.
   /// [stackId] Required.
   /// [status] Optional.
-  GetChangeSetsResult({
+  const GetChangeSetsResult({
     this.changeSetName,
     this.enableDetails,
     required this.id,

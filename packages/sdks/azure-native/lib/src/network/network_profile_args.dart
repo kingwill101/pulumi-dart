@@ -28,7 +28,7 @@ class NetworkProfileArgs {
   /// [networkProfileName] The name of the network profile.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  NetworkProfileArgs({
+  const NetworkProfileArgs({
     this.containerNetworkInterfaceConfigurations,
     this.id,
     this.location,

@@ -23,7 +23,7 @@ class ActivationState {
   /// [instanceName] The default instance name prefix. The instance name prefix must be 1 to 50 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The instance name prefix can contain only letters, digits, periods (.), underscores (_), hyphens (-), and colons (:).
   /// [ipAddressRange] The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
   /// [timeToLiveInHours] The validity period of the activation code. The activation code cannot be used to register new instances after the validity period expires. Unit: hours. Valid values: `1` to `24`. Default value: `4`.
-  ActivationState({
+  const ActivationState({
     this.description,
     this.instanceCount,
     this.instanceName,

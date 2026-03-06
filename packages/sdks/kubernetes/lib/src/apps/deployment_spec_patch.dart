@@ -33,7 +33,7 @@ class DeploymentSpecPatch {
   /// [selector] Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment. It must match the pod template's labels.
   /// [strategy] The deployment strategy to use to replace existing pods with new ones.
   /// [template] Template describes the pods that will be created. The only allowed template.spec.restartPolicy value is "Always".
-  DeploymentSpecPatch({
+  const DeploymentSpecPatch({
     this.minReadySeconds,
     this.paused,
     this.progressDeadlineSeconds,

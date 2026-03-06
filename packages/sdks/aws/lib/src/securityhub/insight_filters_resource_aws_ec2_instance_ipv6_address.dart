@@ -8,7 +8,7 @@ class InsightFiltersResourceAwsEc2InstanceIpv6Address {
 
   /// Creates a new [InsightFiltersResourceAwsEc2InstanceIpv6Address].
   /// [cidr] A finding's CIDR value.
-  InsightFiltersResourceAwsEc2InstanceIpv6Address({
+  const InsightFiltersResourceAwsEc2InstanceIpv6Address({
     required this.cidr,
   });
 

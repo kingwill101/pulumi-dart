@@ -13,7 +13,7 @@ class SharingProfile {
   /// Creates a new [SharingProfile].
   /// [communityGalleryInfo] Information of community gallery if current gallery is shared to community.
   /// [permissions] This property allows you to specify the permission of sharing gallery. Possible values are: **Private,** **Groups,** **Community.**
-  SharingProfile({
+  const SharingProfile({
     this.communityGalleryInfo,
     this.permissions,
   });

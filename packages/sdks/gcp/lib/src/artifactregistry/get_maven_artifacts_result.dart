@@ -19,7 +19,7 @@ class GetMavenArtifactsResult {
   /// [mavenArtifacts] A list of all retrieved Artifact Registry Maven artifacts. Structure is defined below.
   /// [project] Optional.
   /// [repositoryId] Required.
-  GetMavenArtifactsResult({
+  const GetMavenArtifactsResult({
     required this.id,
     required this.location,
     required this.mavenArtifacts,

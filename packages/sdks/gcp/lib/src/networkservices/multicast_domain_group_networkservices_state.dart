@@ -69,7 +69,7 @@ class MulticastDomainGroupNetworkservicesState {
   /// [states] (Output)
   /// [uniqueId] The Google-generated UUID for the resource. This value is
   /// [updateTime] The timestamp when the multicast domain group was most
-  MulticastDomainGroupNetworkservicesState({
+  const MulticastDomainGroupNetworkservicesState({
     this.createTime,
     this.description,
     this.effectiveLabels,

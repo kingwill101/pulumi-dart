@@ -11,7 +11,7 @@ class RecordsExclusiveResourceRecordSetGeolocation {
   /// [continentCode] Optional.
   /// [countryCode] Optional.
   /// [subdivisionCode] Optional.
-  RecordsExclusiveResourceRecordSetGeolocation({
+  const RecordsExclusiveResourceRecordSetGeolocation({
     this.continentCode,
     this.countryCode,
     this.subdivisionCode,

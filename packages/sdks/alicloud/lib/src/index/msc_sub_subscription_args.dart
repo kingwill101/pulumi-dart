@@ -36,7 +36,7 @@ class MscSubSubscriptionArgs {
   /// [ttsStatus] The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   /// [webhookIds] The ids of subscribed webhooks.
   /// [webhookStatus] The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
-  MscSubSubscriptionArgs({
+  const MscSubSubscriptionArgs({
     this.contactIds,
     this.emailStatus,
     required this.itemName,

@@ -29,7 +29,7 @@ class ApiArgs {
   /// [labels] Resource labels to represent user-provided metadata.
   /// [managedService] Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
   /// [project] The ID of the project in which the resource belongs.
-  ApiArgs({
+  const ApiArgs({
     required this.apiId,
     this.displayName,
     this.labels,

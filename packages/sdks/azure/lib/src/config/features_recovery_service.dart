@@ -11,7 +11,7 @@ class FeaturesRecoveryService {
   /// [purgeProtectedItemsFromVaultOnDestroy] Optional.
   /// [vmBackupStopProtectionAndRetainDataOnDestroy] Optional.
   /// [vmBackupSuspendProtectionAndRetainDataOnDestroy] Optional.
-  FeaturesRecoveryService({
+  const FeaturesRecoveryService({
     this.purgeProtectedItemsFromVaultOnDestroy,
     this.vmBackupStopProtectionAndRetainDataOnDestroy,
     this.vmBackupSuspendProtectionAndRetainDataOnDestroy,

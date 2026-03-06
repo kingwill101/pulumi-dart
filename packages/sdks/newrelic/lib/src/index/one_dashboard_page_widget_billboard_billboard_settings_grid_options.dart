@@ -14,7 +14,7 @@ class OneDashboardPageWidgetBillboardBillboardSettingsGridOptions {
   /// [columns] (Optional) Number of columns to use for the grid layout.
   /// [label] (Optional) Grid configuration for label.
   /// [value] (Required) A possible variable value
-  OneDashboardPageWidgetBillboardBillboardSettingsGridOptions({
+  const OneDashboardPageWidgetBillboardBillboardSettingsGridOptions({
     this.columns,
     this.label,
     this.value,

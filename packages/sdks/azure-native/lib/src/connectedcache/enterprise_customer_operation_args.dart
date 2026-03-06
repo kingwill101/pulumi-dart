@@ -25,7 +25,7 @@ class EnterpriseCustomerOperationArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  EnterpriseCustomerOperationArgs({
+  const EnterpriseCustomerOperationArgs({
     this.customerResourceName,
     this.location,
     this.properties,

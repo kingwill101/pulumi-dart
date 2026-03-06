@@ -10,7 +10,7 @@ class MapperAttributeMappingsResponse {
 
   /// Creates a new [MapperAttributeMappingsResponse].
   /// [attributeMappings] List of attribute mappings.
-  MapperAttributeMappingsResponse({
+  const MapperAttributeMappingsResponse({
     this.attributeMappings,
   });
 

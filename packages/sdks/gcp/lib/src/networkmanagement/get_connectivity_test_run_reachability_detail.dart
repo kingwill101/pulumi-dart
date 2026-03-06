@@ -20,7 +20,7 @@ class GetConnectivityTestRunReachabilityDetail {
   /// [result] (Output)
   /// [traces] (Output)
   /// [verifyTime] (Output)
-  GetConnectivityTestRunReachabilityDetail({
+  const GetConnectivityTestRunReachabilityDetail({
     required this.result,
     required this.traces,
     required this.verifyTime,

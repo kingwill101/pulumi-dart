@@ -21,7 +21,7 @@ class AuthorityArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  AuthorityArgs({
+  const AuthorityArgs({
     this.authorityName,
     this.location,
     required this.resourceGroupName,

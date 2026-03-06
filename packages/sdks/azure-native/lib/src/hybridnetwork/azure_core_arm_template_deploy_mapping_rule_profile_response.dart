@@ -13,7 +13,7 @@ class AzureCoreArmTemplateDeployMappingRuleProfileResponse {
   /// Creates a new [AzureCoreArmTemplateDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.
   /// [templateMappingRuleProfile] The template mapping rule profile.
-  AzureCoreArmTemplateDeployMappingRuleProfileResponse({
+  const AzureCoreArmTemplateDeployMappingRuleProfileResponse({
     this.applicationEnablement,
     this.templateMappingRuleProfile,
   });

@@ -55,7 +55,7 @@ class NspAccessRuleArgs {
   /// [serviceTags] Inbound rules service tag names.
   /// [subscriptions] List of subscription ids
   /// [tags] Resource tags.
-  NspAccessRuleArgs({
+  const NspAccessRuleArgs({
     this.accessRuleName,
     this.addressPrefixes,
     this.direction,

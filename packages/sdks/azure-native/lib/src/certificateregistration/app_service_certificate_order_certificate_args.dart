@@ -33,7 +33,7 @@ class AppServiceCertificateOrderCertificateArgs {
   /// [name] Name of the certificate.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [tags] Resource tags.
-  AppServiceCertificateOrderCertificateArgs({
+  const AppServiceCertificateOrderCertificateArgs({
     required this.certificateOrderName,
     this.keyVaultId,
     this.keyVaultSecretName,

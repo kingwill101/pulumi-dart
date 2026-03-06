@@ -9,7 +9,7 @@ class InsightFiltersNetworkDestinationDomain {
   /// Creates a new [InsightFiltersNetworkDestinationDomain].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersNetworkDestinationDomain({
+  const InsightFiltersNetworkDestinationDomain({
     required this.comparison,
     required this.value,
   });

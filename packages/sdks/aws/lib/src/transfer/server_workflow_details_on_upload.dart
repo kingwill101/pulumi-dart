@@ -11,7 +11,7 @@ class ServerWorkflowDetailsOnUpload {
   /// Creates a new [ServerWorkflowDetailsOnUpload].
   /// [executionRole] Includes the necessary permissions for S3, EFS, and Lambda operations that Transfer can assume, so that all workflow steps can operate on the required resources.
   /// [workflowId] A unique identifier for the workflow.
-  ServerWorkflowDetailsOnUpload({
+  const ServerWorkflowDetailsOnUpload({
     required this.executionRole,
     required this.workflowId,
   });

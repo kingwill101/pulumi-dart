@@ -20,7 +20,7 @@ class GetDataCollectorResult {
   /// [lastModifiedAt] The time at which the Data Collector was last updated in milliseconds since the epoch.
   /// [name] ID of the data collector. Must begin with `dc_`.
   /// [type] Immutable. The type of data this data collector will collect.
-  GetDataCollectorResult({
+  const GetDataCollectorResult({
     required this.createdAt,
     required this.description,
     required this.lastModifiedAt,

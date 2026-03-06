@@ -11,7 +11,7 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
   /// Creates a new [TransferJobTransferSpecAwsS3DataSourceAwsAccessKey].
   /// [accessKeyId] AWS Key ID.
   /// [secretAccessKey] AWS Secret Access Key.
-  TransferJobTransferSpecAwsS3DataSourceAwsAccessKey({
+  const TransferJobTransferSpecAwsS3DataSourceAwsAccessKey({
     required this.accessKeyId,
     required this.secretAccessKey,
   });

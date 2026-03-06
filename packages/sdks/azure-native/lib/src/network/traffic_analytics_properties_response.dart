@@ -10,7 +10,7 @@ class TrafficAnalyticsPropertiesResponse {
 
   /// Creates a new [TrafficAnalyticsPropertiesResponse].
   /// [networkWatcherFlowAnalyticsConfiguration] Parameters that define the configuration of traffic analytics.
-  TrafficAnalyticsPropertiesResponse({
+  const TrafficAnalyticsPropertiesResponse({
     this.networkWatcherFlowAnalyticsConfiguration,
   });
 

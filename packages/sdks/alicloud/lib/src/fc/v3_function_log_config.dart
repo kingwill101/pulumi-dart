@@ -20,7 +20,7 @@ class V3FunctionLogConfig {
   /// [logBeginRule] Log Line First Matching Rules
   /// [logstore] The Logstore name of log service.
   /// [project] The name of the log service Project.
-  V3FunctionLogConfig({
+  const V3FunctionLogConfig({
     this.enableInstanceMetrics,
     this.enableRequestMetrics,
     this.logBeginRule,

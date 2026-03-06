@@ -11,7 +11,7 @@ class InstanceFromMachineImageGuestAccelerator {
   /// Creates a new [InstanceFromMachineImageGuestAccelerator].
   /// [count] The number of the guest accelerator cards exposed to this instance.
   /// [type] The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
-  InstanceFromMachineImageGuestAccelerator({
+  const InstanceFromMachineImageGuestAccelerator({
     required this.count,
     required this.type,
   });

@@ -14,7 +14,7 @@ class GetLoadBalancerStickySession {
   /// [cookieName] the name of the cookie sent to the client
   /// [cookieTtlSeconds] the number of seconds until the cookie set by the Load Balancer expires
   /// [type] how and if requests from a client will be persistently served by the same backend droplet
-  GetLoadBalancerStickySession({
+  const GetLoadBalancerStickySession({
     required this.cookieName,
     required this.cookieTtlSeconds,
     required this.type,

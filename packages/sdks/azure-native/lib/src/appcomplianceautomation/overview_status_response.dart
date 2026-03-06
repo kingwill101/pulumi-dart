@@ -21,7 +21,7 @@ class OverviewStatusResponse {
   /// [notApplicableCount] The count of all not applicable control.
   /// [passedCount] The count of all passed control.
   /// [pendingCount] The count of all pending for approval control.
-  OverviewStatusResponse({
+  const OverviewStatusResponse({
     required this.failedCount,
     required this.manualCount,
     required this.notApplicableCount,

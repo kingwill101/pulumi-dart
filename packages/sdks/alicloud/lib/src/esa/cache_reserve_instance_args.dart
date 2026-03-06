@@ -29,7 +29,7 @@ class CacheReserveInstanceArgs {
   /// [paymentType] Specifies whether to enable auto payment.
   /// [period] Purchase period (unit: month).
   /// [quotaGb] Cache retention specification (unit: GB).
-  CacheReserveInstanceArgs({
+  const CacheReserveInstanceArgs({
     this.autoPay,
     this.autoRenew,
     this.crRegion,

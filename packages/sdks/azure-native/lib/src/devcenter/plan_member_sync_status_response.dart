@@ -16,7 +16,7 @@ class PlanMemberSyncStatusResponse {
   /// [lastSyncError] Error response describing why the sync failed.
   /// [lastSyncTime] When the plan member was last synced.
   /// [syncState] The synchronization state of the plan member.
-  PlanMemberSyncStatusResponse({
+  const PlanMemberSyncStatusResponse({
     this.lastSyncError,
     required this.lastSyncTime,
     required this.syncState,

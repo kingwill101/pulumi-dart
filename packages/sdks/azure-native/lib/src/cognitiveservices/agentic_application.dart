@@ -37,7 +37,7 @@ class AgenticApplication {
   /// [displayName] The display name of the application.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [trafficRoutingPolicy] Gets or sets the traffic routing policy for the application's deployments.
-  AgenticApplication({
+  const AgenticApplication({
     this.agentIdentityBlueprint,
     this.agents,
     this.authorizationPolicy,

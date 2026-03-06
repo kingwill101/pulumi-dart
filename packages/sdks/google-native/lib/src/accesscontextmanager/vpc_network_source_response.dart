@@ -10,7 +10,7 @@ class VpcNetworkSourceResponse {
 
   /// Creates a new [VpcNetworkSourceResponse].
   /// [vpcSubnetwork] Sub-segment ranges of a VPC network.
-  VpcNetworkSourceResponse({
+  const VpcNetworkSourceResponse({
     required this.vpcSubnetwork,
   });
 

@@ -8,7 +8,7 @@ class GetClusterIpAllocationPolicyNetworkTierConfig {
 
   /// Creates a new [GetClusterIpAllocationPolicyNetworkTierConfig].
   /// [networkTier] Network tier configuration.
-  GetClusterIpAllocationPolicyNetworkTierConfig({
+  const GetClusterIpAllocationPolicyNetworkTierConfig({
     required this.networkTier,
   });
 

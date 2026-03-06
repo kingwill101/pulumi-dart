@@ -9,7 +9,7 @@ class DomainDevicesDiskBackingStoreSourceCookies {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceCookies].
   /// [cookies] Configures cookies for the backing store source, allowing additional parameters for storage.
-  DomainDevicesDiskBackingStoreSourceCookies({
+  const DomainDevicesDiskBackingStoreSourceCookies({
     this.cookies,
   });
 

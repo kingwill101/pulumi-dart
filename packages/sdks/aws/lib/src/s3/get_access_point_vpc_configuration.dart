@@ -8,7 +8,7 @@ class GetAccessPointVpcConfiguration {
 
   /// Creates a new [GetAccessPointVpcConfiguration].
   /// [vpcId] Access point will only allow connections from this VPC.
-  GetAccessPointVpcConfiguration({
+  const GetAccessPointVpcConfiguration({
     required this.vpcId,
   });
 

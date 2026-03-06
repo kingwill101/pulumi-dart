@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorSourceReadahead {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceReadahead].
   /// [size] Configures the size of data that should be prefetched when reading from the network block device.
-  DomainDevicesDiskMirrorSourceReadahead({
+  const DomainDevicesDiskMirrorSourceReadahead({
     required this.size,
   });
 

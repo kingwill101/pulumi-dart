@@ -9,7 +9,7 @@ class DeploymentSettingsExecutorContext {
 
   /// Creates a new [DeploymentSettingsExecutorContext].
   /// [executorImage] Allows overriding the default executor image with a custom image. E.g. 'pulumi/pulumi-nodejs:latest'
-  DeploymentSettingsExecutorContext({
+  const DeploymentSettingsExecutorContext({
     required this.executorImage,
   });
 

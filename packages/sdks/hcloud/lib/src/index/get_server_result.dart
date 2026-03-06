@@ -75,7 +75,7 @@ class GetServerResult {
   /// [status] (string) The status of the server.
   /// [withSelector] Optional.
   /// [withStatuses] Optional.
-  GetServerResult({
+  const GetServerResult({
     required this.backupWindow,
     required this.backups,
     required this.datacenter,

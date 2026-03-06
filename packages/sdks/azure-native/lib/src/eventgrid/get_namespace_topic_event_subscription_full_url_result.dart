@@ -8,7 +8,7 @@ class GetNamespaceTopicEventSubscriptionFullUrlResult {
 
   /// Creates a new [GetNamespaceTopicEventSubscriptionFullUrlResult].
   /// [endpointUrl] The URL that represents the endpoint of the destination of an event subscription.
-  GetNamespaceTopicEventSubscriptionFullUrlResult({
+  const GetNamespaceTopicEventSubscriptionFullUrlResult({
     this.endpointUrl,
   });
 

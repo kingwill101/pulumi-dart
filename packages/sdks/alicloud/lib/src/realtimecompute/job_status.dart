@@ -22,7 +22,7 @@ class JobStatus {
   /// [healthScore] Job Run Health Score
   /// [riskLevel] Risk level, which indicates the risk level of the operation status of the job.
   /// [running] job running status, which has value when the job is Running.
-  JobStatus({
+  const JobStatus({
     this.currentJobStatus,
     this.failure,
     this.healthScore,

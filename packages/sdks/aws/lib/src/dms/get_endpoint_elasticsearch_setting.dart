@@ -13,7 +13,7 @@ class GetEndpointElasticsearchSetting {
   /// [errorRetryDuration] Required.
   /// [fullLoadErrorPercentage] Required.
   /// [serviceAccessRoleArn] Required.
-  GetEndpointElasticsearchSetting({
+  const GetEndpointElasticsearchSetting({
     required this.endpointUri,
     required this.errorRetryDuration,
     required this.fullLoadErrorPercentage,

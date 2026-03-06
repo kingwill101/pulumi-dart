@@ -15,7 +15,7 @@ class GetRegionSslPolicyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [sslPolicy] Required.
-  GetRegionSslPolicyArgs({
+  const GetRegionSslPolicyArgs({
     this.project,
     required this.region,
     required this.sslPolicy,

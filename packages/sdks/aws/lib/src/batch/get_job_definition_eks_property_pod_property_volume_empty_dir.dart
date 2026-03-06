@@ -11,7 +11,7 @@ class GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir {
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir].
   /// [medium] The medium to store the volume.
   /// [sizeLimit] The maximum size of the volume. By default, there's no maximum size defined.
-  GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir({
+  const GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir({
     required this.medium,
     required this.sizeLimit,
   });

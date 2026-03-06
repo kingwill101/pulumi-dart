@@ -12,7 +12,7 @@ class ConfigDiagnosticsValidatorResultIssueResponse {
   /// Creates a new [ConfigDiagnosticsValidatorResultIssueResponse].
   /// [descriptionParams] List of domain resource property name or values used to compose a rich description.
   /// [id] Validation issue identifier.
-  ConfigDiagnosticsValidatorResultIssueResponse({
+  const ConfigDiagnosticsValidatorResultIssueResponse({
     this.descriptionParams,
     this.id,
   });

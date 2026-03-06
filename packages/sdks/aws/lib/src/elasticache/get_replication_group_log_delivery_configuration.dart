@@ -13,7 +13,7 @@ class GetReplicationGroupLogDeliveryConfiguration {
   /// [destinationType] Required.
   /// [logFormat] Required.
   /// [logType] Required.
-  GetReplicationGroupLogDeliveryConfiguration({
+  const GetReplicationGroupLogDeliveryConfiguration({
     required this.destination,
     required this.destinationType,
     required this.logFormat,

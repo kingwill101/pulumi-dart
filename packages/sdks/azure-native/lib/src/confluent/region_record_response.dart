@@ -20,7 +20,7 @@ class RegionRecordResponse {
   /// [kind] Kind of the cluster
   /// [metadata] Metadata of the record
   /// [spec] Specification of the region
-  RegionRecordResponse({
+  const RegionRecordResponse({
     this.id,
     this.kind,
     this.metadata,

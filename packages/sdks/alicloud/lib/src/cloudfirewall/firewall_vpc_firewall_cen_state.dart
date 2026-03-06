@@ -34,7 +34,7 @@ class FirewallVpcFirewallCenState {
   /// [vpcFirewallId] VPC firewall ID
   /// [vpcFirewallName] The name of the VPC firewall instance.
   /// [vpcRegion] The ID of the region to which the VPC is created.
-  FirewallVpcFirewallCenState({
+  const FirewallVpcFirewallCenState({
     this.cenId,
     this.connectType,
     this.lang,

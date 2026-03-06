@@ -12,7 +12,7 @@ class EncryptionInfoResponseAlloydbV1beta {
   /// Creates a new [EncryptionInfoResponseAlloydbV1beta].
   /// [encryptionType] Type of encryption.
   /// [kmsKeyVersions] Cloud KMS key versions that are being used to protect the database or the backup.
-  EncryptionInfoResponseAlloydbV1beta({
+  const EncryptionInfoResponseAlloydbV1beta({
     required this.encryptionType,
     required this.kmsKeyVersions,
   });

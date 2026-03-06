@@ -16,7 +16,7 @@ class NodeInfoResponse {
   /// [ipConfiguration] IP Configuration of the Kubernetes node.
   /// [name] Node name.
   /// [type] Node type - Master/Worker
-  NodeInfoResponse({
+  const NodeInfoResponse({
     this.ipConfiguration,
     required this.name,
     required this.type,

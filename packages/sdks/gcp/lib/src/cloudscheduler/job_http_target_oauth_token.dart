@@ -13,7 +13,7 @@ class JobHttpTargetOauthToken {
   /// Creates a new [JobHttpTargetOauthToken].
   /// [scope] OAuth scope to be used for generating OAuth access token. If not specified,
   /// [serviceAccountEmail] Service account email to be used for generating OAuth token.
-  JobHttpTargetOauthToken({
+  const JobHttpTargetOauthToken({
     this.scope,
     required this.serviceAccountEmail,
   });

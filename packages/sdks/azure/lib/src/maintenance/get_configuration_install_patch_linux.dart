@@ -14,7 +14,7 @@ class GetConfigurationInstallPatchLinux {
   /// [classificationsToIncludes] List of Classification category of patches to be patched.
   /// [packageNamesMaskToExcludes] List of package names to be excluded from patching.
   /// [packageNamesMaskToIncludes] List of package names to be included for patching.
-  GetConfigurationInstallPatchLinux({
+  const GetConfigurationInstallPatchLinux({
     required this.classificationsToIncludes,
     required this.packageNamesMaskToExcludes,
     required this.packageNamesMaskToIncludes,

@@ -11,7 +11,7 @@ class BiEngineReasonResponse {
   /// Creates a new [BiEngineReasonResponse].
   /// [code] High-level BI Engine reason for partial or disabled acceleration.
   /// [message] Free form human-readable reason for partial or disabled acceleration.
-  BiEngineReasonResponse({
+  const BiEngineReasonResponse({
     required this.code,
     required this.message,
   });

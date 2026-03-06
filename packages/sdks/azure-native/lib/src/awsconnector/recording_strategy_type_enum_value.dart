@@ -9,7 +9,7 @@ class RecordingStrategyTypeEnumValue {
 
   /// Creates a new [RecordingStrategyTypeEnumValue].
   /// [value] Property value
-  RecordingStrategyTypeEnumValue({
+  const RecordingStrategyTypeEnumValue({
     this.value,
   });
 

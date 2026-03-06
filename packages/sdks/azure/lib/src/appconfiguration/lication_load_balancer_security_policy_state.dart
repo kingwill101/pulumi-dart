@@ -21,7 +21,7 @@ class LicationLoadBalancerSecurityPolicyState {
   /// [name] The name which should be used for this Application Load Balancer Security Policy. Changing this forces a new Application Load Balancer Security Policy to be created.
   /// [tags] A mapping of tags which should be assigned to the Application Load Balancer Security Policy.
   /// [webApplicationFirewallPolicyId] The ID of the Web Application Firewall Policy. Changing this forces a new Application Load Balancer Security Policy to be created.
-  LicationLoadBalancerSecurityPolicyState({
+  const LicationLoadBalancerSecurityPolicyState({
     this.applicationLoadBalancerId,
     this.location,
     this.name,

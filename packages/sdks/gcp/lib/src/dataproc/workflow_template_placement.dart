@@ -13,7 +13,7 @@ class WorkflowTemplatePlacement {
   /// Creates a new [WorkflowTemplatePlacement].
   /// [clusterSelector] A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
   /// [managedCluster] A cluster that is managed by the workflow.
-  WorkflowTemplatePlacement({
+  const WorkflowTemplatePlacement({
     this.clusterSelector,
     this.managedCluster,
   });

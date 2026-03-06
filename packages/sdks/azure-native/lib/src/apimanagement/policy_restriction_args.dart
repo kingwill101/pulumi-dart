@@ -24,7 +24,7 @@ class PolicyRestrictionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scope] Path to the policy document.
   /// [serviceName] The name of the API Management service.
-  PolicyRestrictionArgs({
+  const PolicyRestrictionArgs({
     this.policyRestrictionId,
     this.requireBase,
     required this.resourceGroupName,

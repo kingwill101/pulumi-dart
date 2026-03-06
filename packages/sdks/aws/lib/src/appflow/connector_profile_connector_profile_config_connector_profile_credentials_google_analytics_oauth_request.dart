@@ -11,7 +11,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAna
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest].
   /// [authCode] The code provided by the connector when it has been authenticated via the connected app.
   /// [redirectUri] The URL to which the authentication server redirects the browser after authorization has been granted.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest({
     this.authCode,
     this.redirectUri,
   });

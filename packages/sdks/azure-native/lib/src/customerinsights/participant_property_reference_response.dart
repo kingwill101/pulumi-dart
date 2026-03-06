@@ -12,7 +12,7 @@ class ParticipantPropertyReferenceResponse {
   /// Creates a new [ParticipantPropertyReferenceResponse].
   /// [sourcePropertyName] The source property that maps to the target property.
   /// [targetPropertyName] The target property that maps to the source property.
-  ParticipantPropertyReferenceResponse({
+  const ParticipantPropertyReferenceResponse({
     required this.sourcePropertyName,
     required this.targetPropertyName,
   });

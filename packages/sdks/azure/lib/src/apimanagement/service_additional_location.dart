@@ -35,7 +35,7 @@ class ServiceAdditionalLocation {
   /// [publicIpAddresses] Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
   /// [virtualNetworkConfiguration] A `virtual_network_configuration` block as defined below. Required when `virtual_network_type` is `External` or `Internal`.
   /// [zones] A list of availability zones.
-  ServiceAdditionalLocation({
+  const ServiceAdditionalLocation({
     this.capacity,
     this.gatewayDisabled,
     this.gatewayRegionalUrl,

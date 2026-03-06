@@ -37,7 +37,7 @@ class GetKeyResult {
   /// [testingOptions] Optional. Options for user acceptance testing.
   /// [wafSettings] Optional. Settings for WAF
   /// [webSettings] Settings for keys that can be used by websites.
-  GetKeyResult({
+  const GetKeyResult({
     required this.androidSettings,
     required this.createTime,
     required this.displayName,

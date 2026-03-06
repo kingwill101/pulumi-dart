@@ -30,7 +30,7 @@ class AliasArgs {
   /// [name] Name for the alias. Pattern: `(?!^[0-9]+$)([a-zA-Z0-9-_]+)`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingConfig] Lambda alias' route configuration settings. See below.
-  AliasArgs({
+  const AliasArgs({
     this.description,
     required this.functionName,
     required this.functionVersion,

@@ -28,7 +28,7 @@ class WorkflowTemplateJobPigJob {
   /// [queryFileUri] The HCFS URI of the script that contains the Pig queries.
   /// [queryList] A list of queries.
   /// [scriptVariables] Mapping of query variable names to values (equivalent to the Pig command: `name=`).
-  WorkflowTemplateJobPigJob({
+  const WorkflowTemplateJobPigJob({
     this.continueOnFailure,
     this.jarFileUris,
     this.loggingConfig,

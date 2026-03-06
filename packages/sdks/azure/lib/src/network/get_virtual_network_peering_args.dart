@@ -15,7 +15,7 @@ class GetVirtualNetworkPeeringArgs {
   /// Creates a new [GetVirtualNetworkPeeringArgs].
   /// [name] The name of this virtual network peering.
   /// [virtualNetworkId] The resource ID of the virtual network.
-  GetVirtualNetworkPeeringArgs({
+  const GetVirtualNetworkPeeringArgs({
     required this.name,
     required this.virtualNetworkId,
   });

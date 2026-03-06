@@ -13,7 +13,7 @@ class GoogleCloudDatacatalogV1VertexModelSourceInfo {
   /// Creates a new [GoogleCloudDatacatalogV1VertexModelSourceInfo].
   /// [copy] If this Model is copy of another Model. If true then source_type pertains to the original.
   /// [sourceType] Type of the model source.
-  GoogleCloudDatacatalogV1VertexModelSourceInfo({
+  const GoogleCloudDatacatalogV1VertexModelSourceInfo({
     this.copy,
     this.sourceType,
   });

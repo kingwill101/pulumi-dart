@@ -18,7 +18,7 @@ class SSLConfigurationResponse {
   /// [sslHostNameInCertificate] Specify the hostname as mentioned in the SSL certificate. If this argument is not provided, it is automatically determined by searching in the SSL certificate.
   /// [sslKeyStore] Specify the name of the keystore file that contains the client's identity (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
   /// [sslTrustStore] Specify the name of the trust store file that contains the server’s public certificates (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
-  SSLConfigurationResponse({
+  const SSLConfigurationResponse({
     this.sslCryptoProvider,
     this.sslHostNameInCertificate,
     this.sslKeyStore,

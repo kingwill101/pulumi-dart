@@ -43,7 +43,7 @@ class DiscountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The resource model definition representing SKU
   /// [tags] Resource tags.
-  DiscountArgs({
+  const DiscountArgs({
     this.discountName,
     this.identity,
     this.kind,

@@ -20,7 +20,7 @@ class WebsiteConfigurationResponse {
   /// [indexDocument] The name of the index document for the website.
   /// [redirectAllRequestsTo] The redirect behavior for every request to this bucket's website endpoint.  If you specify this property, you can't specify any other property. Specifies the redirect behavior of all requests to a website endpoint of an Amazon S3 bucket.
   /// [routingRules] Rules that define when a redirect is applied and the redirect behavior.
-  WebsiteConfigurationResponse({
+  const WebsiteConfigurationResponse({
     this.errorDocument,
     this.indexDocument,
     this.redirectAllRequestsTo,

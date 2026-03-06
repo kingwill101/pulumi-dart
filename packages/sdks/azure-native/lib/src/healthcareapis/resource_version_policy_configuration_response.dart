@@ -12,7 +12,7 @@ class ResourceVersionPolicyConfigurationResponse {
   /// Creates a new [ResourceVersionPolicyConfigurationResponse].
   /// [default_] The default value for tracking history across all resources.
   /// [resourceTypeOverrides] A list of FHIR Resources and their version policy overrides.
-  ResourceVersionPolicyConfigurationResponse({
+  const ResourceVersionPolicyConfigurationResponse({
     this.default_,
     this.resourceTypeOverrides,
   });

@@ -25,7 +25,7 @@ class FirewallRuleArgs {
   /// [fleetspaceName] Name of the fleetspace.
   /// [properties] A Firewall rule properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     this.firewallRuleName,
     required this.fleetName,
     required this.fleetspaceName,

@@ -12,7 +12,7 @@ class DomainOsNvRamSourceNetworkAuth {
   /// Creates a new [DomainOsNvRamSourceNetworkAuth].
   /// [secret] Specifies the secret used for authenticating the iSCSI connection.
   /// [username] Sets the username for iSCSI authentication.
-  DomainOsNvRamSourceNetworkAuth({
+  const DomainOsNvRamSourceNetworkAuth({
     this.secret,
     this.username,
   });

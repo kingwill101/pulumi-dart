@@ -9,7 +9,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition {
 
   /// Creates a new [ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition].
   /// [failoverConditionSettings] Failover condition type-specific settings. See Failover Condition Settings for more details.
-  ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition({
+  const ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition({
     this.failoverConditionSettings,
   });
 

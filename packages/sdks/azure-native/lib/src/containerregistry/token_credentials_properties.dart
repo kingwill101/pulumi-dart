@@ -12,7 +12,7 @@ class TokenCredentialsProperties {
   /// Creates a new [TokenCredentialsProperties].
   /// [certificates] Optional.
   /// [passwords] Optional.
-  TokenCredentialsProperties({
+  const TokenCredentialsProperties({
     this.certificates,
     this.passwords,
   });

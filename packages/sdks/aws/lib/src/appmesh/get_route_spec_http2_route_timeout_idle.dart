@@ -9,7 +9,7 @@ class GetRouteSpecHttp2RouteTimeoutIdle {
   /// Creates a new [GetRouteSpecHttp2RouteTimeoutIdle].
   /// [unit] Required.
   /// [value] Required.
-  GetRouteSpecHttp2RouteTimeoutIdle({
+  const GetRouteSpecHttp2RouteTimeoutIdle({
     required this.unit,
     required this.value,
   });

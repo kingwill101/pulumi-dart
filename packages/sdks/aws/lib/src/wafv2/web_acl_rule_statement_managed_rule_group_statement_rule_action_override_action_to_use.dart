@@ -21,7 +21,7 @@ class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUse 
   /// [captcha] Instructs AWS WAF to run a Captcha check against the web request. See `captcha` below for details.
   /// [challenge] Optional.
   /// [count] Optional.
-  WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUse({
+  const WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUse({
     this.allow,
     this.block,
     this.captcha,

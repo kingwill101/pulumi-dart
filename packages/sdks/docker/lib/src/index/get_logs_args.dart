@@ -34,7 +34,7 @@ class GetLogsArgs {
   /// [tail] Optional.
   /// [timestamps] Optional.
   /// [until] Optional.
-  GetLogsArgs({
+  const GetLogsArgs({
     this.details,
     this.discardHeaders,
     this.follow,

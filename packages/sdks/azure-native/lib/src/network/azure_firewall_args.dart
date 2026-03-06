@@ -71,7 +71,7 @@ class AzureFirewallArgs {
   /// [threatIntelMode] The operation mode for Threat Intelligence.
   /// [virtualHub] The virtualHub to which the firewall belongs.
   /// [zones] A list of availability zones denoting where the resource needs to come from.
-  AzureFirewallArgs({
+  const AzureFirewallArgs({
     this.additionalProperties,
     this.applicationRuleCollections,
     this.autoscaleConfiguration,

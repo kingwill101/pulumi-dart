@@ -12,7 +12,7 @@ class ClusterNodeConfigSoleTenantConfig {
   /// Creates a new [ClusterNodeConfigSoleTenantConfig].
   /// [minNodeCpus] Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feeature is disabled. The value should be greater than or equal to half of the machine type's CPU count.
   /// [nodeAffinities] The node affinity settings for the sole tenant node pool. Structure is documented below.
-  ClusterNodeConfigSoleTenantConfig({
+  const ClusterNodeConfigSoleTenantConfig({
     this.minNodeCpus,
     required this.nodeAffinities,
   });

@@ -9,7 +9,7 @@ class Disallowed {
 
   /// Creates a new [Disallowed].
   /// [diskTypes] A list of disk types.
-  Disallowed({
+  const Disallowed({
     this.diskTypes,
   });
 

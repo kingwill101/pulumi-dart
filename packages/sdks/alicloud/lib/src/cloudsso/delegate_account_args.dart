@@ -12,7 +12,7 @@ class DelegateAccountArgs {
 
   /// Creates a new [DelegateAccountArgs].
   /// [accountId] Delegate administrator account Id
-  DelegateAccountArgs({
+  const DelegateAccountArgs({
     required this.accountId,
   });
 

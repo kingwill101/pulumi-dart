@@ -27,7 +27,7 @@ class GetManagedKubernetesClustersResult {
   /// [nameRegex] Optional.
   /// [names] A list of matched Kubernetes clusters' names.
   /// [outputFile] Optional.
-  GetManagedKubernetesClustersResult({
+  const GetManagedKubernetesClustersResult({
     required this.clusters,
     this.enableDetails,
     required this.id,

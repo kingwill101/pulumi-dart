@@ -39,7 +39,7 @@ class WindowsConfiguration {
   /// [productId] Sets product id of the vm.
   /// [timeZone] Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
   /// [workGroupName] Sets work group name that vm should join.
-  WindowsConfiguration({
+  const WindowsConfiguration({
     this.autoLogon,
     this.autoLogonCount,
     this.domainName,

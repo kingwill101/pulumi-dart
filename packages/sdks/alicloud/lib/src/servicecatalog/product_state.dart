@@ -21,7 +21,7 @@ class ProductState {
   /// [productName] The name of the product
   /// [productType] The type of the product
   /// [providerName] The provider name of the product
-  ProductState({
+  const ProductState({
     this.createTime,
     this.description,
     this.productName,

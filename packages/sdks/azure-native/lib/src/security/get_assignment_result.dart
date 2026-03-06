@@ -63,7 +63,7 @@ class GetAssignmentResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] A list of key value pairs that describe the resource.
   /// [type] Resource type
-  GetAssignmentResult({
+  const GetAssignmentResult({
     this.additionalData,
     this.assignedComponent,
     this.assignedStandard,

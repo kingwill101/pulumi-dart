@@ -9,7 +9,7 @@ class DeploymentExternalInput {
 
   /// Creates a new [DeploymentExternalInput].
   /// [value] External input value.
-  DeploymentExternalInput({
+  const DeploymentExternalInput({
     required this.value,
   });
 

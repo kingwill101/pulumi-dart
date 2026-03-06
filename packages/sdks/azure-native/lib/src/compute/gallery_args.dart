@@ -36,7 +36,7 @@ class GalleryArgs {
   /// [sharingProfile] Profile for gallery sharing to subscription or tenant
   /// [softDeletePolicy] Contains information about the soft deletion policy of the gallery.
   /// [tags] Resource tags.
-  GalleryArgs({
+  const GalleryArgs({
     this.description,
     this.galleryName,
     this.identity,

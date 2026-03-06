@@ -18,7 +18,7 @@ class GetEntityArgs {
   /// [entityName] Name of the entity. Must be unique within a health model.
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEntityArgs({
+  const GetEntityArgs({
     required this.entityName,
     required this.healthModelName,
     required this.resourceGroupName,

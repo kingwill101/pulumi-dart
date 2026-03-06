@@ -23,7 +23,7 @@ class HybridComputeSettingsProperties {
   /// [region] The location where the metadata of machines will be stored
   /// [resourceGroupName] The name of the resource group where Arc (Hybrid Compute) connectors are connected.
   /// [servicePrincipal] An object to access resources that are secured by an Azure AD tenant.
-  HybridComputeSettingsProperties({
+  const HybridComputeSettingsProperties({
     required this.autoProvision,
     this.proxyServer,
     this.region,

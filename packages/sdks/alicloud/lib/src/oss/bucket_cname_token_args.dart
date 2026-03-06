@@ -15,7 +15,7 @@ class BucketCnameTokenArgs {
   /// Creates a new [BucketCnameTokenArgs].
   /// [bucket] The name of the bucket
   /// [domain] The custom domain
-  BucketCnameTokenArgs({
+  const BucketCnameTokenArgs({
     required this.bucket,
     required this.domain,
   });

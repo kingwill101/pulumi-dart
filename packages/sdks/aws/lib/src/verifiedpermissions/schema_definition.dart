@@ -8,7 +8,7 @@ class SchemaDefinition {
 
   /// Creates a new [SchemaDefinition].
   /// [value] A JSON string representation of the schema.
-  SchemaDefinition({
+  const SchemaDefinition({
     required this.value,
   });
 

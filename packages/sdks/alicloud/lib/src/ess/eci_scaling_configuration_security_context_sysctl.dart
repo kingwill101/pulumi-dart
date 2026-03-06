@@ -11,7 +11,7 @@ class EciScalingConfigurationSecurityContextSysctl {
   /// Creates a new [EciScalingConfigurationSecurityContextSysctl].
   /// [name] The system name of the security context in which the elastic container instance is run.
   /// [value] The system value of the security context in which the elastic container instance is run.
-  EciScalingConfigurationSecurityContextSysctl({
+  const EciScalingConfigurationSecurityContextSysctl({
     this.name,
     this.value,
   });

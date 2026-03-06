@@ -11,7 +11,7 @@ class GetClusterDatabaseEncryption {
   /// Creates a new [GetClusterDatabaseEncryption].
   /// [keyName] The key to use to encrypt/decrypt secrets.
   /// [state] ENCRYPTED or DECRYPTED.
-  GetClusterDatabaseEncryption({
+  const GetClusterDatabaseEncryption({
     required this.keyName,
     required this.state,
   });

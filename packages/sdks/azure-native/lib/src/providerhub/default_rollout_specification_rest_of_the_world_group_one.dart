@@ -11,7 +11,7 @@ class DefaultRolloutSpecificationRestOfTheWorldGroupOne {
   /// Creates a new [DefaultRolloutSpecificationRestOfTheWorldGroupOne].
   /// [regions] Optional.
   /// [waitDuration] The wait duration.
-  DefaultRolloutSpecificationRestOfTheWorldGroupOne({
+  const DefaultRolloutSpecificationRestOfTheWorldGroupOne({
     this.regions,
     this.waitDuration,
   });

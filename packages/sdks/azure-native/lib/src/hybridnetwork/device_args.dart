@@ -24,7 +24,7 @@ class DeviceArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  DeviceArgs({
+  const DeviceArgs({
     this.deviceName,
     required this.deviceType,
     this.location,

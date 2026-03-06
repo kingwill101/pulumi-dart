@@ -46,7 +46,7 @@ class GetPoolV2Member {
   /// [subnetId] Required.
   /// [tags] A set of tags applied to the loadbalancer's pool. The
   /// [weight] Required.
-  GetPoolV2Member({
+  const GetPoolV2Member({
     required this.address,
     required this.adminStateUp,
     required this.backup,

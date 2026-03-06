@@ -23,7 +23,7 @@ class ConnectionArgs {
   /// [connectionName] The name of the connection.
   /// [description] The description of the connection.
   /// [networkParameters] The parameters that are configured for the network. See `network_parameters` below.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.authParameters,
     required this.connectionName,
     this.description,

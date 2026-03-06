@@ -11,7 +11,7 @@ class GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption {
   /// Creates a new [GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption].
   /// [target] Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
   /// [type] Type of the redirect action.
-  GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption({
+  const GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption({
     required this.target,
     required this.type,
   });

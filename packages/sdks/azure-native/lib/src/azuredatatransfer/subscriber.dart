@@ -11,7 +11,7 @@ class Subscriber {
   /// Creates a new [Subscriber].
   /// [email] Email of the subscriber
   /// [notifications] Number specifying what notifications to receive
-  Subscriber({
+  const Subscriber({
     this.email,
     this.notifications,
   });

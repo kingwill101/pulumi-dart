@@ -15,7 +15,7 @@ class GetFunctionAppHostKeysArgs {
   /// Creates a new [GetFunctionAppHostKeysArgs].
   /// [name] The name of the Function App.
   /// [resourceGroupName] The name of the Resource Group where the Function App exists.
-  GetFunctionAppHostKeysArgs({
+  const GetFunctionAppHostKeysArgs({
     required this.name,
     required this.resourceGroupName,
   });

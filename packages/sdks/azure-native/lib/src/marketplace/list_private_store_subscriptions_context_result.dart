@@ -7,7 +7,7 @@ class ListPrivateStoreSubscriptionsContextResult {
 
   /// Creates a new [ListPrivateStoreSubscriptionsContextResult].
   /// [subscriptionsIds] Optional.
-  ListPrivateStoreSubscriptionsContextResult({
+  const ListPrivateStoreSubscriptionsContextResult({
     this.subscriptionsIds,
   });
 

@@ -21,7 +21,7 @@ class ReplicaSetConditionAppsV1beta2 {
   /// [reason] The reason for the condition's last transition.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of replica set condition.
-  ReplicaSetConditionAppsV1beta2({
+  const ReplicaSetConditionAppsV1beta2({
     this.lastTransitionTime,
     this.message,
     this.reason,

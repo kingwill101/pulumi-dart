@@ -15,7 +15,7 @@ class GetTopicArgs {
   /// Creates a new [GetTopicArgs].
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicName] Name of the topic.
-  GetTopicArgs({
+  const GetTopicArgs({
     required this.resourceGroupName,
     required this.topicName,
   });

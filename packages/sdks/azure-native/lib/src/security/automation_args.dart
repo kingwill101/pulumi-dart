@@ -42,7 +42,7 @@ class AutomationArgs {
   /// [scopes] A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
   /// [sources] A collection of the source event types which evaluate the security automation set of rules.
   /// [tags] A list of key value pairs that describe the resource.
-  AutomationArgs({
+  const AutomationArgs({
     this.actions,
     this.automationName,
     this.description,

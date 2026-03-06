@@ -15,7 +15,7 @@ class GetAndroidAppConfigResult {
   /// [configFilename] Required.
   /// [id] Required.
   /// [project] Optional.
-  GetAndroidAppConfigResult({
+  const GetAndroidAppConfigResult({
     required this.appId,
     required this.configFileContents,
     required this.configFilename,

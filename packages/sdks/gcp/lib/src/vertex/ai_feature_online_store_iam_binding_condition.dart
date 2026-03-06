@@ -11,7 +11,7 @@ class AiFeatureOnlineStoreIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AiFeatureOnlineStoreIamBindingCondition({
+  const AiFeatureOnlineStoreIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -11,7 +11,7 @@ class SoftwareUpdateConfigurationTargetAzureQueryTag {
   /// Creates a new [SoftwareUpdateConfigurationTargetAzureQueryTag].
   /// [tag] Specifies the name of the tag to filter.
   /// [values] Specifies a list of values for this tag key.
-  SoftwareUpdateConfigurationTargetAzureQueryTag({
+  const SoftwareUpdateConfigurationTargetAzureQueryTag({
     required this.tag,
     required this.values,
   });

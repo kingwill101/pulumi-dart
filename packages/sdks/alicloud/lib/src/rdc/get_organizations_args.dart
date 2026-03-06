@@ -21,7 +21,7 @@ class GetOrganizationsArgs {
   /// [nameRegex] A regex string to filter results by Organization name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [realPk] User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
-  GetOrganizationsArgs({
+  const GetOrganizationsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

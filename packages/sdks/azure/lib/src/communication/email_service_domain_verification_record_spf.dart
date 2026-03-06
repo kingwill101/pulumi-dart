@@ -17,7 +17,7 @@ class EmailServiceDomainVerificationRecordSpf {
   /// [ttl] Represents an expiry time in seconds to represent how long this entry can be cached by the resolver, default = 3600sec.
   /// [type] Type of the DNS record. Example: TXT
   /// [value] Value of the DNS record.
-  EmailServiceDomainVerificationRecordSpf({
+  const EmailServiceDomainVerificationRecordSpf({
     this.name,
     this.ttl,
     this.type,

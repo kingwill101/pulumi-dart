@@ -21,7 +21,7 @@ class GetFeedbackMessageResult {
   /// [name] Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
   /// [operatorFeedbackMetadata] Required.
   /// [requesterFeedbackMetadata] Required.
-  GetFeedbackMessageResult({
+  const GetFeedbackMessageResult({
     required this.body,
     required this.createTime,
     required this.image,

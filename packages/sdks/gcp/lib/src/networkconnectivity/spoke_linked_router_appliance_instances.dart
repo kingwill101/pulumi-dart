@@ -17,7 +17,7 @@ class SpokeLinkedRouterApplianceInstances {
   /// [includeImportRanges] IP ranges allowed to be included during import from hub (does not control transit connectivity).
   /// [instances] The list of router appliance instances
   /// [siteToSiteDataTransfer] A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
-  SpokeLinkedRouterApplianceInstances({
+  const SpokeLinkedRouterApplianceInstances({
     this.includeImportRanges,
     required this.instances,
     required this.siteToSiteDataTransfer,

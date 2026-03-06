@@ -17,7 +17,7 @@ class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint {
   /// [matchAddress] (Output)
   /// [network] (Output)
   /// [projectId] (Output)
-  AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint({
+  const AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint({
     this.matchAddress,
     this.network,
     this.projectId,

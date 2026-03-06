@@ -28,7 +28,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
   /// [portRanges] A configuration block for PortRange. See the `port_range` block.
   /// [protocol] The protocol number. A value of "-1" means all protocols.
   /// [ruleAction] A string value that indicates whether to allow or deny the traffic that matches the rule. Valid values: `allow`, `deny`.
-  PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry({
+  const PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry({
     this.cidrBlock,
     required this.egress,
     this.icmpTypeCodes,

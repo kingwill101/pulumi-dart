@@ -56,7 +56,7 @@ class SecurityGatewayApplicationState {
   /// [securityGatewayId] ID of the Security Gateway resource this belongs to.
   /// [updateTime] Output only. Timestamp when the resource was last modified.
   /// [upstreams] Optional. List of which upstream resource(s) to forward traffic to.
-  SecurityGatewayApplicationState({
+  const SecurityGatewayApplicationState({
     this.applicationId,
     this.createTime,
     this.displayName,

@@ -64,7 +64,7 @@ class InstanceBootDisk {
   /// [kmsKeySelfLink] The self_link of the encryption key that is
   /// [mode] The mode in which to attach this disk, either `READ_WRITE`
   /// [source] The name or self_link of the existing disk (such as those managed by
-  InstanceBootDisk({
+  const InstanceBootDisk({
     this.autoDelete,
     this.deviceName,
     this.diskEncryptionKeyRaw,

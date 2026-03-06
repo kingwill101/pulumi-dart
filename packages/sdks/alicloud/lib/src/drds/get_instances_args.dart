@@ -20,7 +20,7 @@ class GetInstancesArgs {
   /// [ids] A list of DRDS instance IDs.
   /// [nameRegex] A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
   /// [outputFile] Optional.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.descriptionRegex,
     this.ids,
     this.nameRegex,

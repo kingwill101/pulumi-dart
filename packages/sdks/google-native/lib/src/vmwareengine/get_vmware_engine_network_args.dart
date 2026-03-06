@@ -15,7 +15,7 @@ class GetVmwareEngineNetworkArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [vmwareEngineNetworkId] Required.
-  GetVmwareEngineNetworkArgs({
+  const GetVmwareEngineNetworkArgs({
     required this.location,
     this.project,
     required this.vmwareEngineNetworkId,

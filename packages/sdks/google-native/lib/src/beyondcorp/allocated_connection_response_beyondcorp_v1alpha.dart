@@ -12,7 +12,7 @@ class AllocatedConnectionResponseBeyondcorpV1alpha {
   /// Creates a new [AllocatedConnectionResponseBeyondcorpV1alpha].
   /// [ingressPort] The ingress port of an allocated connection
   /// [pscUri] The PSC uri of an allocated connection
-  AllocatedConnectionResponseBeyondcorpV1alpha({
+  const AllocatedConnectionResponseBeyondcorpV1alpha({
     required this.ingressPort,
     required this.pscUri,
   });

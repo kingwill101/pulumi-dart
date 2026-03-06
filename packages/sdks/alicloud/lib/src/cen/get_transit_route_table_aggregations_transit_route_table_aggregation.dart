@@ -29,7 +29,7 @@ class GetTransitRouteTableAggregationsTransitRouteTableAggregation {
   /// [transitRouteTableAggregationName] The name of the aggregate route.
   /// [transitRouteTableAggregationScope] The scope of networks that you want to advertise the aggregate route.
   /// [transitRouteTableId] The ID of the route table of the Enterprise Edition transit router.
-  GetTransitRouteTableAggregationsTransitRouteTableAggregation({
+  const GetTransitRouteTableAggregationsTransitRouteTableAggregation({
     required this.id,
     required this.routeType,
     required this.status,

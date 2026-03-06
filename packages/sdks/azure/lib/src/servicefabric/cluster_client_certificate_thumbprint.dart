@@ -11,7 +11,7 @@ class ClusterClientCertificateThumbprint {
   /// Creates a new [ClusterClientCertificateThumbprint].
   /// [isAdmin] Does the Client Certificate have Admin Access to the cluster? Non-admin clients can only perform read only operations on the cluster.
   /// [thumbprint] The Thumbprint associated with the Client Certificate.
-  ClusterClientCertificateThumbprint({
+  const ClusterClientCertificateThumbprint({
     required this.isAdmin,
     required this.thumbprint,
   });

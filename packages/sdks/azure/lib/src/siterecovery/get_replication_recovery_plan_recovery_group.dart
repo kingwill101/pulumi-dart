@@ -19,7 +19,7 @@ class GetReplicationRecoveryPlanRecoveryGroup {
   /// [preActions] one or more `action` block. which will be executed before the group recovery.
   /// [replicatedProtectedItems] one or more id of protected VM.
   /// [type] Type of the action detail.
-  GetReplicationRecoveryPlanRecoveryGroup({
+  const GetReplicationRecoveryPlanRecoveryGroup({
     required this.postActions,
     required this.preActions,
     required this.replicatedProtectedItems,

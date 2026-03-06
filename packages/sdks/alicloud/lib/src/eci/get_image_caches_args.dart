@@ -30,7 +30,7 @@ class GetImageCachesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [snapshotId] The id of snapshot.
   /// [status] The status of ECI Image Cache.
-  GetImageCachesArgs({
+  const GetImageCachesArgs({
     this.ids,
     this.image,
     this.imageCacheName,

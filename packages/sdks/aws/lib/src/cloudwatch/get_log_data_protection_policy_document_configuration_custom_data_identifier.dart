@@ -11,7 +11,7 @@ class GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier {
   /// Creates a new [GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier].
   /// [name] Name of the custom data idenfitier
   /// [regex] Regular expression to match sensitive data
-  GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier({
+  const GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier({
     required this.name,
     required this.regex,
   });

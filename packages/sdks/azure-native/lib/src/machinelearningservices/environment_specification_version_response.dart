@@ -35,7 +35,7 @@ class EnvironmentSpecificationVersionResponse {
   /// [isAnonymous] If the name version are system generated (anonymous registration).
   /// [properties] The asset property dictionary.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  EnvironmentSpecificationVersionResponse({
+  const EnvironmentSpecificationVersionResponse({
     this.condaFile,
     this.description,
     this.docker,

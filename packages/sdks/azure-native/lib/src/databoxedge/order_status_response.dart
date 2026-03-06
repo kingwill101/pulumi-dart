@@ -23,7 +23,7 @@ class OrderStatusResponse {
   /// [status] Status of the order as per the allowed status types.
   /// [trackingInformation] Tracking information related to the state in the ordering flow
   /// [updateDateTime] Time of status update.
-  OrderStatusResponse({
+  const OrderStatusResponse({
     required this.additionalOrderDetails,
     this.comments,
     required this.status,

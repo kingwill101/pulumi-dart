@@ -117,7 +117,7 @@ class ProcessServerResponse {
   /// [totalMemoryInBytes] The total memory.
   /// [totalSpaceInBytes] The total space.
   /// [versionStatus] Version status.
-  ProcessServerResponse({
+  const ProcessServerResponse({
     this.agentExpiryDate,
     this.agentVersion,
     this.agentVersionDetails,

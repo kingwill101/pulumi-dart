@@ -21,7 +21,7 @@ class AliasArgs {
   /// Creates a new [AliasArgs].
   /// [aliasName] The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
   /// [keyId] The id of the key.
-  AliasArgs({
+  const AliasArgs({
     required this.aliasName,
     required this.keyId,
   });

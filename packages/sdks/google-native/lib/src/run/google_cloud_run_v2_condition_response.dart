@@ -30,7 +30,7 @@ class GoogleCloudRunV2ConditionResponse {
   /// [severity] How to interpret failures of this condition, one of Error, Warning, Info
   /// [state] State of the condition.
   /// [type] type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-  GoogleCloudRunV2ConditionResponse({
+  const GoogleCloudRunV2ConditionResponse({
     required this.executionReason,
     required this.lastTransitionTime,
     required this.message,

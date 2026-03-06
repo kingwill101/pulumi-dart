@@ -37,7 +37,7 @@ class ArcSettingArgs {
   /// [clusterName] The name of the cluster.
   /// [connectivityProperties] contains connectivity related configuration for ARC resources
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ArcSettingArgs({
+  const ArcSettingArgs({
     this.arcApplicationClientId,
     this.arcApplicationObjectId,
     this.arcApplicationTenantId,

@@ -14,7 +14,7 @@ class TargetPropertiesResponse {
   /// Creates a new [TargetPropertiesResponse].
   /// [azureQueries] List of Azure queries in the software update configuration.
   /// [nonAzureQueries] List of non Azure queries in the software update configuration.
-  TargetPropertiesResponse({
+  const TargetPropertiesResponse({
     this.azureQueries,
     this.nonAzureQueries,
   });

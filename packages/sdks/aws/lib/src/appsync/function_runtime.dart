@@ -11,7 +11,7 @@ class FunctionRuntime {
   /// Creates a new [FunctionRuntime].
   /// [name] The name of the runtime to use. Currently, the only allowed value is `APPSYNC_JS`.
   /// [runtimeVersion] The version of the runtime to use. Currently, the only allowed version is `1.0.0`.
-  FunctionRuntime({
+  const FunctionRuntime({
     required this.name,
     required this.runtimeVersion,
   });

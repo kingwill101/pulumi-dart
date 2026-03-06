@@ -15,7 +15,7 @@ class GetFirehoseDeliveryStreamResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetFirehoseDeliveryStreamResult({
+  const GetFirehoseDeliveryStreamResult({
     required this.arn,
     required this.id,
     required this.name,

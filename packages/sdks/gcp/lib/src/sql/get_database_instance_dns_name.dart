@@ -12,7 +12,7 @@ class GetDatabaseInstanceDnsName {
   /// [connectionType] Required.
   /// [dnsScope] Required.
   /// [name] The name of the instance.
-  GetDatabaseInstanceDnsName({
+  const GetDatabaseInstanceDnsName({
     required this.connectionType,
     required this.dnsScope,
     required this.name,

@@ -9,7 +9,7 @@ class VICredentialResponse {
 
   /// Creates a new [VICredentialResponse].
   /// [username] Gets or sets username to connect with the vCenter.
-  VICredentialResponse({
+  const VICredentialResponse({
     this.username,
   });
 

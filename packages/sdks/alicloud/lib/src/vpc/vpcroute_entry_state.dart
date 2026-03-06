@@ -48,7 +48,7 @@ class VPCRouteEntryState {
   /// [routePublishTargets] Route publish status and publish target type See `route_publish_targets` below.
   /// [routeTableId] Routing table ID
   /// [status] The status of the route entry.
-  VPCRouteEntryState({
+  const VPCRouteEntryState({
     this.description,
     this.destinationCidrBlock,
     this.nextHops,

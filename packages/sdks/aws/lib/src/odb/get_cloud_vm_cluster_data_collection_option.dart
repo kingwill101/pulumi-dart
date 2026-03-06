@@ -11,7 +11,7 @@ class GetCloudVmClusterDataCollectionOption {
   /// [isDiagnosticsEventsEnabled] Required.
   /// [isHealthMonitoringEnabled] Required.
   /// [isIncidentLogsEnabled] Required.
-  GetCloudVmClusterDataCollectionOption({
+  const GetCloudVmClusterDataCollectionOption({
     required this.isDiagnosticsEventsEnabled,
     required this.isHealthMonitoringEnabled,
     required this.isIncidentLogsEnabled,

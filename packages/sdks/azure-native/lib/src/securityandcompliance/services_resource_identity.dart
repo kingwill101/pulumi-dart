@@ -9,7 +9,7 @@ class ServicesResourceIdentity {
 
   /// Creates a new [ServicesResourceIdentity].
   /// [type] Type of identity being specified, currently SystemAssigned and None are allowed.
-  ServicesResourceIdentity({
+  const ServicesResourceIdentity({
     this.type,
   });
 

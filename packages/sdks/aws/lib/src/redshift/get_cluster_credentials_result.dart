@@ -28,7 +28,7 @@ class GetClusterCredentialsResult {
   /// [expiration] Date and time the password in `db_password` expires.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetClusterCredentialsResult({
+  const GetClusterCredentialsResult({
     this.autoCreate,
     required this.clusterIdentifier,
     this.dbGroups,

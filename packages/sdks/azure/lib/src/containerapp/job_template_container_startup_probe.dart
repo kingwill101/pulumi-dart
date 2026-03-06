@@ -36,7 +36,7 @@ class JobTemplateContainerStartupProbe {
   /// [terminationGracePeriodSeconds] The time in seconds after the container is sent the termination signal before the process if forcibly killed.
   /// [timeout] Time in seconds after which the probe times out. Possible values are in the range `1` - `240`. Defaults to `1`.
   /// [transport] Type of probe. Possible values are `TCP`, `HTTP`, and `HTTPS`.
-  JobTemplateContainerStartupProbe({
+  const JobTemplateContainerStartupProbe({
     this.failureCountThreshold,
     this.headers,
     this.host,

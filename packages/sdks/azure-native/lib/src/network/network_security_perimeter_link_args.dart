@@ -30,7 +30,7 @@ class NetworkSecurityPerimeterLinkArgs {
   /// [networkSecurityPerimeterName] The name of the network security perimeter.
   /// [remoteInboundProfiles] Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
   /// [resourceGroupName] The name of the resource group.
-  NetworkSecurityPerimeterLinkArgs({
+  const NetworkSecurityPerimeterLinkArgs({
     this.autoApprovedRemotePerimeterResourceId,
     this.description,
     this.linkName,

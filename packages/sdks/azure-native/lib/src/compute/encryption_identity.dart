@@ -9,7 +9,7 @@ class EncryptionIdentity {
 
   /// Creates a new [EncryptionIdentity].
   /// [userAssignedIdentityResourceId] Specifies ARM Resource ID of one of the user identities associated with the VM.
-  EncryptionIdentity({
+  const EncryptionIdentity({
     this.userAssignedIdentityResourceId,
   });
 

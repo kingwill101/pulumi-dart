@@ -11,7 +11,7 @@ class GetInstanceTypesInstanceTypeGpu {
   /// Creates a new [GetInstanceTypesInstanceTypeGpu].
   /// [amount] The number of local storage devices that an instance has been attached to.
   /// [category] The category of local storage that an instance has been attached to.
-  GetInstanceTypesInstanceTypeGpu({
+  const GetInstanceTypesInstanceTypeGpu({
     required this.amount,
     required this.category,
   });

@@ -22,7 +22,7 @@ class MigrateSqlServerSqlMIDatabaseInputResponse {
   /// [id] id of the database
   /// [name] Name of the database
   /// [restoreDatabaseName] Name of the database at destination
-  MigrateSqlServerSqlMIDatabaseInputResponse({
+  const MigrateSqlServerSqlMIDatabaseInputResponse({
     this.backupFilePaths,
     this.backupFileShare,
     this.id,

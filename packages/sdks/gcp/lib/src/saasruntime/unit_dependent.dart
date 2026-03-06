@@ -13,7 +13,7 @@ class UnitDependent {
   /// Creates a new [UnitDependent].
   /// [alias] (Output)
   /// [unit] (Output)
-  UnitDependent({
+  const UnitDependent({
     this.alias,
     this.unit,
   });

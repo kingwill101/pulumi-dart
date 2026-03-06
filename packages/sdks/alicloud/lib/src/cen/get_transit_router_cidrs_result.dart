@@ -24,7 +24,7 @@ class GetTransitRouterCidrsResult {
   /// [outputFile] Optional.
   /// [transitRouterCidrId] Optional.
   /// [transitRouterId] Required.
-  GetTransitRouterCidrsResult({
+  const GetTransitRouterCidrsResult({
     required this.cidrs,
     required this.id,
     required this.ids,

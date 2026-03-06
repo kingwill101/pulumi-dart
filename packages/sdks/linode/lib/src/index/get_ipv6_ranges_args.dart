@@ -12,7 +12,7 @@ class GetIpv6RangesArgs {
 
   /// Creates a new [GetIpv6RangesArgs].
   /// [filters] Optional.
-  GetIpv6RangesArgs({
+  const GetIpv6RangesArgs({
     this.filters,
   });
 

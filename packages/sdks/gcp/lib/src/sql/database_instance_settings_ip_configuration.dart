@@ -42,7 +42,7 @@ class DatabaseInstanceSettingsIpConfiguration {
   /// [serverCaMode] Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
   /// [serverCaPool] The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
   /// [sslMode] Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
-  DatabaseInstanceSettingsIpConfiguration({
+  const DatabaseInstanceSettingsIpConfiguration({
     this.allocatedIpRange,
     this.authorizedNetworks,
     this.customSubjectAlternativeNames,

@@ -11,7 +11,7 @@ class DomainDevicesGraphicSpiceChannel {
   /// Creates a new [DomainDevicesGraphicSpiceChannel].
   /// [mode] Configures the mode of the Spice channel, allowing control over the type of communication used.
   /// [name] Sets the name for the Spice channel, which identifies the channel in the configuration.
-  DomainDevicesGraphicSpiceChannel({
+  const DomainDevicesGraphicSpiceChannel({
     required this.mode,
     required this.name,
   });

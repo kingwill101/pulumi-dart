@@ -142,7 +142,7 @@ class CloudVmClusterProperties {
   /// [storageSizeGb] (Output)
   /// [systemVersion] (Output)
   /// [timeZone] Represents a time zone from the
-  CloudVmClusterProperties({
+  const CloudVmClusterProperties({
     this.clusterName,
     this.compartmentId,
     required this.cpuCoreCount,

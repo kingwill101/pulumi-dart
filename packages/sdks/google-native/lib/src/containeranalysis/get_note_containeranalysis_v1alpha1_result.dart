@@ -95,7 +95,7 @@ class GetNoteContaineranalysisV1alpha1Result {
   /// [upgrade] A note describing an upgrade.
   /// [vulnerabilityAssessment] A note describing a vulnerability assessment.
   /// [vulnerabilityType] A package vulnerability type of note.
-  GetNoteContaineranalysisV1alpha1Result({
+  const GetNoteContaineranalysisV1alpha1Result({
     required this.attestationAuthority,
     required this.baseImage,
     required this.buildType,

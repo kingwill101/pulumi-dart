@@ -22,7 +22,7 @@ class ProductSetArgs {
   /// [name] The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
   /// [productSetId] A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
   /// [project] Optional.
-  ProductSetArgs({
+  const ProductSetArgs({
     this.displayName,
     this.location,
     this.name,

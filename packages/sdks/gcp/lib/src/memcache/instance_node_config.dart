@@ -11,7 +11,7 @@ class InstanceNodeConfig {
   /// Creates a new [InstanceNodeConfig].
   /// [cpuCount] Number of CPUs per node.
   /// [memorySizeMb] Memory size in Mebibytes for each memcache node.
-  InstanceNodeConfig({
+  const InstanceNodeConfig({
     required this.cpuCount,
     required this.memorySizeMb,
   });

@@ -42,7 +42,7 @@ class CxGeneratorState {
   /// [parent] The agent to create a Generator for.
   /// [placeholders] List of custom placeholders in the prompt text.
   /// [promptText] Prompt for the LLM model.
-  CxGeneratorState({
+  const CxGeneratorState({
     this.displayName,
     this.languageCode,
     this.llmModelSettings,

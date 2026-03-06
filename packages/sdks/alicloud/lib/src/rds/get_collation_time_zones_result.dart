@@ -16,7 +16,7 @@ class GetCollationTimeZonesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] Required.
   /// [outputFile] Optional.
-  GetCollationTimeZonesResult({
+  const GetCollationTimeZonesResult({
     this.collationTimeZones,
     required this.id,
     required this.ids,

@@ -19,7 +19,7 @@ class GetEndpointRedisSetting {
   /// [serverName] Required.
   /// [sslCaCertificateArn] Required.
   /// [sslSecurityProtocol] Required.
-  GetEndpointRedisSetting({
+  const GetEndpointRedisSetting({
     required this.authPassword,
     required this.authType,
     required this.authUserName,

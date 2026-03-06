@@ -25,7 +25,7 @@ class HttpRetryPolicy {
   /// [initialDelayInMilliseconds] Initial delay, in milliseconds, before retrying a request
   /// [maxIntervalInMilliseconds] Maximum interval, in milliseconds, between retries
   /// [maxRetries] Maximum number of times a request will retry
-  HttpRetryPolicy({
+  const HttpRetryPolicy({
     this.errors,
     this.headers,
     this.httpStatusCodes,

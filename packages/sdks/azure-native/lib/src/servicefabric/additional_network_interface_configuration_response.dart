@@ -20,7 +20,7 @@ class AdditionalNetworkInterfaceConfigurationResponse {
   /// [enableAcceleratedNetworking] Specifies whether the network interface is accelerated networking-enabled.
   /// [ipConfigurations] Specifies the IP configurations of the network interface.
   /// [name] Name of the network interface.
-  AdditionalNetworkInterfaceConfigurationResponse({
+  const AdditionalNetworkInterfaceConfigurationResponse({
     this.dscpConfiguration,
     this.enableAcceleratedNetworking,
     required this.ipConfigurations,

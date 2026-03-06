@@ -15,7 +15,7 @@ class MedianStoppingPolicy {
   /// [delayEvaluation] Number of intervals by which to delay the first evaluation.
   /// [evaluationInterval] Interval (number of runs) between policy evaluations.
   /// [policyType] Expected value is 'MedianStopping'.
-  MedianStoppingPolicy({
+  const MedianStoppingPolicy({
     this.delayEvaluation,
     this.evaluationInterval,
     required this.policyType,

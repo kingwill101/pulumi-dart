@@ -18,7 +18,7 @@ class GetTestGrokPatternArgs {
   /// [accountId] The New Relic account ID to operate on.  This allows you to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   /// [grok] The Grok pattern to test.
   /// [logLines] The log lines to test the Grok pattern against.
-  GetTestGrokPatternArgs({
+  const GetTestGrokPatternArgs({
     this.accountId,
     required this.grok,
     required this.logLines,

@@ -9,7 +9,7 @@ class Aws {
 
   /// Creates a new [Aws].
   /// [accountId] The AWS account ID.
-  Aws({
+  const Aws({
     required this.accountId,
   });
 

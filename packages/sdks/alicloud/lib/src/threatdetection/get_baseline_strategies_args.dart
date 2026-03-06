@@ -23,7 +23,7 @@ class GetBaselineStrategiesArgs {
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [strategyIds] Optional.
-  GetBaselineStrategiesArgs({
+  const GetBaselineStrategiesArgs({
     this.customType,
     this.ids,
     this.nameRegex,

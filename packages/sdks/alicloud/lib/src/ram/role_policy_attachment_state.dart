@@ -17,7 +17,7 @@ class RolePolicyAttachmentState {
   /// [policyName] The name of the policy.
   /// [policyType] Policy type.
   /// [roleName] The RAM role name.
-  RolePolicyAttachmentState({
+  const RolePolicyAttachmentState({
     this.policyName,
     this.policyType,
     this.roleName,

@@ -13,7 +13,7 @@ class Extension {
   /// Creates a new [Extension].
   /// [name] The name of the extension.
   /// [properties] Extension Properties.
-  Extension({
+  const Extension({
     this.name,
     this.properties,
   });

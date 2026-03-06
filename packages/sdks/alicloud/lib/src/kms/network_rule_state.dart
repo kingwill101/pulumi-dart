@@ -15,7 +15,7 @@ class NetworkRuleState {
   /// [description] Description.
   /// [networkRuleName] Network Rule Name.
   /// [sourcePrivateIps] Allowed private network addresses.
-  NetworkRuleState({
+  const NetworkRuleState({
     this.description,
     this.networkRuleName,
     this.sourcePrivateIps,

@@ -26,7 +26,7 @@ class GetPublicIpAddressPoolCidrBlocksBlock {
   /// [status] The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
   /// [totalIpNum] The number of occupied IP addresses in the CIDR block.
   /// [usedIpNum] The total number of available IP addresses in the CIDR block.
-  GetPublicIpAddressPoolCidrBlocksBlock({
+  const GetPublicIpAddressPoolCidrBlocksBlock({
     required this.cidrBlock,
     required this.createTime,
     required this.id,

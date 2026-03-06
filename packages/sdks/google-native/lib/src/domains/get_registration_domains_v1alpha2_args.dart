@@ -15,7 +15,7 @@ class GetRegistrationDomainsV1alpha2Args {
   /// [location] Required.
   /// [project] Optional.
   /// [registrationId] Required.
-  GetRegistrationDomainsV1alpha2Args({
+  const GetRegistrationDomainsV1alpha2Args({
     required this.location,
     this.project,
     required this.registrationId,

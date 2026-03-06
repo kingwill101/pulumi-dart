@@ -46,7 +46,7 @@ class TopicArgs {
   /// [publicNetworkAccessEnabled] Whether or not public network access is allowed for this server. Defaults to `true`.
   /// [resourceGroupName] The name of the resource group in which the EventGrid Topic exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  TopicArgs({
+  const TopicArgs({
     this.identity,
     this.inboundIpRules,
     this.inputMappingDefaultValues,

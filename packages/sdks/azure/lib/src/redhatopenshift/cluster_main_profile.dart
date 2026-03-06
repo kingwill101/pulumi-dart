@@ -19,7 +19,7 @@ class ClusterMainProfile {
   /// [encryptionAtHostEnabled] Whether main virtual machines are encrypted at host. Defaults to `false`. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet where main nodes will be hosted. Changing this forces a new resource to be created.
   /// [vmSize] The size of the Virtual Machines for the main nodes. Changing this forces a new resource to be created.
-  ClusterMainProfile({
+  const ClusterMainProfile({
     this.diskEncryptionSetId,
     this.encryptionAtHostEnabled,
     required this.subnetId,

@@ -47,7 +47,7 @@ class ExpressRouteConnectionArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [routingWeight] The routing weight associated to the connection.
-  ExpressRouteConnectionArgs({
+  const ExpressRouteConnectionArgs({
     this.authorizationKey,
     this.connectionName,
     this.enableInternetSecurity,

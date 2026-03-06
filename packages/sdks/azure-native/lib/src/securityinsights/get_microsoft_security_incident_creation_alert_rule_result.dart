@@ -55,7 +55,7 @@ class GetMicrosoftSecurityIncidentCreationAlertRuleResult {
   /// [severitiesFilter] the alerts' severities on which the cases will be generated
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetMicrosoftSecurityIncidentCreationAlertRuleResult({
+  const GetMicrosoftSecurityIncidentCreationAlertRuleResult({
     this.alertRuleTemplateName,
     required this.azureApiVersion,
     this.description,

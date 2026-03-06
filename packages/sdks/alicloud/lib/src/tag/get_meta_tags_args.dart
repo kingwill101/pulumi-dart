@@ -15,7 +15,7 @@ class GetMetaTagsArgs {
   /// Creates a new [GetMetaTagsArgs].
   /// [keyName] The name of the key.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetMetaTagsArgs({
+  const GetMetaTagsArgs({
     this.keyName,
     this.outputFile,
   });

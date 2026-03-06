@@ -26,7 +26,7 @@ class ServiceTopicState {
   /// [maxMessageSize] The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
   /// [tags] A mapping of tags to assign to the resource.
   /// [topicName] The name of the topic.
-  ServiceTopicState({
+  const ServiceTopicState({
     this.createTime,
     this.enableLogging,
     this.loggingEnabled,

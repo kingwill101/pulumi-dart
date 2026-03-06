@@ -37,7 +37,7 @@ class AkriConnectorTemplateRuntimeImageConfiguration {
   /// [persistentVolumeClaims] The persistent volume claims for the managed configuration.
   /// [secrets] Connector secrets that will be mounted onto all connector instances.
   /// [trustSettings] Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
-  AkriConnectorTemplateRuntimeImageConfiguration({
+  const AkriConnectorTemplateRuntimeImageConfiguration({
     this.additionalConfiguration,
     this.allocation,
     required this.imageConfigurationSettings,

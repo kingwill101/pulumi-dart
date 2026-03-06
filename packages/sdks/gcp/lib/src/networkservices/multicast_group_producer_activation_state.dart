@@ -17,7 +17,7 @@ class MulticastGroupProducerActivationState {
 
   /// Creates a new [MulticastGroupProducerActivationState].
   /// [state] (Output)
-  MulticastGroupProducerActivationState({
+  const MulticastGroupProducerActivationState({
     this.state,
   });
 

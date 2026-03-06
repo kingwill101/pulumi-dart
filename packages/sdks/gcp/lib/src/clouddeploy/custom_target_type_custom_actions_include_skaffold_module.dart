@@ -23,7 +23,7 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModule {
   /// [git] Remote git repository containing the Skaffold Config modules.
   /// [googleCloudBuildRepo] Cloud Build 2nd gen repository containing the Skaffold Config modules.
   /// [googleCloudStorage] Cloud Storage bucket containing Skaffold Config modules.
-  CustomTargetTypeCustomActionsIncludeSkaffoldModule({
+  const CustomTargetTypeCustomActionsIncludeSkaffoldModule({
     this.configs,
     this.git,
     this.googleCloudBuildRepo,

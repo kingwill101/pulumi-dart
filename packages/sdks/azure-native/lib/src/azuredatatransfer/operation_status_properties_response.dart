@@ -15,7 +15,7 @@ class OperationStatusPropertiesResponse {
   /// [id] Operation status ID of the last patch request for this connection.
   /// [message] Message for the operation for the last patch request for this connection.
   /// [status] Operation status for the last patch request for this connection.
-  OperationStatusPropertiesResponse({
+  const OperationStatusPropertiesResponse({
     required this.id,
     required this.message,
     required this.status,

@@ -18,7 +18,7 @@ class ObfuscationExpressionState {
   /// [description] Description of expression.
   /// [name] Name of expression.
   /// [regex] Regex of expression. Must be wrapped in parentheses, e.g. (regex.*).
-  ObfuscationExpressionState({
+  const ObfuscationExpressionState({
     this.accountId,
     this.description,
     this.name,

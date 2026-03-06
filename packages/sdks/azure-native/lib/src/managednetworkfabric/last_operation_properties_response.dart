@@ -9,7 +9,7 @@ class LastOperationPropertiesResponse {
 
   /// Creates a new [LastOperationPropertiesResponse].
   /// [details] Details status of the last operation performed on the resource.
-  LastOperationPropertiesResponse({
+  const LastOperationPropertiesResponse({
     required this.details,
   });
 

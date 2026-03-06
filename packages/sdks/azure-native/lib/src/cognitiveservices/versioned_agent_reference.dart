@@ -15,7 +15,7 @@ class VersionedAgentReference {
   /// [agentId] Gets the agent's unique identifier within the organization (subscription).
   /// [agentName] Gets the agent's name (unique within the project/app).
   /// [agentVersion] Gets the agent's version (unique for each agent lineage).
-  VersionedAgentReference({
+  const VersionedAgentReference({
     this.agentId,
     this.agentName,
     this.agentVersion,

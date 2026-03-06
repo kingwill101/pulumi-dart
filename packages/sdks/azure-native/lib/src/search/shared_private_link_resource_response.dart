@@ -23,7 +23,7 @@ class SharedPrivateLinkResourceResponse {
   /// [properties] Describes the properties of a shared private link resource managed by the Azure AI Search service.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  SharedPrivateLinkResourceResponse({
+  const SharedPrivateLinkResourceResponse({
     required this.id,
     required this.name,
     this.properties,

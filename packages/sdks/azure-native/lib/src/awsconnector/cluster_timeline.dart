@@ -15,7 +15,7 @@ class ClusterTimeline {
   /// [creationDateTime] &lt;p&gt;The creation date and time of the cluster.&lt;/p&gt;
   /// [endDateTime] &lt;p&gt;The date and time when the cluster was terminated.&lt;/p&gt;
   /// [readyDateTime] &lt;p&gt;The date and time when the cluster was ready to run steps.&lt;/p&gt;
-  ClusterTimeline({
+  const ClusterTimeline({
     this.creationDateTime,
     this.endDateTime,
     this.readyDateTime,

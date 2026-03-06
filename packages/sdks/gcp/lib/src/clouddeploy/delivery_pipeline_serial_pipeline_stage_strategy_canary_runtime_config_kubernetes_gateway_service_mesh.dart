@@ -27,7 +27,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
   /// [routeUpdateWaitTime] Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
   /// [service] Required. Name of the Kubernetes Service.
   /// [stableCutbackDuration] Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
-  DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh({
+  const DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh({
     required this.deployment,
     required this.httpRoute,
     this.podSelectorLabel,

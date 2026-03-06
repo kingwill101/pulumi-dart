@@ -47,7 +47,7 @@ class MeshState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [selfLink] Server-defined URL of this resource.
   /// [updateTime] Time the Mesh was updated in UTC.
-  MeshState({
+  const MeshState({
     this.createTime,
     this.description,
     this.effectiveLabels,

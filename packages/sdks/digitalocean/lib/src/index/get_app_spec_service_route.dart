@@ -11,7 +11,7 @@ class GetAppSpecServiceRoute {
   /// Creates a new [GetAppSpecServiceRoute].
   /// [path] Paths must start with `/` and must be unique within the app.
   /// [preservePathPrefix] An optional flag to preserve the path that is forwarded to the backend service.
-  GetAppSpecServiceRoute({
+  const GetAppSpecServiceRoute({
     this.path,
     this.preservePathPrefix,
   });

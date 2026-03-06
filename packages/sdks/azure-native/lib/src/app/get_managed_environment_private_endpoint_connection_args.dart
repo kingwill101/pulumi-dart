@@ -18,7 +18,7 @@ class GetManagedEnvironmentPrivateEndpointConnectionArgs {
   /// [environmentName] Name of the Managed Environment.
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetManagedEnvironmentPrivateEndpointConnectionArgs({
+  const GetManagedEnvironmentPrivateEndpointConnectionArgs({
     required this.environmentName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class BareMetalClusterProxy {
   /// Creates a new [BareMetalClusterProxy].
   /// [noProxies] A list of IPs, hostnames, and domains that should skip the proxy.
   /// [uri] Specifies the address of your proxy server.
-  BareMetalClusterProxy({
+  const BareMetalClusterProxy({
     this.noProxies,
     required this.uri,
   });

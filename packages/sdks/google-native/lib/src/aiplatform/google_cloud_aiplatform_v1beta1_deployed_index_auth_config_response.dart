@@ -10,7 +10,7 @@ class GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse].
   /// [authProvider] Defines the authentication provider that the DeployedIndex uses.
-  GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse({
+  const GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse({
     required this.authProvider,
   });
 

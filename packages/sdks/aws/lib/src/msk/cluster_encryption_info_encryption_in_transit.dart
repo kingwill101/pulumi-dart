@@ -11,7 +11,7 @@ class ClusterEncryptionInfoEncryptionInTransit {
   /// Creates a new [ClusterEncryptionInfoEncryptionInTransit].
   /// [clientBroker] Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`. Default value is `TLS`.
   /// [inCluster] Whether data communication among broker nodes is encrypted. Default value: `true`.
-  ClusterEncryptionInfoEncryptionInTransit({
+  const ClusterEncryptionInfoEncryptionInTransit({
     this.clientBroker,
     this.inCluster,
   });

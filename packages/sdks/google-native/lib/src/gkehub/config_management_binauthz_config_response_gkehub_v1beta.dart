@@ -9,7 +9,7 @@ class ConfigManagementBinauthzConfigResponseGkehubV1beta {
 
   /// Creates a new [ConfigManagementBinauthzConfigResponseGkehubV1beta].
   /// [enabled] Whether binauthz is enabled in this cluster.
-  ConfigManagementBinauthzConfigResponseGkehubV1beta({
+  const ConfigManagementBinauthzConfigResponseGkehubV1beta({
     required this.enabled,
   });
 

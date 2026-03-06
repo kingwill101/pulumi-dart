@@ -19,7 +19,7 @@ class GetAccountIdTokenResult {
   /// [includeEmail] Optional.
   /// [targetAudience] Required.
   /// [targetServiceAccount] Optional.
-  GetAccountIdTokenResult({
+  const GetAccountIdTokenResult({
     this.delegates,
     required this.id,
     required this.idToken,

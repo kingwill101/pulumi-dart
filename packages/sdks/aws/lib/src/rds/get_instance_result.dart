@@ -142,7 +142,7 @@ class GetInstanceResult {
   /// [timezone] Time zone of the DB instance.
   /// [upgradeRolloutOrder] Order in which the instances are upgraded (`first`, `second`, `last`). See [the AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Maintenance.AMVU.UpgradeRollout.html) for details.
   /// [vpcSecurityGroups] Provides a list of VPC security group elements that the DB instance belongs to.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.address,
     required this.allocatedStorage,
     required this.autoMinorVersionUpgrade,

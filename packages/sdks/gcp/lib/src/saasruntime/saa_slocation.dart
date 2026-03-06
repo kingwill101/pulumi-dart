@@ -8,7 +8,7 @@ class SaaSLocation {
 
   /// Creates a new [SaaSLocation].
   /// [name] Name of location.
-  SaaSLocation({
+  const SaaSLocation({
     this.name,
   });
 

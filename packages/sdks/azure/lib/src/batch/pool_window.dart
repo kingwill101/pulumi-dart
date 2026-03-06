@@ -8,7 +8,7 @@ class PoolWindow {
 
   /// Creates a new [PoolWindow].
   /// [enableAutomaticUpdates] Whether automatic updates are enabled on the virtual machine. Defaults to `true`.
-  PoolWindow({
+  const PoolWindow({
     this.enableAutomaticUpdates,
   });
 

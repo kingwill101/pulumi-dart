@@ -10,7 +10,7 @@ class CloudConnectorsResponse {
 
   /// Creates a new [CloudConnectorsResponse].
   /// [awsExternalId] AWS external identifier.
-  CloudConnectorsResponse({
+  const CloudConnectorsResponse({
     required this.awsExternalId,
   });
 

@@ -16,7 +16,7 @@ class SecretProperties {
   /// [attributes] The attributes of the secret.
   /// [contentType] The content type of the secret.
   /// [value] The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
-  SecretProperties({
+  const SecretProperties({
     this.attributes,
     this.contentType,
     this.value,

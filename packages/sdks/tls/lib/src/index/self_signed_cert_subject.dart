@@ -35,7 +35,7 @@ class SelfSignedCertSubject {
   /// [province] Distinguished name: `ST`
   /// [serialNumber] Distinguished name: `SERIALNUMBER`
   /// [streetAddresses] Distinguished name: `STREET`
-  SelfSignedCertSubject({
+  const SelfSignedCertSubject({
     this.commonName,
     this.country,
     this.emailAddress,

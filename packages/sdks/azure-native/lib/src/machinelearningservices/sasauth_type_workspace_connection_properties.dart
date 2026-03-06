@@ -32,7 +32,7 @@ class SASAuthTypeWorkspaceConnectionProperties {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  SASAuthTypeWorkspaceConnectionProperties({
+  const SASAuthTypeWorkspaceConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

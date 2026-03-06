@@ -82,7 +82,7 @@ class GetForwardingRuleResult {
   /// [sourceIpRanges] Required.
   /// [subnetwork] Required.
   /// [target] Required.
-  GetForwardingRuleResult({
+  const GetForwardingRuleResult({
     required this.allPorts,
     required this.allowGlobalAccess,
     required this.allowPscGlobalAccess,

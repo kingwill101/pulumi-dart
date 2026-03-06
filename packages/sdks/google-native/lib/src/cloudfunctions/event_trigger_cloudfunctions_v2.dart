@@ -29,7 +29,7 @@ class EventTriggerCloudfunctionsV2 {
   /// [retryPolicy] Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
   /// [serviceAccountEmail] Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
   /// [triggerRegion] The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
-  EventTriggerCloudfunctionsV2({
+  const EventTriggerCloudfunctionsV2({
     this.channel,
     this.eventFilters,
     required this.eventType,

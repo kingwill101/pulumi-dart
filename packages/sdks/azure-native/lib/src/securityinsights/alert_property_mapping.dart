@@ -12,7 +12,7 @@ class AlertPropertyMapping {
   /// Creates a new [AlertPropertyMapping].
   /// [alertProperty] The V3 alert property
   /// [value] the column name to use to override this property
-  AlertPropertyMapping({
+  const AlertPropertyMapping({
     this.alertProperty,
     this.value,
   });

@@ -12,7 +12,7 @@ class GetPolicyArgs {
 
   /// Creates a new [GetPolicyArgs].
   /// [policyId] The unique identifier (ID) of the policy that you want more details on. Policy id starts with a "p-" followed by 8-28 lowercase or uppercase letters, digits, and underscores.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     required this.policyId,
   });
 

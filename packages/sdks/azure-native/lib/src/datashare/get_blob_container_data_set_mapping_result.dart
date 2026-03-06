@@ -46,7 +46,7 @@ class GetBlobContainerDataSetMappingResult {
   /// [subscriptionId] Subscription id of storage account.
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
-  GetBlobContainerDataSetMappingResult({
+  const GetBlobContainerDataSetMappingResult({
     required this.azureApiVersion,
     required this.containerName,
     required this.dataSetId,

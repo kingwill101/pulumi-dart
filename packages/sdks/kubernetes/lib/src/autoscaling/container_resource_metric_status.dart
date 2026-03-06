@@ -16,7 +16,7 @@ class ContainerResourceMetricStatus {
   /// [container] container is the name of the container in the pods of the scaling target
   /// [current] current contains the current value for the given metric
   /// [name] name is the name of the resource in question.
-  ContainerResourceMetricStatus({
+  const ContainerResourceMetricStatus({
     required this.container,
     required this.current,
     required this.name,

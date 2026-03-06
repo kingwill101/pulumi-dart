@@ -24,7 +24,7 @@ class GetTestResultConsoleLogDownloadURLArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   /// [testResultName] The Test Result Name. It equals to TestResult-{TestResultId} string.
-  GetTestResultConsoleLogDownloadURLArgs({
+  const GetTestResultConsoleLogDownloadURLArgs({
     required this.logFileName,
     required this.packageName,
     required this.resourceGroupName,

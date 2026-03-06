@@ -13,7 +13,7 @@ class MyWorkbookManagedIdentityResponse {
   /// Creates a new [MyWorkbookManagedIdentityResponse].
   /// [type] The identity type.
   /// [userAssignedIdentities] Customer Managed Identity
-  MyWorkbookManagedIdentityResponse({
+  const MyWorkbookManagedIdentityResponse({
     this.type,
     this.userAssignedIdentities,
   });

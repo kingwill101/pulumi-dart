@@ -20,7 +20,7 @@ class GetRegionalParametersResult {
   /// [location] Required.
   /// [parameters] A list of regional parameters matching the filter. Structure is defined below.
   /// [project] The ID of the project in which the resource belongs.
-  GetRegionalParametersResult({
+  const GetRegionalParametersResult({
     this.filter,
     required this.id,
     required this.location,

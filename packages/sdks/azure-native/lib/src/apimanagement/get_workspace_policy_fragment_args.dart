@@ -24,7 +24,7 @@ class GetWorkspacePolicyFragmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  GetWorkspacePolicyFragmentArgs({
+  const GetWorkspacePolicyFragmentArgs({
     this.format,
     required this.id,
     required this.resourceGroupName,

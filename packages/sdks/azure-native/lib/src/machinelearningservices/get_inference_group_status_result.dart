@@ -15,7 +15,7 @@ class GetInferenceGroupStatusResult {
   /// [actualCapacityInfo] Gets or sets the actual capacity info for the group.
   /// [endpointCount] Gets or sets the actual number of endpoints in the group.
   /// [requestedCapacity] Gets or sets the request number of instances for the group.
-  GetInferenceGroupStatusResult({
+  const GetInferenceGroupStatusResult({
     this.actualCapacityInfo,
     this.endpointCount,
     this.requestedCapacity,

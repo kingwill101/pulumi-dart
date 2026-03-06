@@ -26,7 +26,7 @@ class GetProjectProject {
   /// [number] The numeric identifier of the project.
   /// [parent] An optional reference to a parent resource.
   /// [projectId] The project id of the project.
-  GetProjectProject({
+  const GetProjectProject({
     required this.createTime,
     required this.labels,
     required this.lifecycleState,

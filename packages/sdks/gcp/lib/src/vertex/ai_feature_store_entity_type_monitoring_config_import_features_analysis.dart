@@ -17,7 +17,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis {
   /// Creates a new [AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis].
   /// [anomalyDetectionBaseline] Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
   /// [state] Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
-  AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis({
+  const AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis({
     this.anomalyDetectionBaseline,
     this.state,
   });

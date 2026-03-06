@@ -28,7 +28,7 @@ class SolutionInstanceState {
   /// [solutionId] Solution ID.
   /// [solutionInstanceName] Solution Instance Name.
   /// [status] The status of the resource.
-  SolutionInstanceState({
+  const SolutionInstanceState({
     this.createTime,
     this.description,
     this.parameters,

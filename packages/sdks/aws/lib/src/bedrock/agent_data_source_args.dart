@@ -41,7 +41,7 @@ class AgentDataSourceArgs {
   /// [serverSideEncryptionConfiguration] Details about the configuration of the server-side encryption. See `server_side_encryption_configuration` block for details.
   /// [timeouts] Optional.
   /// [vectorIngestionConfiguration] Details about the configuration of the server-side encryption. See `vector_ingestion_configuration` block for details.
-  AgentDataSourceArgs({
+  const AgentDataSourceArgs({
     this.dataDeletionPolicy,
     required this.dataSourceConfiguration,
     this.description,

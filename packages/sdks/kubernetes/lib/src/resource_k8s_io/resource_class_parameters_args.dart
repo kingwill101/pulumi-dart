@@ -31,7 +31,7 @@ class ResourceClassParametersArgs {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object metadata
   /// [vendorParameters] VendorParameters are arbitrary setup parameters for all claims using this class. They are ignored while allocating the claim. There must not be more than one entry per driver.
-  ResourceClassParametersArgs({
+  const ResourceClassParametersArgs({
     this.apiVersion,
     this.filters,
     this.generatedFrom,

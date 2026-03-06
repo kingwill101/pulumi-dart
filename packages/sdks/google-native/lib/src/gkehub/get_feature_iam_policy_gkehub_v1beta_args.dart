@@ -17,7 +17,7 @@ class GetFeatureIamPolicyGkehubV1betaArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetFeatureIamPolicyGkehubV1betaArgs({
+  const GetFeatureIamPolicyGkehubV1betaArgs({
     required this.featureId,
     required this.location,
     this.optionsRequestedPolicyVersion,

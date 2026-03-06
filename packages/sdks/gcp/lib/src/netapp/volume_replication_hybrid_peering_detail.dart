@@ -34,7 +34,7 @@ class VolumeReplicationHybridPeeringDetail {
   /// [peerSvmName] (Output)
   /// [peerVolumeName] (Output)
   /// [subnetIp] (Output)
-  VolumeReplicationHybridPeeringDetail({
+  const VolumeReplicationHybridPeeringDetail({
     this.command,
     this.commandExpiryTime,
     this.passphrase,

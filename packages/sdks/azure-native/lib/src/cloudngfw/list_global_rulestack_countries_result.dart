@@ -13,7 +13,7 @@ class ListGlobalRulestackCountriesResult {
   /// Creates a new [ListGlobalRulestackCountriesResult].
   /// [nextLink] next link
   /// [value] List of countries
-  ListGlobalRulestackCountriesResult({
+  const ListGlobalRulestackCountriesResult({
     this.nextLink,
     required this.value,
   });

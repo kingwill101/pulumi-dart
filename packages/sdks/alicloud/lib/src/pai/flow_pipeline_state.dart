@@ -15,7 +15,7 @@ class FlowPipelineState {
   /// [createTime] The creation time of the resource.
   /// [manifest] The pipeline definition. For more information, see the sample pipeline definition).
   /// [workspaceId] The ID of the workspace.
-  FlowPipelineState({
+  const FlowPipelineState({
     this.createTime,
     this.manifest,
     this.workspaceId,

@@ -17,7 +17,7 @@ class EnvFromSource {
   /// [configMapRef] The ConfigMap to select from
   /// [prefix] An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
   /// [secretRef] The Secret to select from
-  EnvFromSource({
+  const EnvFromSource({
     this.configMapRef,
     this.prefix,
     this.secretRef,

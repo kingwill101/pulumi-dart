@@ -8,7 +8,7 @@ class NodePoolNodeConfigFastSocket {
 
   /// Creates a new [NodePoolNodeConfigFastSocket].
   /// [enabled] Whether or not NCCL Fast Socket is enabled
-  NodePoolNodeConfigFastSocket({
+  const NodePoolNodeConfigFastSocket({
     required this.enabled,
   });
 

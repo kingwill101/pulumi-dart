@@ -11,7 +11,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemor
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib].
   /// [max] Maximum.
   /// [min] Minimum.
-  GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib({
+  const GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib({
     required this.max,
     required this.min,
   });

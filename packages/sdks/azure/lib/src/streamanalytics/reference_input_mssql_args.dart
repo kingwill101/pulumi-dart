@@ -45,7 +45,7 @@ class ReferenceInputMssqlArgs {
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [table] The name of the table in the Azure SQL database.
   /// [username] The username to connect to the MS SQL database.
-  ReferenceInputMssqlArgs({
+  const ReferenceInputMssqlArgs({
     required this.database,
     this.deltaSnapshotQuery,
     required this.fullSnapshotQuery,

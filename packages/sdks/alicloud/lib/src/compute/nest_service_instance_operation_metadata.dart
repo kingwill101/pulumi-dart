@@ -17,7 +17,7 @@ class NestServiceInstanceOperationMetadata {
   /// [operationEndTime] The end time of O&M.
   /// [operationStartTime] The start time of O&M.
   /// [resources] The list of imported resources.
-  NestServiceInstanceOperationMetadata({
+  const NestServiceInstanceOperationMetadata({
     this.operatedServiceInstanceId,
     this.operationEndTime,
     this.operationStartTime,

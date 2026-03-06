@@ -138,7 +138,7 @@ class FlexibleAppVersionArgs {
   /// [servingStatus] Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
   /// [versionId] Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
   /// [vpcAccessConnector] Enables VPC connectivity for standard apps.
-  FlexibleAppVersionArgs({
+  const FlexibleAppVersionArgs({
     this.apiConfig,
     this.automaticScaling,
     this.betaSettings,

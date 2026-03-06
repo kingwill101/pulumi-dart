@@ -22,7 +22,7 @@ class LabelingJobArgs {
   /// [labelingJobProperties] [Required] Additional attributes of the entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  LabelingJobArgs({
+  const LabelingJobArgs({
     this.id,
     required this.labelingJobProperties,
     required this.resourceGroupName,

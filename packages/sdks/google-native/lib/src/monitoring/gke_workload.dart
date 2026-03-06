@@ -21,7 +21,7 @@ class GkeWorkload {
   /// [namespaceName] The name of the parent namespace.
   /// [topLevelControllerName] The name of this workload.
   /// [topLevelControllerType] The type of this workload (for example, "Deployment" or "DaemonSet")
-  GkeWorkload({
+  const GkeWorkload({
     this.clusterName,
     this.location,
     this.namespaceName,

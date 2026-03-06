@@ -20,7 +20,7 @@ class ServiceTagOutboundRule {
   /// [destination] Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
   /// [status] Type of a managed network Outbound Rule of a machine learning workspace.
   /// [type] Type of a managed network Outbound Rule of a machine learning workspace.
-  ServiceTagOutboundRule({
+  const ServiceTagOutboundRule({
     this.category,
     this.destination,
     this.status,

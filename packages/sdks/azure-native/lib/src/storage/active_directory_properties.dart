@@ -30,7 +30,7 @@ class ActiveDirectoryProperties {
   /// [forestName] Specifies the Active Directory forest to get.
   /// [netBiosDomainName] Specifies the NetBIOS domain name.
   /// [samAccountName] Specifies the Active Directory SAMAccountName for Azure Storage.
-  ActiveDirectoryProperties({
+  const ActiveDirectoryProperties({
     this.accountType,
     this.azureStorageSid,
     required this.domainGuid,

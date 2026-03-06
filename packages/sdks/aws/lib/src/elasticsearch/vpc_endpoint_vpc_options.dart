@@ -15,7 +15,7 @@ class VpcEndpointVpcOptions {
   /// [securityGroupIds] The list of security group IDs associated with the VPC endpoints for the domain. If you do not provide a security group ID, elasticsearch Service uses the default security group for the VPC.
   /// [subnetIds] A list of subnet IDs associated with the VPC endpoints for the domain. If your domain uses multiple Availability Zones, you need to provide two subnet IDs, one per zone. Otherwise, provide only one.
   /// [vpcId] Optional.
-  VpcEndpointVpcOptions({
+  const VpcEndpointVpcOptions({
     this.availabilityZones,
     this.securityGroupIds,
     required this.subnetIds,

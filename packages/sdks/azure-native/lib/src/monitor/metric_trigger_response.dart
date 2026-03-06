@@ -43,7 +43,7 @@ class MetricTriggerResponse {
   /// [timeAggregation] time aggregation type. How the data that is collected should be combined over time. The default value is Average.
   /// [timeGrain] the granularity of metrics the rule monitors. Must be one of the predefined values returned from metric definitions for the metric. Must be between 12 hours and 1 minute.
   /// [timeWindow] the range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.
-  MetricTriggerResponse({
+  const MetricTriggerResponse({
     this.dimensions,
     this.dividePerInstance,
     required this.metricName,

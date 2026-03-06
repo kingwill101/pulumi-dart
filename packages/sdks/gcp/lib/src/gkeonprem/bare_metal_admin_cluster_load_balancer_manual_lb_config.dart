@@ -8,7 +8,7 @@ class BareMetalAdminClusterLoadBalancerManualLbConfig {
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerManualLbConfig].
   /// [enabled] Whether manual load balancing is enabled.
-  BareMetalAdminClusterLoadBalancerManualLbConfig({
+  const BareMetalAdminClusterLoadBalancerManualLbConfig({
     required this.enabled,
   });
 

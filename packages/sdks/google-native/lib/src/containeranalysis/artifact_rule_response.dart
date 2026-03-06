@@ -8,7 +8,7 @@ class ArtifactRuleResponse {
 
   /// Creates a new [ArtifactRuleResponse].
   /// [artifactRule] Required.
-  ArtifactRuleResponse({
+  const ArtifactRuleResponse({
     required this.artifactRule,
   });
 

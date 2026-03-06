@@ -57,7 +57,7 @@ class InstanceConfigState {
   /// [rootDevice] The root device to boot. (default `/dev/sda`)
   /// [runLevel] Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
   /// [virtMode] Controls the virtualization mode. (`paravirt`, `fullvirt`)
-  InstanceConfigState({
+  const InstanceConfigState({
     this.booted,
     this.comments,
     this.device,

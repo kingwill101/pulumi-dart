@@ -24,7 +24,7 @@ class GetInstanceTypeFamiliesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [spotStrategy] Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
   /// [zoneId] The Zone to launch the instance.
-  GetInstanceTypeFamiliesArgs({
+  const GetInstanceTypeFamiliesArgs({
     this.generation,
     this.instanceChargeType,
     this.outputFile,

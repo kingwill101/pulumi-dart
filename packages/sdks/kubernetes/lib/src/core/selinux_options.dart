@@ -18,7 +18,7 @@ class SELinuxOptions {
   /// [role] Role is a SELinux role label that applies to the container.
   /// [type] Type is a SELinux type label that applies to the container.
   /// [user] User is a SELinux user label that applies to the container.
-  SELinuxOptions({
+  const SELinuxOptions({
     this.level,
     this.role,
     this.type,

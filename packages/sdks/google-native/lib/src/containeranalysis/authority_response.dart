@@ -10,7 +10,7 @@ class AuthorityResponse {
 
   /// Creates a new [AuthorityResponse].
   /// [hint] Hint hints at the purpose of the attestation authority.
-  AuthorityResponse({
+  const AuthorityResponse({
     required this.hint,
   });
 

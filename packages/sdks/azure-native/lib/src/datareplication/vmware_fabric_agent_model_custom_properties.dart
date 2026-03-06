@@ -17,7 +17,7 @@ class VMwareFabricAgentModelCustomProperties {
   /// [biosId] Gets or sets the BIOS Id of the fabric agent machine.
   /// [instanceType] Discriminator property for FabricAgentModelCustomProperties.
   /// [marsAuthenticationIdentity] Identity model.
-  VMwareFabricAgentModelCustomProperties({
+  const VMwareFabricAgentModelCustomProperties({
     required this.biosId,
     required this.instanceType,
     required this.marsAuthenticationIdentity,

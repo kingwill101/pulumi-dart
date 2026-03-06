@@ -9,7 +9,7 @@ class DomainFeaturesHyperVStimer {
 
   /// Creates a new [DomainFeaturesHyperVStimer].
   /// [direct] Enables or disables support for PS/2 devices in the virtual machine.
-  DomainFeaturesHyperVStimer({
+  const DomainFeaturesHyperVStimer({
     this.direct,
   });
 

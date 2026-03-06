@@ -12,7 +12,7 @@ class SbePartnerProperties {
   /// Creates a new [SbePartnerProperties].
   /// [name] SBE partner property name.
   /// [value] SBE partner property value.
-  SbePartnerProperties({
+  const SbePartnerProperties({
     this.name,
     this.value,
   });

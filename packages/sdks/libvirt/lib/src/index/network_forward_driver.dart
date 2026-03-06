@@ -11,7 +11,7 @@ class NetworkForwardDriver {
   /// Creates a new [NetworkForwardDriver].
   /// [model] Specifies the model of the forwarding driver.
   /// [name] Sets the name of the forwarding driver.
-  NetworkForwardDriver({
+  const NetworkForwardDriver({
     this.model,
     this.name,
   });

@@ -8,7 +8,7 @@ class GetVpcSubnetIpv6 {
 
   /// Creates a new [GetVpcSubnetIpv6].
   /// [range] An IPv6 range allocated to this subnet.
-  GetVpcSubnetIpv6({
+  const GetVpcSubnetIpv6({
     required this.range,
   });
 

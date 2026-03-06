@@ -15,7 +15,7 @@ class NetezzaPartitionSettingsResponse {
   /// [partitionColumnName] The name of the column in integer type that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
   /// [partitionLowerBound] The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
   /// [partitionUpperBound] The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  NetezzaPartitionSettingsResponse({
+  const NetezzaPartitionSettingsResponse({
     this.partitionColumnName,
     this.partitionLowerBound,
     this.partitionUpperBound,

@@ -28,7 +28,7 @@ class NetworkIp {
   /// [netmask] Specifies the subnet mask for the IP address configuration.
   /// [prefix] Sets the prefix length for CIDR notation in the network's IP configuration.
   /// [tftp] Configures TFTP settings for the network.
-  NetworkIp({
+  const NetworkIp({
     this.address,
     this.dhcp,
     this.family,

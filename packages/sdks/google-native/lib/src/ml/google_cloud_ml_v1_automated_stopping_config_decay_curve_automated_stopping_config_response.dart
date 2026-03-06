@@ -8,7 +8,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigRes
 
   /// Creates a new [GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigResponse].
   /// [useElapsedTime] If true, measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.steps will be used as the x-axis.
-  GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigResponse({
+  const GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigResponse({
     required this.useElapsedTime,
   });
 

@@ -14,7 +14,7 @@ class GetDomainLogPublishingOption {
   /// [cloudwatchLogGroupArn] The CloudWatch Log Group where the logs are published.
   /// [enabled] Whether node to node encryption is enabled.
   /// [logType] The type of Elasticsearch log being published.
-  GetDomainLogPublishingOption({
+  const GetDomainLogPublishingOption({
     required this.cloudwatchLogGroupArn,
     required this.enabled,
     required this.logType,

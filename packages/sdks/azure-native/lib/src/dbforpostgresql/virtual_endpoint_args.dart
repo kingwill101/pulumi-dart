@@ -24,7 +24,7 @@ class VirtualEndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
   /// [virtualEndpointName] Base name of the virtual endpoints.
-  VirtualEndpointArgs({
+  const VirtualEndpointArgs({
     this.endpointType,
     this.members,
     required this.resourceGroupName,

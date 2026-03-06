@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardCell {
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageTableCardCell].
   /// [text] Text in this cell.
-  GoogleCloudDialogflowV2IntentMessageTableCardCell({
+  const GoogleCloudDialogflowV2IntentMessageTableCardCell({
     required this.text,
   });
 

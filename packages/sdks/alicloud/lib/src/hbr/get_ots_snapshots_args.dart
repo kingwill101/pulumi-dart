@@ -20,7 +20,7 @@ class GetOtsSnapshotsArgs {
   /// [ids] Optional.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [startTime] The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
-  GetOtsSnapshotsArgs({
+  const GetOtsSnapshotsArgs({
     this.endTime,
     this.ids,
     this.outputFile,

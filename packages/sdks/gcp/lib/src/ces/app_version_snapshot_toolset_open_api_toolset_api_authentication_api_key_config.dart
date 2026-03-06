@@ -25,7 +25,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfig {
   /// [apiKeySecretVersion] (Output)
   /// [keyName] (Output)
   /// [requestLocation] (Output)
-  AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfig({
+  const AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfig({
     this.apiKeySecretVersion,
     this.keyName,
     this.requestLocation,

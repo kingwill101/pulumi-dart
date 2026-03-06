@@ -13,7 +13,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence {
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence].
   /// [frequency] How frequently data profiles can be updated when tables are modified. Defaults to never.
   /// [types] The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP
-  PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence({
+  const PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence({
     this.frequency,
     this.types,
   });

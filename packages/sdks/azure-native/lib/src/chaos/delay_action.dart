@@ -16,7 +16,7 @@ class DelayAction {
   /// [duration] ISO8601 formatted string that represents a duration.
   /// [name] String that represents a Capability URN.
   /// [type] Enum that discriminates between action models.
-  DelayAction({
+  const DelayAction({
     required this.duration,
     required this.name,
     required this.type,

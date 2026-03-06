@@ -11,7 +11,7 @@ class GetPrincipalPolicySimulationResultMatchedStatement {
   /// Creates a new [GetPrincipalPolicySimulationResultMatchedStatement].
   /// [sourcePolicyId] Identifier of one of the policies used as input to the simulation.
   /// [sourcePolicyType] The type of the policy identified in source_policy_id.
-  GetPrincipalPolicySimulationResultMatchedStatement({
+  const GetPrincipalPolicySimulationResultMatchedStatement({
     required this.sourcePolicyId,
     required this.sourcePolicyType,
   });

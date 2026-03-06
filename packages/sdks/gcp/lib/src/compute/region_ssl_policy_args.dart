@@ -57,7 +57,7 @@ class RegionSslPolicyArgs {
   /// [profile] Profile specifies the set of SSL features that can be used by the
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region where the regional SSL policy resides.
-  RegionSslPolicyArgs({
+  const RegionSslPolicyArgs({
     this.customFeatures,
     this.description,
     this.minTlsVersion,

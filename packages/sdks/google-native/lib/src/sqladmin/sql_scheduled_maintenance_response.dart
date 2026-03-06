@@ -17,7 +17,7 @@ class SqlScheduledMaintenanceResponse {
   /// [canReschedule] If the scheduled maintenance can be rescheduled.
   /// [scheduleDeadlineTime] Maintenance cannot be rescheduled to start beyond this deadline.
   /// [startTime] The start time of any upcoming scheduled maintenance for this instance.
-  SqlScheduledMaintenanceResponse({
+  const SqlScheduledMaintenanceResponse({
     required this.canDefer,
     required this.canReschedule,
     required this.scheduleDeadlineTime,

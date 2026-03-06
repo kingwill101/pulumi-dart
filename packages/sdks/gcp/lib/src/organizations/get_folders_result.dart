@@ -15,7 +15,7 @@ class GetFoldersResult {
   /// [folders] A list of folders matching the provided filter. Structure is defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [parentId] Required.
-  GetFoldersResult({
+  const GetFoldersResult({
     required this.folders,
     required this.id,
     required this.parentId,

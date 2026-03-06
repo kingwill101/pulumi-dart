@@ -8,7 +8,7 @@ class GetForwardingRulesForwardingRuleRuleConditionPathConfig {
 
   /// Creates a new [GetForwardingRulesForwardingRuleRuleConditionPathConfig].
   /// [values] The domain name is 3-128 characters long.
-  GetForwardingRulesForwardingRuleRuleConditionPathConfig({
+  const GetForwardingRulesForwardingRuleRuleConditionPathConfig({
     required this.values,
   });
 

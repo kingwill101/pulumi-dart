@@ -14,7 +14,7 @@ class FunctionAppAuthSettingsMicrosoft {
   /// [clientId] The OAuth 2.0 client ID that was created for the app used for authentication.
   /// [clientSecret] The OAuth 2.0 client secret that was created for the app used for authentication.
   /// [oauthScopes] The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. &lt;https://msdn.microsoft.com/en-us/library/dn631845.aspx&gt;
-  FunctionAppAuthSettingsMicrosoft({
+  const FunctionAppAuthSettingsMicrosoft({
     required this.clientId,
     required this.clientSecret,
     this.oauthScopes,

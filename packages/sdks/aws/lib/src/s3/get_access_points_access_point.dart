@@ -33,7 +33,7 @@ class GetAccessPointsAccessPoint {
   /// [name] Name of the access point.
   /// [networkOrigin] Indicates whether the access point allows access from the public Internet.
   /// [vpcConfigurations] VPC configuration for the access point. See `vpc_configuration` below.
-  GetAccessPointsAccessPoint({
+  const GetAccessPointsAccessPoint({
     required this.accessPointArn,
     required this.alias,
     required this.bucket,

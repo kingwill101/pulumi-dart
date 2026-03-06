@@ -33,7 +33,7 @@ class GetNetworkConnectionResult {
   /// [resourceGroupName] Required.
   /// [subnetId] The ID of the Subnet that is used to attach Virtual Machines.
   /// [tags] A mapping of tags assigned to the Dev Center Network Connection.
-  GetNetworkConnectionResult({
+  const GetNetworkConnectionResult({
     required this.domainJoinType,
     required this.domainName,
     required this.domainUsername,

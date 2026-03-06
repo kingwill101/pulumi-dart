@@ -38,7 +38,7 @@ class VpcNatGatewayArgs {
   /// [type] The type of the VPC NAT Gateway.
   /// [udpTimeoutSeconds] The egress timeout value for UDP connections of the VPC NAT Gateway.
   /// [vpcs] The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
-  VpcNatGatewayArgs({
+  const VpcNatGatewayArgs({
     this.icmpTimeoutSeconds,
     this.name,
     this.projectId,

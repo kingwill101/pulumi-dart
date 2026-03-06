@@ -14,7 +14,7 @@ class IstioComponentsResponse {
   /// Creates a new [IstioComponentsResponse].
   /// [egressGateways] Istio egress gateways.
   /// [ingressGateways] Istio ingress gateways.
-  IstioComponentsResponse({
+  const IstioComponentsResponse({
     this.egressGateways,
     this.ingressGateways,
   });

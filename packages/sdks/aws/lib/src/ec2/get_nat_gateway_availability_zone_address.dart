@@ -14,7 +14,7 @@ class GetNatGatewayAvailabilityZoneAddress {
   /// [allocationIds] List of allocation IDs of the Elastic IP addresses (EIPs) to be used for handling outbound NAT traffic in this specific Availability Zone.
   /// [availabilityZone] Availability Zone where this specific NAT gateway configuration is active.
   /// [availabilityZoneId] Availability Zone ID where this specific NAT gateway configuration is active
-  GetNatGatewayAvailabilityZoneAddress({
+  const GetNatGatewayAvailabilityZoneAddress({
     required this.allocationIds,
     required this.availabilityZone,
     required this.availabilityZoneId,

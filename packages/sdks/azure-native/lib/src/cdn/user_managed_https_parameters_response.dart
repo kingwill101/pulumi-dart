@@ -20,7 +20,7 @@ class UserManagedHttpsParametersResponse {
   /// [certificateSourceParameters] Defines the certificate source parameters using user's keyvault certificate for enabling SSL.
   /// [minimumTlsVersion] TLS protocol version that will be used for Https
   /// [protocolType] Defines the TLS extension protocol that is used for secure delivery.
-  UserManagedHttpsParametersResponse({
+  const UserManagedHttpsParametersResponse({
     required this.certificateSource,
     required this.certificateSourceParameters,
     this.minimumTlsVersion,

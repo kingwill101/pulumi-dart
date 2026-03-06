@@ -9,7 +9,7 @@ class ServicePrincipal {
 
   /// Creates a new [ServicePrincipal].
   /// [service] The service principal identifier.
-  ServicePrincipal({
+  const ServicePrincipal({
     required this.service,
   });
 

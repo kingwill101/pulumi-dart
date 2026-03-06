@@ -126,7 +126,7 @@ class EciScalingConfigurationContainer {
   /// [tty] Specifies whether to enable the Interaction feature. Valid values: true, false.
   /// [volumeMounts] The structure of volumeMounts.
   /// [workingDir] The working directory of the container.
-  EciScalingConfigurationContainer({
+  const EciScalingConfigurationContainer({
     this.args,
     this.commands,
     this.cpu,

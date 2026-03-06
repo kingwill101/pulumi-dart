@@ -27,7 +27,7 @@ class StreamSourceConfigSqlServerSourceConfig {
   /// [maxConcurrentBackfillTasks] Max concurrent backfill tasks.
   /// [maxConcurrentCdcTasks] Max concurrent CDC tasks.
   /// [transactionLogs] CDC reader reads from transaction logs.
-  StreamSourceConfigSqlServerSourceConfig({
+  const StreamSourceConfigSqlServerSourceConfig({
     this.changeTables,
     this.excludeObjects,
     this.includeObjects,

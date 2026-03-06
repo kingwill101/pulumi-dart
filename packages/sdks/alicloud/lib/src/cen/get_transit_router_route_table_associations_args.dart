@@ -34,7 +34,7 @@ class GetTransitRouterRouteTableAssociationsArgs {
   /// [transitRouterAttachmentResourceId] The ID of the next hop.
   /// [transitRouterAttachmentResourceType] The type of next hop. Valid values:
   /// [transitRouterRouteTableId] The ID of the route table of the Enterprise Edition transit router.
-  GetTransitRouterRouteTableAssociationsArgs({
+  const GetTransitRouterRouteTableAssociationsArgs({
     this.ids,
     this.outputFile,
     this.status,

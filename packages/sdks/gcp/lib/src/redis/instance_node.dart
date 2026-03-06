@@ -13,7 +13,7 @@ class InstanceNode {
   /// Creates a new [InstanceNode].
   /// [id] (Output)
   /// [zone] (Output)
-  InstanceNode({
+  const InstanceNode({
     this.id,
     this.zone,
   });

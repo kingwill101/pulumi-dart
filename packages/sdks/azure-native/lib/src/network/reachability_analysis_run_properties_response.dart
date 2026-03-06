@@ -22,7 +22,7 @@ class ReachabilityAnalysisRunPropertiesResponse {
   /// [intentContent] Intent information.
   /// [intentId] Id of the intent resource to run analysis on.
   /// [provisioningState] Provisioning states of a resource.
-  ReachabilityAnalysisRunPropertiesResponse({
+  const ReachabilityAnalysisRunPropertiesResponse({
     required this.analysisResult,
     this.description,
     required this.errorMessage,

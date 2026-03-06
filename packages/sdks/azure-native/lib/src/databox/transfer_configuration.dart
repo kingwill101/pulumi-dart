@@ -17,7 +17,7 @@ class TransferConfiguration {
   /// [transferAllDetails] Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll
   /// [transferConfigurationType] Type of the configuration for transfer.
   /// [transferFilterDetails] Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
-  TransferConfiguration({
+  const TransferConfiguration({
     this.transferAllDetails,
     required this.transferConfigurationType,
     this.transferFilterDetails,

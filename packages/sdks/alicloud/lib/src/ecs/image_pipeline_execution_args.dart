@@ -16,7 +16,7 @@ class ImagePipelineExecutionArgs {
   /// Creates a new [ImagePipelineExecutionArgs].
   /// [imagePipelineId] The ID of the image template.
   /// [status] The status of the image build task. Valid values:
-  ImagePipelineExecutionArgs({
+  const ImagePipelineExecutionArgs({
     required this.imagePipelineId,
     this.status,
   });

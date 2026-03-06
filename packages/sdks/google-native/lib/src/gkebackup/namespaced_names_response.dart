@@ -10,7 +10,7 @@ class NamespacedNamesResponse {
 
   /// Creates a new [NamespacedNamesResponse].
   /// [namespacedNames] Optional. A list of namespaced Kubernetes resources.
-  NamespacedNamesResponse({
+  const NamespacedNamesResponse({
     required this.namespacedNames,
   });
 

@@ -24,7 +24,7 @@ class GetAclResult {
   /// [region] Required.
   /// [tags] Map of tags assigned to the ACL.
   /// [userNames] Set of MemoryDB user names included in this ACL.
-  GetAclResult({
+  const GetAclResult({
     required this.arn,
     required this.id,
     required this.minimumEngineVersion,

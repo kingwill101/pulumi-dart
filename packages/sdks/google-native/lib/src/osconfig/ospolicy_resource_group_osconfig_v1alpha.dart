@@ -18,7 +18,7 @@ class OSPolicyResourceGroupOsconfigV1alpha {
   /// [inventoryFilters] List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
   /// [osFilter] Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
   /// [resources] List of resources configured for this resource group. The resources are executed in the exact order specified here.
-  OSPolicyResourceGroupOsconfigV1alpha({
+  const OSPolicyResourceGroupOsconfigV1alpha({
     this.inventoryFilters,
     this.osFilter,
     required this.resources,

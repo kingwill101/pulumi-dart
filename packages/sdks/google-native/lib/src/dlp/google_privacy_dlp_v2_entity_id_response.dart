@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2EntityIdResponse {
 
   /// Creates a new [GooglePrivacyDlpV2EntityIdResponse].
   /// [field] Composite key indicating which field contains the entity identifier.
-  GooglePrivacyDlpV2EntityIdResponse({
+  const GooglePrivacyDlpV2EntityIdResponse({
     required this.field,
   });
 

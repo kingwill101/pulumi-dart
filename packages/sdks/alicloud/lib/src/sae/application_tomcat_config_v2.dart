@@ -20,7 +20,7 @@ class ApplicationTomcatConfigV2 {
   /// [port] The port.
   /// [uriEncoding] The URI encoding scheme in the Tomcat container.
   /// [useBodyEncodingForUri] Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
-  ApplicationTomcatConfigV2({
+  const ApplicationTomcatConfigV2({
     this.contextPath,
     this.maxThreads,
     this.port,

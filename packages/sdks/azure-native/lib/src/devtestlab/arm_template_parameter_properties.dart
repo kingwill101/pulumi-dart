@@ -12,7 +12,7 @@ class ArmTemplateParameterProperties {
   /// Creates a new [ArmTemplateParameterProperties].
   /// [name] The name of the template parameter.
   /// [value] The value of the template parameter.
-  ArmTemplateParameterProperties({
+  const ArmTemplateParameterProperties({
     this.name,
     this.value,
   });

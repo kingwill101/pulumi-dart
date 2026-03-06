@@ -11,7 +11,7 @@ class GetListenersListenerCertificate {
   /// Creates a new [GetListenersListenerCertificate].
   /// [id] The ID of the Listener.
   /// [type] The type of the certificate.
-  GetListenersListenerCertificate({
+  const GetListenersListenerCertificate({
     required this.id,
     required this.type,
   });

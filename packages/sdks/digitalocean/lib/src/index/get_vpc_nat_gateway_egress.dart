@@ -9,7 +9,7 @@ class GetVpcNatGatewayEgress {
 
   /// Creates a new [GetVpcNatGatewayEgress].
   /// [publicGateways] List of public gateway IPs
-  GetVpcNatGatewayEgress({
+  const GetVpcNatGatewayEgress({
     required this.publicGateways,
   });
 

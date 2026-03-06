@@ -12,7 +12,7 @@ class GetContainerRecipeInstanceConfiguration {
   /// Creates a new [GetContainerRecipeInstanceConfiguration].
   /// [blockDeviceMappings] Set of objects with block device mappings for the instance configuration.
   /// [image] AMI ID of the base image for container build and test instance.
-  GetContainerRecipeInstanceConfiguration({
+  const GetContainerRecipeInstanceConfiguration({
     required this.blockDeviceMappings,
     required this.image,
   });

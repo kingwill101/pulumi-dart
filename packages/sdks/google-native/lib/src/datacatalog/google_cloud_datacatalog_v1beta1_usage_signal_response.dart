@@ -12,7 +12,7 @@ class GoogleCloudDatacatalogV1beta1UsageSignalResponse {
   /// Creates a new [GoogleCloudDatacatalogV1beta1UsageSignalResponse].
   /// [updateTime] The timestamp of the end of the usage statistics duration.
   /// [usageWithinTimeRange] Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
-  GoogleCloudDatacatalogV1beta1UsageSignalResponse({
+  const GoogleCloudDatacatalogV1beta1UsageSignalResponse({
     required this.updateTime,
     required this.usageWithinTimeRange,
   });

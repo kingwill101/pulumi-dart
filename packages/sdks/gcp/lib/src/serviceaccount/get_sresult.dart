@@ -19,7 +19,7 @@ class GetSResult {
   /// [prefix] Optional.
   /// [project] Optional.
   /// [regex] Optional.
-  GetSResult({
+  const GetSResult({
     required this.accounts,
     required this.id,
     this.prefix,

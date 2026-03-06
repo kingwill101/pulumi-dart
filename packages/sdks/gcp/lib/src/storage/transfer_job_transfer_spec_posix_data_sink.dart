@@ -8,7 +8,7 @@ class TransferJobTransferSpecPosixDataSink {
 
   /// Creates a new [TransferJobTransferSpecPosixDataSink].
   /// [rootDirectory] Root directory path to the filesystem.
-  TransferJobTransferSpecPosixDataSink({
+  const TransferJobTransferSpecPosixDataSink({
     required this.rootDirectory,
   });
 

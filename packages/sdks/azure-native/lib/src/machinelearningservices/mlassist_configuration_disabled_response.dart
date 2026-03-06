@@ -9,7 +9,7 @@ class MLAssistConfigurationDisabledResponse {
 
   /// Creates a new [MLAssistConfigurationDisabledResponse].
   /// [mlAssist] Expected value is 'Disabled'.
-  MLAssistConfigurationDisabledResponse({
+  const MLAssistConfigurationDisabledResponse({
     required this.mlAssist,
   });
 

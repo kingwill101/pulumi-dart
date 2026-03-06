@@ -21,7 +21,7 @@ class EcsNetworkInterfacePermissionState {
   /// [networkInterfaceId] The ID of the network interface.
   /// [permission] The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
   /// [status] The Status of the Network Interface Permissions. Valid values: `Pending`, `Granted`, `Revoking`, `Revoked`.
-  EcsNetworkInterfacePermissionState({
+  const EcsNetworkInterfacePermissionState({
     this.accountId,
     this.force,
     this.networkInterfaceId,

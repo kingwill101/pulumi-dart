@@ -11,7 +11,7 @@ class FastUdpAppVirtualServer {
   /// Creates a new [FastUdpAppVirtualServer].
   /// [ip] IP4/IPv6 address to be used for virtual server ex: `10.1.1.1`
   /// [port] Port number to used for accessing virtual server/application
-  FastUdpAppVirtualServer({
+  const FastUdpAppVirtualServer({
     required this.ip,
     required this.port,
   });

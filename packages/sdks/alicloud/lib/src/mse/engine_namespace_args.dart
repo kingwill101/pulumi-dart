@@ -29,7 +29,7 @@ class EngineNamespaceArgs {
   /// [namespaceDesc] The description of the namespace.
   /// [namespaceId] The id of Namespace.
   /// [namespaceShowName] The name of the Engine Namespace.
-  EngineNamespaceArgs({
+  const EngineNamespaceArgs({
     this.acceptLanguage,
     this.clusterId,
     this.instanceId,

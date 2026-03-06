@@ -14,7 +14,7 @@ class GetBlockedRegionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [language] Required.
   /// [regions] Required.
-  GetBlockedRegionsResult({
+  const GetBlockedRegionsResult({
     required this.id,
     required this.language,
     required this.regions,

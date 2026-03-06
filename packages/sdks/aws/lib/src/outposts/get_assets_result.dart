@@ -19,7 +19,7 @@ class GetAssetsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [statusIdFilters] Optional.
-  GetAssetsResult({
+  const GetAssetsResult({
     required this.arn,
     required this.assetIds,
     this.hostIdFilters,

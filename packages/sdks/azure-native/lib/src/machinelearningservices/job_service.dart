@@ -23,7 +23,7 @@ class JobService {
   /// [nodes] Nodes that user would like to start the service on.
   /// [port] Port for endpoint.
   /// [properties] Additional properties to set on the endpoint.
-  JobService({
+  const JobService({
     this.endpoint,
     this.jobServiceType,
     this.nodes,

@@ -17,7 +17,7 @@ class FeatureStateState {
   /// [code] (Output)
   /// [description] (Output)
   /// [updateTime] (Output)
-  FeatureStateState({
+  const FeatureStateState({
     this.code,
     this.description,
     this.updateTime,

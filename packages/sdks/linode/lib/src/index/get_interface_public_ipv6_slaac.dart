@@ -11,7 +11,7 @@ class GetInterfacePublicIpv6Slaac {
   /// Creates a new [GetInterfacePublicIpv6Slaac].
   /// [address] The IPv6 SLAAC address.
   /// [prefix] The prefix length for the IPv6 SLAAC address.
-  GetInterfacePublicIpv6Slaac({
+  const GetInterfacePublicIpv6Slaac({
     required this.address,
     required this.prefix,
   });

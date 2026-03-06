@@ -12,7 +12,7 @@ class SettingResponse {
   /// Creates a new [SettingResponse].
   /// [name] The name of the setting.
   /// [value] The value of the setting.
-  SettingResponse({
+  const SettingResponse({
     this.name,
     this.value,
   });

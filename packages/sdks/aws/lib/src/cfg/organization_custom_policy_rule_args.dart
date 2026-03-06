@@ -53,7 +53,7 @@ class OrganizationCustomPolicyRuleArgs {
   /// [tagKeyScope] Tag key of AWS resources to evaluate.
   /// [tagValueScope] Tag value of AWS resources to evaluate.
   /// [triggerTypes] List of notification types that trigger AWS Config to run an evaluation for the rule. Valid values: `ConfigurationItemChangeNotification`, `OversizedConfigurationItemChangeNotification`.
-  OrganizationCustomPolicyRuleArgs({
+  const OrganizationCustomPolicyRuleArgs({
     this.debugLogDeliveryAccounts,
     this.description,
     this.excludedAccounts,

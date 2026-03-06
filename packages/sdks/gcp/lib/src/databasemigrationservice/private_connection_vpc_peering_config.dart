@@ -12,7 +12,7 @@ class PrivateConnectionVpcPeeringConfig {
   /// Creates a new [PrivateConnectionVpcPeeringConfig].
   /// [subnet] A free subnet for peering. (CIDR of /29)
   /// [vpcName] Fully qualified name of the VPC that Database Migration Service will peer to.
-  PrivateConnectionVpcPeeringConfig({
+  const PrivateConnectionVpcPeeringConfig({
     required this.subnet,
     required this.vpcName,
   });

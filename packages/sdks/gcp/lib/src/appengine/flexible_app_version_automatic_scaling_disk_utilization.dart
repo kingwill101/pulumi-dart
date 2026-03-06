@@ -17,7 +17,7 @@ class FlexibleAppVersionAutomaticScalingDiskUtilization {
   /// [targetReadOpsPerSecond] Target ops read per seconds.
   /// [targetWriteBytesPerSecond] Target bytes written per second.
   /// [targetWriteOpsPerSecond] Target ops written per second.
-  FlexibleAppVersionAutomaticScalingDiskUtilization({
+  const FlexibleAppVersionAutomaticScalingDiskUtilization({
     this.targetReadBytesPerSecond,
     this.targetReadOpsPerSecond,
     this.targetWriteBytesPerSecond,

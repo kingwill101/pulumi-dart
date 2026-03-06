@@ -17,7 +17,7 @@ class GetInstanceGroupManagerResizeRequestArgs {
   /// [project] Optional.
   /// [resizeRequest] Required.
   /// [zone] Required.
-  GetInstanceGroupManagerResizeRequestArgs({
+  const GetInstanceGroupManagerResizeRequestArgs({
     required this.instanceGroupManager,
     this.project,
     required this.resizeRequest,

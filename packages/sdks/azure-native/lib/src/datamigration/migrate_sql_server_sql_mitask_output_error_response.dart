@@ -16,7 +16,7 @@ class MigrateSqlServerSqlMITaskOutputErrorResponse {
   /// [error] Migration error
   /// [id] Result identifier
   /// [resultType] Result type
-  MigrateSqlServerSqlMITaskOutputErrorResponse({
+  const MigrateSqlServerSqlMITaskOutputErrorResponse({
     required this.error,
     required this.id,
     required this.resultType,

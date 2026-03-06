@@ -19,7 +19,7 @@ class DataCellsFilterArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableData] Information about the data cells filter. See Table Data below for details.
   /// [timeouts] Optional.
-  DataCellsFilterArgs({
+  const DataCellsFilterArgs({
     this.region,
     required this.tableData,
     this.timeouts,

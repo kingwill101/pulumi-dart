@@ -30,7 +30,7 @@ class InferenceGroupResponse {
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [provisioningState] Provisioning state for the inference group.
   /// [scaleUnitSize] Gets or sets Scale Unit size.
-  InferenceGroupResponse({
+  const InferenceGroupResponse({
     this.description,
     this.environmentConfiguration,
     this.modelConfiguration,

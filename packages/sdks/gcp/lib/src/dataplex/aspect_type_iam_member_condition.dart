@@ -11,7 +11,7 @@ class AspectTypeIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AspectTypeIamMemberCondition({
+  const AspectTypeIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

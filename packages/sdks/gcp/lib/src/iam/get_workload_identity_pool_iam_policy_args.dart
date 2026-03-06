@@ -16,7 +16,7 @@ class GetWorkloadIdentityPoolIamPolicyArgs {
   /// Creates a new [GetWorkloadIdentityPoolIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [workloadIdentityPoolId] Used to find the parent resource to bind the IAM policy to
-  GetWorkloadIdentityPoolIamPolicyArgs({
+  const GetWorkloadIdentityPoolIamPolicyArgs({
     this.project,
     required this.workloadIdentityPoolId,
   });

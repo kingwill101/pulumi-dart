@@ -11,7 +11,7 @@ class KafkaClusterMonitor {
   /// Creates a new [KafkaClusterMonitor].
   /// [logAnalyticsWorkspaceId] The Operations Management Suite (OMS) workspace ID.
   /// [primaryKey] The Operations Management Suite (OMS) workspace key.
-  KafkaClusterMonitor({
+  const KafkaClusterMonitor({
     required this.logAnalyticsWorkspaceId,
     required this.primaryKey,
   });

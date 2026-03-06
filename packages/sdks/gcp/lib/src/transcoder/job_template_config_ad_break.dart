@@ -8,7 +8,7 @@ class JobTemplateConfigAdBreak {
 
   /// Creates a new [JobTemplateConfigAdBreak].
   /// [startTimeOffset] Start time in seconds for the ad break, relative to the output file timeline
-  JobTemplateConfigAdBreak({
+  const JobTemplateConfigAdBreak({
     this.startTimeOffset,
   });
 

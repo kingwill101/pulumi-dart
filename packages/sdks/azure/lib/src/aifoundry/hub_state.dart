@@ -65,7 +65,7 @@ class HubState {
   /// [storageAccountId] The Storage Account ID that should be used by this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
   /// [tags] A mapping of tags which should be assigned to the AI Foundry Hub.
   /// [workspaceId] The immutable ID associated with this AI Foundry Hub.
-  HubState({
+  const HubState({
     this.applicationInsightsId,
     this.containerRegistryId,
     this.description,

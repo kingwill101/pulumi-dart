@@ -8,7 +8,7 @@ class DomainFeaturesApic {
 
   /// Creates a new [DomainFeaturesApic].
   /// [eoi] Determines the EOI (End of Interrupt) behavior for APIC, allowing customization of how interrupts are acknowledged.
-  DomainFeaturesApic({
+  const DomainFeaturesApic({
     this.eoi,
   });
 

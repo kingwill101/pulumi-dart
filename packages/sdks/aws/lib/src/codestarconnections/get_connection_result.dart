@@ -27,7 +27,7 @@ class GetConnectionResult {
   /// [providerType] Name of the external provider where your third-party code repository is configured. Possible values are `Bitbucket`, `GitHub` and `GitLab`. For connections to GitHub Enterprise Server or GitLab Self-Managed instances, you must create an aws.codestarconnections.Host resource and use `host_arn` instead.
   /// [region] Required.
   /// [tags] Map of key-value resource tags to associate with the resource.
-  GetConnectionResult({
+  const GetConnectionResult({
     required this.arn,
     required this.connectionStatus,
     required this.hostArn,

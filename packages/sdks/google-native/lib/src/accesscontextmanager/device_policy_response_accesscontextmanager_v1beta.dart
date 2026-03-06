@@ -25,7 +25,7 @@ class DevicePolicyResponseAccesscontextmanagerV1beta {
   /// [requireAdminApproval] Whether the device needs to be approved by the customer admin.
   /// [requireCorpOwned] Whether the device needs to be corp owned.
   /// [requireScreenlock] Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`.
-  DevicePolicyResponseAccesscontextmanagerV1beta({
+  const DevicePolicyResponseAccesscontextmanagerV1beta({
     required this.allowedDeviceManagementLevels,
     required this.allowedEncryptionStatuses,
     required this.osConstraints,

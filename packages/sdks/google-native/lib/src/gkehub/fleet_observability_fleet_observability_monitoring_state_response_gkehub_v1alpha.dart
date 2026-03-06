@@ -10,7 +10,7 @@ class FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1alpha {
 
   /// Creates a new [FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1alpha].
   /// [state] The base feature state of fleet monitoring feature.
-  FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1alpha({
+  const FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1alpha({
     required this.state,
   });
 

@@ -8,7 +8,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLit
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue].
   /// [stringValue] String.
-  AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue({
+  const AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue({
     this.stringValue,
   });
 

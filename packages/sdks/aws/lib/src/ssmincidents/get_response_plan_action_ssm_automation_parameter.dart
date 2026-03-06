@@ -11,7 +11,7 @@ class GetResponsePlanActionSsmAutomationParameter {
   /// Creates a new [GetResponsePlanActionSsmAutomationParameter].
   /// [name] The name of the PagerDuty configuration.
   /// [values] The values for the associated parameter name.
-  GetResponsePlanActionSsmAutomationParameter({
+  const GetResponsePlanActionSsmAutomationParameter({
     required this.name,
     required this.values,
   });

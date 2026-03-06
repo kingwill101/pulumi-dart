@@ -51,7 +51,7 @@ class RuleState {
   /// [status] Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
   /// [target] The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
   /// [warnLevel] The risk level of the alert that is triggered. Valid values:
-  RuleState({
+  const RuleState({
     this.category,
     this.content,
     this.contentCategory,

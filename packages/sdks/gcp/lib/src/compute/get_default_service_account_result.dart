@@ -25,7 +25,7 @@ class GetDefaultServiceAccountResult {
   /// [name] The fully-qualified name of the service account.
   /// [project] Required.
   /// [uniqueId] The unique id of the service account.
-  GetDefaultServiceAccountResult({
+  const GetDefaultServiceAccountResult({
     required this.displayName,
     required this.email,
     required this.id,

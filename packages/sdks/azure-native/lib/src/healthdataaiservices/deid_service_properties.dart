@@ -10,7 +10,7 @@ class DeidServiceProperties {
 
   /// Creates a new [DeidServiceProperties].
   /// [publicNetworkAccess] Gets or sets allow or disallow public network access to resource
-  DeidServiceProperties({
+  const DeidServiceProperties({
     this.publicNetworkAccess,
   });
 

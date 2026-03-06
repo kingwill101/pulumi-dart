@@ -37,7 +37,7 @@ class ConfigServerGitPropertyResponse {
   /// [strictHostKeyChecking] Strict host key checking or not.
   /// [uri] URI of the repository
   /// [username] Username of git repository basic auth.
-  ConfigServerGitPropertyResponse({
+  const ConfigServerGitPropertyResponse({
     this.hostKey,
     this.hostKeyAlgorithm,
     this.label,

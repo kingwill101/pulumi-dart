@@ -24,7 +24,7 @@ class TenantRoleUserAttachmentArgs {
   /// Creates a new [TenantRoleUserAttachmentArgs].
   /// [accountId] Account UID
   /// [tenantRole] Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
-  TenantRoleUserAttachmentArgs({
+  const TenantRoleUserAttachmentArgs({
     this.accountId,
     this.tenantRole,
   });

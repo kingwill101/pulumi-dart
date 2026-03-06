@@ -12,7 +12,7 @@ class CredentialResultResponse {
   /// Creates a new [CredentialResultResponse].
   /// [name] The name of the credential.
   /// [value] Base64-encoded Kubernetes configuration file.
-  CredentialResultResponse({
+  const CredentialResultResponse({
     required this.name,
     required this.value,
   });

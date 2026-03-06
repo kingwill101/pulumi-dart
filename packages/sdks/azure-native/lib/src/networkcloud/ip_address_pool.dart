@@ -17,7 +17,7 @@ class IpAddressPool {
   /// [autoAssign] The indicator to determine if automatic allocation from the pool should occur.
   /// [name] The name used to identify this IP address pool for association with a BGP advertisement.
   /// [onlyUseHostIps] The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
-  IpAddressPool({
+  const IpAddressPool({
     required this.addresses,
     this.autoAssign,
     required this.name,

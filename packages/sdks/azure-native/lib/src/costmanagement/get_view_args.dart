@@ -12,7 +12,7 @@ class GetViewArgs {
 
   /// Creates a new [GetViewArgs].
   /// [viewName] View name
-  GetViewArgs({
+  const GetViewArgs({
     required this.viewName,
   });
 

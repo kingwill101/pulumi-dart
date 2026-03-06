@@ -11,7 +11,7 @@ class HttpRouteRuleActionFaultInjectionPolicyDelay {
   /// Creates a new [HttpRouteRuleActionFaultInjectionPolicyDelay].
   /// [fixedDelay] Specify a fixed delay before forwarding the request.
   /// [percentage] The percentage of traffic on which delay will be injected.
-  HttpRouteRuleActionFaultInjectionPolicyDelay({
+  const HttpRouteRuleActionFaultInjectionPolicyDelay({
     this.fixedDelay,
     this.percentage,
   });

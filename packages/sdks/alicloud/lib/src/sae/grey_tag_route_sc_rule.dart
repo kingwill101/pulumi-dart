@@ -15,7 +15,7 @@ class GreyTagRouteScRule {
   /// [condition] The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
   /// [items] A list of conditions items. See `items` below.
   /// [path] The path corresponding to the grayscale rule.
-  GreyTagRouteScRule({
+  const GreyTagRouteScRule({
     this.condition,
     this.items,
     this.path,

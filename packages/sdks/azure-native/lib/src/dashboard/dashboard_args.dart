@@ -21,7 +21,7 @@ class DashboardArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  DashboardArgs({
+  const DashboardArgs({
     this.dashboardName,
     this.location,
     required this.resourceGroupName,

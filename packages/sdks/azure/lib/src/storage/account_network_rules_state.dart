@@ -35,7 +35,7 @@ class AccountNetworkRulesState {
   /// [privateLinkAccessRules] One or more `private_link_access` block as defined below.
   /// [storageAccountId] Specifies the ID of the storage account. Changing this forces a new resource to be created.
   /// [virtualNetworkSubnetIds] A list of virtual network subnet ids to secure the storage account.
-  AccountNetworkRulesState({
+  const AccountNetworkRulesState({
     this.bypasses,
     this.defaultAction,
     this.ipRules,

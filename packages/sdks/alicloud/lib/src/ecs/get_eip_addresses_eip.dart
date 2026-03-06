@@ -31,7 +31,7 @@ class GetEipAddressesEip {
   /// [internetChargeType] The metering method of the EIP.
   /// [ipAddress] The eip address.
   /// [status] The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
-  GetEipAddressesEip({
+  const GetEipAddressesEip({
     required this.bandwidth,
     required this.creationTime,
     required this.deletionProtection,

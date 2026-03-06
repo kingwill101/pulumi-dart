@@ -29,7 +29,7 @@ class BatchRuntimeInfo {
   /// [diagnosticOutputUri] (Output)
   /// [endpoints] (Output)
   /// [outputUri] (Output)
-  BatchRuntimeInfo({
+  const BatchRuntimeInfo({
     this.approximateUsages,
     this.currentUsages,
     this.diagnosticOutputUri,

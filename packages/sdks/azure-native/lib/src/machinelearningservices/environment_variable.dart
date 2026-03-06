@@ -12,7 +12,7 @@ class EnvironmentVariable {
   /// Creates a new [EnvironmentVariable].
   /// [type] Type of the Environment Variable. Possible values are: local - For local variable
   /// [value] Value of the Environment variable
-  EnvironmentVariable({
+  const EnvironmentVariable({
     this.type,
     this.value,
   });

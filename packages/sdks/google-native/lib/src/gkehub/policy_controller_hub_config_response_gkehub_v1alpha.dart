@@ -38,7 +38,7 @@ class PolicyControllerHubConfigResponseGkehubV1alpha {
   /// [mutationEnabled] Enables the ability to mutate resources using Policy Controller.
   /// [policyContent] Specifies the desired policy content on the cluster
   /// [referentialRulesEnabled] Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
-  PolicyControllerHubConfigResponseGkehubV1alpha({
+  const PolicyControllerHubConfigResponseGkehubV1alpha({
     required this.auditIntervalSeconds,
     required this.constraintViolationLimit,
     required this.deploymentConfigs,

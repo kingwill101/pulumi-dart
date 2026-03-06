@@ -19,7 +19,7 @@ class AzureFirewallIPConfiguration {
   /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [publicIPAddress] Reference to the PublicIP resource. This field is a mandatory input if subnet is not null.
   /// [subnet] Reference to the subnet resource. This resource must be named 'AzureFirewallSubnet' or 'AzureFirewallManagementSubnet'.
-  AzureFirewallIPConfiguration({
+  const AzureFirewallIPConfiguration({
     this.id,
     this.name,
     this.publicIPAddress,

@@ -15,7 +15,7 @@ class GetAccountArgs {
   /// Creates a new [GetAccountArgs].
   /// [accountId] Account ID number of a delegated administrator account in the organization.
   /// [tags] Map of tags for the resource.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.accountId,
     this.tags,
   });

@@ -29,7 +29,7 @@ class GetExchangesExchange {
   /// [id] The ID of the Exchange. Its value is same as Queue Name.
   /// [instanceId] The ID of the instance.
   /// [virtualHostName] The name of virtual host where an exchange resides.
-  GetExchangesExchange({
+  const GetExchangesExchange({
     required this.attributes,
     required this.autoDeleteState,
     required this.createTime,

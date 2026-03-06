@@ -70,7 +70,7 @@ class PluginInstanceState {
   /// [project] The ID of the project in which the resource belongs.
   /// [state] The current state of the plugin instance (e.g., enabled, disabled,
   /// [updateTime] Timestamp indicating when the plugin instance was last updated.
-  PluginInstanceState({
+  const PluginInstanceState({
     this.actions,
     this.authConfig,
     this.createTime,

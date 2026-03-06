@@ -17,7 +17,7 @@ class GetDbServersArgs {
   /// Creates a new [GetDbServersArgs].
   /// [cloudExadataInfrastructureId] The unique identifier of the cloud vm cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDbServersArgs({
+  const GetDbServersArgs({
     required this.cloudExadataInfrastructureId,
     this.region,
   });

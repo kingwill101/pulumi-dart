@@ -12,7 +12,7 @@ class MonitorConfigCustomHeadersItem {
   /// Creates a new [MonitorConfigCustomHeadersItem].
   /// [name] Header name.
   /// [value] Header value.
-  MonitorConfigCustomHeadersItem({
+  const MonitorConfigCustomHeadersItem({
     this.name,
     this.value,
   });

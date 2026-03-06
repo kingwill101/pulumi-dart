@@ -74,7 +74,7 @@ class DomainOsNvRamSource {
   /// [vhostUser] Configures VHostUser settings for the backing store source in disk mirroring.
   /// [vhostVdpa] Configures the VHostVDPA settings for the source backing store.
   /// [volume] Configures the source volume settings for the mirror backing store.
-  DomainOsNvRamSource({
+  const DomainOsNvRamSource({
     this.block,
     this.cookies,
     this.dataStore,

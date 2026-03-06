@@ -24,7 +24,7 @@ class PrivateEndpointIPConfigurationResponse {
   /// [name] The name of the resource that is unique within a resource group.
   /// [privateIPAddress] A private ip address obtained from the private endpoint's subnet.
   /// [type] The resource type.
-  PrivateEndpointIPConfigurationResponse({
+  const PrivateEndpointIPConfigurationResponse({
     required this.etag,
     this.groupId,
     this.memberName,

@@ -11,7 +11,7 @@ class GetClustersClusterAccessInfoZkLink {
   /// Creates a new [GetClustersClusterAccessInfoZkLink].
   /// [link] The access link address of ZooKeeper.
   /// [port] The port of ZooKeeper.
-  GetClustersClusterAccessInfoZkLink({
+  const GetClustersClusterAccessInfoZkLink({
     required this.link,
     required this.port,
   });

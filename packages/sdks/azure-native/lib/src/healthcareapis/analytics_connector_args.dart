@@ -40,7 +40,7 @@ class AnalyticsConnectorArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [tags] Resource tags.
   /// [workspaceName] The name of workspace resource.
-  AnalyticsConnectorArgs({
+  const AnalyticsConnectorArgs({
     this.analyticsConnectorName,
     required this.dataDestinationConfiguration,
     required this.dataMappingConfiguration,

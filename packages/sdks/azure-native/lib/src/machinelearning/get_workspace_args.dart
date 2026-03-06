@@ -15,7 +15,7 @@ class GetWorkspaceArgs {
   /// Creates a new [GetWorkspaceArgs].
   /// [resourceGroupName] The name of the resource group to which the machine learning workspace belongs.
   /// [workspaceName] The name of the machine learning workspace.
-  GetWorkspaceArgs({
+  const GetWorkspaceArgs({
     required this.resourceGroupName,
     required this.workspaceName,
   });

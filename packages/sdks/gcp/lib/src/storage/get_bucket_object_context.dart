@@ -9,7 +9,7 @@ class GetBucketObjectContext {
 
   /// Creates a new [GetBucketObjectContext].
   /// [customs] A list of custom context key-value pairs.
-  GetBucketObjectContext({
+  const GetBucketObjectContext({
     required this.customs,
   });
 

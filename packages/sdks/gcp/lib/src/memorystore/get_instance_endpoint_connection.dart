@@ -9,7 +9,7 @@ class GetInstanceEndpointConnection {
 
   /// Creates a new [GetInstanceEndpointConnection].
   /// [pscAutoConnections] Detailed information of a PSC connection that is created through service connectivity automation.
-  GetInstanceEndpointConnection({
+  const GetInstanceEndpointConnection({
     required this.pscAutoConnections,
   });
 

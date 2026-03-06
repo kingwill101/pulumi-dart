@@ -13,7 +13,7 @@ class WebResourceSite {
   /// Creates a new [WebResourceSite].
   /// [identifier] The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
   /// [type] The type of resource to be verified.
-  WebResourceSite({
+  const WebResourceSite({
     required this.identifier,
     required this.type,
   });

@@ -15,7 +15,7 @@ class GetSshPublicKeyArgs {
   /// Creates a new [GetSshPublicKeyArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sshPublicKeyName] The name of the SSH public key.
-  GetSshPublicKeyArgs({
+  const GetSshPublicKeyArgs({
     required this.resourceGroupName,
     required this.sshPublicKeyName,
   });

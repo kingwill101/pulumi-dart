@@ -94,7 +94,7 @@ class GetInstancesInstance {
   /// [vpcId] The ID of the VPC。.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the instance.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.availabilityZone,
     required this.chargeType,
     required this.connectionString,

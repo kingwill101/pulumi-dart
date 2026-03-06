@@ -10,7 +10,7 @@ class ListManagedClusterAdminCredentialsResult {
 
   /// Creates a new [ListManagedClusterAdminCredentialsResult].
   /// [kubeconfigs] Base64-encoded Kubernetes configuration file.
-  ListManagedClusterAdminCredentialsResult({
+  const ListManagedClusterAdminCredentialsResult({
     required this.kubeconfigs,
   });
 

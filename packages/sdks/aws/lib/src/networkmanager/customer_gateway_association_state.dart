@@ -20,7 +20,7 @@ class CustomerGatewayAssociationState {
   /// [deviceId] ID of the device.
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link.
-  CustomerGatewayAssociationState({
+  const CustomerGatewayAssociationState({
     this.customerGatewayArn,
     this.deviceId,
     this.globalNetworkId,

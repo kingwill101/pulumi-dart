@@ -33,7 +33,7 @@ class GetBucketResult {
   /// [region] Required.
   /// [websiteDomain] Domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string. This is used to create Route 53 alias records.
   /// [websiteEndpoint] Website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
-  GetBucketResult({
+  const GetBucketResult({
     required this.arn,
     required this.bucket,
     required this.bucketDomainName,

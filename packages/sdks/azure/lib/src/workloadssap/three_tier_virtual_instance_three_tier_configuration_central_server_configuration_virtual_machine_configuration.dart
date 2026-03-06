@@ -16,7 +16,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVi
   /// [image] An `image` block as defined below. Changing this forces a new resource to be created.
   /// [osProfile] An `os_profile` block as defined below. Changing this forces a new resource to be created.
   /// [virtualMachineSize] The size of the Virtual Machine. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration({
+  const ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration({
     required this.image,
     required this.osProfile,
     required this.virtualMachineSize,

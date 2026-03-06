@@ -7,7 +7,7 @@ class ClusterAddonsConfigParallelstoreCsiDriverConfig {
 
   /// Creates a new [ClusterAddonsConfigParallelstoreCsiDriverConfig].
   /// [enabled] Required.
-  ClusterAddonsConfigParallelstoreCsiDriverConfig({
+  const ClusterAddonsConfigParallelstoreCsiDriverConfig({
     required this.enabled,
   });
 

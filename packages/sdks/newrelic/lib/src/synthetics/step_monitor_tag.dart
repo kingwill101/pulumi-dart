@@ -11,7 +11,7 @@ class StepMonitorTag {
   /// Creates a new [StepMonitorTag].
   /// [key] Name of the tag key.
   /// [values] Values associated with the tag key.
-  StepMonitorTag({
+  const StepMonitorTag({
     required this.key,
     required this.values,
   });

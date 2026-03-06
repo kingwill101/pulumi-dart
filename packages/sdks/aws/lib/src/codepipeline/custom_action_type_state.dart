@@ -40,7 +40,7 @@ class CustomActionTypeState {
   /// [tags] Optional.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [version] Optional.
-  CustomActionTypeState({
+  const CustomActionTypeState({
     this.arn,
     this.category,
     this.configurationProperties,

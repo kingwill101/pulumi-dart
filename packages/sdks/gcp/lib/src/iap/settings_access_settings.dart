@@ -44,7 +44,7 @@ class SettingsAccessSettings {
   /// [oauthSettings] Settings to configure IAP's OAuth behavior.
   /// [reauthSettings] Settings to configure reauthentication policies in IAP.
   /// [workforceIdentitySettings] Settings to configure the workforce identity federation, including workforce pools
-  SettingsAccessSettings({
+  const SettingsAccessSettings({
     this.allowedDomainsSettings,
     this.corsSettings,
     this.gcipSettings,

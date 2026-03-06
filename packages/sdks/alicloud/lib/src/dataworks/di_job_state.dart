@@ -61,7 +61,7 @@ class DiJobState {
   /// [sourceDataSourceType] The type of the source data source. The enumerated value is MySQL.
   /// [tableMappings] Synchronize object transformation mapping list See `table_mappings` below.
   /// [transformationRules] Definition list of synchronization object conversion rules See `transformation_rules` below.
-  DiJobState({
+  const DiJobState({
     this.description,
     this.destinationDataSourceSettings,
     this.destinationDataSourceType,

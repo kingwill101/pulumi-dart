@@ -32,7 +32,7 @@ class DomainNewCertificateConfig {
   /// [privateKey] The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
   /// [serverCertificate] The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
   /// [serverCertificateStatus] Whether the HTTPS certificate is enabled. Value:
-  DomainNewCertificateConfig({
+  const DomainNewCertificateConfig({
     this.certId,
     this.certName,
     this.certRegion,

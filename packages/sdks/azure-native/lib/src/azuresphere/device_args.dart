@@ -27,7 +27,7 @@ class DeviceArgs {
   /// [deviceName] Device name
   /// [productName] Name of product.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DeviceArgs({
+  const DeviceArgs({
     required this.catalogName,
     required this.deviceGroupName,
     this.deviceId,

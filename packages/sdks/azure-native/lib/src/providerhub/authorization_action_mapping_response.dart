@@ -11,7 +11,7 @@ class AuthorizationActionMappingResponse {
   /// Creates a new [AuthorizationActionMappingResponse].
   /// [desired] The desired action name.
   /// [original] The original action name.
-  AuthorizationActionMappingResponse({
+  const AuthorizationActionMappingResponse({
     this.desired,
     this.original,
   });

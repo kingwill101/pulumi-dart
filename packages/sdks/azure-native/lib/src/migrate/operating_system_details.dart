@@ -13,7 +13,7 @@ class OperatingSystemDetails {
   /// [osArchitecture] Optional.
   /// [osName] Optional.
   /// [osVersion] Optional.
-  OperatingSystemDetails({
+  const OperatingSystemDetails({
     this.os,
     this.osArchitecture,
     this.osName,

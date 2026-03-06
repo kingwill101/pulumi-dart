@@ -17,7 +17,7 @@ class GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunch
   /// [organizationalUnitArns] Set of AWS Organizational Unit ARNs.
   /// [userGroups] Set of EC2 launch permission user groups.
   /// [userIds] Set of AWS Account identifiers.
-  GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission({
+  const GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission({
     required this.organizationArns,
     required this.organizationalUnitArns,
     required this.userGroups,

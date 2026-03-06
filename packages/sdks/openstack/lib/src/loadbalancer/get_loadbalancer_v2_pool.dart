@@ -7,7 +7,7 @@ class GetLoadbalancerV2Pool {
 
   /// Creates a new [GetLoadbalancerV2Pool].
   /// [id] Required.
-  GetLoadbalancerV2Pool({
+  const GetLoadbalancerV2Pool({
     required this.id,
   });
 

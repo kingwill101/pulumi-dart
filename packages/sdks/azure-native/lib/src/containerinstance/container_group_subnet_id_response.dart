@@ -12,7 +12,7 @@ class ContainerGroupSubnetIdResponse {
   /// Creates a new [ContainerGroupSubnetIdResponse].
   /// [id] Resource ID of virtual network and subnet.
   /// [name] Friendly name for the subnet.
-  ContainerGroupSubnetIdResponse({
+  const ContainerGroupSubnetIdResponse({
     required this.id,
     this.name,
   });

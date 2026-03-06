@@ -15,7 +15,7 @@ class AppState {
   /// [description] The description of the app. Defaults to null.
   /// [name] The name of the app.
   /// [tags] A mapping of tags to assign to the resource.
-  AppState({
+  const AppState({
     this.description,
     this.name,
     this.tags,

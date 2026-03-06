@@ -45,7 +45,7 @@ class SpringCloudNewRelicApplicationPerformanceMonitoringArgs {
   /// [licenseKey] Specifies the license key associated with the New Relic account. This key binds your agent's data to your account in New Relic service.
   /// [name] The name which should be used for this Spring Cloud Application Performance Monitoring resource for New Relic. Changing this forces a new resource to be created.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
-  SpringCloudNewRelicApplicationPerformanceMonitoringArgs({
+  const SpringCloudNewRelicApplicationPerformanceMonitoringArgs({
     this.agentEnabled,
     required this.appName,
     this.appServerPort,

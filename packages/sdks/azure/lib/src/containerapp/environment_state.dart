@@ -83,7 +83,7 @@ class EnvironmentState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [workloadProfiles] One or more `workload_profile` blocks as defined below.
   /// [zoneRedundancyEnabled] Should the Container App Environment be created with Zone Redundancy enabled? Defaults to `false`. Changing this forces a new resource to be created.
-  EnvironmentState({
+  const EnvironmentState({
     this.customDomainVerificationId,
     this.daprApplicationInsightsConnectionString,
     this.defaultDomain,

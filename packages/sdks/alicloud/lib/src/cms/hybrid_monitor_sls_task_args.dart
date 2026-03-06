@@ -32,7 +32,7 @@ class HybridMonitorSlsTaskArgs {
   /// [namespace] The name of the namespace.
   /// [slsProcessConfig] The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
   /// [taskName] The name of the metric import task, enter the name of the metric for logs imported from Log Service.
-  HybridMonitorSlsTaskArgs({
+  const HybridMonitorSlsTaskArgs({
     this.attachLabels,
     this.collectInterval,
     required this.collectTargetType,

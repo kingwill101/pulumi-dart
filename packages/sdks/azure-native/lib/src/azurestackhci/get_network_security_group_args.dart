@@ -15,7 +15,7 @@ class GetNetworkSecurityGroupArgs {
   /// Creates a new [GetNetworkSecurityGroupArgs].
   /// [networkSecurityGroupName] Name of the network security group
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkSecurityGroupArgs({
+  const GetNetworkSecurityGroupArgs({
     required this.networkSecurityGroupName,
     required this.resourceGroupName,
   });

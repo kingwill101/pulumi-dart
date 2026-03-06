@@ -38,7 +38,7 @@ class GetObjectsResult {
   /// [requestCharged] If present, indicates that the requester was successfully charged for the request.
   /// [requestPayer] Optional.
   /// [startAfter] Optional.
-  GetObjectsResult({
+  const GetObjectsResult({
     required this.bucket,
     required this.commonPrefixes,
     this.delimiter,

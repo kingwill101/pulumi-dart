@@ -12,7 +12,7 @@ class SinglePackageChangeResponse {
   /// Creates a new [SinglePackageChangeResponse].
   /// [packageBody] Optional. Sql code for package body
   /// [packageDescription] Optional. Sql code for package description
-  SinglePackageChangeResponse({
+  const SinglePackageChangeResponse({
     required this.packageBody,
     required this.packageDescription,
   });

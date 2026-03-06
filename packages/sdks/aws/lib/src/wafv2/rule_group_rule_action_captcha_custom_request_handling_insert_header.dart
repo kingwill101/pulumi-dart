@@ -11,7 +11,7 @@ class RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader {
   /// Creates a new [RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader].
   /// [name] A friendly name of the rule group.
   /// [value] The value of the custom header.
-  RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader({
+  const RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader({
     required this.name,
     required this.value,
   });

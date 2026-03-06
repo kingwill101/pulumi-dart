@@ -18,7 +18,7 @@ class GetProjectArgs {
   /// [accountName] The name of Cognitive Services account.
   /// [projectName] The name of Cognitive Services account's project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProjectArgs({
+  const GetProjectArgs({
     required this.accountName,
     required this.projectName,
     required this.resourceGroupName,

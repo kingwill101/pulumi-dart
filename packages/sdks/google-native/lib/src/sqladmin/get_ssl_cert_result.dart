@@ -32,7 +32,7 @@ class GetSslCertResult {
   /// [kind] This is always `sql#sslCert`.
   /// [selfLink] The URI of this resource.
   /// [sha1Fingerprint] Sha1 Fingerprint.
-  GetSslCertResult({
+  const GetSslCertResult({
     required this.cert,
     required this.certSerialNumber,
     required this.commonName,

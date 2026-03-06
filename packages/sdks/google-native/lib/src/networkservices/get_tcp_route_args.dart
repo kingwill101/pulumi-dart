@@ -15,7 +15,7 @@ class GetTcpRouteArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [tcpRouteId] Required.
-  GetTcpRouteArgs({
+  const GetTcpRouteArgs({
     required this.location,
     this.project,
     required this.tcpRouteId,

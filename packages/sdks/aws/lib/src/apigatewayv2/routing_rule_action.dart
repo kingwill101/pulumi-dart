@@ -9,7 +9,7 @@ class RoutingRuleAction {
 
   /// Creates a new [RoutingRuleAction].
   /// [invokeApi] Configuration to invoke a stage of a target API. Only REST APIs are supported. See below.
-  RoutingRuleAction({
+  const RoutingRuleAction({
     required this.invokeApi,
   });
 

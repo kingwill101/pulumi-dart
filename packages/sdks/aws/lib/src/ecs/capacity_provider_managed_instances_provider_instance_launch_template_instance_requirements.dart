@@ -86,7 +86,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
   /// [spotMaxPricePercentageOverLowestPrice] The maximum price for Spot instances as a percentage over the lowest priced On-Demand instance. This helps control Spot instance costs while maintaining access to capacity.
   /// [totalLocalStorageGb] The minimum and maximum total local storage in gigabytes (GB) for instance types with local storage.
   /// [vcpuCount] The minimum and maximum number of vCPUs for the instance types. Amazon ECS selects instance types that have vCPU counts within this range.
-  CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirements({
+  const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirements({
     this.acceleratorCount,
     this.acceleratorManufacturers,
     this.acceleratorNames,

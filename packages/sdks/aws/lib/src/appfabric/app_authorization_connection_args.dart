@@ -25,7 +25,7 @@ class AppAuthorizationConnectionArgs {
   /// [authRequest] Contains OAuth2 authorization information.This is required if the app authorization for the request is configured with an OAuth2 (oauth2) authorization type.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  AppAuthorizationConnectionArgs({
+  const AppAuthorizationConnectionArgs({
     required this.appAuthorizationArn,
     required this.appBundleArn,
     this.authRequest,

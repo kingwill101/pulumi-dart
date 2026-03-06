@@ -11,7 +11,7 @@ class GetEdgeActionVersionCodeResult {
   /// Creates a new [GetEdgeActionVersionCodeResult].
   /// [content] The version code deployment content
   /// [name] The version code name
-  GetEdgeActionVersionCodeResult({
+  const GetEdgeActionVersionCodeResult({
     required this.content,
     required this.name,
   });

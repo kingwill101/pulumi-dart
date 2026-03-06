@@ -31,7 +31,7 @@ class ServiceBusQueueOutputDataSource {
   /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
   /// [systemPropertyColumns] The system properties associated with the Service Bus Queue. The following system properties are supported: ReplyToSessionId, ContentType, To, Subject, CorrelationId, TimeToLive, PartitionKey, SessionId, ScheduledEnqueueTime, MessageId, ReplyTo, Label, ScheduledEnqueueTimeUtc.
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
-  ServiceBusQueueOutputDataSource({
+  const ServiceBusQueueOutputDataSource({
     this.authenticationMode,
     this.propertyColumns,
     this.queueName,

@@ -43,7 +43,7 @@ class GetResourcePolicyComputeBetaResult {
   /// [selfLink] Server-defined fully-qualified URL for this resource.
   /// [snapshotSchedulePolicy] Resource policy for persistent disks for creating snapshots.
   /// [status] The status of resource policy creation.
-  GetResourcePolicyComputeBetaResult({
+  const GetResourcePolicyComputeBetaResult({
     required this.creationTimestamp,
     required this.description,
     required this.diskConsistencyGroupPolicy,

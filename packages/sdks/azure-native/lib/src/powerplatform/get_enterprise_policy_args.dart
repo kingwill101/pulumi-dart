@@ -15,7 +15,7 @@ class GetEnterprisePolicyArgs {
   /// Creates a new [GetEnterprisePolicyArgs].
   /// [enterprisePolicyName] The EnterprisePolicy name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEnterprisePolicyArgs({
+  const GetEnterprisePolicyArgs({
     required this.enterprisePolicyName,
     required this.resourceGroupName,
   });

@@ -24,7 +24,7 @@ class AssumeRoleWithWebIdentity {
   /// [sessionName] An identifier for the assumed role session.
   /// [webIdentityToken] Optional.
   /// [webIdentityTokenFile] Optional.
-  AssumeRoleWithWebIdentity({
+  const AssumeRoleWithWebIdentity({
     this.duration,
     this.policy,
     this.policyArns,

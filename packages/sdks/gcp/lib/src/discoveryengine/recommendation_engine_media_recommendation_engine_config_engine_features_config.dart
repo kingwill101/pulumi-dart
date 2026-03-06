@@ -15,7 +15,7 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig {
   /// Creates a new [RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig].
   /// [mostPopularConfig] Feature configurations that are required for creating a Most Popular engine.
   /// [recommendedForYouConfig] Additional feature configurations for creating a `recommended-for-you` engine.
-  RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig({
+  const RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig({
     this.mostPopularConfig,
     this.recommendedForYouConfig,
   });

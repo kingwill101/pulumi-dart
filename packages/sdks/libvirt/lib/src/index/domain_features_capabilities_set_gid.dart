@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSetGid {
 
   /// Creates a new [DomainFeaturesCapabilitiesSetGid].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSetGid({
+  const DomainFeaturesCapabilitiesSetGid({
     this.state,
   });
 

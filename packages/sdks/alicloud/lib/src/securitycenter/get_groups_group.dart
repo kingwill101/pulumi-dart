@@ -17,7 +17,7 @@ class GetGroupsGroup {
   /// [groupId] The ID of Group.
   /// [groupName] The name of Group.
   /// [id] The ID of the Group(same as the group_id).
-  GetGroupsGroup({
+  const GetGroupsGroup({
     required this.groupFlag,
     required this.groupId,
     required this.groupName,

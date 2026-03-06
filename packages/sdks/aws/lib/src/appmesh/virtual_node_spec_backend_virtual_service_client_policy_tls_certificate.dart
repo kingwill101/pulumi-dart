@@ -13,7 +13,7 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate {
   /// Creates a new [VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate].
   /// [file] Local file certificate.
   /// [sds] A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate({
+  const VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate({
     this.file,
     this.sds,
   });

@@ -17,7 +17,7 @@ class AutoscaleSettingProfileRuleScaleAction {
   /// [direction] The scale direction. Possible values are `Increase` and `Decrease`.
   /// [type] The type of action that should occur. Possible values are `ChangeCount`, `ExactCount`, `PercentChangeCount` and `ServiceAllowedNextValue`.
   /// [value] The number of instances involved in the scaling action.
-  AutoscaleSettingProfileRuleScaleAction({
+  const AutoscaleSettingProfileRuleScaleAction({
     required this.cooldown,
     required this.direction,
     required this.type,

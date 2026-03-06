@@ -10,7 +10,7 @@ class InstanceMaintenanceOptions {
 
   /// Creates a new [InstanceMaintenanceOptions].
   /// [autoRecovery] &lt;p&gt;Provides information on the current automatic recovery behavior of your instance.&lt;/p&gt;
-  InstanceMaintenanceOptions({
+  const InstanceMaintenanceOptions({
     this.autoRecovery,
   });
 

@@ -33,7 +33,7 @@ class GetQuotaAlarmsAlarm {
   /// [threshold] The threshold of Quota Alarm.
   /// [thresholdPercent] The threshold percent of Quota Alarm.
   /// [webHook] The WebHook of Quota Alarm.
-  GetQuotaAlarmsAlarm({
+  const GetQuotaAlarmsAlarm({
     required this.alarmId,
     required this.id,
     required this.productCode,

@@ -21,7 +21,7 @@ class ObjectStorageKeyArgs {
   /// [bucketAccesses] Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
   /// [label] The label given to this key. For display purposes only.
   /// [regions] A set of regions where the key will grant access to create buckets.
-  ObjectStorageKeyArgs({
+  const ObjectStorageKeyArgs({
     this.bucketAccesses,
     required this.label,
     this.regions,

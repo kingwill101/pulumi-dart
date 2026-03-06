@@ -44,7 +44,7 @@ class GetResult {
   /// [resourceGroupName] Required.
   /// [skuName] The SKU name of the Managed Redis instance.
   /// [tags] A mapping of tags assigned to the Managed Redis instance.
-  GetResult({
+  const GetResult({
     required this.customerManagedKeys,
     required this.defaultDatabases,
     required this.highAvailabilityEnabled,

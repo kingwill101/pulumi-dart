@@ -18,7 +18,7 @@ class UserVpcAuthorizationArgs {
   /// [authChannel] The auth channel. Valid values: `RESOURCE_DIRECTORY`.
   /// [authType] The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
   /// [authorizedUserId] The primary account ID of the user who authorizes the resource.
-  UserVpcAuthorizationArgs({
+  const UserVpcAuthorizationArgs({
     this.authChannel,
     this.authType,
     required this.authorizedUserId,

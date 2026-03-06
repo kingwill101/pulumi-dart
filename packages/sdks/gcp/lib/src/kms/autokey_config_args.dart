@@ -17,7 +17,7 @@ class AutokeyConfigArgs {
   /// Creates a new [AutokeyConfigArgs].
   /// [folder] The folder for which to retrieve config.
   /// [keyProject] The target key project for a given folder where KMS Autokey will provision a
-  AutokeyConfigArgs({
+  const AutokeyConfigArgs({
     required this.folder,
     this.keyProject,
   });

@@ -18,7 +18,7 @@ class GetAgentPoolArgs {
   /// [agentPoolName] The name of the agent pool.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  GetAgentPoolArgs({
+  const GetAgentPoolArgs({
     required this.agentPoolName,
     required this.resourceGroupName,
     required this.resourceName,

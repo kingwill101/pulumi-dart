@@ -9,7 +9,7 @@ class RegistrationAssignmentProperties {
 
   /// Creates a new [RegistrationAssignmentProperties].
   /// [registrationDefinitionId] The fully qualified path of the registration definition.
-  RegistrationAssignmentProperties({
+  const RegistrationAssignmentProperties({
     required this.registrationDefinitionId,
   });
 

@@ -24,7 +24,7 @@ class ViewArgs {
   /// [location] Location of the resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [value] A filter to reduce conversation results to a specific subset.
-  ViewArgs({
+  const ViewArgs({
     this.displayName,
     required this.location,
     this.project,

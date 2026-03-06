@@ -22,7 +22,7 @@ class AnalysisArgs {
   /// [location] Optional.
   /// [name] Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
   /// [project] Optional.
-  AnalysisArgs({
+  const AnalysisArgs({
     this.annotatorSelector,
     required this.conversationId,
     this.location,

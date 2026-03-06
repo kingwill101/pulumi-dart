@@ -16,7 +16,7 @@ class TimePartitioningResponse {
   /// [field] [Beta] [Optional] If not set, the table is partitioned by pseudo column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
   /// [requirePartitionFilter] Required.
   /// [type] [Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively. When the type is not specified, the default behavior is DAY.
-  TimePartitioningResponse({
+  const TimePartitioningResponse({
     required this.expirationMs,
     required this.field,
     required this.requirePartitionFilter,

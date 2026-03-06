@@ -11,7 +11,7 @@ class LocalUserSshAuthorizedKey {
   /// Creates a new [LocalUserSshAuthorizedKey].
   /// [description] The description of this SSH authorized key.
   /// [key] The public key value of this SSH authorized key.
-  LocalUserSshAuthorizedKey({
+  const LocalUserSshAuthorizedKey({
     this.description,
     required this.key,
   });

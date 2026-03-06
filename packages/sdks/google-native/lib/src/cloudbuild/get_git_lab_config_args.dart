@@ -15,7 +15,7 @@ class GetGitLabConfigArgs {
   /// [gitLabConfigId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGitLabConfigArgs({
+  const GetGitLabConfigArgs({
     required this.gitLabConfigId,
     required this.location,
     this.project,

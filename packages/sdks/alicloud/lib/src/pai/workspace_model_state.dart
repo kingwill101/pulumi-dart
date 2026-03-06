@@ -45,7 +45,7 @@ class WorkspaceModelState {
   /// [origin] The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
   /// [task] The task of the model. Describes the specific problem that the model solves. Example: text-classification.
   /// [workspaceId] The ID of the workspace.
-  WorkspaceModelState({
+  const WorkspaceModelState({
     this.accessibility,
     this.domain,
     this.extraInfo,

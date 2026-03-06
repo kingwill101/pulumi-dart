@@ -18,7 +18,7 @@ class GetMigrationConfigArgs {
   /// [configName] The configuration name. Should always be "$default".
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMigrationConfigArgs({
+  const GetMigrationConfigArgs({
     required this.configName,
     required this.namespaceName,
     required this.resourceGroupName,

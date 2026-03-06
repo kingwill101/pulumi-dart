@@ -18,7 +18,7 @@ class SoftwareUpdateConfigurationTargetAzureQuery {
   /// [scopes] Specifies a list of Subscription or Resource Group ARM Ids to query.
   /// [tagFilter] Specifies how the specified tags to filter VMs. Possible values are `Any` and `All`.
   /// [tags] A mapping of tags used for query filter. One or more `tags` block as defined below.
-  SoftwareUpdateConfigurationTargetAzureQuery({
+  const SoftwareUpdateConfigurationTargetAzureQuery({
     this.locations,
     this.scopes,
     this.tagFilter,

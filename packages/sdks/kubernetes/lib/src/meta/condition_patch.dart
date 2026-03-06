@@ -24,7 +24,7 @@ class ConditionPatch {
   /// [reason] reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.
   /// [status] status of the condition, one of True, False, Unknown.
   /// [type] type of condition in CamelCase or in foo.example.com/CamelCase.
-  ConditionPatch({
+  const ConditionPatch({
     this.lastTransitionTime,
     this.message,
     this.observedGeneration,

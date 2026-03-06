@@ -9,7 +9,7 @@ class QuarantinePolicyResponse {
 
   /// Creates a new [QuarantinePolicyResponse].
   /// [status] The value that indicates whether the policy is enabled or not.
-  QuarantinePolicyResponse({
+  const QuarantinePolicyResponse({
     this.status,
   });
 

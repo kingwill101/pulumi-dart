@@ -9,7 +9,7 @@ class ResourceManagerTags {
 
   /// Creates a new [ResourceManagerTags].
   /// [tags] TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`
-  ResourceManagerTags({
+  const ResourceManagerTags({
     this.tags,
   });
 

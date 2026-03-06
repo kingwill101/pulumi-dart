@@ -11,7 +11,7 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsAccelerato
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount].
   /// [max] Maximum. Set to `0` to exclude instance types with accelerators.
   /// [min] Minimum.
-  SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount({
+  const SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount({
     this.max,
     this.min,
   });

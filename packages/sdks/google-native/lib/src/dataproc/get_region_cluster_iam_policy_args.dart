@@ -15,7 +15,7 @@ class GetRegionClusterIamPolicyArgs {
   /// [clusterId] Required.
   /// [project] Optional.
   /// [regionId] Required.
-  GetRegionClusterIamPolicyArgs({
+  const GetRegionClusterIamPolicyArgs({
     required this.clusterId,
     this.project,
     required this.regionId,

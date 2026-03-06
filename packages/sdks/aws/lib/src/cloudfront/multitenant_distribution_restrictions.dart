@@ -9,7 +9,7 @@ class MultitenantDistributionRestrictions {
 
   /// Creates a new [MultitenantDistributionRestrictions].
   /// [geoRestriction] Geographic restriction configuration. See Geo Restriction below.
-  MultitenantDistributionRestrictions({
+  const MultitenantDistributionRestrictions({
     required this.geoRestriction,
   });
 

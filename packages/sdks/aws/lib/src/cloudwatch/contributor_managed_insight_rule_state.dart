@@ -28,7 +28,7 @@ class ContributorManagedInsightRuleState {
   /// [tags] Optional.
   /// [tagsAll] Optional.
   /// [templateName] Template name for the managed Contributor Insights rule, as returned by ListManagedInsightRules.
-  ContributorManagedInsightRuleState({
+  const ContributorManagedInsightRuleState({
     this.arn,
     this.region,
     this.resourceArn,

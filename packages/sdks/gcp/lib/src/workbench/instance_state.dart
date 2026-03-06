@@ -89,7 +89,7 @@ class InstanceState {
   /// [state] (Output)
   /// [updateTime] An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
   /// [upgradeHistories] Output only. The upgrade history of this instance.
-  InstanceState({
+  const InstanceState({
     this.createTime,
     this.creator,
     this.desiredState,

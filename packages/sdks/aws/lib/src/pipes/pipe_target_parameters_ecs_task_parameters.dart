@@ -55,7 +55,7 @@ class PipeTargetParametersEcsTaskParameters {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [taskCount] The number of tasks to create based on TaskDefinition. The default is 1.
   /// [taskDefinitionArn] The ARN of the task definition to use if the event target is an Amazon ECS task.
-  PipeTargetParametersEcsTaskParameters({
+  const PipeTargetParametersEcsTaskParameters({
     this.capacityProviderStrategies,
     this.enableEcsManagedTags,
     this.enableExecuteCommand,

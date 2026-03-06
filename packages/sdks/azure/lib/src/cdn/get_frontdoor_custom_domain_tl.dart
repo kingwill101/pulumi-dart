@@ -14,7 +14,7 @@ class GetFrontdoorCustomDomainTl {
   /// [cdnFrontdoorSecretId] The Resource ID of the Front Door Secret.
   /// [certificateType] The SSL certificate type.
   /// [minimumTlsVersion] The TLS protocol version that will be used for Https connections.
-  GetFrontdoorCustomDomainTl({
+  const GetFrontdoorCustomDomainTl({
     required this.cdnFrontdoorSecretId,
     required this.certificateType,
     required this.minimumTlsVersion,

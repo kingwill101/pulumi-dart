@@ -18,7 +18,7 @@ class GetEmailIdentityArgs {
   /// [emailIdentity] The name of the email identity.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags.
-  GetEmailIdentityArgs({
+  const GetEmailIdentityArgs({
     required this.emailIdentity,
     this.region,
     this.tags,

@@ -34,7 +34,7 @@ class VocabularyFilterState {
   /// [vocabularyFilterFileUri] The Amazon S3 location (URI) of the text file that contains your custom VocabularyFilter. Conflicts with `words` argument.
   /// [vocabularyFilterName] The name of the VocabularyFilter.
   /// [words] A list of terms to include in the vocabulary. Conflicts with `vocabulary_filter_file_uri` argument.
-  VocabularyFilterState({
+  const VocabularyFilterState({
     this.arn,
     this.downloadUri,
     this.languageCode,

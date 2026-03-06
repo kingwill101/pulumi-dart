@@ -25,7 +25,7 @@ class SecretResourcePropertiesResponse {
   /// [provisioningState] State of the resource.
   /// [status] Status of the resource.
   /// [statusDetails] Gives additional information about the current status of the secret.
-  SecretResourcePropertiesResponse({
+  const SecretResourcePropertiesResponse({
     this.contentType,
     this.description,
     required this.kind,

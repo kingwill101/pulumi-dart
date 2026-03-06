@@ -11,7 +11,7 @@ class DomainDevicesFilesystemBinaryLock {
   /// Creates a new [DomainDevicesFilesystemBinaryLock].
   /// [flock] Controls flocking for the binary filesystem device's lock settings.
   /// [posix] Configures whether the lock for the binary filesystem is POSIX compliant.
-  DomainDevicesFilesystemBinaryLock({
+  const DomainDevicesFilesystemBinaryLock({
     this.flock,
     this.posix,
   });

@@ -14,7 +14,7 @@ class GetClusterClusterAutoscalingResourceLimit {
   /// [maximum] Maximum amount of the resource in the cluster.
   /// [minimum] Minimum amount of the resource in the cluster.
   /// [resourceType] The type of the resource. For example, cpu and memory. See the guide to using Node Auto-Provisioning for a list of types.
-  GetClusterClusterAutoscalingResourceLimit({
+  const GetClusterClusterAutoscalingResourceLimit({
     required this.maximum,
     required this.minimum,
     required this.resourceType,

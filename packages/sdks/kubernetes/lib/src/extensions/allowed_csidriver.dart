@@ -9,7 +9,7 @@ class AllowedCSIDriver {
 
   /// Creates a new [AllowedCSIDriver].
   /// [name] Name is the registered name of the CSI driver
-  AllowedCSIDriver({
+  const AllowedCSIDriver({
     required this.name,
   });
 

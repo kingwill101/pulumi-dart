@@ -15,7 +15,7 @@ class WindowsUpdateSettingsResponseOsconfigV1beta {
   /// [classifications] Only apply updates of these windows update classifications. If empty, all updates are applied.
   /// [excludes] List of KBs to exclude from update.
   /// [exclusivePatches] An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
-  WindowsUpdateSettingsResponseOsconfigV1beta({
+  const WindowsUpdateSettingsResponseOsconfigV1beta({
     required this.classifications,
     required this.excludes,
     required this.exclusivePatches,

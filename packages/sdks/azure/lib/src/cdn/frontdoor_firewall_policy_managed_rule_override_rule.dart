@@ -28,7 +28,7 @@ class FrontdoorFirewallPolicyManagedRuleOverrideRule {
   /// [enabled] Is the managed rule override enabled or disabled. Defaults to `false`
   /// [exclusions] One or more `exclusion` blocks as defined below.
   /// [ruleId] Identifier for the managed rule.
-  FrontdoorFirewallPolicyManagedRuleOverrideRule({
+  const FrontdoorFirewallPolicyManagedRuleOverrideRule({
     required this.action,
     this.enabled,
     this.exclusions,

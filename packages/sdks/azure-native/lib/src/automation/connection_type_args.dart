@@ -28,7 +28,7 @@ class ConnectionTypeArgs {
   /// [isGlobal] Gets or sets a Boolean value to indicate if the connection type is global.
   /// [name] Gets or sets the name of the connection type.
   /// [resourceGroupName] Name of an Azure Resource group.
-  ConnectionTypeArgs({
+  const ConnectionTypeArgs({
     required this.automationAccountName,
     this.connectionTypeName,
     required this.fieldDefinitions,

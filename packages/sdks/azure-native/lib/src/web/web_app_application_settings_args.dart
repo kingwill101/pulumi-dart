@@ -21,7 +21,7 @@ class WebAppApplicationSettingsArgs {
   /// [name] Name of the app.
   /// [properties] Settings.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppApplicationSettingsArgs({
+  const WebAppApplicationSettingsArgs({
     this.kind,
     required this.name,
     this.properties,

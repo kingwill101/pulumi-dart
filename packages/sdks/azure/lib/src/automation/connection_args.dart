@@ -33,7 +33,7 @@ class ConnectionArgs {
   /// [resourceGroupName] The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   /// [type] The type of the Connection - can be either builtin type such as `Azure`, `AzureClassicCertificate`, and `AzureServicePrincipal`, or a user defined types. Changing this forces a new resource to be created.
   /// [values] A mapping of key value pairs passed to the connection. Different `type` needs different parameters in the `values`. Builtin types have required field values as below:
-  ConnectionArgs({
+  const ConnectionArgs({
     required this.automationAccountName,
     this.description,
     this.name,

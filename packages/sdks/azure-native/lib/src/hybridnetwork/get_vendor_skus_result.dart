@@ -46,7 +46,7 @@ class GetVendorSkusResult {
   /// [skuType] The sku type.
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetVendorSkusResult({
+  const GetVendorSkusResult({
     required this.azureApiVersion,
     this.deploymentMode,
     required this.id,

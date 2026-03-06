@@ -17,7 +17,7 @@ class NetworkBandwidthOutbound {
   /// [burst] Configures the maximum burst capacity of outbound data that can exceed the average rate temporarily.
   /// [floor] Specifies the minimum guaranteed rate for outbound data traffic, ensuring a baseline level of performance.
   /// [peak] Defines the upper limit for the peak rate of outbound data, controlling spikes in network usage.
-  NetworkBandwidthOutbound({
+  const NetworkBandwidthOutbound({
     this.average,
     this.burst,
     this.floor,

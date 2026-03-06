@@ -15,7 +15,7 @@ class GetCustomClassArgs {
   /// [customClassId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCustomClassArgs({
+  const GetCustomClassArgs({
     required this.customClassId,
     required this.location,
     this.project,

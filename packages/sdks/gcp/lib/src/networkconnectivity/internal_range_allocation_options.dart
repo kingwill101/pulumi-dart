@@ -13,7 +13,7 @@ class InternalRangeAllocationOptions {
   /// Creates a new [InternalRangeAllocationOptions].
   /// [allocationStrategy] Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
   /// [firstAvailableRangesLookupSize] Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
-  InternalRangeAllocationOptions({
+  const InternalRangeAllocationOptions({
     this.allocationStrategy,
     this.firstAvailableRangesLookupSize,
   });

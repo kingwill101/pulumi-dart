@@ -30,7 +30,7 @@ class ExperimentTemplateTarget {
   /// [resourceTags] Tag(s) the resources need to have to be considered a valid target for an action. Conflicts with `resource_arns`. See below.
   /// [resourceType] AWS resource type. The resource type must be supported for the specified action. To find out what resource types are supported, see [Targets for AWS FIS](https://docs.aws.amazon.com/fis/latest/userguide/targets.html#resource-types).
   /// [selectionMode] Scopes the identified resources. Valid values are `ALL` (all identified resources), `COUNT(n)` (randomly select `n` of the identified resources), `PERCENT(n)` (randomly select `n` percent of the identified resources).
-  ExperimentTemplateTarget({
+  const ExperimentTemplateTarget({
     this.filters,
     required this.name,
     this.parameters,

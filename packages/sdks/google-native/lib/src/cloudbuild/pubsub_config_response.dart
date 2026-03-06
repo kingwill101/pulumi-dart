@@ -18,7 +18,7 @@ class PubsubConfigResponse {
   /// [state] Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
   /// [subscription] Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
   /// [topic] The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
-  PubsubConfigResponse({
+  const PubsubConfigResponse({
     required this.serviceAccountEmail,
     required this.state,
     required this.subscription,

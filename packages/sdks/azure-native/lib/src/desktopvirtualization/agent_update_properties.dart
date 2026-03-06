@@ -19,7 +19,7 @@ class AgentUpdateProperties {
   /// [maintenanceWindows] List of maintenance windows. Maintenance windows are 2 hours long.
   /// [type] The type of maintenance for session host components.
   /// [useSessionHostLocalTime] Whether to use localTime of the virtual machine.
-  AgentUpdateProperties({
+  const AgentUpdateProperties({
     this.maintenanceWindowTimeZone,
     this.maintenanceWindows,
     this.type,

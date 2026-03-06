@@ -11,7 +11,7 @@ class GetTemplateScratchesScratchSourceResource {
   /// Creates a new [GetTemplateScratchesScratchSourceResource].
   /// [resourceId] The ID of the Source Resource.
   /// [resourceType] The type of the Source resource.
-  GetTemplateScratchesScratchSourceResource({
+  const GetTemplateScratchesScratchSourceResource({
     required this.resourceId,
     required this.resourceType,
   });

@@ -46,7 +46,7 @@ class ConfigurationFeatureArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [targetingFilters] A `targeting_filter` block as defined below.
   /// [timewindowFilters] A `timewindow_filter` block as defined below.
-  ConfigurationFeatureArgs({
+  const ConfigurationFeatureArgs({
     required this.configurationStoreId,
     this.description,
     this.enabled,

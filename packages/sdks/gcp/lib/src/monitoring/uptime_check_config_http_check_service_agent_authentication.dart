@@ -9,7 +9,7 @@ class UptimeCheckConfigHttpCheckServiceAgentAuthentication {
 
   /// Creates a new [UptimeCheckConfigHttpCheckServiceAgentAuthentication].
   /// [type] The type of authentication to use.
-  UptimeCheckConfigHttpCheckServiceAgentAuthentication({
+  const UptimeCheckConfigHttpCheckServiceAgentAuthentication({
     this.type,
   });
 

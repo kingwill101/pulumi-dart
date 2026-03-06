@@ -9,7 +9,7 @@ class VpnSiteO365Policy {
 
   /// Creates a new [VpnSiteO365Policy].
   /// [trafficCategory] A `traffic_category` block as defined above.
-  VpnSiteO365Policy({
+  const VpnSiteO365Policy({
     this.trafficCategory,
   });
 

@@ -27,7 +27,7 @@ class ToolsetOpenApiToolsetApiAuthenticationOauthConfig {
   /// [oauthGrantType] OAuth grant types.
   /// [scopes] The OAuth scopes to grant.
   /// [tokenEndpoint] The token endpoint in the OAuth provider to exchange for an access token.
-  ToolsetOpenApiToolsetApiAuthenticationOauthConfig({
+  const ToolsetOpenApiToolsetApiAuthenticationOauthConfig({
     required this.clientId,
     required this.clientSecretVersion,
     required this.oauthGrantType,

@@ -34,7 +34,7 @@ class ServerCertificateState {
   /// [resourceGroupId] The Id of resource group which the slb server certificate belongs.
   /// [serverCertificate] the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
   /// [tags] A mapping of tags to assign to the resource.
-  ServerCertificateState({
+  const ServerCertificateState({
     this.alicloudCertifacteId,
     this.alicloudCertifacteName,
     this.alicloudCertificateId,

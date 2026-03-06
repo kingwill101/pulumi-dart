@@ -16,7 +16,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// [allowAllBundleIds] Optional. If set to true, allowed_bundle_ids are not enforced.
   /// [allowedBundleIds] Optional. iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
   /// [appleDeveloperId] Optional. Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
-  GoogleCloudRecaptchaenterpriseV1IOSKeySettings({
+  const GoogleCloudRecaptchaenterpriseV1IOSKeySettings({
     this.allowAllBundleIds,
     this.allowedBundleIds,
     this.appleDeveloperId,

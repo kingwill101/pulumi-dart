@@ -22,7 +22,7 @@ class ScheduleResponse {
   /// [daily] For schedules like: 'recur every day' or 'recur every 3 days'.
   /// [relativeMonthly] For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
   /// [weekly] For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-  ScheduleResponse({
+  const ScheduleResponse({
     this.absoluteMonthly,
     this.daily,
     this.relativeMonthly,

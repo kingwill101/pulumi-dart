@@ -21,7 +21,7 @@ class MoveCollectionProperties {
   /// [sourceRegion] Gets or sets the source region.
   /// [targetRegion] Gets or sets the target region.
   /// [version] Gets or sets the version of move collection.
-  MoveCollectionProperties({
+  const MoveCollectionProperties({
     this.moveRegion,
     this.moveType,
     this.sourceRegion,

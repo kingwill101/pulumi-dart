@@ -32,7 +32,7 @@ class NamespaceNetworkRuleSetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [trustedServiceAccessEnabled] Value that indicates whether Trusted Service Access is Enabled or not.
   /// [virtualNetworkRules] List VirtualNetwork Rules
-  NamespaceNetworkRuleSetArgs({
+  const NamespaceNetworkRuleSetArgs({
     this.defaultAction,
     this.ipRules,
     required this.namespaceName,

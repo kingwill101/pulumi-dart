@@ -18,7 +18,7 @@ class GetNetworkProfileArgs {
   /// [expand] Expands referenced resources.
   /// [networkProfileName] The name of the public IP prefix.
   /// [resourceGroupName] The name of the resource group.
-  GetNetworkProfileArgs({
+  const GetNetworkProfileArgs({
     this.expand,
     required this.networkProfileName,
     required this.resourceGroupName,

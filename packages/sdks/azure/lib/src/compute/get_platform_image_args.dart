@@ -24,7 +24,7 @@ class GetPlatformImageArgs {
   /// [publisher] Specifies the Publisher associated with the Platform Image.
   /// [sku] Specifies the SKU of the Platform Image.
   /// [version] The version of the Platform Image.
-  GetPlatformImageArgs({
+  const GetPlatformImageArgs({
     required this.location,
     required this.offer,
     required this.publisher,

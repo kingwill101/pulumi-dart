@@ -26,7 +26,7 @@ class WorkspaceAzureDevopsRepo {
   /// [repositoryName] Specifies the name of the git repository.
   /// [rootFolder] Specifies the root folder within the repository. Set to `/` for the top level.
   /// [tenantId] the ID of the tenant for the Azure DevOps account.
-  WorkspaceAzureDevopsRepo({
+  const WorkspaceAzureDevopsRepo({
     required this.accountName,
     required this.branchName,
     this.lastCommitId,

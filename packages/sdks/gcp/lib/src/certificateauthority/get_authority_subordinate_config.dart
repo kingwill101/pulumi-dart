@@ -16,7 +16,7 @@ class GetAuthoritySubordinateConfig {
   /// Creates a new [GetAuthoritySubordinateConfig].
   /// [certificateAuthority] This can refer to a CertificateAuthority that was used to create a
   /// [pemIssuerChains] Contains the PEM certificate chain for the issuers of this CertificateAuthority,
-  GetAuthoritySubordinateConfig({
+  const GetAuthoritySubordinateConfig({
     required this.certificateAuthority,
     required this.pemIssuerChains,
   });

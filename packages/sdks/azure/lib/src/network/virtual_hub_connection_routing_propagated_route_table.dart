@@ -11,7 +11,7 @@ class VirtualHubConnectionRoutingPropagatedRouteTable {
   /// Creates a new [VirtualHubConnectionRoutingPropagatedRouteTable].
   /// [labels] The list of labels to assign to this route table.
   /// [routeTableIds] A list of Route Table IDs to associated with this Virtual Hub Connection.
-  VirtualHubConnectionRoutingPropagatedRouteTable({
+  const VirtualHubConnectionRoutingPropagatedRouteTable({
     this.labels,
     this.routeTableIds,
   });

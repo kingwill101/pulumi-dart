@@ -11,7 +11,7 @@ class LifecyclePolicyResourceSelectionRecipe {
   /// Creates a new [LifecyclePolicyResourceSelectionRecipe].
   /// [name] The name of an Image Builder recipe that the lifecycle policy uses for resource selection.
   /// [semanticVersion] The version of the Image Builder recipe specified by the name field.
-  LifecyclePolicyResourceSelectionRecipe({
+  const LifecyclePolicyResourceSelectionRecipe({
     required this.name,
     required this.semanticVersion,
   });

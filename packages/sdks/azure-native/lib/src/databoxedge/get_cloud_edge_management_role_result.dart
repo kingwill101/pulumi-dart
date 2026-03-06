@@ -35,7 +35,7 @@ class GetCloudEdgeManagementRoleResult {
   /// [roleStatus] Role status.
   /// [systemData] Metadata pertaining to creation and last modification of Role
   /// [type] The hierarchical type of the object.
-  GetCloudEdgeManagementRoleResult({
+  const GetCloudEdgeManagementRoleResult({
     required this.azureApiVersion,
     required this.edgeProfile,
     required this.id,

@@ -15,7 +15,7 @@ class GetPoolContainerConfiguration {
   /// [containerImageNames] A list of container image names to use, as would be specified by `docker pull`.
   /// [containerRegistries] Additional container registries from which container images can be pulled by the pool's VMs.
   /// [type] The type of container configuration.
-  GetPoolContainerConfiguration({
+  const GetPoolContainerConfiguration({
     required this.containerImageNames,
     required this.containerRegistries,
     required this.type,

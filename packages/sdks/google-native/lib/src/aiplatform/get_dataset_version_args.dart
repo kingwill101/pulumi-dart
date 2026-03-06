@@ -19,7 +19,7 @@ class GetDatasetVersionArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [readMask] Optional.
-  GetDatasetVersionArgs({
+  const GetDatasetVersionArgs({
     required this.datasetId,
     required this.datasetVersionId,
     required this.location,

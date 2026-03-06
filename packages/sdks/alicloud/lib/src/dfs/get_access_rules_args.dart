@@ -18,7 +18,7 @@ class GetAccessRulesArgs {
   /// [accessGroupId] The resource ID of the Access Group.
   /// [ids] A list of Access Rule IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAccessRulesArgs({
+  const GetAccessRulesArgs({
     required this.accessGroupId,
     this.ids,
     this.outputFile,

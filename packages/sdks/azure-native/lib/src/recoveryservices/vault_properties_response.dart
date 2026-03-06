@@ -65,7 +65,7 @@ class VaultPropertiesResponse {
   /// [secureScore] Secure Score of Recovery Services Vault
   /// [securitySettings] Security Settings of the vault
   /// [upgradeDetails] Details for upgrading vault.
-  VaultPropertiesResponse({
+  const VaultPropertiesResponse({
     required this.backupStorageVersion,
     required this.bcdrSecurityLevel,
     this.encryption,

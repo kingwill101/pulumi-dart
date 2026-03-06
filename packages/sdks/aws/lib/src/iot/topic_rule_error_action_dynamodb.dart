@@ -35,7 +35,7 @@ class TopicRuleErrorActionDynamodb {
   /// [rangeKeyValue] The range key value.
   /// [roleArn] The ARN of the IAM role that grants access to the DynamoDB table.
   /// [tableName] The name of the DynamoDB table.
-  TopicRuleErrorActionDynamodb({
+  const TopicRuleErrorActionDynamodb({
     required this.hashKeyField,
     this.hashKeyType,
     required this.hashKeyValue,

@@ -15,7 +15,7 @@ class ServerKeyArgs {
   /// Creates a new [ServerKeyArgs].
   /// [keyVaultKeyId] The URL to a Key Vault Key.
   /// [serverId] The ID of the PostgreSQL Server. Changing this forces a new resource to be created.
-  ServerKeyArgs({
+  const ServerKeyArgs({
     required this.keyVaultKeyId,
     required this.serverId,
   });

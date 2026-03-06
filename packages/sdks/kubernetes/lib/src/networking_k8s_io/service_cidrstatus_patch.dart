@@ -10,7 +10,7 @@ class ServiceCIDRStatusPatch {
 
   /// Creates a new [ServiceCIDRStatusPatch].
   /// [conditions] conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state
-  ServiceCIDRStatusPatch({
+  const ServiceCIDRStatusPatch({
     this.conditions,
   });
 

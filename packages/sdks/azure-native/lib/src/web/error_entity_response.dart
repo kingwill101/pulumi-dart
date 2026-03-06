@@ -30,7 +30,7 @@ class ErrorEntityResponse {
   /// [messageTemplate] Message template.
   /// [parameters] Parameters for the template.
   /// [target] The error target.
-  ErrorEntityResponse({
+  const ErrorEntityResponse({
     this.code,
     this.details,
     this.extendedCode,

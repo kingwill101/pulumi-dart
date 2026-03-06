@@ -90,7 +90,7 @@ class GetEcsNetworkInterfacesInterface {
   /// [vpcId] The vpc id.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone id.
-  GetEcsNetworkInterfacesInterface({
+  const GetEcsNetworkInterfacesInterface({
     required this.associatedPublicIps,
     required this.creationTime,
     required this.description,

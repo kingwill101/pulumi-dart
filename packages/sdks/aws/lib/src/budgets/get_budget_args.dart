@@ -23,7 +23,7 @@ class GetBudgetArgs {
   /// [name] The name of a budget. Unique within accounts.
   /// [namePrefix] The prefix of the name of a budget. Unique within accounts.
   /// [tags] Map of tags assigned to the resource.
-  GetBudgetArgs({
+  const GetBudgetArgs({
     this.accountId,
     required this.name,
     this.namePrefix,

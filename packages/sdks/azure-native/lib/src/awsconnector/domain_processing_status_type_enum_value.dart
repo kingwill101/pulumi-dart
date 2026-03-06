@@ -9,7 +9,7 @@ class DomainProcessingStatusTypeEnumValue {
 
   /// Creates a new [DomainProcessingStatusTypeEnumValue].
   /// [value] Property value
-  DomainProcessingStatusTypeEnumValue({
+  const DomainProcessingStatusTypeEnumValue({
     this.value,
   });
 

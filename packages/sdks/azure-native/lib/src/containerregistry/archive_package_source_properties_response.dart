@@ -12,7 +12,7 @@ class ArchivePackageSourcePropertiesResponse {
   /// Creates a new [ArchivePackageSourcePropertiesResponse].
   /// [type] The type of package source for a archive.
   /// [url] The external repository url.
-  ArchivePackageSourcePropertiesResponse({
+  const ArchivePackageSourcePropertiesResponse({
     this.type,
     this.url,
   });

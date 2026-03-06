@@ -47,7 +47,7 @@ class TestSpecificationResponse {
   /// [iosXcTest] An iOS XCTest, via an .xctestrun file.
   /// [testSetup] Test setup requirements for Android e.g. files to install, bootstrap scripts.
   /// [testTimeout] Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.
-  TestSpecificationResponse({
+  const TestSpecificationResponse({
     required this.androidInstrumentationTest,
     required this.androidRoboTest,
     required this.androidTestLoop,

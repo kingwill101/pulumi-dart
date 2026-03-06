@@ -12,7 +12,7 @@ class ClientCertificateAuthentication {
   /// Creates a new [ClientCertificateAuthentication].
   /// [allowedThumbprints] The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
   /// [validationScheme] The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
-  ClientCertificateAuthentication({
+  const ClientCertificateAuthentication({
     this.allowedThumbprints,
     this.validationScheme,
   });

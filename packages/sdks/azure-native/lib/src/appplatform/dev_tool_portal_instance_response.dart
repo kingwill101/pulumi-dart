@@ -12,7 +12,7 @@ class DevToolPortalInstanceResponse {
   /// Creates a new [DevToolPortalInstanceResponse].
   /// [name] Name of the Dev Tool Portal instance.
   /// [status] Status of the Dev Tool Portal instance. It can be Pending, Running, Succeeded, Failed, Unknown.
-  DevToolPortalInstanceResponse({
+  const DevToolPortalInstanceResponse({
     required this.name,
     required this.status,
   });

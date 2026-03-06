@@ -37,7 +37,7 @@ class PeerConnectionAccepterArgs {
   /// [linkType] Link Type
   /// [peerConnectionAccepterName] The new name of the VPC peering connection.
   /// [resourceGroupId] The ID of the new resource group.
-  PeerConnectionAccepterArgs({
+  const PeerConnectionAccepterArgs({
     this.bandwidth,
     this.description,
     this.dryRun,

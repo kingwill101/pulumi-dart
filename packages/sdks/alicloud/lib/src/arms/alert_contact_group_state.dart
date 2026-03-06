@@ -12,7 +12,7 @@ class AlertContactGroupState {
   /// Creates a new [AlertContactGroupState].
   /// [alertContactGroupName] The name of the resource.
   /// [contactIds] The list id of alert contact.
-  AlertContactGroupState({
+  const AlertContactGroupState({
     this.alertContactGroupName,
     this.contactIds,
   });

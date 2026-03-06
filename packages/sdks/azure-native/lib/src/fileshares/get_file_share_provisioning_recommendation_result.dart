@@ -9,7 +9,7 @@ class GetFileShareProvisioningRecommendationResult {
 
   /// Creates a new [GetFileShareProvisioningRecommendationResult].
   /// [properties] The properties of the file share provisioning recommendation output.
-  GetFileShareProvisioningRecommendationResult({
+  const GetFileShareProvisioningRecommendationResult({
     required this.properties,
   });
 

@@ -11,7 +11,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfi
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig].
   /// [accessPointId] The Amazon EFS access point ID to use.
   /// [iam] Whether or not to use the AWS Batch job IAM role defined in a job definition when mounting the Amazon EFS file system.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig({
     required this.accessPointId,
     required this.iam,
   });

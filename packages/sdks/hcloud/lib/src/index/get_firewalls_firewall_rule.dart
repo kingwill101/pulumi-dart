@@ -17,7 +17,7 @@ class GetFirewallsFirewallRule {
   /// [port] Optional.
   /// [protocol] Optional.
   /// [sourceIps] Optional.
-  GetFirewallsFirewallRule({
+  const GetFirewallsFirewallRule({
     this.description,
     this.destinationIps,
     required this.direction,

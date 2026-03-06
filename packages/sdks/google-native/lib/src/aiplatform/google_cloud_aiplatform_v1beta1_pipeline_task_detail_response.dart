@@ -49,7 +49,7 @@ class GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse {
   /// [state] State of the task.
   /// [taskId] The system generated ID of the task.
   /// [taskName] The user specified name of the task that is defined in pipeline_spec.
-  GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse({
+  const GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse({
     required this.createTime,
     required this.endTime,
     required this.error,

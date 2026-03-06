@@ -27,7 +27,7 @@ class CodeVersionResponse {
   /// [properties] The asset property dictionary.
   /// [provisioningState] Provisioning state for the code version.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  CodeVersionResponse({
+  const CodeVersionResponse({
     this.codeUri,
     this.description,
     this.isAnonymous,

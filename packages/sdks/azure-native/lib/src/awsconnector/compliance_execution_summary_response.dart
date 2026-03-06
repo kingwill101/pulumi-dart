@@ -15,7 +15,7 @@ class ComplianceExecutionSummaryResponse {
   /// [executionId] &lt;p&gt;An ID created by the system when &lt;code&gt;PutComplianceItems&lt;/code&gt; was called. For example, &lt;code&gt;CommandID&lt;/code&gt; is a valid execution ID. You can use this ID in subsequent calls.&lt;/p&gt;
   /// [executionTime] &lt;p&gt;The time the execution ran as a datetime object that is saved in the following format: &lt;code&gt;yyyy-MM-dd'T'HH:mm:ss'Z'&lt;/code&gt; &lt;/p&gt;
   /// [executionType] &lt;p&gt;The type of execution. For example, &lt;code&gt;Command&lt;/code&gt; is a valid execution type.&lt;/p&gt;
-  ComplianceExecutionSummaryResponse({
+  const ComplianceExecutionSummaryResponse({
     this.executionId,
     this.executionTime,
     this.executionType,

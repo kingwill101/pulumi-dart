@@ -21,7 +21,7 @@ class DataSourceDynamodbConfig {
   /// [tableName] Name of the DynamoDB table.
   /// [useCallerCredentials] Set to `true` to use Amazon Cognito credentials with this data source.
   /// [versioned] Detects Conflict Detection and Resolution with this data source.
-  DataSourceDynamodbConfig({
+  const DataSourceDynamodbConfig({
     this.deltaSyncConfig,
     this.region,
     required this.tableName,

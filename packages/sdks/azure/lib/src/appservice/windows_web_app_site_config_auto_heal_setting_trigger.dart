@@ -24,7 +24,7 @@ class WindowsWebAppSiteConfigAutoHealSettingTrigger {
   /// [slowRequest] A `slow_request` block as defined above.
   /// [slowRequestWithPaths] One or more `slow_request_with_path` blocks as defined above.
   /// [statusCodes] One or more `status_code` blocks as defined above.
-  WindowsWebAppSiteConfigAutoHealSettingTrigger({
+  const WindowsWebAppSiteConfigAutoHealSettingTrigger({
     this.privateMemoryKb,
     this.requests,
     this.slowRequest,

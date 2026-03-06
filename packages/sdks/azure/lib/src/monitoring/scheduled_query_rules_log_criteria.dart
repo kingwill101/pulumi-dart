@@ -12,7 +12,7 @@ class ScheduledQueryRulesLogCriteria {
   /// Creates a new [ScheduledQueryRulesLogCriteria].
   /// [dimensions] A `dimension` block as defined below.
   /// [metricName] Name of the metric. Supported metrics are listed in the Azure Monitor [Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftoperationalinsightsworkspaces) metrics namespace.
-  ScheduledQueryRulesLogCriteria({
+  const ScheduledQueryRulesLogCriteria({
     required this.dimensions,
     required this.metricName,
   });

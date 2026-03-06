@@ -15,7 +15,7 @@ class GetExpressRoutePortArgs {
   /// Creates a new [GetExpressRoutePortArgs].
   /// [expressRoutePortName] The name of ExpressRoutePort.
   /// [resourceGroupName] The name of the resource group.
-  GetExpressRoutePortArgs({
+  const GetExpressRoutePortArgs({
     required this.expressRoutePortName,
     required this.resourceGroupName,
   });

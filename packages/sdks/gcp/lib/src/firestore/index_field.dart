@@ -24,7 +24,7 @@ class IndexField {
   /// [fieldPath] Name of the field.
   /// [order] Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
   /// [vectorConfig] Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
-  IndexField({
+  const IndexField({
     this.arrayConfig,
     this.fieldPath,
     this.order,

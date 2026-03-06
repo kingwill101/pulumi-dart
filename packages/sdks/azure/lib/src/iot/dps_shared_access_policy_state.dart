@@ -50,7 +50,7 @@ class DpsSharedAccessPolicyState {
   /// [secondaryConnectionString] The secondary connection string of the Shared Access Policy.
   /// [secondaryKey] The secondary key used to create the authentication token.
   /// [serviceConfig] Adds `ServiceConfig` permission to this Shared Access Account. It allows configuration of the Device Provisioning Service.
-  DpsSharedAccessPolicyState({
+  const DpsSharedAccessPolicyState({
     this.enrollmentRead,
     this.enrollmentWrite,
     this.iothubDpsName,

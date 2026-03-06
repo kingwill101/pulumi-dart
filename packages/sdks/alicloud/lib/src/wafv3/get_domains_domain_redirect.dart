@@ -45,7 +45,7 @@ class GetDomainsDomainRedirect {
   /// [sniEnabled] Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
   /// [sniHost] Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).&gt; This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
   /// [writeTimeout] Write timeout duration. **Unit**: seconds, **Value range**:5~1800.
-  GetDomainsDomainRedirect({
+  const GetDomainsDomainRedirect({
     required this.backends,
     required this.connectTimeout,
     required this.focusHttpBackend,

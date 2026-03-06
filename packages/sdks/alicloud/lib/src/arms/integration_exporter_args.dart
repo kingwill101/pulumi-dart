@@ -18,7 +18,7 @@ class IntegrationExporterArgs {
   /// [clusterId] The ID of the Prometheus instance.
   /// [integrationType] The type of prometheus integration.
   /// [param] Exporter configuration parameter json string.
-  IntegrationExporterArgs({
+  const IntegrationExporterArgs({
     required this.clusterId,
     required this.integrationType,
     required this.param,

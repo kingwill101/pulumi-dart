@@ -15,7 +15,7 @@ class GetRegionBackendServiceCircuitBreakerConnectTimeout {
   /// Creates a new [GetRegionBackendServiceCircuitBreakerConnectTimeout].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  GetRegionBackendServiceCircuitBreakerConnectTimeout({
+  const GetRegionBackendServiceCircuitBreakerConnectTimeout({
     required this.nanos,
     required this.seconds,
   });

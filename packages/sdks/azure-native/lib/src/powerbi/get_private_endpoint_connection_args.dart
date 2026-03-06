@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [azureResourceName] The name of the Azure resource.
   /// [privateEndpointName] The name of the private endpoint.
   /// [resourceGroupName] The name of the resource group.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.azureResourceName,
     required this.privateEndpointName,
     required this.resourceGroupName,

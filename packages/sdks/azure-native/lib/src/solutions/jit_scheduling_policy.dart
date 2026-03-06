@@ -14,7 +14,7 @@ class JitSchedulingPolicy {
   /// [duration] Required.
   /// [startTime] The start time of the request.
   /// [type] The type of JIT schedule.
-  JitSchedulingPolicy({
+  const JitSchedulingPolicy({
     required this.duration,
     required this.startTime,
     required this.type,

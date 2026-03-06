@@ -19,7 +19,7 @@ class DatabaseAccountKeysMetadataResponse {
   /// [primaryReadonlyMasterKey] The metadata related to the Primary Read-Only Key for the given Cosmos DB database account.
   /// [secondaryMasterKey] The metadata related to the Secondary Read-Write Key for the given Cosmos DB database account.
   /// [secondaryReadonlyMasterKey] The metadata related to the Secondary Read-Only Key for the given Cosmos DB database account.
-  DatabaseAccountKeysMetadataResponse({
+  const DatabaseAccountKeysMetadataResponse({
     required this.primaryMasterKey,
     required this.primaryReadonlyMasterKey,
     required this.secondaryMasterKey,

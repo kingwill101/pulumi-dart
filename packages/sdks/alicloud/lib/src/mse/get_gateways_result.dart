@@ -28,7 +28,7 @@ class GetGatewaysResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [vpcId] Optional.
-  GetGatewaysResult({
+  const GetGatewaysResult({
     this.enableDetails,
     this.gatewayName,
     required this.gateways,

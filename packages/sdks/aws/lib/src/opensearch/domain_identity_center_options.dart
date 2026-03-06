@@ -13,7 +13,7 @@ class DomainIdentityCenterOptions {
   /// [identityCenterInstanceArn] Optional.
   /// [rolesKey] Optional.
   /// [subjectKey] Optional.
-  DomainIdentityCenterOptions({
+  const DomainIdentityCenterOptions({
     this.enabledApiAccess,
     this.identityCenterInstanceArn,
     this.rolesKey,

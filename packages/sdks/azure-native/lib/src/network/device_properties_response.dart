@@ -15,7 +15,7 @@ class DevicePropertiesResponse {
   /// [deviceModel] Model of the device.
   /// [deviceVendor] Name of the device Vendor.
   /// [linkSpeedInMbps] Link speed.
-  DevicePropertiesResponse({
+  const DevicePropertiesResponse({
     this.deviceModel,
     this.deviceVendor,
     this.linkSpeedInMbps,

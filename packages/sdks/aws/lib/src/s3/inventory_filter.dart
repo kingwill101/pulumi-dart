@@ -8,7 +8,7 @@ class InventoryFilter {
 
   /// Creates a new [InventoryFilter].
   /// [prefix] Prefix that an object must have to be included in the inventory results.
-  InventoryFilter({
+  const InventoryFilter({
     this.prefix,
   });
 

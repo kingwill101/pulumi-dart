@@ -18,7 +18,7 @@ class GetSyncIdentityProviderArgs {
   /// [childResourceName] The name of the SyncIdentityProvider resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the OpenShift cluster resource.
-  GetSyncIdentityProviderArgs({
+  const GetSyncIdentityProviderArgs({
     required this.childResourceName,
     required this.resourceGroupName,
     required this.resourceName,

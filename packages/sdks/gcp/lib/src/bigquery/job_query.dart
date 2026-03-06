@@ -108,7 +108,7 @@ class JobQuery {
   /// [useQueryCache] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
   /// [userDefinedFunctionResources] Describes user-defined function resources used in the query.
   /// [writeDisposition] Specifies the action that occurs if the destination table already exists. The following values are supported:
-  JobQuery({
+  const JobQuery({
     this.allowLargeResults,
     this.connectionProperties,
     this.continuous,

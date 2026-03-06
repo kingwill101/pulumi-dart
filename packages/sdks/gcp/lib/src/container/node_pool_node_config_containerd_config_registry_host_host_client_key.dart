@@ -8,7 +8,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey {
 
   /// Creates a new [NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey].
   /// [gcpSecretManagerSecretUri] URI for the Secret Manager secret that hosts the private key.
-  NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey({
+  const NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey({
     this.gcpSecretManagerSecretUri,
   });
 

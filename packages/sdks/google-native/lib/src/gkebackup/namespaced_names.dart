@@ -10,7 +10,7 @@ class NamespacedNames {
 
   /// Creates a new [NamespacedNames].
   /// [namespacedNames] Optional. A list of namespaced Kubernetes resources.
-  NamespacedNames({
+  const NamespacedNames({
     this.namespacedNames,
   });
 

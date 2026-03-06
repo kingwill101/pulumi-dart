@@ -21,7 +21,7 @@ class GetKubernetesNodePoolsArgs {
   /// [ids] A list of Nodepool IDs.
   /// [nodePoolName] The name of node pool.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetKubernetesNodePoolsArgs({
+  const GetKubernetesNodePoolsArgs({
     required this.clusterId,
     this.ids,
     this.nodePoolName,

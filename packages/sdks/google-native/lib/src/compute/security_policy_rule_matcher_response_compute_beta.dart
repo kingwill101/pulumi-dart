@@ -21,7 +21,7 @@ class SecurityPolicyRuleMatcherResponseComputeBeta {
   /// [expr] User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
   /// [exprOptions] The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
   /// [versionedExpr] Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
-  SecurityPolicyRuleMatcherResponseComputeBeta({
+  const SecurityPolicyRuleMatcherResponseComputeBeta({
     required this.config,
     required this.expr,
     required this.exprOptions,

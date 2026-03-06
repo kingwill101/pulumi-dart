@@ -41,7 +41,7 @@ class ChannelDirectLineSite {
   /// [userUploadEnabled] Is the user upload enabled for this site? Defaults to `true`.
   /// [v1Allowed] Enables v1 of the Directline protocol for this site. Defaults to `true`.
   /// [v3Allowed] Enables v3 of the Directline protocol for this site. Defaults to `true`.
-  ChannelDirectLineSite({
+  const ChannelDirectLineSite({
     this.enabled,
     this.endpointParametersEnabled,
     this.enhancedAuthenticationEnabled,

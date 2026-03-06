@@ -13,7 +13,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent {
   /// Creates a new [CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent].
   /// [displayName] (Output)
   /// [name] The unique identifier of the intent.
-  CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent({
+  const CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent({
     this.displayName,
     this.name,
   });

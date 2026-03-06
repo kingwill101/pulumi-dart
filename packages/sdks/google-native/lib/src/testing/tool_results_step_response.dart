@@ -18,7 +18,7 @@ class ToolResultsStepResponse {
   /// [historyId] A tool results history ID.
   /// [project] The cloud project that owns the tool results step.
   /// [stepId] A tool results step ID.
-  ToolResultsStepResponse({
+  const ToolResultsStepResponse({
     required this.executionId,
     required this.historyId,
     required this.project,

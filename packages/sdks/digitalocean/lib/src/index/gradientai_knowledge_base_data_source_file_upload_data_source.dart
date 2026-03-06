@@ -14,7 +14,7 @@ class GradientaiKnowledgeBaseDataSourceFileUploadDataSource {
   /// [originalFileName] The original name of the uploaded file
   /// [sizeInBytes] The size of the file in bytes
   /// [storedObjectKey] The stored object key for the file
-  GradientaiKnowledgeBaseDataSourceFileUploadDataSource({
+  const GradientaiKnowledgeBaseDataSourceFileUploadDataSource({
     this.originalFileName,
     this.sizeInBytes,
     this.storedObjectKey,

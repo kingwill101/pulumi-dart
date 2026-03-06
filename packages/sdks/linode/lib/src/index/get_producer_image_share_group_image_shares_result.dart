@@ -22,7 +22,7 @@ class GetProducerImageShareGroupImageSharesResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [sharegroupId] The sharegroup_id from the im_ImageShare row.
-  GetProducerImageShareGroupImageSharesResult({
+  const GetProducerImageShareGroupImageSharesResult({
     this.filters,
     required this.id,
     this.imageShares,

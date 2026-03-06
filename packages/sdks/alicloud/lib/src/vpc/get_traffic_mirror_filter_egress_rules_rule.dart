@@ -38,7 +38,7 @@ class GetTrafficMirrorFilterEgressRulesRule {
   /// [status] The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
   /// [trafficMirrorFilterId] The ID of the filter associated with the outbound rule.
   /// [trafficMirrorFilterRuleId] The first ID of the resource.
-  GetTrafficMirrorFilterEgressRulesRule({
+  const GetTrafficMirrorFilterEgressRulesRule({
     required this.destinationCidrBlock,
     required this.destinationPortRange,
     required this.id,

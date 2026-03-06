@@ -41,7 +41,7 @@ class ResizeRequestState {
   /// [state] Current state of the request.
   /// [statuses] Status of the request.
   /// [zone] The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
-  ResizeRequestState({
+  const ResizeRequestState({
     this.creationTimestamp,
     this.description,
     this.instanceGroupManager,

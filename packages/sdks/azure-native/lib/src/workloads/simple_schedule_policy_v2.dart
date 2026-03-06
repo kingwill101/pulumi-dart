@@ -25,7 +25,7 @@ class SimpleSchedulePolicyV2 {
   /// [schedulePolicyType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// [scheduleRunFrequency] Frequency of the schedule operation of this policy.
   /// [weeklySchedule] Weekly schedule of this policy
-  SimpleSchedulePolicyV2({
+  const SimpleSchedulePolicyV2({
     this.dailySchedule,
     this.hourlySchedule,
     required this.schedulePolicyType,

@@ -21,7 +21,7 @@ class LoadBalancerBackendResponse {
   /// [healthCheckBlockingFirewallRules] A list of firewall rule URIs blocking probes from health check IP ranges.
   /// [healthCheckFirewallState] State of the health check firewall configuration.
   /// [uri] URI of a Compute Engine instance or network endpoint.
-  LoadBalancerBackendResponse({
+  const LoadBalancerBackendResponse({
     required this.displayName,
     required this.healthCheckAllowingFirewallRules,
     required this.healthCheckBlockingFirewallRules,

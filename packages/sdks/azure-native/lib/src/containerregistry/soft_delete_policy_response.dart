@@ -15,7 +15,7 @@ class SoftDeletePolicyResponse {
   /// [lastUpdatedTime] The timestamp when the policy was last updated.
   /// [retentionDays] The number of days after which a soft-deleted item is permanently deleted.
   /// [status] The value that indicates whether the policy is enabled or not.
-  SoftDeletePolicyResponse({
+  const SoftDeletePolicyResponse({
     required this.lastUpdatedTime,
     this.retentionDays,
     this.status,

@@ -26,7 +26,7 @@ class GetServerTrustCertificateResult {
   /// [publicBlob] The certificate public blob
   /// [thumbprint] The certificate thumbprint
   /// [type] Resource type.
-  GetServerTrustCertificateResult({
+  const GetServerTrustCertificateResult({
     required this.azureApiVersion,
     required this.certificateName,
     required this.id,

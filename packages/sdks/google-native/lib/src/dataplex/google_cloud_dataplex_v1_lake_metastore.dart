@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1LakeMetastore {
 
   /// Creates a new [GoogleCloudDataplexV1LakeMetastore].
   /// [service] Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: projects/{project_id}/locations/{location_id}/services/{service_id}
-  GoogleCloudDataplexV1LakeMetastore({
+  const GoogleCloudDataplexV1LakeMetastore({
     this.service,
   });
 

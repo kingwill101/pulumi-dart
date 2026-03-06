@@ -12,7 +12,7 @@ class GetClusterMonitoringConfigManagedPrometheus {
   /// Creates a new [GetClusterMonitoringConfigManagedPrometheus].
   /// [autoMonitoringConfigs] Configuration for GKE Workload Auto-Monitoring.
   /// [enabled] Whether or not the managed collection is enabled.
-  GetClusterMonitoringConfigManagedPrometheus({
+  const GetClusterMonitoringConfigManagedPrometheus({
     required this.autoMonitoringConfigs,
     required this.enabled,
   });

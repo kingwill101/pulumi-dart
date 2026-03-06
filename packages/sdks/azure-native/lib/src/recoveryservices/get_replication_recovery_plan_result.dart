@@ -24,7 +24,7 @@ class GetReplicationRecoveryPlanResult {
   /// [name] Resource Name
   /// [properties] The custom details.
   /// [type] Resource Type
-  GetReplicationRecoveryPlanResult({
+  const GetReplicationRecoveryPlanResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

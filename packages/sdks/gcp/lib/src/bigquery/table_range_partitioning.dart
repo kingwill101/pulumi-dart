@@ -14,7 +14,7 @@ class TableRangePartitioning {
   /// Creates a new [TableRangePartitioning].
   /// [field] The field used to determine how to create a range-based
   /// [range] Information required to partition based on ranges.
-  TableRangePartitioning({
+  const TableRangePartitioning({
     required this.field,
     required this.range,
   });

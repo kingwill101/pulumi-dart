@@ -16,7 +16,7 @@ class GetIamPolicyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyData] (Computed) The policy data
   /// [serviceAccountId] Required.
-  GetIamPolicyResult({
+  const GetIamPolicyResult({
     required this.etag,
     required this.id,
     required this.policyData,

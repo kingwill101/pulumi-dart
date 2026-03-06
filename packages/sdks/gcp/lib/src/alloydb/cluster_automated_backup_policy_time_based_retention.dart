@@ -9,7 +9,7 @@ class ClusterAutomatedBackupPolicyTimeBasedRetention {
 
   /// Creates a new [ClusterAutomatedBackupPolicyTimeBasedRetention].
   /// [retentionPeriod] The retention period.
-  ClusterAutomatedBackupPolicyTimeBasedRetention({
+  const ClusterAutomatedBackupPolicyTimeBasedRetention({
     this.retentionPeriod,
   });
 

@@ -21,7 +21,7 @@ class GeneratorSummarizationContext {
   /// [outputLanguageCode] Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
   /// [summarizationSections] Optional. List of sections. Note it contains both predefined section sand customer defined sections.
   /// [version] Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
-  GeneratorSummarizationContext({
+  const GeneratorSummarizationContext({
     this.fewShotExamples,
     this.outputLanguageCode,
     this.summarizationSections,

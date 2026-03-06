@@ -81,7 +81,7 @@ class GetGatewaysGateway {
   /// [type] gateway type.
   /// [vpcId] gateway vpc id.
   /// [vswitchId] The vswitch id.
-  GetGatewaysGateway({
+  const GetGatewaysGateway({
     required this.activatedTime,
     required this.buyUrl,
     required this.category,

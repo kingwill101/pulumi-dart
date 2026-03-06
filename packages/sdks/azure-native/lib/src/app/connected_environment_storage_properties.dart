@@ -14,7 +14,7 @@ class ConnectedEnvironmentStorageProperties {
   /// Creates a new [ConnectedEnvironmentStorageProperties].
   /// [azureFile] Azure file properties
   /// [smb] SMB storage properties
-  ConnectedEnvironmentStorageProperties({
+  const ConnectedEnvironmentStorageProperties({
     this.azureFile,
     this.smb,
   });

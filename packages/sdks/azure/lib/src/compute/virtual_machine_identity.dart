@@ -22,7 +22,7 @@ class VirtualMachineIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] Optional.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Virtual Machine. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
-  VirtualMachineIdentity({
+  const VirtualMachineIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

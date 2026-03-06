@@ -59,7 +59,7 @@ class ParameterArgs {
   /// [value] Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type
   /// [valueWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [valueWoVersion] Used together with `value_wo` to trigger an update. Increment this value when an update to the `value_wo` is required.
-  ParameterArgs({
+  const ParameterArgs({
     this.allowedPattern,
     this.arn,
     this.dataType,

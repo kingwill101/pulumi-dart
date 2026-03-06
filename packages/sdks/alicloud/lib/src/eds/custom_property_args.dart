@@ -16,7 +16,7 @@ class CustomPropertyArgs {
   /// Creates a new [CustomPropertyArgs].
   /// [propertyKey] The Custom attribute key.
   /// [propertyValues] Custom attribute sets the value of. See `property_values` below.
-  CustomPropertyArgs({
+  const CustomPropertyArgs({
     required this.propertyKey,
     this.propertyValues,
   });

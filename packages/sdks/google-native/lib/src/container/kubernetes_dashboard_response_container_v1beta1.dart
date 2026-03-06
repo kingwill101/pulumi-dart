@@ -9,7 +9,7 @@ class KubernetesDashboardResponseContainerV1beta1 {
 
   /// Creates a new [KubernetesDashboardResponseContainerV1beta1].
   /// [disabled] Whether the Kubernetes Dashboard is enabled for this cluster.
-  KubernetesDashboardResponseContainerV1beta1({
+  const KubernetesDashboardResponseContainerV1beta1({
     required this.disabled,
   });
 

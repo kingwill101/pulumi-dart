@@ -12,7 +12,7 @@ class DocumentNoteResponse {
   /// Creates a new [DocumentNoteResponse].
   /// [dataLicence] Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
   /// [spdxVersion] Provide a reference number that can be used to understand how to parse and interpret the rest of the file
-  DocumentNoteResponse({
+  const DocumentNoteResponse({
     required this.dataLicence,
     required this.spdxVersion,
   });

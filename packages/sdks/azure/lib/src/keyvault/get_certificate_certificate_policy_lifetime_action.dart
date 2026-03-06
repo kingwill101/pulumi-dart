@@ -13,7 +13,7 @@ class GetCertificateCertificatePolicyLifetimeAction {
   /// Creates a new [GetCertificateCertificatePolicyLifetimeAction].
   /// [actions] A `action` block as defined below.
   /// [triggers] A `trigger` block as defined below.
-  GetCertificateCertificatePolicyLifetimeAction({
+  const GetCertificateCertificatePolicyLifetimeAction({
     required this.actions,
     required this.triggers,
   });

@@ -40,7 +40,7 @@ class LinuxFunctionAppSlotAuthSettingsV2Login {
   /// [tokenStorePath] The directory path in the App Filesystem in which the tokens will be stored.
   /// [tokenStoreSasSettingName] The name of the app setting which contains the SAS URL of the blob storage containing the tokens.
   /// [validateNonce] Should the nonce be validated while completing the login flow. Defaults to `true`.
-  LinuxFunctionAppSlotAuthSettingsV2Login({
+  const LinuxFunctionAppSlotAuthSettingsV2Login({
     this.allowedExternalRedirectUrls,
     this.cookieExpirationConvention,
     this.cookieExpirationTime,

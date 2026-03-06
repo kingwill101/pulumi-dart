@@ -15,7 +15,7 @@ class GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
   /// Creates a new [GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs].
   /// [name] Name of the App Service Environment.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs({
+  const GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -11,7 +11,7 @@ class ApiIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ApiIamMemberCondition({
+  const ApiIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

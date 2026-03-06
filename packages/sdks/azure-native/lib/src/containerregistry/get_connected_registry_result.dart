@@ -67,7 +67,7 @@ class GetConnectedRegistryResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
   /// [version] The current version of ACR runtime on the connected registry.
-  GetConnectedRegistryResult({
+  const GetConnectedRegistryResult({
     required this.activation,
     required this.azureApiVersion,
     this.clientTokenIds,

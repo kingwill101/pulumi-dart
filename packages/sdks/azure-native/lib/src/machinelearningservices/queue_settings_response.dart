@@ -8,7 +8,7 @@ class QueueSettingsResponse {
 
   /// Creates a new [QueueSettingsResponse].
   /// [jobTier] Controls the compute job tier
-  QueueSettingsResponse({
+  const QueueSettingsResponse({
     this.jobTier,
   });
 

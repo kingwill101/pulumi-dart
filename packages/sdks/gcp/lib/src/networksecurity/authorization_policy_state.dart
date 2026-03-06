@@ -48,7 +48,7 @@ class AuthorizationPolicyState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [rules] List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
   /// [updateTime] Time the AuthorizationPolicy was updated in UTC.
-  AuthorizationPolicyState({
+  const AuthorizationPolicyState({
     this.action,
     this.createTime,
     this.description,

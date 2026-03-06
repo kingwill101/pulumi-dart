@@ -75,7 +75,7 @@ class EcsNetworkInterfaceArgs {
   /// [sourceDestCheck] Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
-  EcsNetworkInterfaceArgs({
+  const EcsNetworkInterfaceArgs({
     this.description,
     this.instanceType,
     this.ipv4PrefixCount,

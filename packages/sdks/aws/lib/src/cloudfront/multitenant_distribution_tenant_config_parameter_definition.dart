@@ -12,7 +12,7 @@ class MultitenantDistributionTenantConfigParameterDefinition {
   /// Creates a new [MultitenantDistributionTenantConfigParameterDefinition].
   /// [definitions] Definition of the parameter schema. See Parameter Definition Schema below.
   /// [name] Name of the parameter.
-  MultitenantDistributionTenantConfigParameterDefinition({
+  const MultitenantDistributionTenantConfigParameterDefinition({
     this.definitions,
     required this.name,
   });

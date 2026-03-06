@@ -13,7 +13,7 @@ class SparkClusterGateway {
   /// Creates a new [SparkClusterGateway].
   /// [password] The password used for the Ambari Portal.
   /// [username] The username used for the Ambari Portal. Changing this forces a new resource to be created.
-  SparkClusterGateway({
+  const SparkClusterGateway({
     required this.password,
     required this.username,
   });

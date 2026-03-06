@@ -19,7 +19,7 @@ class GetDeploymentArtifactArgs {
   /// [deploymentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDeploymentArtifactArgs({
+  const GetDeploymentArtifactArgs({
     required this.apiId,
     required this.artifactId,
     required this.deploymentId,

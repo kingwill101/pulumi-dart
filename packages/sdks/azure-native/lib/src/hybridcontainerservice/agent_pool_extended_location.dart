@@ -11,7 +11,7 @@ class AgentPoolExtendedLocation {
   /// Creates a new [AgentPoolExtendedLocation].
   /// [name] The extended location name.
   /// [type] The extended location type.
-  AgentPoolExtendedLocation({
+  const AgentPoolExtendedLocation({
     this.name,
     this.type,
   });

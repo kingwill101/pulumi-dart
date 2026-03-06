@@ -14,7 +14,7 @@ class DataflowGraphNodeConnection {
   /// Creates a new [DataflowGraphNodeConnection].
   /// [from] Information about the source node.
   /// [to] Information about the destination node.
-  DataflowGraphNodeConnection({
+  const DataflowGraphNodeConnection({
     required this.from,
     required this.to,
   });

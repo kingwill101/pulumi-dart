@@ -8,7 +8,7 @@ class GetCustomModelValidationDataConfigValidator {
 
   /// Creates a new [GetCustomModelValidationDataConfigValidator].
   /// [s3Uri] The S3 URI where the validation data is stored..
-  GetCustomModelValidationDataConfigValidator({
+  const GetCustomModelValidationDataConfigValidator({
     required this.s3Uri,
   });
 

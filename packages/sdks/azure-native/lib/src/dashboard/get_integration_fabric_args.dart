@@ -18,7 +18,7 @@ class GetIntegrationFabricArgs {
   /// [integrationFabricName] The integration fabric name of Azure Managed Grafana.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
-  GetIntegrationFabricArgs({
+  const GetIntegrationFabricArgs({
     required this.integrationFabricName,
     required this.resourceGroupName,
     required this.workspaceName,

@@ -11,7 +11,7 @@ class GetAppSpecFunctionLogDestinationOpenSearchBasicAuth {
   /// Creates a new [GetAppSpecFunctionLogDestinationOpenSearchBasicAuth].
   /// [password] Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
   /// [user] Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
-  GetAppSpecFunctionLogDestinationOpenSearchBasicAuth({
+  const GetAppSpecFunctionLogDestinationOpenSearchBasicAuth({
     this.password,
     this.user,
   });

@@ -20,7 +20,7 @@ class SqlAlwaysEncryptedProperties {
   /// [credential] The credential reference containing authentication information.
   /// [servicePrincipalId] The client ID of the application in Azure Active Directory used for Azure Key Vault authentication. Type: string (or Expression with resultType string).
   /// [servicePrincipalKey] The key of the service principal used to authenticate against Azure Key Vault.
-  SqlAlwaysEncryptedProperties({
+  const SqlAlwaysEncryptedProperties({
     required this.alwaysEncryptedAkvAuthType,
     this.credential,
     this.servicePrincipalId,

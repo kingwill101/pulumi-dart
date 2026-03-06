@@ -21,7 +21,7 @@ class ConnectionDetailsResponse {
   /// [linkIdentifier] Link ID.
   /// [memberName] Member name.
   /// [privateIpAddress] Private IP address.
-  ConnectionDetailsResponse({
+  const ConnectionDetailsResponse({
     required this.groupId,
     required this.id,
     required this.linkIdentifier,

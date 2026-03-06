@@ -12,7 +12,7 @@ class Backup {
   /// Creates a new [Backup].
   /// [backupRetentionDays] Backup retention days for the server.
   /// [geoRedundantBackup] Indicates if the server is configured to create geographically redundant backups.
-  Backup({
+  const Backup({
     this.backupRetentionDays,
     this.geoRedundantBackup,
   });

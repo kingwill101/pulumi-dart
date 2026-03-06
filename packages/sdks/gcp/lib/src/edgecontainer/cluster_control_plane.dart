@@ -15,7 +15,7 @@ class ClusterControlPlane {
   /// Creates a new [ClusterControlPlane].
   /// [local] Local control plane configuration.
   /// [remote] Remote control plane configuration.
-  ClusterControlPlane({
+  const ClusterControlPlane({
     this.local,
     this.remote,
   });

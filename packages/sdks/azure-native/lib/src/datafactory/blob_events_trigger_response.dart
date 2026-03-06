@@ -38,7 +38,7 @@ class BlobEventsTriggerResponse {
   /// [runtimeState] Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   /// [scope] The ARM resource ID of the Storage Account.
   /// [type] Trigger type.
-  BlobEventsTriggerResponse({
+  const BlobEventsTriggerResponse({
     this.annotations,
     this.blobPathBeginsWith,
     this.blobPathEndsWith,

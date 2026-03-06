@@ -18,7 +18,7 @@ class GetExtensionAzureMonitorAgentStatusResult {
   /// [clusterMonitoringEnabled] The status of the monitor on the HDInsight cluster.
   /// [selectedConfigurations] The selected configurations.
   /// [workspaceId] The workspace ID of the monitor on the HDInsight cluster.
-  GetExtensionAzureMonitorAgentStatusResult({
+  const GetExtensionAzureMonitorAgentStatusResult({
     required this.azureApiVersion,
     this.clusterMonitoringEnabled,
     this.selectedConfigurations,

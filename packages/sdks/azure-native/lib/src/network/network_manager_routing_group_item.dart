@@ -9,7 +9,7 @@ class NetworkManagerRoutingGroupItem {
 
   /// Creates a new [NetworkManagerRoutingGroupItem].
   /// [networkGroupId] Network manager group Id.
-  NetworkManagerRoutingGroupItem({
+  const NetworkManagerRoutingGroupItem({
     required this.networkGroupId,
   });
 

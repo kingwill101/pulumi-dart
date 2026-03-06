@@ -21,7 +21,7 @@ class RdnsArgs {
   /// [rdns] The name of the RDNS address.
   /// [timeouts] Optional.
   /// [waitForAvailable] If true, the RDNS assignment will be retried within the operation timeout period.
-  RdnsArgs({
+  const RdnsArgs({
     required this.address,
     required this.rdns,
     this.timeouts,

@@ -15,7 +15,7 @@ class SubnetNatGatewayAssociationArgs {
   /// Creates a new [SubnetNatGatewayAssociationArgs].
   /// [natGatewayId] The ID of the NAT Gateway which should be associated with the Subnet. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet. Changing this forces a new resource to be created.
-  SubnetNatGatewayAssociationArgs({
+  const SubnetNatGatewayAssociationArgs({
     required this.natGatewayId,
     required this.subnetId,
   });

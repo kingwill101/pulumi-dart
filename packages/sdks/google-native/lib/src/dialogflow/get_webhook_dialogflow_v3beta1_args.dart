@@ -17,7 +17,7 @@ class GetWebhookDialogflowV3beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [webhookId] Required.
-  GetWebhookDialogflowV3beta1Args({
+  const GetWebhookDialogflowV3beta1Args({
     required this.agentId,
     required this.location,
     this.project,

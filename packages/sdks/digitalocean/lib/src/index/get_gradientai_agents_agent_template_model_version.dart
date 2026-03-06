@@ -14,7 +14,7 @@ class GetGradientaiAgentsAgentTemplateModelVersion {
   /// [major] Major version of the model
   /// [minor] Minor version of the model
   /// [patch] Patch version of the model
-  GetGradientaiAgentsAgentTemplateModelVersion({
+  const GetGradientaiAgentsAgentTemplateModelVersion({
     this.major,
     this.minor,
     this.patch,

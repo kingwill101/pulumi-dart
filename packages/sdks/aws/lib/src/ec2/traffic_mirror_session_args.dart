@@ -36,7 +36,7 @@ class TrafficMirrorSessionArgs {
   /// [trafficMirrorFilterId] ID of the traffic mirror filter to be used
   /// [trafficMirrorTargetId] ID of the traffic mirror target to be used
   /// [virtualNetworkId] The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN protocol, see RFC 7348. If you do not specify a VirtualNetworkId, an account-wide unique id is chosen at random.
-  TrafficMirrorSessionArgs({
+  const TrafficMirrorSessionArgs({
     this.description,
     required this.networkInterfaceId,
     this.packetLength,

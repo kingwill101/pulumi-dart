@@ -12,7 +12,7 @@ class SecretPasswordIdentityResponse {
   /// Creates a new [SecretPasswordIdentityResponse].
   /// [principalId] The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
   /// [userAssignedIdentity] The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
-  SecretPasswordIdentityResponse({
+  const SecretPasswordIdentityResponse({
     required this.principalId,
     this.userAssignedIdentity,
   });

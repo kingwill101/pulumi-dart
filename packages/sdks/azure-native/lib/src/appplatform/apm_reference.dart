@@ -9,7 +9,7 @@ class ApmReference {
 
   /// Creates a new [ApmReference].
   /// [resourceId] Resource Id of the APM
-  ApmReference({
+  const ApmReference({
     required this.resourceId,
   });
 

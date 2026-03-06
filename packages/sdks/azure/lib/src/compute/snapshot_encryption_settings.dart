@@ -13,7 +13,7 @@ class SnapshotEncryptionSettings {
   /// Creates a new [SnapshotEncryptionSettings].
   /// [diskEncryptionKey] A `disk_encryption_key` block as defined below.
   /// [keyEncryptionKey] A `key_encryption_key` block as defined below.
-  SnapshotEncryptionSettings({
+  const SnapshotEncryptionSettings({
     required this.diskEncryptionKey,
     this.keyEncryptionKey,
   });

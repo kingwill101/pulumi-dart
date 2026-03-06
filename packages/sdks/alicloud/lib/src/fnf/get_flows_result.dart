@@ -22,7 +22,7 @@ class GetFlowsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetFlowsResult({
+  const GetFlowsResult({
     required this.flows,
     required this.id,
     required this.ids,

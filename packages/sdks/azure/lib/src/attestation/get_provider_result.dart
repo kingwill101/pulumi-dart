@@ -24,7 +24,7 @@ class GetProviderResult {
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Attestation Provider.
   /// [trustModel] Trust model used for the Attestation Service.
-  GetProviderResult({
+  const GetProviderResult({
     required this.attestationUri,
     required this.id,
     required this.location,

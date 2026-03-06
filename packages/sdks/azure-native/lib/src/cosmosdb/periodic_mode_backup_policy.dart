@@ -18,7 +18,7 @@ class PeriodicModeBackupPolicy {
   /// [migrationState] The object representing the state of the migration between the backup policies.
   /// [periodicModeProperties] Configuration values for periodic mode backup
   /// [type] Describes the mode of backups.
-  PeriodicModeBackupPolicy({
+  const PeriodicModeBackupPolicy({
     this.migrationState,
     this.periodicModeProperties,
     required this.type,

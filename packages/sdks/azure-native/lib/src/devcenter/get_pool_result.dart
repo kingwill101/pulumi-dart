@@ -69,7 +69,7 @@ class GetPoolResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualNetworkType] Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
-  GetPoolResult({
+  const GetPoolResult({
     required this.azureApiVersion,
     required this.devBoxCount,
     required this.devBoxDefinitionName,

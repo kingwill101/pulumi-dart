@@ -8,7 +8,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource].
   /// [promptArn] The Amazon Resource Name (ARN) of the prompt from Prompt management.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource({
     required this.promptArn,
   });
 

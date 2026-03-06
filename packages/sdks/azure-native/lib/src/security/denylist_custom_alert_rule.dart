@@ -16,7 +16,7 @@ class DenylistCustomAlertRule {
   /// [denylistValues] The values to deny. The format of the values depends on the rule type.
   /// [isEnabled] Status of the custom alert.
   /// [ruleType] The type of the custom alert rule.
-  DenylistCustomAlertRule({
+  const DenylistCustomAlertRule({
     required this.denylistValues,
     required this.isEnabled,
     required this.ruleType,

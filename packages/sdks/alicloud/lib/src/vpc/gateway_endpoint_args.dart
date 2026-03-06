@@ -34,7 +34,7 @@ class GatewayEndpointArgs {
   /// [serviceName] The endpoint service name.
   /// [tags] The tags of the resource.
   /// [vpcId] The ID of the VPC.
-  GatewayEndpointArgs({
+  const GatewayEndpointArgs({
     this.gatewayEndpointDescrption,
     this.gatewayEndpointName,
     this.policyDocument,

@@ -20,7 +20,7 @@ class GetUserTablesSqlTaskProperties {
   /// [input] Task input
   /// [taskId] Task id
   /// [taskType] Task type.
-  GetUserTablesSqlTaskProperties({
+  const GetUserTablesSqlTaskProperties({
     this.clientData,
     this.input,
     this.taskId,

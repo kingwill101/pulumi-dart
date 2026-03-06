@@ -40,7 +40,7 @@ class GetCredentialSetResult {
   /// [provisioningState] Provisioning state of the resource.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetCredentialSetResult({
+  const GetCredentialSetResult({
     this.authCredentials,
     required this.azureApiVersion,
     required this.creationDate,

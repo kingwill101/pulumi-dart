@@ -8,7 +8,7 @@ class DomainFeaturesKvmPvipi {
 
   /// Creates a new [DomainFeaturesKvmPvipi].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesKvmPvipi({
+  const DomainFeaturesKvmPvipi({
     this.state,
   });
 

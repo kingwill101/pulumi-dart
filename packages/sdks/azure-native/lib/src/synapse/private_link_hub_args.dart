@@ -24,7 +24,7 @@ class PrivateLinkHubArgs {
   /// [provisioningState] PrivateLinkHub provisioning state
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  PrivateLinkHubArgs({
+  const PrivateLinkHubArgs({
     this.location,
     this.privateLinkHubName,
     this.provisioningState,

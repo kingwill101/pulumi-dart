@@ -159,7 +159,7 @@ class InstanceState {
   /// [updated] The time when the instance was last updated.
   /// [userData] The user data to provide when launching the instance.
   /// [vendorOptions] Map of additional vendor-specific options.
-  InstanceState({
+  const InstanceState({
     this.accessIpV4,
     this.accessIpV6,
     this.adminPass,

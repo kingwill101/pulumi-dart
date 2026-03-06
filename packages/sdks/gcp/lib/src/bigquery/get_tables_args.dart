@@ -16,7 +16,7 @@ class GetTablesArgs {
   /// Creates a new [GetTablesArgs].
   /// [datasetId] The dataset ID.
   /// [project] The ID of the project in which the resource belongs.
-  GetTablesArgs({
+  const GetTablesArgs({
     required this.datasetId,
     this.project,
   });

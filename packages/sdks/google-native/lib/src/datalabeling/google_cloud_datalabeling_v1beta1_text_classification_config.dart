@@ -16,7 +16,7 @@ class GoogleCloudDatalabelingV1beta1TextClassificationConfig {
   /// [allowMultiLabel] Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
   /// [annotationSpecSet] Annotation spec set resource name.
   /// [sentimentConfig] Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
-  GoogleCloudDatalabelingV1beta1TextClassificationConfig({
+  const GoogleCloudDatalabelingV1beta1TextClassificationConfig({
     this.allowMultiLabel,
     required this.annotationSpecSet,
     this.sentimentConfig,

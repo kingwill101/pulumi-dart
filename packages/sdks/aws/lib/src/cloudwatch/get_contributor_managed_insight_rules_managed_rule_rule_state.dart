@@ -11,7 +11,7 @@ class GetContributorManagedInsightRulesManagedRuleRuleState {
   /// Creates a new [GetContributorManagedInsightRulesManagedRuleRuleState].
   /// [ruleName] Name of the Contributor Insights rule that contains data for the specified Amazon Web Services resource.
   /// [state] Indicates whether the rule is enabled or disabled.
-  GetContributorManagedInsightRulesManagedRuleRuleState({
+  const GetContributorManagedInsightRulesManagedRuleRuleState({
     required this.ruleName,
     required this.state,
   });

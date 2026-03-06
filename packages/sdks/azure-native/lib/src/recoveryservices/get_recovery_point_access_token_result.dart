@@ -27,7 +27,7 @@ class GetRecoveryPointAccessTokenResult {
   /// [properties] CrrAccessTokenResource properties
   /// [tags] Resource tags.
   /// [type] Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  GetRecoveryPointAccessTokenResult({
+  const GetRecoveryPointAccessTokenResult({
     this.eTag,
     required this.id,
     this.location,

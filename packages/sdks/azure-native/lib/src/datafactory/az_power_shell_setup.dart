@@ -13,7 +13,7 @@ class AzPowerShellSetup {
   /// Creates a new [AzPowerShellSetup].
   /// [type] The type of custom setup.
   /// [version] The required version of Azure PowerShell to install.
-  AzPowerShellSetup({
+  const AzPowerShellSetup({
     required this.type,
     required this.version,
   });

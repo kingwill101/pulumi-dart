@@ -11,7 +11,7 @@ class GetNetworkPolicyInternetAccess {
   /// Creates a new [GetNetworkPolicyInternetAccess].
   /// [enabled] True if the service is enabled; false otherwise.
   /// [state] State of the service. New values may be added to this enum when appropriate.
-  GetNetworkPolicyInternetAccess({
+  const GetNetworkPolicyInternetAccess({
     required this.enabled,
     required this.state,
   });

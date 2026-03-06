@@ -42,7 +42,7 @@ class GetControllerResult {
   /// [targetContainerHostApiServerFqdn] DNS of the target container host's API server
   /// [targetContainerHostResourceId] Resource ID of the target container host
   /// [type] The type of the resource.
-  GetControllerResult({
+  const GetControllerResult({
     required this.azureApiVersion,
     required this.dataPlaneFqdn,
     required this.hostSuffix,

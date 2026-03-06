@@ -9,7 +9,7 @@ class ServerlessKubernetesOperationPolicy {
 
   /// Creates a new [ServerlessKubernetesOperationPolicy].
   /// [clusterAutoUpgrade] Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
-  ServerlessKubernetesOperationPolicy({
+  const ServerlessKubernetesOperationPolicy({
     this.clusterAutoUpgrade,
   });
 

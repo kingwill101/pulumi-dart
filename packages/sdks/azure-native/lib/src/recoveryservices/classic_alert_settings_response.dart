@@ -10,7 +10,7 @@ class ClassicAlertSettingsResponse {
   /// Creates a new [ClassicAlertSettingsResponse].
   /// [alertsForCriticalOperations] Optional.
   /// [emailNotificationsForSiteRecovery] Optional.
-  ClassicAlertSettingsResponse({
+  const ClassicAlertSettingsResponse({
     this.alertsForCriticalOperations,
     this.emailNotificationsForSiteRecovery,
   });

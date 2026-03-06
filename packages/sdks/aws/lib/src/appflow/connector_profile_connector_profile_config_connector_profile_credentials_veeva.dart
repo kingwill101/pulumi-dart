@@ -9,7 +9,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva {
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva].
   /// [password] Required.
   /// [username] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva({
     required this.password,
     required this.username,
   });

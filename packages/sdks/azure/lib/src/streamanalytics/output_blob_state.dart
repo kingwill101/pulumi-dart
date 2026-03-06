@@ -49,7 +49,7 @@ class OutputBlobState {
   /// [storageContainerName] The name of the Container within the Storage Account.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [timeFormat] The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
-  OutputBlobState({
+  const OutputBlobState({
     this.authenticationMode,
     this.batchMaxWaitTime,
     this.batchMinRows,

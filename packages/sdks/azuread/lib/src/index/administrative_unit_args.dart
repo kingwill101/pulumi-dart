@@ -28,7 +28,7 @@ class AdministrativeUnitArgs {
   /// [hiddenMembershipEnabled] Whether the administrative unit and its members are hidden or publicly viewable in the directory.
   /// [members] A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
   /// [preventDuplicateNames] If `true`, will return an error if an existing administrative unit is found with the same name
-  AdministrativeUnitArgs({
+  const AdministrativeUnitArgs({
     this.description,
     required this.displayName,
     this.hiddenMembershipEnabled,

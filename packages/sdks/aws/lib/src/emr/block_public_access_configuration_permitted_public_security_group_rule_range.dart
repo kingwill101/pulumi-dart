@@ -11,7 +11,7 @@ class BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange {
   /// Creates a new [BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange].
   /// [maxRange] The final port in the range of TCP ports.
   /// [minRange] The first port in the range of TCP ports.
-  BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange({
+  const BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange({
     required this.maxRange,
     required this.minRange,
   });

@@ -57,7 +57,7 @@ class DomainArgs {
   /// [tagPropagation] Indicates whether custom tag propagation is supported for the domain. Defaults to `DISABLED`. Valid values are: `ENABLED` and `DISABLED`.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.
-  DomainArgs({
+  const DomainArgs({
     this.appNetworkAccessType,
     this.appSecurityGroupManagement,
     required this.authMode,

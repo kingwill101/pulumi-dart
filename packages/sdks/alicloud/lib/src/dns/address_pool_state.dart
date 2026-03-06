@@ -22,7 +22,7 @@ class AddressPoolState {
   /// [instanceId] The ID of the instance.
   /// [lbaStrategy] The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
   /// [type] The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
-  AddressPoolState({
+  const AddressPoolState({
     this.addressPoolName,
     this.addresses,
     this.instanceId,

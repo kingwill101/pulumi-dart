@@ -27,7 +27,7 @@ class GetEventHubAuthorizationRuleResult {
   /// [rights] The rights associated with the rule.
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
-  GetEventHubAuthorizationRuleResult({
+  const GetEventHubAuthorizationRuleResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

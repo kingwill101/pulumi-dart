@@ -8,7 +8,7 @@ class GetVirtualGatewaySpecBackendDefault {
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefault].
   /// [clientPolicies] Required.
-  GetVirtualGatewaySpecBackendDefault({
+  const GetVirtualGatewaySpecBackendDefault({
     required this.clientPolicies,
   });
 

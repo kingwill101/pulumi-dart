@@ -13,7 +13,7 @@ class OSPolicyResourcePackageResourceDeb {
   /// Creates a new [OSPolicyResourcePackageResourceDeb].
   /// [pullDeps] Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
   /// [source] A deb package.
-  OSPolicyResourcePackageResourceDeb({
+  const OSPolicyResourcePackageResourceDeb({
     this.pullDeps,
     required this.source,
   });

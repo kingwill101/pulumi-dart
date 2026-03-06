@@ -43,7 +43,7 @@ class AddressGroupArgs {
   /// [parent] The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
   /// [purposes] List of supported purposes of the Address Group.
   /// [type] The type of the Address Group. Possible values are "IPV4" or "IPV6".
-  AddressGroupArgs({
+  const AddressGroupArgs({
     required this.capacity,
     this.description,
     this.items,

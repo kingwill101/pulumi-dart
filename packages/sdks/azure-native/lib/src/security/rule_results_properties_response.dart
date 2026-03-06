@@ -9,7 +9,7 @@ class RuleResultsPropertiesResponse {
 
   /// Creates a new [RuleResultsPropertiesResponse].
   /// [results] Expected results in the baseline.
-  RuleResultsPropertiesResponse({
+  const RuleResultsPropertiesResponse({
     this.results,
   });
 

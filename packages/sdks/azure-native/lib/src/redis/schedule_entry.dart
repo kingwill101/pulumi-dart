@@ -16,7 +16,7 @@ class ScheduleEntry {
   /// [dayOfWeek] Day of the week when a cache can be patched.
   /// [maintenanceWindow] ISO8601 timespan specifying how much time cache patching can take.
   /// [startHourUtc] Start hour after which cache patching can start.
-  ScheduleEntry({
+  const ScheduleEntry({
     required this.dayOfWeek,
     this.maintenanceWindow,
     required this.startHourUtc,

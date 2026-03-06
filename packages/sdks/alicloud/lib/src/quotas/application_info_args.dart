@@ -32,7 +32,7 @@ class ApplicationInfoArgs {
   /// [quotaActionCode] Required.
   /// [quotaCategory] Optional.
   /// [reason] Required.
-  ApplicationInfoArgs({
+  const ApplicationInfoArgs({
     this.auditMode,
     required this.desireValue,
     this.dimensions,

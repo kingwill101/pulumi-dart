@@ -27,7 +27,7 @@ class GetGatewaysArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [searchKey] The search key.
   /// [status] The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
-  GetGatewaysArgs({
+  const GetGatewaysArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

@@ -11,7 +11,7 @@ class DeploymentLoggingLog4jLogger {
   /// Creates a new [DeploymentLoggingLog4jLogger].
   /// [loggerLevel] Log output level
   /// [loggerName] Class name for log output
-  DeploymentLoggingLog4jLogger({
+  const DeploymentLoggingLog4jLogger({
     this.loggerLevel,
     this.loggerName,
   });

@@ -25,7 +25,7 @@ class NamespaceTopicSpacesConfiguration {
   /// [maximumSessionExpiryInHours] Specifies the maximum session expiry interval allowed for all MQTT clients connecting to the Event Grid namespace. Valid values can be between `1` and `8`.
   /// [routeTopicId] Specifies the Event Grid topic resource ID to route messages to.
   /// [staticRoutingEnrichments] One or more `static_routing_enrichment` blocks as defined below.
-  NamespaceTopicSpacesConfiguration({
+  const NamespaceTopicSpacesConfiguration({
     this.alternativeAuthenticationNameSources,
     this.dynamicRoutingEnrichments,
     this.maximumClientSessionsPerAuthenticationName,

@@ -14,7 +14,7 @@ class MetadataIntegrationMetastoreV1alpha {
   /// Creates a new [MetadataIntegrationMetastoreV1alpha].
   /// [dataCatalogConfig] Optional. The integration config for the Data Catalog service.
   /// [dataplexConfig] The integration config for the Dataplex service.
-  MetadataIntegrationMetastoreV1alpha({
+  const MetadataIntegrationMetastoreV1alpha({
     this.dataCatalogConfig,
     this.dataplexConfig,
   });

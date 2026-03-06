@@ -12,7 +12,7 @@ class AccessTokenArgs {
 
   /// Creates a new [AccessTokenArgs].
   /// [description] Description of the access token.
-  AccessTokenArgs({
+  const AccessTokenArgs({
     required this.description,
   });
 

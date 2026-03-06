@@ -13,7 +13,7 @@ class VirtualMachineOsProfileWindowsConfigWinrm {
   /// Creates a new [VirtualMachineOsProfileWindowsConfigWinrm].
   /// [certificateUrl] The ID of the Key Vault Secret which contains the encrypted Certificate which should be installed on the Virtual Machine. This certificate must also be specified in the `vault_certificates` block within the `os_profile_secrets` block.
   /// [protocol] Specifies the protocol of listener. Possible values are `HTTP` or `HTTPS`.
-  VirtualMachineOsProfileWindowsConfigWinrm({
+  const VirtualMachineOsProfileWindowsConfigWinrm({
     this.certificateUrl,
     required this.protocol,
   });

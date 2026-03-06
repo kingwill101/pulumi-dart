@@ -9,7 +9,7 @@ class ApplyHash {
 
   /// Creates a new [ApplyHash].
   /// [uuidFromBytes] Optional. Generate UUID from the data's byte array
-  ApplyHash({
+  const ApplyHash({
     this.uuidFromBytes,
   });
 

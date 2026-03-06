@@ -13,7 +13,7 @@ class ConfigMultiTenant {
   /// Creates a new [ConfigMultiTenant].
   /// [allowTenants] Whether this project can have tenants or not.
   /// [defaultTenantLocation] The default cloud parent org or folder that the tenant project should be created under.
-  ConfigMultiTenant({
+  const ConfigMultiTenant({
     this.allowTenants,
     this.defaultTenantLocation,
   });

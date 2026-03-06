@@ -11,7 +11,7 @@ class ViewDataFilterExpressionDimensions {
   /// Creates a new [ViewDataFilterExpressionDimensions].
   /// [key] Key of the dimension. Possible values are `LINKED_ACCOUNT`.
   /// [values] List of metadata values that you can use to filter and group your results.
-  ViewDataFilterExpressionDimensions({
+  const ViewDataFilterExpressionDimensions({
     required this.key,
     required this.values,
   });

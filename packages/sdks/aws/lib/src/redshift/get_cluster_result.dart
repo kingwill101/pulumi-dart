@@ -131,7 +131,7 @@ class GetClusterResult {
   /// [tags] Tags associated to the cluster
   /// [vpcId] VPC Id associated with the cluster
   /// [vpcSecurityGroupIds] The VPC security group Ids associated with the cluster
-  GetClusterResult({
+  const GetClusterResult({
     required this.allowVersionUpgrade,
     required this.aquaConfigurationStatus,
     required this.arn,

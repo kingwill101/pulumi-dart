@@ -22,7 +22,7 @@ class GetPolicyGroupsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetPolicyGroupsResult({
+  const GetPolicyGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

@@ -34,7 +34,7 @@ class GetZonesZone {
   /// [primaryNameservers] Primary nameservers of the Zone.
   /// [registrar] Registrar of the Zone.
   /// [ttl] Default Time To Live (TTL) of the Zone.
-  GetZonesZone({
+  const GetZonesZone({
     required this.authoritativeNameservers,
     required this.deleteProtection,
     required this.id,

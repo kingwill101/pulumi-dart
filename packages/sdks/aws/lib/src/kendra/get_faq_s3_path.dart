@@ -11,7 +11,7 @@ class GetFaqS3Path {
   /// Creates a new [GetFaqS3Path].
   /// [bucket] Name of the S3 bucket that contains the file.
   /// [key] Name of the file.
-  GetFaqS3Path({
+  const GetFaqS3Path({
     required this.bucket,
     required this.key,
   });

@@ -11,7 +11,7 @@ class GetVirtualGatewaySpecListenerTlValidation {
   /// Creates a new [GetVirtualGatewaySpecListenerTlValidation].
   /// [subjectAlternativeNames] Required.
   /// [trusts] Required.
-  GetVirtualGatewaySpecListenerTlValidation({
+  const GetVirtualGatewaySpecListenerTlValidation({
     required this.subjectAlternativeNames,
     required this.trusts,
   });

@@ -15,7 +15,7 @@ class BaiduCredential {
   /// [baiduApiKey] Gets or sets baidu Api Key.
   /// [baiduEndPoint] Gets or sets baidu Endpoint.
   /// [baiduSecretKey] Gets or sets baidu Secret Key
-  BaiduCredential({
+  const BaiduCredential({
     required this.baiduApiKey,
     required this.baiduEndPoint,
     required this.baiduSecretKey,

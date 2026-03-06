@@ -21,7 +21,7 @@ class GetConsumeGroupArgs {
   /// [name] Specifies the name of the EventHub Consumer Group resource.
   /// [namespaceName] Specifies the name of the grandparent EventHub Namespace.
   /// [resourceGroupName] The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists.
-  GetConsumeGroupArgs({
+  const GetConsumeGroupArgs({
     required this.eventhubName,
     required this.name,
     required this.namespaceName,

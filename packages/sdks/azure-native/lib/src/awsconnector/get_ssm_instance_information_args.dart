@@ -15,7 +15,7 @@ class GetSsmInstanceInformationArgs {
   /// Creates a new [GetSsmInstanceInformationArgs].
   /// [name] Name of SsmInstanceInformation
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSsmInstanceInformationArgs({
+  const GetSsmInstanceInformationArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -36,7 +36,7 @@ class SourceApiAssociationState {
   /// [sourceApiAssociationConfigs] Optional.
   /// [sourceApiId] ID of the source API. One of `source_api_arn` or `source_api_id` must be specified.
   /// [timeouts] Optional.
-  SourceApiAssociationState({
+  const SourceApiAssociationState({
     this.arn,
     this.associationId,
     this.description,

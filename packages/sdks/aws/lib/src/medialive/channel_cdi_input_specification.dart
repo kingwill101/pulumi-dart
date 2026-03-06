@@ -8,7 +8,7 @@ class ChannelCdiInputSpecification {
 
   /// Creates a new [ChannelCdiInputSpecification].
   /// [resolution] Maximum CDI input resolution.
-  ChannelCdiInputSpecification({
+  const ChannelCdiInputSpecification({
     required this.resolution,
   });
 

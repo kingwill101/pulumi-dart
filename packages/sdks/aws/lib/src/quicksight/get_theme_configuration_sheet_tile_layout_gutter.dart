@@ -8,7 +8,7 @@ class GetThemeConfigurationSheetTileLayoutGutter {
 
   /// Creates a new [GetThemeConfigurationSheetTileLayoutGutter].
   /// [show] This Boolean value controls whether to display sheet margins.
-  GetThemeConfigurationSheetTileLayoutGutter({
+  const GetThemeConfigurationSheetTileLayoutGutter({
     required this.show,
   });
 

@@ -39,7 +39,7 @@ class GetClusterResult {
   /// [settings] Settings associated with the ECS Cluster
   /// [status] Status of the ECS Cluster
   /// [tags] Key-value map of resource tags
-  GetClusterResult({
+  const GetClusterResult({
     required this.arn,
     required this.clusterName,
     required this.id,

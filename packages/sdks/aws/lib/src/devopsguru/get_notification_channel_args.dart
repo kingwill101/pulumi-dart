@@ -23,7 +23,7 @@ class GetNotificationChannelArgs {
   /// [id] Unique identifier for the notification channel.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sns] SNS noficiation channel configurations. See the `sns` attribute reference below.
-  GetNotificationChannelArgs({
+  const GetNotificationChannelArgs({
     this.filters,
     required this.id,
     this.region,

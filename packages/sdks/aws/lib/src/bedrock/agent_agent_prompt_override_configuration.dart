@@ -12,7 +12,7 @@ class AgentAgentPromptOverrideConfiguration {
   /// Creates a new [AgentAgentPromptOverrideConfiguration].
   /// [overrideLambda] ARN of the Lambda function to use when parsing the raw foundation model output in parts of the agent sequence. If you specify this field, at least one of the `prompt_configurations` block must contain a `parser_mode` value that is set to `OVERRIDDEN`.
   /// [promptConfigurations] Configurations to override a prompt template in one part of an agent sequence. See `prompt_configurations` Block for details.
-  AgentAgentPromptOverrideConfiguration({
+  const AgentAgentPromptOverrideConfiguration({
     required this.overrideLambda,
     required this.promptConfigurations,
   });

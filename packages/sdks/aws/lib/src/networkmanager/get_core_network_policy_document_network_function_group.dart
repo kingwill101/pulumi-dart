@@ -14,7 +14,7 @@ class GetCoreNetworkPolicyDocumentNetworkFunctionGroup {
   /// [description] Optional description of the network function group.
   /// [name] This identifies the network function group container.
   /// [requireAttachmentAcceptance] This will be either `true`, that attachment acceptance is required, or `false`, that it is not required.
-  GetCoreNetworkPolicyDocumentNetworkFunctionGroup({
+  const GetCoreNetworkPolicyDocumentNetworkFunctionGroup({
     this.description,
     required this.name,
     required this.requireAttachmentAcceptance,

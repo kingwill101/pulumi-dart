@@ -50,7 +50,7 @@ class StreamDatastreamV1alpha1Args {
   /// [sourceConfig] Source connection profile configuration.
   /// [state] The state of the stream.
   /// [streamId] Required. The stream identifier.
-  StreamDatastreamV1alpha1Args({
+  const StreamDatastreamV1alpha1Args({
     this.backfillAll,
     this.backfillNone,
     this.customerManagedEncryptionKey,

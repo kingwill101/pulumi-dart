@@ -65,7 +65,7 @@ class NetworkArgs {
   /// [tags] A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [zeroEtlAccess] Specifies the configuration for Zero-ETL access from the ODB network.
-  NetworkArgs({
+  const NetworkArgs({
     this.availabilityZone,
     required this.availabilityZoneId,
     required this.backupSubnetCidr,

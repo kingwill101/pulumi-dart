@@ -14,7 +14,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// [bucket] Required. Bucket of the Cloud Storage object.
   /// [generation] Generation number of the Cloud Storage object.
   /// [object_] Required. Name of the Cloud Storage object.
-  V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs({
+  const V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs({
     required this.bucket,
     this.generation,
     required this.object_,

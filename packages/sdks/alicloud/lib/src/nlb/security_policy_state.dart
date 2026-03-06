@@ -31,7 +31,7 @@ class SecurityPolicyState {
   /// [status] The status of the resource
   /// [tags] The tag of the resource
   /// [tlsVersions] The supported versions of the Transport Layer Security (TLS) protocol. Valid values: `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`. You can specify at most four TLS versions.
-  SecurityPolicyState({
+  const SecurityPolicyState({
     this.ciphers,
     this.resourceGroupId,
     this.securityPolicyName,

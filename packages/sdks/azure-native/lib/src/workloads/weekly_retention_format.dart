@@ -14,7 +14,7 @@ class WeeklyRetentionFormat {
   /// Creates a new [WeeklyRetentionFormat].
   /// [daysOfTheWeek] List of days of the week.
   /// [weeksOfTheMonth] List of weeks of month.
-  WeeklyRetentionFormat({
+  const WeeklyRetentionFormat({
     this.daysOfTheWeek,
     this.weeksOfTheMonth,
   });

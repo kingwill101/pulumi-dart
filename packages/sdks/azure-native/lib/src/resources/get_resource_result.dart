@@ -48,7 +48,7 @@ class GetResourceResult {
   /// [sku] The SKU of the resource.
   /// [tags] Resource tags
   /// [type] Resource type
-  GetResourceResult({
+  const GetResourceResult({
     required this.azureApiVersion,
     this.extendedLocation,
     required this.id,

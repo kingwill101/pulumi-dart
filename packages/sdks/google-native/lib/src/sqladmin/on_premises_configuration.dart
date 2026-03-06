@@ -34,7 +34,7 @@ class OnPremisesConfiguration {
   /// [password] The password for connecting to on-premises instance.
   /// [sourceInstance] The reference to Cloud SQL instance if the source is Cloud SQL.
   /// [username] The username for connecting to on-premises instance.
-  OnPremisesConfiguration({
+  const OnPremisesConfiguration({
     this.caCertificate,
     this.clientCertificate,
     this.clientKey,

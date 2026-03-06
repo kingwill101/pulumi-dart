@@ -14,7 +14,7 @@ class BackfillAllStrategyDatastreamV1alpha1 {
   /// Creates a new [BackfillAllStrategyDatastreamV1alpha1].
   /// [mysqlExcludedObjects] MySQL data source objects to avoid backfilling.
   /// [oracleExcludedObjects] Oracle data source objects to avoid backfilling.
-  BackfillAllStrategyDatastreamV1alpha1({
+  const BackfillAllStrategyDatastreamV1alpha1({
     this.mysqlExcludedObjects,
     this.oracleExcludedObjects,
   });

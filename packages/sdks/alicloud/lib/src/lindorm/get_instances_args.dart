@@ -30,7 +30,7 @@ class GetInstancesArgs {
   /// [queryStr] The query str, which can use `instance_name` keyword for fuzzy search.
   /// [status] Instance status, Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
   /// [supportEngine] The support engine. Valid values: `1` to `7`.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

@@ -22,7 +22,7 @@ class AzureStorageSmbFileShareEndpointPropertiesResponse {
   /// [fileShareName] The name of the Azure Storage file share.
   /// [provisioningState] The provisioning state of this resource.
   /// [storageAccountResourceId] The Azure Resource ID of the storage account.
-  AzureStorageSmbFileShareEndpointPropertiesResponse({
+  const AzureStorageSmbFileShareEndpointPropertiesResponse({
     this.description,
     required this.endpointType,
     required this.fileShareName,

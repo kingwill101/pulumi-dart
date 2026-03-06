@@ -9,7 +9,7 @@ class SamlSsoInfoResponse {
 
   /// Creates a new [SamlSsoInfoResponse].
   /// [inboundSamlSsoProfile] Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
-  SamlSsoInfoResponse({
+  const SamlSsoInfoResponse({
     required this.inboundSamlSsoProfile,
   });
 

@@ -20,7 +20,7 @@ class PipelineWorkloadDataflowFlexTemplateRequest {
   /// [location] The regional endpoint to which to direct the request. For example, us-central1, us-west1.
   /// [projectId] The ID of the Cloud Platform project that the job belongs to.
   /// [validateOnly] If true, the request is validated but not actually executed. Defaults to false.
-  PipelineWorkloadDataflowFlexTemplateRequest({
+  const PipelineWorkloadDataflowFlexTemplateRequest({
     required this.launchParameter,
     required this.location,
     required this.projectId,

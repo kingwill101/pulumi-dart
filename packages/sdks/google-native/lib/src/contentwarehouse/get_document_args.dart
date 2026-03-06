@@ -15,7 +15,7 @@ class GetDocumentArgs {
   /// [documentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDocumentArgs({
+  const GetDocumentArgs({
     required this.documentId,
     required this.location,
     this.project,

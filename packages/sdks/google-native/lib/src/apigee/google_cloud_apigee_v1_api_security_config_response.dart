@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1ApiSecurityConfigResponse {
   /// Creates a new [GoogleCloudApigeeV1ApiSecurityConfigResponse].
   /// [enabled] Flag that specifies whether the API security add-on is enabled.
   /// [expiresAt] Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
-  GoogleCloudApigeeV1ApiSecurityConfigResponse({
+  const GoogleCloudApigeeV1ApiSecurityConfigResponse({
     required this.enabled,
     required this.expiresAt,
   });

@@ -9,7 +9,7 @@ class AutomationRuleCriteriaRecordState {
   /// Creates a new [AutomationRuleCriteriaRecordState].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaRecordState({
+  const AutomationRuleCriteriaRecordState({
     required this.comparison,
     required this.value,
   });

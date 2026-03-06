@@ -11,7 +11,7 @@ class NamedLocationIp {
   /// Creates a new [NamedLocationIp].
   /// [ipRanges] List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596. Each CIDR prefix must be `/8` or larger.
   /// [trusted] Whether the named location is trusted. Defaults to `false`.
-  NamedLocationIp({
+  const NamedLocationIp({
     required this.ipRanges,
     this.trusted,
   });

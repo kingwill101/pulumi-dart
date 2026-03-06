@@ -69,7 +69,7 @@ class AutomationState {
   /// [suspended] Optional. When Suspended, automation is deactivated from execution.
   /// [uid] Output only. Unique identifier of the `Automation`.
   /// [updateTime] Output only. Time at which the automation was updated.
-  AutomationState({
+  const AutomationState({
     this.annotations,
     this.createTime,
     this.deliveryPipeline,

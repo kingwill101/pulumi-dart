@@ -17,7 +17,7 @@ class GetGrantRuleToCensCen {
   /// [cenOwnerId] The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
   /// [createTime] The time when the instance was created.
   /// [id] The ID of the Grant Rule To Cen. It formats as `&lt;cen_id&gt;:&lt;cen_owner_id&gt;:&lt;instance_id&gt;`.
-  GetGrantRuleToCensCen({
+  const GetGrantRuleToCensCen({
     required this.cenId,
     required this.cenOwnerId,
     required this.createTime,

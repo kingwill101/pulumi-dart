@@ -38,7 +38,7 @@ class GetBasicEndpointsEndpoint {
   /// [endpointZoneId] The zone id of the Basic Endpoint.
   /// [id] The id of the Global Accelerator Basic Endpoint. It formats as `&lt;endpoint_group_id&gt;:&lt;endpoint_id&gt;`.
   /// [status] The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
-  GetBasicEndpointsEndpoint({
+  const GetBasicEndpointsEndpoint({
     required this.acceleratorId,
     required this.basicEndpointName,
     required this.endpointAddress,

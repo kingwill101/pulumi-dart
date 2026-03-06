@@ -77,7 +77,7 @@ class EipState {
   /// [status] The EIP current status.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zone] Optional.
-  EipState({
+  const EipState({
     this.activityId,
     this.addressName,
     this.allocationId,

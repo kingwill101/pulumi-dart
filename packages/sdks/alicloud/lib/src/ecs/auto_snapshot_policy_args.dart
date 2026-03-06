@@ -51,7 +51,7 @@ class AutoSnapshotPolicyArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [targetCopyRegions] The destination region to which to copy the snapshot. You can specify only a single destination region.
   /// [timePoints] The points in time of the day at which to create automatic snapshots.
-  AutoSnapshotPolicyArgs({
+  const AutoSnapshotPolicyArgs({
     this.autoSnapshotPolicyName,
     this.copiedSnapshotsRetentionDays,
     this.copyEncryptionConfiguration,

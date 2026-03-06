@@ -23,7 +23,7 @@ class GetInstancesInstanceDiskDeviceMapping {
   /// [diskName] The name of the Disk.
   /// [size] Size of the created disk.
   /// [type] Cloud disk type: system disk or data disk.
-  GetInstancesInstanceDiskDeviceMapping({
+  const GetInstancesInstanceDiskDeviceMapping({
     required this.category,
     required this.device,
     required this.diskId,

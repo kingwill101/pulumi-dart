@@ -21,7 +21,7 @@ class CacheToAzureBlob {
   /// [mode] The cache mode to use. Defaults to `min`.
   /// [name] The name of the cache image.
   /// [secretAccessKey] Blob storage account key.
-  CacheToAzureBlob({
+  const CacheToAzureBlob({
     this.accountUrl,
     this.ignoreError,
     this.mode,

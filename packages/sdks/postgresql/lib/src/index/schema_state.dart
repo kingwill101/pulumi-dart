@@ -27,7 +27,7 @@ class SchemaState {
   /// [name] The name of the schema. Must be unique in the PostgreSQL
   /// [owner] The ROLE who owns the schema.
   /// [policies] Can be specified multiple times for each policy.  Each
-  SchemaState({
+  const SchemaState({
     this.database,
     this.dropCascade,
     this.ifNotExists,

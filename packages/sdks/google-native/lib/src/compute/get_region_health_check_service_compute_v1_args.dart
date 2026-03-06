@@ -15,7 +15,7 @@ class GetRegionHealthCheckServiceComputeV1Args {
   /// [healthCheckService] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionHealthCheckServiceComputeV1Args({
+  const GetRegionHealthCheckServiceComputeV1Args({
     required this.healthCheckService,
     this.project,
     required this.region,

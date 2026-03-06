@@ -9,7 +9,7 @@ class DomainDefaultSpaceSettingsSpaceStorageSettings {
 
   /// Creates a new [DomainDefaultSpaceSettingsSpaceStorageSettings].
   /// [defaultEbsStorageSettings] The default EBS storage settings for a private space. See `default_ebs_storage_settings` Block below.
-  DomainDefaultSpaceSettingsSpaceStorageSettings({
+  const DomainDefaultSpaceSettingsSpaceStorageSettings({
     this.defaultEbsStorageSettings,
   });
 

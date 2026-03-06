@@ -9,7 +9,7 @@ class KubernetesClusterInfo {
 
   /// Creates a new [KubernetesClusterInfo].
   /// [version] Kubernetes cluster version
-  KubernetesClusterInfo({
+  const KubernetesClusterInfo({
     required this.version,
   });
 

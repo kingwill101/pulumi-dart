@@ -15,7 +15,7 @@ class GetCGProfileArgs {
   /// Creates a new [GetCGProfileArgs].
   /// [containerGroupProfileName] ContainerGroupProfile name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCGProfileArgs({
+  const GetCGProfileArgs({
     required this.containerGroupProfileName,
     required this.resourceGroupName,
   });

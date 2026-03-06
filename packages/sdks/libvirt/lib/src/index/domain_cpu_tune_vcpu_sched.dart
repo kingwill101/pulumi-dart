@@ -14,7 +14,7 @@ class DomainCpuTuneVcpuSched {
   /// [priority] Sets the priority for virtual CPU scheduling, affecting execution order between competing CPU tasks.
   /// [scheduler] Specifies the type of scheduler for virtual CPUs, determining how they share and compete for CPU resources.
   /// [vcpus] Configures the specific virtual CPUs affected by the scheduling policies, influencing performance and resource use.
-  DomainCpuTuneVcpuSched({
+  const DomainCpuTuneVcpuSched({
     this.priority,
     this.scheduler,
     required this.vcpus,

@@ -13,7 +13,7 @@ class GetUrlMapComputeV1Args {
   /// Creates a new [GetUrlMapComputeV1Args].
   /// [project] Optional.
   /// [urlMap] Required.
-  GetUrlMapComputeV1Args({
+  const GetUrlMapComputeV1Args({
     this.project,
     required this.urlMap,
   });

@@ -36,7 +36,7 @@ class TraceScopeState {
   /// [resourceNames] Names of the projects that are included in this trace scope.
   /// [traceScopeId] A client-assigned identifier for the trace scope.
   /// [updateTime] The last update timestamp of the trace scope.
-  TraceScopeState({
+  const TraceScopeState({
     this.createTime,
     this.description,
     this.location,

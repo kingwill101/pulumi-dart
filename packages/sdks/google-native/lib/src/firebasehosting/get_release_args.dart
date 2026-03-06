@@ -17,7 +17,7 @@ class GetReleaseArgs {
   /// [project] Optional.
   /// [releaseId] Required.
   /// [siteId] Required.
-  GetReleaseArgs({
+  const GetReleaseArgs({
     required this.channelId,
     this.project,
     required this.releaseId,

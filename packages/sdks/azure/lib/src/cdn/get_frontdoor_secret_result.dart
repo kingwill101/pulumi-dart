@@ -22,7 +22,7 @@ class GetFrontdoorSecretResult {
   /// [profileName] Required.
   /// [resourceGroupName] Required.
   /// [secrets] A `secret` block as defined below.
-  GetFrontdoorSecretResult({
+  const GetFrontdoorSecretResult({
     required this.cdnFrontdoorProfileId,
     required this.id,
     required this.name,

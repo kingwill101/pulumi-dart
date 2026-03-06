@@ -12,7 +12,7 @@ class PrincipalsResponse {
   /// Creates a new [PrincipalsResponse].
   /// [objectId] Object Id for the user
   /// [upn] UPN of the user.
-  PrincipalsResponse({
+  const PrincipalsResponse({
     this.objectId,
     this.upn,
   });

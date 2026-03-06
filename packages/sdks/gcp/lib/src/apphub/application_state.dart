@@ -53,7 +53,7 @@ class ApplicationState {
   /// [state] Output only. Application state.
   /// [uid] Output only. A universally unique identifier (in UUID4 format) for the `Application`.
   /// [updateTime] Output only. Update time.
-  ApplicationState({
+  const ApplicationState({
     this.applicationId,
     this.attributes,
     this.createTime,

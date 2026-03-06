@@ -14,7 +14,7 @@ class GetInstanceTemplateServiceAccount {
   /// Creates a new [GetInstanceTemplateServiceAccount].
   /// [email] The service account e-mail address. If not given, the
   /// [scopes] A list of service scopes. Both OAuth2 URLs and gcloud
-  GetInstanceTemplateServiceAccount({
+  const GetInstanceTemplateServiceAccount({
     required this.email,
     required this.scopes,
   });

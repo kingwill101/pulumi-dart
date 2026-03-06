@@ -38,7 +38,7 @@ class ApiIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  ApiIamBindingState({
+  const ApiIamBindingState({
     this.api,
     this.condition,
     this.etag,

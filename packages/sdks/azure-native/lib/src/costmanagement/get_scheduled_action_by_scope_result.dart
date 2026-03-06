@@ -54,7 +54,7 @@ class GetScheduledActionByScopeResult {
   /// [systemData] Kind of the scheduled action.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [viewId] Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
-  GetScheduledActionByScopeResult({
+  const GetScheduledActionByScopeResult({
     required this.azureApiVersion,
     required this.displayName,
     required this.eTag,

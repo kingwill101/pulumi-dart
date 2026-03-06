@@ -29,7 +29,7 @@ class InterfaceAttachArgs {
   /// [networkId] The ID of the Network to attach to an Instance. A port will be created automatically.
   /// [portId] The ID of the Port to attach to an Instance.
   /// [region] The region in which to create the interface attachment.
-  InterfaceAttachArgs({
+  const InterfaceAttachArgs({
     this.fixedIp,
     required this.instanceId,
     this.networkId,

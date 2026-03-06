@@ -17,7 +17,7 @@ class SourceIamPolicyArgs {
   /// [organization] The organization whose Cloud Security Command Center the Source
   /// [policyData] Required.
   /// [source] Required.
-  SourceIamPolicyArgs({
+  const SourceIamPolicyArgs({
     required this.organization,
     required this.policyData,
     required this.source,

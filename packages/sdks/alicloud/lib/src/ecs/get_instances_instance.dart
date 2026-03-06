@@ -182,7 +182,7 @@ class GetInstancesInstance {
   /// [tags] A map of tags assigned to the ECS instances. It must be in the format:
   /// [vpcId] ID of the VPC linked to the instances.
   /// [vswitchId] ID of the vSwitch linked to the instances.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.availabilityZone,
     required this.creationTime,
     required this.description,

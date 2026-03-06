@@ -9,7 +9,7 @@ class CloudExadataInfrastructurePropertiesCustomerContact {
 
   /// Creates a new [CloudExadataInfrastructurePropertiesCustomerContact].
   /// [email] The email address used by Oracle to send notifications regarding databases
-  CloudExadataInfrastructurePropertiesCustomerContact({
+  const CloudExadataInfrastructurePropertiesCustomerContact({
     required this.email,
   });
 

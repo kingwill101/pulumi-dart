@@ -82,7 +82,7 @@ class VirtualMachineArgs {
   /// [templateId] Gets or sets the ARM Id of the template resource to deploy the virtual machine.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
   /// [virtualMachineName] Name of the virtual machine resource.
-  VirtualMachineArgs({
+  const VirtualMachineArgs({
     this.extendedLocation,
     this.firmwareType,
     this.guestAgentProfile,

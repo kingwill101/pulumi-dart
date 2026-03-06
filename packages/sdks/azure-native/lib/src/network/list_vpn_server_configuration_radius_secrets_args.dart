@@ -15,7 +15,7 @@ class ListVpnServerConfigurationRadiusSecretsArgs {
   /// Creates a new [ListVpnServerConfigurationRadiusSecretsArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vpnServerConfigurationName] The name of the VpnServerConfiguration.
-  ListVpnServerConfigurationRadiusSecretsArgs({
+  const ListVpnServerConfigurationRadiusSecretsArgs({
     required this.resourceGroupName,
     required this.vpnServerConfigurationName,
   });

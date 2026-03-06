@@ -34,7 +34,7 @@ class GetInstanceGroupResult {
   /// [selfLink] The URI of the resource.
   /// [size] The number of instances in the group.
   /// [zone] Required.
-  GetInstanceGroupResult({
+  const GetInstanceGroupResult({
     required this.description,
     required this.id,
     required this.instances,

@@ -9,7 +9,7 @@ class RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink {
 
   /// Creates a new [RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink].
   /// [id] Resource ID.
-  RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink({
+  const RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink({
     this.id,
   });
 

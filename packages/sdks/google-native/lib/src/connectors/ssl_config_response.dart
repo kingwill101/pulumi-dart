@@ -38,7 +38,7 @@ class SslConfigResponse {
   /// [trustModel] Trust Model of the SSL connection
   /// [type] Controls the ssl type for the given connector version.
   /// [useSsl] Bool for enabling SSL
-  SslConfigResponse({
+  const SslConfigResponse({
     required this.additionalVariables,
     required this.clientCertType,
     required this.clientCertificate,

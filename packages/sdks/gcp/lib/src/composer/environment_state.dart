@@ -34,7 +34,7 @@ class EnvironmentState {
   /// [pulumiLabels] The combination of labels configured directly on the resource and default labels configured on the provider.
   /// [region] The location or Compute Engine region for the environment.
   /// [storageConfig] Configuration options for storage used by Composer environment.
-  EnvironmentState({
+  const EnvironmentState({
     this.config,
     this.effectiveLabels,
     this.labels,

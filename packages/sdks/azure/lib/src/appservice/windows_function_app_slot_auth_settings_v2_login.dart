@@ -40,7 +40,7 @@ class WindowsFunctionAppSlotAuthSettingsV2Login {
   /// [tokenStorePath] The directory path in the App Filesystem in which the tokens will be stored.
   /// [tokenStoreSasSettingName] The name of the app setting which contains the SAS URL of the blob storage containing the tokens.
   /// [validateNonce] Should the nonce be validated while completing the login flow. Defaults to `true`.
-  WindowsFunctionAppSlotAuthSettingsV2Login({
+  const WindowsFunctionAppSlotAuthSettingsV2Login({
     this.allowedExternalRedirectUrls,
     this.cookieExpirationConvention,
     this.cookieExpirationTime,

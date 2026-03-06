@@ -17,7 +17,7 @@ class GetCollationTimeZonesArgs {
   /// Creates a new [GetCollationTimeZonesArgs].
   /// [collationTimeZones] An array that consists of the character set collations and time zones that are available for
   /// [outputFile] File name where to save data source results (after running `pulumi up`).
-  GetCollationTimeZonesArgs({
+  const GetCollationTimeZonesArgs({
     this.collationTimeZones,
     this.outputFile,
   });

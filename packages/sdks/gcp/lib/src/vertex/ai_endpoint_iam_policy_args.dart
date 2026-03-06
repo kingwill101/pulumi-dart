@@ -17,7 +17,7 @@ class AiEndpointIamPolicyArgs {
   /// [location] Optional.
   /// [policyData] Required.
   /// [project] Optional.
-  AiEndpointIamPolicyArgs({
+  const AiEndpointIamPolicyArgs({
     required this.endpoint,
     this.location,
     required this.policyData,

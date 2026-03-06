@@ -15,7 +15,7 @@ class GatewayArgs {
   /// Creates a new [GatewayArgs].
   /// [gatewayDesc] The description of Gateway.
   /// [gatewayName] The name of the Gateway.
-  GatewayArgs({
+  const GatewayArgs({
     this.gatewayDesc,
     required this.gatewayName,
   });

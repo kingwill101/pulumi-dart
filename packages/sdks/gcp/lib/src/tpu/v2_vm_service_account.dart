@@ -12,7 +12,7 @@ class V2VmServiceAccount {
   /// Creates a new [V2VmServiceAccount].
   /// [email] Email address of the service account. If empty, default Compute service account will be used.
   /// [scopes] The list of scopes to be made available for this service account. If empty, access to all
-  V2VmServiceAccount({
+  const V2VmServiceAccount({
     this.email,
     this.scopes,
   });

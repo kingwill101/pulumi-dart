@@ -11,7 +11,7 @@ class DomainFeaturesTcg {
   /// Creates a new [DomainFeaturesTcg].
   /// [tbCache] Configures the Trusted Boot (TB) cache settings for TCG to manage trusted boot processes.
   /// [tbCacheUnit] Specifies the unit of the TB cache size set for TCG configurations.
-  DomainFeaturesTcg({
+  const DomainFeaturesTcg({
     this.tbCache,
     this.tbCacheUnit,
   });

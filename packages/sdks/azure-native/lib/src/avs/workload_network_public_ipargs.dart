@@ -24,7 +24,7 @@ class WorkloadNetworkPublicIPArgs {
   /// [privateCloudName] Name of the private cloud
   /// [publicIPId] ID of the DNS zone.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  WorkloadNetworkPublicIPArgs({
+  const WorkloadNetworkPublicIPArgs({
     this.displayName,
     this.numberOfPublicIPs,
     required this.privateCloudName,

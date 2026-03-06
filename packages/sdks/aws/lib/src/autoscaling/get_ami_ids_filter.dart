@@ -11,7 +11,7 @@ class GetAmiIdsFilter {
   /// Creates a new [GetAmiIdsFilter].
   /// [name] Name of the DescribeAutoScalingGroup filter. The recommended values are: `tag-key`, `tag-value`, and `tag:&lt;tag name&gt;`
   /// [values] Value of the filter.
-  GetAmiIdsFilter({
+  const GetAmiIdsFilter({
     required this.name,
     required this.values,
   });

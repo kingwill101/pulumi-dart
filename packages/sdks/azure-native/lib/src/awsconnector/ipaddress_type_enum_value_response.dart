@@ -9,7 +9,7 @@ class IPAddressTypeEnumValueResponse {
 
   /// Creates a new [IPAddressTypeEnumValueResponse].
   /// [value] Property value
-  IPAddressTypeEnumValueResponse({
+  const IPAddressTypeEnumValueResponse({
     this.value,
   });
 

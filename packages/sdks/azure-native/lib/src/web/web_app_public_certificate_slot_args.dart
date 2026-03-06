@@ -31,7 +31,7 @@ class WebAppPublicCertificateSlotArgs {
   /// [publicCertificateName] Public certificate name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
-  WebAppPublicCertificateSlotArgs({
+  const WebAppPublicCertificateSlotArgs({
     this.blob,
     this.kind,
     required this.name,

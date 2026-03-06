@@ -8,7 +8,7 @@ class ScheduledActionTargetActionPauseCluster {
 
   /// Creates a new [ScheduledActionTargetActionPauseCluster].
   /// [clusterIdentifier] The identifier of the cluster to be paused.
-  ScheduledActionTargetActionPauseCluster({
+  const ScheduledActionTargetActionPauseCluster({
     required this.clusterIdentifier,
   });
 

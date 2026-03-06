@@ -13,7 +13,7 @@ class GetServicePerimeterAccesscontextmanagerV1betaArgs {
   /// Creates a new [GetServicePerimeterAccesscontextmanagerV1betaArgs].
   /// [accessPolicyId] Required.
   /// [servicePerimeterId] Required.
-  GetServicePerimeterAccesscontextmanagerV1betaArgs({
+  const GetServicePerimeterAccesscontextmanagerV1betaArgs({
     required this.accessPolicyId,
     required this.servicePerimeterId,
   });

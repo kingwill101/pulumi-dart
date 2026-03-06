@@ -36,7 +36,7 @@ class FailActivity {
   /// [state] Activity state. This is an optional property and if not provided, the state will be Active by default.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  FailActivity({
+  const FailActivity({
     this.dependsOn,
     this.description,
     required this.errorCode,

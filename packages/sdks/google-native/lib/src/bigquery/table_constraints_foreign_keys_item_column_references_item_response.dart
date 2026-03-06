@@ -9,7 +9,7 @@ class TableConstraintsForeignKeysItemColumnReferencesItemResponse {
   /// Creates a new [TableConstraintsForeignKeysItemColumnReferencesItemResponse].
   /// [referencedColumn] Required.
   /// [referencingColumn] Required.
-  TableConstraintsForeignKeysItemColumnReferencesItemResponse({
+  const TableConstraintsForeignKeysItemColumnReferencesItemResponse({
     required this.referencedColumn,
     required this.referencingColumn,
   });

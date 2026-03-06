@@ -45,7 +45,7 @@ class GetGenaiAgentsAgentTemplateKnowledgeBase {
   /// [updatedAt] Timestamp when the Knowledge Base was updated
   /// [userId] User ID of the Knowledge Base
   /// [uuid] UUID of the Knowledge Base
-  GetGenaiAgentsAgentTemplateKnowledgeBase({
+  const GetGenaiAgentsAgentTemplateKnowledgeBase({
     required this.addedToAgentAt,
     required this.createdAt,
     this.databaseId,

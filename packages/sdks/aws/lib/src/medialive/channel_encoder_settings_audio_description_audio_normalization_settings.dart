@@ -14,7 +14,7 @@ class ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings {
   /// [algorithm] Audio normalization algorithm to use. itu17701 conforms to the CALM Act specification, itu17702 to the EBU R-128 specification.
   /// [algorithmControl] Algorithm control for the audio description.
   /// [targetLkfs] Target LKFS (loudness) to adjust volume to.
-  ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings({
+  const ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings({
     this.algorithm,
     this.algorithmControl,
     this.targetLkfs,

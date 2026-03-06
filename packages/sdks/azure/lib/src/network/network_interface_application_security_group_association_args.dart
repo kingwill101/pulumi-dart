@@ -15,7 +15,7 @@ class NetworkInterfaceApplicationSecurityGroupAssociationArgs {
   /// Creates a new [NetworkInterfaceApplicationSecurityGroupAssociationArgs].
   /// [applicationSecurityGroupId] The ID of the Application Security Group which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   /// [networkInterfaceId] The ID of the Network Interface. Changing this forces a new resource to be created.
-  NetworkInterfaceApplicationSecurityGroupAssociationArgs({
+  const NetworkInterfaceApplicationSecurityGroupAssociationArgs({
     required this.applicationSecurityGroupId,
     required this.networkInterfaceId,
   });

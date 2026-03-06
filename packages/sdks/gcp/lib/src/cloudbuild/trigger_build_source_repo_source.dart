@@ -36,7 +36,7 @@ class TriggerBuildSourceRepoSource {
   /// [repoName] Name of the Cloud Source Repository.
   /// [substitutions] Substitutions to use in a triggered build. Should only be used with triggers.run
   /// [tagName] Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-  TriggerBuildSourceRepoSource({
+  const TriggerBuildSourceRepoSource({
     this.branchName,
     this.commitSha,
     this.dir,

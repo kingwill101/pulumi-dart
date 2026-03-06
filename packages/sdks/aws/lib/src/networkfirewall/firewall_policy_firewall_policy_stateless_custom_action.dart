@@ -12,7 +12,7 @@ class FirewallPolicyFirewallPolicyStatelessCustomAction {
   /// Creates a new [FirewallPolicyFirewallPolicyStatelessCustomAction].
   /// [actionDefinition] A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
   /// [actionName] A friendly name of the custom action.
-  FirewallPolicyFirewallPolicyStatelessCustomAction({
+  const FirewallPolicyFirewallPolicyStatelessCustomAction({
     required this.actionDefinition,
     required this.actionName,
   });

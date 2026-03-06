@@ -11,7 +11,7 @@ class DataCollectionRuleDestinationsLogAnalytic {
   /// Creates a new [DataCollectionRuleDestinationsLogAnalytic].
   /// [name] The name which should be used for this destination. This name should be unique across all destinations regardless of type within the Data Collection Rule.
   /// [workspaceResourceId] The ID of a Log Analytic Workspace resource.
-  DataCollectionRuleDestinationsLogAnalytic({
+  const DataCollectionRuleDestinationsLogAnalytic({
     required this.name,
     required this.workspaceResourceId,
   });

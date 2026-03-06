@@ -10,7 +10,7 @@ class GetClusterDiscoveryEndpointPscConfig {
 
   /// Creates a new [GetClusterDiscoveryEndpointPscConfig].
   /// [network] The consumer network where the network address of the discovery
-  GetClusterDiscoveryEndpointPscConfig({
+  const GetClusterDiscoveryEndpointPscConfig({
     required this.network,
   });
 

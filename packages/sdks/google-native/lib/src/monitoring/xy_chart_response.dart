@@ -31,7 +31,7 @@ class XyChartResponse {
   /// [xAxis] The properties applied to the x-axis.
   /// [y2Axis] The properties applied to the y2-axis.
   /// [yAxis] The properties applied to the y-axis.
-  XyChartResponse({
+  const XyChartResponse({
     required this.chartOptions,
     required this.dataSets,
     required this.thresholds,

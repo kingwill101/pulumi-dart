@@ -15,7 +15,7 @@ class K8sClusterArgs {
   /// Creates a new [K8sClusterArgs].
   /// [csClusterId] The ID of the alicloud container service kubernetes cluster that you want to import.
   /// [namespaceId] The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
-  K8sClusterArgs({
+  const K8sClusterArgs({
     required this.csClusterId,
     this.namespaceId,
   });

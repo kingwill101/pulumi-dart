@@ -8,7 +8,7 @@ class GetStaticWebAppBasicAuth {
 
   /// Creates a new [GetStaticWebAppBasicAuth].
   /// [environments] The Environment types which are configured to use Basic Auth access.
-  GetStaticWebAppBasicAuth({
+  const GetStaticWebAppBasicAuth({
     required this.environments,
   });
 

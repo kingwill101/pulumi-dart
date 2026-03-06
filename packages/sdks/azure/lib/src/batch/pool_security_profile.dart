@@ -21,7 +21,7 @@ class PoolSecurityProfile {
   /// [secureBootEnabled] Whether to enable secure boot for the Virtual Machine or Virtual Machine Scale Set. Possible values are `true` and `false`. Changing this forces a new resource to be created.
   /// [securityType] The security type of the Virtual Machine. Possible values are `confidentialVM` and `trustedLaunch`. Changing this forces a new resource to be created.
   /// [vtpmEnabled] Whether to enable virtual trusted platform module (vTPM) for the Virtual Machine or Virtual Machine Scale Set. Possible values are `true` and `false`. Changing this forces a new resource to be created.
-  PoolSecurityProfile({
+  const PoolSecurityProfile({
     this.hostEncryptionEnabled,
     this.secureBootEnabled,
     this.securityType,

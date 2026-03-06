@@ -21,7 +21,7 @@ class ServiceHybridDoubleWriteArgs {
   /// [sourceNamespace] Source Namespace.
   /// [sourceUserId] Source UserId.
   /// [userId] Target UserId.
-  ServiceHybridDoubleWriteArgs({
+  const ServiceHybridDoubleWriteArgs({
     required this.namespace,
     required this.sourceNamespace,
     required this.sourceUserId,

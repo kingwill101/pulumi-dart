@@ -20,7 +20,7 @@ class GetTagsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [tags] Required.
-  GetTagsResult({
+  const GetTagsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

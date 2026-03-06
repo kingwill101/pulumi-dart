@@ -23,7 +23,7 @@ class GetGradientaiAgentsAgentChatbot {
   /// [primaryColor] Primary color for the chatbot
   /// [secondaryColor] Secondary color for the chatbot
   /// [startingMessage] Starting message for the chatbot
-  GetGradientaiAgentsAgentChatbot({
+  const GetGradientaiAgentsAgentChatbot({
     this.buttonBackgroundColor,
     this.logo,
     this.name,

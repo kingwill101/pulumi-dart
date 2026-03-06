@@ -11,7 +11,7 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup {
   /// Creates a new [AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup].
   /// [featureGroupId] Identifier of the feature group.
   /// [featureIds] Identifiers of features under the feature group.
-  AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup({
+  const AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup({
     required this.featureGroupId,
     required this.featureIds,
   });

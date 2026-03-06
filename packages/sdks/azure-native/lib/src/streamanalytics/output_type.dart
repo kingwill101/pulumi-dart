@@ -23,7 +23,7 @@ class OutputType {
   /// [serialization] Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
   /// [sizeWindow] The size window to constrain a Stream Analytics output to.
   /// [timeWindow] The time frame for filtering Stream Analytics job outputs.
-  OutputType({
+  const OutputType({
     this.datasource,
     this.name,
     this.serialization,

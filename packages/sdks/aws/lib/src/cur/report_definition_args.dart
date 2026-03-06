@@ -45,7 +45,7 @@ class ReportDefinitionArgs {
   /// [s3Region] Region of the existing S3 bucket to hold generated reports.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeUnit] The frequency on which report data are measured and displayed.  Valid values are: `DAILY`, `HOURLY`, `MONTHLY`.
-  ReportDefinitionArgs({
+  const ReportDefinitionArgs({
     this.additionalArtifacts,
     required this.additionalSchemaElements,
     required this.compression,

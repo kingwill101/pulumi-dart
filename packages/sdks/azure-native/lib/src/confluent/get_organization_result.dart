@@ -47,7 +47,7 @@ class GetOrganizationResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userDetail] Subscriber detail
-  GetOrganizationResult({
+  const GetOrganizationResult({
     required this.azureApiVersion,
     required this.createdTime,
     required this.id,

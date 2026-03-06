@@ -25,7 +25,7 @@ class ClusterMasterInstanceFleetInstanceTypeConfig {
   /// [ebsConfigs] Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
   /// [instanceType] EC2 instance type, such as m4.xlarge.
   /// [weightedCapacity] Number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in `aws.emr.InstanceFleet`.
-  ClusterMasterInstanceFleetInstanceTypeConfig({
+  const ClusterMasterInstanceFleetInstanceTypeConfig({
     this.bidPrice,
     this.bidPriceAsPercentageOfOnDemandPrice,
     this.configurations,

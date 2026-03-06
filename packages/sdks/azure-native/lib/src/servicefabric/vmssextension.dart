@@ -39,7 +39,7 @@ class VMSSExtension {
   /// [setupOrder] Indicates the setup order for the extension.
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  VMSSExtension({
+  const VMSSExtension({
     this.autoUpgradeMinorVersion,
     this.enableAutomaticUpgrade,
     this.forceUpdateTag,

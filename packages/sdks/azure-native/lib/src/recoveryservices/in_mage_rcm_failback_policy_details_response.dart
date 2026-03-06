@@ -16,7 +16,7 @@ class InMageRcmFailbackPolicyDetailsResponse {
   /// [appConsistentFrequencyInMinutes] The app consistent snapshot frequency in minutes.
   /// [crashConsistentFrequencyInMinutes] The crash consistent snapshot frequency in minutes.
   /// [instanceType] Gets the class type. Overridden in derived classes.
-  InMageRcmFailbackPolicyDetailsResponse({
+  const InMageRcmFailbackPolicyDetailsResponse({
     this.appConsistentFrequencyInMinutes,
     this.crashConsistentFrequencyInMinutes,
     required this.instanceType,

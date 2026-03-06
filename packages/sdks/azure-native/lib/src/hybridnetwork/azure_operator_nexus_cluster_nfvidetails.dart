@@ -17,7 +17,7 @@ class AzureOperatorNexusClusterNFVIDetails {
   /// [customLocationReference] The reference to the custom location.
   /// [name] Name of the nfvi.
   /// [nfviType] The NFVI type.
-  AzureOperatorNexusClusterNFVIDetails({
+  const AzureOperatorNexusClusterNFVIDetails({
     this.customLocationReference,
     this.name,
     required this.nfviType,

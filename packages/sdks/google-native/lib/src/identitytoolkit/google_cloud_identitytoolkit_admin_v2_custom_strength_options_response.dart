@@ -24,7 +24,7 @@ class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse {
   /// [containsUppercaseCharacter] The password must contain an upper case character.
   /// [maxPasswordLength] Maximum password length. No default max length
   /// [minPasswordLength] Minimum password length. Range from 6 to 30
-  GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse({
+  const GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse({
     required this.containsLowercaseCharacter,
     required this.containsNonAlphanumericCharacter,
     required this.containsNumericCharacter,

@@ -9,7 +9,7 @@ class ManagedClusterStorageProfileSnapshotController {
 
   /// Creates a new [ManagedClusterStorageProfileSnapshotController].
   /// [enabled] Whether to enable Snapshot Controller. The default value is true.
-  ManagedClusterStorageProfileSnapshotController({
+  const ManagedClusterStorageProfileSnapshotController({
     this.enabled,
   });
 

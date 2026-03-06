@@ -13,7 +13,7 @@ class CryptoHashConfigResponse {
   /// Creates a new [CryptoHashConfigResponse].
   /// [cryptoKey] An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
   /// [kmsWrapped] KMS wrapped key. Must not be set if `crypto_key` is set.
-  CryptoHashConfigResponse({
+  const CryptoHashConfigResponse({
     required this.cryptoKey,
     required this.kmsWrapped,
   });

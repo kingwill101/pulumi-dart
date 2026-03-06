@@ -9,7 +9,7 @@ class CloudMetadataResponse {
 
   /// Creates a new [CloudMetadataResponse].
   /// [provider] Specifies the cloud provider (Azure/AWS/GCP...).
-  CloudMetadataResponse({
+  const CloudMetadataResponse({
     required this.provider,
   });
 

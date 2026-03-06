@@ -14,7 +14,7 @@ class EventListenerResponse {
   /// Creates a new [EventListenerResponse].
   /// [endpoint] An endpoint specifying where Web PubSub should send events to.
   /// [filter] A base class for event filter which determines whether an event should be sent to an event listener.
-  EventListenerResponse({
+  const EventListenerResponse({
     required this.endpoint,
     required this.filter,
   });

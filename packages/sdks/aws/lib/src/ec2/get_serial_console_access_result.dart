@@ -13,7 +13,7 @@ class GetSerialConsoleAccessResult {
   /// [enabled] Whether or not serial console access is enabled. Returns as `true` or `false`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetSerialConsoleAccessResult({
+  const GetSerialConsoleAccessResult({
     required this.enabled,
     required this.id,
     required this.region,

@@ -35,7 +35,7 @@ class GetRoleManagementPolicyAssignmentResult {
   /// [roleDefinitionId] The role definition of management policy assignment.
   /// [scope] The role management policy scope.
   /// [type] The role management policy type.
-  GetRoleManagementPolicyAssignmentResult({
+  const GetRoleManagementPolicyAssignmentResult({
     required this.azureApiVersion,
     required this.effectiveRules,
     required this.id,

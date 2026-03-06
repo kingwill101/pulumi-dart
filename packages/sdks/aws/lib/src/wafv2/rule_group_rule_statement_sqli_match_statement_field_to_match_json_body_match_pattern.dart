@@ -10,7 +10,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern {
   /// Creates a new [RuleGroupRuleStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  RuleGroupRuleStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern({
+  const RuleGroupRuleStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

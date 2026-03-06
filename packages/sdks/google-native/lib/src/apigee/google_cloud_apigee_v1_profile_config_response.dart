@@ -10,7 +10,7 @@ class GoogleCloudApigeeV1ProfileConfigResponse {
 
   /// Creates a new [GoogleCloudApigeeV1ProfileConfigResponse].
   /// [categories] List of categories of profile config.
-  GoogleCloudApigeeV1ProfileConfigResponse({
+  const GoogleCloudApigeeV1ProfileConfigResponse({
     required this.categories,
   });
 

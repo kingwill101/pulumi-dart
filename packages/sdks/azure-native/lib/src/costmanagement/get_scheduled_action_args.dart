@@ -12,7 +12,7 @@ class GetScheduledActionArgs {
 
   /// Creates a new [GetScheduledActionArgs].
   /// [name] Scheduled action name.
-  GetScheduledActionArgs({
+  const GetScheduledActionArgs({
     required this.name,
   });
 

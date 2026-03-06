@@ -13,7 +13,7 @@ class CanonicalProfileDefinitionResponse {
   /// Creates a new [CanonicalProfileDefinitionResponse].
   /// [canonicalProfileId] Canonical profile ID.
   /// [properties] Properties of the canonical profile.
-  CanonicalProfileDefinitionResponse({
+  const CanonicalProfileDefinitionResponse({
     this.canonicalProfileId,
     this.properties,
   });

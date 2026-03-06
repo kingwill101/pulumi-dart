@@ -11,7 +11,7 @@ class FutureReservationTimeWindowDuration {
   /// Creates a new [FutureReservationTimeWindowDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond resolution.
   /// [seconds] Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-  FutureReservationTimeWindowDuration({
+  const FutureReservationTimeWindowDuration({
     this.nanos,
     this.seconds,
   });

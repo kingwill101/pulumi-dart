@@ -14,7 +14,7 @@ class GetPricesPricePromotionDetail {
   /// [promotionDesc] Offer Description.
   /// [promotionId] Offer logo.
   /// [promotionName] Offer Name.
-  GetPricesPricePromotionDetail({
+  const GetPricesPricePromotionDetail({
     required this.promotionDesc,
     required this.promotionId,
     required this.promotionName,

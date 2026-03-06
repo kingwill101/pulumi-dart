@@ -26,7 +26,7 @@ class LoggingState {
   /// [logExports] Collection of exported log types. Required when `log_destination_type` is `cloudwatch`. Valid values are `connectionlog`, `useractivitylog`, and `userlog`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3KeyPrefix] Prefix applied to the log file names.
-  LoggingState({
+  const LoggingState({
     this.bucketName,
     this.clusterIdentifier,
     this.logDestinationType,

@@ -45,7 +45,7 @@ class VirtualMachineScaleSetNetworkConfigurationResponse {
   /// [name] The network configuration name.
   /// [networkSecurityGroup] The network security group.
   /// [primary] Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-  VirtualMachineScaleSetNetworkConfigurationResponse({
+  const VirtualMachineScaleSetNetworkConfigurationResponse({
     this.auxiliaryMode,
     this.auxiliarySku,
     this.deleteOption,

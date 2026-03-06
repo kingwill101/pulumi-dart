@@ -16,7 +16,7 @@ class SshKeyState {
   /// [fingerprint] The fingerprint of the SSH key
   /// [name] The name of the SSH key for identification
   /// [publicKey] The public key. If this is a file, it
-  SshKeyState({
+  const SshKeyState({
     this.fingerprint,
     this.name,
     this.publicKey,

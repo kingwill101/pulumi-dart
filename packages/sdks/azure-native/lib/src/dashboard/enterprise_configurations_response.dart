@@ -12,7 +12,7 @@ class EnterpriseConfigurationsResponse {
   /// Creates a new [EnterpriseConfigurationsResponse].
   /// [marketplaceAutoRenew] The AutoRenew setting of the Enterprise subscription
   /// [marketplacePlanId] The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
-  EnterpriseConfigurationsResponse({
+  const EnterpriseConfigurationsResponse({
     this.marketplaceAutoRenew,
     this.marketplacePlanId,
   });

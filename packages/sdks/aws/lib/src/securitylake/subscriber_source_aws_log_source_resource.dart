@@ -11,7 +11,7 @@ class SubscriberSourceAwsLogSourceResource {
   /// Creates a new [SubscriberSourceAwsLogSourceResource].
   /// [sourceName] The name for a AWS source. This must be a Regionally unique value. Valid values: `ROUTE53`, `VPC_FLOW`, `SH_FINDINGS`, `CLOUD_TRAIL_MGMT`, `LAMBDA_EXECUTION`, `S3_DATA`, `EKS_AUDIT` and `WAF`.
   /// [sourceVersion] The version for a AWS source. This must be a Regionally unique value.
-  SubscriberSourceAwsLogSourceResource({
+  const SubscriberSourceAwsLogSourceResource({
     required this.sourceName,
     this.sourceVersion,
   });

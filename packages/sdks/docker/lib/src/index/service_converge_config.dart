@@ -11,7 +11,7 @@ class ServiceConvergeConfig {
   /// Creates a new [ServiceConvergeConfig].
   /// [delay] The interval to check if the desired state is reached `(ms|s)`. Defaults to `7s`.
   /// [timeout] The timeout of the service to reach the desired state `(s|m)`. Defaults to `3m`
-  ServiceConvergeConfig({
+  const ServiceConvergeConfig({
     this.delay,
     this.timeout,
   });

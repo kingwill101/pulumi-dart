@@ -50,7 +50,7 @@ class RunbookArgs {
   /// [runbookName] The runbook name.
   /// [runbookType] Gets or sets the type of the runbook.
   /// [tags] Gets or sets the tags attached to the resource.
-  RunbookArgs({
+  const RunbookArgs({
     required this.automationAccountName,
     this.description,
     this.draft,

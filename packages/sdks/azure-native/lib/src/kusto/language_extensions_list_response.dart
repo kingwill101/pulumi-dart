@@ -10,7 +10,7 @@ class LanguageExtensionsListResponse {
 
   /// Creates a new [LanguageExtensionsListResponse].
   /// [value] The list of language extensions.
-  LanguageExtensionsListResponse({
+  const LanguageExtensionsListResponse({
     this.value,
   });
 

@@ -32,7 +32,7 @@ class TextStyle {
   /// [pointerLocation] The pointer location for this widget (also sometimes called a "tail")
   /// [textColor] The text color as a hex string. "#RRGGBB" or "#RGB"
   /// [verticalAlignment] The vertical alignment of both the title and content
-  TextStyle({
+  const TextStyle({
     this.backgroundColor,
     this.fontSize,
     this.horizontalAlignment,

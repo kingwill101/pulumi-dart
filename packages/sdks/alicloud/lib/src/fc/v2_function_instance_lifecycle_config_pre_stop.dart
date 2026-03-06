@@ -11,7 +11,7 @@ class V2FunctionInstanceLifecycleConfigPreStop {
   /// Creates a new [V2FunctionInstanceLifecycleConfigPreStop].
   /// [handler] entry point of function.
   /// [timeout] max running time of function.
-  V2FunctionInstanceLifecycleConfigPreStop({
+  const V2FunctionInstanceLifecycleConfigPreStop({
     this.handler,
     this.timeout,
   });

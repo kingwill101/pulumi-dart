@@ -20,7 +20,7 @@ class ConnectorDefinitionsPermissionsResponse {
   /// [licenses] Gets or sets the required licenses for the user to create connections.
   /// [resourceProvider] Gets or sets the resource provider permissions required for the user to create connections.
   /// [tenant] Gets or sets the required tenant permissions for the connector.
-  ConnectorDefinitionsPermissionsResponse({
+  const ConnectorDefinitionsPermissionsResponse({
     this.customs,
     this.licenses,
     this.resourceProvider,

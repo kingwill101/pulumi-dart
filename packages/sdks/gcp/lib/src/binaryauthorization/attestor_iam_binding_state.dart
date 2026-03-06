@@ -38,7 +38,7 @@ class AttestorIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  AttestorIamBindingState({
+  const AttestorIamBindingState({
     this.attestor,
     this.condition,
     this.etag,

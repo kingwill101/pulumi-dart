@@ -16,7 +16,7 @@ class NumberLessThanAdvancedFilterResponse {
   /// [key] The field/property in the event based on which you want to filter.
   /// [operatorType] The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// [value] The filter value.
-  NumberLessThanAdvancedFilterResponse({
+  const NumberLessThanAdvancedFilterResponse({
     this.key,
     required this.operatorType,
     this.value,

@@ -32,7 +32,7 @@ class ConnectToSourcePostgreSqlSyncTaskPropertiesResponse {
   /// [output] Task output. This is ignored if submitted.
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskType] Task type.
-  ConnectToSourcePostgreSqlSyncTaskPropertiesResponse({
+  const ConnectToSourcePostgreSqlSyncTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

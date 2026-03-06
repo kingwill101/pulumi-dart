@@ -20,7 +20,7 @@ class GetIpInfoResult {
   /// [ispEname] Required.
   /// [region] Required.
   /// [regionEname] Required.
-  GetIpInfoResult({
+  const GetIpInfoResult({
     required this.cdnIp,
     required this.id,
     required this.ip,

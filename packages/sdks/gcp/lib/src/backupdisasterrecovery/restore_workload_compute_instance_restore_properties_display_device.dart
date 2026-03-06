@@ -8,7 +8,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice].
   /// [enableDisplay] Optional. Enables display for the Compute Engine VM.
-  RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice({
+  const RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice({
     this.enableDisplay,
   });
 

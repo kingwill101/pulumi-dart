@@ -16,7 +16,7 @@ class CounterOptionsGameservicesV1beta {
   /// [customFields] Custom fields.
   /// [field] The field value to attribute.
   /// [metric] The metric to update.
-  CounterOptionsGameservicesV1beta({
+  const CounterOptionsGameservicesV1beta({
     this.customFields,
     this.field,
     this.metric,

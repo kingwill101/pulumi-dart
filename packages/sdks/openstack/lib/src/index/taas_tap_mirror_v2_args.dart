@@ -47,7 +47,7 @@ class TaasTapMirrorV2Args {
   /// [region] The region in which to obtain the V2 Networking client.
   /// [remoteIp] The remote IP of the Tap Mirror, this will be the remote
   /// [tenantId] The owner of the Tap Mirror. Required if admin wants to
-  TaasTapMirrorV2Args({
+  const TaasTapMirrorV2Args({
     this.description,
     required this.directions,
     required this.mirrorType,

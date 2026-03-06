@@ -17,7 +17,7 @@ class GetBackupVaultIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Backup Vault.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Backup Vault.
   /// [type] The type of Managed Service Identity that is configured on this Backup Vault.
-  GetBackupVaultIdentity({
+  const GetBackupVaultIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

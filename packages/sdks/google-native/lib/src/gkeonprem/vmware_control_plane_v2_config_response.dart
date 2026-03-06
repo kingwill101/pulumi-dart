@@ -10,7 +10,7 @@ class VmwareControlPlaneV2ConfigResponse {
 
   /// Creates a new [VmwareControlPlaneV2ConfigResponse].
   /// [controlPlaneIpBlock] Static IP addresses for the control plane nodes.
-  VmwareControlPlaneV2ConfigResponse({
+  const VmwareControlPlaneV2ConfigResponse({
     required this.controlPlaneIpBlock,
   });
 

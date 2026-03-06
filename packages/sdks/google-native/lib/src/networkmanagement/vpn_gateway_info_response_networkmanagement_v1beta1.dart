@@ -24,7 +24,7 @@ class VpnGatewayInfoResponseNetworkmanagementV1beta1 {
   /// [region] Name of a Google Cloud region where this VPN gateway is configured.
   /// [uri] URI of a VPN gateway.
   /// [vpnTunnelUri] A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed.
-  VpnGatewayInfoResponseNetworkmanagementV1beta1({
+  const VpnGatewayInfoResponseNetworkmanagementV1beta1({
     required this.displayName,
     required this.ipAddress,
     required this.networkUri,

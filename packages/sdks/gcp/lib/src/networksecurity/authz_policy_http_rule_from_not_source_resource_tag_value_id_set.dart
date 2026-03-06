@@ -9,7 +9,7 @@ class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet {
 
   /// Creates a new [AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet].
   /// [ids] A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
-  AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet({
+  const AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet({
     this.ids,
   });
 

@@ -12,7 +12,7 @@ class AccessPackageAssignmentPolicyQuestionText {
   /// Creates a new [AccessPackageAssignmentPolicyQuestionText].
   /// [defaultText] The default text of this question
   /// [localizedTexts] The localized text of this question
-  AccessPackageAssignmentPolicyQuestionText({
+  const AccessPackageAssignmentPolicyQuestionText({
     required this.defaultText,
     this.localizedTexts,
   });

@@ -11,7 +11,7 @@ class IpGroupRule {
   /// Creates a new [IpGroupRule].
   /// [description] The description of the IP group.
   /// [source] The IP address range, in CIDR notation, e.g., `10.0.0.0/16`
-  IpGroupRule({
+  const IpGroupRule({
     this.description,
     required this.source,
   });

@@ -13,7 +13,7 @@ class KubernetesClusterMonitorMetrics {
   /// Creates a new [KubernetesClusterMonitorMetrics].
   /// [annotationsAllowed] Specifies a comma-separated list of Kubernetes annotation keys that will be used in the resource's labels metric.
   /// [labelsAllowed] Specifies a Comma-separated list of additional Kubernetes label keys that will be used in the resource's labels metric.
-  KubernetesClusterMonitorMetrics({
+  const KubernetesClusterMonitorMetrics({
     this.annotationsAllowed,
     this.labelsAllowed,
   });

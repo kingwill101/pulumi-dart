@@ -25,7 +25,7 @@ class CryptoKeyVersionArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [state] The current state of the CryptoKeyVersion.
-  CryptoKeyVersionArgs({
+  const CryptoKeyVersionArgs({
     this.cryptoKeyId,
     this.externalProtectionLevelOptions,
     required this.keyRingId,

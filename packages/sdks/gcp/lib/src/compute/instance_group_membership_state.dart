@@ -19,7 +19,7 @@ class InstanceGroupMembershipState {
   /// [instanceGroup] Represents an Instance Group resource name that the instance belongs to.
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the instance group resides.
-  InstanceGroupMembershipState({
+  const InstanceGroupMembershipState({
     this.instance,
     this.instanceGroup,
     this.project,

@@ -15,7 +15,7 @@ class GetTrackerAssociationsArgs {
   /// Creates a new [GetTrackerAssociationsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [trackerName] Name of the tracker resource associated with a geofence collection.
-  GetTrackerAssociationsArgs({
+  const GetTrackerAssociationsArgs({
     this.region,
     required this.trackerName,
   });

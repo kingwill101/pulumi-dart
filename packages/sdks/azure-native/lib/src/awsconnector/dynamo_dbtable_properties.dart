@@ -31,7 +31,7 @@ class DynamoDBTableProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  DynamoDBTableProperties({
+  const DynamoDBTableProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

@@ -38,7 +38,7 @@ class GetApplicationLoadBalancersSlb {
   /// [tags] A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
   /// [vpcId] ID of the VPC linked to the SLBs.
   /// [vswitchId] ID of the vSwitch linked to the SLBs.
-  GetApplicationLoadBalancersSlb({
+  const GetApplicationLoadBalancersSlb({
     required this.address,
     required this.creationTime,
     required this.id,

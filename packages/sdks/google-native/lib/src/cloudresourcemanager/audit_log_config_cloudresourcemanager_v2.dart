@@ -13,7 +13,7 @@ class AuditLogConfigCloudresourcemanagerV2 {
   /// Creates a new [AuditLogConfigCloudresourcemanagerV2].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigCloudresourcemanagerV2({
+  const AuditLogConfigCloudresourcemanagerV2({
     this.exemptedMembers,
     this.logType,
   });

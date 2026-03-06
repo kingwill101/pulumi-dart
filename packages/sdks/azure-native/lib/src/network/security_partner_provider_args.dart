@@ -31,7 +31,7 @@ class SecurityPartnerProviderArgs {
   /// [securityProviderName] The security provider name.
   /// [tags] Resource tags.
   /// [virtualHub] The virtualHub to which the Security Partner Provider belongs.
-  SecurityPartnerProviderArgs({
+  const SecurityPartnerProviderArgs({
     this.id,
     this.location,
     required this.resourceGroupName,

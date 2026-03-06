@@ -18,7 +18,7 @@ class KeyGroupState {
   /// [etag] The identifier for this version of the key group.
   /// [items] A list of the identifiers of the public keys in the key group.
   /// [name] A name to identify the key group.
-  KeyGroupState({
+  const KeyGroupState({
     this.comment,
     this.etag,
     this.items,

@@ -28,7 +28,7 @@ class TxtRecordArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [ttl] The Time To Live (TTL) of the DNS record in seconds.
   /// [zoneName] Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
-  TxtRecordArgs({
+  const TxtRecordArgs({
     this.name,
     required this.records,
     required this.resourceGroupName,

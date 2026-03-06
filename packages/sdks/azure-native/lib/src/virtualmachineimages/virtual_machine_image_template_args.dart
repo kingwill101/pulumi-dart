@@ -66,7 +66,7 @@ class VirtualMachineImageTemplateArgs {
   /// [tags] Resource tags.
   /// [validate] Configuration options and list of validations to be performed on the resulting image.
   /// [vmProfile] Describes how virtual machine is set up to build images
-  VirtualMachineImageTemplateArgs({
+  const VirtualMachineImageTemplateArgs({
     this.autoRun,
     this.buildTimeoutInMinutes,
     this.customize,

@@ -22,7 +22,7 @@ class GetRdsParameterGroupsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetRdsParameterGroupsResult({
+  const GetRdsParameterGroupsResult({
     this.enableDetails,
     required this.groups,
     required this.id,

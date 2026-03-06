@@ -18,7 +18,7 @@ class GetReplicationArgs {
   /// [registryName] The name of the container registry.
   /// [replicationName] The name of the replication.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetReplicationArgs({
+  const GetReplicationArgs({
     required this.registryName,
     required this.replicationName,
     required this.resourceGroupName,

@@ -71,7 +71,7 @@ class GetPimRoleEligibilityScheduleResult {
   /// [targetRoleEligibilityScheduleInstanceId] The role eligibility schedule instance id being updated
   /// [ticketInfo] Ticket Info of the role eligibility
   /// [type] The role eligibility schedule request type.
-  GetPimRoleEligibilityScheduleResult({
+  const GetPimRoleEligibilityScheduleResult({
     required this.approvalId,
     required this.azureApiVersion,
     this.condition,

@@ -13,7 +13,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex].
   /// [groupIndexes] The index of the submatch to extract as findings. When not specified,
   /// [pattern] Pattern defining the regular expression. Its syntax
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex({
     this.groupIndexes,
     this.pattern,
   });

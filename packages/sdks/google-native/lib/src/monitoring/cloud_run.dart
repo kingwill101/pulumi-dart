@@ -12,7 +12,7 @@ class CloudRun {
   /// Creates a new [CloudRun].
   /// [location] The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
   /// [serviceName] The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
-  CloudRun({
+  const CloudRun({
     this.location,
     this.serviceName,
   });

@@ -19,7 +19,7 @@ class GetSizesArgs {
   /// Creates a new [GetSizesArgs].
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetSizesArgs({
+  const GetSizesArgs({
     this.filters,
     this.sorts,
   });

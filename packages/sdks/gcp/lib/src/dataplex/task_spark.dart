@@ -31,7 +31,7 @@ class TaskSpark {
   /// [pythonScriptFile] The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
   /// [sqlScript] The query text. The execution args are used to declare a set of script variables (set key='value';).
   /// [sqlScriptFile] A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key='value';).
-  TaskSpark({
+  const TaskSpark({
     this.archiveUris,
     this.fileUris,
     this.infrastructureSpec,

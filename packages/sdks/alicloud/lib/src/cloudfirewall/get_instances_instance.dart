@@ -29,7 +29,7 @@ class GetInstancesInstance {
   /// [renewalDurationUnit] Automatic renewal period unit. Valid values: `Month`,`Year`.
   /// [renewalStatus] Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
   /// [status] The Status of Instance.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.createTime,
     required this.endTime,
     required this.id,

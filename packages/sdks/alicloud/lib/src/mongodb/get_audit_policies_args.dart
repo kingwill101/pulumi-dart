@@ -15,7 +15,7 @@ class GetAuditPoliciesArgs {
   /// Creates a new [GetAuditPoliciesArgs].
   /// [dbInstanceId] The id of the db instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAuditPoliciesArgs({
+  const GetAuditPoliciesArgs({
     required this.dbInstanceId,
     this.outputFile,
   });

@@ -24,7 +24,7 @@ class GetApiVersionArgs {
   /// [serviceName] The name of Azure API Center service.
   /// [versionName] The name of the API version.
   /// [workspaceName] The name of the workspace.
-  GetApiVersionArgs({
+  const GetApiVersionArgs({
     required this.apiName,
     required this.resourceGroupName,
     required this.serviceName,

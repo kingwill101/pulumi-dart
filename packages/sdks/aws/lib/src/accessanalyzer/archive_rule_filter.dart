@@ -20,7 +20,7 @@ class ArchiveRuleFilter {
   /// [eqs] Equals comparator.
   /// [exists] Boolean comparator.
   /// [neqs] Not Equals comparator.
-  ArchiveRuleFilter({
+  const ArchiveRuleFilter({
     this.contains,
     required this.criteria,
     this.eqs,

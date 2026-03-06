@@ -7,7 +7,7 @@ class ProviderTerraformConfigResult {
 
   /// Creates a new [ProviderTerraformConfigResult].
   /// [result] Required.
-  ProviderTerraformConfigResult({
+  const ProviderTerraformConfigResult({
     required this.result,
   });
 

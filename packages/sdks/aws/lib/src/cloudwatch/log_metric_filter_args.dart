@@ -29,7 +29,7 @@ class LogMetricFilterArgs {
   /// [name] A name for the metric filter.
   /// [pattern] A valid [CloudWatch Logs filter pattern](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/FilterAndPatternSyntax.html)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LogMetricFilterArgs({
+  const LogMetricFilterArgs({
     this.applyOnTransformedLogs,
     required this.logGroupName,
     required this.metricTransformation,

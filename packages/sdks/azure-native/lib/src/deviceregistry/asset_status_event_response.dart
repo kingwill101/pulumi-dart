@@ -13,7 +13,7 @@ class AssetStatusEventResponse {
   /// Creates a new [AssetStatusEventResponse].
   /// [messageSchemaReference] The message schema reference object.
   /// [name] The name of the event. Must be unique within the status.events array. This name is used to correlate between the spec and status event information.
-  AssetStatusEventResponse({
+  const AssetStatusEventResponse({
     required this.messageSchemaReference,
     required this.name,
   });

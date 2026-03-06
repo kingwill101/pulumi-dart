@@ -15,7 +15,7 @@ class GetServiceGatewayArgs {
   /// Creates a new [GetServiceGatewayArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceGatewayName] The name of the service gateway.
-  GetServiceGatewayArgs({
+  const GetServiceGatewayArgs({
     required this.resourceGroupName,
     required this.serviceGatewayName,
   });

@@ -19,7 +19,7 @@ class GetPolicyDocumentArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [statements] Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
   /// [version] Version of the RAM policy document. Valid value is `1`. Default value is `1`.
-  GetPolicyDocumentArgs({
+  const GetPolicyDocumentArgs({
     this.outputFile,
     this.statements,
     this.version,

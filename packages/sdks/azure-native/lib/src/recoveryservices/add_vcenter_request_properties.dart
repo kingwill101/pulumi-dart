@@ -21,7 +21,7 @@ class AddVCenterRequestProperties {
   /// [port] The port number for discovery.
   /// [processServerId] The process server Id from where the discovery is orchestrated.
   /// [runAsAccountId] The account Id which has privileges to discover the vCenter.
-  AddVCenterRequestProperties({
+  const AddVCenterRequestProperties({
     this.friendlyName,
     this.ipAddress,
     this.port,

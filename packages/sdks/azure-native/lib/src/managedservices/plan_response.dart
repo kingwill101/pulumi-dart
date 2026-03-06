@@ -18,7 +18,7 @@ class PlanResponse {
   /// [product] Azure Marketplace product code.
   /// [publisher] Azure Marketplace publisher ID.
   /// [version] Azure Marketplace plan's version.
-  PlanResponse({
+  const PlanResponse({
     required this.name,
     required this.product,
     required this.publisher,

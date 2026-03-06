@@ -8,7 +8,7 @@ class MembershipDefaultResultConfigurationOutputConfiguration {
 
   /// Creates a new [MembershipDefaultResultConfigurationOutputConfiguration].
   /// [s3] Required.
-  MembershipDefaultResultConfigurationOutputConfiguration({
+  const MembershipDefaultResultConfigurationOutputConfiguration({
     required this.s3,
   });
 

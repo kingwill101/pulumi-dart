@@ -140,7 +140,7 @@ class InstanceArgs {
   /// [tags] The tag value corresponding to the tag key.See the following `Block Tags`.
   /// [type] The instance type. Valid values:
   /// [usedTime] Prepaid instance purchase duration.
-  InstanceArgs({
+  const InstanceArgs({
     this.autoPay,
     this.autoStart,
     this.computeUnit,

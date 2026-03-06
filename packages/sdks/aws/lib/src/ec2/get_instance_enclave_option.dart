@@ -8,7 +8,7 @@ class GetInstanceEnclaveOption {
 
   /// Creates a new [GetInstanceEnclaveOption].
   /// [enabled] Whether Nitro Enclaves are enabled.
-  GetInstanceEnclaveOption({
+  const GetInstanceEnclaveOption({
     required this.enabled,
   });
 

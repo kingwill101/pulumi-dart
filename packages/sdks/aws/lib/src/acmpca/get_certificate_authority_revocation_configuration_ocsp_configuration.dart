@@ -11,7 +11,7 @@ class GetCertificateAuthorityRevocationConfigurationOcspConfiguration {
   /// Creates a new [GetCertificateAuthorityRevocationConfigurationOcspConfiguration].
   /// [enabled] Boolean value that specifies whether a custom OCSP responder is enabled.
   /// [ocspCustomCname] A CNAME specifying a customized OCSP domain.
-  GetCertificateAuthorityRevocationConfigurationOcspConfiguration({
+  const GetCertificateAuthorityRevocationConfigurationOcspConfiguration({
     required this.enabled,
     required this.ocspCustomCname,
   });

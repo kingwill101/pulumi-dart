@@ -21,7 +21,7 @@ class ConnectPeerConfiguration {
   /// [insideCidrBlocks] Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See `aws.networkmanager.ConnectAttachment` for details.
   /// [peerAddress] Connect peer address.
   /// [protocol] Optional.
-  ConnectPeerConfiguration({
+  const ConnectPeerConfiguration({
     this.bgpConfigurations,
     this.coreNetworkAddress,
     this.insideCidrBlocks,

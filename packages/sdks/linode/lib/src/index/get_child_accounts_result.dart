@@ -14,7 +14,7 @@ class GetChildAccountsResult {
   /// [childAccounts] Required.
   /// [filters] Optional.
   /// [id] Required.
-  GetChildAccountsResult({
+  const GetChildAccountsResult({
     required this.childAccounts,
     this.filters,
     required this.id,

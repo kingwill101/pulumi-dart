@@ -14,7 +14,7 @@ class ResourcePolicyWeeklyCycleDayOfWeekResponse {
   /// [day] Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
   /// [duration] [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
   /// [startTime] Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
-  ResourcePolicyWeeklyCycleDayOfWeekResponse({
+  const ResourcePolicyWeeklyCycleDayOfWeekResponse({
     required this.day,
     required this.duration,
     required this.startTime,

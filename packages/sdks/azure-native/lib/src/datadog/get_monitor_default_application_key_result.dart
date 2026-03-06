@@ -14,7 +14,7 @@ class GetMonitorDefaultApplicationKeyResult {
   /// [createdBy] The user that created the Application key.
   /// [key] The value of the Application key.
   /// [name] The name of the Application key.
-  GetMonitorDefaultApplicationKeyResult({
+  const GetMonitorDefaultApplicationKeyResult({
     this.createdBy,
     required this.key,
     this.name,

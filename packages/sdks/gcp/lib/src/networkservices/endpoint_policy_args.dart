@@ -47,7 +47,7 @@ class EndpointPolicyArgs {
   /// [serverTlsPolicy] A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
   /// [trafficPortSelector] Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
   /// [type] The type of endpoint policy. This is primarily used to validate the configuration.
-  EndpointPolicyArgs({
+  const EndpointPolicyArgs({
     this.authorizationPolicy,
     this.clientTlsPolicy,
     this.description,

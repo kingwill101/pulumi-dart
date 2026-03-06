@@ -18,7 +18,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettings {
   /// [failoverConditions] A list of failover conditions. If any of these conditions occur, MediaLive will perform a failover to the other input. See Failover Condition Block for more details.
   /// [inputPreference] Input preference when deciding which input to make active when a previously failed input has recovered.
   /// [secondaryInputId] The input ID of the secondary input in the automatic input failover pair.
-  ChannelInputAttachmentAutomaticInputFailoverSettings({
+  const ChannelInputAttachmentAutomaticInputFailoverSettings({
     this.errorClearTimeMsec,
     this.failoverConditions,
     this.inputPreference,

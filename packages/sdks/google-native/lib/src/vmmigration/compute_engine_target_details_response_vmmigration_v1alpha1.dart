@@ -67,7 +67,7 @@ class ComputeEngineTargetDetailsResponseVmmigrationV1alpha1 {
   /// [serviceAccount] The service account to associate the VM with.
   /// [vmName] The name of the VM to create.
   /// [zone] The zone in which to create the VM.
-  ComputeEngineTargetDetailsResponseVmmigrationV1alpha1({
+  const ComputeEngineTargetDetailsResponseVmmigrationV1alpha1({
     required this.additionalLicenses,
     required this.appliedLicense,
     required this.bootOption,

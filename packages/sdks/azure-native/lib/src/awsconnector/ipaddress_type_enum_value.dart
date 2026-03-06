@@ -9,7 +9,7 @@ class IPAddressTypeEnumValue {
 
   /// Creates a new [IPAddressTypeEnumValue].
   /// [value] Property value
-  IPAddressTypeEnumValue({
+  const IPAddressTypeEnumValue({
     this.value,
   });
 

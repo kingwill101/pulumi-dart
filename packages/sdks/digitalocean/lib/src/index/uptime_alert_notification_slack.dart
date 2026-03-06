@@ -11,7 +11,7 @@ class UptimeAlertNotificationSlack {
   /// Creates a new [UptimeAlertNotificationSlack].
   /// [channel] The Slack channel to send alerts to.
   /// [url] The webhook URL for Slack.
-  UptimeAlertNotificationSlack({
+  const UptimeAlertNotificationSlack({
     required this.channel,
     required this.url,
   });

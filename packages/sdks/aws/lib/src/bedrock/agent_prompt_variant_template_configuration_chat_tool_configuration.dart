@@ -13,7 +13,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfiguration {
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfiguration].
   /// [toolChoice] Defines which tools the model should request when invoked. See Tool Choice for more information.
   /// [tools] A list of tools to pass to a model. See Tool for more information.
-  AgentPromptVariantTemplateConfigurationChatToolConfiguration({
+  const AgentPromptVariantTemplateConfigurationChatToolConfiguration({
     this.toolChoice,
     this.tools,
   });

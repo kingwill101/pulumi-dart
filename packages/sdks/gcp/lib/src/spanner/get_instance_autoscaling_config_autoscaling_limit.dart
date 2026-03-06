@@ -22,7 +22,7 @@ class GetInstanceAutoscalingConfigAutoscalingLimit {
   /// [maxProcessingUnits] Specifies maximum number of processing units allocated to the instance.
   /// [minNodes] Specifies number of nodes allocated to the instance. If set, this number
   /// [minProcessingUnits] Specifies minimum number of processing units allocated to the instance.
-  GetInstanceAutoscalingConfigAutoscalingLimit({
+  const GetInstanceAutoscalingConfigAutoscalingLimit({
     required this.maxNodes,
     required this.maxProcessingUnits,
     required this.minNodes,

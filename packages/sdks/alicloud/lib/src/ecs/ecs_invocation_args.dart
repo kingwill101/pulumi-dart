@@ -39,7 +39,7 @@ class EcsInvocationArgs {
   /// [timed] Specifies whether to periodically run the command. Default value: `false`.
   /// [username] The username that is used to run the command on the ECS instance.
   /// [windowsPasswordName] The name of the password used to run the command on a Windows instance.
-  EcsInvocationArgs({
+  const EcsInvocationArgs({
     required this.commandId,
     this.frequency,
     required this.instanceIds,

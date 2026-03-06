@@ -40,7 +40,7 @@ class PrometheusRuleGroupArgs {
   /// [rules] Defines the rules in the Prometheus rule group.
   /// [scopes] Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
   /// [tags] Resource tags.
-  PrometheusRuleGroupArgs({
+  const PrometheusRuleGroupArgs({
     this.clusterName,
     this.description,
     this.enabled,

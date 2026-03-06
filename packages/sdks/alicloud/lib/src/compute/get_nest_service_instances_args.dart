@@ -28,7 +28,7 @@ class GetNestServiceInstancesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
   /// [tags] A mapping of tags to assign to the resource.
-  GetNestServiceInstancesArgs({
+  const GetNestServiceInstancesArgs({
     this.filters,
     this.ids,
     this.nameRegex,

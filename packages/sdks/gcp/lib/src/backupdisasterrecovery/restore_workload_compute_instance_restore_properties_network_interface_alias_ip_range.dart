@@ -11,7 +11,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRang
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange].
   /// [ipCidrRange] (Optional)
   /// [subnetworkRangeName] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange({
+  const RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange({
     this.ipCidrRange,
     this.subnetworkRangeName,
   });

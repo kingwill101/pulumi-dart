@@ -15,7 +15,7 @@ class GetResourcePolicyArgs {
   /// Creates a new [GetResourcePolicyArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The Amazon Resource Name (ARN) that identifies the resource policy.
-  GetResourcePolicyArgs({
+  const GetResourcePolicyArgs({
     this.region,
     required this.resourceArn,
   });

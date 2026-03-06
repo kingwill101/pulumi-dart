@@ -14,7 +14,7 @@ class EnergyServicePropertiesResponse {
   /// [dataPartitionNames] Optional.
   /// [dnsName] Required.
   /// [provisioningState] Required.
-  EnergyServicePropertiesResponse({
+  const EnergyServicePropertiesResponse({
     this.authAppId,
     this.dataPartitionNames,
     required this.dnsName,

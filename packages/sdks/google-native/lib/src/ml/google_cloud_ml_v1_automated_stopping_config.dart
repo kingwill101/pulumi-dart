@@ -12,7 +12,7 @@ class GoogleCloudMlV1AutomatedStoppingConfig {
   /// Creates a new [GoogleCloudMlV1AutomatedStoppingConfig].
   /// [decayCurveStoppingConfig] Optional.
   /// [medianAutomatedStoppingConfig] Optional.
-  GoogleCloudMlV1AutomatedStoppingConfig({
+  const GoogleCloudMlV1AutomatedStoppingConfig({
     this.decayCurveStoppingConfig,
     this.medianAutomatedStoppingConfig,
   });

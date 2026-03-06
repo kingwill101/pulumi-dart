@@ -36,7 +36,7 @@ class ConnectionMonitorEndpointResponse {
   /// [scope] Endpoint scope defines which target resource to monitor in case of compound resource endpoints like VMSS, AzureSubnet, AzureVNet, MMAWorkspaceNetwork, AzureArcNetwork.
   /// [subscriptionId] Subscription ID for connection monitor endpoint. It's an optional parameter which is being used for 'AzureArcNetwork' type endpoint.
   /// [type] The endpoint type.
-  ConnectionMonitorEndpointResponse({
+  const ConnectionMonitorEndpointResponse({
     this.address,
     this.coverageLevel,
     this.filter,

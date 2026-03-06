@@ -9,7 +9,7 @@ class PoolSourceInitiator {
 
   /// Creates a new [PoolSourceInitiator].
   /// [iqn] Configures the iSCSI Qualified Name (IQN) for the initiator connecting to the storage source.
-  PoolSourceInitiator({
+  const PoolSourceInitiator({
     this.iqn,
   });
 

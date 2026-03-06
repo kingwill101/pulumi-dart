@@ -18,7 +18,7 @@ class GetVirtualMachineConfigurationAssignmentArgs {
   /// [name] Specifies the name of the Guest Configuration Assignment.
   /// [resourceGroupName] Specifies the Name of the Resource Group where the Guest Configuration Assignment exists.
   /// [virtualMachineName] Only retrieve Policy Set Definitions from this Management Group.
-  GetVirtualMachineConfigurationAssignmentArgs({
+  const GetVirtualMachineConfigurationAssignmentArgs({
     required this.name,
     required this.resourceGroupName,
     required this.virtualMachineName,

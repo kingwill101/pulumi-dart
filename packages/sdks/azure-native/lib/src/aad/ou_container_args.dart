@@ -27,7 +27,7 @@ class OuContainerArgs {
   /// [password] The account password
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [spn] The account spn
-  OuContainerArgs({
+  const OuContainerArgs({
     this.accountName,
     required this.domainServiceName,
     this.ouContainerName,

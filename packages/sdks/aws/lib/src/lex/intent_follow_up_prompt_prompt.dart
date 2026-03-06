@@ -19,7 +19,7 @@ class IntentFollowUpPromptPrompt {
   /// [maxAttempts] The number of times to prompt the user for information. Must be a number between 1 and 5 (inclusive).
   /// [messages] A set of messages, each of which provides a message string and its type.
   /// [responseCard] The response card. Amazon Lex will substitute session attributes and
-  IntentFollowUpPromptPrompt({
+  const IntentFollowUpPromptPrompt({
     required this.maxAttempts,
     required this.messages,
     this.responseCard,

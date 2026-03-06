@@ -10,7 +10,7 @@ class QuotaScheduleScheduleListCondition {
 
   /// Creates a new [QuotaScheduleScheduleListCondition].
   /// [at] Effective time. The format is HH:mm, sample value: 00:00
-  QuotaScheduleScheduleListCondition({
+  const QuotaScheduleScheduleListCondition({
     required this.at,
   });
 

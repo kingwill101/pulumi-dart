@@ -15,7 +15,7 @@ class ApplicationGatewayAuthenticationCertificate {
   /// [data] Certificate public data.
   /// [id] Resource ID.
   /// [name] Name of the authentication certificate that is unique within an Application Gateway.
-  ApplicationGatewayAuthenticationCertificate({
+  const ApplicationGatewayAuthenticationCertificate({
     this.data,
     this.id,
     this.name,

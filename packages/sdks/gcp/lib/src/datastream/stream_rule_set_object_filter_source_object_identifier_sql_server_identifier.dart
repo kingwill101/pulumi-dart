@@ -11,7 +11,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier {
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier].
   /// [schema] The schema name.
   /// [table] The table name.
-  StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier({
+  const StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier({
     required this.schema,
     required this.table,
   });

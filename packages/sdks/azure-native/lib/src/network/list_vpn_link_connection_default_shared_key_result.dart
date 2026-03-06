@@ -18,7 +18,7 @@ class ListVpnLinkConnectionDefaultSharedKeyResult {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [properties] Properties of the shared key.
   /// [type] Resource type.
-  ListVpnLinkConnectionDefaultSharedKeyResult({
+  const ListVpnLinkConnectionDefaultSharedKeyResult({
     this.id,
     this.name,
     required this.properties,

@@ -28,7 +28,7 @@ class HubArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   /// [tenantFeatures] The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0.
-  HubArgs({
+  const HubArgs({
     this.hubBillingInfo,
     this.hubName,
     this.location,

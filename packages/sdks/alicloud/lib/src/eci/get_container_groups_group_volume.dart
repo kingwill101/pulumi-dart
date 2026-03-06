@@ -39,7 +39,7 @@ class GetContainerGroupsGroupVolume {
   /// [nfsVolumeReadOnly] Default value: `false`.
   /// [nfsVolumeServer] The address of the NFS server.
   /// [type] The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
-  GetContainerGroupsGroupVolume({
+  const GetContainerGroupsGroupVolume({
     required this.configFileVolumeConfigFileToPaths,
     required this.diskVolumeDiskId,
     required this.diskVolumeFsType,

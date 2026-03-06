@@ -15,7 +15,7 @@ class SlotSwapStatusResponse {
   /// [destinationSlotName] The destination slot of the last swap operation.
   /// [sourceSlotName] The source slot of the last swap operation.
   /// [timestampUtc] The time the last successful slot swap completed.
-  SlotSwapStatusResponse({
+  const SlotSwapStatusResponse({
     required this.destinationSlotName,
     required this.sourceSlotName,
     required this.timestampUtc,

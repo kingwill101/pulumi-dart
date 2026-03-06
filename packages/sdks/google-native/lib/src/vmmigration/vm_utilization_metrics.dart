@@ -30,7 +30,7 @@ class VmUtilizationMetrics {
   /// [memoryMaxPercent] Max memory usage, percent.
   /// [networkThroughputAverageKbps] Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
   /// [networkThroughputMaxKbps] Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-  VmUtilizationMetrics({
+  const VmUtilizationMetrics({
     this.cpuAveragePercent,
     this.cpuMaxPercent,
     this.diskIoRateAverageKbps,

@@ -12,7 +12,7 @@ class GetEntitlementApprovalWorkflowManualApproval {
   /// Creates a new [GetEntitlementApprovalWorkflowManualApproval].
   /// [requireApproverJustification] Optional. Do the approvers need to provide a justification for their actions?
   /// [steps] List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
-  GetEntitlementApprovalWorkflowManualApproval({
+  const GetEntitlementApprovalWorkflowManualApproval({
     required this.requireApproverJustification,
     required this.steps,
   });

@@ -108,7 +108,7 @@ class DiskArgs {
   /// [tags] Resource tags.
   /// [tier] Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks.
   /// [zones] The Logical zone list for Disk.
-  DiskArgs({
+  const DiskArgs({
     this.burstingEnabled,
     this.completionPercent,
     required this.creationData,

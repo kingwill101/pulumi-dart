@@ -15,7 +15,7 @@ class GetConfigServiceConfigurationRecorderStatusArgs {
   /// Creates a new [GetConfigServiceConfigurationRecorderStatusArgs].
   /// [name] Name of ConfigServiceConfigurationRecorderStatus
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConfigServiceConfigurationRecorderStatusArgs({
+  const GetConfigServiceConfigurationRecorderStatusArgs({
     required this.name,
     required this.resourceGroupName,
   });

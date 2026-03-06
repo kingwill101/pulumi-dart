@@ -26,7 +26,7 @@ class GetFirewallArgs {
   /// [inboundRules] Optional.
   /// [outboundRules] Optional.
   /// [tags] The names of the Tags assigned to the Firewall.
-  GetFirewallArgs({
+  const GetFirewallArgs({
     this.dropletIds,
     required this.firewallId,
     this.inboundRules,

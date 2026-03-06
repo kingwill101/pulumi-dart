@@ -12,7 +12,7 @@ class EntryBigqueryTableSpecTableSpec {
 
   /// Creates a new [EntryBigqueryTableSpecTableSpec].
   /// [groupedEntry] (Output)
-  EntryBigqueryTableSpecTableSpec({
+  const EntryBigqueryTableSpecTableSpec({
     this.groupedEntry,
   });
 

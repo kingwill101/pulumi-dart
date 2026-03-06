@@ -31,7 +31,7 @@ class TransferAgentPoolArgs {
   /// [displayName] Specifies the client-specified AgentPool description.
   /// [name] The ID of the agent pool to create.
   /// [project] The ID of the project in which the resource belongs.
-  TransferAgentPoolArgs({
+  const TransferAgentPoolArgs({
     this.bandwidthLimit,
     this.displayName,
     this.name,

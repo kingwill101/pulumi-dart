@@ -22,7 +22,7 @@ class RelatedAlertResponse {
   /// [lastModifiedAt] The last update time of this relation (in UTC)
   /// [origin] The source that related the alert to the issue
   /// [relevance] The alerts's relevance status
-  RelatedAlertResponse({
+  const RelatedAlertResponse({
     required this.addedAt,
     required this.id,
     required this.lastModifiedAt,

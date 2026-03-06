@@ -27,7 +27,7 @@ class ReadinessCheck {
   /// [path] The request path.
   /// [successThreshold] Number of consecutive successful checks required before receiving traffic.
   /// [timeout] Time before the check is considered failed.
-  ReadinessCheck({
+  const ReadinessCheck({
     this.appStartTimeout,
     this.checkInterval,
     this.failureThreshold,

@@ -11,7 +11,7 @@ class GatewayIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  GatewayIamMemberCondition({
+  const GatewayIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

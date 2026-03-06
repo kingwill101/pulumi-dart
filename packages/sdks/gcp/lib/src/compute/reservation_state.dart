@@ -91,7 +91,7 @@ class ReservationState {
   /// [specificReservationRequired] When set to true, only VMs that target this reservation by name can
   /// [status] The status of the reservation.
   /// [zone] The zone where the reservation is made.
-  ReservationState({
+  const ReservationState({
     this.blockNames,
     this.commitment,
     this.creationTimestamp,

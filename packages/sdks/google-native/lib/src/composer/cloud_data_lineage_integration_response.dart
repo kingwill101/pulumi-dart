@@ -9,7 +9,7 @@ class CloudDataLineageIntegrationResponse {
 
   /// Creates a new [CloudDataLineageIntegrationResponse].
   /// [enabled] Optional. Whether or not Cloud Data Lineage integration is enabled.
-  CloudDataLineageIntegrationResponse({
+  const CloudDataLineageIntegrationResponse({
     required this.enabled,
   });
 

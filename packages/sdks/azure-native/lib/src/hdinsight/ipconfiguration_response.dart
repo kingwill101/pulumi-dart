@@ -31,7 +31,7 @@ class IPConfigurationResponse {
   /// [provisioningState] The private link configuration provisioning state, which only appears in the response.
   /// [subnet] The subnet resource id.
   /// [type] The type of the private link IP configuration.
-  IPConfigurationResponse({
+  const IPConfigurationResponse({
     required this.id,
     required this.name,
     this.primary,

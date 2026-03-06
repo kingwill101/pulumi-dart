@@ -18,7 +18,7 @@ class GetEdgeMachineJobArgs {
   /// [edgeMachineName] Name of Device
   /// [jobsName] Name of EdgeMachineJob
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEdgeMachineJobArgs({
+  const GetEdgeMachineJobArgs({
     required this.edgeMachineName,
     required this.jobsName,
     required this.resourceGroupName,

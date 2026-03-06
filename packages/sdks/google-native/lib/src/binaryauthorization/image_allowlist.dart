@@ -9,7 +9,7 @@ class ImageAllowlist {
 
   /// Creates a new [ImageAllowlist].
   /// [allowPattern] A disjunction of image patterns to allow. If any of these patterns match, then the image is considered exempted by this allowlist.
-  ImageAllowlist({
+  const ImageAllowlist({
     required this.allowPattern,
   });
 

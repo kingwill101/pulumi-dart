@@ -21,7 +21,7 @@ class ListCapacityPoolCachePeeringPassphrasesArgs {
   /// [cacheName] The name of the cache resource.
   /// [poolName] The name of the capacity pool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListCapacityPoolCachePeeringPassphrasesArgs({
+  const ListCapacityPoolCachePeeringPassphrasesArgs({
     required this.accountName,
     required this.cacheName,
     required this.poolName,

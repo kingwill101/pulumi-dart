@@ -17,7 +17,7 @@ class GetClusterTemplateArgs {
   /// Creates a new [GetClusterTemplateArgs].
   /// [name] The name of the cluster template.
   /// [region] The region in which to obtain the V1 Container Infra
-  GetClusterTemplateArgs({
+  const GetClusterTemplateArgs({
     required this.name,
     this.region,
   });

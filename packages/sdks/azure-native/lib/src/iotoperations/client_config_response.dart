@@ -25,7 +25,7 @@ class ClientConfigResponse {
   /// [maxReceiveMaximum] Upper bound of Receive Maximum that a client can request in the CONNECT packet.
   /// [maxSessionExpirySeconds] Upper bound of Session Expiry Interval, in seconds.
   /// [subscriberQueueLimit] The limit on the number of queued messages for a subscriber.
-  ClientConfigResponse({
+  const ClientConfigResponse({
     this.maxKeepAliveSeconds,
     this.maxMessageExpirySeconds,
     this.maxPacketSizeBytes,

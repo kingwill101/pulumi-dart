@@ -19,7 +19,7 @@ class GetServerBackupPlansResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [plans] Required.
-  GetServerBackupPlansResult({
+  const GetServerBackupPlansResult({
     this.filters,
     required this.id,
     required this.ids,

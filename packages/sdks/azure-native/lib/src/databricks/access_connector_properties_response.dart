@@ -11,7 +11,7 @@ class AccessConnectorPropertiesResponse {
   /// Creates a new [AccessConnectorPropertiesResponse].
   /// [provisioningState] Provisioning status of the Access Connector.
   /// [referedBy] List of workspaces referring this Access Connector.
-  AccessConnectorPropertiesResponse({
+  const AccessConnectorPropertiesResponse({
     required this.provisioningState,
     required this.referedBy,
   });

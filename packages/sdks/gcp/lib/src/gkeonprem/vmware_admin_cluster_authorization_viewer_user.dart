@@ -8,7 +8,7 @@ class VmwareAdminClusterAuthorizationViewerUser {
 
   /// Creates a new [VmwareAdminClusterAuthorizationViewerUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  VmwareAdminClusterAuthorizationViewerUser({
+  const VmwareAdminClusterAuthorizationViewerUser({
     required this.username,
   });
 

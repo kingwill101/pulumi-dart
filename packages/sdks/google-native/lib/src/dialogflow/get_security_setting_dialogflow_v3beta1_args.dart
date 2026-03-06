@@ -15,7 +15,7 @@ class GetSecuritySettingDialogflowV3beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [securitySettingId] Required.
-  GetSecuritySettingDialogflowV3beta1Args({
+  const GetSecuritySettingDialogflowV3beta1Args({
     required this.location,
     this.project,
     required this.securitySettingId,

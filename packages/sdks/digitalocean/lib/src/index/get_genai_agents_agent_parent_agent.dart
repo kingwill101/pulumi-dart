@@ -50,7 +50,7 @@ class GetGenaiAgentsAgentParentAgent {
   /// [name] Name of the Agent
   /// [projectId] Project ID of the Agent
   /// [region] Region where the Agent is deployed
-  GetGenaiAgentsAgentParentAgent({
+  const GetGenaiAgentsAgentParentAgent({
     required this.agentId,
     this.anthropicApiKeys,
     this.apiKeyInfos,

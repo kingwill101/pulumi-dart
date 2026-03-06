@@ -22,7 +22,7 @@ class TopicRuleErrorActionTimestream {
   /// [roleArn] The ARN of the role that grants permission to write to the Amazon Timestream database table.
   /// [tableName] The name of the database table into which to write the measure records.
   /// [timestamp] Configuration block specifying an application-defined value to replace the default value assigned to the Timestream record's timestamp in the time column. Nested arguments below.
-  TopicRuleErrorActionTimestream({
+  const TopicRuleErrorActionTimestream({
     required this.databaseName,
     required this.dimensions,
     required this.roleArn,

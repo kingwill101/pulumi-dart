@@ -36,7 +36,7 @@ class ProjectState {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the resource.
   /// [tags] Tag.
-  ProjectState({
+  const ProjectState({
     this.createTime,
     this.description,
     this.name,

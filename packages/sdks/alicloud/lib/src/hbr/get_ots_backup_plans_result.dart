@@ -26,7 +26,7 @@ class GetOtsBackupPlansResult {
   /// [planName] Optional.
   /// [plans] Required.
   /// [vaultId] Optional.
-  GetOtsBackupPlansResult({
+  const GetOtsBackupPlansResult({
     required this.id,
     required this.ids,
     this.nameRegex,

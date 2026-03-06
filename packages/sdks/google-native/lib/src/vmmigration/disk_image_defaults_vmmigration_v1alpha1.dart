@@ -9,7 +9,7 @@ class DiskImageDefaultsVmmigrationV1alpha1 {
 
   /// Creates a new [DiskImageDefaultsVmmigrationV1alpha1].
   /// [sourceImage] The Image resource used when creating the disk.
-  DiskImageDefaultsVmmigrationV1alpha1({
+  const DiskImageDefaultsVmmigrationV1alpha1({
     required this.sourceImage,
   });
 

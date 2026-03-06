@@ -8,7 +8,7 @@ class AgentDataSourceServerSideEncryptionConfiguration {
 
   /// Creates a new [AgentDataSourceServerSideEncryptionConfiguration].
   /// [kmsKeyArn] ARN of the AWS KMS key used to encrypt the resource.
-  AgentDataSourceServerSideEncryptionConfiguration({
+  const AgentDataSourceServerSideEncryptionConfiguration({
     this.kmsKeyArn,
   });
 

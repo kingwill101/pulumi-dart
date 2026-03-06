@@ -17,7 +17,7 @@ class GetCodeSigningConfigArgs {
   /// Creates a new [GetCodeSigningConfigArgs].
   /// [arn] ARN of the code signing configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCodeSigningConfigArgs({
+  const GetCodeSigningConfigArgs({
     required this.arn,
     this.region,
   });

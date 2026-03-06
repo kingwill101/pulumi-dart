@@ -14,7 +14,7 @@ class DefenderCspmJFrogOffering {
   /// Creates a new [DefenderCspmJFrogOffering].
   /// [mdcContainersImageAssessment] The Microsoft Defender Container image assessment configuration
   /// [offeringType] The type of the security offering.
-  DefenderCspmJFrogOffering({
+  const DefenderCspmJFrogOffering({
     this.mdcContainersImageAssessment,
     required this.offeringType,
   });

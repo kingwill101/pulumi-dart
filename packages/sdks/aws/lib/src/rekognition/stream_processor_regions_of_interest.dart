@@ -13,7 +13,7 @@ class StreamProcessorRegionsOfInterest {
   /// Creates a new [StreamProcessorRegionsOfInterest].
   /// [boundingBox] Box representing a region of interest on screen. Only 1 per region is allowed. See `bounding_box`.
   /// [polygons] Shape made up of up to 10 Point objects to define a region of interest. See `polygon`.
-  StreamProcessorRegionsOfInterest({
+  const StreamProcessorRegionsOfInterest({
     this.boundingBox,
     this.polygons,
   });

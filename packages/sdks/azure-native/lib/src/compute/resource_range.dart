@@ -12,7 +12,7 @@ class ResourceRange {
   /// Creates a new [ResourceRange].
   /// [max] The maximum number of the resource.
   /// [min] The minimum number of the resource.
-  ResourceRange({
+  const ResourceRange({
     this.max,
     this.min,
   });

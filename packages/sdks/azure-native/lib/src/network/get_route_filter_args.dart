@@ -18,7 +18,7 @@ class GetRouteFilterArgs {
   /// [expand] Expands referenced express route bgp peering resources.
   /// [resourceGroupName] The name of the resource group.
   /// [routeFilterName] The name of the route filter.
-  GetRouteFilterArgs({
+  const GetRouteFilterArgs({
     this.expand,
     required this.resourceGroupName,
     required this.routeFilterName,

@@ -95,7 +95,7 @@ class HostPoolArgs {
   /// [tags] Resource tags.
   /// [validationEnvironment] Is validation environment.
   /// [vmTemplate] VM template for sessionhosts configuration within hostpool.
-  HostPoolArgs({
+  const HostPoolArgs({
     this.agentUpdate,
     this.customRdpProperty,
     this.description,

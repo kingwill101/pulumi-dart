@@ -7,7 +7,7 @@ class V2modelsBotVersionLocaleSpecification {
 
   /// Creates a new [V2modelsBotVersionLocaleSpecification].
   /// [sourceBotVersion] Required.
-  V2modelsBotVersionLocaleSpecification({
+  const V2modelsBotVersionLocaleSpecification({
     required this.sourceBotVersion,
   });
 

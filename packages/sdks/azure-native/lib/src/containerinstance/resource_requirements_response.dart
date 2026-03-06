@@ -14,7 +14,7 @@ class ResourceRequirementsResponse {
   /// Creates a new [ResourceRequirementsResponse].
   /// [limits] The resource limits of this container instance.
   /// [requests] The resource requests of this container instance.
-  ResourceRequirementsResponse({
+  const ResourceRequirementsResponse({
     this.limits,
     required this.requests,
   });

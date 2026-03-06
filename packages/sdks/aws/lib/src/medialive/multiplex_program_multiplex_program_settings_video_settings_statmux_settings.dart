@@ -14,7 +14,7 @@ class MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings {
   /// [maximumBitrate] Maximum bitrate.
   /// [minimumBitrate] Minimum bitrate.
   /// [priority] Priority value.
-  MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings({
+  const MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings({
     this.maximumBitrate,
     this.minimumBitrate,
     this.priority,

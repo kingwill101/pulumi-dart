@@ -28,7 +28,7 @@ class GetUsersResult {
   /// [provisionType] Optional.
   /// [status] Optional.
   /// [users] Required.
-  GetUsersResult({
+  const GetUsersResult({
     required this.directoryId,
     this.enableDetails,
     required this.id,

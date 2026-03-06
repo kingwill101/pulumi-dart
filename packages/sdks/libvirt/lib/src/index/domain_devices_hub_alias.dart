@@ -8,7 +8,7 @@ class DomainDevicesHubAlias {
 
   /// Creates a new [DomainDevicesHubAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesHubAlias({
+  const DomainDevicesHubAlias({
     required this.name,
   });
 

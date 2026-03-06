@@ -28,7 +28,7 @@ class GetDomainsDomain {
   /// [redirects] Configure forwarding information.
   /// [resourceManagerResourceGroupId] The ID of the resource group.
   /// [status] The status of the domain.
-  GetDomainsDomain({
+  const GetDomainsDomain({
     required this.cname,
     required this.domain,
     required this.id,

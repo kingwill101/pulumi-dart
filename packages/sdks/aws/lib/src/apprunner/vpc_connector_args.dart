@@ -24,7 +24,7 @@ class VpcConnectorArgs {
   /// [subnets] List of IDs of subnets that App Runner should use when it associates your service with a custom Amazon VPC. Specify IDs of subnets of a single Amazon VPC. App Runner determines the Amazon VPC from the subnets you specify.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConnectorName] Name for the VPC connector.
-  VpcConnectorArgs({
+  const VpcConnectorArgs({
     this.region,
     required this.securityGroups,
     required this.subnets,

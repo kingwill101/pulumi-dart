@@ -27,7 +27,7 @@ class SnatEntryArgs {
   /// [snatTableId] The ID of the SNAT table.
   /// [sourceCidr] The source CIDR block specified in the SNAT entry.
   /// [sourceVswitchId] The ID of the vSwitch.
-  SnatEntryArgs({
+  const SnatEntryArgs({
     this.eipAffinity,
     this.snatEntryName,
     required this.snatIp,

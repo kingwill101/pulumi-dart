@@ -12,7 +12,7 @@ class GetAccessPolicyIamPolicyArgs {
 
   /// Creates a new [GetAccessPolicyIamPolicyArgs].
   /// [name] Used to find the parent resource to bind the IAM policy to
-  GetAccessPolicyIamPolicyArgs({
+  const GetAccessPolicyIamPolicyArgs({
     required this.name,
   });
 

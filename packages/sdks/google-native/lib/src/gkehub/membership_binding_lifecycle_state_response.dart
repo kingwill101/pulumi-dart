@@ -9,7 +9,7 @@ class MembershipBindingLifecycleStateResponse {
 
   /// Creates a new [MembershipBindingLifecycleStateResponse].
   /// [code] The current state of the MembershipBinding resource.
-  MembershipBindingLifecycleStateResponse({
+  const MembershipBindingLifecycleStateResponse({
     required this.code,
   });
 

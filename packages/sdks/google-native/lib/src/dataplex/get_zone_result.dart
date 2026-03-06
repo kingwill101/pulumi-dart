@@ -44,7 +44,7 @@ class GetZoneResult {
   /// [type] Immutable. The type of the zone.
   /// [uid] System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
   /// [updateTime] The time when the zone was last updated.
-  GetZoneResult({
+  const GetZoneResult({
     required this.assetStatus,
     required this.createTime,
     required this.description,

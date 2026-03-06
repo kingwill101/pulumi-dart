@@ -17,7 +17,7 @@ class GetAccountProjectIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Cognitive Services Account Project.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Cognitive Services Account Project.
   /// [type] The type of Managed Service Identity that is configured on this Cognitive Services Account Project.
-  GetAccountProjectIdentity({
+  const GetAccountProjectIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

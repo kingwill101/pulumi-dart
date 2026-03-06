@@ -24,7 +24,7 @@ class ImportCollectorsOperationArgs {
   /// [projectName] Assessment Project Name
   /// [provisioningState] The status of the last operation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ImportCollectorsOperationArgs({
+  const ImportCollectorsOperationArgs({
     this.discoverySiteId,
     this.importCollectorName,
     required this.projectName,

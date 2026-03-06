@@ -63,7 +63,7 @@ class TrailState {
   /// [status] The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
   /// [trailName] The name of the trail to be created.
   /// [trailRegion] The region of the trail.
-  TrailState({
+  const TrailState({
     this.createTime,
     this.dataEventTrailRegion,
     this.eventRw,

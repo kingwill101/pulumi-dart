@@ -41,7 +41,7 @@ class GetTargetVpnGatewayComputeV1Result {
   /// [selfLink] Server-defined URL for the resource.
   /// [status] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
   /// [tunnels] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
-  GetTargetVpnGatewayComputeV1Result({
+  const GetTargetVpnGatewayComputeV1Result({
     required this.creationTimestamp,
     required this.description,
     required this.forwardingRules,

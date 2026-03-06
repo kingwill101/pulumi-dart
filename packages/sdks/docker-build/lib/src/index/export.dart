@@ -40,7 +40,7 @@ class Export {
   /// [raw] A raw string as you would provide it to the Docker CLI (e.g.,
   /// [registry] Identical to the Image exporter, but pushes by default.
   /// [tar] Export to a local directory as a tarball.
-  Export({
+  const Export({
     this.cacheonly,
     this.disabled,
     this.docker,

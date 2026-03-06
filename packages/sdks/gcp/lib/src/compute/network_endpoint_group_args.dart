@@ -52,7 +52,7 @@ class NetworkEndpointGroupArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [subnetwork] Optional subnetwork to which all network endpoints in the NEG belong.
   /// [zone] Zone where the network endpoint group is located.
-  NetworkEndpointGroupArgs({
+  const NetworkEndpointGroupArgs({
     this.defaultPort,
     this.description,
     this.name,

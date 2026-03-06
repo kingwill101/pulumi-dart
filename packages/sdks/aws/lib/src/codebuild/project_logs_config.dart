@@ -13,7 +13,7 @@ class ProjectLogsConfig {
   /// Creates a new [ProjectLogsConfig].
   /// [cloudwatchLogs] Configuration block. Detailed below.
   /// [s3Logs] Configuration block. Detailed below.
-  ProjectLogsConfig({
+  const ProjectLogsConfig({
     this.cloudwatchLogs,
     this.s3Logs,
   });

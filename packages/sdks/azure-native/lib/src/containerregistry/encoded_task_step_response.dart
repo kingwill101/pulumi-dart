@@ -30,7 +30,7 @@ class EncodedTaskStepResponse {
   /// [encodedValuesContent] Base64 encoded value of the parameters/values file content.
   /// [type] The type of the step.
   /// [values] The collection of overridable values that can be passed when running a task.
-  EncodedTaskStepResponse({
+  const EncodedTaskStepResponse({
     required this.baseImageDependencies,
     this.contextAccessToken,
     this.contextPath,

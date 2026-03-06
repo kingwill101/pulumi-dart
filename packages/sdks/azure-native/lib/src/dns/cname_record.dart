@@ -9,7 +9,7 @@ class CnameRecord {
 
   /// Creates a new [CnameRecord].
   /// [cname] The canonical name for this CNAME record.
-  CnameRecord({
+  const CnameRecord({
     this.cname,
   });
 

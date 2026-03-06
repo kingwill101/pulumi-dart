@@ -18,7 +18,7 @@ class InMageAzureV2SwitchProviderDetailsResponse {
   /// [targetFabricId] The target fabric Id.
   /// [targetResourceId] The target resource Id.
   /// [targetVaultId] The target vault Id.
-  InMageAzureV2SwitchProviderDetailsResponse({
+  const InMageAzureV2SwitchProviderDetailsResponse({
     required this.targetApplianceId,
     required this.targetFabricId,
     required this.targetResourceId,

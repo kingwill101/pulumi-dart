@@ -52,7 +52,7 @@ class GetBasicAcceleratorsAccelerator {
   /// [instanceChargeType] The billing method of the Global Accelerator Basic Accelerator instance.
   /// [regionId] The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
   /// [status] The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
-  GetBasicAcceleratorsAccelerator({
+  const GetBasicAcceleratorsAccelerator({
     required this.bandwidthBillingType,
     required this.basicAcceleratorId,
     required this.basicAcceleratorName,

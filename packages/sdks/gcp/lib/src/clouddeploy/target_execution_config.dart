@@ -23,7 +23,7 @@ class TargetExecutionConfig {
   /// [usages] Required. Usages when this configuration should be applied.
   /// [verbose] Optional. If true, additional logging will be enabled when running builds in this execution environment.
   /// [workerPool] Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
-  TargetExecutionConfig({
+  const TargetExecutionConfig({
     this.artifactStorage,
     this.executionTimeout,
     this.serviceAccount,

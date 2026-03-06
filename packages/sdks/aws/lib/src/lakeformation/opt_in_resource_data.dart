@@ -41,7 +41,7 @@ class OptInResourceData {
   /// [lfTagPolicies] List of LF-Tag conditions or saved LF-Tag expressions that define a resource's LF-Tag policy. See LF-Tag Policy for more details.
   /// [table] Table for the resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal. See Table for more details.
   /// [tableWithColumns] Table with columns for the resource. A principal with permissions to this resource can select metadata from the columns of a table in the Data Catalog and the underlying data in Amazon S3. See Table With Columns for more details.
-  OptInResourceData({
+  const OptInResourceData({
     this.catalogs,
     this.dataCellsFilters,
     this.dataLocations,

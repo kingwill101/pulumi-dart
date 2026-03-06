@@ -12,7 +12,7 @@ class ProjectResourcesState {
   /// Creates a new [ProjectResourcesState].
   /// [project] the ID of the project
   /// [resources] a list of uniform resource names (URNs) for the resources associated with the project
-  ProjectResourcesState({
+  const ProjectResourcesState({
     this.project,
     this.resources,
   });

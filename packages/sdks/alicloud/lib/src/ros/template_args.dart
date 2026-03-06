@@ -24,7 +24,7 @@ class TemplateArgs {
   /// [templateBody] The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
   /// [templateName] The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   /// [templateUrl] The template url.
-  TemplateArgs({
+  const TemplateArgs({
     this.description,
     this.tags,
     this.templateBody,

@@ -18,7 +18,7 @@ class WindowsDetailResponse {
   /// [description] The description of this vulnerability.
   /// [fixingKbs] The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed KBs presence is considered a fix.
   /// [name] The name of this vulnerability.
-  WindowsDetailResponse({
+  const WindowsDetailResponse({
     required this.cpeUri,
     required this.description,
     required this.fixingKbs,

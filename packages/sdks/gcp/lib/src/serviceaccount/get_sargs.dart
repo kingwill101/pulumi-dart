@@ -18,7 +18,7 @@ class GetSArgs {
   /// [prefix] A prefix for filtering. It's applied with the `account_id`.
   /// [project] The ID of the project. If it is not provided, the provider project is used.
   /// [regex] A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
-  GetSArgs({
+  const GetSArgs({
     this.prefix,
     this.project,
     this.regex,

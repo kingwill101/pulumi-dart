@@ -11,7 +11,7 @@ class AiFeatureGroupIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AiFeatureGroupIamBindingCondition({
+  const AiFeatureGroupIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

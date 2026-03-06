@@ -50,7 +50,7 @@ class GetPolicyResult {
   /// [threshold] The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
-  GetPolicyResult({
+  const GetPolicyResult({
     required this.azureApiVersion,
     required this.createdDate,
     this.description,

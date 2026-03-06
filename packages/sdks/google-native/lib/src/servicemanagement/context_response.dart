@@ -10,7 +10,7 @@ class ContextResponse {
 
   /// Creates a new [ContextResponse].
   /// [rules] A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  ContextResponse({
+  const ContextResponse({
     required this.rules,
   });
 

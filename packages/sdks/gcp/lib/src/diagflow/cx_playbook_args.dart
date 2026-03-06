@@ -36,7 +36,7 @@ class CxPlaybookArgs {
   /// [parent] The agent to create a Playbook for.
   /// [playbookType] Type of the playbook.
   /// [referencedTools] The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
-  CxPlaybookArgs({
+  const CxPlaybookArgs({
     required this.displayName,
     required this.goal,
     this.instruction,

@@ -21,7 +21,7 @@ class RequestBodyMatchConditionParameters {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
-  RequestBodyMatchConditionParameters({
+  const RequestBodyMatchConditionParameters({
     this.matchValues,
     this.negateCondition,
     required this.operator,

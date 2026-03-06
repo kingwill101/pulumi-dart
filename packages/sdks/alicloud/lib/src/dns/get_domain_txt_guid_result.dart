@@ -22,7 +22,7 @@ class GetDomainTxtGuidResult {
   /// [rr] Host record.
   /// [type] Required.
   /// [value] Record the value.
-  GetDomainTxtGuidResult({
+  const GetDomainTxtGuidResult({
     required this.domainName,
     required this.id,
     this.lang,

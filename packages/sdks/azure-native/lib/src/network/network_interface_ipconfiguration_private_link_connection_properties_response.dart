@@ -15,7 +15,7 @@ class NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse {
   /// [fqdns] List of FQDNs for current private link connection.
   /// [groupId] The group ID for current private link connection.
   /// [requiredMemberName] The required member name for current private link connection.
-  NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse({
+  const NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse({
     required this.fqdns,
     required this.groupId,
     required this.requiredMemberName,

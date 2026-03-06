@@ -14,7 +14,7 @@ class ResourceIdentity {
   /// [tenantId] Optional.
   /// [type] Optional.
   /// [userAssignedIdentities] Optional.
-  ResourceIdentity({
+  const ResourceIdentity({
     this.principalId,
     this.tenantId,
     this.type,

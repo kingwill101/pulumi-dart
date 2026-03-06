@@ -17,7 +17,7 @@ class AppTemplateVolume {
   /// [name] The name of the volume.
   /// [storageName] The name of the `AzureFile` storage.
   /// [storageType] The type of storage volume. Possible values are `AzureFile`, `EmptyDir`, `NfsAzureFile` and `Secret`. Defaults to `EmptyDir`.
-  AppTemplateVolume({
+  const AppTemplateVolume({
     this.mountOptions,
     required this.name,
     this.storageName,

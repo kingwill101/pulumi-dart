@@ -17,7 +17,7 @@ class ServerGroupConnectionDrainConfig {
   /// Creates a new [ServerGroupConnectionDrainConfig].
   /// [connectionDrainEnabled] Indicates whether connection draining is enabled. Valid values:
   /// [connectionDrainTimeout] The timeout period of connection draining.
-  ServerGroupConnectionDrainConfig({
+  const ServerGroupConnectionDrainConfig({
     this.connectionDrainEnabled,
     this.connectionDrainTimeout,
   });

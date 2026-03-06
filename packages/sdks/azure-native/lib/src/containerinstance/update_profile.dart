@@ -12,7 +12,7 @@ class UpdateProfile {
   /// Creates a new [UpdateProfile].
   /// [rollingUpdateProfile] This profile allows the customers to customize the rolling update.
   /// [updateMode] Optional.
-  UpdateProfile({
+  const UpdateProfile({
     this.rollingUpdateProfile,
     this.updateMode,
   });

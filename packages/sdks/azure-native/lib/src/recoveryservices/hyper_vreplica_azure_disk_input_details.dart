@@ -21,7 +21,7 @@ class HyperVReplicaAzureDiskInputDetails {
   /// [diskType] The disk type.
   /// [logStorageAccountId] The LogStorageAccountId.
   /// [sectorSizeInBytes] The logical sector size (in bytes), 512 by default.
-  HyperVReplicaAzureDiskInputDetails({
+  const HyperVReplicaAzureDiskInputDetails({
     this.diskEncryptionSetId,
     this.diskId,
     this.diskType,

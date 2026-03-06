@@ -43,7 +43,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage {
   /// [evaluationMissingData] A condition control that determines how
   /// [query] Monitoring Query Language query that outputs a boolean stream.
   /// [trigger] The number/percent of time series for which
-  AlertPolicyConditionConditionMonitoringQueryLanguage({
+  const AlertPolicyConditionConditionMonitoringQueryLanguage({
     required this.duration,
     this.evaluationMissingData,
     required this.query,

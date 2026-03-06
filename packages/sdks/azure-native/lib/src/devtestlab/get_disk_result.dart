@@ -56,7 +56,7 @@ class GetDiskResult {
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
-  GetDiskResult({
+  const GetDiskResult({
     required this.azureApiVersion,
     required this.createdDate,
     this.diskBlobName,

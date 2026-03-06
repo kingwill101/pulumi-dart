@@ -13,7 +13,7 @@ class GetFeatureSpecFleetobservabilityLoggingConfig {
   /// Creates a new [GetFeatureSpecFleetobservabilityLoggingConfig].
   /// [defaultConfigs] Specified if applying the default routing config to logs not specified in other configs.
   /// [fleetScopeLogsConfigs] Specified if applying the routing config to all logs for all fleet scopes.
-  GetFeatureSpecFleetobservabilityLoggingConfig({
+  const GetFeatureSpecFleetobservabilityLoggingConfig({
     required this.defaultConfigs,
     required this.fleetScopeLogsConfigs,
   });

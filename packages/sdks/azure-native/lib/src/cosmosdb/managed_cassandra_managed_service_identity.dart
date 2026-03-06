@@ -9,7 +9,7 @@ class ManagedCassandraManagedServiceIdentity {
 
   /// Creates a new [ManagedCassandraManagedServiceIdentity].
   /// [type] The type of the resource.
-  ManagedCassandraManagedServiceIdentity({
+  const ManagedCassandraManagedServiceIdentity({
     this.type,
   });
 

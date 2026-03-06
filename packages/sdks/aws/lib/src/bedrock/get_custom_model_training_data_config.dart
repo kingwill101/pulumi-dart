@@ -8,7 +8,7 @@ class GetCustomModelTrainingDataConfig {
 
   /// Creates a new [GetCustomModelTrainingDataConfig].
   /// [s3Uri] The S3 URI where the validation data is stored..
-  GetCustomModelTrainingDataConfig({
+  const GetCustomModelTrainingDataConfig({
     required this.s3Uri,
   });
 

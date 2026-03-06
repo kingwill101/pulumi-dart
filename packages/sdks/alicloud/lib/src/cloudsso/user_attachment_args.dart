@@ -18,7 +18,7 @@ class UserAttachmentArgs {
   /// [directoryId] The ID of the directory.
   /// [groupId] The ID of the group.
   /// [userId] The ID of the user.
-  UserAttachmentArgs({
+  const UserAttachmentArgs({
     required this.directoryId,
     required this.groupId,
     required this.userId,

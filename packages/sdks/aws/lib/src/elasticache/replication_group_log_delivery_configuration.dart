@@ -17,7 +17,7 @@ class ReplicationGroupLogDeliveryConfiguration {
   /// [destinationType] For CloudWatch Logs use `cloudwatch-logs` or for Kinesis Data Firehose use `kinesis-firehose`.
   /// [logFormat] Valid values are `json` or `text`
   /// [logType] Valid values are  `slow-log` or `engine-log`. Max 1 of each.
-  ReplicationGroupLogDeliveryConfiguration({
+  const ReplicationGroupLogDeliveryConfiguration({
     required this.destination,
     required this.destinationType,
     required this.logFormat,

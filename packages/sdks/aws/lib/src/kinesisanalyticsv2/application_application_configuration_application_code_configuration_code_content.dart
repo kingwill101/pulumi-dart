@@ -12,7 +12,7 @@ class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent
   /// Creates a new [ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent].
   /// [s3ContentLocation] Information about the Amazon S3 bucket containing the application code.
   /// [textContent] The text-format code for the application.
-  ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent({
+  const ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent({
     this.s3ContentLocation,
     this.textContent,
   });

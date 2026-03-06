@@ -15,7 +15,7 @@ class GetLandingZoneAccountOperationArgs {
   /// Creates a new [GetLandingZoneAccountOperationArgs].
   /// [landingZoneAccountName] The landing zone account.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLandingZoneAccountOperationArgs({
+  const GetLandingZoneAccountOperationArgs({
     required this.landingZoneAccountName,
     required this.resourceGroupName,
   });

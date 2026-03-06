@@ -15,7 +15,7 @@ class LogTransformerTransformerConfigCopyValueEntry {
   /// [overwriteIfExists] Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// [source] Specifies the key to modify.
   /// [target] Specifies the key to move to.
-  LogTransformerTransformerConfigCopyValueEntry({
+  const LogTransformerTransformerConfigCopyValueEntry({
     this.overwriteIfExists,
     required this.source,
     required this.target,

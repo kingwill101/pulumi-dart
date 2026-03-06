@@ -15,7 +15,7 @@ class DatascanDataDiscoverySpec {
   /// Creates a new [DatascanDataDiscoverySpec].
   /// [bigqueryPublishingConfig] Configuration for metadata publishing.
   /// [storageConfig] Configurations related to Cloud Storage as the data source.
-  DatascanDataDiscoverySpec({
+  const DatascanDataDiscoverySpec({
     this.bigqueryPublishingConfig,
     this.storageConfig,
   });

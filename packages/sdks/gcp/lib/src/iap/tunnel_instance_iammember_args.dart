@@ -45,7 +45,7 @@ class TunnelInstanceIAMMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [zone] Used to find the parent resource to bind the IAM policy to. If not specified,
-  TunnelInstanceIAMMemberArgs({
+  const TunnelInstanceIAMMemberArgs({
     this.condition,
     required this.instance,
     required this.member,

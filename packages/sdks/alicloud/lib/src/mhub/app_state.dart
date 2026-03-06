@@ -27,7 +27,7 @@ class AppState {
   /// [packageName] Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
   /// [productId] The ID of the Product.
   /// [type] The type of the Product. Valid values: `Android` and `iOS`.
-  AppState({
+  const AppState({
     this.appName,
     this.bundleId,
     this.encodedIcon,

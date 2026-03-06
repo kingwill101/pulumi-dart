@@ -32,7 +32,7 @@ class FrontdoorRuleActionsRouteConfigurationOverrideAction {
   /// [forwardingProtocol] The forwarding protocol the request will be redirected as. This overrides the configuration specified in the route to be associated with. Possible values include `MatchRequest`, `HttpOnly` or `HttpsOnly`.
   /// [queryStringCachingBehavior] `IncludeSpecifiedQueryStrings` query strings specified in the `query_string_parameters` field get included when the cache key gets generated. `UseQueryString` cache every unique URL, each unique URL will have its own cache key. `IgnoreSpecifiedQueryStrings` query strings specified in the `query_string_parameters` field get excluded when the cache key gets generated. `IgnoreQueryString` query strings aren't considered when the cache key gets generated. Possible values include `IgnoreQueryString`, `UseQueryString`, `IgnoreSpecifiedQueryStrings` or `IncludeSpecifiedQueryStrings`.
   /// [queryStringParameters] A list of query string parameter names.
-  FrontdoorRuleActionsRouteConfigurationOverrideAction({
+  const FrontdoorRuleActionsRouteConfigurationOverrideAction({
     this.cacheBehavior,
     this.cacheDuration,
     this.cdnFrontdoorOriginGroupId,

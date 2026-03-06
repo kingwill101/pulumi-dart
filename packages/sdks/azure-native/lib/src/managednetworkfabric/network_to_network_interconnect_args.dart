@@ -53,7 +53,7 @@ class NetworkToNetworkInterconnectArgs {
   /// [optionBLayer3Configuration] Common properties for Layer3Configuration.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [useOptionB] Based on this option layer3 parameters are mandatory. Example: True/False
-  NetworkToNetworkInterconnectArgs({
+  const NetworkToNetworkInterconnectArgs({
     this.egressAclId,
     this.exportRoutePolicy,
     this.importRoutePolicy,

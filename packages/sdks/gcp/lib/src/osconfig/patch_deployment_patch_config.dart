@@ -47,7 +47,7 @@ class PatchDeploymentPatchConfig {
   /// [windowsUpdate] Windows update settings. Use this setting to override the default Windows patch rules.
   /// [yum] Yum update settings. Use this setting to override the default yum patch rules.
   /// [zypper] zypper update settings. Use this setting to override the default zypper patch rules.
-  PatchDeploymentPatchConfig({
+  const PatchDeploymentPatchConfig({
     this.apt,
     this.goo,
     this.migInstancesAllowed,

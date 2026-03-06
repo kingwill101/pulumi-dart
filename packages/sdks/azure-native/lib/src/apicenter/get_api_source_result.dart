@@ -38,7 +38,7 @@ class GetApiSourceResult {
   /// [targetEnvironmentId] The target environment resource ID.
   /// [targetLifecycleStage] The target lifecycle stage.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApiSourceResult({
+  const GetApiSourceResult({
     this.azureApiManagementSource,
     required this.azureApiVersion,
     required this.id,

@@ -27,7 +27,7 @@ class AppSpecWorkerImage {
   /// [registryType] The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
   /// [repository] The repository name.
   /// [tag] The repository tag. Defaults to `latest` if not provided.
-  AppSpecWorkerImage({
+  const AppSpecWorkerImage({
     this.deployOnPushes,
     this.digest,
     this.registry,

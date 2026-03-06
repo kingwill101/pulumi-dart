@@ -14,7 +14,7 @@ class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig {
 
   /// Creates a new [ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig].
   /// [serviceAccount] The email address of the service account used for authenticatation. CES
-  ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig({
+  const ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig({
     required this.serviceAccount,
   });
 

@@ -24,7 +24,7 @@ class KeyVaultPropertiesResponse {
   /// [keyVaultUri] The Uri of KeyVault.
   /// [keyVersion] The version of KeyVault key.
   /// [lastKeyRotationTimestamp] Timestamp of last rotation of the Key Vault Key.
-  KeyVaultPropertiesResponse({
+  const KeyVaultPropertiesResponse({
     required this.currentVersionedKeyExpirationTimestamp,
     required this.currentVersionedKeyIdentifier,
     this.keyName,

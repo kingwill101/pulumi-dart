@@ -37,7 +37,7 @@ class GatewaySecurityPolicyState {
   /// [selfLink] Server-defined URL of this resource.
   /// [tlsInspectionPolicy] Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
   /// [updateTime] The timestamp when the resource was updated.
-  GatewaySecurityPolicyState({
+  const GatewaySecurityPolicyState({
     this.createTime,
     this.description,
     this.location,

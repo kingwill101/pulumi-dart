@@ -36,7 +36,7 @@ class GetCertificateResult {
   /// [notValidBefore] (string) Point in time when the Certificate becomes valid (in ISO-8601 format).
   /// [type] Required.
   /// [withSelector] Optional.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.certificate,
     required this.created,
     required this.domainNames,

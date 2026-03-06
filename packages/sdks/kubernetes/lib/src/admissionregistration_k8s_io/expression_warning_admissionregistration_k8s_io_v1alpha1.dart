@@ -12,7 +12,7 @@ class ExpressionWarningAdmissionregistrationK8sIoV1alpha1 {
   /// Creates a new [ExpressionWarningAdmissionregistrationK8sIoV1alpha1].
   /// [fieldRef] The path to the field that refers the expression. For example, the reference to the expression of the first item of validations is "spec.validations[0].expression"
   /// [warning] The content of type checking information in a human-readable form. Each line of the warning contains the type that the expression is checked against, followed by the type check error from the compiler.
-  ExpressionWarningAdmissionregistrationK8sIoV1alpha1({
+  const ExpressionWarningAdmissionregistrationK8sIoV1alpha1({
     required this.fieldRef,
     required this.warning,
   });

@@ -27,7 +27,7 @@ class GuestOSNICCustomizationResponse {
   /// [mask] Network mask for nic
   /// [primaryWinsServer] primary WINS server for Windows
   /// [secondaryWinsServer] secondary WINS server for Windows
-  GuestOSNICCustomizationResponse({
+  const GuestOSNICCustomizationResponse({
     this.allocation,
     this.dnsServers,
     this.gateway,

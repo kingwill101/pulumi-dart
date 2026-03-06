@@ -30,7 +30,7 @@ class FirewallPolicyCustomRule {
   /// [rateLimitDurationInMinutes] The rate limit duration in minutes. Defaults to `1`.
   /// [rateLimitThreshold] The rate limit threshold. Defaults to `10`.
   /// [type] The type of rule. Possible values are `MatchRule` or `RateLimitRule`.
-  FirewallPolicyCustomRule({
+  const FirewallPolicyCustomRule({
     required this.action,
     this.enabled,
     this.matchConditions,

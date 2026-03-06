@@ -18,7 +18,7 @@ class PeeringSkuResponse {
   /// [name] The name of the peering SKU.
   /// [size] The size of the peering SKU.
   /// [tier] The tier of the peering SKU.
-  PeeringSkuResponse({
+  const PeeringSkuResponse({
     required this.family,
     this.name,
     required this.size,

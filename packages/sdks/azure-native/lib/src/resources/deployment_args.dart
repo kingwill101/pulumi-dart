@@ -25,7 +25,7 @@ class DeploymentArgs {
   /// [properties] The deployment properties.
   /// [resourceGroupName] The name of the resource group to deploy the resources to. The name is case insensitive. The resource group must already exist.
   /// [tags] Deployment tags
-  DeploymentArgs({
+  const DeploymentArgs({
     this.deploymentName,
     this.location,
     required this.properties,

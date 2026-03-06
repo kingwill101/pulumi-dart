@@ -22,7 +22,7 @@ class GetServerlessAccessPolicyResult {
   /// [policyVersion] Version of the policy.
   /// [region] Required.
   /// [type] Required.
-  GetServerlessAccessPolicyResult({
+  const GetServerlessAccessPolicyResult({
     required this.description,
     required this.id,
     required this.name,

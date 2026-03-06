@@ -12,7 +12,7 @@ class ScopeMap {
   /// Creates a new [ScopeMap].
   /// [from] Scope Map Key.
   /// [to] Scope Map Value.
-  ScopeMap({
+  const ScopeMap({
     required this.from,
     required this.to,
   });

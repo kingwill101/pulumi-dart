@@ -15,7 +15,7 @@ class GetMembershipGkehubV1beta1Args {
   /// [location] Required.
   /// [membershipId] Required.
   /// [project] Optional.
-  GetMembershipGkehubV1beta1Args({
+  const GetMembershipGkehubV1beta1Args({
     required this.location,
     required this.membershipId,
     this.project,

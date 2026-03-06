@@ -18,7 +18,7 @@ class FunctionSecretVolume {
   /// [projectId] Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
   /// [secret] ID of the secret in secret manager (not the full resource name).
   /// [versions] List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
-  FunctionSecretVolume({
+  const FunctionSecretVolume({
     required this.mountPath,
     this.projectId,
     required this.secret,

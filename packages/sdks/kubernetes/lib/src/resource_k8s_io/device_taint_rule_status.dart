@@ -19,7 +19,7 @@ class DeviceTaintRuleStatus {
 
   /// Creates a new [DeviceTaintRuleStatus].
   /// [conditions] Conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format.
-  DeviceTaintRuleStatus({
+  const DeviceTaintRuleStatus({
     this.conditions,
   });
 

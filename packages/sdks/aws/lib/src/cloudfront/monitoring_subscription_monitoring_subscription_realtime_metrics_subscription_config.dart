@@ -8,7 +8,7 @@ class MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionCon
 
   /// Creates a new [MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig].
   /// [realtimeMetricsSubscriptionStatus] A flag that indicates whether additional CloudWatch metrics are enabled for a given CloudFront distribution. Valid values are `Enabled` and `Disabled`. See below.
-  MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig({
+  const MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig({
     required this.realtimeMetricsSubscriptionStatus,
   });
 

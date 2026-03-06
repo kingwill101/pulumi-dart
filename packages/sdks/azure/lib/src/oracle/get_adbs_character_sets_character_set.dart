@@ -8,7 +8,7 @@ class GetAdbsCharacterSetsCharacterSet {
 
   /// Creates a new [GetAdbsCharacterSetsCharacterSet].
   /// [characterSet] A valid Oracle character set.
-  GetAdbsCharacterSetsCharacterSet({
+  const GetAdbsCharacterSetsCharacterSet({
     required this.characterSet,
   });
 

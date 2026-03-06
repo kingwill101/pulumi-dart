@@ -8,7 +8,7 @@ class BatchOperationsJobRewriteObject {
 
   /// Creates a new [BatchOperationsJobRewriteObject].
   /// [kmsKey] valid kms key
-  BatchOperationsJobRewriteObject({
+  const BatchOperationsJobRewriteObject({
     required this.kmsKey,
   });
 

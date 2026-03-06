@@ -12,7 +12,7 @@ class MetaTagState {
   /// Creates a new [MetaTagState].
   /// [key] The key of the tag meta tag. key must be 1 to 128 characters in length.
   /// [values] The values of the tag meta tag.
-  MetaTagState({
+  const MetaTagState({
     this.key,
     this.values,
   });

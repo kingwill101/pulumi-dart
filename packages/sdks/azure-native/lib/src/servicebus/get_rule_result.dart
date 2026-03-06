@@ -39,7 +39,7 @@ class GetRuleResult {
   /// [sqlFilter] Properties of sqlFilter
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
-  GetRuleResult({
+  const GetRuleResult({
     this.action,
     required this.azureApiVersion,
     this.correlationFilter,

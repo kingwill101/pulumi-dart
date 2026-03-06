@@ -27,7 +27,7 @@ class ConsumerGroupState {
   /// [regionId] (Available since v1.268.0) The region ID.
   /// [remark] The remark of the resource.
   /// [tags] A mapping of tags to assign to the resource.
-  ConsumerGroupState({
+  const ConsumerGroupState({
     this.consumerId,
     this.createTime,
     this.description,

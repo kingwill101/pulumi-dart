@@ -20,7 +20,7 @@ class ResourceGroupCostManagementViewDataset {
   /// [granularity] The granularity of rows in the report. Possible values are `Daily` and `Monthly`.
   /// [groupings] One or more `grouping` blocks as defined below.
   /// [sortings] One or more `sorting` blocks as defined below, containing the order by expression to be used in the report
-  ResourceGroupCostManagementViewDataset({
+  const ResourceGroupCostManagementViewDataset({
     required this.aggregations,
     required this.granularity,
     this.groupings,

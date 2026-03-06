@@ -13,7 +13,7 @@ class AutomationActionWorkspace {
   /// Creates a new [AutomationActionWorkspace].
   /// [actionType] The type of the action that will be triggered by the Automation
   /// [workspaceResourceId] The fully qualified Log Analytics Workspace Azure Resource ID.
-  AutomationActionWorkspace({
+  const AutomationActionWorkspace({
     required this.actionType,
     this.workspaceResourceId,
   });

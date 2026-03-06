@@ -21,7 +21,7 @@ class TargetIamMemberState {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Optional.
-  TargetIamMemberState({
+  const TargetIamMemberState({
     this.condition,
     this.etag,
     this.location,

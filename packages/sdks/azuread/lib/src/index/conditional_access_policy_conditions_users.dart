@@ -33,7 +33,7 @@ class ConditionalAccessPolicyConditionsUsers {
   /// [includedGuestsOrExternalUsers] A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
   /// [includedRoles] A list of role IDs in scope of policy unless explicitly excluded.
   /// [includedUsers] A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
-  ConditionalAccessPolicyConditionsUsers({
+  const ConditionalAccessPolicyConditionsUsers({
     this.excludedGroups,
     this.excludedGuestsOrExternalUsers,
     this.excludedRoles,

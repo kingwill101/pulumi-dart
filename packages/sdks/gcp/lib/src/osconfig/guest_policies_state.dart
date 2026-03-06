@@ -63,7 +63,7 @@ class GuestPoliciesState {
   /// [project] The ID of the project in which the resource belongs.
   /// [recipes] A list of Recipes to install on the VM instance.
   /// [updateTime] Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
-  GuestPoliciesState({
+  const GuestPoliciesState({
     this.assignment,
     this.createTime,
     this.description,

@@ -18,7 +18,7 @@ class GetWorkspacePrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
-  GetWorkspacePrivateEndpointConnectionArgs({
+  const GetWorkspacePrivateEndpointConnectionArgs({
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,
     required this.workspaceName,

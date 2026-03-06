@@ -18,7 +18,7 @@ class ContainerRegistryDockerCredentialsArgs {
   /// [expirySeconds] The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
   /// [registryName] The name of the container registry.
   /// [write] Allow for write access to the container registry. Defaults to false.
-  ContainerRegistryDockerCredentialsArgs({
+  const ContainerRegistryDockerCredentialsArgs({
     this.expirySeconds,
     required this.registryName,
     this.write,

@@ -59,7 +59,7 @@ class ConfigArgs {
   /// [quota] Configuration related to quotas.
   /// [signIn] Configuration related to local sign in methods.
   /// [smsRegionConfig] Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
-  ConfigArgs({
+  const ConfigArgs({
     this.authorizedDomains,
     this.autodeleteAnonymousUsers,
     this.blockingFunctions,

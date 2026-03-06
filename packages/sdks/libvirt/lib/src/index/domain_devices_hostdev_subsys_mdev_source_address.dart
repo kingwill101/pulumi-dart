@@ -8,7 +8,7 @@ class DomainDevicesHostdevSubsysMDevSourceAddress {
 
   /// Creates a new [DomainDevicesHostdevSubsysMDevSourceAddress].
   /// [uuid] Configures the UUID for the address of the multimedia subsystem device source.
-  DomainDevicesHostdevSubsysMDevSourceAddress({
+  const DomainDevicesHostdevSubsysMDevSourceAddress({
     this.uuid,
   });
 

@@ -14,7 +14,7 @@ class AccessPointPosixUser {
   /// [gid] POSIX group ID used for all file system operations using this access point.
   /// [secondaryGids] Secondary POSIX group IDs used for all file system operations using this access point.
   /// [uid] POSIX user ID used for all file system operations using this access point.
-  AccessPointPosixUser({
+  const AccessPointPosixUser({
     required this.gid,
     this.secondaryGids,
     required this.uid,

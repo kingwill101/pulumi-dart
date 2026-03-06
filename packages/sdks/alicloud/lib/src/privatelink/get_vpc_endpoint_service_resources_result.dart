@@ -20,7 +20,7 @@ class GetVpcEndpointServiceResourcesResult {
   /// [outputFile] Optional.
   /// [resources] A list of Privatelink Vpc Endpoint Service Resources. Each element contains the following attributes:
   /// [serviceId] Required.
-  GetVpcEndpointServiceResourcesResult({
+  const GetVpcEndpointServiceResourcesResult({
     required this.id,
     required this.ids,
     this.outputFile,

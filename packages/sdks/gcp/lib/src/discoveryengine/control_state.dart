@@ -71,7 +71,7 @@ class ControlState {
   /// [solutionType] The solution type that the control belongs to.
   /// [synonymsAction] Associates queries with each other.
   /// [useCases] The use cases that the control is used for.
-  ControlState({
+  const ControlState({
     this.boostAction,
     this.collectionId,
     this.conditions,

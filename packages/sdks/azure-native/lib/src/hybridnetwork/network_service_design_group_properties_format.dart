@@ -9,7 +9,7 @@ class NetworkServiceDesignGroupPropertiesFormat {
 
   /// Creates a new [NetworkServiceDesignGroupPropertiesFormat].
   /// [description] The network service design group description.
-  NetworkServiceDesignGroupPropertiesFormat({
+  const NetworkServiceDesignGroupPropertiesFormat({
     this.description,
   });
 

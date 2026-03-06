@@ -9,7 +9,7 @@ class QueryOverride {
 
   /// Creates a new [QueryOverride].
   /// [queryParams] The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
-  QueryOverride({
+  const QueryOverride({
     this.queryParams,
   });
 

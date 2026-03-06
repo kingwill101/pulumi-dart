@@ -171,7 +171,7 @@ class GetApplicationGatewayResult {
   /// [urlPathMaps] URL path map of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   /// [webApplicationFirewallConfiguration] Web application firewall configuration.
   /// [zones] A list of availability zones denoting where the resource needs to come from.
-  GetApplicationGatewayResult({
+  const GetApplicationGatewayResult({
     this.authenticationCertificates,
     this.autoscaleConfiguration,
     required this.azureApiVersion,

@@ -12,7 +12,7 @@ class LinkedTemplateArtifactResponse {
   /// Creates a new [LinkedTemplateArtifactResponse].
   /// [path] A filesystem safe relative path of the artifact.
   /// [template] The Azure Resource Manager template.
-  LinkedTemplateArtifactResponse({
+  const LinkedTemplateArtifactResponse({
     required this.path,
     required this.template,
   });

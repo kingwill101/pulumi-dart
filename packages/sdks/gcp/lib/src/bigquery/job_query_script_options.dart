@@ -16,7 +16,7 @@ class JobQueryScriptOptions {
   /// [keyResultStatement] Determines which statement in the script represents the "key result",
   /// [statementByteBudget] Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
   /// [statementTimeoutMs] Timeout period for each statement in a script.
-  JobQueryScriptOptions({
+  const JobQueryScriptOptions({
     this.keyResultStatement,
     this.statementByteBudget,
     this.statementTimeoutMs,

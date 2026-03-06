@@ -11,7 +11,7 @@ class GetClusterRestoreContinuousBackupSource {
   /// Creates a new [GetClusterRestoreContinuousBackupSource].
   /// [cluster] The name of the source cluster that this cluster is restored from.
   /// [pointInTime] The point in time that this cluster is restored to, in RFC 3339 format.
-  GetClusterRestoreContinuousBackupSource({
+  const GetClusterRestoreContinuousBackupSource({
     required this.cluster,
     required this.pointInTime,
   });

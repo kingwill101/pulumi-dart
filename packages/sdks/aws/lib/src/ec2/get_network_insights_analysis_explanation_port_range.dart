@@ -9,7 +9,7 @@ class GetNetworkInsightsAnalysisExplanationPortRange {
   /// Creates a new [GetNetworkInsightsAnalysisExplanationPortRange].
   /// [from] Required.
   /// [to] Required.
-  GetNetworkInsightsAnalysisExplanationPortRange({
+  const GetNetworkInsightsAnalysisExplanationPortRange({
     required this.from,
     required this.to,
   });

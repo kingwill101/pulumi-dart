@@ -15,7 +15,7 @@ class GetReplayPolicysimulatorV1betaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [replayId] Required.
-  GetReplayPolicysimulatorV1betaArgs({
+  const GetReplayPolicysimulatorV1betaArgs({
     required this.location,
     this.project,
     required this.replayId,

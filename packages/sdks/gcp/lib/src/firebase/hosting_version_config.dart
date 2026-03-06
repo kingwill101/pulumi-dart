@@ -23,7 +23,7 @@ class HostingVersionConfig {
   /// [headers] An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
   /// [redirects] An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
   /// [rewrites] An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
-  HostingVersionConfig({
+  const HostingVersionConfig({
     this.headers,
     this.redirects,
     this.rewrites,

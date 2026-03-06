@@ -37,7 +37,7 @@ class GetImportJobResult {
   /// [state] The state of the import job.
   /// [updateTime] The timestamp when the import job was last updated.
   /// [validationReport] The report with the validation results of the import job.
-  GetImportJobResult({
+  const GetImportJobResult({
     required this.assetSource,
     required this.completeTime,
     required this.createTime,

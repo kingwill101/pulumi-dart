@@ -15,7 +15,7 @@ class GetMySQLSiteArgs {
   /// Creates a new [GetMySQLSiteArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] The name of Site
-  GetMySQLSiteArgs({
+  const GetMySQLSiteArgs({
     required this.resourceGroupName,
     required this.siteName,
   });

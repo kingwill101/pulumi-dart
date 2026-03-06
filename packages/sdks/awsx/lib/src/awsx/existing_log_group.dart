@@ -15,7 +15,7 @@ class ExistingLogGroup {
   /// [arn] Arn of the log group. Only one of [arn] or [name] can be specified.
   /// [name] Name of the log group. Only one of [arn] or [name] can be specified.
   /// [region] Region of the log group. If not specified, the provider region will be used.
-  ExistingLogGroup({
+  const ExistingLogGroup({
     this.arn,
     this.name,
     this.region,

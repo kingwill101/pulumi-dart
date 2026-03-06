@@ -33,7 +33,7 @@ class OnlineExperimentationWorkspaceArgs {
   /// [sku] The SKU (Stock Keeping Unit) assigned to this resource.
   /// [tags] Resource tags.
   /// [workspaceName] The name of the OnlineExperimentationWorkspace
-  OnlineExperimentationWorkspaceArgs({
+  const OnlineExperimentationWorkspaceArgs({
     this.identity,
     this.location,
     this.properties,

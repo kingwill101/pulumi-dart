@@ -14,7 +14,7 @@ class GetCustomModelsModelSummary {
   /// [creationTime] Creation time of the model.
   /// [modelArn] The ARN of the custom model.
   /// [modelName] The name of the custom model.
-  GetCustomModelsModelSummary({
+  const GetCustomModelsModelSummary({
     required this.creationTime,
     required this.modelArn,
     required this.modelName,

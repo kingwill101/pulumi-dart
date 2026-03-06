@@ -13,7 +13,7 @@ class GetMembershipCloudidentityV1beta1Args {
   /// Creates a new [GetMembershipCloudidentityV1beta1Args].
   /// [groupId] Required.
   /// [membershipId] Required.
-  GetMembershipCloudidentityV1beta1Args({
+  const GetMembershipCloudidentityV1beta1Args({
     required this.groupId,
     required this.membershipId,
   });

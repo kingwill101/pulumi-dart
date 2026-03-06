@@ -13,7 +13,7 @@ class ManagementServerNetwork {
   /// Creates a new [ManagementServerNetwork].
   /// [network] Network with format `projects/{{project_id}}/global/networks/{{network_id}}`
   /// [peeringMode] Type of Network peeringMode
-  ManagementServerNetwork({
+  const ManagementServerNetwork({
     required this.network,
     this.peeringMode,
   });

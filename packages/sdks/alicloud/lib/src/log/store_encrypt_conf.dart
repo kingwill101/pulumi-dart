@@ -15,7 +15,7 @@ class StoreEncryptConf {
   /// [enable] Enable encryption. Default false.
   /// [encryptType] Supported encryption type, only supports `default`(AES), `m4`.
   /// [userCmkInfo] User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
-  StoreEncryptConf({
+  const StoreEncryptConf({
     this.enable,
     this.encryptType,
     this.userCmkInfo,

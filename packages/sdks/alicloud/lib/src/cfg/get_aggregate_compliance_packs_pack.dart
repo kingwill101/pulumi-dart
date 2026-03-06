@@ -33,7 +33,7 @@ class GetAggregateCompliancePacksPack {
   /// [id] The ID of the Aggregate Compliance Pack.
   /// [riskLevel] The Risk Level.
   /// [status] The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
-  GetAggregateCompliancePacksPack({
+  const GetAggregateCompliancePacksPack({
     required this.accountId,
     required this.aggregateCompliancePackName,
     required this.aggregatorCompliancePackId,

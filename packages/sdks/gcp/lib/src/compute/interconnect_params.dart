@@ -10,7 +10,7 @@ class InterconnectParams {
 
   /// Creates a new [InterconnectParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the interconnect. Tag keys and values have the
-  InterconnectParams({
+  const InterconnectParams({
     this.resourceManagerTags,
   });
 

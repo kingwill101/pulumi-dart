@@ -41,7 +41,7 @@ class DatabaseArgs {
   /// [instance] The name of the Cloud SQL instance. This does not include the project
   /// [name] The name of the database in the Cloud SQL instance.
   /// [project] The ID of the project in which the resource belongs.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.charset,
     this.collation,
     this.deletionPolicy,

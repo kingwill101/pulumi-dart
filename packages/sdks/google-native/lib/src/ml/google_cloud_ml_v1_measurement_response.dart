@@ -16,7 +16,7 @@ class GoogleCloudMlV1MeasurementResponse {
   /// [elapsedTime] Time that the trial has been running at the point of this measurement.
   /// [metrics] Provides a list of metrics that act as inputs into the objective function.
   /// [stepCount] The number of steps a machine learning model has been trained for. Must be non-negative.
-  GoogleCloudMlV1MeasurementResponse({
+  const GoogleCloudMlV1MeasurementResponse({
     required this.elapsedTime,
     required this.metrics,
     required this.stepCount,

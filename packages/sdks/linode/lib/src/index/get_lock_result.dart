@@ -22,7 +22,7 @@ class GetLockResult {
   /// [entityUrl] The URL of the locked entity.
   /// [id] Required.
   /// [lockType] The type of lock.
-  GetLockResult({
+  const GetLockResult({
     required this.entityId,
     required this.entityLabel,
     required this.entityType,

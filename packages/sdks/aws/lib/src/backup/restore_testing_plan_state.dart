@@ -33,7 +33,7 @@ class RestoreTestingPlanState {
   /// [startWindowHours] The number of hours in the start window for the restore testing plan. Must be between 1 and 168.
   /// [tags] Optional.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  RestoreTestingPlanState({
+  const RestoreTestingPlanState({
     this.arn,
     this.name,
     this.recoveryPointSelection,

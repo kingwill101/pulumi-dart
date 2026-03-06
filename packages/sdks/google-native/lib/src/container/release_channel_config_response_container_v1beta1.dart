@@ -19,7 +19,7 @@ class ReleaseChannelConfigResponseContainerV1beta1 {
   /// [channel] The release channel this configuration applies to.
   /// [defaultVersion] The default version for newly created clusters on the channel.
   /// [validVersions] List of valid versions for the channel.
-  ReleaseChannelConfigResponseContainerV1beta1({
+  const ReleaseChannelConfigResponseContainerV1beta1({
     required this.availableVersions,
     required this.channel,
     required this.defaultVersion,

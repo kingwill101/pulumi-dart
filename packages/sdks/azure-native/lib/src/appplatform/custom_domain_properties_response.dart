@@ -18,7 +18,7 @@ class CustomDomainPropertiesResponse {
   /// [certName] The bound certificate name of domain.
   /// [provisioningState] Provisioning state of the Domain
   /// [thumbprint] The thumbprint of bound certificate.
-  CustomDomainPropertiesResponse({
+  const CustomDomainPropertiesResponse({
     required this.appName,
     this.certName,
     required this.provisioningState,

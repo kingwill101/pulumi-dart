@@ -13,7 +13,7 @@ class ConditionsItem {
   /// [conditionName] Optional.
   /// [type] Optional.
   /// [value] These items are open-ended strings.
-  ConditionsItem({
+  const ConditionsItem({
     this.conditionName,
     this.type,
     this.value,

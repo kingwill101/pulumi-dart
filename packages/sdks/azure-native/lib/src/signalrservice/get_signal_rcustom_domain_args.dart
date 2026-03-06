@@ -18,7 +18,7 @@ class GetSignalRCustomDomainArgs {
   /// [name] Custom domain name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  GetSignalRCustomDomainArgs({
+  const GetSignalRCustomDomainArgs({
     required this.name,
     required this.resourceGroupName,
     required this.resourceName,

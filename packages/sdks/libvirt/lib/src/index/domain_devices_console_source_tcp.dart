@@ -21,7 +21,7 @@ class DomainDevicesConsoleSourceTcp {
   /// [reconnect] Configures reconnect settings for the UNIX domain socket in the backend.
   /// [service] Defines the service attribute for the TCP connection in the random number generator backend.
   /// [tls] Enables or disables TLS encryption for the TCP connection in the backend.
-  DomainDevicesConsoleSourceTcp({
+  const DomainDevicesConsoleSourceTcp({
     this.host,
     this.mode,
     this.reconnect,

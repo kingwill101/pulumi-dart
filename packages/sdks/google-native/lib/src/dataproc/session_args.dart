@@ -43,7 +43,7 @@ class SessionArgs {
   /// [sessionId] Required. The ID to use for the session, which becomes the final component of the session's resource name.This value must be 4-63 characters. Valid characters are /a-z-/.
   /// [sessionTemplate] Optional. The session template used by the session.Only resource names, including project ID and location, are valid.Example: * https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id] * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]The template must be in the same project and Dataproc region as the session.
   /// [user] Optional. The email address of the user who owns the session.
-  SessionArgs({
+  const SessionArgs({
     this.environmentConfig,
     this.jupyterSession,
     this.labels,

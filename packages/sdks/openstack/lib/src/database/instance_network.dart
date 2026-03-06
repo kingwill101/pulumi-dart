@@ -21,7 +21,7 @@ class InstanceNetwork {
   /// [fixedIpV6] Specifies a fixed IPv6 address to be used on this
   /// [port] The port UUID of a
   /// [uuid] The network UUID to
-  InstanceNetwork({
+  const InstanceNetwork({
     this.fixedIpV4,
     this.fixedIpV6,
     this.port,

@@ -27,7 +27,7 @@ class VpcConfigResponseResponse {
   /// [securityGroupIds] &lt;p&gt;The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane.&lt;/p&gt;
   /// [subnetIds] &lt;p&gt;The subnets associated with your cluster.&lt;/p&gt;
   /// [vpcId] &lt;p&gt;The VPC associated with your cluster.&lt;/p&gt;
-  VpcConfigResponseResponse({
+  const VpcConfigResponseResponse({
     this.clusterSecurityGroupId,
     this.endpointPrivateAccess,
     this.endpointPublicAccess,

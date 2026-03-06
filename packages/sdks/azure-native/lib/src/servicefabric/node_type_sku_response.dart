@@ -15,7 +15,7 @@ class NodeTypeSkuResponse {
   /// [capacity] The number of nodes in the node type.&lt;br /&gt;&lt;br /&gt;If present in request it will override properties.vmInstanceCount.
   /// [name] The sku name. &lt;br /&gt;&lt;br /&gt;Name is internally generated and is used in auto-scale scenarios.&lt;br /&gt; Property does not allow to be changed to other values than generated.&lt;br /&gt; To avoid deployment errors please omit the property.
   /// [tier] Specifies the tier of the node type. &lt;br /&gt;&lt;br /&gt; Possible Values:&lt;br /&gt; **Standard**
-  NodeTypeSkuResponse({
+  const NodeTypeSkuResponse({
     required this.capacity,
     this.name,
     this.tier,

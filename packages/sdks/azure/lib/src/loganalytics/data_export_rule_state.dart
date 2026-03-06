@@ -27,7 +27,7 @@ class DataExportRuleState {
   /// [resourceGroupName] The name of the Resource Group where the Log Analytics Data Export should exist. Changing this forces a new Log Analytics Data Export Rule to be created.
   /// [tableNames] A list of table names to export to the destination resource, for example: `["Heartbeat", "SecurityEvent"]`.
   /// [workspaceResourceId] The resource ID of the workspace. Changing this forces a new Log Analytics Data Export Rule to be created.
-  DataExportRuleState({
+  const DataExportRuleState({
     this.destinationResourceId,
     this.enabled,
     this.exportRuleId,

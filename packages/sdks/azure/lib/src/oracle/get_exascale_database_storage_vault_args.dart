@@ -15,7 +15,7 @@ class GetExascaleDatabaseStorageVaultArgs {
   /// Creates a new [GetExascaleDatabaseStorageVaultArgs].
   /// [name] The name of this Exadata Database Storage Vault.
   /// [resourceGroupName] The name of the Resource Group where the Exadata Database Storage Vault exists.
-  GetExascaleDatabaseStorageVaultArgs({
+  const GetExascaleDatabaseStorageVaultArgs({
     required this.name,
     required this.resourceGroupName,
   });

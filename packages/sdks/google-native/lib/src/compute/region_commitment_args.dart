@@ -58,7 +58,7 @@ class RegionCommitmentArgs {
   /// [resources] A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
   /// [splitSourceCommitment] Source commitment to be split into a new commitment.
   /// [type] The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
-  RegionCommitmentArgs({
+  const RegionCommitmentArgs({
     this.autoRenew,
     this.category,
     this.description,

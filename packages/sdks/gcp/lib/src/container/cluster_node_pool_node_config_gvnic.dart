@@ -8,7 +8,7 @@ class ClusterNodePoolNodeConfigGvnic {
 
   /// Creates a new [ClusterNodePoolNodeConfigGvnic].
   /// [enabled] Whether or not the Google Virtual NIC (gVNIC) is enabled
-  ClusterNodePoolNodeConfigGvnic({
+  const ClusterNodePoolNodeConfigGvnic({
     required this.enabled,
   });
 

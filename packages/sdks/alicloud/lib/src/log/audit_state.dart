@@ -21,7 +21,7 @@ class AuditState {
   /// [multiAccounts] Multi-account configuration, please fill in multiple aliuid.
   /// [resourceDirectoryType] Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
   /// [variableMap] Log audit detailed configuration.
-  AuditState({
+  const AuditState({
     this.aliuid,
     this.displayName,
     this.multiAccounts,

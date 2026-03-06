@@ -24,7 +24,7 @@ class FleetMemberArgs {
   /// [fleetName] The name of the Fleet resource.
   /// [group] The group this member belongs to for multi-cluster update management.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  FleetMemberArgs({
+  const FleetMemberArgs({
     required this.clusterResourceId,
     this.fleetMemberName,
     required this.fleetName,

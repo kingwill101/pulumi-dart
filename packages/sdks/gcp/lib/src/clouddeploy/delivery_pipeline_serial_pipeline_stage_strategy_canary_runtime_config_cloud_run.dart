@@ -17,7 +17,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun {
   /// [canaryRevisionTags] Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
   /// [priorRevisionTags] Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
   /// [stableRevisionTags] Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
-  DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun({
+  const DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun({
     this.automaticTrafficControl,
     this.canaryRevisionTags,
     this.priorRevisionTags,

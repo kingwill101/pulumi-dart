@@ -12,7 +12,7 @@ class TemplateSourceEntitySourceAnalysis {
   /// Creates a new [TemplateSourceEntitySourceAnalysis].
   /// [arn] The Amazon Resource Name (ARN) of the resource.
   /// [dataSetReferences] A list of dataset references used as placeholders in the template. See data_set_references.
-  TemplateSourceEntitySourceAnalysis({
+  const TemplateSourceEntitySourceAnalysis({
     required this.arn,
     required this.dataSetReferences,
   });

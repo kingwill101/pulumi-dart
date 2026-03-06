@@ -17,7 +17,7 @@ class RegistryEndpointProperties {
   /// [authentication] The authentication settings for the Azure Container Registry.
   /// [host] The Container Registry endpoint hostname.
   /// [trustSettings] Trust settings for the registry endpoint
-  RegistryEndpointProperties({
+  const RegistryEndpointProperties({
     required this.authentication,
     required this.host,
     this.trustSettings,

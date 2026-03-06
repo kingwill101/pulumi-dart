@@ -21,7 +21,7 @@ class CaCertificateState {
   /// [name] Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
   /// [resourceGroupId] The Id of resource group which the slb_ca certificate belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  CaCertificateState({
+  const CaCertificateState({
     this.caCertificate,
     this.caCertificateName,
     this.name,

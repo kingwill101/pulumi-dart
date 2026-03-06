@@ -32,7 +32,7 @@ class GetZoneRecordsResult {
   /// [tag] Optional.
   /// [userClientIp] Optional.
   /// [zoneId] Required.
-  GetZoneRecordsResult({
+  const GetZoneRecordsResult({
     required this.id,
     required this.ids,
     this.keyword,

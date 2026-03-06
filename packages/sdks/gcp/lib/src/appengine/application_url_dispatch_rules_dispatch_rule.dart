@@ -17,7 +17,7 @@ class ApplicationUrlDispatchRulesDispatchRule {
   /// [domain] Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
   /// [path] Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
   /// [service] Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
-  ApplicationUrlDispatchRulesDispatchRule({
+  const ApplicationUrlDispatchRulesDispatchRule({
     this.domain,
     required this.path,
     required this.service,

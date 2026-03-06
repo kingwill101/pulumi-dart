@@ -12,7 +12,7 @@ class DeploymentTargetImport {
   /// Creates a new [DeploymentTargetImport].
   /// [content] The full contents of the template that you want to import.
   /// [name] The name of the template to import, as declared in the YAML
-  DeploymentTargetImport({
+  const DeploymentTargetImport({
     this.content,
     this.name,
   });

@@ -77,7 +77,7 @@ class DistributionState {
   /// [supportCode] Support code. Include this code in your email to support when you have questions about your Lightsail distribution. This code enables our support team to look up your Lightsail information more easily.
   /// [tags] Map of tags for the Lightsail Distribution. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  DistributionState({
+  const DistributionState({
     this.alternativeDomainNames,
     this.arn,
     this.bundleId,

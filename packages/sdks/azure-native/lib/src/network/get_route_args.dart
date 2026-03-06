@@ -18,7 +18,7 @@ class GetRouteArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [routeName] The name of the route.
   /// [routeTableName] The name of the route table.
-  GetRouteArgs({
+  const GetRouteArgs({
     required this.resourceGroupName,
     required this.routeName,
     required this.routeTableName,

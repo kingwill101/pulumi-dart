@@ -87,7 +87,7 @@ class GdcServiceInstanceState {
   /// [stateMessage] A message explaining the current state.
   /// [uid] System generated unique identifier for this service instance, formatted as UUID4.
   /// [updateTime] The timestamp when the resource was most recently updated.
-  GdcServiceInstanceState({
+  const GdcServiceInstanceState({
     this.createTime,
     this.displayName,
     this.effectiveLabels,

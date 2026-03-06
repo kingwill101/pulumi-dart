@@ -19,7 +19,7 @@ class CapacityRequirementsResourceK8sIoV1beta2 {
 
   /// Creates a new [CapacityRequirementsResourceK8sIoV1beta2].
   /// [requests] Requests represent individual device resource requests for distinct resources, all of which must be provided by the device.
-  CapacityRequirementsResourceK8sIoV1beta2({
+  const CapacityRequirementsResourceK8sIoV1beta2({
     this.requests,
   });
 

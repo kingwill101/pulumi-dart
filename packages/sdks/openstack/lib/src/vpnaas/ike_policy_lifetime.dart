@@ -11,7 +11,7 @@ class IkePolicyLifetime {
   /// Creates a new [IkePolicyLifetime].
   /// [units] Optional.
   /// [value] The value for the lifetime of the security association. Must be a positive integer.
-  IkePolicyLifetime({
+  const IkePolicyLifetime({
     this.units,
     this.value,
   });

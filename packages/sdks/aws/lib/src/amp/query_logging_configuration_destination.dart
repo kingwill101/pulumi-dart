@@ -13,7 +13,7 @@ class QueryLoggingConfigurationDestination {
   /// Creates a new [QueryLoggingConfigurationDestination].
   /// [cloudwatchLogs] Configuration block for CloudWatch Logs destination. See `cloudwatch_logs`.
   /// [filters] A list of filter configurations that specify which logs should be sent to the destination. See `filters`.
-  QueryLoggingConfigurationDestination({
+  const QueryLoggingConfigurationDestination({
     required this.cloudwatchLogs,
     required this.filters,
   });

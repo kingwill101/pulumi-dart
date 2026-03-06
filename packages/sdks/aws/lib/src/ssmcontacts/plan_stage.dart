@@ -12,7 +12,7 @@ class PlanStage {
   /// Creates a new [PlanStage].
   /// [durationInMinutes] The time to wait until beginning the next stage. The duration can only be set to 0 if a target is specified.
   /// [targets] One or more configuration blocks for specifying the contacts or contact methods that the escalation plan or engagement plan is engaging. See Target below for more details.
-  PlanStage({
+  const PlanStage({
     required this.durationInMinutes,
     this.targets,
   });

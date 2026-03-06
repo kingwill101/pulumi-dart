@@ -13,7 +13,7 @@ class GetUptimeCheckConfigArgs {
   /// Creates a new [GetUptimeCheckConfigArgs].
   /// [project] Optional.
   /// [uptimeCheckConfigId] Required.
-  GetUptimeCheckConfigArgs({
+  const GetUptimeCheckConfigArgs({
     this.project,
     required this.uptimeCheckConfigId,
   });

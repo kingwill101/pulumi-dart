@@ -23,7 +23,7 @@ class GetUserSshKeyResult {
   /// [sshPublicKeyId] Required.
   /// [status] Status of the SSH public key. Active means that the key can be used for authentication with an CodeCommit repository. Inactive means that the key cannot be used.
   /// [username] Required.
-  GetUserSshKeyResult({
+  const GetUserSshKeyResult({
     required this.encoding,
     required this.fingerprint,
     required this.id,

@@ -26,7 +26,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
   /// [syncRepo] The OCI image repository URL for the package to sync from
   /// [syncWaitSecs] Period in seconds between consecutive syncs. Default: 15
   /// [version] (Optional, Deprecated)
-  FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci({
+  const FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci({
     this.gcpServiceAccountEmail,
     this.policyDir,
     required this.secretType,

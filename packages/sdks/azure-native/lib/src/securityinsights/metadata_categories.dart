@@ -12,7 +12,7 @@ class MetadataCategories {
   /// Creates a new [MetadataCategories].
   /// [domains] domain for the solution content item
   /// [verticals] Industry verticals for the solution content item
-  MetadataCategories({
+  const MetadataCategories({
     this.domains,
     this.verticals,
   });

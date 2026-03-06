@@ -11,7 +11,7 @@ class VirtualRouterSpecListenerPortMapping {
   /// Creates a new [VirtualRouterSpecListenerPortMapping].
   /// [port] Port used for the port mapping.
   /// [protocol] Protocol used for the port mapping. Valid values are `http`,`http2`, `tcp` and `grpc`.
-  VirtualRouterSpecListenerPortMapping({
+  const VirtualRouterSpecListenerPortMapping({
     required this.port,
     required this.protocol,
   });

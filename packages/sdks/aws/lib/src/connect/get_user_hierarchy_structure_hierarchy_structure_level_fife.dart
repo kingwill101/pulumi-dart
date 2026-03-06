@@ -14,7 +14,7 @@ class GetUserHierarchyStructureHierarchyStructureLevelFife {
   /// [arn] ARN of the hierarchy level.
   /// [id] The identifier of the hierarchy level.
   /// [name] Name of the user hierarchy level. Must not be more than 50 characters.
-  GetUserHierarchyStructureHierarchyStructureLevelFife({
+  const GetUserHierarchyStructureHierarchyStructureLevelFife({
     required this.arn,
     required this.id,
     required this.name,

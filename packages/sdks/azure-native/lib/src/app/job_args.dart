@@ -43,7 +43,7 @@ class JobArgs {
   /// [tags] Resource tags.
   /// [template] Container Apps job definition.
   /// [workloadProfileName] Workload profile name to pin for container apps job execution.
-  JobArgs({
+  const JobArgs({
     this.configuration,
     this.environmentId,
     this.extendedLocation,

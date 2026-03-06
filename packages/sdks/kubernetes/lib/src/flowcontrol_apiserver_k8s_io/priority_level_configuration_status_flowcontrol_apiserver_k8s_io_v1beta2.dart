@@ -10,7 +10,7 @@ class PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta2 {
 
   /// Creates a new [PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta2].
   /// [conditions] `conditions` is the current state of "request-priority".
-  PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta2({
+  const PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta2({
     this.conditions,
   });
 

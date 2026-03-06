@@ -10,7 +10,7 @@ class GetOntapFileSystemEndpointIntercluster {
   /// Creates a new [GetOntapFileSystemEndpointIntercluster].
   /// [dnsName] DNS name for the file system.
   /// [ipAddresses] Required.
-  GetOntapFileSystemEndpointIntercluster({
+  const GetOntapFileSystemEndpointIntercluster({
     required this.dnsName,
     required this.ipAddresses,
   });

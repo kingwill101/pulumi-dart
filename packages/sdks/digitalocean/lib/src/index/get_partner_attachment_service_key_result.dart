@@ -16,7 +16,7 @@ class GetPartnerAttachmentServiceKeyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [state] Required.
   /// [value] Required.
-  GetPartnerAttachmentServiceKeyResult({
+  const GetPartnerAttachmentServiceKeyResult({
     required this.attachmentId,
     required this.createdAt,
     required this.id,

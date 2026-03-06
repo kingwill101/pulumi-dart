@@ -10,7 +10,7 @@ class ExportExecutionListResultResponse {
 
   /// Creates a new [ExportExecutionListResultResponse].
   /// [value] A list of export runs.
-  ExportExecutionListResultResponse({
+  const ExportExecutionListResultResponse({
     required this.value,
   });
 

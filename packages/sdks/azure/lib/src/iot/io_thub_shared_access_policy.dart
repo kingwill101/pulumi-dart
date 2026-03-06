@@ -17,7 +17,7 @@ class IoTHubSharedAccessPolicy {
   /// [permissions] The permissions assigned to the shared access policy.
   /// [primaryKey] The primary key.
   /// [secondaryKey] The secondary key.
-  IoTHubSharedAccessPolicy({
+  const IoTHubSharedAccessPolicy({
     this.keyName,
     this.permissions,
     this.primaryKey,

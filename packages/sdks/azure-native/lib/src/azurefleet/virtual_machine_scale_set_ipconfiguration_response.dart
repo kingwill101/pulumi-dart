@@ -14,7 +14,7 @@ class VirtualMachineScaleSetIPConfigurationResponse {
   /// Creates a new [VirtualMachineScaleSetIPConfigurationResponse].
   /// [name] The IP configuration name.
   /// [properties] Describes a virtual machine scale set network profile's IP configuration
-  VirtualMachineScaleSetIPConfigurationResponse({
+  const VirtualMachineScaleSetIPConfigurationResponse({
     required this.name,
     this.properties,
   });

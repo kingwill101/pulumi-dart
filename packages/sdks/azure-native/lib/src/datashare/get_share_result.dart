@@ -42,7 +42,7 @@ class GetShareResult {
   /// [type] Type of the azure resource
   /// [userEmail] Email of the user who created the resource
   /// [userName] Name of the user who created the resource
-  GetShareResult({
+  const GetShareResult({
     required this.azureApiVersion,
     required this.createdAt,
     this.description,

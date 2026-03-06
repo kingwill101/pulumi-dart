@@ -32,7 +32,7 @@ class GetLicenseComputeV1Result {
   /// [resourceRequirements] Required.
   /// [selfLink] Server-defined URL for the resource.
   /// [transferable] If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
-  GetLicenseComputeV1Result({
+  const GetLicenseComputeV1Result({
     required this.chargesUseFee,
     required this.creationTimestamp,
     required this.description,

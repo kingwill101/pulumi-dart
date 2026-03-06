@@ -13,7 +13,7 @@ class GetServicePerimeterArgs {
   /// Creates a new [GetServicePerimeterArgs].
   /// [accessPolicyId] Required.
   /// [servicePerimeterId] Required.
-  GetServicePerimeterArgs({
+  const GetServicePerimeterArgs({
     required this.accessPolicyId,
     required this.servicePerimeterId,
   });

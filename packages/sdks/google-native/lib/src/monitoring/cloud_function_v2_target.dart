@@ -9,7 +9,7 @@ class CloudFunctionV2Target {
 
   /// Creates a new [CloudFunctionV2Target].
   /// [name] Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
-  CloudFunctionV2Target({
+  const CloudFunctionV2Target({
     required this.name,
   });
 

@@ -92,7 +92,7 @@ class InstanceState {
   /// [version] The version of the instance.
   /// [vpcId] The VPC ID of the instance.
   /// [vswitches] The VSwitches info of the instance. See `vswitches` below.
-  InstanceState({
+  const InstanceState({
     this.adminPassword,
     this.autoRenew,
     this.backendNodeGroups,

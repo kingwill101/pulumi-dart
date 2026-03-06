@@ -21,7 +21,7 @@ class GetPortBinding {
   /// [vifDetails] A map of JSON strings containing additional details for this
   /// [vifType] The VNIC type of the port binding.
   /// [vnicType] VNIC type for the port.
-  GetPortBinding({
+  const GetPortBinding({
     required this.hostId,
     required this.profile,
     required this.vifDetails,

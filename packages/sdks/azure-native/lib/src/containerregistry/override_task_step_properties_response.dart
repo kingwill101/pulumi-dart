@@ -26,7 +26,7 @@ class OverrideTaskStepPropertiesResponse {
   /// [target] The name of the target build stage for the docker build.
   /// [updateTriggerToken] Base64 encoded update trigger token that will be attached with the base image trigger webhook.
   /// [values] The collection of overridable values that can be passed when running a Task.
-  OverrideTaskStepPropertiesResponse({
+  const OverrideTaskStepPropertiesResponse({
     this.arguments,
     this.contextPath,
     this.file,

@@ -13,7 +13,7 @@ class AuthenticationResponse {
   /// Creates a new [AuthenticationResponse].
   /// [mode] Mode of authentication in SqlServer.
   /// [sqlServerEntraIdentity] Entra Authentication configuration for the SQL Server Instance.
-  AuthenticationResponse({
+  const AuthenticationResponse({
     this.mode,
     this.sqlServerEntraIdentity,
   });

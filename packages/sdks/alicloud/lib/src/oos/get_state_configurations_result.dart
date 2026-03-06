@@ -20,7 +20,7 @@ class GetStateConfigurationsResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] Optional.
   /// [tags] Optional.
-  GetStateConfigurationsResult({
+  const GetStateConfigurationsResult({
     required this.configurations,
     required this.id,
     required this.ids,

@@ -11,7 +11,7 @@ class EndpointModelSkuCapacityPropertiesResponse {
   /// Creates a new [EndpointModelSkuCapacityPropertiesResponse].
   /// [default_] The default capacity.
   /// [maximum] The maximum capacity.
-  EndpointModelSkuCapacityPropertiesResponse({
+  const EndpointModelSkuCapacityPropertiesResponse({
     this.default_,
     this.maximum,
   });

@@ -15,7 +15,7 @@ class SdkBugResponse {
   /// [severity] How severe the SDK bug is.
   /// [type] Describes the impact of this SDK bug.
   /// [uri] Link to more information on the bug.
-  SdkBugResponse({
+  const SdkBugResponse({
     required this.severity,
     required this.type,
     required this.uri,

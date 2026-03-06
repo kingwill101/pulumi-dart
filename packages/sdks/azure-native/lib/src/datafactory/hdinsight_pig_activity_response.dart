@@ -56,7 +56,7 @@ class HDInsightPigActivityResponse {
   /// [storageLinkedServices] Storage linked service references.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  HDInsightPigActivityResponse({
+  const HDInsightPigActivityResponse({
     this.arguments,
     this.defines,
     this.dependsOn,

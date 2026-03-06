@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2ReplaceValueConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2ReplaceValueConfigResponse].
   /// [newValue] Value to replace it with.
-  GooglePrivacyDlpV2ReplaceValueConfigResponse({
+  const GooglePrivacyDlpV2ReplaceValueConfigResponse({
     required this.newValue,
   });
 

@@ -14,7 +14,7 @@ class TagTag {
   /// [key] Tag name.
   /// [propagateAtLaunch] Whether to propagate the tags to instances launched by the ASG.
   /// [value] Tag value.
-  TagTag({
+  const TagTag({
     required this.key,
     required this.propagateAtLaunch,
     required this.value,

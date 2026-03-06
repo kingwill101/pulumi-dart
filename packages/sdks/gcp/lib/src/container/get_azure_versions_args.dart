@@ -16,7 +16,7 @@ class GetAzureVersionsArgs {
   /// Creates a new [GetAzureVersionsArgs].
   /// [location] The location to list versions for.
   /// [project] ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
-  GetAzureVersionsArgs({
+  const GetAzureVersionsArgs({
     this.location,
     this.project,
   });

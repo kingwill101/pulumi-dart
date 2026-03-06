@@ -11,7 +11,7 @@ class ChannelFacebookPage {
   /// Creates a new [ChannelFacebookPage].
   /// [accessToken] The Facebook Page Access Token for the Facebook Channel.
   /// [id] The Facebook Page ID for the Facebook Channel.
-  ChannelFacebookPage({
+  const ChannelFacebookPage({
     required this.accessToken,
     required this.id,
   });

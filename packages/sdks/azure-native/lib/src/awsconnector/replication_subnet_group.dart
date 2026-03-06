@@ -25,7 +25,7 @@ class ReplicationSubnetGroup {
   /// [subnets] &lt;p&gt;The subnets that are in the subnet group.&lt;/p&gt;
   /// [supportedNetworkTypes] &lt;p&gt;The IP addressing protocol supported by the subnet group. This is used by a replication instance with values such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.&lt;/p&gt;
   /// [vpcId] &lt;p&gt;The ID of the VPC.&lt;/p&gt;
-  ReplicationSubnetGroup({
+  const ReplicationSubnetGroup({
     this.replicationSubnetGroupDescription,
     this.replicationSubnetGroupIdentifier,
     this.subnetGroupStatus,

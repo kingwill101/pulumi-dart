@@ -23,7 +23,7 @@ class GetNotebookWorkspaceResult {
   /// [notebookServerEndpoint] Specifies the endpoint of Notebook server.
   /// [status] Status of the notebook workspace. Possible values are: Creating, Online, Deleting, Failed, Updating.
   /// [type] The type of Azure resource.
-  GetNotebookWorkspaceResult({
+  const GetNotebookWorkspaceResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

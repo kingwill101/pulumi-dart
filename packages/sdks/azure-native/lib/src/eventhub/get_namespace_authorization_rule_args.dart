@@ -18,7 +18,7 @@ class GetNamespaceAuthorizationRuleArgs {
   /// [authorizationRuleName] The authorization rule name.
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  GetNamespaceAuthorizationRuleArgs({
+  const GetNamespaceAuthorizationRuleArgs({
     required this.authorizationRuleName,
     required this.namespaceName,
     required this.resourceGroupName,

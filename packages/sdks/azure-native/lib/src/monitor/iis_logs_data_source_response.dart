@@ -16,7 +16,7 @@ class IisLogsDataSourceResponse {
   /// [logDirectories] Absolute paths file location
   /// [name] A friendly name for the data source.
   /// [streams] IIS streams
-  IisLogsDataSourceResponse({
+  const IisLogsDataSourceResponse({
     this.logDirectories,
     this.name,
     required this.streams,

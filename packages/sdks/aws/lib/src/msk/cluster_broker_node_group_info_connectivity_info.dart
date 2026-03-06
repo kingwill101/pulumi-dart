@@ -13,7 +13,7 @@ class ClusterBrokerNodeGroupInfoConnectivityInfo {
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfo].
   /// [publicAccess] Access control settings for brokers. See connectivity_info public_access Argument Reference below.
   /// [vpcConnectivity] VPC connectivity access control for brokers. See connectivity_info vpc_connectivity Argument Reference below.
-  ClusterBrokerNodeGroupInfoConnectivityInfo({
+  const ClusterBrokerNodeGroupInfoConnectivityInfo({
     this.publicAccess,
     this.vpcConnectivity,
   });

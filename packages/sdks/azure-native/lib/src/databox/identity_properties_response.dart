@@ -13,7 +13,7 @@ class IdentityPropertiesResponse {
   /// Creates a new [IdentityPropertiesResponse].
   /// [type] Managed service identity type.
   /// [userAssigned] User assigned identity properties.
-  IdentityPropertiesResponse({
+  const IdentityPropertiesResponse({
     this.type,
     this.userAssigned,
   });

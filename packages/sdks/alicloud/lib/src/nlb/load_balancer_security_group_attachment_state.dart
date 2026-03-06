@@ -15,7 +15,7 @@ class LoadBalancerSecurityGroupAttachmentState {
   /// [dryRun] Specifies whether to perform a dry run, without performing the actual request. Valid values:
   /// [loadBalancerId] The ID of the NLB instance to be associated with the security group.
   /// [securityGroupId] The ID of the security group to be disassociated.
-  LoadBalancerSecurityGroupAttachmentState({
+  const LoadBalancerSecurityGroupAttachmentState({
     this.dryRun,
     this.loadBalancerId,
     this.securityGroupId,

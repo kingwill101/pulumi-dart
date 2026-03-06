@@ -15,7 +15,7 @@ class GetPolicyArgs {
   /// Creates a new [GetPolicyArgs].
   /// [policyName] The name of the CdnWebApplicationFirewallPolicy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     required this.policyName,
     required this.resourceGroupName,
   });

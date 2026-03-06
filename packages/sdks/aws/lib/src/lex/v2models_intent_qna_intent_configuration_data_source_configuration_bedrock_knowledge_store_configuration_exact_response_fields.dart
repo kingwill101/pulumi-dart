@@ -8,7 +8,7 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields].
   /// [answerField] Field name for the answer.
-  V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields({
+  const V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields({
     this.answerField,
   });
 

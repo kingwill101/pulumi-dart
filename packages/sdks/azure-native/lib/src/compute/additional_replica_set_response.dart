@@ -12,7 +12,7 @@ class AdditionalReplicaSetResponse {
   /// Creates a new [AdditionalReplicaSetResponse].
   /// [regionalReplicaCount] The number of direct drive replicas of the Image Version to be created.This Property is updatable
   /// [storageAccountType] Specifies the storage account type to be used to create the direct drive replicas
-  AdditionalReplicaSetResponse({
+  const AdditionalReplicaSetResponse({
     this.regionalReplicaCount,
     this.storageAccountType,
   });

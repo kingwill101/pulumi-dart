@@ -13,7 +13,7 @@ class ChildRolloutJobsResponse {
   /// Creates a new [ChildRolloutJobsResponse].
   /// [advanceRolloutJobs] List of AdvanceChildRolloutJobs
   /// [createRolloutJobs] List of CreateChildRolloutJobs
-  ChildRolloutJobsResponse({
+  const ChildRolloutJobsResponse({
     required this.advanceRolloutJobs,
     required this.createRolloutJobs,
   });

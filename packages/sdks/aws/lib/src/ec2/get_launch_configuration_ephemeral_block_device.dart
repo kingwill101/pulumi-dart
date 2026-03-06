@@ -11,7 +11,7 @@ class GetLaunchConfigurationEphemeralBlockDevice {
   /// Creates a new [GetLaunchConfigurationEphemeralBlockDevice].
   /// [deviceName] Name of the device.
   /// [virtualName] Virtual Name of the device.
-  GetLaunchConfigurationEphemeralBlockDevice({
+  const GetLaunchConfigurationEphemeralBlockDevice({
     required this.deviceName,
     required this.virtualName,
   });

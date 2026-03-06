@@ -41,7 +41,7 @@ class BlobContainerArgs {
   /// [metadata] A name-value pair to associate with the container as metadata.
   /// [publicAccess] Specifies whether data in the container may be accessed publicly and the level of access.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  BlobContainerArgs({
+  const BlobContainerArgs({
     required this.accountName,
     this.containerName,
     this.defaultEncryptionScope,

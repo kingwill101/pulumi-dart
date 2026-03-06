@@ -18,7 +18,7 @@ class GetWorkloadArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualEnclaveName] The name of the enclaveResource Resource
   /// [workloadName] The name of the workloadResource Resource
-  GetWorkloadArgs({
+  const GetWorkloadArgs({
     required this.resourceGroupName,
     required this.virtualEnclaveName,
     required this.workloadName,

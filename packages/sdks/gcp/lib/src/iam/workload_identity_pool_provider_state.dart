@@ -124,7 +124,7 @@ class WorkloadIdentityPoolProviderState {
   /// [workloadIdentityPoolId] The ID used for the pool, which is the final component of the pool resource name. This
   /// [workloadIdentityPoolProviderId] The ID for the provider, which becomes the final component of the resource name. This
   /// [x509] An X.509-type identity provider represents a CA. It is trusted to assert a
-  WorkloadIdentityPoolProviderState({
+  const WorkloadIdentityPoolProviderState({
     this.attributeCondition,
     this.attributeMapping,
     this.aws,

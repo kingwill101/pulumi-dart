@@ -95,7 +95,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
   /// [timedMetadataId3Period] Optional.
   /// [timestampDeltaMilliseconds] Optional.
   /// [tsFileMode] Optional.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings({
     this.adMarkers,
     this.baseUrlContent,
     this.baseUrlContent1,

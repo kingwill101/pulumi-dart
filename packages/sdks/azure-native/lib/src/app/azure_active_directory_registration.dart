@@ -33,7 +33,7 @@ class AzureActiveDirectoryRegistration {
   /// [clientSecretCertificateThumbprint] An alternative to the client secret, that is the thumbprint of a certificate used for signing purposes. This property acts as
   /// [clientSecretSettingName] The app setting name that contains the client secret of the relying party application.
   /// [openIdIssuer] The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-  AzureActiveDirectoryRegistration({
+  const AzureActiveDirectoryRegistration({
     this.clientId,
     this.clientSecretCertificateIssuer,
     this.clientSecretCertificateSubjectAlternativeName,

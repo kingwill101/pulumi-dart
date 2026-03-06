@@ -38,7 +38,7 @@ class IntegrationAccountAgreementState {
   /// [metadata] The metadata of the Logic App Integration Account Agreement.
   /// [name] The name which should be used for this Logic App Integration Account Agreement. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Agreement should exist. Changing this forces a new resource to be created.
-  IntegrationAccountAgreementState({
+  const IntegrationAccountAgreementState({
     this.agreementType,
     this.content,
     this.guestIdentity,

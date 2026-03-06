@@ -15,7 +15,7 @@ class GetInterconnectLocationsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [locations] A list of interconnect locations. Each location will have the following attributes:
   /// [project] Required.
-  GetInterconnectLocationsResult({
+  const GetInterconnectLocationsResult({
     required this.id,
     required this.locations,
     required this.project,

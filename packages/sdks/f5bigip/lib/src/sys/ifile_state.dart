@@ -24,7 +24,7 @@ class IfileState {
   /// [partition] Partition where the iFile will be stored. Defaults to `Common`.
   /// [size] Size of the iFile content in bytes.
   /// [subPath] Subdirectory within the partition for organizing iFiles hierarchically.
-  IfileState({
+  const IfileState({
     this.checksum,
     this.content,
     this.name,

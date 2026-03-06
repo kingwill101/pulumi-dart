@@ -27,7 +27,7 @@ class ImageReference {
   /// [sharedGalleryImageId] This property is mutually exclusive with other properties and can be fetched from shared gallery image GET call.
   /// [sku] For example, 18.04-LTS or 2022-datacenter.
   /// [version] A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
-  ImageReference({
+  const ImageReference({
     this.communityGalleryImageId,
     this.id,
     this.offer,

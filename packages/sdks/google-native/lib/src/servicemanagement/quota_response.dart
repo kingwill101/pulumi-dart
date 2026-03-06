@@ -14,7 +14,7 @@ class QuotaResponse {
   /// Creates a new [QuotaResponse].
   /// [limits] List of QuotaLimit definitions for the service.
   /// [metricRules] List of MetricRule definitions, each one mapping a selected method to one or more metrics.
-  QuotaResponse({
+  const QuotaResponse({
     required this.limits,
     required this.metricRules,
   });

@@ -9,7 +9,7 @@ class ResourceReferenceResponse {
 
   /// Creates a new [ResourceReferenceResponse].
   /// [id] The ARM Resource ID of a resource managed by the deployment stack.
-  ResourceReferenceResponse({
+  const ResourceReferenceResponse({
     required this.id,
   });
 

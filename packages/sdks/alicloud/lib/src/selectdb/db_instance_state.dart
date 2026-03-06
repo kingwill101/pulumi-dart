@@ -113,7 +113,7 @@ class DbInstanceState {
   /// [vpcId] The ID of the VPC for DBInstance.
   /// [vswitchId] The ID of vswitch for DBInstance.
   /// [zoneId] The ID of zone for DBInstance.
-  DbInstanceState({
+  const DbInstanceState({
     this.adminPass,
     this.cacheSize,
     this.cacheSizePostpaid,

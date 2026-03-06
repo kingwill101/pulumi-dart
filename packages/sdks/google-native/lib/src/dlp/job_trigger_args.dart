@@ -38,7 +38,7 @@ class JobTriggerArgs {
   /// [status] A status for this trigger.
   /// [triggerId] The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
   /// [triggers] A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-  JobTriggerArgs({
+  const JobTriggerArgs({
     this.description,
     this.displayName,
     this.inspectJob,

@@ -12,7 +12,7 @@ class FilterRule {
   /// Creates a new [FilterRule].
   /// [name] The object key name prefix or suffix identifying one or more objects to which the filtering rule applies. The maximum length is 1,024 characters. Overlapping prefixes and suffixes are not supported. For more information, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html) in the *Amazon S3 User Guide*.
   /// [value] The value that the filter searches for in object key names.
-  FilterRule({
+  const FilterRule({
     this.name,
     this.value,
   });

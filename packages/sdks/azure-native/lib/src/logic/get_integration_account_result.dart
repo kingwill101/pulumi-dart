@@ -34,7 +34,7 @@ class GetIntegrationAccountResult {
   /// [state] The workflow state.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetIntegrationAccountResult({
+  const GetIntegrationAccountResult({
     required this.azureApiVersion,
     required this.id,
     this.integrationServiceEnvironment,

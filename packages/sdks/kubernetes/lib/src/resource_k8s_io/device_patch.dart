@@ -83,7 +83,7 @@ class DevicePatch {
   /// [nodeName] NodeName identifies the node where the device is available.
   /// [nodeSelector] NodeSelector defines the nodes where the device is available.
   /// [taints] If specified, these are the driver-defined taints.
-  DevicePatch({
+  const DevicePatch({
     this.allNodes,
     this.allowMultipleAllocations,
     this.attributes,

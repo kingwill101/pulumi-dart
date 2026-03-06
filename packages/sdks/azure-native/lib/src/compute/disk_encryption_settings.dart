@@ -17,7 +17,7 @@ class DiskEncryptionSettings {
   /// [diskEncryptionKey] Specifies the location of the disk encryption key, which is a Key Vault Secret.
   /// [enabled] Specifies whether disk encryption should be enabled on the virtual machine.
   /// [keyEncryptionKey] Specifies the location of the key encryption key in Key Vault.
-  DiskEncryptionSettings({
+  const DiskEncryptionSettings({
     this.diskEncryptionKey,
     this.enabled,
     this.keyEncryptionKey,

@@ -17,7 +17,7 @@ class AppLoggingSettingsBigqueryExportSettings {
   /// [dataset] The BigQuery dataset to export the data to.
   /// [enabled] Indicates whether the BigQuery export is enabled.
   /// [project] The project ID of the BigQuery dataset to export the data to.
-  AppLoggingSettingsBigqueryExportSettings({
+  const AppLoggingSettingsBigqueryExportSettings({
     this.dataset,
     this.enabled,
     this.project,

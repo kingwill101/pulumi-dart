@@ -8,7 +8,7 @@ class EventTargetKinesisTarget {
 
   /// Creates a new [EventTargetKinesisTarget].
   /// [partitionKeyPath] The JSON path to be extracted from the event and used as the partition key.
-  EventTargetKinesisTarget({
+  const EventTargetKinesisTarget({
     this.partitionKeyPath,
   });
 

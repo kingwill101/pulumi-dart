@@ -32,7 +32,7 @@ class InstanceGroupManagerUpdatePolicyComputeV1 {
   /// [mostDisruptiveAllowedAction] Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
   /// [replacementMethod] What action should be used to replace instances. See minimal_action.REPLACE
   /// [type] The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
-  InstanceGroupManagerUpdatePolicyComputeV1({
+  const InstanceGroupManagerUpdatePolicyComputeV1({
     this.instanceRedistributionType,
     this.maxSurge,
     this.maxUnavailable,

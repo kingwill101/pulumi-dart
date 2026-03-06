@@ -15,7 +15,7 @@ class RecycleBinState {
   /// [fileSystemId] The ID of the file system for which you want to enable the recycle bin feature.
   /// [reservedDays] The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
   /// [status] The status of the recycle bin.
-  RecycleBinState({
+  const RecycleBinState({
     this.fileSystemId,
     this.reservedDays,
     this.status,

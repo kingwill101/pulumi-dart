@@ -9,7 +9,7 @@ class AccountAttributeValueResponse {
 
   /// Creates a new [AccountAttributeValueResponse].
   /// [attributeValue] &lt;p&gt;The value of the attribute.&lt;/p&gt;
-  AccountAttributeValueResponse({
+  const AccountAttributeValueResponse({
     this.attributeValue,
   });
 

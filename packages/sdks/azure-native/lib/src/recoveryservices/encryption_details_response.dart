@@ -15,7 +15,7 @@ class EncryptionDetailsResponse {
   /// [kekCertExpiryDate] The key encryption key certificate expiry date.
   /// [kekCertThumbprint] The key encryption key certificate thumbprint.
   /// [kekState] The key encryption key state for the Vmm.
-  EncryptionDetailsResponse({
+  const EncryptionDetailsResponse({
     this.kekCertExpiryDate,
     this.kekCertThumbprint,
     this.kekState,

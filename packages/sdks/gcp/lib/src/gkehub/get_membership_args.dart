@@ -20,7 +20,7 @@ class GetMembershipArgs {
   /// [location] The location for the GKE Hub Membership.
   /// [membershipId] The GKE Hub Membership id or GKE Cluster's name.
   /// [project] The ID of the project in which the resource belongs.
-  GetMembershipArgs({
+  const GetMembershipArgs({
     required this.location,
     required this.membershipId,
     this.project,

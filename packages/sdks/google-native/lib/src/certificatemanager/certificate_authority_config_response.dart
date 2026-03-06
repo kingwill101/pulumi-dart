@@ -10,7 +10,7 @@ class CertificateAuthorityConfigResponse {
 
   /// Creates a new [CertificateAuthorityConfigResponse].
   /// [certificateAuthorityServiceConfig] Defines a CertificateAuthorityServiceConfig.
-  CertificateAuthorityConfigResponse({
+  const CertificateAuthorityConfigResponse({
     required this.certificateAuthorityServiceConfig,
   });
 

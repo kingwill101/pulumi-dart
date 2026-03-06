@@ -16,7 +16,7 @@ class AzureFilesIdentityBasedAuthentication {
   /// [activeDirectoryProperties] Required if directoryServiceOptions are AD, optional if they are AADKERB.
   /// [defaultSharePermission] Default share permission for users using Kerberos authentication if RBAC role is not assigned.
   /// [directoryServiceOptions] Indicates the directory service used. Note that this enum may be extended in the future.
-  AzureFilesIdentityBasedAuthentication({
+  const AzureFilesIdentityBasedAuthentication({
     this.activeDirectoryProperties,
     this.defaultSharePermission,
     required this.directoryServiceOptions,

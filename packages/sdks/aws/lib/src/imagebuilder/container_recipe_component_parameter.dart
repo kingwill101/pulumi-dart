@@ -11,7 +11,7 @@ class ContainerRecipeComponentParameter {
   /// Creates a new [ContainerRecipeComponentParameter].
   /// [name] The name of the component parameter.
   /// [value] The value for the named component parameter.
-  ContainerRecipeComponentParameter({
+  const ContainerRecipeComponentParameter({
     required this.name,
     required this.value,
   });

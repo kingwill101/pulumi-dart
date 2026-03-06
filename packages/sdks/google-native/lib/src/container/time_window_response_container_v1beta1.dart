@@ -16,7 +16,7 @@ class TimeWindowResponseContainerV1beta1 {
   /// [endTime] The time that the window ends. The end time should take place after the start time.
   /// [maintenanceExclusionOptions] MaintenanceExclusionOptions provides maintenance exclusion related options.
   /// [startTime] The time that the window first starts.
-  TimeWindowResponseContainerV1beta1({
+  const TimeWindowResponseContainerV1beta1({
     required this.endTime,
     required this.maintenanceExclusionOptions,
     required this.startTime,

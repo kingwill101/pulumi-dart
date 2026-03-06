@@ -12,7 +12,7 @@ class DBClusterRoleResponse {
   /// Creates a new [DBClusterRoleResponse].
   /// [featureName] The name of the feature associated with the AWS Identity and Access Management (IAM) role. For the list of supported feature names, see DBEngineVersion in the Amazon RDS API Reference.
   /// [roleArn] The Amazon Resource Name (ARN) of the IAM role that is associated with the DB cluster.
-  DBClusterRoleResponse({
+  const DBClusterRoleResponse({
     this.featureName,
     this.roleArn,
   });

@@ -18,7 +18,7 @@ class TypedObjectReference {
   /// [kind] Kind is the type of resource being referenced
   /// [name] Name is the name of resource being referenced
   /// [namespace] Namespace is the namespace of resource being referenced Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details. (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
-  TypedObjectReference({
+  const TypedObjectReference({
     this.apiGroup,
     required this.kind,
     required this.name,

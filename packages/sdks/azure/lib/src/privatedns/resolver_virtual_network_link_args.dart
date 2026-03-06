@@ -21,7 +21,7 @@ class ResolverVirtualNetworkLinkArgs {
   /// [metadata] Metadata attached to the Private DNS Resolver Virtual Network Link.
   /// [name] Specifies the name which should be used for this Private DNS Resolver Virtual Network Link. Changing this forces a new Private DNS Resolver Virtual Network Link to be created.
   /// [virtualNetworkId] The ID of the Virtual Network that is linked to the Private DNS Resolver Virtual Network Link. Changing this forces a new resource to be created.
-  ResolverVirtualNetworkLinkArgs({
+  const ResolverVirtualNetworkLinkArgs({
     required this.dnsForwardingRulesetId,
     this.metadata,
     this.name,

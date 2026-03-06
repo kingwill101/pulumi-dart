@@ -18,7 +18,7 @@ class DataProtectionSettingsInlineRedactionConfiguration {
   /// [globalEnforcedUrls] The global enforced URL configuration for the inline redaction configuration.
   /// [globalExemptUrls] The global exempt URL configuration for the inline redaction configuration.
   /// [inlineRedactionPatterns] The inline redaction patterns to be enabled for the inline redaction configuration. Detailed below.
-  DataProtectionSettingsInlineRedactionConfiguration({
+  const DataProtectionSettingsInlineRedactionConfiguration({
     this.globalConfidenceLevel,
     this.globalEnforcedUrls,
     this.globalExemptUrls,

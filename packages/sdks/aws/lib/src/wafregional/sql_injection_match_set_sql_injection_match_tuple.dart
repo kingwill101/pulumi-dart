@@ -16,7 +16,7 @@ class SqlInjectionMatchSetSqlInjectionMatchTuple {
   /// Creates a new [SqlInjectionMatchSetSqlInjectionMatchTuple].
   /// [fieldToMatch] Specifies where in a web request to look for snippets of malicious SQL code.
   /// [textTransformation] Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
-  SqlInjectionMatchSetSqlInjectionMatchTuple({
+  const SqlInjectionMatchSetSqlInjectionMatchTuple({
     required this.fieldToMatch,
     required this.textTransformation,
   });

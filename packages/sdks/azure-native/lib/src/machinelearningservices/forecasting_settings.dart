@@ -55,7 +55,7 @@ class ForecastingSettings {
   /// [timeColumnName] The name of the time column. This parameter is required when forecasting to specify the datetime column in the input data used for building the time series and inferring its frequency.
   /// [timeSeriesIdColumnNames] The names of columns used to group a timeseries. It can be used to create multiple series.
   /// [useStl] Configure STL Decomposition of the time-series target column.
-  ForecastingSettings({
+  const ForecastingSettings({
     this.countryOrRegionForHolidays,
     this.cvStepSize,
     this.featureLags,

@@ -18,7 +18,7 @@ class DataLakeTargetStorage {
   /// [datalakeStorage] DataLake service storage details.
   /// [fabricOneLake] Fabric one lake storage details.
   /// [localStorage] Local storage details.
-  DataLakeTargetStorage({
+  const DataLakeTargetStorage({
     this.datalakeStorage,
     this.fabricOneLake,
     this.localStorage,

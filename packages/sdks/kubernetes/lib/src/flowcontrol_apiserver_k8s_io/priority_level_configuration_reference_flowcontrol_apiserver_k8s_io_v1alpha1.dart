@@ -9,7 +9,7 @@ class PriorityLevelConfigurationReferenceFlowcontrolApiserverK8sIoV1alpha1 {
 
   /// Creates a new [PriorityLevelConfigurationReferenceFlowcontrolApiserverK8sIoV1alpha1].
   /// [name] `name` is the name of the priority level configuration being referenced Required.
-  PriorityLevelConfigurationReferenceFlowcontrolApiserverK8sIoV1alpha1({
+  const PriorityLevelConfigurationReferenceFlowcontrolApiserverK8sIoV1alpha1({
     required this.name,
   });
 

@@ -14,7 +14,7 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrust {
   /// [acms] Required.
   /// [files] Required.
   /// [sds] Required.
-  GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrust({
+  const GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrust({
     required this.acms,
     required this.files,
     required this.sds,

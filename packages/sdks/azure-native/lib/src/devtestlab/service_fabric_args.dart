@@ -33,7 +33,7 @@ class ServiceFabricArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags of the resource.
   /// [userName] The name of the user profile.
-  ServiceFabricArgs({
+  const ServiceFabricArgs({
     this.environmentId,
     this.externalServiceFabricId,
     required this.labName,

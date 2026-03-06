@@ -16,7 +16,7 @@ class ServiceLevelEventsGoodEvents {
   /// [from] The event type where NRDB data will be fetched from.
   /// [select] The NRQL SELECT clause to aggregate events.
   /// [where] A filter that narrows down the NRDB events just to those that are considered good responses (e.g, those that refer to
-  ServiceLevelEventsGoodEvents({
+  const ServiceLevelEventsGoodEvents({
     required this.from,
     this.select,
     this.where,

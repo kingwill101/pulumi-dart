@@ -9,7 +9,7 @@ class ApiEntityReferenceResponse {
 
   /// Creates a new [ApiEntityReferenceResponse].
   /// [resourceId] The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-  ApiEntityReferenceResponse({
+  const ApiEntityReferenceResponse({
     this.resourceId,
   });
 

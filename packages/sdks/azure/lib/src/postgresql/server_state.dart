@@ -83,7 +83,7 @@ class ServerState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [threatDetectionPolicy] Threat detection policy configuration, known in the API as Server Security Alerts Policy. The `threat_detection_policy` block supports fields documented below.
   /// [version] Specifies the version of PostgreSQL to use. Valid values are `9.5`, `9.6`, `10`, `10.0`, `10.2` and `11`. Changing this forces a new resource to be created.
-  ServerState({
+  const ServerState({
     this.administratorLogin,
     this.administratorLoginPassword,
     this.administratorLoginPasswordWoVersion,

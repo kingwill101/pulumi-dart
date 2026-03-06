@@ -13,7 +13,7 @@ class BackendServerBackendServer {
   /// [serverIp] Optional.
   /// [type] Optional.
   /// [weight] Required.
-  BackendServerBackendServer({
+  const BackendServerBackendServer({
     required this.serverId,
     this.serverIp,
     this.type,

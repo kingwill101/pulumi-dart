@@ -35,7 +35,7 @@ class JobResponse {
   /// [skipMessage] Additional information on why the Job was skipped, if available.
   /// [state] The current state of the Job.
   /// [verifyJob] A verify Job.
-  JobResponse({
+  const JobResponse({
     required this.advanceChildRolloutJob,
     required this.createChildRolloutJob,
     required this.deployJob,

@@ -20,7 +20,7 @@ class MoveResourceProperties {
   /// [existingTargetId] Gets or sets the existing target ARM Id of the resource.
   /// [resourceSettings] Gets or sets the resource settings.
   /// [sourceId] Gets or sets the Source ARM Id of the resource.
-  MoveResourceProperties({
+  const MoveResourceProperties({
     this.dependsOnOverrides,
     this.existingTargetId,
     this.resourceSettings,

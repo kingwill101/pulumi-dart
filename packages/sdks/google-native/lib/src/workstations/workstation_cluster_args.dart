@@ -41,7 +41,7 @@ class WorkstationClusterArgs {
   /// [project] Optional.
   /// [subnetwork] Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
   /// [workstationClusterId] Required. ID to use for the workstation cluster.
-  WorkstationClusterArgs({
+  const WorkstationClusterArgs({
     this.annotations,
     this.displayName,
     this.etag,

@@ -18,7 +18,7 @@ class NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule {
   /// [prefixListId] Optional.
   /// [protocol] Optional.
   /// [securityGroupId] Optional.
-  NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule({
+  const NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule({
     this.cidr,
     this.direction,
     this.portRanges,

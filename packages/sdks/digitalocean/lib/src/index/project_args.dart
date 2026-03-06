@@ -27,7 +27,7 @@ class ProjectArgs {
   /// [name] The name of the Project
   /// [purpose] the purpose of the project, (Default: "Web Application")
   /// [resources] a list of uniform resource names (URNs) for the resources associated with the project
-  ProjectArgs({
+  const ProjectArgs({
     this.description,
     this.environment,
     this.isDefault,

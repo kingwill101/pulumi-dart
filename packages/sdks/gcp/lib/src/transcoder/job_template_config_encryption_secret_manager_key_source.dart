@@ -8,7 +8,7 @@ class JobTemplateConfigEncryptionSecretManagerKeySource {
 
   /// Creates a new [JobTemplateConfigEncryptionSecretManagerKeySource].
   /// [secretVersion] The name of the Secret Version containing the encryption key in the following format: projects/{project}/secrets/{secret_id}/versions/{version_number}.
-  JobTemplateConfigEncryptionSecretManagerKeySource({
+  const JobTemplateConfigEncryptionSecretManagerKeySource({
     required this.secretVersion,
   });
 

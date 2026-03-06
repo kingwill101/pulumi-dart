@@ -28,7 +28,7 @@ class GetKeysArgs {
   /// [ids] A list of KMS key IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
-  GetKeysArgs({
+  const GetKeysArgs({
     this.descriptionRegex,
     this.enableDetails,
     this.filters,

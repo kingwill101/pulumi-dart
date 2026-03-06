@@ -27,7 +27,7 @@ class RemoteSupportNodeSettingsResponse {
   /// [state] Remote Support Access Connection State on the Node
   /// [transcriptLocation] Remote Support Transcript location on the node
   /// [updatedAt] Remote Support Enablement Request Updated TimeStamp on the Node
-  RemoteSupportNodeSettingsResponse({
+  const RemoteSupportNodeSettingsResponse({
     required this.arcResourceId,
     required this.connectionErrorMessage,
     required this.connectionStatus,

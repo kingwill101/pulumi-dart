@@ -13,7 +13,7 @@ class BuildResponse {
   /// Creates a new [BuildResponse].
   /// [builderVersion] Immutable. Version of the builder which produced this build.
   /// [signature] Signature of the build in occurrences pointing to this build note containing build details.
-  BuildResponse({
+  const BuildResponse({
     required this.builderVersion,
     required this.signature,
   });

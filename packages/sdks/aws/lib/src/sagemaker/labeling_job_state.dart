@@ -63,7 +63,7 @@ class LabelingJobState {
   /// [stoppingConditions] Conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped. Fields are documented below.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  LabelingJobState({
+  const LabelingJobState({
     this.failureReason,
     this.humanTaskConfig,
     this.inputConfig,

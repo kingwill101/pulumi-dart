@@ -23,7 +23,7 @@ class GetZnodesZnode {
   /// [id] The ID of the Znode. The value formats as `&lt;cluster_id&gt;:&lt;path&gt;`.
   /// [path] The Node path.
   /// [znodeName] The Node name.
-  GetZnodesZnode({
+  const GetZnodesZnode({
     required this.clusterId,
     required this.data,
     required this.dir,

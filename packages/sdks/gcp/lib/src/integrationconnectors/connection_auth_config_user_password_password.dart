@@ -9,7 +9,7 @@ class ConnectionAuthConfigUserPasswordPassword {
 
   /// Creates a new [ConnectionAuthConfigUserPasswordPassword].
   /// [secretVersion] The resource name of the secret version in the format,
-  ConnectionAuthConfigUserPasswordPassword({
+  const ConnectionAuthConfigUserPasswordPassword({
     required this.secretVersion,
   });
 

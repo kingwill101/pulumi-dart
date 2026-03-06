@@ -30,7 +30,7 @@ class SecondarySubnetArgs {
   /// [secondaryNetworkId] ID of the secondary network in which to create the secondary subnet.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  SecondarySubnetArgs({
+  const SecondarySubnetArgs({
     this.availabilityZone,
     this.availabilityZoneId,
     required this.ipv4CidrBlock,

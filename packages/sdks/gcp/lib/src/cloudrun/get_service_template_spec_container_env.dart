@@ -15,7 +15,7 @@ class GetServiceTemplateSpecContainerEnv {
   /// [name] The name of the Cloud Run Service.
   /// [value] Defaults to "".
   /// [valueFroms] Source for the environment variable's value. Only supports secret_key_ref.
-  GetServiceTemplateSpecContainerEnv({
+  const GetServiceTemplateSpecContainerEnv({
     required this.name,
     required this.value,
     required this.valueFroms,

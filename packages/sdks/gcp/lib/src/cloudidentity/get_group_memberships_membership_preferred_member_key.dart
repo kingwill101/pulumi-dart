@@ -16,7 +16,7 @@ class GetGroupMembershipsMembershipPreferredMemberKey {
   /// Creates a new [GetGroupMembershipsMembershipPreferredMemberKey].
   /// [id] The ID of the entity. For Google-managed entities, the id is the email address of an existing
   /// [namespace] The namespace in which the entity exists.
-  GetGroupMembershipsMembershipPreferredMemberKey({
+  const GetGroupMembershipsMembershipPreferredMemberKey({
     required this.id,
     required this.namespace,
   });

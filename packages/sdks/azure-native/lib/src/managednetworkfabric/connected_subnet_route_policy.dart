@@ -13,7 +13,7 @@ class ConnectedSubnetRoutePolicy {
   /// Creates a new [ConnectedSubnetRoutePolicy].
   /// [exportRoutePolicy] Array of ARM Resource ID of the RoutePolicies.
   /// [exportRoutePolicyId] ARM Resource ID of the Route Policy. This is used for the backward compatibility.
-  ConnectedSubnetRoutePolicy({
+  const ConnectedSubnetRoutePolicy({
     this.exportRoutePolicy,
     this.exportRoutePolicyId,
   });

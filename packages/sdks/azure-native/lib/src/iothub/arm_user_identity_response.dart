@@ -9,7 +9,7 @@ class ArmUserIdentityResponse {
   /// Creates a new [ArmUserIdentityResponse].
   /// [clientId] Required.
   /// [principalId] Required.
-  ArmUserIdentityResponse({
+  const ArmUserIdentityResponse({
     required this.clientId,
     required this.principalId,
   });

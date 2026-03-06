@@ -17,7 +17,7 @@ class GetAppSpecEnv {
   /// [scope] The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
   /// [type] The type of the environment variable, `GENERAL` or `SECRET`.
   /// [value] The threshold for the type of the warning.
-  GetAppSpecEnv({
+  const GetAppSpecEnv({
     this.key,
     this.scope,
     required this.type,

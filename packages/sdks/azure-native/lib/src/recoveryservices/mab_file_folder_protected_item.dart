@@ -77,7 +77,7 @@ class MabFileFolderProtectedItem {
   /// [resourceGuardOperationRequests] ResourceGuardOperationRequests on which LAC check will be performed
   /// [softDeleteRetentionPeriodInDays] Soft delete retention period in days
   /// [sourceResourceId] ARM ID of the resource to be backed up.
-  MabFileFolderProtectedItem({
+  const MabFileFolderProtectedItem({
     this.backupSetName,
     this.computerName,
     this.containerName,

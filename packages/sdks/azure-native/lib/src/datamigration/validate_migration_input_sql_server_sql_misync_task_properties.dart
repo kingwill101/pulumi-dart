@@ -17,7 +17,7 @@ class ValidateMigrationInputSqlServerSqlMISyncTaskProperties {
   /// [clientData] Key value pairs of client data to attach meta data information to task
   /// [input] Task input
   /// [taskType] Task type.
-  ValidateMigrationInputSqlServerSqlMISyncTaskProperties({
+  const ValidateMigrationInputSqlServerSqlMISyncTaskProperties({
     this.clientData,
     this.input,
     required this.taskType,

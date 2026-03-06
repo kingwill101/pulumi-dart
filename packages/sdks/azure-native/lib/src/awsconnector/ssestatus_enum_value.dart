@@ -9,7 +9,7 @@ class SSEStatusEnumValue {
 
   /// Creates a new [SSEStatusEnumValue].
   /// [value] Property value
-  SSEStatusEnumValue({
+  const SSEStatusEnumValue({
     this.value,
   });
 

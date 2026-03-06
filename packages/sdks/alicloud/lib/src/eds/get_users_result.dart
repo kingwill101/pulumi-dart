@@ -18,7 +18,7 @@ class GetUsersResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [users] Required.
-  GetUsersResult({
+  const GetUsersResult({
     required this.id,
     required this.ids,
     this.outputFile,

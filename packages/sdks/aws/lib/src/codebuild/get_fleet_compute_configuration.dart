@@ -20,7 +20,7 @@ class GetFleetComputeConfiguration {
   /// [machineType] Machine type of the instance type included in the fleet.
   /// [memory] Amount of memory of the instance type included in the fleet.
   /// [vcpu] Number of vCPUs of the instance type included in the fleet.
-  GetFleetComputeConfiguration({
+  const GetFleetComputeConfiguration({
     required this.disk,
     required this.instanceType,
     required this.machineType,

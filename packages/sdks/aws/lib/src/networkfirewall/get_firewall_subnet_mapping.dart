@@ -8,7 +8,7 @@ class GetFirewallSubnetMapping {
 
   /// Creates a new [GetFirewallSubnetMapping].
   /// [subnetId] The unique identifier for the subnet.
-  GetFirewallSubnetMapping({
+  const GetFirewallSubnetMapping({
     required this.subnetId,
   });
 

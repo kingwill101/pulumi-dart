@@ -15,7 +15,7 @@ class GetEndpointArgs {
   /// Creates a new [GetEndpointArgs].
   /// [endpointName] The endpoint name.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetEndpointArgs({
+  const GetEndpointArgs({
     required this.endpointName,
     required this.resourceUri,
   });

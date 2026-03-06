@@ -10,7 +10,7 @@ class FirewallPolicyTransportSecurityResponse {
 
   /// Creates a new [FirewallPolicyTransportSecurityResponse].
   /// [certificateAuthority] The CA used for intermediate CA generation.
-  FirewallPolicyTransportSecurityResponse({
+  const FirewallPolicyTransportSecurityResponse({
     this.certificateAuthority,
   });
 

@@ -22,7 +22,7 @@ class EcsPrefixListState {
   /// [entries] The Entry. The details see Block `entry`.
   /// [maxEntries] The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
   /// [prefixListName] The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
-  EcsPrefixListState({
+  const EcsPrefixListState({
     this.addressFamily,
     this.description,
     this.entries,

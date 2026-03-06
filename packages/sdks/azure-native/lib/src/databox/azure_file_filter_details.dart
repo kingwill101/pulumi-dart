@@ -15,7 +15,7 @@ class AzureFileFilterDetails {
   /// [filePathList] List of full path of the files to be transferred.
   /// [filePrefixList] Prefix list of the Azure files to be transferred.
   /// [fileShareList] List of file shares to be transferred.
-  AzureFileFilterDetails({
+  const AzureFileFilterDetails({
     this.filePathList,
     this.filePrefixList,
     this.fileShareList,

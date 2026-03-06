@@ -12,7 +12,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettingsResponse {
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1WafSettingsResponse].
   /// [wafFeature] The WAF feature for which this key is enabled.
   /// [wafService] The WAF service that uses this key.
-  GoogleCloudRecaptchaenterpriseV1WafSettingsResponse({
+  const GoogleCloudRecaptchaenterpriseV1WafSettingsResponse({
     required this.wafFeature,
     required this.wafService,
   });

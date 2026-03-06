@@ -8,7 +8,7 @@ class PoolUserAccountWindowsUserConfiguration {
 
   /// Creates a new [PoolUserAccountWindowsUserConfiguration].
   /// [loginMode] Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode. Values supported are "Batch" and "Interactive".
-  PoolUserAccountWindowsUserConfiguration({
+  const PoolUserAccountWindowsUserConfiguration({
     required this.loginMode,
   });
 

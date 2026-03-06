@@ -15,7 +15,7 @@ class GetClusterMaintenancePolicyMaintenanceExclusion {
   /// [exclusionName] Required.
   /// [exclusionOptions] Maintenance exclusion related options.
   /// [startTime] Required.
-  GetClusterMaintenancePolicyMaintenanceExclusion({
+  const GetClusterMaintenancePolicyMaintenanceExclusion({
     required this.endTime,
     required this.exclusionName,
     required this.exclusionOptions,

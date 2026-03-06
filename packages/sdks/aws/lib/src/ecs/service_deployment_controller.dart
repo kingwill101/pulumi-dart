@@ -8,7 +8,7 @@ class ServiceDeploymentController {
 
   /// Creates a new [ServiceDeploymentController].
   /// [type] Type of deployment controller. Valid values: `CODE_DEPLOY`, `ECS`, `EXTERNAL`. Default: `ECS`.
-  ServiceDeploymentController({
+  const ServiceDeploymentController({
     this.type,
   });
 

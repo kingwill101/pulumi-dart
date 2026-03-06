@@ -19,7 +19,7 @@ class ImportRowErrorResponse {
   /// [rowNumber] The row number where the error was detected.
   /// [vmName] The name of the VM in the row.
   /// [vmUuid] The VM UUID.
-  ImportRowErrorResponse({
+  const ImportRowErrorResponse({
     required this.errors,
     required this.rowNumber,
     required this.vmName,

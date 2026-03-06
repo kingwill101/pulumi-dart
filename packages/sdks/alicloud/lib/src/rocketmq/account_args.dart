@@ -21,7 +21,7 @@ class AccountArgs {
   /// [instanceId] The instance ID.
   /// [password] The password of the account.
   /// [username] The username of the account.
-  AccountArgs({
+  const AccountArgs({
     this.accountStatus,
     required this.instanceId,
     required this.password,

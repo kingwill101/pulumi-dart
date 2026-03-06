@@ -81,7 +81,7 @@ class GetManagedKubernetesClustersCluster {
   /// [workerNumbers] The ECS instance node number in the current container cluster.
   /// [workerPeriod] Required.
   /// [workerPeriodUnit] Required.
-  GetManagedKubernetesClustersCluster({
+  const GetManagedKubernetesClustersCluster({
     required this.availabilityZone,
     required this.clusterNetworkType,
     required this.connections,

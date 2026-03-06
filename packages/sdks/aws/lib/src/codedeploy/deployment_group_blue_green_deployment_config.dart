@@ -19,7 +19,7 @@ class DeploymentGroupBlueGreenDeploymentConfig {
   /// [deploymentReadyOption] Information about the action to take when newly provisioned instances are ready to receive traffic in a blue/green deployment (documented below).
   /// [greenFleetProvisioningOption] Information about how instances are provisioned for a replacement environment in a blue/green deployment (documented below).
   /// [terminateBlueInstancesOnDeploymentSuccess] Information about whether to terminate instances in the original fleet during a blue/green deployment (documented below).
-  DeploymentGroupBlueGreenDeploymentConfig({
+  const DeploymentGroupBlueGreenDeploymentConfig({
     this.deploymentReadyOption,
     this.greenFleetProvisioningOption,
     this.terminateBlueInstancesOnDeploymentSuccess,

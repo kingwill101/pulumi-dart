@@ -48,7 +48,7 @@ class DscpConfigurationArgs {
   /// [sourceIpRanges] Source IP ranges.
   /// [sourcePortRanges] Sources port ranges.
   /// [tags] Resource tags.
-  DscpConfigurationArgs({
+  const DscpConfigurationArgs({
     this.destinationIpRanges,
     this.destinationPortRanges,
     this.dscpConfigurationName,

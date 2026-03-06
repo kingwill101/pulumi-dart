@@ -8,7 +8,7 @@ class LocationSmbMountOptions {
 
   /// Creates a new [LocationSmbMountOptions].
   /// [version] The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
-  LocationSmbMountOptions({
+  const LocationSmbMountOptions({
     this.version,
   });
 

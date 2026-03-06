@@ -21,7 +21,7 @@ class GetInstanceArgs {
   /// [instanceId] The ID of the memorystore instance.
   /// [location] (optional)
   /// [project] (optional)
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.instanceId,
     this.location,
     this.project,

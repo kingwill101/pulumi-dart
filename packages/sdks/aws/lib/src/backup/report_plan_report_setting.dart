@@ -23,7 +23,7 @@ class ReportPlanReportSetting {
   /// [organizationUnits] Specifies the list of Organizational Units a report covers.
   /// [regions] Specifies the list of regions a report covers.
   /// [reportTemplate] Identifies the report template for the report. Reports are built using a report template. The report templates are: `RESOURCE_COMPLIANCE_REPORT` | `CONTROL_COMPLIANCE_REPORT` | `BACKUP_JOB_REPORT` | `COPY_JOB_REPORT` | `RESTORE_JOB_REPORT`.
-  ReportPlanReportSetting({
+  const ReportPlanReportSetting({
     this.accounts,
     this.frameworkArns,
     this.numberOfFrameworks,

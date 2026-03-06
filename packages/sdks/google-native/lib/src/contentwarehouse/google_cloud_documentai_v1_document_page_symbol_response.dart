@@ -14,7 +14,7 @@ class GoogleCloudDocumentaiV1DocumentPageSymbolResponse {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageSymbolResponse].
   /// [detectedLanguages] A list of detected languages together with confidence.
   /// [layout] Layout for Symbol.
-  GoogleCloudDocumentaiV1DocumentPageSymbolResponse({
+  const GoogleCloudDocumentaiV1DocumentPageSymbolResponse({
     required this.detectedLanguages,
     required this.layout,
   });

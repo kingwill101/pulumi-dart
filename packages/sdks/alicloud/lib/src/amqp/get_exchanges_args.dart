@@ -24,7 +24,7 @@ class GetExchangesArgs {
   /// [nameRegex] A regex string to filter results by Exchange name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [virtualHostName] The name of virtual host where an exchange resides.
-  GetExchangesArgs({
+  const GetExchangesArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

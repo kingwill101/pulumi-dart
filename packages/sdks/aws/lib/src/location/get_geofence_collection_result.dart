@@ -30,7 +30,7 @@ class GetGeofenceCollectionResult {
   /// [region] Required.
   /// [tags] Key-value map of resource tags for the geofence collection.
   /// [updateTime] Timestamp for when the geofence collection resource was last updated in ISO 8601 format.
-  GetGeofenceCollectionResult({
+  const GetGeofenceCollectionResult({
     required this.collectionArn,
     required this.collectionName,
     required this.createTime,

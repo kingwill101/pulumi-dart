@@ -14,7 +14,7 @@ class CaCertificateRegistrationConfig {
   /// [roleArn] The ARN of the role.
   /// [templateBody] The template body.
   /// [templateName] The name of the provisioning template.
-  CaCertificateRegistrationConfig({
+  const CaCertificateRegistrationConfig({
     this.roleArn,
     this.templateBody,
     this.templateName,

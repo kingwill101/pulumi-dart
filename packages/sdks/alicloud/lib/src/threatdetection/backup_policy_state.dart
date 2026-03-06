@@ -24,7 +24,7 @@ class BackupPolicyState {
   /// [policyVersion] Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
   /// [status] The status of the Backup Policy instance.
   /// [uuidLists] Specify the Protection of Server UUID List.
-  BackupPolicyState({
+  const BackupPolicyState({
     this.backupPolicyName,
     this.policy,
     this.policyRegionId,

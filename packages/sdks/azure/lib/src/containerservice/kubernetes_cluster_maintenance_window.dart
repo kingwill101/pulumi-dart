@@ -13,7 +13,7 @@ class KubernetesClusterMaintenanceWindow {
   /// Creates a new [KubernetesClusterMaintenanceWindow].
   /// [alloweds] One or more `allowed` blocks as defined below.
   /// [notAlloweds] One or more `not_allowed` block as defined below.
-  KubernetesClusterMaintenanceWindow({
+  const KubernetesClusterMaintenanceWindow({
     this.alloweds,
     this.notAlloweds,
   });

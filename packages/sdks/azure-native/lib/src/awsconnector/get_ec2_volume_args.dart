@@ -15,7 +15,7 @@ class GetEc2VolumeArgs {
   /// Creates a new [GetEc2VolumeArgs].
   /// [name] Name of Ec2Volume
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2VolumeArgs({
+  const GetEc2VolumeArgs({
     required this.name,
     required this.resourceGroupName,
   });

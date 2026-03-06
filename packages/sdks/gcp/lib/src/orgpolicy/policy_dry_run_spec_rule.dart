@@ -27,7 +27,7 @@ class PolicyDryRunSpecRule {
   /// [enforce] If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
   /// [parameters] Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
   /// [values] List of values to be used for this policy rule. This field can be set only in policies for list constraints.
-  PolicyDryRunSpecRule({
+  const PolicyDryRunSpecRule({
     this.allowAll,
     this.condition,
     this.denyAll,

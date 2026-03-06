@@ -11,7 +11,7 @@ class GetPrometheusAlertRulesRuleLabel {
   /// Creates a new [GetPrometheusAlertRulesRuleLabel].
   /// [name] The name of the label.
   /// [value] The value of the label.
-  GetPrometheusAlertRulesRuleLabel({
+  const GetPrometheusAlertRulesRuleLabel({
     required this.name,
     required this.value,
   });

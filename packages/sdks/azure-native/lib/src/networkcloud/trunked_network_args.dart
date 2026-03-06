@@ -37,7 +37,7 @@ class TrunkedNetworkArgs {
   /// [tags] Resource tags.
   /// [trunkedNetworkName] The name of the trunked network.
   /// [vlans] The list of vlans that are selected from the isolation domains for trunking.
-  TrunkedNetworkArgs({
+  const TrunkedNetworkArgs({
     required this.extendedLocation,
     this.hybridAksPluginType,
     this.interfaceName,

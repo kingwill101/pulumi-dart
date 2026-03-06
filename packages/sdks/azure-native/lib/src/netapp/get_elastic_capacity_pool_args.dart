@@ -18,7 +18,7 @@ class GetElasticCapacityPoolArgs {
   /// [accountName] The name of the ElasticAccount
   /// [poolName] The name of the ElasticCapacityPool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetElasticCapacityPoolArgs({
+  const GetElasticCapacityPoolArgs({
     required this.accountName,
     required this.poolName,
     required this.resourceGroupName,

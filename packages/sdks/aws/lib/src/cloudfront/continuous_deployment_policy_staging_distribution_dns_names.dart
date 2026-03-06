@@ -11,7 +11,7 @@ class ContinuousDeploymentPolicyStagingDistributionDnsNames {
   /// Creates a new [ContinuousDeploymentPolicyStagingDistributionDnsNames].
   /// [items] A list of CloudFront domain names for the staging distribution.
   /// [quantity] Number of CloudFront domain names in the staging distribution.
-  ContinuousDeploymentPolicyStagingDistributionDnsNames({
+  const ContinuousDeploymentPolicyStagingDistributionDnsNames({
     this.items,
     required this.quantity,
   });

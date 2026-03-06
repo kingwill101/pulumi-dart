@@ -48,7 +48,7 @@ class DatabaseArgs {
   /// [persistence] Persistence settings
   /// [port] TCP port of the database endpoint. Specified at create time. Defaults to an available port.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.accessKeysAuthentication,
     this.clientProtocol,
     required this.clusterName,

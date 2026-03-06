@@ -15,7 +15,7 @@ class GetSharedLimitArgs {
   /// Creates a new [GetSharedLimitArgs].
   /// [location] The name of the Azure region.
   /// [name] The name of the SharedLimit
-  GetSharedLimitArgs({
+  const GetSharedLimitArgs({
     required this.location,
     required this.name,
   });

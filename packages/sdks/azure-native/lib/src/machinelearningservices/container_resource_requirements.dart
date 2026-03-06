@@ -13,7 +13,7 @@ class ContainerResourceRequirements {
   /// Creates a new [ContainerResourceRequirements].
   /// [containerResourceLimits] Container resource limit info:
   /// [containerResourceRequests] Container resource request info:
-  ContainerResourceRequirements({
+  const ContainerResourceRequirements({
     this.containerResourceLimits,
     this.containerResourceRequests,
   });

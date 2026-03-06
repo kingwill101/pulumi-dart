@@ -23,7 +23,7 @@ class EndpointAttachmentArgs {
   /// [name] Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
   /// [organizationId] Required.
   /// [serviceAttachment] Format: projects/*/regions/*/serviceAttachments/*
-  EndpointAttachmentArgs({
+  const EndpointAttachmentArgs({
     this.endpointAttachmentId,
     this.location,
     this.name,

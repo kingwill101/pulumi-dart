@@ -8,7 +8,7 @@ class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
 
   /// Creates a new [NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
-  NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig({
+  const NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig({
     required this.gpuDriverVersion,
   });
 

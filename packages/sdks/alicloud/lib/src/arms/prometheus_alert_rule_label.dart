@@ -11,7 +11,7 @@ class PrometheusAlertRuleLabel {
   /// Creates a new [PrometheusAlertRuleLabel].
   /// [name] The name of the label.
   /// [value] The value of the label.
-  PrometheusAlertRuleLabel({
+  const PrometheusAlertRuleLabel({
     this.name,
     this.value,
   });

@@ -22,7 +22,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter {
   /// Creates a new [OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter].
   /// [key] Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.
   /// [value] This property does not have a description in the spec, please add it before generating code.
-  OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter({
+  const OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter({
     this.key,
     this.value,
   });

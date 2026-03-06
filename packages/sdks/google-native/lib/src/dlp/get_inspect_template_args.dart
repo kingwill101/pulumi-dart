@@ -15,7 +15,7 @@ class GetInspectTemplateArgs {
   /// [inspectTemplateId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetInspectTemplateArgs({
+  const GetInspectTemplateArgs({
     required this.inspectTemplateId,
     required this.location,
     this.project,

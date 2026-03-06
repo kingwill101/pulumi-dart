@@ -31,7 +31,7 @@ class GetPrivateLinkHubResult {
   /// [provisioningState] PrivateLinkHub provisioning state
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateLinkHubResult({
+  const GetPrivateLinkHubResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

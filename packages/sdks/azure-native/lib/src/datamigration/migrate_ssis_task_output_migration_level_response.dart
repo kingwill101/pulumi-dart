@@ -43,7 +43,7 @@ class MigrateSsisTaskOutputMigrationLevelResponse {
   /// [status] Current status of migration
   /// [targetServerBrandVersion] Target server brand version
   /// [targetServerVersion] Target server version
-  MigrateSsisTaskOutputMigrationLevelResponse({
+  const MigrateSsisTaskOutputMigrationLevelResponse({
     required this.endedOn,
     required this.exceptionsAndWarnings,
     required this.id,

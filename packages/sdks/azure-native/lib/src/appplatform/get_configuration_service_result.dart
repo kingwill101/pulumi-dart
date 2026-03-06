@@ -25,7 +25,7 @@ class GetConfigurationServiceResult {
   /// [properties] Application Configuration Service properties payload
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetConfigurationServiceResult({
+  const GetConfigurationServiceResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

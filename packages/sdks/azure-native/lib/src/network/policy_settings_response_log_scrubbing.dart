@@ -13,7 +13,7 @@ class PolicySettingsResponseLogScrubbing {
   /// Creates a new [PolicySettingsResponseLogScrubbing].
   /// [scrubbingRules] The rules that are applied to the logs for scrubbing.
   /// [state] State of the log scrubbing config. Default value is Enabled.
-  PolicySettingsResponseLogScrubbing({
+  const PolicySettingsResponseLogScrubbing({
     this.scrubbingRules,
     this.state,
   });

@@ -11,7 +11,7 @@ class OpenZfsVolumeOriginSnapshot {
   /// Creates a new [OpenZfsVolumeOriginSnapshot].
   /// [copyStrategy] Specifies the strategy used when copying data from the snapshot to the new volume. Valid values are `CLONE`, `FULL_COPY`, `INCREMENTAL_COPY`.
   /// [snapshotArn] The Amazon Resource Name (ARN) of the origin snapshot.
-  OpenZfsVolumeOriginSnapshot({
+  const OpenZfsVolumeOriginSnapshot({
     required this.copyStrategy,
     required this.snapshotArn,
   });

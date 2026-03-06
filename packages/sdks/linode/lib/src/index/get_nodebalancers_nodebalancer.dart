@@ -42,7 +42,7 @@ class GetNodebalancersNodebalancer {
   /// [tags] A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [transfers] Information about the amount of transfer this NodeBalancer has had so far this month.
   /// [updated] When this Linode NodeBalancer was last updated
-  GetNodebalancersNodebalancer({
+  const GetNodebalancersNodebalancer({
     required this.clientConnThrottle,
     required this.clientUdpSessThrottle,
     required this.created,

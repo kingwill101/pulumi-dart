@@ -10,7 +10,7 @@ class APIServiceStatusPatch {
 
   /// Creates a new [APIServiceStatusPatch].
   /// [conditions] Current service state of apiService.
-  APIServiceStatusPatch({
+  const APIServiceStatusPatch({
     this.conditions,
   });
 

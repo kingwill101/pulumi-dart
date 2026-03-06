@@ -98,7 +98,7 @@ class GetEipAddressesAddress {
   /// [segmentInstanceId] The IDs of the contiguous EIPs.
   /// [status] The status of the EIP.
   /// [tags] A mapping of tags to assign to the resource.
-  GetEipAddressesAddress({
+  const GetEipAddressesAddress({
     required this.addressName,
     required this.allocationId,
     required this.availableRegions,

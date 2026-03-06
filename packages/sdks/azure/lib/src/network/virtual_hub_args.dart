@@ -43,7 +43,7 @@ class VirtualHubArgs {
   /// [tags] A mapping of tags to assign to the Virtual Hub.
   /// [virtualRouterAutoScaleMinCapacity] Minimum instance capacity for the scaling configuration of the Virtual Hub Router. Defaults to `2`.
   /// [virtualWanId] The ID of a Virtual WAN within which the Virtual Hub should be created. Changing this forces a new resource to be created.
-  VirtualHubArgs({
+  const VirtualHubArgs({
     this.addressPrefix,
     this.branchToBranchTrafficEnabled,
     this.hubRoutingPreference,

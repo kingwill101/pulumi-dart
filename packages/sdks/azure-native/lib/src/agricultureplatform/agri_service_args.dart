@@ -33,7 +33,7 @@ class AgriServiceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The SKU (Stock Keeping Unit) assigned to this resource.
   /// [tags] Resource tags.
-  AgriServiceArgs({
+  const AgriServiceArgs({
     this.agriServiceResourceName,
     this.identity,
     this.location,

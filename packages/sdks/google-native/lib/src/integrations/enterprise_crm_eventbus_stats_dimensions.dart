@@ -29,7 +29,7 @@ class EnterpriseCrmEventbusStatsDimensions {
   /// [warningEnumString] Optional.
   /// [workflowId] Optional.
   /// [workflowName] Optional.
-  EnterpriseCrmEventbusStatsDimensions({
+  const EnterpriseCrmEventbusStatsDimensions({
     this.clientId,
     this.enumFilterType,
     this.errorEnumString,

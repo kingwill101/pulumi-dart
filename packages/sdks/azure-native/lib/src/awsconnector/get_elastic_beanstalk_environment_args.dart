@@ -15,7 +15,7 @@ class GetElasticBeanstalkEnvironmentArgs {
   /// Creates a new [GetElasticBeanstalkEnvironmentArgs].
   /// [name] Name of ElasticBeanstalkEnvironment
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetElasticBeanstalkEnvironmentArgs({
+  const GetElasticBeanstalkEnvironmentArgs({
     required this.name,
     required this.resourceGroupName,
   });

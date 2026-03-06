@@ -13,7 +13,7 @@ class FhirServiceAcrConfiguration {
   /// Creates a new [FhirServiceAcrConfiguration].
   /// [loginServers] The list of the Azure container registry login servers.
   /// [ociArtifacts] The list of Open Container Initiative (OCI) artifacts.
-  FhirServiceAcrConfiguration({
+  const FhirServiceAcrConfiguration({
     this.loginServers,
     this.ociArtifacts,
   });

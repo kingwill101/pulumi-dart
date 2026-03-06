@@ -23,7 +23,7 @@ class ContainerAppsConfiguration {
   /// [dockerBridgeCidr] CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the IP range defined in platformReservedCidr, if defined.
   /// [platformReservedCidr] IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. It must not overlap with any other Subnet IP ranges.
   /// [platformReservedDnsIP] An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server
-  ContainerAppsConfiguration({
+  const ContainerAppsConfiguration({
     this.appSubnetResourceId,
     this.controlPlaneSubnetResourceId,
     this.daprAIInstrumentationKey,

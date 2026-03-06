@@ -20,7 +20,7 @@ class GetResourceSharesShare {
   /// [resourceShareName] The name of resource share.
   /// [resourceShareOwner] The owner of resource share.
   /// [status] The status of resource share.
-  GetResourceSharesShare({
+  const GetResourceSharesShare({
     required this.id,
     required this.resourceShareId,
     required this.resourceShareName,

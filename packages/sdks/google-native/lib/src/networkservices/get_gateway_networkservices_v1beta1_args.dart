@@ -15,7 +15,7 @@ class GetGatewayNetworkservicesV1beta1Args {
   /// [gatewayId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGatewayNetworkservicesV1beta1Args({
+  const GetGatewayNetworkservicesV1beta1Args({
     required this.gatewayId,
     required this.location,
     this.project,

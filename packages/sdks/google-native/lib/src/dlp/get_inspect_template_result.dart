@@ -24,7 +24,7 @@ class GetInspectTemplateResult {
   /// [inspectConfig] The core content of the template. Configuration of the scanning process.
   /// [name] The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
   /// [updateTime] The last update timestamp of an inspectTemplate.
-  GetInspectTemplateResult({
+  const GetInspectTemplateResult({
     required this.createTime,
     required this.description,
     required this.displayName,

@@ -20,7 +20,7 @@ class GetGradientaiAgentVersionsResult {
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sorts] Optional.
-  GetGradientaiAgentVersionsResult({
+  const GetGradientaiAgentVersionsResult({
     required this.agentId,
     required this.agentVersions,
     this.filters,

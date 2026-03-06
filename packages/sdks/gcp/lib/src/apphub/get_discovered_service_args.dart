@@ -18,7 +18,7 @@ class GetDiscoveredServiceArgs {
   /// [location] The location of the discovered service.
   /// [project] The host project of the discovered service.
   /// [serviceUri] The uri of the service.
-  GetDiscoveredServiceArgs({
+  const GetDiscoveredServiceArgs({
     required this.location,
     this.project,
     required this.serviceUri,

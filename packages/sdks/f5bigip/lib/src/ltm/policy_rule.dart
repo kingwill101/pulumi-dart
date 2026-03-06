@@ -19,7 +19,7 @@ class PolicyRule {
   /// [conditions] Block type. See condition block for more details.
   /// [description] Specifies descriptive text that identifies the irule attached to policy.
   /// [name] Name of Rule to be applied in policy.
-  PolicyRule({
+  const PolicyRule({
     this.actions,
     this.conditions,
     this.description,

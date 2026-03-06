@@ -38,7 +38,7 @@ class GetFeatureOnlineStoreAiplatformV1beta1Result {
   /// [optimized] Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
   /// [state] State of the featureOnlineStore.
   /// [updateTime] Timestamp when this FeatureOnlineStore was last updated.
-  GetFeatureOnlineStoreAiplatformV1beta1Result({
+  const GetFeatureOnlineStoreAiplatformV1beta1Result({
     required this.bigtable,
     required this.createTime,
     required this.dedicatedServingEndpoint,

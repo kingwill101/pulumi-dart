@@ -11,7 +11,7 @@ class MonitorTagRuleMetric {
 
   /// Creates a new [MonitorTagRuleMetric].
   /// [filters] A `filter` block as defined below.
-  MonitorTagRuleMetric({
+  const MonitorTagRuleMetric({
     this.filters,
   });
 

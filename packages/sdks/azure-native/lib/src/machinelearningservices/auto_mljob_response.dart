@@ -76,7 +76,7 @@ class AutoMLJobResponse {
   /// [status] Status of the job.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [taskDetails] [Required] This represents scenario which can be one of Tables/NLP/Image
-  AutoMLJobResponse({
+  const AutoMLJobResponse({
     this.componentId,
     this.computeId,
     this.description,

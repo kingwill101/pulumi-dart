@@ -21,7 +21,7 @@ class PipelineDescription {
   /// [executionPipelineStage] Description of each stage of execution of the pipeline.
   /// [originalPipelineTransform] Description of each transform in the pipeline and collections between them.
   /// [stepNamesHash] A hash value of the submitted pipeline portable graph step names if exists.
-  PipelineDescription({
+  const PipelineDescription({
     this.displayData,
     this.executionPipelineStage,
     this.originalPipelineTransform,

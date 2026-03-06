@@ -10,7 +10,7 @@ class GetTrafficManagerResult {
   /// Creates a new [GetTrafficManagerResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  GetTrafficManagerResult({
+  const GetTrafficManagerResult({
     required this.id,
     required this.name,
   });

@@ -13,7 +13,7 @@ class DomainNumaTune {
   /// Creates a new [DomainNumaTune].
   /// [memNodes] Configures the specific NUMA node settings including memory assignments and other parameters.
   /// [memory] Configures the total memory settings for NUMA nodes, controlling overall memory usage policy.
-  DomainNumaTune({
+  const DomainNumaTune({
     this.memNodes,
     this.memory,
   });

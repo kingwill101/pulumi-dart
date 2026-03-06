@@ -25,7 +25,7 @@ class NodeCustomizationPropertiesResponse {
   /// [identityProfile] The identity used to execute node customization tasks during image build time and provisioning time.
   /// [provisioningState] The provisioning state of the node customization.
   /// [version] An auto-generated value that changes when the other fields of the image customization are changed.
-  NodeCustomizationPropertiesResponse({
+  const NodeCustomizationPropertiesResponse({
     this.containerImages,
     this.customizationScripts,
     this.identityProfile,

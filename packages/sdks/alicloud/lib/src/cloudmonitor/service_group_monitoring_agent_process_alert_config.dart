@@ -33,7 +33,7 @@ class ServiceGroupMonitoringAgentProcessAlertConfig {
   /// [threshold] The alert threshold.
   /// [times] The number of times for which the threshold can be consecutively exceeded.
   /// [webhook] The callback URL.
-  ServiceGroupMonitoringAgentProcessAlertConfig({
+  const ServiceGroupMonitoringAgentProcessAlertConfig({
     required this.comparisonOperator,
     this.effectiveInterval,
     required this.escalationsLevel,

@@ -17,7 +17,7 @@ class GetPartitionResult {
   /// [id] Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   /// [partition] Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   /// [reverseDnsPrefix] Prefix of service names (e.g., `com.amazonaws` in AWS Commercial, `cn.com.amazonaws` in AWS China).
-  GetPartitionResult({
+  const GetPartitionResult({
     required this.dnsSuffix,
     required this.id,
     required this.partition,

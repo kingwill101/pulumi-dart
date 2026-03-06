@@ -31,7 +31,7 @@ class HanaBackupDataResponse {
   /// [instanceNumber] Gets or sets the database instance number.
   /// [recoveryServicesVault] The properties of the recovery services vault used for backup.
   /// [sslConfiguration] Path of the SSL key store.
-  HanaBackupDataResponse({
+  const HanaBackupDataResponse({
     required this.backupPolicy,
     required this.backupType,
     this.dbInstanceSnapshotBackupPolicy,

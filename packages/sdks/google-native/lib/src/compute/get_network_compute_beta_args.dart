@@ -13,7 +13,7 @@ class GetNetworkComputeBetaArgs {
   /// Creates a new [GetNetworkComputeBetaArgs].
   /// [network] Required.
   /// [project] Optional.
-  GetNetworkComputeBetaArgs({
+  const GetNetworkComputeBetaArgs({
     required this.network,
     this.project,
   });

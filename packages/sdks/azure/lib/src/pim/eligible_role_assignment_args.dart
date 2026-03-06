@@ -37,7 +37,7 @@ class EligibleRoleAssignmentArgs {
   /// [schedule] A `schedule` block as defined below. Changing this forces a new resource to be created.
   /// [scope] The scope for this eligible role assignment, should be a valid resource ID. Changing this forces a new resource to be created.
   /// [ticket] A `ticket` block as defined below. Changing this forces a new resource to be created.
-  EligibleRoleAssignmentArgs({
+  const EligibleRoleAssignmentArgs({
     this.condition,
     this.conditionVersion,
     this.justification,

@@ -15,7 +15,7 @@ class GetServiceBindingArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [serviceBindingId] Required.
-  GetServiceBindingArgs({
+  const GetServiceBindingArgs({
     required this.location,
     this.project,
     required this.serviceBindingId,

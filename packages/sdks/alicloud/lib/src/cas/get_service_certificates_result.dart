@@ -28,7 +28,7 @@ class GetServiceCertificatesResult {
   /// [nameRegex] Optional.
   /// [names] A list of Ssl Certificates names.
   /// [outputFile] Optional.
-  GetServiceCertificatesResult({
+  const GetServiceCertificatesResult({
     required this.certificates,
     this.enableDetails,
     required this.id,

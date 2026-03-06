@@ -12,7 +12,7 @@ class RelationshipTypeFieldMappingResponse {
   /// Creates a new [RelationshipTypeFieldMappingResponse].
   /// [profileFieldName] Specifies the fieldName in profile.
   /// [relatedProfileKeyProperty] Specifies the KeyProperty (from StrongId) of the related profile.
-  RelationshipTypeFieldMappingResponse({
+  const RelationshipTypeFieldMappingResponse({
     required this.profileFieldName,
     required this.relatedProfileKeyProperty,
   });

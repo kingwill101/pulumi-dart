@@ -11,7 +11,7 @@ class GetAlertsAlertConfigurationAnnotation {
   /// Creates a new [GetAlertsAlertConfigurationAnnotation].
   /// [key] Field name.
   /// [value] Field value.
-  GetAlertsAlertConfigurationAnnotation({
+  const GetAlertsAlertConfigurationAnnotation({
     required this.key,
     required this.value,
   });

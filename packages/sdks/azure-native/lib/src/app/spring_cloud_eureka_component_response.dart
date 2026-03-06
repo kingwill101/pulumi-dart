@@ -29,7 +29,7 @@ class SpringCloudEurekaComponentResponse {
   /// [provisioningState] Provisioning state of the Java Component.
   /// [scale] Java component scaling configurations
   /// [serviceBinds] List of Java Components that are bound to the Java component
-  SpringCloudEurekaComponentResponse({
+  const SpringCloudEurekaComponentResponse({
     required this.componentType,
     this.configurations,
     this.ingress,

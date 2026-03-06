@@ -34,7 +34,7 @@ class NoneAuthTypeWorkspaceConnectionPropertiesResponse {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  NoneAuthTypeWorkspaceConnectionPropertiesResponse({
+  const NoneAuthTypeWorkspaceConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

@@ -12,7 +12,7 @@ class LocalBrokerKubernetesAuthenticationResponse {
   /// Creates a new [LocalBrokerKubernetesAuthenticationResponse].
   /// [secretPath] Secret Path where SAT is mounted.
   /// [serviceAccountTokenName] Token name where SAT is mounted on secret path.
-  LocalBrokerKubernetesAuthenticationResponse({
+  const LocalBrokerKubernetesAuthenticationResponse({
     this.secretPath,
     this.serviceAccountTokenName,
   });

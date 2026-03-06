@@ -40,7 +40,7 @@ class AccountArgs {
   /// [instanceId] The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
   /// [kmsEncryptedPassword] An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
   /// [kmsEncryptionContext] An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-  AccountArgs({
+  const AccountArgs({
     required this.accountName,
     this.accountPassword,
     this.accountPrivilege,

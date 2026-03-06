@@ -13,7 +13,7 @@ class GetAttestorArgs {
   /// Creates a new [GetAttestorArgs].
   /// [attestorId] Required.
   /// [project] Optional.
-  GetAttestorArgs({
+  const GetAttestorArgs({
     required this.attestorId,
     this.project,
   });

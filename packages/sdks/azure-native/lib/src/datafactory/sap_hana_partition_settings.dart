@@ -9,7 +9,7 @@ class SapHanaPartitionSettings {
 
   /// Creates a new [SapHanaPartitionSettings].
   /// [partitionColumnName] The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  SapHanaPartitionSettings({
+  const SapHanaPartitionSettings({
     this.partitionColumnName,
   });
 

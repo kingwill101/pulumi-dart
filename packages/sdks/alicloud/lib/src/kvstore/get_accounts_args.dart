@@ -23,7 +23,7 @@ class GetAccountsArgs {
   /// [nameRegex] Optional.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
-  GetAccountsArgs({
+  const GetAccountsArgs({
     this.accountName,
     required this.instanceId,
     this.nameRegex,

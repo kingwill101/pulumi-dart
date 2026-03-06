@@ -24,7 +24,7 @@ class CustomRoutingEndpointGroupState {
   /// [endpointGroupRegion] The ID of the region in which to create the endpoint group.
   /// [listenerId] The ID of the custom routing listener.
   /// [status] The status of the Custom Routing Endpoint Group.
-  CustomRoutingEndpointGroupState({
+  const CustomRoutingEndpointGroupState({
     this.acceleratorId,
     this.customRoutingEndpointGroupName,
     this.description,

@@ -9,7 +9,7 @@ class TcpConnectionPool {
 
   /// Creates a new [TcpConnectionPool].
   /// [maxConnections] Maximum number of tcp connections allowed
-  TcpConnectionPool({
+  const TcpConnectionPool({
     this.maxConnections,
   });
 

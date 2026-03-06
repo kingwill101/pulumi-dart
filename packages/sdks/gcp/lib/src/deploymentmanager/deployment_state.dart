@@ -66,7 +66,7 @@ class DeploymentState {
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] Output only. Server defined URL for the resource.
   /// [target] Parameters that define your deployment, including the deployment
-  DeploymentState({
+  const DeploymentState({
     this.createPolicy,
     this.deletePolicy,
     this.deploymentId,

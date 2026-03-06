@@ -43,7 +43,7 @@ class GroupState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Output only. The timestamp when the group was last updated.
-  GroupState({
+  const GroupState({
     this.createTime,
     this.description,
     this.displayName,

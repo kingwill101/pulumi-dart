@@ -15,7 +15,7 @@ class PipelineReference {
   /// [name] Reference name.
   /// [referenceName] Reference pipeline name.
   /// [type] Pipeline reference type.
-  PipelineReference({
+  const PipelineReference({
     this.name,
     required this.referenceName,
     required this.type,

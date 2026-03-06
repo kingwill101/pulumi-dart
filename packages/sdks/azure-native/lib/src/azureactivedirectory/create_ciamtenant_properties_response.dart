@@ -12,7 +12,7 @@ class CreateCIAMTenantPropertiesResponse {
   /// Creates a new [CreateCIAMTenantPropertiesResponse].
   /// [countryCode] Country code of Azure tenant (e.g. 'US'). Refer to [https://aka.ms/ciam-data-location](https://aka.ms/ciam-data-location) to see valid country codes and corresponding data residency locations. If you do not see a country code in an valid data residency location, choose one from the list.
   /// [displayName] The display name of the Azure AD for customers tenant.
-  CreateCIAMTenantPropertiesResponse({
+  const CreateCIAMTenantPropertiesResponse({
     required this.countryCode,
     required this.displayName,
   });

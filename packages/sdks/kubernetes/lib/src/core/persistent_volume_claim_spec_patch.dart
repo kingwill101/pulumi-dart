@@ -44,7 +44,7 @@ class PersistentVolumeClaimSpecPatch {
   /// [volumeAttributesClassName] volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim. If specified, the CSI driver will create or update the volume with the attributes defined in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName, it can be changed after the claim is created. An empty string or nil value indicates that no VolumeAttributesClass will be applied to the claim. If the claim enters an Infeasible error state, this field can be reset to its previous value (including nil) to cancel the modification. If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource exists. More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/
   /// [volumeMode] volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.
   /// [volumeName] volumeName is the binding reference to the PersistentVolume backing this claim.
-  PersistentVolumeClaimSpecPatch({
+  const PersistentVolumeClaimSpecPatch({
     this.accessModes,
     this.dataSource,
     this.dataSourceRef,

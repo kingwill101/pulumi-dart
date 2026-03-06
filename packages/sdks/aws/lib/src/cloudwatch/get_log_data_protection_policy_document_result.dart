@@ -24,7 +24,7 @@ class GetLogDataProtectionPolicyDocumentResult {
   /// [name] Required.
   /// [statements] Required.
   /// [version] Optional.
-  GetLogDataProtectionPolicyDocumentResult({
+  const GetLogDataProtectionPolicyDocumentResult({
     this.configuration,
     this.description,
     required this.id,

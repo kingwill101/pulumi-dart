@@ -49,7 +49,7 @@ class ExadataInfrastructureArgs {
   /// [storageServerType] The storage server model type of the cloud Exadata infrastructure resource. Changing this forces a new Cloud Exadata Infrastructure to be created.
   /// [tags] A mapping of tags which should be assigned to the Cloud Exadata Infrastructure.
   /// [zones] Cloud Exadata Infrastructure zones. Changing this forces a new Cloud Exadata Infrastructure to be created.
-  ExadataInfrastructureArgs({
+  const ExadataInfrastructureArgs({
     required this.computeCount,
     this.customerContacts,
     this.databaseServerType,

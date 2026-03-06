@@ -72,7 +72,7 @@ class GuardrailState {
   /// [topicPolicyConfig] Topic policy config for a guardrail. See Topic Policy Config for more information.
   /// [version] Version of the Guardrail.
   /// [wordPolicyConfig] Word policy config for a guardrail. See Word Policy Config for more information.
-  GuardrailState({
+  const GuardrailState({
     this.blockedInputMessaging,
     this.blockedOutputsMessaging,
     this.contentPolicyConfig,

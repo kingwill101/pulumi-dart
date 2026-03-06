@@ -31,7 +31,7 @@ class RdsDBSnapshotProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  RdsDBSnapshotProperties({
+  const RdsDBSnapshotProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

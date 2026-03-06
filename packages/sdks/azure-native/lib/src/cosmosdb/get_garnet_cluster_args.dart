@@ -15,7 +15,7 @@ class GetGarnetClusterArgs {
   /// Creates a new [GetGarnetClusterArgs].
   /// [clusterName] Garnet cache cluster name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGarnetClusterArgs({
+  const GetGarnetClusterArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

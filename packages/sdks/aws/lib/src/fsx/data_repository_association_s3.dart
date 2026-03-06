@@ -13,7 +13,7 @@ class DataRepositoryAssociationS3 {
   /// Creates a new [DataRepositoryAssociationS3].
   /// [autoExportPolicy] Specifies the type of updated objects that will be automatically exported from your file system to the linked S3 bucket. See the `events` configuration block.
   /// [autoImportPolicy] Specifies the type of updated objects that will be automatically imported from the linked S3 bucket to your file system. See the `events` configuration block.
-  DataRepositoryAssociationS3({
+  const DataRepositoryAssociationS3({
     this.autoExportPolicy,
     this.autoImportPolicy,
   });

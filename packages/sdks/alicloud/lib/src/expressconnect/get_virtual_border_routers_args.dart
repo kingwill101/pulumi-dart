@@ -25,7 +25,7 @@ class GetVirtualBorderRoutersArgs {
   /// [nameRegex] A regex string to filter results by Virtual Border Router name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
-  GetVirtualBorderRoutersArgs({
+  const GetVirtualBorderRoutersArgs({
     this.filters,
     this.ids,
     this.nameRegex,

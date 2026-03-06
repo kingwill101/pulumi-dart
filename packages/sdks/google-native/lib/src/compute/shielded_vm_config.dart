@@ -15,7 +15,7 @@ class ShieldedVmConfig {
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled.
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
   /// [enableVtpm] Defines whether the instance has the vTPM enabled.
-  ShieldedVmConfig({
+  const ShieldedVmConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
     this.enableVtpm,

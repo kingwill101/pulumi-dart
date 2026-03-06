@@ -12,7 +12,7 @@ class IdentityResponse {
   /// Creates a new [IdentityResponse].
   /// [revision] The revision number of the update.
   /// [updateId] The revision independent identifier of the update.
-  IdentityResponse({
+  const IdentityResponse({
     required this.revision,
     required this.updateId,
   });

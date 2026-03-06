@@ -49,7 +49,7 @@ class AccountArgs {
   /// [resellAccountType] The identity type of the member. Valid values:
   /// [tags] The tag of the resource
   /// [type] Member type. The value of ResourceAccount indicates the resource account
-  AccountArgs({
+  const AccountArgs({
     this.abandonAbleCheckIds,
     this.abandonableCheckIds,
     this.accountNamePrefix,

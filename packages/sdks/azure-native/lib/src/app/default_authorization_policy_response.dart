@@ -13,7 +13,7 @@ class DefaultAuthorizationPolicyResponse {
   /// Creates a new [DefaultAuthorizationPolicyResponse].
   /// [allowedApplications] The configuration settings of the Azure Active Directory allowed applications.
   /// [allowedPrincipals] The configuration settings of the Azure Active Directory allowed principals.
-  DefaultAuthorizationPolicyResponse({
+  const DefaultAuthorizationPolicyResponse({
     this.allowedApplications,
     this.allowedPrincipals,
   });

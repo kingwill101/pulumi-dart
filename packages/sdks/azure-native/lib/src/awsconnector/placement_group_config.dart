@@ -14,7 +14,7 @@ class PlacementGroupConfig {
   /// Creates a new [PlacementGroupConfig].
   /// [instanceRole] &lt;p&gt;Role of the instance in the cluster.&lt;/p&gt; &lt;p&gt;Starting with Amazon EMR release 5.23.0, the only supported instance role is &lt;code&gt;MASTER&lt;/code&gt;.&lt;/p&gt;
   /// [placementStrategy] &lt;p&gt;Amazon EC2 Placement Group strategy associated with instance role.&lt;/p&gt; &lt;p&gt;Starting with Amazon EMR release 5.23.0, the only supported placement strategy is &lt;code&gt;SPREAD&lt;/code&gt; for the &lt;code&gt;MASTER&lt;/code&gt; instance role.&lt;/p&gt;
-  PlacementGroupConfig({
+  const PlacementGroupConfig({
     this.instanceRole,
     this.placementStrategy,
   });

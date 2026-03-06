@@ -74,7 +74,7 @@ class GetTopicResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [tags] Tags of the resource.
   /// [type] Type of the resource.
-  GetTopicResult({
+  const GetTopicResult({
     required this.azureApiVersion,
     this.dataResidencyBoundary,
     this.disableLocalAuth,

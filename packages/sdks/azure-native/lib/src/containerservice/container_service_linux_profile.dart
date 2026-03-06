@@ -13,7 +13,7 @@ class ContainerServiceLinuxProfile {
   /// Creates a new [ContainerServiceLinuxProfile].
   /// [adminUsername] The administrator username to use for Linux VMs.
   /// [ssh] The SSH configuration for Linux-based VMs running on Azure.
-  ContainerServiceLinuxProfile({
+  const ContainerServiceLinuxProfile({
     required this.adminUsername,
     required this.ssh,
   });

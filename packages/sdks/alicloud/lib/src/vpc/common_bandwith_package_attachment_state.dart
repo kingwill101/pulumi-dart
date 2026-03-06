@@ -29,7 +29,7 @@ class CommonBandwithPackageAttachmentState {
   /// [instanceId] The ID of the EIP that you want to query.
   /// [ipType] The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
   /// [status] The status of the Internet Shared Bandwidth instance.
-  CommonBandwithPackageAttachmentState({
+  const CommonBandwithPackageAttachmentState({
     this.bandwidthPackageBandwidth,
     this.bandwidthPackageId,
     this.cancelCommonBandwidthPackageIpBandwidth,

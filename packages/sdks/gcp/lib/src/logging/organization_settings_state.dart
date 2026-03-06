@@ -27,7 +27,7 @@ class OrganizationSettingsState {
   /// [name] The resource name of the settings.
   /// [organization] The organization for which to retrieve or configure settings.
   /// [storageLocation] The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
-  OrganizationSettingsState({
+  const OrganizationSettingsState({
     this.disableDefaultSink,
     this.kmsKeyName,
     this.kmsServiceAccountId,

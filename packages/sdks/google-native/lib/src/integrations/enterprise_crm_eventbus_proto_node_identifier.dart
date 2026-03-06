@@ -13,7 +13,7 @@ class EnterpriseCrmEventbusProtoNodeIdentifier {
   /// Creates a new [EnterpriseCrmEventbusProtoNodeIdentifier].
   /// [elementIdentifier] Configuration of the edge.
   /// [elementType] Destination node where the edge ends. It can only be a task config.
-  EnterpriseCrmEventbusProtoNodeIdentifier({
+  const EnterpriseCrmEventbusProtoNodeIdentifier({
     this.elementIdentifier,
     this.elementType,
   });

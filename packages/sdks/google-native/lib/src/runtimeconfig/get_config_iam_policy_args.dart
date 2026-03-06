@@ -15,7 +15,7 @@ class GetConfigIamPolicyArgs {
   /// [configId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetConfigIamPolicyArgs({
+  const GetConfigIamPolicyArgs({
     required this.configId,
     this.optionsRequestedPolicyVersion,
     this.project,

@@ -241,7 +241,7 @@ class ApplicationState {
   /// [vswitchId] The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
   /// [warStartOptions] WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
   /// [webContainer] The version of tomcat that the deployment package depends on. Image type applications are not supported.
-  ApplicationState({
+  const ApplicationState({
     this.acrAssumeRoleArn,
     this.acrInstanceId,
     this.appDescription,

@@ -21,7 +21,7 @@ class PolicyTableAssociationState {
   /// [resourceType] Type of the resource
   /// [transitGatewayAttachmentId] Identifier of EC2 Transit Gateway Attachment.
   /// [transitGatewayPolicyTableId] Identifier of EC2 Transit Gateway Policy Table.
-  PolicyTableAssociationState({
+  const PolicyTableAssociationState({
     this.region,
     this.resourceId,
     this.resourceType,

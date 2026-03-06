@@ -24,7 +24,7 @@ class WebAppAssessmentV3PropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [scope] Gets or sets the scope of assessment.
   /// [settings] Gets or sets the settings for the assessment.
-  WebAppAssessmentV3PropertiesResponse({
+  const WebAppAssessmentV3PropertiesResponse({
     this.details,
     this.fallbackMachineAssessmentArmId,
     required this.provisioningState,

@@ -25,7 +25,7 @@ class ReachabilityAnalysisIntentArgs {
   /// [reachabilityAnalysisIntentName] Reachability Analysis Intent name.
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceName] Workspace name.
-  ReachabilityAnalysisIntentArgs({
+  const ReachabilityAnalysisIntentArgs({
     required this.networkManagerName,
     required this.properties,
     this.reachabilityAnalysisIntentName,

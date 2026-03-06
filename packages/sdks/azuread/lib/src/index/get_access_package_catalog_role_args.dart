@@ -17,7 +17,7 @@ class GetAccessPackageCatalogRoleArgs {
   /// Creates a new [GetAccessPackageCatalogRoleArgs].
   /// [displayName] Specifies the display name of the role.
   /// [objectId] Specifies the object ID of the role.
-  GetAccessPackageCatalogRoleArgs({
+  const GetAccessPackageCatalogRoleArgs({
     this.displayName,
     this.objectId,
   });

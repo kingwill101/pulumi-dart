@@ -22,7 +22,7 @@ class GuestPoliciesPackage {
   /// [desiredState] The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
   /// [manager] Type of package manager that can be used to install this package. If a system does not have the package manager,
   /// [name] The name of the package. A package is uniquely identified for conflict validation
-  GuestPoliciesPackage({
+  const GuestPoliciesPackage({
     this.desiredState,
     this.manager,
     required this.name,

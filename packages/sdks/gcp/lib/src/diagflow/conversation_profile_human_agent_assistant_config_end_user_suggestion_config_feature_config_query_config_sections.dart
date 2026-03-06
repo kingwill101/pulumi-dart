@@ -10,7 +10,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections].
   /// [sectionTypes] The selected sections chosen to return when requesting a summary of a conversation
-  ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections({
+  const ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections({
     this.sectionTypes,
   });
 

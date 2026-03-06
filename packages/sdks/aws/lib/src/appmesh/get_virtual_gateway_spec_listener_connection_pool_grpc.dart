@@ -7,7 +7,7 @@ class GetVirtualGatewaySpecListenerConnectionPoolGrpc {
 
   /// Creates a new [GetVirtualGatewaySpecListenerConnectionPoolGrpc].
   /// [maxRequests] Required.
-  GetVirtualGatewaySpecListenerConnectionPoolGrpc({
+  const GetVirtualGatewaySpecListenerConnectionPoolGrpc({
     required this.maxRequests,
   });
 

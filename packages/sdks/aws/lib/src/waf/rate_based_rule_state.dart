@@ -31,7 +31,7 @@ class RateBasedRuleState {
   /// [rateLimit] The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  RateBasedRuleState({
+  const RateBasedRuleState({
     this.arn,
     this.metricName,
     this.name,

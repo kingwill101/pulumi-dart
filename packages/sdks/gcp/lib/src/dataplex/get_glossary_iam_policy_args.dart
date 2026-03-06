@@ -22,7 +22,7 @@ class GetGlossaryIamPolicyArgs {
   /// [glossaryId] Used to find the parent resource to bind the IAM policy to
   /// [location] The location where the glossary should reside.
   /// [project] The ID of the project in which the resource belongs.
-  GetGlossaryIamPolicyArgs({
+  const GetGlossaryIamPolicyArgs({
     required this.glossaryId,
     this.location,
     this.project,

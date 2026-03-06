@@ -21,7 +21,7 @@ class SkuLocationInfoResponse {
   /// [type] The type.
   /// [zoneDetails] The zone details.
   /// [zones] The zones.
-  SkuLocationInfoResponse({
+  const SkuLocationInfoResponse({
     this.extendedLocations,
     required this.location,
     this.type,

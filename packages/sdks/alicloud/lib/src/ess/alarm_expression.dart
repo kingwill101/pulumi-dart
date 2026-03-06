@@ -20,7 +20,7 @@ class AlarmExpression {
   /// [period] The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
   /// [statistics] The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
   /// [threshold] The value against which the specified statistics is compared.
-  AlarmExpression({
+  const AlarmExpression({
     this.comparisonOperator,
     this.metricName,
     this.period,

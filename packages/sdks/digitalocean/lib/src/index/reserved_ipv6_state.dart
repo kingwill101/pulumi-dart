@@ -16,7 +16,7 @@ class ReservedIpv6State {
   /// [ip] Optional.
   /// [regionSlug] The region that the reserved IPv6 needs to be reserved to.
   /// [reservedIpv6Urn] the uniform resource name for the reserved ipv6
-  ReservedIpv6State({
+  const ReservedIpv6State({
     this.dropletId,
     this.ip,
     this.regionSlug,

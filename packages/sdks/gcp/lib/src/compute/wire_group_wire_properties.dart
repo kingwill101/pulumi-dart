@@ -19,7 +19,7 @@ class WireGroupWireProperties {
   /// [bandwidthAllocation] The configuration of a wire's bandwidth allocation.
   /// [bandwidthUnmetered] The unmetered bandwidth setting.
   /// [faultResponse] Response when a fault is detected in a pseudowire:
-  WireGroupWireProperties({
+  const WireGroupWireProperties({
     required this.bandwidthAllocation,
     this.bandwidthUnmetered,
     this.faultResponse,

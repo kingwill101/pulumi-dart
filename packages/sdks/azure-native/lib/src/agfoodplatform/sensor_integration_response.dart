@@ -16,7 +16,7 @@ class SensorIntegrationResponse {
   /// [enabled] Sensor integration enable state.
   /// [provisioningInfo] Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
   /// [provisioningState] Sensor integration instance provisioning state.
-  SensorIntegrationResponse({
+  const SensorIntegrationResponse({
     this.enabled,
     this.provisioningInfo,
     required this.provisioningState,

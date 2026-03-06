@@ -10,7 +10,7 @@ class BareMetalAdminClusterSecurityConfigAuthorization {
 
   /// Creates a new [BareMetalAdminClusterSecurityConfigAuthorization].
   /// [adminUsers] Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
-  BareMetalAdminClusterSecurityConfigAuthorization({
+  const BareMetalAdminClusterSecurityConfigAuthorization({
     required this.adminUsers,
   });
 

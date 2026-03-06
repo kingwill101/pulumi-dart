@@ -12,7 +12,7 @@ class AutomationRulePropertyValuesConditionResponse {
   /// [operator] Optional.
   /// [propertyName] The property to evaluate in an automation rule property condition.
   /// [propertyValues] Optional.
-  AutomationRulePropertyValuesConditionResponse({
+  const AutomationRulePropertyValuesConditionResponse({
     this.operator,
     this.propertyName,
     this.propertyValues,

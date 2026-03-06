@@ -35,7 +35,7 @@ class GetProjectCloudresourcemanagerV3Result {
   /// [projectId] Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
   /// [state] The project lifecycle state.
   /// [updateTime] The most recent time this resource was modified.
-  GetProjectCloudresourcemanagerV3Result({
+  const GetProjectCloudresourcemanagerV3Result({
     required this.createTime,
     required this.deleteTime,
     required this.displayName,

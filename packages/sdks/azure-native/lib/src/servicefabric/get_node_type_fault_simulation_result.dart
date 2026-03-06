@@ -21,7 +21,7 @@ class GetNodeTypeFaultSimulationResult {
   /// [simulationId] unique identifier for the fault simulation.
   /// [startTime] The start time of the fault simulation.
   /// [status] Fault simulation status
-  GetNodeTypeFaultSimulationResult({
+  const GetNodeTypeFaultSimulationResult({
     this.details,
     this.endTime,
     this.simulationId,

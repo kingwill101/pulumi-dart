@@ -11,7 +11,7 @@ class RouteSpecGrpcRouteMatchMetadataMatchRange {
   /// Creates a new [RouteSpecGrpcRouteMatchMetadataMatchRange].
   /// [end] End of the range.
   /// [start] Start of the range.
-  RouteSpecGrpcRouteMatchMetadataMatchRange({
+  const RouteSpecGrpcRouteMatchMetadataMatchRange({
     required this.end,
     required this.start,
   });

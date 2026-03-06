@@ -8,7 +8,7 @@ class BucketWebsiteRoutingRulesRoutingRuleLuaConfig {
 
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleLuaConfig].
   /// [script] The Lua script name.
-  BucketWebsiteRoutingRulesRoutingRuleLuaConfig({
+  const BucketWebsiteRoutingRulesRoutingRuleLuaConfig({
     this.script,
   });
 

@@ -15,7 +15,7 @@ class GetSecurityReportArgs {
   /// [environmentId] Required.
   /// [organizationId] Required.
   /// [securityReportId] Required.
-  GetSecurityReportArgs({
+  const GetSecurityReportArgs({
     required this.environmentId,
     required this.organizationId,
     required this.securityReportId,

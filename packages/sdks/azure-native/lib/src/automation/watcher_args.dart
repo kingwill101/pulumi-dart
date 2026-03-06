@@ -39,7 +39,7 @@ class WatcherArgs {
   /// [scriptRunOn] Gets or sets the name of the hybrid worker group the watcher will run on.
   /// [tags] Resource tags.
   /// [watcherName] The watcher name.
-  WatcherArgs({
+  const WatcherArgs({
     required this.automationAccountName,
     this.description,
     this.executionFrequencyInSeconds,

@@ -35,7 +35,7 @@ class CustomerCertificateParametersResponse {
   /// [thumbprint] Certificate thumbprint.
   /// [type] The type of the secret resource.
   /// [useLatestVersion] Whether to use the latest version for the certificate
-  CustomerCertificateParametersResponse({
+  const CustomerCertificateParametersResponse({
     required this.certificateAuthority,
     required this.expirationDate,
     required this.secretSource,

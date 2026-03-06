@@ -39,7 +39,7 @@ class ConsentStoreIamBindingArgs {
   /// [dataset] Identifies the dataset addressed by this request. Must be in the format
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  ConsentStoreIamBindingArgs({
+  const ConsentStoreIamBindingArgs({
     this.condition,
     required this.consentStoreId,
     required this.dataset,

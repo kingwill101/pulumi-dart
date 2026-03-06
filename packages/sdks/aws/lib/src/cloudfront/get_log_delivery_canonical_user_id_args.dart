@@ -12,7 +12,7 @@ class GetLogDeliveryCanonicalUserIdArgs {
 
   /// Creates a new [GetLogDeliveryCanonicalUserIdArgs].
   /// [region] Name of the Region whose canonical user ID is desired. Defaults to the Region set in the provider configuration.
-  GetLogDeliveryCanonicalUserIdArgs({
+  const GetLogDeliveryCanonicalUserIdArgs({
     this.region,
   });
 

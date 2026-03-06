@@ -21,7 +21,7 @@ class RegionSecurityPolicyRuleMatch {
   /// [config] The configuration options available when specifying versionedExpr.
   /// [expr] User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
   /// [versionedExpr] Preconfigured versioned expression. If this field is specified, config must also be specified.
-  RegionSecurityPolicyRuleMatch({
+  const RegionSecurityPolicyRuleMatch({
     this.config,
     this.expr,
     this.versionedExpr,

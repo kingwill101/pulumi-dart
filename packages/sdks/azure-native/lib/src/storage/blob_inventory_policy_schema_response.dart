@@ -19,7 +19,7 @@ class BlobInventoryPolicySchemaResponse {
   /// [enabled] Policy is enabled if set to true.
   /// [rules] The storage account blob inventory policy rules. The rule is applied when it is enabled.
   /// [type] The valid value is Inventory
-  BlobInventoryPolicySchemaResponse({
+  const BlobInventoryPolicySchemaResponse({
     required this.destination,
     required this.enabled,
     required this.rules,

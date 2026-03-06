@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlMaxHeapTableSize {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlMaxHeapTableSize({
+  const GetDatabaseMysqlConfigMysqlMaxHeapTableSize({
     required this.description,
     required this.example,
     required this.maximum,

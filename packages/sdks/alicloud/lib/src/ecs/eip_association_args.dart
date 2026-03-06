@@ -51,7 +51,7 @@ class EipAssociationArgs {
   /// [mode] The association mode. Valid values:
   /// [privateIpAddress] The IP address in the CIDR block of the vSwitch.
   /// [vpcId] The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
-  EipAssociationArgs({
+  const EipAssociationArgs({
     required this.allocationId,
     this.force,
     required this.instanceId,

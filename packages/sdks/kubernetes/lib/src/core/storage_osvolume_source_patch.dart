@@ -22,7 +22,7 @@ class StorageOSVolumeSourcePatch {
   /// [secretRef] secretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
   /// [volumeName] volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.
   /// [volumeNamespace] volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.
-  StorageOSVolumeSourcePatch({
+  const StorageOSVolumeSourcePatch({
     this.fsType,
     this.readOnly,
     this.secretRef,

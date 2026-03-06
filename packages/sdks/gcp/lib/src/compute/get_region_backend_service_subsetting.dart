@@ -17,7 +17,7 @@ class GetRegionBackendServiceSubsetting {
   /// Creates a new [GetRegionBackendServiceSubsetting].
   /// [policy] The algorithm used for subsetting. Possible values: ["CONSISTENT_HASH_SUBSETTING"]
   /// [subsetSize] The number of backends per backend group assigned to each proxy instance or each service mesh client.
-  GetRegionBackendServiceSubsetting({
+  const GetRegionBackendServiceSubsetting({
     required this.policy,
     required this.subsetSize,
   });

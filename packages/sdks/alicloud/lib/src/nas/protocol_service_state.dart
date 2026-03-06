@@ -48,7 +48,7 @@ class ProtocolServiceState {
   /// [status] Agreement service status.
   /// [vpcId] The VpcId of the protocol service, which must be consistent with the VPC of the file system.
   /// [vswitchId] The VSwitchId of the protocol service.
-  ProtocolServiceState({
+  const ProtocolServiceState({
     this.createTime,
     this.description,
     this.dryRun,

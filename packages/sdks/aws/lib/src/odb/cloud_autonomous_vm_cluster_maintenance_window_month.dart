@@ -7,7 +7,7 @@ class CloudAutonomousVmClusterMaintenanceWindowMonth {
 
   /// Creates a new [CloudAutonomousVmClusterMaintenanceWindowMonth].
   /// [name] Required.
-  CloudAutonomousVmClusterMaintenanceWindowMonth({
+  const CloudAutonomousVmClusterMaintenanceWindowMonth({
     required this.name,
   });
 

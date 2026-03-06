@@ -13,7 +13,7 @@ class ListDomainRecommendationsResult {
   /// Creates a new [ListDomainRecommendationsResult].
   /// [nextLink] Link to next page of resources.
   /// [value] Collection of resources.
-  ListDomainRecommendationsResult({
+  const ListDomainRecommendationsResult({
     required this.nextLink,
     required this.value,
   });

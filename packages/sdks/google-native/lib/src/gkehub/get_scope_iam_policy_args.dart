@@ -17,7 +17,7 @@ class GetScopeIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [scopeId] Required.
-  GetScopeIamPolicyArgs({
+  const GetScopeIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

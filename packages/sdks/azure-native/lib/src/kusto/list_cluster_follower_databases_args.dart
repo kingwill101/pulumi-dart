@@ -15,7 +15,7 @@ class ListClusterFollowerDatabasesArgs {
   /// Creates a new [ListClusterFollowerDatabasesArgs].
   /// [clusterName] The name of the Kusto cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListClusterFollowerDatabasesArgs({
+  const ListClusterFollowerDatabasesArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

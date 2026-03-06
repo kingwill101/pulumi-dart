@@ -9,7 +9,7 @@ class PrivateServiceConnectConnectivityResponse {
 
   /// Creates a new [PrivateServiceConnectConnectivityResponse].
   /// [serviceAttachment] A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
-  PrivateServiceConnectConnectivityResponse({
+  const PrivateServiceConnectConnectivityResponse({
     required this.serviceAttachment,
   });
 

@@ -26,7 +26,7 @@ class DatabaseCmekConfig {
   /// Creates a new [DatabaseCmekConfig].
   /// [activeKeyVersions] (Output)
   /// [kmsKeyName] The resource ID of a Cloud KMS key. If set, the database created will
-  DatabaseCmekConfig({
+  const DatabaseCmekConfig({
     this.activeKeyVersions,
     required this.kmsKeyName,
   });

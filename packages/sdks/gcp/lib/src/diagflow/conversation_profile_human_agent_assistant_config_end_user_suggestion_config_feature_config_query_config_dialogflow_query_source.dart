@@ -13,7 +13,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource].
   /// [agent] he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
   /// [humanAgentSideConfig] The Dialogflow assist configuration for human agent.
-  ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource({
+  const ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource({
     required this.agent,
     this.humanAgentSideConfig,
   });

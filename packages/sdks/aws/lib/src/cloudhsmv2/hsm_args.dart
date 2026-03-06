@@ -26,7 +26,7 @@ class HsmArgs {
   /// [ipAddress] The IP address of HSM module. Must be within the CIDR of selected subnet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetId] The ID of subnet in which HSM module will be located. Conflicts with `availability_zone`.
-  HsmArgs({
+  const HsmArgs({
     this.availabilityZone,
     required this.clusterId,
     this.ipAddress,

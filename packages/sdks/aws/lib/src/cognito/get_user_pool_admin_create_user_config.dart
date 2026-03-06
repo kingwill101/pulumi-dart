@@ -15,7 +15,7 @@ class GetUserPoolAdminCreateUserConfig {
   /// [allowAdminCreateUserOnly] - Whether only admins can create users.
   /// [inviteMessageTemplates] Required.
   /// [unusedAccountValidityDays] - Number of days an unconfirmed user account remains valid.
-  GetUserPoolAdminCreateUserConfig({
+  const GetUserPoolAdminCreateUserConfig({
     required this.allowAdminCreateUserOnly,
     required this.inviteMessageTemplates,
     required this.unusedAccountValidityDays,

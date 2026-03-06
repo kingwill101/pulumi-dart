@@ -24,7 +24,7 @@ class GetCompliancePacksArgs {
   /// [nameRegex] A regex string to filter results by Compliance Pack name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values `ACTIVE`, `CREATING`.
-  GetCompliancePacksArgs({
+  const GetCompliancePacksArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

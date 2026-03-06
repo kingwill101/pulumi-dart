@@ -18,7 +18,7 @@ class ContainerImage {
   /// [pullSecrets] Image pull secrets.
   /// [repository] The Docker image name.
   /// [tag] The Docker  image tag.
-  ContainerImage({
+  const ContainerImage({
     this.pullPolicy,
     this.pullSecrets,
     required this.repository,

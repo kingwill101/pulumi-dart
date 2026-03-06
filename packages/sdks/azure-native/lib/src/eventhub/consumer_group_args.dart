@@ -24,7 +24,7 @@ class ConsumerGroupArgs {
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   /// [userMetadata] User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
-  ConsumerGroupArgs({
+  const ConsumerGroupArgs({
     this.consumerGroupName,
     required this.eventHubName,
     required this.namespaceName,

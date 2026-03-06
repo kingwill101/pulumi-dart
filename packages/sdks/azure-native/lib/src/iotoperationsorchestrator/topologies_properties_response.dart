@@ -10,7 +10,7 @@ class TopologiesPropertiesResponse {
 
   /// Creates a new [TopologiesPropertiesResponse].
   /// [bindings] bindings description.
-  TopologiesPropertiesResponse({
+  const TopologiesPropertiesResponse({
     this.bindings,
   });
 

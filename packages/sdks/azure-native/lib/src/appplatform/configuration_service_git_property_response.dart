@@ -10,7 +10,7 @@ class ConfigurationServiceGitPropertyResponse {
 
   /// Creates a new [ConfigurationServiceGitPropertyResponse].
   /// [repositories] Repositories of Application Configuration Service git property.
-  ConfigurationServiceGitPropertyResponse({
+  const ConfigurationServiceGitPropertyResponse({
     this.repositories,
   });
 

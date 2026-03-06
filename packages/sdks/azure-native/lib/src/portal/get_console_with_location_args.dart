@@ -15,7 +15,7 @@ class GetConsoleWithLocationArgs {
   /// Creates a new [GetConsoleWithLocationArgs].
   /// [consoleName] The name of the console
   /// [location] The provider location
-  GetConsoleWithLocationArgs({
+  const GetConsoleWithLocationArgs({
     required this.consoleName,
     required this.location,
   });

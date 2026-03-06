@@ -38,7 +38,7 @@ class GetMoveCollectionResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource.
-  GetMoveCollectionResult({
+  const GetMoveCollectionResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

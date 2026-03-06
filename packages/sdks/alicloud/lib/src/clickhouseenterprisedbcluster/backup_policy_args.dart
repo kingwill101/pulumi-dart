@@ -21,7 +21,7 @@ class BackupPolicyArgs {
   /// [dbInstanceId] The instance ID.
   /// [preferredBackupPeriod] Backup period.
   /// [preferredBackupTime] Backup time.
-  BackupPolicyArgs({
+  const BackupPolicyArgs({
     required this.backupRetentionPeriod,
     required this.dbInstanceId,
     required this.preferredBackupPeriod,

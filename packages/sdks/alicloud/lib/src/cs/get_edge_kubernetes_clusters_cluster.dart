@@ -31,7 +31,7 @@ class GetEdgeKubernetesClustersCluster {
   /// [securityGroupId] The ID of security group where the current cluster worker node is located.
   /// [vpcId] The ID of VPC where the current cluster is located.
   /// [workerNodes] List of cluster worker nodes. It contains several attributes to `Block Nodes`.
-  GetEdgeKubernetesClustersCluster({
+  const GetEdgeKubernetesClustersCluster({
     required this.availabilityZone,
     required this.connections,
     required this.id,

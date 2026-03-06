@@ -9,7 +9,7 @@ class StorageConfigResponse {
 
   /// Creates a new [StorageConfigResponse].
   /// [bucket] Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
-  StorageConfigResponse({
+  const StorageConfigResponse({
     required this.bucket,
   });
 

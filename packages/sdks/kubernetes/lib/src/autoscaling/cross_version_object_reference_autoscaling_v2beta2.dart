@@ -15,7 +15,7 @@ class CrossVersionObjectReferenceAutoscalingV2beta2 {
   /// [apiVersion] API version of the referent
   /// [kind] Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
   /// [name] Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names
-  CrossVersionObjectReferenceAutoscalingV2beta2({
+  const CrossVersionObjectReferenceAutoscalingV2beta2({
     this.apiVersion,
     required this.kind,
     required this.name,

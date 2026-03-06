@@ -12,7 +12,7 @@ class EntityCoordinates {
   /// Creates a new [EntityCoordinates].
   /// [x] X Coordinate
   /// [y] Y Coordinate
-  EntityCoordinates({
+  const EntityCoordinates({
     required this.x,
     required this.y,
   });

@@ -15,7 +15,7 @@ class GetMonitorDefaultKeyArgs {
   /// Creates a new [GetMonitorDefaultKeyArgs].
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMonitorDefaultKeyArgs({
+  const GetMonitorDefaultKeyArgs({
     required this.monitorName,
     required this.resourceGroupName,
   });

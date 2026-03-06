@@ -28,7 +28,7 @@ class DatasetBlobStorageState {
   /// [folderPath] The path of the folder in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   /// [name] The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
   /// [storageAccount] A `storage_account` block as defined below. Changing this forces a new resource to be created.
-  DatasetBlobStorageState({
+  const DatasetBlobStorageState({
     this.containerName,
     this.dataShareId,
     this.displayName,

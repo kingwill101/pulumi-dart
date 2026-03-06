@@ -42,7 +42,7 @@ class AccountState {
   /// [totalDatabases] The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
   /// [totalDictionaries] The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
   /// [type] The type of the database account. Valid values: `Normal` or `Super`.
-  AccountState({
+  const AccountState({
     this.accountDescription,
     this.accountName,
     this.accountPassword,

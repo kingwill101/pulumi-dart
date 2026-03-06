@@ -11,7 +11,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse].
   /// [op] The match operator for the field.
   /// [val] The value of the field.
-  SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse({
+  const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse({
     required this.op,
     required this.val,
   });

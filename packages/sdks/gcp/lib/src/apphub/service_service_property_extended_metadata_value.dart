@@ -13,7 +13,7 @@ class ServiceServicePropertyExtendedMetadataValue {
   /// Creates a new [ServiceServicePropertyExtendedMetadataValue].
   /// [extendedMetadataSchema] (Output)
   /// [metadataStruct] (Output)
-  ServiceServicePropertyExtendedMetadataValue({
+  const ServiceServicePropertyExtendedMetadataValue({
     this.extendedMetadataSchema,
     this.metadataStruct,
   });

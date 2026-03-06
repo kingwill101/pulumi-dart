@@ -19,7 +19,7 @@ class GetLkeClustersResult {
   /// [lkeClusters] Required.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetLkeClustersResult({
+  const GetLkeClustersResult({
     this.filters,
     required this.id,
     required this.lkeClusters,

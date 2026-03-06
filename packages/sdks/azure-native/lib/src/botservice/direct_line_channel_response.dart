@@ -23,7 +23,7 @@ class DirectLineChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Direct Line channel resource
   /// [provisioningState] Provisioning state of the resource
-  DirectLineChannelResponse({
+  const DirectLineChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

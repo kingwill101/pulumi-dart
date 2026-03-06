@@ -34,7 +34,7 @@ class GetPeerAsnResult {
   /// [peerName] The name of the peer.
   /// [type] The type of the resource.
   /// [validationState] The validation state of the ASN associated with the peer.
-  GetPeerAsnResult({
+  const GetPeerAsnResult({
     required this.azureApiVersion,
     required this.errorMessage,
     required this.id,

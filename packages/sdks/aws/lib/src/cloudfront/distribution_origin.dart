@@ -45,7 +45,7 @@ class DistributionOrigin {
   /// [responseCompletionTimeout] Time (in seconds) that a request from CloudFront to the origin can stay open and wait for a response. Must be integer greater than or equal to the value of `origin_read_timeout`. If omitted or explicitly set to `0`, no maximum value is enforced.
   /// [s3OriginConfig] CloudFront S3 origin configuration information. If a custom origin is required, use `custom_origin_config` instead.
   /// [vpcOriginConfig] The VPC origin configuration.
-  DistributionOrigin({
+  const DistributionOrigin({
     this.connectionAttempts,
     this.connectionTimeout,
     this.customHeaders,

@@ -13,7 +13,7 @@ class DestinationConfig {
   /// Creates a new [DestinationConfig].
   /// [destinations] The destinations for the key.
   /// [key] The key is the destination identifier that is supported by the Connector.
-  DestinationConfig({
+  const DestinationConfig({
     this.destinations,
     this.key,
   });

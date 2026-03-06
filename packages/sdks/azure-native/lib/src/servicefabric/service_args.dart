@@ -31,7 +31,7 @@ class ServiceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the service resource in the format of {applicationName}~{serviceName}.
   /// [tags] Resource tags.
-  ServiceArgs({
+  const ServiceArgs({
     required this.applicationName,
     required this.clusterName,
     this.location,

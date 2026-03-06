@@ -28,7 +28,7 @@ class GetApplicationInfosArgs {
   /// [quotaActionCode] Optional.
   /// [quotaCategory] Optional.
   /// [status] Optional.
-  GetApplicationInfosArgs({
+  const GetApplicationInfosArgs({
     this.dimensions,
     this.enableDetails,
     this.ids,

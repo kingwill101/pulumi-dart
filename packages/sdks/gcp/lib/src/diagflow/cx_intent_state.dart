@@ -72,7 +72,7 @@ class CxIntentState {
   /// [priority] The priority of this intent. Higher numbers represent higher priorities.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [trainingPhrases] The collection of training phrases the agent is trained on to identify the intent.
-  CxIntentState({
+  const CxIntentState({
     this.description,
     this.displayName,
     this.effectiveLabels,

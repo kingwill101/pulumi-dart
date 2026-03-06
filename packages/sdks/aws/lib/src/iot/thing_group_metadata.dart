@@ -13,7 +13,7 @@ class ThingGroupMetadata {
   /// [creationDate] Optional.
   /// [parentGroupName] The name of the parent Thing Group.
   /// [rootToParentGroups] Optional.
-  ThingGroupMetadata({
+  const ThingGroupMetadata({
     this.creationDate,
     this.parentGroupName,
     this.rootToParentGroups,

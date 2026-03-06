@@ -18,7 +18,7 @@ class StorageDiscoveryScopeResponse {
   /// [resourceTypes] Resource types for the collection
   /// [tagKeysOnly] The storage account tags keys to filter
   /// [tags] Resource tags.
-  StorageDiscoveryScopeResponse({
+  const StorageDiscoveryScopeResponse({
     required this.displayName,
     required this.resourceTypes,
     this.tagKeysOnly,

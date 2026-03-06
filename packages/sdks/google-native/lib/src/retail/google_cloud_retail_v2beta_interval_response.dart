@@ -18,7 +18,7 @@ class GoogleCloudRetailV2betaIntervalResponse {
   /// [exclusiveMinimum] Exclusive lower bound.
   /// [maximum] Inclusive upper bound.
   /// [minimum] Inclusive lower bound.
-  GoogleCloudRetailV2betaIntervalResponse({
+  const GoogleCloudRetailV2betaIntervalResponse({
     required this.exclusiveMaximum,
     required this.exclusiveMinimum,
     required this.maximum,

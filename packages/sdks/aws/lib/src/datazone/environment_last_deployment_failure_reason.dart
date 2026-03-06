@@ -9,7 +9,7 @@ class EnvironmentLastDeploymentFailureReason {
   /// Creates a new [EnvironmentLastDeploymentFailureReason].
   /// [code] Required.
   /// [message] Required.
-  EnvironmentLastDeploymentFailureReason({
+  const EnvironmentLastDeploymentFailureReason({
     required this.code,
     required this.message,
   });

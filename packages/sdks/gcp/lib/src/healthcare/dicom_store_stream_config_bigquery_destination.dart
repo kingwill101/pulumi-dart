@@ -8,7 +8,7 @@ class DicomStoreStreamConfigBigqueryDestination {
 
   /// Creates a new [DicomStoreStreamConfigBigqueryDestination].
   /// [tableUri] a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
-  DicomStoreStreamConfigBigqueryDestination({
+  const DicomStoreStreamConfigBigqueryDestination({
     required this.tableUri,
   });
 

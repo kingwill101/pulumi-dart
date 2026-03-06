@@ -22,7 +22,7 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
   /// [parameters] The runtime parameters to pass to the job.
   /// [transformNameMapping] Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. Only applicable when updating a pipeline.
   /// [update] If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.
-  GoogleCloudDatapipelinesV1LaunchTemplateParameters({
+  const GoogleCloudDatapipelinesV1LaunchTemplateParameters({
     this.environment,
     required this.jobName,
     this.parameters,

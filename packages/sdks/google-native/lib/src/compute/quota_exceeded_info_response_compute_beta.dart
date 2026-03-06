@@ -24,7 +24,7 @@ class QuotaExceededInfoResponseComputeBeta {
   /// [limitName] The name of the quota limit.
   /// [metricName] The Compute Engine quota metric name.
   /// [rolloutStatus] Rollout status of the future quota limit.
-  QuotaExceededInfoResponseComputeBeta({
+  const QuotaExceededInfoResponseComputeBeta({
     required this.dimensions,
     required this.futureLimit,
     required this.limit,

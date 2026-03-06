@@ -54,7 +54,7 @@ class PrivateEndpointArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [subnet] The ID of the subnet from which the private IP will be allocated.
   /// [tags] Resource tags.
-  PrivateEndpointArgs({
+  const PrivateEndpointArgs({
     this.applicationSecurityGroups,
     this.customDnsConfigs,
     this.customNetworkInterfaceName,

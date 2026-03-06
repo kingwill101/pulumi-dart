@@ -9,7 +9,7 @@ class GoogleCloudMlV1SampledShapleyAttributionResponse {
 
   /// Creates a new [GoogleCloudMlV1SampledShapleyAttributionResponse].
   /// [numPaths] The number of feature permutations to consider when approximating the Shapley values.
-  GoogleCloudMlV1SampledShapleyAttributionResponse({
+  const GoogleCloudMlV1SampledShapleyAttributionResponse({
     required this.numPaths,
   });
 

@@ -25,7 +25,7 @@ class SchedulerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schedulerName] The name of the Scheduler
   /// [tags] Resource tags.
-  SchedulerArgs({
+  const SchedulerArgs({
     this.location,
     this.properties,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class GetServiceResult {
   /// [region] Required.
   /// [serviceCode] Code of the service.
   /// [serviceName] Required.
-  GetServiceResult({
+  const GetServiceResult({
     required this.id,
     required this.region,
     required this.serviceCode,

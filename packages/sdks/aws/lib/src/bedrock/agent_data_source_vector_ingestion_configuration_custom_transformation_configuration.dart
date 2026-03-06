@@ -13,7 +13,7 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration].
   /// [intermediateStorage] The intermediate storage for custom transformation.
   /// [transformation] A custom processing step for documents moving through the data source ingestion pipeline.
-  AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration({
+  const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration({
     this.intermediateStorage,
     this.transformation,
   });

@@ -11,7 +11,7 @@ class StorageSpacesResponseExtendedLocation {
   /// Creates a new [StorageSpacesResponseExtendedLocation].
   /// [name] The extended location name.
   /// [type] The extended location type.
-  StorageSpacesResponseExtendedLocation({
+  const StorageSpacesResponseExtendedLocation({
     this.name,
     this.type,
   });

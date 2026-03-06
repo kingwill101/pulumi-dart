@@ -11,7 +11,7 @@ class GetRulesRuleCompliance {
   /// Creates a new [GetRulesRuleCompliance].
   /// [complianceType] The compliance evaluation result of the target resources.
   /// [count] The number of resources with the specified compliance evaluation result.
-  GetRulesRuleCompliance({
+  const GetRulesRuleCompliance({
     required this.complianceType,
     required this.count,
   });

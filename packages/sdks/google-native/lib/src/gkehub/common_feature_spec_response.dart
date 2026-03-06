@@ -21,7 +21,7 @@ class CommonFeatureSpecResponse {
   /// [clusterupgrade] ClusterUpgrade (fleet-based) feature spec.
   /// [fleetobservability] FleetObservability feature spec.
   /// [multiclusteringress] Multicluster Ingress-specific spec.
-  CommonFeatureSpecResponse({
+  const CommonFeatureSpecResponse({
     required this.appdevexperience,
     required this.clusterupgrade,
     required this.fleetobservability,

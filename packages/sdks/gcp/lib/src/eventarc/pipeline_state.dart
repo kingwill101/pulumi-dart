@@ -109,7 +109,7 @@ class PipelineState {
   /// [retryPolicy] The retry policy configuration for the Pipeline. The pipeline
   /// [uid] Server-assigned unique identifier for the Pipeline. The value
   /// [updateTime] The last-modified time.
-  PipelineState({
+  const PipelineState({
     this.annotations,
     this.createTime,
     this.cryptoKeyName,

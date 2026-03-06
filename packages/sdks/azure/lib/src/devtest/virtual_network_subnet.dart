@@ -18,7 +18,7 @@ class VirtualNetworkSubnet {
   /// [sharedPublicIpAddress] A `shared_public_ip_address` block as defined below.
   /// [useInVirtualMachineCreation] Can this subnet be used for creating Virtual Machines? Possible values are `Allow`, `Default` and `Deny`. Defaults to `Allow`.
   /// [usePublicIpAddress] Can Virtual Machines in this Subnet use Public IP Addresses? Possible values are `Allow`, `Default` and `Deny`. Defaults to `Allow`.
-  VirtualNetworkSubnet({
+  const VirtualNetworkSubnet({
     this.name,
     this.sharedPublicIpAddress,
     this.useInVirtualMachineCreation,

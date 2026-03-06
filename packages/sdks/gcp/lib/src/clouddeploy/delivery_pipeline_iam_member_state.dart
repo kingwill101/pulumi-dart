@@ -21,7 +21,7 @@ class DeliveryPipelineIamMemberState {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Optional.
-  DeliveryPipelineIamMemberState({
+  const DeliveryPipelineIamMemberState({
     this.condition,
     this.etag,
     this.location,

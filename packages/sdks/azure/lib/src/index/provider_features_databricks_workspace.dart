@@ -8,7 +8,7 @@ class ProviderFeaturesDatabricksWorkspace {
 
   /// Creates a new [ProviderFeaturesDatabricksWorkspace].
   /// [forceDelete] When enabled, the managed resource group that contains the Unity Catalog data will be forcibly deleted when the workspace is destroyed, regardless of contents.
-  ProviderFeaturesDatabricksWorkspace({
+  const ProviderFeaturesDatabricksWorkspace({
     this.forceDelete,
   });
 

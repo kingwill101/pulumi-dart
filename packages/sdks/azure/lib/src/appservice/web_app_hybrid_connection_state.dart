@@ -36,7 +36,7 @@ class WebAppHybridConnectionState {
   /// [serviceBusNamespace] The Service Bus Namespace.
   /// [serviceBusSuffix] The suffix for the endpoint.
   /// [webAppId] The ID of the Web App for this Hybrid Connection. Changing this forces a new resource to be created.
-  WebAppHybridConnectionState({
+  const WebAppHybridConnectionState({
     this.hostname,
     this.namespaceName,
     this.port,

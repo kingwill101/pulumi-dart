@@ -8,7 +8,7 @@ class ListBuildServiceBuilderDeploymentsResult {
 
   /// Creates a new [ListBuildServiceBuilderDeploymentsResult].
   /// [deployments] A list of deployment resource ids.
-  ListBuildServiceBuilderDeploymentsResult({
+  const ListBuildServiceBuilderDeploymentsResult({
     this.deployments,
   });
 

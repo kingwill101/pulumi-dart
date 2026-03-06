@@ -12,7 +12,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration].
   /// [chat] Contains configurations to use the prompt in a conversational format. See Chat Template Configuration for more information.
   /// [text] Optional.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration({
     this.chat,
     this.text,
   });

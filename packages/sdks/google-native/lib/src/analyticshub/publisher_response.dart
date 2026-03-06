@@ -12,7 +12,7 @@ class PublisherResponse {
   /// Creates a new [PublisherResponse].
   /// [name] Optional. Name of the listing publisher.
   /// [primaryContact] Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.
-  PublisherResponse({
+  const PublisherResponse({
     required this.name,
     required this.primaryContact,
   });

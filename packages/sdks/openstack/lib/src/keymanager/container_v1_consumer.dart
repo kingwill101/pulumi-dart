@@ -12,7 +12,7 @@ class ContainerV1Consumer {
   /// Creates a new [ContainerV1Consumer].
   /// [name] Human-readable name for the Container. Does not have
   /// [url] The consumer URL.
-  ContainerV1Consumer({
+  const ContainerV1Consumer({
     this.name,
     this.url,
   });

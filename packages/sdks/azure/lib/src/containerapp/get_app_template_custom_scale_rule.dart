@@ -15,7 +15,7 @@ class GetAppTemplateCustomScaleRule {
   /// [customRuleType] Required.
   /// [metadata] Required.
   /// [name] The name of the Container App.
-  GetAppTemplateCustomScaleRule({
+  const GetAppTemplateCustomScaleRule({
     required this.authentications,
     required this.customRuleType,
     required this.metadata,

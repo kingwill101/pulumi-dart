@@ -63,7 +63,7 @@ class ExtensionArgs {
   /// [type] The type of extension, available types for a publisher can be found using the Azure CLI.
   /// [typeHandlerVersion] Specifies the version of the extension to use, available versions can be found using the Azure CLI.
   /// [virtualMachineId] The ID of the Virtual Machine. Changing this forces a new resource to be created
-  ExtensionArgs({
+  const ExtensionArgs({
     this.autoUpgradeMinorVersion,
     this.automaticUpgradeEnabled,
     this.failureSuppressionEnabled,

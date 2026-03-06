@@ -11,7 +11,7 @@ class RoutingIdentityInfo {
   /// Creates a new [RoutingIdentityInfo].
   /// [type] Routing identity type for topic spaces configuration.
   /// [userAssignedIdentity] Optional.
-  RoutingIdentityInfo({
+  const RoutingIdentityInfo({
     this.type,
     this.userAssignedIdentity,
   });

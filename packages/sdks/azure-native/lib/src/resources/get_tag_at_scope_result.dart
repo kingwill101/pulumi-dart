@@ -21,7 +21,7 @@ class GetTagAtScopeResult {
   /// [name] The name of the tags wrapper resource.
   /// [properties] The set of tags.
   /// [type] The type of the tags wrapper resource.
-  GetTagAtScopeResult({
+  const GetTagAtScopeResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

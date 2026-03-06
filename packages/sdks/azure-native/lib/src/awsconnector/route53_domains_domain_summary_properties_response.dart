@@ -34,7 +34,7 @@ class Route53DomainsDomainSummaryPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Route53DomainsDomainSummaryPropertiesResponse({
+  const Route53DomainsDomainSummaryPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

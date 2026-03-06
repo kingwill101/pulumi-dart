@@ -110,7 +110,7 @@ class GetInstanceResult {
   /// [version] Current version of the Data Fusion. Only specifiable in Update.
   /// [workforceIdentityServiceEndpoint] Endpoint on which the Data Fusion UI is accessible to third-party users
   /// [zone] Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.accelerators,
     required this.apiEndpoint,
     required this.availableVersion,

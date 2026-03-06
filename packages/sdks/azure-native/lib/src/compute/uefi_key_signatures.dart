@@ -19,7 +19,7 @@ class UefiKeySignatures {
   /// [dbx] The database of revoked UEFI keys for this image version.
   /// [kek] The Key Encryption Keys of this image version.
   /// [pk] The Platform Key of this image version.
-  UefiKeySignatures({
+  const UefiKeySignatures({
     this.db,
     this.dbx,
     this.kek,

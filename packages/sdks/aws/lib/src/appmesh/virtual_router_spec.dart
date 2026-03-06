@@ -10,7 +10,7 @@ class VirtualRouterSpec {
 
   /// Creates a new [VirtualRouterSpec].
   /// [listeners] Listeners that the virtual router is expected to receive inbound traffic from.
-  VirtualRouterSpec({
+  const VirtualRouterSpec({
     this.listeners,
   });
 

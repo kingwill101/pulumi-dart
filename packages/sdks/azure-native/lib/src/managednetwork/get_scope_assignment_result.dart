@@ -29,7 +29,7 @@ class GetScopeAssignmentResult {
   /// [name] The name of the resource
   /// [provisioningState] Provisioning state of the ManagedNetwork resource.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetScopeAssignmentResult({
+  const GetScopeAssignmentResult({
     this.assignedManagedNetwork,
     required this.azureApiVersion,
     required this.etag,

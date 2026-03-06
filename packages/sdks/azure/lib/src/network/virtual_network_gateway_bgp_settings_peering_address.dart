@@ -19,7 +19,7 @@ class VirtualNetworkGatewayBgpSettingsPeeringAddress {
   /// [defaultAddresses] A list of peering address assigned to the BGP peer of the Virtual Network Gateway.
   /// [ipConfigurationName] The name of the IP configuration of this Virtual Network Gateway. In case there are multiple `ip_configuration` blocks defined, this property is **required** to specify.
   /// [tunnelIpAddresses] A list of tunnel IP addresses assigned to the BGP peer of the Virtual Network Gateway.
-  VirtualNetworkGatewayBgpSettingsPeeringAddress({
+  const VirtualNetworkGatewayBgpSettingsPeeringAddress({
     this.apipaAddresses,
     this.defaultAddresses,
     this.ipConfigurationName,

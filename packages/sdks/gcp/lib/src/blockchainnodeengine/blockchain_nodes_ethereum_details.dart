@@ -43,7 +43,7 @@ class BlockchainNodesEthereumDetails {
   /// [network] The Ethereum environment being accessed.
   /// [nodeType] The type of Ethereum node.
   /// [validatorConfig] Configuration for validator-related parameters on the beacon client, and for any managed validator client.
-  BlockchainNodesEthereumDetails({
+  const BlockchainNodesEthereumDetails({
     this.additionalEndpoints,
     this.apiEnableAdmin,
     this.apiEnableDebug,

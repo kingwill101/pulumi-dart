@@ -11,7 +11,7 @@ class SpringCloudServiceConfigServerGitSettingHttpBasicAuth {
   /// Creates a new [SpringCloudServiceConfigServerGitSettingHttpBasicAuth].
   /// [password] The password used to access the Git repository server, required when the Git repository server supports HTTP Basic Authentication.
   /// [username] The username that's used to access the Git repository server, required when the Git repository server supports HTTP Basic Authentication.
-  SpringCloudServiceConfigServerGitSettingHttpBasicAuth({
+  const SpringCloudServiceConfigServerGitSettingHttpBasicAuth({
     required this.password,
     required this.username,
   });

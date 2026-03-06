@@ -13,7 +13,7 @@ class GetLicenseComputeV1Args {
   /// Creates a new [GetLicenseComputeV1Args].
   /// [license] Required.
   /// [project] Optional.
-  GetLicenseComputeV1Args({
+  const GetLicenseComputeV1Args({
     required this.license,
     this.project,
   });

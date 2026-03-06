@@ -66,7 +66,7 @@ class RestoreWorkloadDiskRestoreProperties {
   /// [sizeGb] Required. The size of the disk in GB.
   /// [storagePool] Optional. The storage pool in which the new disk is created.
   /// [type] Required. URL of the disk type resource describing which disk type to use.
-  RestoreWorkloadDiskRestoreProperties({
+  const RestoreWorkloadDiskRestoreProperties({
     this.accessMode,
     this.architecture,
     this.description,

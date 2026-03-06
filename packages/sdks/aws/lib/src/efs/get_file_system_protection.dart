@@ -7,7 +7,7 @@ class GetFileSystemProtection {
 
   /// Creates a new [GetFileSystemProtection].
   /// [replicationOverwrite] Required.
-  GetFileSystemProtection({
+  const GetFileSystemProtection({
     required this.replicationOverwrite,
   });
 

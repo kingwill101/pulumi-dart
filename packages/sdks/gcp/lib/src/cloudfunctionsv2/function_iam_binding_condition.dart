@@ -11,7 +11,7 @@ class FunctionIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  FunctionIamBindingCondition({
+  const FunctionIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

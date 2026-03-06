@@ -10,7 +10,7 @@ class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse {
 
   /// Creates a new [GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse].
   /// [bigqueryExportResult] The result of BigQuery export post scan action.
-  GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse({
+  const GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse({
     required this.bigqueryExportResult,
   });
 

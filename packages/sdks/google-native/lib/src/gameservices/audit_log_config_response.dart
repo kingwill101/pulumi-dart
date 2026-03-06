@@ -14,7 +14,7 @@ class AuditLogConfigResponse {
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [ignoreChildExemptions] Required.
   /// [logType] The log type that this config enables.
-  AuditLogConfigResponse({
+  const AuditLogConfigResponse({
     required this.exemptedMembers,
     required this.ignoreChildExemptions,
     required this.logType,

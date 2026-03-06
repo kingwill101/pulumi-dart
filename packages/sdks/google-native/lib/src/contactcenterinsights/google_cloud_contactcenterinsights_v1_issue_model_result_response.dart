@@ -13,7 +13,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelResultResponse {
   /// Creates a new [GoogleCloudContactcenterinsightsV1IssueModelResultResponse].
   /// [issueModel] Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
   /// [issues] All the matched issues.
-  GoogleCloudContactcenterinsightsV1IssueModelResultResponse({
+  const GoogleCloudContactcenterinsightsV1IssueModelResultResponse({
     required this.issueModel,
     required this.issues,
   });

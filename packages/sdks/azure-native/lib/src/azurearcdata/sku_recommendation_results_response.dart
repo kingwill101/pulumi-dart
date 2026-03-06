@@ -18,7 +18,7 @@ class SkuRecommendationResultsResponse {
   /// [azureSqlDatabase] SKU Recommendation results for Azure SQL Database.
   /// [azureSqlManagedInstance] SKU Recommendation results for Azure SQL Managed Instance.
   /// [azureSqlVirtualMachine] SKU Recommendation results for Azure SQL Virtual Machine.
-  SkuRecommendationResultsResponse({
+  const SkuRecommendationResultsResponse({
     this.azureSqlDatabase,
     this.azureSqlManagedInstance,
     this.azureSqlVirtualMachine,

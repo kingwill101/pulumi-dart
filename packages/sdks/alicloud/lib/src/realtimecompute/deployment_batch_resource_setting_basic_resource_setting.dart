@@ -13,7 +13,7 @@ class DeploymentBatchResourceSettingBasicResourceSetting {
   /// [jobmanagerResourceSettingSpec] Optional.
   /// [parallelism] Optional.
   /// [taskmanagerResourceSettingSpec] Optional.
-  DeploymentBatchResourceSettingBasicResourceSetting({
+  const DeploymentBatchResourceSettingBasicResourceSetting({
     this.jobmanagerResourceSettingSpec,
     this.parallelism,
     this.taskmanagerResourceSettingSpec,

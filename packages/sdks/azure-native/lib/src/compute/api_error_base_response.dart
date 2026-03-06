@@ -15,7 +15,7 @@ class ApiErrorBaseResponse {
   /// [code] The error code.
   /// [message] The error message.
   /// [target] The target of the particular error.
-  ApiErrorBaseResponse({
+  const ApiErrorBaseResponse({
     this.code,
     this.message,
     this.target,

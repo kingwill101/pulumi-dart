@@ -12,7 +12,7 @@ class DeviceMessagingEndpoint {
   /// Creates a new [DeviceMessagingEndpoint].
   /// [address] The endpoint address to connect to.
   /// [endpointType] Type of connection used for the messaging endpoint.
-  DeviceMessagingEndpoint({
+  const DeviceMessagingEndpoint({
     required this.address,
     this.endpointType,
   });

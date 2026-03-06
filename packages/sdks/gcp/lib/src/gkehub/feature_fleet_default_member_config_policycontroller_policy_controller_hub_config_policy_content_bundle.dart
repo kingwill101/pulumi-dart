@@ -11,7 +11,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle].
   /// [bundle] The identifier for this object. Format specified above.
   /// [exemptedNamespaces] The set of namespaces to be exempted from the bundle.
-  FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle({
+  const FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle({
     required this.bundle,
     this.exemptedNamespaces,
   });

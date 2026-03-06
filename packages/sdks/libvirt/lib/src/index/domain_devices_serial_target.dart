@@ -15,7 +15,7 @@ class DomainDevicesSerialTarget {
   /// [model] Sets the model type for the target serial device, defining its emulation characteristics.
   /// [port] Sets the port number for the target serial device, determining its communication endpoint.
   /// [type] Specifies the type of the target serial device, indicating its nature or protocol.
-  DomainDevicesSerialTarget({
+  const DomainDevicesSerialTarget({
     this.model,
     this.port,
     this.type,

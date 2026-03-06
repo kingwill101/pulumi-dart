@@ -14,7 +14,7 @@ class ClusterMasterUserSecret {
   /// [kmsKeyId] ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
   /// [secretArn] Amazon Resource Name (ARN) of the secret.
   /// [secretStatus] Status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
-  ClusterMasterUserSecret({
+  const ClusterMasterUserSecret({
     this.kmsKeyId,
     this.secretArn,
     this.secretStatus,

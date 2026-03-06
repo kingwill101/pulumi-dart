@@ -25,7 +25,7 @@ class DocumentAiProcessorState {
   /// [name] The resource name of the processor.
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes)
-  DocumentAiProcessorState({
+  const DocumentAiProcessorState({
     this.displayName,
     this.kmsKeyName,
     this.location,

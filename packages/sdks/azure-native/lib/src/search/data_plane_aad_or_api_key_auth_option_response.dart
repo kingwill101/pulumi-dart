@@ -9,7 +9,7 @@ class DataPlaneAadOrApiKeyAuthOptionResponse {
 
   /// Creates a new [DataPlaneAadOrApiKeyAuthOptionResponse].
   /// [aadAuthFailureMode] Describes what response the data plane API of a search service would send for requests that failed authentication.
-  DataPlaneAadOrApiKeyAuthOptionResponse({
+  const DataPlaneAadOrApiKeyAuthOptionResponse({
     this.aadAuthFailureMode,
   });
 

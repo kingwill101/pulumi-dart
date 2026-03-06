@@ -12,7 +12,7 @@ class NetworkPortGroupVlan {
   /// Creates a new [NetworkPortGroupVlan].
   /// [tags] Configures a VLAN tag group for the specified network port group.
   /// [trunk] Controls whether the VLAN tag allows trunking for the network port group.
-  NetworkPortGroupVlan({
+  const NetworkPortGroupVlan({
     this.tags,
     this.trunk,
   });

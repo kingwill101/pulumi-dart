@@ -28,7 +28,7 @@ class GetInstancesResult {
   /// [queryStr] Optional.
   /// [status] Optional.
   /// [supportEngine] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

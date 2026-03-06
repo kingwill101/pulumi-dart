@@ -8,7 +8,7 @@ class FunctionEventTriggerFailurePolicy {
 
   /// Creates a new [FunctionEventTriggerFailurePolicy].
   /// [retry] Whether the function should be retried on failure. Defaults to `false`.
-  FunctionEventTriggerFailurePolicy({
+  const FunctionEventTriggerFailurePolicy({
     required this.retry,
   });
 

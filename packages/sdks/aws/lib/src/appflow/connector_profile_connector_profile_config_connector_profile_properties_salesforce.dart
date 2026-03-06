@@ -13,7 +13,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce
   /// [instanceUrl] Optional.
   /// [isSandboxEnvironment] Indicates whether the connector profile applies to a sandbox or production environment.
   /// [usePrivatelinkForMetadataAndAuthorization] Indicates whether Amazon AppFlow uses the private network to send metadata and authorization calls to Salesforce. Amazon AppFlow sends private calls through AWS PrivateLink. These calls travel through AWS infrastructure without being exposed to the public internet.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce({
     this.instanceUrl,
     this.isSandboxEnvironment,
     this.usePrivatelinkForMetadataAndAuthorization,

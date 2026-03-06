@@ -17,7 +17,7 @@ class GetEnvgroupAttachmentResult {
   /// [environment] ID of the attached environment.
   /// [environmentGroupId] ID of the environment group.
   /// [name] ID of the environment group attachment.
-  GetEnvgroupAttachmentResult({
+  const GetEnvgroupAttachmentResult({
     required this.createdAt,
     required this.environment,
     required this.environmentGroupId,

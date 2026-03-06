@@ -15,7 +15,7 @@ class GetContactProfileArgs {
   /// Creates a new [GetContactProfileArgs].
   /// [contactProfileName] Contact Profile name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetContactProfileArgs({
+  const GetContactProfileArgs({
     required this.contactProfileName,
     required this.resourceGroupName,
   });

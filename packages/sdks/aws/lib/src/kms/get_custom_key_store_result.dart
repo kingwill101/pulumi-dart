@@ -25,7 +25,7 @@ class GetCustomKeyStoreResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [trustAnchorCertificate] The trust anchor certificate of the associated CloudHSM cluster.
-  GetCustomKeyStoreResult({
+  const GetCustomKeyStoreResult({
     required this.cloudHsmClusterId,
     required this.connectionState,
     required this.creationDate,

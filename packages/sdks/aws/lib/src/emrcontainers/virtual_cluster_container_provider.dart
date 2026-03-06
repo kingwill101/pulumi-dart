@@ -15,7 +15,7 @@ class VirtualClusterContainerProvider {
   /// [id] The name of the container provider that is running your EMR Containers cluster
   /// [info] Nested list containing information about the configuration of the container provider
   /// [type] The type of the container provider
-  VirtualClusterContainerProvider({
+  const VirtualClusterContainerProvider({
     required this.id,
     required this.info,
     required this.type,

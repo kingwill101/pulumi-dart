@@ -22,7 +22,7 @@ class CassandraDataCenterArgs {
   /// [dataCenterName] Data center name in a managed Cassandra cluster.
   /// [properties] Properties of a managed Cassandra data center.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  CassandraDataCenterArgs({
+  const CassandraDataCenterArgs({
     required this.clusterName,
     this.dataCenterName,
     this.properties,

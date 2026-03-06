@@ -22,7 +22,7 @@ class DomainCpuNumaCellCach {
   /// [line] Specifies the cache line size which dictates how much data is fetched from memory in one cache transaction.
   /// [policy] Specifies the cache management policy that dictates how cache entries are allocated and evicted.
   /// [size] Configures the total size of the cache, determining its capacity for storing cache lines.
-  DomainCpuNumaCellCach({
+  const DomainCpuNumaCellCach({
     required this.associativity,
     required this.level,
     this.line,

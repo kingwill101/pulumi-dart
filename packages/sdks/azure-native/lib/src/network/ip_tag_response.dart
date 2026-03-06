@@ -12,7 +12,7 @@ class IpTagResponse {
   /// Creates a new [IpTagResponse].
   /// [ipTagType] The IP tag type. Example: FirstPartyUsage.
   /// [tag] The value of the IP tag associated with the public IP. Example: SQL.
-  IpTagResponse({
+  const IpTagResponse({
     this.ipTagType,
     this.tag,
   });

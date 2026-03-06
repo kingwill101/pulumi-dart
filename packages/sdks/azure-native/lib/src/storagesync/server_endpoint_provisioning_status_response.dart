@@ -16,7 +16,7 @@ class ServerEndpointProvisioningStatusResponse {
   /// [provisioningStatus] Server Endpoint provisioning status
   /// [provisioningStepStatuses] Provisioning Step status information for each step in the provisioning process
   /// [provisioningType] Server Endpoint provisioning type
-  ServerEndpointProvisioningStatusResponse({
+  const ServerEndpointProvisioningStatusResponse({
     required this.provisioningStatus,
     required this.provisioningStepStatuses,
     required this.provisioningType,

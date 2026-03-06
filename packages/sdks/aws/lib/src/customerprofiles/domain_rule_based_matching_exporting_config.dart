@@ -8,7 +8,7 @@ class DomainRuleBasedMatchingExportingConfig {
 
   /// Creates a new [DomainRuleBasedMatchingExportingConfig].
   /// [s3Exporting] Optional.
-  DomainRuleBasedMatchingExportingConfig({
+  const DomainRuleBasedMatchingExportingConfig({
     this.s3Exporting,
   });
 

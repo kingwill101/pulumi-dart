@@ -12,7 +12,7 @@ class XiaomiCredentialResponse {
   /// Creates a new [XiaomiCredentialResponse].
   /// [appSecret] Gets or sets app secret.
   /// [endpoint] Gets or sets xiaomi service endpoint.
-  XiaomiCredentialResponse({
+  const XiaomiCredentialResponse({
     this.appSecret,
     this.endpoint,
   });

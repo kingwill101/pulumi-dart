@@ -17,7 +17,7 @@ class DataflowEndpointDataExplorerAuthentication {
   /// [method] Mode of Authentication.
   /// [systemAssignedManagedIdentitySettings] System-assigned managed identity authentication.
   /// [userAssignedManagedIdentitySettings] User-assigned managed identity authentication.
-  DataflowEndpointDataExplorerAuthentication({
+  const DataflowEndpointDataExplorerAuthentication({
     required this.method,
     this.systemAssignedManagedIdentitySettings,
     this.userAssignedManagedIdentitySettings,

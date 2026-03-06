@@ -32,7 +32,7 @@ class GetBudgetResourceGroupResult {
   /// [resourceGroupId] Required.
   /// [timeGrain] The time covered by a budget.
   /// [timePeriods] A `time_period` block as defined below.
-  GetBudgetResourceGroupResult({
+  const GetBudgetResourceGroupResult({
     required this.amount,
     required this.filters,
     required this.id,

@@ -15,7 +15,7 @@ class GetMeshNetworkservicesV1beta1Args {
   /// [location] Required.
   /// [meshId] Required.
   /// [project] Optional.
-  GetMeshNetworkservicesV1beta1Args({
+  const GetMeshNetworkservicesV1beta1Args({
     required this.location,
     required this.meshId,
     this.project,

@@ -43,7 +43,7 @@ class KafkaAzureCosmosDBSinkConnectorInfo {
   /// [timeInterval] Time Interval
   /// [topics] Kafka topics list
   /// [topicsDir] Kafka topics directory
-  KafkaAzureCosmosDBSinkConnectorInfo({
+  const KafkaAzureCosmosDBSinkConnectorInfo({
     this.apiKey,
     this.apiSecret,
     this.authType,

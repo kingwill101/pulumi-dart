@@ -23,7 +23,7 @@ class ContainerHealthcheck {
   /// [startPeriod] Start period for the container to initialize before counting retries towards unstable (ms|s|m|h). Defaults to `0s`.
   /// [tests] Command to run to check health. For example, to run `curl -f localhost/health` set the command to be `["CMD", "curl", "-f", "localhost/health"]`.
   /// [timeout] Maximum time to allow one check to run (ms|s|m|h). Defaults to `0s`.
-  ContainerHealthcheck({
+  const ContainerHealthcheck({
     this.interval,
     this.retries,
     this.startInterval,

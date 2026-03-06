@@ -18,7 +18,7 @@ class GetServerCollectorsOperationArgs {
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverCollectorName] Physical server collector ARM name
-  GetServerCollectorsOperationArgs({
+  const GetServerCollectorsOperationArgs({
     required this.projectName,
     required this.resourceGroupName,
     required this.serverCollectorName,

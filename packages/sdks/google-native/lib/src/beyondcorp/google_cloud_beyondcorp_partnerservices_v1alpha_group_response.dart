@@ -9,7 +9,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse {
 
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse].
   /// [email] The group email id
-  GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse({
+  const GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse({
     required this.email,
   });
 

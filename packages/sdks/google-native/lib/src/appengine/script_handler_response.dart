@@ -9,7 +9,7 @@ class ScriptHandlerResponse {
 
   /// Creates a new [ScriptHandlerResponse].
   /// [scriptPath] Path to the script from the application root directory.
-  ScriptHandlerResponse({
+  const ScriptHandlerResponse({
     required this.scriptPath,
   });
 

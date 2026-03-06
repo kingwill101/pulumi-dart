@@ -15,7 +15,7 @@ class AnalyticsApplicationInputsSchemaRecordFormatMappingParameters {
   /// Creates a new [AnalyticsApplicationInputsSchemaRecordFormatMappingParameters].
   /// [csv] Mapping information when the record format uses delimiters.
   /// [json] Mapping information when JSON is the record format on the streaming source.
-  AnalyticsApplicationInputsSchemaRecordFormatMappingParameters({
+  const AnalyticsApplicationInputsSchemaRecordFormatMappingParameters({
     this.csv,
     this.json,
   });

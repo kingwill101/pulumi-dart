@@ -14,7 +14,7 @@ class KubernetesClusterKubeletIdentity {
   /// [clientId] The Client ID of the user-defined Managed Identity to be assigned to the Kubelets. If not specified a Managed Identity is created automatically. Changing this forces a new resource to be created.
   /// [objectId] The Object ID of the user-defined Managed Identity assigned to the Kubelets.If not specified a Managed Identity is created automatically. Changing this forces a new resource to be created.
   /// [userAssignedIdentityId] The ID of the User Assigned Identity assigned to the Kubelets. If not specified a Managed Identity is created automatically. Changing this forces a new resource to be created.
-  KubernetesClusterKubeletIdentity({
+  const KubernetesClusterKubeletIdentity({
     this.clientId,
     this.objectId,
     this.userAssignedIdentityId,

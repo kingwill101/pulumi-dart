@@ -15,7 +15,7 @@ class GetFolderReplayPolicysimulatorV1alphaArgs {
   /// [folderId] Required.
   /// [location] Required.
   /// [replayId] Required.
-  GetFolderReplayPolicysimulatorV1alphaArgs({
+  const GetFolderReplayPolicysimulatorV1alphaArgs({
     required this.folderId,
     required this.location,
     required this.replayId,

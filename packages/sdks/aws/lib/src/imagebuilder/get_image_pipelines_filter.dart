@@ -11,7 +11,7 @@ class GetImagePipelinesFilter {
   /// Creates a new [GetImagePipelinesFilter].
   /// [name] Name of the filter field. Valid values can be found in the [Image Builder ListImagePipelines API Reference](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListImagePipelines.html).
   /// [values] Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  GetImagePipelinesFilter({
+  const GetImagePipelinesFilter({
     required this.name,
     required this.values,
   });

@@ -12,7 +12,7 @@ class GatewayApiState {
   /// Creates a new [GatewayApiState].
   /// [apiId] The Identifier of the API Management API within the API Management Service. Changing this forces a new API Management Gateway API to be created.
   /// [gatewayId] The Identifier for the API Management Gateway. Changing this forces a new API Management Gateway API to be created.
-  GatewayApiState({
+  const GatewayApiState({
     this.apiId,
     this.gatewayId,
   });

@@ -9,7 +9,7 @@ class InsightFiltersComplianceStatus {
   /// Creates a new [InsightFiltersComplianceStatus].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersComplianceStatus({
+  const InsightFiltersComplianceStatus({
     required this.comparison,
     required this.value,
   });

@@ -331,7 +331,7 @@ class PolicyArgs {
   /// [scalingAdjustment] Number of members by which to
   /// [stepAdjustments] Set of adjustments that manage
   /// [targetTrackingConfiguration] Target tracking policy. These have the following structure:
-  PolicyArgs({
+  const PolicyArgs({
     this.adjustmentType,
     required this.autoscalingGroupName,
     this.cooldown,

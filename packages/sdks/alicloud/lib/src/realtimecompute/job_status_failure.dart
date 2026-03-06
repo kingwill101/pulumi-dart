@@ -14,7 +14,7 @@ class JobStatusFailure {
   /// [failedAt] Job failure time
   /// [message] Failure Information Details
   /// [reason] Failure Reason
-  JobStatusFailure({
+  const JobStatusFailure({
     this.failedAt,
     this.message,
     this.reason,

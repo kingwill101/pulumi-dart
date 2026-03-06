@@ -35,7 +35,7 @@ class PostgreSqlConnectionProfile {
   /// [ssl] SSL configuration for the destination to connect to the source database.
   /// [staticIpConnectivity] Static ip connectivity data (default, no additional details needed).
   /// [username] The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-  PostgreSqlConnectionProfile({
+  const PostgreSqlConnectionProfile({
     this.alloydbClusterId,
     this.cloudSqlId,
     required this.host,

@@ -13,7 +13,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
   /// Creates a new [CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText].
   /// [allowPlaybackInterruption] (Output)
   /// [texts] A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-  CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText({
+  const CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText({
     this.allowPlaybackInterruption,
     this.texts,
   });

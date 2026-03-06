@@ -40,7 +40,7 @@ class DomainDevicesShmem {
   /// [server] Configures server parameters for the shared memory device, enabling network-based communication.
   /// [size] Configures the size of the shared memory device allocated for the guest.
   /// [sizeUnit] Sets the unit of measurement for the shared memory size, such as bytes or kilobytes.
-  DomainDevicesShmem({
+  const DomainDevicesShmem({
     this.acpi,
     this.address,
     this.alias,

@@ -14,7 +14,7 @@ class SecurityPostureConfig {
   /// Creates a new [SecurityPostureConfig].
   /// [mode] Sets which mode to use for Security Posture features.
   /// [vulnerabilityMode] Sets which mode to use for vulnerability scanning.
-  SecurityPostureConfig({
+  const SecurityPostureConfig({
     this.mode,
     this.vulnerabilityMode,
   });

@@ -11,7 +11,7 @@ class LinuxWebAppSlotSiteConfigCors {
   /// Creates a new [LinuxWebAppSlotSiteConfigCors].
   /// [allowedOrigins] Specifies a list of origins that should be allowed to make cross-origin calls.
   /// [supportCredentials] Whether CORS requests with credentials are allowed. Defaults to `false`
-  LinuxWebAppSlotSiteConfigCors({
+  const LinuxWebAppSlotSiteConfigCors({
     this.allowedOrigins,
     this.supportCredentials,
   });

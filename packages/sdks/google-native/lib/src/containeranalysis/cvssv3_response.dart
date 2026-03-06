@@ -30,7 +30,7 @@ class CVSSv3Response {
   /// [privilegesRequired] Required.
   /// [scope] Required.
   /// [userInteraction] Required.
-  CVSSv3Response({
+  const CVSSv3Response({
     required this.attackComplexity,
     required this.attackVector,
     required this.availabilityImpact,

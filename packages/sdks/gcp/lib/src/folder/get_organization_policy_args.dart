@@ -15,7 +15,7 @@ class GetOrganizationPolicyArgs {
   /// Creates a new [GetOrganizationPolicyArgs].
   /// [constraint] (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
   /// [folder] The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
-  GetOrganizationPolicyArgs({
+  const GetOrganizationPolicyArgs({
     required this.constraint,
     required this.folder,
   });

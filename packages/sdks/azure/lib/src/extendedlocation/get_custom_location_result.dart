@@ -35,7 +35,7 @@ class GetCustomLocationResult {
   /// [name] Required.
   /// [namespace] The namespace of the Custom Location.
   /// [resourceGroupName] Required.
-  GetCustomLocationResult({
+  const GetCustomLocationResult({
     required this.authentications,
     required this.clusterExtensionIds,
     required this.displayName,

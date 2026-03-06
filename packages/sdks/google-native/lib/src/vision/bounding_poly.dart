@@ -14,7 +14,7 @@ class BoundingPoly {
   /// Creates a new [BoundingPoly].
   /// [normalizedVertices] The bounding polygon normalized vertices.
   /// [vertices] The bounding polygon vertices.
-  BoundingPoly({
+  const BoundingPoly({
     this.normalizedVertices,
     this.vertices,
   });

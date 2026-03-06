@@ -101,7 +101,7 @@ class ServerGroupState {
   /// [uchConfig] Url consistency hash parameter configuration See `uch_config` below.
   /// [upstreamKeepaliveEnabled] Specifies whether to enable persistent TCP connections.
   /// [vpcId] The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
-  ServerGroupState({
+  const ServerGroupState({
     this.connectionDrainConfig,
     this.createTime,
     this.crossZoneEnabled,

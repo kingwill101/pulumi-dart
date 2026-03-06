@@ -9,7 +9,7 @@ class DomainDevicesDiskMirrorFormatMetadataCache {
 
   /// Creates a new [DomainDevicesDiskMirrorFormatMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.
-  DomainDevicesDiskMirrorFormatMetadataCache({
+  const DomainDevicesDiskMirrorFormatMetadataCache({
     this.maxSize,
   });
 

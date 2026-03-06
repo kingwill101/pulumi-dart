@@ -13,7 +13,7 @@ class HttpFaultDelayComputeV1 {
   /// Creates a new [HttpFaultDelayComputeV1].
   /// [fixedDelay] Specifies the value of the fixed delay interval.
   /// [percentage] The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
-  HttpFaultDelayComputeV1({
+  const HttpFaultDelayComputeV1({
     this.fixedDelay,
     this.percentage,
   });

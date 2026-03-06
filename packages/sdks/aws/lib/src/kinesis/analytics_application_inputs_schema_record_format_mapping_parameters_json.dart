@@ -8,7 +8,7 @@ class AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson {
 
   /// Creates a new [AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson].
   /// [recordRowPath] Path to the top-level parent that contains the records.
-  AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson({
+  const AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson({
     required this.recordRowPath,
   });
 

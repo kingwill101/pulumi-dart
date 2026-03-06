@@ -12,7 +12,7 @@ class ConnectionCloudSqlCredential {
   /// Creates a new [ConnectionCloudSqlCredential].
   /// [password] Password for database.
   /// [username] Username for database.
-  ConnectionCloudSqlCredential({
+  const ConnectionCloudSqlCredential({
     required this.password,
     required this.username,
   });

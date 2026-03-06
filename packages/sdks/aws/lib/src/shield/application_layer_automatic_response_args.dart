@@ -18,7 +18,7 @@ class ApplicationLayerAutomaticResponseArgs {
   /// [action] One of `COUNT` or `BLOCK`
   /// [resourceArn] ARN of the resource to protect (Cloudfront Distributions and ALBs only at this time).
   /// [timeouts] Optional.
-  ApplicationLayerAutomaticResponseArgs({
+  const ApplicationLayerAutomaticResponseArgs({
     required this.action,
     required this.resourceArn,
     this.timeouts,

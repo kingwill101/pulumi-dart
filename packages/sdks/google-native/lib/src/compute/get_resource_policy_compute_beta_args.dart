@@ -15,7 +15,7 @@ class GetResourcePolicyComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resourcePolicy] Required.
-  GetResourcePolicyComputeBetaArgs({
+  const GetResourcePolicyComputeBetaArgs({
     this.project,
     required this.region,
     required this.resourcePolicy,

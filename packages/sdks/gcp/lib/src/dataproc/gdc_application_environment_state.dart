@@ -61,7 +61,7 @@ class GdcApplicationEnvironmentState {
   /// [sparkApplicationEnvironmentConfig] Represents the SparkApplicationEnvironmentConfig.
   /// [uid] System generated unique identifier for this application environment, formatted as UUID4.
   /// [updateTime] The timestamp when the resource was most recently updated.
-  GdcApplicationEnvironmentState({
+  const GdcApplicationEnvironmentState({
     this.annotations,
     this.applicationEnvironmentId,
     this.createTime,

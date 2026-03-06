@@ -27,7 +27,7 @@ class SubProtectionPolicyResponse {
   /// [schedulePolicy] Backup schedule specified as part of backup policy.
   /// [snapshotBackupAdditionalDetails] Hana DB instance snapshot backup additional details.
   /// [tieringPolicy] Tiering policy to automatically move RPs to another tier.
-  SubProtectionPolicyResponse({
+  const SubProtectionPolicyResponse({
     this.policyType,
     this.retentionPolicy,
     this.schedulePolicy,

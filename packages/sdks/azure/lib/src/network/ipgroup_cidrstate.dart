@@ -16,7 +16,7 @@ class IPGroupCIDRState {
   /// Creates a new [IPGroupCIDRState].
   /// [cidr] The `CIDR` that should be added to the IP Group.
   /// [ipGroupId] The ID of the destination IP Group.
-  IPGroupCIDRState({
+  const IPGroupCIDRState({
     this.cidr,
     this.ipGroupId,
   });

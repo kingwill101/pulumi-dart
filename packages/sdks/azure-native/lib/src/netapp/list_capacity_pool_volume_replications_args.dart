@@ -21,7 +21,7 @@ class ListCapacityPoolVolumeReplicationsArgs {
   /// [poolName] The name of the capacity pool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] The name of the volume
-  ListCapacityPoolVolumeReplicationsArgs({
+  const ListCapacityPoolVolumeReplicationsArgs({
     required this.accountName,
     required this.poolName,
     required this.resourceGroupName,

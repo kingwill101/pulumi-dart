@@ -14,7 +14,7 @@ class RepositoryRemoteRepositoryConfigDockerRepository {
   /// Creates a new [RepositoryRemoteRepositoryConfigDockerRepository].
   /// [customRepository] [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// [publicRepository] Address of the remote repository.
-  RepositoryRemoteRepositoryConfigDockerRepository({
+  const RepositoryRemoteRepositoryConfigDockerRepository({
     this.customRepository,
     this.publicRepository,
   });

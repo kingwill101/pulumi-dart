@@ -28,7 +28,7 @@ class GetRuntimeVersionResult {
   /// [releaseDate] Date that the runtime version was released.
   /// [version] Optional.
   /// [versionName] Name of the runtime version. For a list of valid runtime versions, see [Canary Runtime Versions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html).
-  GetRuntimeVersionResult({
+  const GetRuntimeVersionResult({
     required this.deprecationDate,
     required this.description,
     required this.id,

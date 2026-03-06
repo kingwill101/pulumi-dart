@@ -9,7 +9,7 @@ class GetSecurityPolicyRuleHeaderAction {
 
   /// Creates a new [GetSecurityPolicyRuleHeaderAction].
   /// [requestHeadersToAdds] The list of request headers to add or overwrite if they're already present.
-  GetSecurityPolicyRuleHeaderAction({
+  const GetSecurityPolicyRuleHeaderAction({
     required this.requestHeadersToAdds,
   });
 

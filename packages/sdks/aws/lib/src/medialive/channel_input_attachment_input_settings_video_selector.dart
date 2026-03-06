@@ -9,7 +9,7 @@ class ChannelInputAttachmentInputSettingsVideoSelector {
   /// Creates a new [ChannelInputAttachmentInputSettingsVideoSelector].
   /// [colorSpace] Optional.
   /// [colorSpaceUsage] Optional.
-  ChannelInputAttachmentInputSettingsVideoSelector({
+  const ChannelInputAttachmentInputSettingsVideoSelector({
     this.colorSpace,
     this.colorSpaceUsage,
   });

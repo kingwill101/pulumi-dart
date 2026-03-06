@@ -13,7 +13,7 @@ class PipelineDiagnosticSettingsResponse {
   /// Creates a new [PipelineDiagnosticSettingsResponse].
   /// [request] Diagnostic settings for request.
   /// [response] Diagnostic settings for response.
-  PipelineDiagnosticSettingsResponse({
+  const PipelineDiagnosticSettingsResponse({
     this.request,
     this.response,
   });

@@ -66,7 +66,7 @@ class GetImagePipelineResult {
   /// [schedules] List of an object with schedule settings.
   /// [status] Status of the image pipeline.
   /// [tags] Key-value map of resource tags for the image pipeline.
-  GetImagePipelineResult({
+  const GetImagePipelineResult({
     required this.arn,
     required this.containerRecipeArn,
     required this.dateCreated,

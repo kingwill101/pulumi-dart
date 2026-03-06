@@ -24,7 +24,7 @@ class GetCloudFormationTypeArgs {
   /// [type] CloudFormation Registry Type. For example, `RESOURCE`.
   /// [typeName] CloudFormation Type name. For example, `AWS::EC2::VPC`.
   /// [versionId] Identifier of the CloudFormation Type version.
-  GetCloudFormationTypeArgs({
+  const GetCloudFormationTypeArgs({
     this.arn,
     this.region,
     this.type,

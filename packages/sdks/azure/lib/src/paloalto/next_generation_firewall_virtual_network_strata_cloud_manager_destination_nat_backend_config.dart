@@ -11,7 +11,7 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatBacken
   /// Creates a new [NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatBackendConfig].
   /// [port] The port number to send traffic to.
   /// [publicIpAddress] The public IP Address to send the traffic to.
-  NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatBackendConfig({
+  const NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatBackendConfig({
     required this.port,
     required this.publicIpAddress,
   });

@@ -11,7 +11,7 @@ class ListUpgradableVersionDetailsResult {
   /// Creates a new [ListUpgradableVersionDetailsResult].
   /// [currentVersion] Current version of the elastic monitor
   /// [upgradableVersions] Stack Versions that this version can upgrade to
-  ListUpgradableVersionDetailsResult({
+  const ListUpgradableVersionDetailsResult({
     this.currentVersion,
     this.upgradableVersions,
   });

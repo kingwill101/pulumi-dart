@@ -12,7 +12,7 @@ class MigrateSyncCompleteCommandInputResponse {
   /// Creates a new [MigrateSyncCompleteCommandInputResponse].
   /// [commitTimeStamp] Time stamp to complete
   /// [databaseName] Name of database
-  MigrateSyncCompleteCommandInputResponse({
+  const MigrateSyncCompleteCommandInputResponse({
     this.commitTimeStamp,
     required this.databaseName,
   });

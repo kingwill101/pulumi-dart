@@ -27,7 +27,7 @@ class GetDatabaseSystemVersionsArgs {
   /// [shapeFamily] If provided, filters the results to the set of database versions which are supported for the given shape family. Possible values are `EXADATA`, `EXADB_XS`, `SINGLENODE` and `VIRTUALMACHINE`.
   /// [storageManagement] The database system storage management option. Used to list database versions available for that storage manager. The only possible value is `LVM`.
   /// [upgradeSupported] Whether to filter the results to the set of database versions which are supported for upgrade.
-  GetDatabaseSystemVersionsArgs({
+  const GetDatabaseSystemVersionsArgs({
     this.databaseSoftwareImageSupported,
     this.databaseSystemShape,
     required this.location,

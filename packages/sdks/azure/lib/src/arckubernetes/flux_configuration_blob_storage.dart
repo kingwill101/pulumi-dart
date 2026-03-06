@@ -27,7 +27,7 @@ class FluxConfigurationBlobStorage {
   /// [servicePrincipal] A `service_principal` block as defined below.
   /// [syncIntervalInSeconds] Specifies the interval at which to re-reconcile the cluster Azure Blob source with the remote.
   /// [timeoutInSeconds] Specifies the maximum time to attempt to reconcile the cluster Azure Blob source with the remote.
-  FluxConfigurationBlobStorage({
+  const FluxConfigurationBlobStorage({
     this.accountKey,
     required this.containerId,
     this.localAuthReference,

@@ -18,7 +18,7 @@ class GetNetworkVirtualApplianceArgs {
   /// [expand] Expands referenced resources.
   /// [networkVirtualApplianceName] The name of Network Virtual Appliance.
   /// [resourceGroupName] The name of the resource group.
-  GetNetworkVirtualApplianceArgs({
+  const GetNetworkVirtualApplianceArgs({
     this.expand,
     required this.networkVirtualApplianceName,
     required this.resourceGroupName,

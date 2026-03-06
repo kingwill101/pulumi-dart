@@ -13,7 +13,7 @@ class ManagementNetworkConfigurationPropertiesResponse {
   /// Creates a new [ManagementNetworkConfigurationPropertiesResponse].
   /// [infrastructureVpnConfiguration] VPN Configuration properties.
   /// [workloadVpnConfiguration] VPN Configuration properties.
-  ManagementNetworkConfigurationPropertiesResponse({
+  const ManagementNetworkConfigurationPropertiesResponse({
     required this.infrastructureVpnConfiguration,
     required this.workloadVpnConfiguration,
   });

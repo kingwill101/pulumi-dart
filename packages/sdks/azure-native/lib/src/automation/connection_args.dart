@@ -31,7 +31,7 @@ class ConnectionArgs {
   /// [fieldDefinitionValues] Gets or sets the field definition properties of the connection.
   /// [name] Gets or sets the name of the connection.
   /// [resourceGroupName] Name of an Azure Resource group.
-  ConnectionArgs({
+  const ConnectionArgs({
     required this.automationAccountName,
     this.connectionName,
     required this.connectionType,

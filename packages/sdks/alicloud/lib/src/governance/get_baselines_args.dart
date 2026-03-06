@@ -18,7 +18,7 @@ class GetBaselinesArgs {
   /// [ids] A list of Baseline IDs.
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetBaselinesArgs({
+  const GetBaselinesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

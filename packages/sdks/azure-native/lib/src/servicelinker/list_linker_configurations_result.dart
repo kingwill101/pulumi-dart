@@ -10,7 +10,7 @@ class ListLinkerConfigurationsResult {
 
   /// Creates a new [ListLinkerConfigurationsResult].
   /// [configurations] The configuration properties for source resource.
-  ListLinkerConfigurationsResult({
+  const ListLinkerConfigurationsResult({
     this.configurations,
   });
 

@@ -11,7 +11,7 @@ class ExternalAccessRuleSourceIpRange {
   /// Creates a new [ExternalAccessRuleSourceIpRange].
   /// [ipAddress] A single IP address.
   /// [ipAddressRange] An IP address range in the CIDR format.
-  ExternalAccessRuleSourceIpRange({
+  const ExternalAccessRuleSourceIpRange({
     this.ipAddress,
     this.ipAddressRange,
   });

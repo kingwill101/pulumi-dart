@@ -48,7 +48,7 @@ class GetManagedDatabaseSensitivityLabelResult {
   /// [schemaName] The schema name.
   /// [tableName] The table name.
   /// [type] Resource type.
-  GetManagedDatabaseSensitivityLabelResult({
+  const GetManagedDatabaseSensitivityLabelResult({
     required this.azureApiVersion,
     this.clientClassificationSource,
     required this.columnName,

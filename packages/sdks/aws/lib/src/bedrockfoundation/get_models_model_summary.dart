@@ -32,7 +32,7 @@ class GetModelsModelSummary {
   /// [outputModalities] Output modalities that the model supports.
   /// [providerName] Model provider name.
   /// [responseStreamingSupported] Indicates whether the model supports streaming.
-  GetModelsModelSummary({
+  const GetModelsModelSummary({
     required this.customizationsSupporteds,
     required this.inferenceTypesSupporteds,
     required this.inputModalities,

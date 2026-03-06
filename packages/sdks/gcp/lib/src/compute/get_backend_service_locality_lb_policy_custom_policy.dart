@@ -14,7 +14,7 @@ class GetBackendServiceLocalityLbPolicyCustomPolicy {
   /// Creates a new [GetBackendServiceLocalityLbPolicyCustomPolicy].
   /// [data] An optional, arbitrary JSON object with configuration data, understood
   /// [name] The name of the Backend Service.
-  GetBackendServiceLocalityLbPolicyCustomPolicy({
+  const GetBackendServiceLocalityLbPolicyCustomPolicy({
     required this.data,
     required this.name,
   });

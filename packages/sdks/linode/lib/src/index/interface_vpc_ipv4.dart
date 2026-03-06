@@ -21,7 +21,7 @@ class InterfaceVpcIpv4 {
   /// [assignedAddresses] (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
   /// [assignedRanges] Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
   /// [ranges] IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
-  InterfaceVpcIpv4({
+  const InterfaceVpcIpv4({
     this.addresses,
     this.assignedAddresses,
     this.assignedRanges,

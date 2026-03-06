@@ -16,7 +16,7 @@ class GeoMatchSetState {
   /// [arn] Amazon Resource Name (ARN)
   /// [geoMatchConstraints] The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
   /// [name] The name or description of the GeoMatchSet.
-  GeoMatchSetState({
+  const GeoMatchSetState({
     this.arn,
     this.geoMatchConstraints,
     this.name,

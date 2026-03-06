@@ -12,7 +12,7 @@ class RiskConfigurationCompromisedCredentialsRiskConfiguration {
   /// Creates a new [RiskConfigurationCompromisedCredentialsRiskConfiguration].
   /// [actions] The compromised credentials risk configuration actions. See details below.
   /// [eventFilters] Perform the action for these events. The default is to perform all events if no event filter is specified. Valid values are `SIGN_IN`, `PASSWORD_CHANGE`, and `SIGN_UP`.
-  RiskConfigurationCompromisedCredentialsRiskConfiguration({
+  const RiskConfigurationCompromisedCredentialsRiskConfiguration({
     required this.actions,
     this.eventFilters,
   });

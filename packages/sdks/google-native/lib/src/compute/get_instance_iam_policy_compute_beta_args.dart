@@ -17,7 +17,7 @@ class GetInstanceIamPolicyComputeBetaArgs {
   /// [project] Optional.
   /// [resource] Required.
   /// [zone] Required.
-  GetInstanceIamPolicyComputeBetaArgs({
+  const GetInstanceIamPolicyComputeBetaArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

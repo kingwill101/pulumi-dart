@@ -20,7 +20,7 @@ class FanoutLinkedNotificationRuleResponse {
   /// [dstsConfiguration] The dsts configuration.
   /// [endpoints] The endpoints.
   /// [tokenAuthConfiguration] The token auth configuration.
-  FanoutLinkedNotificationRuleResponse({
+  const FanoutLinkedNotificationRuleResponse({
     this.actions,
     this.dstsConfiguration,
     this.endpoints,

@@ -29,7 +29,7 @@ class BrokerListenerArgs {
   /// [listenerName] Name of Instance broker listener resource
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  BrokerListenerArgs({
+  const BrokerListenerArgs({
     required this.brokerName,
     required this.extendedLocation,
     required this.instanceName,

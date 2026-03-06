@@ -16,7 +16,7 @@ class MongoDbCollectionSettings {
   /// [canDelete] Whether the migrator is allowed to drop the target collection in the course of performing a migration. The default is true.
   /// [shardKey] Describes a MongoDB shard key
   /// [targetRUs] The RUs that should be configured on a CosmosDB target, or null to use the default. This has no effect on non-CosmosDB targets.
-  MongoDbCollectionSettings({
+  const MongoDbCollectionSettings({
     this.canDelete,
     this.shardKey,
     this.targetRUs,

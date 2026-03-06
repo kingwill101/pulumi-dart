@@ -12,7 +12,7 @@ class LibraryResponseAppengineV1beta {
   /// Creates a new [LibraryResponseAppengineV1beta].
   /// [name] Name of the library. Example: "django".
   /// [version] Version of the library to select, or "latest".
-  LibraryResponseAppengineV1beta({
+  const LibraryResponseAppengineV1beta({
     required this.name,
     required this.version,
   });

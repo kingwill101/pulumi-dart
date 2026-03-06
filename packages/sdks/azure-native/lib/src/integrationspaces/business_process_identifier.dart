@@ -12,7 +12,7 @@ class BusinessProcessIdentifier {
   /// Creates a new [BusinessProcessIdentifier].
   /// [propertyName] The property name of the business process identifier.
   /// [propertyType] The property type of the business process identifier.
-  BusinessProcessIdentifier({
+  const BusinessProcessIdentifier({
     this.propertyName,
     this.propertyType,
   });

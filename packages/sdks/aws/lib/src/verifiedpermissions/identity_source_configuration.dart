@@ -13,7 +13,7 @@ class IdentitySourceConfiguration {
   /// Creates a new [IdentitySourceConfiguration].
   /// [cognitoUserPoolConfiguration] Specifies the configuration details of an Amazon Cognito user pool that Verified Permissions can use as a source of authenticated identities as entities. See Cognito User Pool Configuration below.
   /// [openIdConnectConfiguration] Specifies the configuration details of an OpenID Connect (OIDC) identity provider, or identity source, that Verified Permissions can use to generate entities from authenticated identities. See Open ID Connect Configuration below.
-  IdentitySourceConfiguration({
+  const IdentitySourceConfiguration({
     this.cognitoUserPoolConfiguration,
     this.openIdConnectConfiguration,
   });

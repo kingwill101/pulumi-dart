@@ -19,7 +19,7 @@ class GetCloudAutonomousVmClusterMaintenanceWindow {
   /// [months] Required.
   /// [preference] Required.
   /// [weeksOfMonths] Required.
-  GetCloudAutonomousVmClusterMaintenanceWindow({
+  const GetCloudAutonomousVmClusterMaintenanceWindow({
     required this.daysOfWeeks,
     required this.hoursOfDays,
     required this.leadTimeInWeeks,

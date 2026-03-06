@@ -12,7 +12,7 @@ class ListenerDefaultActionForwardTargetGroup {
   /// Creates a new [ListenerDefaultActionForwardTargetGroup].
   /// [targetGroupIdentifier] ID or Amazon Resource Name (ARN) of the target group.
   /// [weight] Determines how requests are distributed to the target group. Only required if you specify multiple target groups for a forward action. For example, if you specify two target groups, one with a
-  ListenerDefaultActionForwardTargetGroup({
+  const ListenerDefaultActionForwardTargetGroup({
     this.targetGroupIdentifier,
     this.weight,
   });

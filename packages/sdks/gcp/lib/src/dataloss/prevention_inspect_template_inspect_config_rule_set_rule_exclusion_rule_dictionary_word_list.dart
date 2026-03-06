@@ -9,7 +9,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWo
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList].
   /// [words] Words or phrases defining the dictionary. The dictionary must contain at least one
-  PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList({
+  const PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList({
     required this.words,
   });
 

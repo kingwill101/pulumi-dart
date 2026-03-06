@@ -43,7 +43,7 @@ class SecurityAlertTimelineItemResponse {
   /// [startTimeUtc] The alert start time.
   /// [techniques] The techniques of the alert.
   /// [timeGenerated] The alert generated time.
-  SecurityAlertTimelineItemResponse({
+  const SecurityAlertTimelineItemResponse({
     required this.alertType,
     required this.azureResourceId,
     this.description,

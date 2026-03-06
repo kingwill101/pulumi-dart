@@ -7,7 +7,7 @@ class ResourceSku {
 
   /// Creates a new [ResourceSku].
   /// [name] Required.
-  ResourceSku({
+  const ResourceSku({
     required this.name,
   });
 

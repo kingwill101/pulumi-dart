@@ -8,7 +8,7 @@ class ElasticProfileGuidNamingPolicy {
 
   /// Creates a new [ElasticProfileGuidNamingPolicy].
   /// [prefix] The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
-  ElasticProfileGuidNamingPolicy({
+  const ElasticProfileGuidNamingPolicy({
     this.prefix,
   });
 

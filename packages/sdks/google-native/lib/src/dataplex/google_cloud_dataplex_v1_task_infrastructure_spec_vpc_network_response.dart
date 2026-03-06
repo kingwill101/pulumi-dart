@@ -15,7 +15,7 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse {
   /// [network] Optional. The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
   /// [networkTags] Optional. List of network tags to apply to the job.
   /// [subNetwork] Optional. The Cloud VPC sub-network in which the job is run.
-  GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse({
+  const GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse({
     required this.network,
     required this.networkTags,
     required this.subNetwork,

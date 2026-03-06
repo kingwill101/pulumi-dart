@@ -10,7 +10,7 @@ class CatalogClaimsItem {
   /// Creates a new [CatalogClaimsItem].
   /// [catalogClaimsItemType] Optional.
   /// [value] Optional.
-  CatalogClaimsItem({
+  const CatalogClaimsItem({
     this.catalogClaimsItemType,
     this.value,
   });

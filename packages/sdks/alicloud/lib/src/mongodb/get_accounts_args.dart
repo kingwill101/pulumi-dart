@@ -18,7 +18,7 @@ class GetAccountsArgs {
   /// [accountName] The name of the account. Valid values: `root`.
   /// [instanceId] The ID of the instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAccountsArgs({
+  const GetAccountsArgs({
     this.accountName,
     required this.instanceId,
     this.outputFile,

@@ -19,7 +19,7 @@ class DdosSettingsResponse {
   /// [ddosProtectionPlan] The DDoS protection plan associated with the public IP. Can only be set if ProtectionMode is Enabled
   /// [protectionCoverage] The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
   /// [protectionMode] The DDoS protection mode of the public IP
-  DdosSettingsResponse({
+  const DdosSettingsResponse({
     this.ddosCustomPolicy,
     this.ddosProtectionPlan,
     this.protectionCoverage,

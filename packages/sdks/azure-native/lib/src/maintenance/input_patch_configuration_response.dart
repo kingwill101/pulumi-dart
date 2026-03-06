@@ -17,7 +17,7 @@ class InputPatchConfigurationResponse {
   /// [linuxParameters] Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
   /// [rebootSetting] Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
   /// [windowsParameters] Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
-  InputPatchConfigurationResponse({
+  const InputPatchConfigurationResponse({
     this.linuxParameters,
     this.rebootSetting,
     this.windowsParameters,

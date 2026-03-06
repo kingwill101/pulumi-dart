@@ -10,7 +10,7 @@ class FabricCreationInputProperties {
 
   /// Creates a new [FabricCreationInputProperties].
   /// [customDetails] Fabric provider specific creation input.
-  FabricCreationInputProperties({
+  const FabricCreationInputProperties({
     this.customDetails,
   });
 

@@ -13,7 +13,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema {
   /// Creates a new [StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema].
   /// [schema] Schema name.
   /// [tables] Tables in the schema.
-  StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema({
+  const StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema({
     required this.schema,
     this.tables,
   });

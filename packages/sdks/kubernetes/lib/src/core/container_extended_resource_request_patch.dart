@@ -15,7 +15,7 @@ class ContainerExtendedResourceRequestPatch {
   /// [containerName] The name of the container requesting resources.
   /// [requestName] The name of the request in the special ResourceClaim which corresponds to the extended resource.
   /// [resourceName] The name of the extended resource in that container which gets backed by DRA.
-  ContainerExtendedResourceRequestPatch({
+  const ContainerExtendedResourceRequestPatch({
     this.containerName,
     this.requestName,
     this.resourceName,

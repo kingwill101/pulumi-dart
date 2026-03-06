@@ -46,7 +46,7 @@ class DnsThreatDetectorState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [threatDetectorProvider] DNS Threat Detection provider. The only supported value is `INFOBLOX`.
   /// [updateTime] The timestamp when the resource was updated.
-  DnsThreatDetectorState({
+  const DnsThreatDetectorState({
     this.createTime,
     this.effectiveLabels,
     this.excludedNetworks,

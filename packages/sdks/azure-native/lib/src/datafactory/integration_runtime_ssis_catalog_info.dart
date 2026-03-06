@@ -22,7 +22,7 @@ class IntegrationRuntimeSsisCatalogInfo {
   /// [catalogPricingTier] The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
   /// [catalogServerEndpoint] The catalog database server URL.
   /// [dualStandbyPairName] The dual standby pair name of Azure-SSIS Integration Runtimes to support SSISDB failover.
-  IntegrationRuntimeSsisCatalogInfo({
+  const IntegrationRuntimeSsisCatalogInfo({
     this.catalogAdminPassword,
     this.catalogAdminUserName,
     this.catalogPricingTier,

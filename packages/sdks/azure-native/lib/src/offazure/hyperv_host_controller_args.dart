@@ -27,7 +27,7 @@ class HypervHostControllerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runAsAccountId] Gets or sets the run as account ID of the Hyper-V host.
   /// [siteName] Site name
-  HypervHostControllerArgs({
+  const HypervHostControllerArgs({
     this.fqdn,
     this.hostName,
     this.provisioningState,

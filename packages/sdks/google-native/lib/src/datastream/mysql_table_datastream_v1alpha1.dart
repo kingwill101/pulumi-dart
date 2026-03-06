@@ -13,7 +13,7 @@ class MysqlTableDatastreamV1alpha1 {
   /// Creates a new [MysqlTableDatastreamV1alpha1].
   /// [mysqlColumns] MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
   /// [tableName] Table name.
-  MysqlTableDatastreamV1alpha1({
+  const MysqlTableDatastreamV1alpha1({
     this.mysqlColumns,
     this.tableName,
   });

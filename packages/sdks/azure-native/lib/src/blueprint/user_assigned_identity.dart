@@ -12,7 +12,7 @@ class UserAssignedIdentity {
   /// Creates a new [UserAssignedIdentity].
   /// [clientId] Client App Id associated with this identity.
   /// [principalId] Azure Active Directory principal ID associated with this Identity.
-  UserAssignedIdentity({
+  const UserAssignedIdentity({
     this.clientId,
     this.principalId,
   });

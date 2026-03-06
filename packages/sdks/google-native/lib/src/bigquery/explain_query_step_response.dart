@@ -11,7 +11,7 @@ class ExplainQueryStepResponse {
   /// Creates a new [ExplainQueryStepResponse].
   /// [kind] Machine-readable operation type.
   /// [substeps] Human-readable stage descriptions.
-  ExplainQueryStepResponse({
+  const ExplainQueryStepResponse({
     required this.kind,
     required this.substeps,
   });

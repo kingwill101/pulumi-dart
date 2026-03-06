@@ -26,7 +26,7 @@ class GetSshKeyResult {
   /// [publicKey] Public key of the SSH Key pair.
   /// [selector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  GetSshKeyResult({
+  const GetSshKeyResult({
     this.fingerprint,
     this.id,
     required this.labels,

@@ -24,7 +24,7 @@ class ParameterDefinition {
   /// [displayName] DisplayName of this parameter/resourceGroup.
   /// [strongType] StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
   /// [type] Allowed data types for Resource Manager template parameters.
-  ParameterDefinition({
+  const ParameterDefinition({
     this.allowedValues,
     this.defaultValue,
     this.description,

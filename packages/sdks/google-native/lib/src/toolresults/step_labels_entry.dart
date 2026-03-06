@@ -9,7 +9,7 @@ class StepLabelsEntry {
   /// Creates a new [StepLabelsEntry].
   /// [key] Optional.
   /// [value] Optional.
-  StepLabelsEntry({
+  const StepLabelsEntry({
     this.key,
     this.value,
   });

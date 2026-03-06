@@ -27,7 +27,7 @@ class GetRolloutResult {
   /// [serviceName] The name of the service associated with this Rollout.
   /// [status] The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
   /// [trafficPercentStrategy] Google Service Control selects service configurations based on traffic percentage.
-  GetRolloutResult({
+  const GetRolloutResult({
     required this.createTime,
     required this.createdBy,
     required this.deleteServiceStrategy,

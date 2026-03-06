@@ -71,7 +71,7 @@ class ServiceArgs {
   /// [serviceId] Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
   /// [telemetryConfig] The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
   /// [tier] The tier of the service.
-  ServiceArgs({
+  const ServiceArgs({
     this.databaseType,
     this.encryptionConfig,
     this.hiveMetastoreConfig,

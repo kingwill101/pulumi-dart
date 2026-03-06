@@ -11,7 +11,7 @@ class GuardrailActionRespondImmediately {
 
   /// Creates a new [GuardrailActionRespondImmediately].
   /// [responses] The canned responses for the agent to choose from. The response is chosen
-  GuardrailActionRespondImmediately({
+  const GuardrailActionRespondImmediately({
     required this.responses,
   });
 

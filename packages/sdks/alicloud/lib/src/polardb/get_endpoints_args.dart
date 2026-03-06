@@ -15,7 +15,7 @@ class GetEndpointsArgs {
   /// Creates a new [GetEndpointsArgs].
   /// [dbClusterId] PolarDB cluster ID.
   /// [dbEndpointId] endpoint of the cluster.
-  GetEndpointsArgs({
+  const GetEndpointsArgs({
     required this.dbClusterId,
     this.dbEndpointId,
   });

@@ -24,7 +24,7 @@ class JobPrivateEndpointArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   /// [targetServerAzureResourceId] ARM resource id of the server the private endpoint will target.
-  JobPrivateEndpointArgs({
+  const JobPrivateEndpointArgs({
     required this.jobAgentName,
     this.privateEndpointName,
     required this.resourceGroupName,

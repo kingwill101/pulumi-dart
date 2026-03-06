@@ -21,7 +21,7 @@ class DaemonSetConditionPatch {
   /// [reason] The reason for the condition's last transition.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of DaemonSet condition.
-  DaemonSetConditionPatch({
+  const DaemonSetConditionPatch({
     this.lastTransitionTime,
     this.message,
     this.reason,

@@ -34,7 +34,7 @@ class RoleManagementPolicyState {
   /// [notificationRules] A `notification_rules` block as defined below.
   /// [roleDefinitionId] The scoped Role Definition ID of the role for which this policy will apply. Changing this forces a new resource to be created.
   /// [scope] The scope to which this Role Management Policy will apply. Can refer to a management group, a subscription, a resource group or a resource. Changing this forces a new resource to be created.
-  RoleManagementPolicyState({
+  const RoleManagementPolicyState({
     this.activationRules,
     this.activeAssignmentRules,
     this.description,

@@ -9,7 +9,7 @@ class L2ServiceLoadBalancerConfigurationResponse {
 
   /// Creates a new [L2ServiceLoadBalancerConfigurationResponse].
   /// [ipAddressPools] The list of pools of IP addresses that can be allocated to load balancer services.
-  L2ServiceLoadBalancerConfigurationResponse({
+  const L2ServiceLoadBalancerConfigurationResponse({
     this.ipAddressPools,
   });
 

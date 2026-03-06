@@ -24,7 +24,7 @@ class GetTransitRouterVbrAttachmentsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
   /// [transitRouterId] ID of the transit router.
-  GetTransitRouterVbrAttachmentsArgs({
+  const GetTransitRouterVbrAttachmentsArgs({
     required this.cenId,
     this.ids,
     this.outputFile,

@@ -9,7 +9,7 @@ class DeployableResponseContaineranalysisV1beta1 {
 
   /// Creates a new [DeployableResponseContaineranalysisV1beta1].
   /// [resourceUri] Resource URI for the artifact being deployed.
-  DeployableResponseContaineranalysisV1beta1({
+  const DeployableResponseContaineranalysisV1beta1({
     required this.resourceUri,
   });
 

@@ -18,7 +18,7 @@ class CapabilityArgs {
   /// [capabilityName] Capability name that should be updated on the folder.
   /// [parent] Folder on which Capability needs to be updated in the format folders/folder_id.
   /// [value] Capability Value.
-  CapabilityArgs({
+  const CapabilityArgs({
     required this.capabilityName,
     required this.parent,
     required this.value,

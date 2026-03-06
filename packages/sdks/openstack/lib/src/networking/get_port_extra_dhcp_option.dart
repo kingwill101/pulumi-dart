@@ -14,7 +14,7 @@ class GetPortExtraDhcpOption {
   /// [ipVersion] IP protocol version
   /// [name] The name of the port.
   /// [value] Value of the DHCP option.
-  GetPortExtraDhcpOption({
+  const GetPortExtraDhcpOption({
     required this.ipVersion,
     required this.name,
     required this.value,

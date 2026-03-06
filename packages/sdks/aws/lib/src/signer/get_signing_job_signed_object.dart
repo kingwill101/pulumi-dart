@@ -8,7 +8,7 @@ class GetSigningJobSignedObject {
 
   /// Creates a new [GetSigningJobSignedObject].
   /// [s3s] Required.
-  GetSigningJobSignedObject({
+  const GetSigningJobSignedObject({
     required this.s3s,
   });
 

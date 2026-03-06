@@ -34,7 +34,7 @@ class MySQLSiteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] The name of Site
   /// [tags] Resource tags.
-  MySQLSiteArgs({
+  const MySQLSiteArgs({
     required this.extendedLocation,
     this.location,
     required this.masterSiteId,

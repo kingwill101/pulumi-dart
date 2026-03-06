@@ -29,7 +29,7 @@ class ConditionResponse {
   /// [regions] The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes.
   /// [requiredAccessLevels] A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
   /// [vpcNetworkSources] The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
-  ConditionResponse({
+  const ConditionResponse({
     required this.devicePolicy,
     required this.ipSubnetworks,
     required this.members,

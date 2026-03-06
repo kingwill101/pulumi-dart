@@ -20,7 +20,7 @@ class GetImageOutputResourceAmi {
   /// [image] Identifier of the AMI.
   /// [name] Name of the AMI.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetImageOutputResourceAmi({
+  const GetImageOutputResourceAmi({
     required this.accountId,
     required this.description,
     required this.image,

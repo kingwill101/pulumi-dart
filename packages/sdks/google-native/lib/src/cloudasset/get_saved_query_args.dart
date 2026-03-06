@@ -15,7 +15,7 @@ class GetSavedQueryArgs {
   /// [savedQueryId] Required.
   /// [v1Id] Required.
   /// [v1Id1] Required.
-  GetSavedQueryArgs({
+  const GetSavedQueryArgs({
     required this.savedQueryId,
     required this.v1Id,
     required this.v1Id1,

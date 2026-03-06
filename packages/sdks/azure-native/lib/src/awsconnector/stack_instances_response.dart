@@ -17,7 +17,7 @@ class StackInstancesResponse {
   /// [deploymentTargets] The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified Regions.
   /// [parameterOverrides] A list of stack set parameters whose values you want to override in the selected stack instances.
   /// [regions] The names of one or more Regions where you want to create stack instances using the specified AWS account(s).
-  StackInstancesResponse({
+  const StackInstancesResponse({
     this.deploymentTargets,
     this.parameterOverrides,
     this.regions,

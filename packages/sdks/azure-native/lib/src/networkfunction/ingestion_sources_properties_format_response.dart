@@ -12,7 +12,7 @@ class IngestionSourcesPropertiesFormatResponse {
   /// Creates a new [IngestionSourcesPropertiesFormatResponse].
   /// [resourceId] Resource ID.
   /// [sourceType] Ingestion source type.
-  IngestionSourcesPropertiesFormatResponse({
+  const IngestionSourcesPropertiesFormatResponse({
     this.resourceId,
     this.sourceType,
   });

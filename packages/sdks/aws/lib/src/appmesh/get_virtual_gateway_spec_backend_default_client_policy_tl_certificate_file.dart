@@ -9,7 +9,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile {
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile].
   /// [certificateChain] Required.
   /// [privateKey] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile({
     required this.certificateChain,
     required this.privateKey,
   });

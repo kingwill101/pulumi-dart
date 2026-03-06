@@ -29,7 +29,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilter {
   /// [groupKinds] (Filtering parameter) Any resource subject to transformation must
   /// [jsonPath] This is a JSONPath expression that matches specific fields of
   /// [namespaces] (Filtering parameter) Any resource subject to transformation must
-  RestorePlanRestoreConfigTransformationRuleResourceFilter({
+  const RestorePlanRestoreConfigTransformationRuleResourceFilter({
     this.groupKinds,
     this.jsonPath,
     this.namespaces,

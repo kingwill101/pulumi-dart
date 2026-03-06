@@ -20,7 +20,7 @@ class RestoreTestingPlanRecoveryPointSelection {
   /// [includeVaults] Specifies the backup vaults to include in the recovery point selection. Each value must be a valid AWS ARN for a backup vault or "*" to include all backup vaults.
   /// [recoveryPointTypes] Specifies the types of recovery points to include in the selection. Valid values are "CONTINUOUS" and "SNAPSHOT".
   /// [selectionWindowDays] Specifies the number of days within which the recovery points should be selected. Must be a value between 1 and 365.
-  RestoreTestingPlanRecoveryPointSelection({
+  const RestoreTestingPlanRecoveryPointSelection({
     required this.algorithm,
     this.excludeVaults,
     required this.includeVaults,

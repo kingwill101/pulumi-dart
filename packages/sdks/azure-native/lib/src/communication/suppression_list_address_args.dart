@@ -36,7 +36,7 @@ class SuppressionListAddressArgs {
   /// [notes] An optional property to provide contextual notes or a description for an address.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [suppressionListName] The name of the suppression list.
-  SuppressionListAddressArgs({
+  const SuppressionListAddressArgs({
     this.addressId,
     required this.domainName,
     required this.email,

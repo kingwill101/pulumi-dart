@@ -24,7 +24,7 @@ class GetUserGroupsArgs {
   /// [nameRegex] A regex string to filter results by User Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [userGroupName] Specify the New Group Name. Supports up to 128 Characters.
-  GetUserGroupsArgs({
+  const GetUserGroupsArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

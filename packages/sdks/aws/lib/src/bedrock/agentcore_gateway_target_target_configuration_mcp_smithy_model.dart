@@ -11,7 +11,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel {
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel].
   /// [inlinePayload] Optional.
   /// [s3] Optional.
-  AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel({
+  const AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel({
     this.inlinePayload,
     this.s3,
   });

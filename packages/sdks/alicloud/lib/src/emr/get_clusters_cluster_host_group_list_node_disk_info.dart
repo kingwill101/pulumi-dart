@@ -20,7 +20,7 @@ class GetClustersClusterHostGroupListNodeDiskInfo {
   /// [diskName] The disk name.
   /// [size] Disk capacity.
   /// [type] Disk type.
-  GetClustersClusterHostGroupListNodeDiskInfo({
+  const GetClustersClusterHostGroupListNodeDiskInfo({
     required this.device,
     required this.diskId,
     required this.diskName,

@@ -15,7 +15,7 @@ class GetBackupScheduleArgs {
   /// [backupScheduleId] Required.
   /// [databaseId] Required.
   /// [project] Optional.
-  GetBackupScheduleArgs({
+  const GetBackupScheduleArgs({
     required this.backupScheduleId,
     required this.databaseId,
     this.project,

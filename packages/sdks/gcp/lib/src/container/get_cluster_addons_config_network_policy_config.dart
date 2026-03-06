@@ -7,7 +7,7 @@ class GetClusterAddonsConfigNetworkPolicyConfig {
 
   /// Creates a new [GetClusterAddonsConfigNetworkPolicyConfig].
   /// [disabled] Required.
-  GetClusterAddonsConfigNetworkPolicyConfig({
+  const GetClusterAddonsConfigNetworkPolicyConfig({
     required this.disabled,
   });
 

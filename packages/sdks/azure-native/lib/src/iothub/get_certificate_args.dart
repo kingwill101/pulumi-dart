@@ -18,7 +18,7 @@ class GetCertificateArgs {
   /// [certificateName] The name of the certificate
   /// [resourceGroupName] The name of the resource group that contains the IoT hub.
   /// [resourceName] The name of the IoT hub.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.certificateName,
     required this.resourceGroupName,
     required this.resourceName,

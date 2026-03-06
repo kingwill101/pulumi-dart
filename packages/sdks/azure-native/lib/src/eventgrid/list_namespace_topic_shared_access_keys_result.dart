@@ -11,7 +11,7 @@ class ListNamespaceTopicSharedAccessKeysResult {
   /// Creates a new [ListNamespaceTopicSharedAccessKeysResult].
   /// [key1] Shared access key1 for the topic.
   /// [key2] Shared access key2 for the topic.
-  ListNamespaceTopicSharedAccessKeysResult({
+  const ListNamespaceTopicSharedAccessKeysResult({
     this.key1,
     this.key2,
   });

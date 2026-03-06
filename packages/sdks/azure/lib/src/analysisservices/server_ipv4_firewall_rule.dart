@@ -14,7 +14,7 @@ class ServerIpv4FirewallRule {
   /// [name] Specifies the name of the firewall rule.
   /// [rangeEnd] End of the firewall rule range as IPv4 address.
   /// [rangeStart] Start of the firewall rule range as IPv4 address.
-  ServerIpv4FirewallRule({
+  const ServerIpv4FirewallRule({
     required this.name,
     required this.rangeEnd,
     required this.rangeStart,

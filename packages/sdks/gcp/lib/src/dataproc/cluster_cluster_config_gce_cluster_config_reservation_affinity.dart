@@ -14,7 +14,7 @@ class ClusterClusterConfigGceClusterConfigReservationAffinity {
   /// [consumeReservationType] Corresponds to the type of reservation consumption.
   /// [key] Corresponds to the label key of reservation resource.
   /// [values] Corresponds to the label values of reservation resource.
-  ClusterClusterConfigGceClusterConfigReservationAffinity({
+  const ClusterClusterConfigGceClusterConfigReservationAffinity({
     this.consumeReservationType,
     this.key,
     this.values,

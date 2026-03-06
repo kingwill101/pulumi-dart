@@ -12,7 +12,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevDev {
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevDev].
   /// [path] Specifies the path to the device file for the EGD backend.
   /// [secLabels] Configures the security label settings for the device source in the EGD backend.
-  DomainDevicesInterfaceSourceVhostUserChardevDev({
+  const DomainDevicesInterfaceSourceVhostUserChardevDev({
     required this.path,
     this.secLabels,
   });

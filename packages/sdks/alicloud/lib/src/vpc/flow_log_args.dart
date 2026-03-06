@@ -56,7 +56,7 @@ class FlowLogArgs {
   /// [tags] The tag of the current instance resource.
   /// [trafficPaths] The collected flow path. Value:
   /// [trafficType] The type of traffic collected. Valid values:
-  FlowLogArgs({
+  const FlowLogArgs({
     this.aggregationInterval,
     this.description,
     this.flowLogName,

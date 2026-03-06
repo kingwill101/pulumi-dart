@@ -27,7 +27,7 @@ class ClusterClusterConfigSoftwareConfig {
   /// [optionalComponents] The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
   /// [overrideProperties] A list of override and additional properties (key/value pairs)
   /// [properties] A list of the properties used to set the daemon config files.
-  ClusterClusterConfigSoftwareConfig({
+  const ClusterClusterConfigSoftwareConfig({
     this.imageVersion,
     this.optionalComponents,
     this.overrideProperties,

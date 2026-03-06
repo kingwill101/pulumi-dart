@@ -14,7 +14,7 @@ class LoadBalancerAccessLogs {
   /// [bucket] S3 bucket name to store the logs in.
   /// [enabled] Boolean to enable / disable `access_logs`. Defaults to `false`, even when `bucket` is specified.
   /// [prefix] S3 bucket prefix. Logs are stored in the root if not configured.
-  LoadBalancerAccessLogs({
+  const LoadBalancerAccessLogs({
     required this.bucket,
     this.enabled,
     this.prefix,

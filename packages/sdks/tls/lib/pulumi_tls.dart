@@ -3,11 +3,11 @@
 import 'package:pulumi_tls/index.dart' as module_index;
 import 'package:pulumi_tls/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final CertRequest = module_index.CertRequest.new;
   final CertRequestArgs = module_index.CertRequestArgs.new;
   final CertRequestState = module_index.CertRequestState.new;
@@ -43,7 +43,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final ProviderArgs = module_providers.ProviderArgs.new;
   final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
   final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;

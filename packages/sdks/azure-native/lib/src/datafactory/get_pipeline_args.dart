@@ -18,7 +18,7 @@ class GetPipelineArgs {
   /// [factoryName] The factory name.
   /// [pipelineName] The pipeline name.
   /// [resourceGroupName] The resource group name.
-  GetPipelineArgs({
+  const GetPipelineArgs({
     required this.factoryName,
     required this.pipelineName,
     required this.resourceGroupName,

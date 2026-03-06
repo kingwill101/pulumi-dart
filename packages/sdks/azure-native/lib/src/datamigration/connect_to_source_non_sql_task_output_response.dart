@@ -23,7 +23,7 @@ class ConnectToSourceNonSqlTaskOutputResponse {
   /// [serverProperties] Server properties
   /// [sourceServerBrandVersion] Server brand version
   /// [validationErrors] Validation errors associated with the task
-  ConnectToSourceNonSqlTaskOutputResponse({
+  const ConnectToSourceNonSqlTaskOutputResponse({
     required this.databases,
     required this.id,
     required this.serverProperties,

@@ -17,7 +17,7 @@ class GetWindowsWebAppIdentity {
   /// [principalId] The Principal ID Managed Service Identity.
   /// [tenantId] The Tenant ID of the Managed Service Identity.
   /// [type] The Azure Storage Type.
-  GetWindowsWebAppIdentity({
+  const GetWindowsWebAppIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

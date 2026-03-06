@@ -10,7 +10,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition {
 
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition].
   /// [expressions] An expression
-  PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition({
+  const PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition({
     this.expressions,
   });
 

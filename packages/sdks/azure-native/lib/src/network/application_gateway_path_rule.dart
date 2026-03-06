@@ -34,7 +34,7 @@ class ApplicationGatewayPathRule {
   /// [paths] Path rules of URL path map.
   /// [redirectConfiguration] Redirect configuration resource of URL path map path rule.
   /// [rewriteRuleSet] Rewrite rule set resource of URL path map path rule.
-  ApplicationGatewayPathRule({
+  const ApplicationGatewayPathRule({
     this.backendAddressPool,
     this.backendHttpSettings,
     this.firewallPolicy,

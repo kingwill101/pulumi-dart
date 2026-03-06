@@ -17,7 +17,7 @@ class GetNetworksArgs {
   /// [ids] A list of CCN instances IDs.
   /// [nameRegex] A regex string to filter CCN instances by name.
   /// [outputFile] Optional.
-  GetNetworksArgs({
+  const GetNetworksArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -11,7 +11,7 @@ class GetImageImageTestsConfiguration {
   /// Creates a new [GetImageImageTestsConfiguration].
   /// [imageTestsEnabled] Whether image tests are enabled.
   /// [timeoutMinutes] Number of minutes before image tests time out.
-  GetImageImageTestsConfiguration({
+  const GetImageImageTestsConfiguration({
     required this.imageTestsEnabled,
     required this.timeoutMinutes,
   });

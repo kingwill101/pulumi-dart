@@ -8,7 +8,7 @@ class RepositoryAssociationRepositoryCodecommit {
 
   /// Creates a new [RepositoryAssociationRepositoryCodecommit].
   /// [name] The name of the AWS CodeCommit repository.
-  RepositoryAssociationRepositoryCodecommit({
+  const RepositoryAssociationRepositoryCodecommit({
     required this.name,
   });
 

@@ -15,7 +15,7 @@ class GetRequiredTagsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [requiredTags] List of required tag configurations. See `required_tags` below.
-  GetRequiredTagsResult({
+  const GetRequiredTagsResult({
     required this.id,
     required this.region,
     required this.requiredTags,

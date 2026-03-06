@@ -24,7 +24,7 @@ class PatchDeploymentPatchConfigZypper {
   /// [severities] Install only patches with these severities. Common severities include critical, important, moderate, and low.
   /// [withOptional] Adds the --with-optional flag to zypper patch.
   /// [withUpdate] Adds the --with-update flag, to zypper patch.
-  PatchDeploymentPatchConfigZypper({
+  const PatchDeploymentPatchConfigZypper({
     this.categories,
     this.excludes,
     this.exclusivePatches,

@@ -16,7 +16,7 @@ class VMwareNodePoolConfigVsphereConfig {
   /// [datastore] The name of the vCenter datastore. Inherited from the user cluster.
   /// [hostGroups] Vsphere host groups to apply to all VMs in the node pool
   /// [tags] Tags to apply to VMs.
-  VMwareNodePoolConfigVsphereConfig({
+  const VMwareNodePoolConfigVsphereConfig({
     this.datastore,
     this.hostGroups,
     this.tags,

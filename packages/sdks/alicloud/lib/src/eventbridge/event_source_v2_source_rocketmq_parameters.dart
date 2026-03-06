@@ -57,7 +57,7 @@ class EventSourceV2SourceRocketmqParameters {
   /// [tag] The filter label of the message.
   /// [timestamp] The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
   /// [topic] The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
-  EventSourceV2SourceRocketmqParameters({
+  const EventSourceV2SourceRocketmqParameters({
     this.authType,
     this.groupId,
     this.instanceEndpoint,

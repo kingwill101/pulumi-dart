@@ -11,7 +11,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationAdditionalU
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationAdditionalUnattendContent].
   /// [content] The XML formatted content that is added to the unattend.xml file for the specified path and component. Changing this forces a new resource to be created.
   /// [setting] The name of the setting to which the content applies. Possible values are `AutoLogon` and `FirstLogonCommands`. Changing this forces a new resource to be created.
-  OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationAdditionalUnattendContent({
+  const OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationAdditionalUnattendContent({
     required this.content,
     required this.setting,
   });

@@ -30,7 +30,7 @@ class GetParameterGroupResult {
   /// [parameters] Set of user-defined MemoryDB parameters applied by the parameter group.
   /// [region] Required.
   /// [tags] Map of tags assigned to the parameter group.
-  GetParameterGroupResult({
+  const GetParameterGroupResult({
     required this.arn,
     required this.description,
     required this.family,

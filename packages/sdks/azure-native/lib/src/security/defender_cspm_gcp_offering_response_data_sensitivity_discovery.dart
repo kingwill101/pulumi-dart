@@ -15,7 +15,7 @@ class DefenderCspmGcpOfferingResponseDataSensitivityDiscovery {
   /// [enabled] Is Microsoft Defender Data Sensitivity discovery enabled
   /// [serviceAccountEmailAddress] The service account email address in GCP for this feature
   /// [workloadIdentityProviderId] The workload identity provider id in GCP for this feature
-  DefenderCspmGcpOfferingResponseDataSensitivityDiscovery({
+  const DefenderCspmGcpOfferingResponseDataSensitivityDiscovery({
     this.enabled,
     this.serviceAccountEmailAddress,
     this.workloadIdentityProviderId,

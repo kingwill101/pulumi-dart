@@ -31,7 +31,7 @@ class VpcEndpointAssociationArgs {
   /// [tags] Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [vpcId] The unique identifier of the VPC for the endpoint association.
-  VpcEndpointAssociationArgs({
+  const VpcEndpointAssociationArgs({
     this.description,
     required this.firewallArn,
     this.region,

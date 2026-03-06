@@ -9,7 +9,7 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore {
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore].
   /// [score] The sensitivity score applied to the resource.
-  PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore({
+  const PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore({
     required this.score,
   });
 

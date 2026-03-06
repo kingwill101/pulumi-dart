@@ -11,7 +11,7 @@ class AzureIntegrationsEventHub {
   /// Creates a new [AzureIntegrationsEventHub].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsEventHub({
+  const AzureIntegrationsEventHub({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

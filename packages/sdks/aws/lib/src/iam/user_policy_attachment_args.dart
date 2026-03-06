@@ -15,7 +15,7 @@ class UserPolicyAttachmentArgs {
   /// Creates a new [UserPolicyAttachmentArgs].
   /// [policyArn] The ARN of the policy you want to apply
   /// [user] The user the policy should be applied to
-  UserPolicyAttachmentArgs({
+  const UserPolicyAttachmentArgs({
     required this.policyArn,
     required this.user,
   });

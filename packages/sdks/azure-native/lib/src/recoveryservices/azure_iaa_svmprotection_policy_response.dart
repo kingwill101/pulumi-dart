@@ -43,7 +43,7 @@ class AzureIaaSVMProtectionPolicyResponse {
   /// [snapshotConsistencyType] Optional.
   /// [tieringPolicy] Tiering policy to automatically move RPs to another tier
   /// [timeZone] TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
-  AzureIaaSVMProtectionPolicyResponse({
+  const AzureIaaSVMProtectionPolicyResponse({
     required this.backupManagementType,
     this.instantRPDetails,
     this.instantRpRetentionRangeInDays,

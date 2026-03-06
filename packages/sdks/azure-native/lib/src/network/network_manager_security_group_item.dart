@@ -9,7 +9,7 @@ class NetworkManagerSecurityGroupItem {
 
   /// Creates a new [NetworkManagerSecurityGroupItem].
   /// [networkGroupId] Network manager group Id.
-  NetworkManagerSecurityGroupItem({
+  const NetworkManagerSecurityGroupItem({
     required this.networkGroupId,
   });
 

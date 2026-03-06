@@ -9,7 +9,7 @@ class CloudHealthcareSource {
 
   /// Creates a new [CloudHealthcareSource].
   /// [name] Full path of a Cloud Healthcare API resource.
-  CloudHealthcareSource({
+  const CloudHealthcareSource({
     this.name,
   });
 

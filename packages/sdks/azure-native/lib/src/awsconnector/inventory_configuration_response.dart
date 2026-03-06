@@ -28,7 +28,7 @@ class InventoryConfigurationResponse {
   /// [optionalFields] Contains the optional fields that are included in the inventory results.
   /// [prefix] Specifies the inventory filter prefix.
   /// [scheduleFrequency] Specifies the schedule for generating inventory results.
-  InventoryConfigurationResponse({
+  const InventoryConfigurationResponse({
     this.destination,
     this.enabled,
     this.id,

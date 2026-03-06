@@ -11,7 +11,7 @@ class EntryGroupIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  EntryGroupIamMemberCondition({
+  const EntryGroupIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

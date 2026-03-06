@@ -12,7 +12,7 @@ class HubResponse {
   /// Creates a new [HubResponse].
   /// [resourceId] Resource Id.
   /// [resourceType] Resource Type.
-  HubResponse({
+  const HubResponse({
     this.resourceId,
     this.resourceType,
   });

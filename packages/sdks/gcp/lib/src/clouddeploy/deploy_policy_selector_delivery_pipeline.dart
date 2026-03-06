@@ -13,7 +13,7 @@ class DeployPolicySelectorDeliveryPipeline {
   /// Creates a new [DeployPolicySelectorDeliveryPipeline].
   /// [id] ID of the DeliveryPipeline. The value of this field could be one of the following:
   /// [labels] DeliveryPipeline labels.
-  DeployPolicySelectorDeliveryPipeline({
+  const DeployPolicySelectorDeliveryPipeline({
     this.id,
     this.labels,
   });

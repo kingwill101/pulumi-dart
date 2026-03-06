@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2DataProfileAction {
   /// Creates a new [GooglePrivacyDlpV2DataProfileAction].
   /// [exportData] Export data profiles into a provided location.
   /// [pubSubNotification] Publish a message into the Pub/Sub topic.
-  GooglePrivacyDlpV2DataProfileAction({
+  const GooglePrivacyDlpV2DataProfileAction({
     this.exportData,
     this.pubSubNotification,
   });

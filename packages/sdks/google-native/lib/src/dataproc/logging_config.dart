@@ -9,7 +9,7 @@ class LoggingConfig {
 
   /// Creates a new [LoggingConfig].
   /// [driverLogLevels] The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
-  LoggingConfig({
+  const LoggingConfig({
     this.driverLogLevels,
   });
 

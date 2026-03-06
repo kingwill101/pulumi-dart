@@ -16,7 +16,7 @@ class ReportSummaryVMWareEngineFindingResponse {
   /// [allocatedAssetCount] Count of assets which are allocated
   /// [allocatedRegions] Set of regions in which the assets were allocated
   /// [nodeAllocations] Set of per-nodetype allocation records
-  ReportSummaryVMWareEngineFindingResponse({
+  const ReportSummaryVMWareEngineFindingResponse({
     required this.allocatedAssetCount,
     required this.allocatedRegions,
     required this.nodeAllocations,

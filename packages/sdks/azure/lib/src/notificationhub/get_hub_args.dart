@@ -18,7 +18,7 @@ class GetHubArgs {
   /// [name] Specifies the Name of the Notification Hub.
   /// [namespaceName] Specifies the Name of the Notification Hub Namespace which contains the Notification Hub.
   /// [resourceGroupName] Specifies the Name of the Resource Group within which the Notification Hub exists.
-  GetHubArgs({
+  const GetHubArgs({
     required this.name,
     required this.namespaceName,
     required this.resourceGroupName,

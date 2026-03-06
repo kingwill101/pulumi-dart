@@ -12,7 +12,7 @@ class PrivateClusterConfig {
   /// Creates a new [PrivateClusterConfig].
   /// [allowedProjects] Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
   /// [enablePrivateEndpoint] Immutable. Whether Workstations endpoint is private.
-  PrivateClusterConfig({
+  const PrivateClusterConfig({
     this.allowedProjects,
     this.enablePrivateEndpoint,
   });

@@ -9,7 +9,7 @@ class VirtualApplianceNetworkInterfaceConfigurationProperties {
 
   /// Creates a new [VirtualApplianceNetworkInterfaceConfigurationProperties].
   /// [ipConfigurations] Optional.
-  VirtualApplianceNetworkInterfaceConfigurationProperties({
+  const VirtualApplianceNetworkInterfaceConfigurationProperties({
     this.ipConfigurations,
   });
 

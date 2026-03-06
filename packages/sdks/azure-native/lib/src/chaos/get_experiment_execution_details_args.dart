@@ -18,7 +18,7 @@ class GetExperimentExecutionDetailsArgs {
   /// [executionId] GUID that represents a Experiment execution detail.
   /// [experimentName] String that represents a Experiment resource name.
   /// [resourceGroupName] String that represents an Azure resource group.
-  GetExperimentExecutionDetailsArgs({
+  const GetExperimentExecutionDetailsArgs({
     required this.executionId,
     required this.experimentName,
     required this.resourceGroupName,

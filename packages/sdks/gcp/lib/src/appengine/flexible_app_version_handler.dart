@@ -37,7 +37,7 @@ class FlexibleAppVersionHandler {
   /// [securityLevel] Security (HTTPS) enforcement for this URL.
   /// [staticFiles] Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
   /// [urlRegex] URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
-  FlexibleAppVersionHandler({
+  const FlexibleAppVersionHandler({
     this.authFailAction,
     this.login,
     this.redirectHttpResponseCode,

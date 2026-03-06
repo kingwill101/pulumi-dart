@@ -92,7 +92,7 @@ class InsightsDatasetConfigState {
   /// [sourceProjects] Defines the options for providing source projects for the DatasetConfig.
   /// [uid] System generated unique identifier for the resource.
   /// [updateTime] The UTC time at which the DatasetConfig was updated. This is auto-populated.
-  InsightsDatasetConfigState({
+  const InsightsDatasetConfigState({
     this.activityDataRetentionPeriodDays,
     this.createTime,
     this.datasetConfigId,

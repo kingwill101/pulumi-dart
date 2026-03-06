@@ -8,7 +8,7 @@ class TableComment {
 
   /// Creates a new [TableComment].
   /// [message] A description of the table.
-  TableComment({
+  const TableComment({
     this.message,
   });
 

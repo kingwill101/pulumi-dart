@@ -40,7 +40,7 @@ class TargetState {
   /// [suspendedState] Specifies whether the scaling activities for a scalable target are in a suspended state.
   /// [tags] Map of tags to assign to the scalable target. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  TargetState({
+  const TargetState({
     this.arn,
     this.maxCapacity,
     this.minCapacity,

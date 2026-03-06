@@ -24,7 +24,7 @@ class EndpointAuthorizationArgs {
   /// [forceDelete] Indicates whether to force the revoke action. If true, the Redshift-managed VPC endpoints associated with the endpoint authorization are also deleted. Default value is `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcIds] The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
-  EndpointAuthorizationArgs({
+  const EndpointAuthorizationArgs({
     required this.account,
     required this.clusterIdentifier,
     this.forceDelete,

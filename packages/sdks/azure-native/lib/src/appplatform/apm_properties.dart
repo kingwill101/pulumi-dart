@@ -15,7 +15,7 @@ class ApmProperties {
   /// [properties] Non-sensitive properties for the APM
   /// [secrets] Sensitive properties for the APM
   /// [type] APM Type
-  ApmProperties({
+  const ApmProperties({
     this.properties,
     this.secrets,
     required this.type,

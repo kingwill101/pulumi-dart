@@ -40,7 +40,7 @@ class TriggerCustomEventState {
   /// [pipelines] One or more `pipeline` blocks as defined below.
   /// [subjectBeginsWith] The pattern that event subject starts with for trigger to fire.
   /// [subjectEndsWith] The pattern that event subject ends with for trigger to fire.
-  TriggerCustomEventState({
+  const TriggerCustomEventState({
     this.activated,
     this.additionalProperties,
     this.annotations,

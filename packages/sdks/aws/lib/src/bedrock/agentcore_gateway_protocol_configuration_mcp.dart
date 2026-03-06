@@ -14,7 +14,7 @@ class AgentcoreGatewayProtocolConfigurationMcp {
   /// [instructions] Instructions for the MCP protocol configuration.
   /// [searchType] Search type for MCP. Valid values: `SEMANTIC`.
   /// [supportedVersions] Set of supported MCP protocol versions.
-  AgentcoreGatewayProtocolConfigurationMcp({
+  const AgentcoreGatewayProtocolConfigurationMcp({
     this.instructions,
     this.searchType,
     this.supportedVersions,

@@ -17,7 +17,7 @@ class GetMonitorPlan {
   /// [effectiveDate] Date when plan was applied.
   /// [plan] Plan id as published by Dynatrace.
   /// [usageType] Different usage type.
-  GetMonitorPlan({
+  const GetMonitorPlan({
     required this.billingCycle,
     required this.effectiveDate,
     required this.plan,

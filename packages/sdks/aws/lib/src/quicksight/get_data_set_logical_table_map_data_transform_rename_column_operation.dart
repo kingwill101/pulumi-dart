@@ -9,7 +9,7 @@ class GetDataSetLogicalTableMapDataTransformRenameColumnOperation {
   /// Creates a new [GetDataSetLogicalTableMapDataTransformRenameColumnOperation].
   /// [columnName] Required.
   /// [newColumnName] Required.
-  GetDataSetLogicalTableMapDataTransformRenameColumnOperation({
+  const GetDataSetLogicalTableMapDataTransformRenameColumnOperation({
     required this.columnName,
     required this.newColumnName,
   });

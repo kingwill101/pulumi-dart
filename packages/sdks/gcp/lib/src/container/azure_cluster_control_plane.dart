@@ -41,7 +41,7 @@ class AzureClusterControlPlane {
   /// [tags] Optional. A set of tags to apply to all underlying control plane Azure resources.
   /// [version] The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
   /// [vmSize] Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
-  AzureClusterControlPlane({
+  const AzureClusterControlPlane({
     this.databaseEncryption,
     this.mainVolume,
     this.proxyConfig,

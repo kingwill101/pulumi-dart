@@ -11,7 +11,7 @@ class DomainDevicesFilesystemSourceRam {
   /// Creates a new [DomainDevicesFilesystemSourceRam].
   /// [units] Defines the units for the RAM source of the filesystem.
   /// [usage] Specifies the usage type for the RAM source of the filesystem.
-  DomainDevicesFilesystemSourceRam({
+  const DomainDevicesFilesystemSourceRam({
     this.units,
     required this.usage,
   });

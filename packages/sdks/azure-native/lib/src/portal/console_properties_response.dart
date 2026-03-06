@@ -15,7 +15,7 @@ class ConsolePropertiesResponse {
   /// [osType] The operating system type of the cloud shell.
   /// [provisioningState] Provisioning state of the console.
   /// [uri] Uri of the console.
-  ConsolePropertiesResponse({
+  const ConsolePropertiesResponse({
     required this.osType,
     required this.provisioningState,
     required this.uri,

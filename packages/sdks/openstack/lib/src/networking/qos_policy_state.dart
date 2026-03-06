@@ -53,7 +53,7 @@ class QosPolicyState {
   /// [tags] A set of string tags for the QoS policy.
   /// [updatedAt] The time at which QoS policy was created.
   /// [valueSpecs] Map of additional options.
-  QosPolicyState({
+  const QosPolicyState({
     this.allTags,
     this.createdAt,
     this.description,

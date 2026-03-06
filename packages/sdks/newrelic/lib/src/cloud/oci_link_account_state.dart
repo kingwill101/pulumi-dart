@@ -48,7 +48,7 @@ class OciLinkAccountState {
   /// [ociRegion] OCI region for the linkage (ignored on create, applied on update).
   /// [tenantId] OCI tenancy OCID (root tenancy). Changing forces a new linked account.
   /// [userVaultOcid] Vault secret OCID containing a user or auxiliary secret.
-  OciLinkAccountState({
+  const OciLinkAccountState({
     this.accountId,
     this.compartmentOcid,
     this.ingestVaultOcid,

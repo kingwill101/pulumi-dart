@@ -15,7 +15,7 @@ class GetAutoscalingPolicyArgs {
   /// [autoscalingPolicyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAutoscalingPolicyArgs({
+  const GetAutoscalingPolicyArgs({
     required this.autoscalingPolicyId,
     required this.location,
     this.project,

@@ -24,7 +24,7 @@ class GetWafRulesWafRuleRateLimit {
   /// [target] The statistical field for frequency control.
   /// [threshold] The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
   /// [ttl] The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
-  GetWafRulesWafRuleRateLimit({
+  const GetWafRulesWafRuleRateLimit({
     required this.interval,
     required this.statuses,
     required this.subKey,

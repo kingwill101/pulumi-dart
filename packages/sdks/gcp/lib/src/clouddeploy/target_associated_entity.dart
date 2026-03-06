@@ -16,7 +16,7 @@ class TargetAssociatedEntity {
   /// [anthosClusters] Optional. Information specifying Anthos clusters as associated entities.
   /// [entityId] The name for the key in the map for which this object is mapped to in the API
   /// [gkeClusters] Optional. Information specifying GKE clusters as associated entities.
-  TargetAssociatedEntity({
+  const TargetAssociatedEntity({
     this.anthosClusters,
     required this.entityId,
     this.gkeClusters,

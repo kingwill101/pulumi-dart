@@ -15,7 +15,7 @@ class GetInstanceDatafusionV1beta1Args {
   /// [instanceId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetInstanceDatafusionV1beta1Args({
+  const GetInstanceDatafusionV1beta1Args({
     required this.instanceId,
     required this.location,
     this.project,

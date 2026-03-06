@@ -18,7 +18,7 @@ class ConnectivityGroupItem {
   /// [isGlobal] Flag if global is supported.
   /// [networkGroupId] Network group Id.
   /// [useHubGateway] Flag if need to use hub gateway.
-  ConnectivityGroupItem({
+  const ConnectivityGroupItem({
     required this.groupConnectivity,
     this.isGlobal,
     required this.networkGroupId,

@@ -156,7 +156,7 @@ class DomainFeaturesCapabilities {
   /// [sysTime] Configures whether the domain can wake from an alarm.
   /// [sysTtyCnofig] Configures whether the domain can wake from an alarm.
   /// [wakeAlarm] Configures whether the domain can wake from an alarm.
-  DomainFeaturesCapabilities({
+  const DomainFeaturesCapabilities({
     this.auditControl,
     this.auditWrite,
     this.blockSuspend,

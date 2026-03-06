@@ -17,7 +17,7 @@ class WorkforceWorkforceVpcConfig {
   /// [subnets] The ID of the subnets in the VPC that you want to connect.
   /// [vpcEndpointId] The IDs for the VPC service endpoints of your VPC workforce.
   /// [vpcId] The ID of the VPC that the workforce uses for communication.
-  WorkforceWorkforceVpcConfig({
+  const WorkforceWorkforceVpcConfig({
     this.securityGroupIds,
     this.subnets,
     this.vpcEndpointId,

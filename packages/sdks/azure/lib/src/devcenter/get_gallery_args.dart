@@ -15,7 +15,7 @@ class GetGalleryArgs {
   /// Creates a new [GetGalleryArgs].
   /// [devCenterId] The ID of the Dev Center which contains the Dev Center Gallery.
   /// [name] The name of this Dev Center Gallery.
-  GetGalleryArgs({
+  const GetGalleryArgs({
     required this.devCenterId,
     required this.name,
   });

@@ -18,7 +18,7 @@ class ListApplicationBusinessProcessDevelopmentArtifactsArgs {
   /// [applicationName] The name of the Application
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spaceName] The name of the space
-  ListApplicationBusinessProcessDevelopmentArtifactsArgs({
+  const ListApplicationBusinessProcessDevelopmentArtifactsArgs({
     required this.applicationName,
     required this.resourceGroupName,
     required this.spaceName,

@@ -18,7 +18,7 @@ class AnalyticsApplicationInputsSchema {
   /// [recordColumns] The Record Column mapping for the streaming source data element.
   /// [recordEncoding] The Encoding of the record in the streaming source.
   /// [recordFormat] The Record Format and mapping information to schematize a record.
-  AnalyticsApplicationInputsSchema({
+  const AnalyticsApplicationInputsSchema({
     required this.recordColumns,
     this.recordEncoding,
     required this.recordFormat,

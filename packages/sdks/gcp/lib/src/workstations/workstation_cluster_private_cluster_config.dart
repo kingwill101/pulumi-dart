@@ -24,7 +24,7 @@ class WorkstationClusterPrivateClusterConfig {
   /// [clusterHostname] (Output)
   /// [enablePrivateEndpoint] Whether Workstations endpoint is private.
   /// [serviceAttachmentUri] (Output)
-  WorkstationClusterPrivateClusterConfig({
+  const WorkstationClusterPrivateClusterConfig({
     this.allowedProjects,
     this.clusterHostname,
     required this.enablePrivateEndpoint,

@@ -15,7 +15,7 @@ class IoTHubNetworkRuleSet {
   /// [applyToBuiltinEventhubEndpoint] Determines if Network Rule Set is also applied to the BuiltIn EventHub EndPoint of the IotHub. Defaults to `false`.
   /// [defaultAction] Default Action for Network Rule Set. Possible values are `DefaultActionDeny`, `DefaultActionAllow`. Defaults to `DefaultActionDeny`.
   /// [ipRules] One or more `ip_rule` blocks as defined below.
-  IoTHubNetworkRuleSet({
+  const IoTHubNetworkRuleSet({
     this.applyToBuiltinEventhubEndpoint,
     this.defaultAction,
     this.ipRules,

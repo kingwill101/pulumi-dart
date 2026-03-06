@@ -11,7 +11,7 @@ class AgentcoreAgentRuntimeLifecycleConfiguration {
   /// Creates a new [AgentcoreAgentRuntimeLifecycleConfiguration].
   /// [idleRuntimeSessionTimeout] Timeout in seconds for idle runtime sessions.
   /// [maxLifetime] Maximum lifetime for the instance in seconds.
-  AgentcoreAgentRuntimeLifecycleConfiguration({
+  const AgentcoreAgentRuntimeLifecycleConfiguration({
     required this.idleRuntimeSessionTimeout,
     required this.maxLifetime,
   });

@@ -28,7 +28,7 @@ class ConfigurationDeviceDetailsResponse {
   /// [identificationType] Identification type of the configuration.
   /// [quantity] Quantity of the product.
   /// [termCommitmentInformation] Term Commitment Information of the Device.
-  ConfigurationDeviceDetailsResponse({
+  const ConfigurationDeviceDetailsResponse({
     required this.deviceDetails,
     this.displayInfo,
     required this.hierarchyInformation,

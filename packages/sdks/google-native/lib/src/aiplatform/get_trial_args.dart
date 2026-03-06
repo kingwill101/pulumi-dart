@@ -17,7 +17,7 @@ class GetTrialArgs {
   /// [project] Optional.
   /// [studyId] Required.
   /// [trialId] Required.
-  GetTrialArgs({
+  const GetTrialArgs({
     required this.location,
     this.project,
     required this.studyId,

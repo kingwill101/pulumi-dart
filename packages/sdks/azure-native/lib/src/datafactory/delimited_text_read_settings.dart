@@ -17,7 +17,7 @@ class DelimitedTextReadSettings {
   /// [compressionProperties] Compression settings.
   /// [skipLineCount] Indicates the number of non-empty rows to skip when reading data from input files. Type: integer (or Expression with resultType integer).
   /// [type] The read setting type.
-  DelimitedTextReadSettings({
+  const DelimitedTextReadSettings({
     this.compressionProperties,
     this.skipLineCount,
     required this.type,

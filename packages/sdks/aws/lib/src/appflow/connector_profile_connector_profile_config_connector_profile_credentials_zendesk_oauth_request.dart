@@ -11,7 +11,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOa
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest].
   /// [authCode] The code provided by the connector when it has been authenticated via the connected app.
   /// [redirectUri] The URL to which the authentication server redirects the browser after authorization has been granted.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest({
     this.authCode,
     this.redirectUri,
   });

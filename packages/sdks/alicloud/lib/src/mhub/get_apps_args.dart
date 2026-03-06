@@ -27,7 +27,7 @@ class GetAppsArgs {
   /// [osType] The os type. Valid values: `Android` and `iOS`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [productId] The ID of the Product.
-  GetAppsArgs({
+  const GetAppsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

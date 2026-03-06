@@ -12,7 +12,7 @@ class ForecastSpendResponse {
   /// Creates a new [ForecastSpendResponse].
   /// [amount] The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type.
   /// [unit] The unit of measure for the budget amount.
-  ForecastSpendResponse({
+  const ForecastSpendResponse({
     required this.amount,
     required this.unit,
   });

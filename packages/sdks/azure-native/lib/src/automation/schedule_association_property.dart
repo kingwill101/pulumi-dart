@@ -9,7 +9,7 @@ class ScheduleAssociationProperty {
 
   /// Creates a new [ScheduleAssociationProperty].
   /// [name] Gets or sets the name of the Schedule.
-  ScheduleAssociationProperty({
+  const ScheduleAssociationProperty({
     this.name,
   });
 

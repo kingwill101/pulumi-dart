@@ -23,7 +23,7 @@ class UserCustomPermissionState {
   /// [namespace] Namespace that the user belongs to. Defaults to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userName] Username of the user.
-  UserCustomPermissionState({
+  const UserCustomPermissionState({
     this.awsAccountId,
     this.customPermissionsName,
     this.namespace,

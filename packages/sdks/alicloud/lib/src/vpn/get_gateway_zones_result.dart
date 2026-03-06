@@ -20,7 +20,7 @@ class GetGatewayZonesResult {
   /// [outputFile] Optional.
   /// [spec] Required.
   /// [zones] A list of Zone Entries. Each element contains the following attributes:
-  GetGatewayZonesResult({
+  const GetGatewayZonesResult({
     required this.id,
     required this.ids,
     this.outputFile,

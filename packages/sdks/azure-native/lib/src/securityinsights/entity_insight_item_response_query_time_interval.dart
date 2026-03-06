@@ -12,7 +12,7 @@ class EntityInsightItemResponseQueryTimeInterval {
   /// Creates a new [EntityInsightItemResponseQueryTimeInterval].
   /// [endTime] Insight query end time
   /// [startTime] Insight query start time
-  EntityInsightItemResponseQueryTimeInterval({
+  const EntityInsightItemResponseQueryTimeInterval({
     this.endTime,
     this.startTime,
   });

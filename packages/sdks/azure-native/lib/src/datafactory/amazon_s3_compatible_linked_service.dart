@@ -43,7 +43,7 @@ class AmazonS3CompatibleLinkedService {
   /// [serviceUrl] This value specifies the endpoint to access with the Amazon S3 Compatible Connector. This is an optional property; change it only if you want to try a different service endpoint or want to switch between https and http. Type: string (or Expression with resultType string).
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AmazonS3CompatibleLinkedService({
+  const AmazonS3CompatibleLinkedService({
     this.accessKeyId,
     this.annotations,
     this.connectVia,

@@ -39,7 +39,7 @@ class GetServiceQuotaResult {
   /// [serviceName] Name of the service.
   /// [usageMetrics] Information about the measurement.
   /// [value] Current value of the service quota.
-  GetServiceQuotaResult({
+  const GetServiceQuotaResult({
     required this.adjustable,
     required this.arn,
     required this.defaultValue,

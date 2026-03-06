@@ -18,7 +18,7 @@ class NetworkSecurityPerimeterState {
   /// [name] The name which should be used for this Network Security Perimeter. Changing this forces a new Network Security Perimeter to be created.
   /// [resourceGroupName] The name of the Resource Group where the Network Security Perimeter should exist.
   /// [tags] A mapping of tags which should be assigned to the Network Security Perimeter.
-  NetworkSecurityPerimeterState({
+  const NetworkSecurityPerimeterState({
     this.location,
     this.name,
     this.resourceGroupName,

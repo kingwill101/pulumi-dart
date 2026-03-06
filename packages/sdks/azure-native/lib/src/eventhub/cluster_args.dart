@@ -28,7 +28,7 @@ class ClusterArgs {
   /// [sku] Properties of the cluster SKU.
   /// [supportsScaling] A value that indicates whether Scaling is Supported.
   /// [tags] Resource tags.
-  ClusterArgs({
+  const ClusterArgs({
     this.clusterName,
     this.location,
     required this.resourceGroupName,

@@ -19,7 +19,7 @@ class GetServerCollectorResult {
   /// [name] Required.
   /// [properties] Required.
   /// [type] Required.
-  GetServerCollectorResult({
+  const GetServerCollectorResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

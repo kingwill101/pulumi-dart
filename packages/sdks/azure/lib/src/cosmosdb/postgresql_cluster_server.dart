@@ -11,7 +11,7 @@ class PostgresqlClusterServer {
   /// Creates a new [PostgresqlClusterServer].
   /// [fqdn] The Fully Qualified Domain Name of the server.
   /// [name] The name which should be used for this Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
-  PostgresqlClusterServer({
+  const PostgresqlClusterServer({
     this.fqdn,
     this.name,
   });

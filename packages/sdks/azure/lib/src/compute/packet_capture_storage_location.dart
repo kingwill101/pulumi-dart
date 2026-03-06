@@ -16,7 +16,7 @@ class PacketCaptureStorageLocation {
   /// [filePath] A valid local path on the target Virtual Machine. Must include the name of the capture file (*.cap). For Linux Virtual Machines it must start with `/var/captures`.
   /// [storageAccountId] The ID of the storage account where the packet capture sessions should be saved to.
   /// [storagePath] The URI of the storage path where the packet capture sessions are saved to.
-  PacketCaptureStorageLocation({
+  const PacketCaptureStorageLocation({
     this.filePath,
     this.storageAccountId,
     this.storagePath,

@@ -9,7 +9,7 @@ class GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage {
   /// Creates a new [GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage].
   /// [revisionDatetime] Required.
   /// [version] Required.
-  GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage({
+  const GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage({
     required this.revisionDatetime,
     required this.version,
   });

@@ -14,7 +14,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack {
   /// [clientId] Required.
   /// [clientSecret] Required.
   /// [oauthRequest] Optional.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack({
     this.accessToken,
     required this.clientId,
     required this.clientSecret,

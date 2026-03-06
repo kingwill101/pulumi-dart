@@ -25,7 +25,7 @@ class ResizeOperationStatusResponse {
   /// [startTime] The time when this resize operation was started.
   /// [targetDedicatedNodes] The desired number of dedicated compute nodes in the pool.
   /// [targetLowPriorityNodes] The desired number of Spot/low-priority compute nodes in the pool.
-  ResizeOperationStatusResponse({
+  const ResizeOperationStatusResponse({
     this.errors,
     this.nodeDeallocationOption,
     this.resizeTimeout,

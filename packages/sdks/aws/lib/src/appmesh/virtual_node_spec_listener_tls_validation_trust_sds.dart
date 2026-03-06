@@ -8,7 +8,7 @@ class VirtualNodeSpecListenerTlsValidationTrustSds {
 
   /// Creates a new [VirtualNodeSpecListenerTlsValidationTrustSds].
   /// [secretName] Name of the secret for a virtual node's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
-  VirtualNodeSpecListenerTlsValidationTrustSds({
+  const VirtualNodeSpecListenerTlsValidationTrustSds({
     required this.secretName,
   });
 

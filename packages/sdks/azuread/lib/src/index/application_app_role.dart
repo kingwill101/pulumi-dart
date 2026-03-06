@@ -27,7 +27,7 @@ class ApplicationAppRole {
   /// [enabled] Determines if the app role is enabled. Defaults to `true`.
   /// [id] The unique identifier of the app role. Must be a valid UUID.
   /// [value] The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-  ApplicationAppRole({
+  const ApplicationAppRole({
     required this.allowedMemberTypes,
     required this.description,
     required this.displayName,

@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlNetReadTimeout {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlNetReadTimeout({
+  const GetDatabaseMysqlConfigMysqlNetReadTimeout({
     required this.description,
     required this.example,
     required this.maximum,

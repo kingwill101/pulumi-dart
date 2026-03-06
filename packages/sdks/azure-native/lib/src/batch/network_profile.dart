@@ -13,7 +13,7 @@ class NetworkProfile {
   /// Creates a new [NetworkProfile].
   /// [accountAccess] Network access profile for batchAccount endpoint (Batch account data plane API).
   /// [nodeManagementAccess] Network access profile for nodeManagement endpoint (Batch service managing compute nodes for Batch pools).
-  NetworkProfile({
+  const NetworkProfile({
     this.accountAccess,
     this.nodeManagementAccess,
   });

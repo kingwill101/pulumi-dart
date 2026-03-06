@@ -23,7 +23,7 @@ class DraModelProperties {
   /// [machineId] Gets or sets the machine Id where Dra is running.
   /// [machineName] Gets or sets the machine name where Dra is running.
   /// [resourceAccessIdentity] Identity model.
-  DraModelProperties({
+  const DraModelProperties({
     required this.authenticationIdentity,
     required this.customProperties,
     required this.machineId,

@@ -21,7 +21,7 @@ class NetworkManagerRoutingConfigurationArgs {
   /// [description] A description of the routing configuration.
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  NetworkManagerRoutingConfigurationArgs({
+  const NetworkManagerRoutingConfigurationArgs({
     this.configurationName,
     this.description,
     required this.networkManagerName,

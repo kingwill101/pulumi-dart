@@ -11,7 +11,7 @@ class ApplicationSettingsTransactionTracerExplainQueryPlan {
   /// Creates a new [ApplicationSettingsTransactionTracerExplainQueryPlan].
   /// [queryPlanThresholdType] The type of threshold for query plans. Valid values are `VALUE`,`APDEX_F`(4 times your apdex target)
   /// [queryPlanThresholdValue] The response time threshold for capturing query plans(in seconds).
-  ApplicationSettingsTransactionTracerExplainQueryPlan({
+  const ApplicationSettingsTransactionTracerExplainQueryPlan({
     this.queryPlanThresholdType,
     this.queryPlanThresholdValue,
   });

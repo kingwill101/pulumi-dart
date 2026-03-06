@@ -24,7 +24,7 @@ class GetSaslAclsArgs {
   /// [instanceId] ID of the ALIKAFKA Instance that owns the sasl acls.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [username] Get results for the specified username.
-  GetSaslAclsArgs({
+  const GetSaslAclsArgs({
     required this.aclResourceName,
     required this.aclResourceType,
     required this.instanceId,

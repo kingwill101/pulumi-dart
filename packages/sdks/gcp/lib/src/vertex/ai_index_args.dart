@@ -44,7 +44,7 @@ class AiIndexArgs {
   /// [metadata] Additional information about the Index.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the index. eg us-central1
-  AiIndexArgs({
+  const AiIndexArgs({
     this.description,
     required this.displayName,
     this.encryptionSpec,

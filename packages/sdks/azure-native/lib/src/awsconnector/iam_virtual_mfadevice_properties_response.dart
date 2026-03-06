@@ -34,7 +34,7 @@ class IamVirtualMFADevicePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamVirtualMFADevicePropertiesResponse({
+  const IamVirtualMFADevicePropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

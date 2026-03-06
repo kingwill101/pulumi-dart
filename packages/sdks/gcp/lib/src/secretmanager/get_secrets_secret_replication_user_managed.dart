@@ -10,7 +10,7 @@ class GetSecretsSecretReplicationUserManaged {
 
   /// Creates a new [GetSecretsSecretReplicationUserManaged].
   /// [replicas] The list of Replicas for this Secret.
-  GetSecretsSecretReplicationUserManaged({
+  const GetSecretsSecretReplicationUserManaged({
     required this.replicas,
   });
 

@@ -21,7 +21,7 @@ class ThemeConfiguration {
   /// [sheet] Display options related to sheets. See sheet.
   /// [typography] Determines the typography options. See typography.
   /// [uiColorPalette] Color properties that apply to the UI and to charts, excluding the colors that apply to data. See ui_color_palette.
-  ThemeConfiguration({
+  const ThemeConfiguration({
     this.dataColorPalette,
     this.sheet,
     this.typography,

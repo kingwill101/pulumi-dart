@@ -13,7 +13,7 @@ class GetProviderNoteIamPolicyArgs {
   /// Creates a new [GetProviderNoteIamPolicyArgs].
   /// [noteId] Required.
   /// [providerId] Required.
-  GetProviderNoteIamPolicyArgs({
+  const GetProviderNoteIamPolicyArgs({
     required this.noteId,
     required this.providerId,
   });

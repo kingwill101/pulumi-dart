@@ -71,7 +71,7 @@ class ServiceAzureBotState {
   /// [sku] The SKU of the Azure Bot Service. Accepted values are `F0` or `S1`. Changing this forces a new resource to be created.
   /// [streamingEndpointEnabled] Is the streaming endpoint enabled for this Azure Bot Service. Defaults to `false`.
   /// [tags] A mapping of tags which should be assigned to this Azure Bot Service.
-  ServiceAzureBotState({
+  const ServiceAzureBotState({
     this.cmkKeyVaultKeyUrl,
     this.developerAppInsightsApiKey,
     this.developerAppInsightsApplicationId,

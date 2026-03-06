@@ -18,7 +18,7 @@ class GetNetworkInsightsAnalysisForwardPathComponentAclRule {
   /// [protocol] Required.
   /// [ruleAction] Required.
   /// [ruleNumber] Required.
-  GetNetworkInsightsAnalysisForwardPathComponentAclRule({
+  const GetNetworkInsightsAnalysisForwardPathComponentAclRule({
     required this.cidr,
     required this.egress,
     required this.portRanges,

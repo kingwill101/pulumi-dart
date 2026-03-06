@@ -32,7 +32,7 @@ class TrustConfigArgs {
   /// [project] Optional.
   /// [trustConfigId] Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
   /// [trustStores] Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
-  TrustConfigArgs({
+  const TrustConfigArgs({
     this.description,
     this.etag,
     this.labels,

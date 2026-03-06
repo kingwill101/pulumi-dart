@@ -70,7 +70,7 @@ class ContainerState {
   /// [storagePolicy] The storage policy to be used for the
   /// [versioning] A boolean that can enable or disable object
   /// [versioningLegacy] Enable legacy object versioning. The
-  ContainerState({
+  const ContainerState({
     this.containerRead,
     this.containerSyncKey,
     this.containerSyncTo,

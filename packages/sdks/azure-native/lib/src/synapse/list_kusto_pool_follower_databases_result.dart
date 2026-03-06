@@ -10,7 +10,7 @@ class ListKustoPoolFollowerDatabasesResult {
 
   /// Creates a new [ListKustoPoolFollowerDatabasesResult].
   /// [value] The list of follower database result.
-  ListKustoPoolFollowerDatabasesResult({
+  const ListKustoPoolFollowerDatabasesResult({
     this.value,
   });
 

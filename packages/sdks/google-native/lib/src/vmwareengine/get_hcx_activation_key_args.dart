@@ -17,7 +17,7 @@ class GetHcxActivationKeyArgs {
   /// [location] Required.
   /// [privateCloudId] Required.
   /// [project] Optional.
-  GetHcxActivationKeyArgs({
+  const GetHcxActivationKeyArgs({
     required this.hcxActivationKeyId,
     required this.location,
     required this.privateCloudId,

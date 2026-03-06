@@ -8,7 +8,7 @@ class GetServiceDeploymentController {
 
   /// Creates a new [GetServiceDeploymentController].
   /// [type] Constraint type
-  GetServiceDeploymentController({
+  const GetServiceDeploymentController({
     required this.type,
   });
 

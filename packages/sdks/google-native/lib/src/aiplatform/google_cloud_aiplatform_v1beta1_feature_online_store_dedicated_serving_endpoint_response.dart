@@ -16,7 +16,7 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResp
   /// [privateServiceConnectConfig] Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
   /// [publicEndpointDomainName] This field will be populated with the domain name to use for this FeatureOnlineStore
   /// [serviceAttachment] The name of the service attachment resource. Populated if private service connect is enabled and after FeatureViewSync is created.
-  GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse({
+  const GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse({
     required this.privateServiceConnectConfig,
     required this.publicEndpointDomainName,
     required this.serviceAttachment,

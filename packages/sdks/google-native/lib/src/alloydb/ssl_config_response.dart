@@ -12,7 +12,7 @@ class SslConfigResponse {
   /// Creates a new [SslConfigResponse].
   /// [caSource] Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
   /// [sslMode] Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
-  SslConfigResponse({
+  const SslConfigResponse({
     required this.caSource,
     required this.sslMode,
   });

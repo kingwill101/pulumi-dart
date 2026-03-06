@@ -49,7 +49,7 @@ class AlertPolicyConditionConditionAbsent {
   /// [duration] The amount of time that a time series must
   /// [filter] A filter that identifies which time series
   /// [trigger] The number/percent of time series for which
-  AlertPolicyConditionConditionAbsent({
+  const AlertPolicyConditionConditionAbsent({
     this.aggregations,
     required this.duration,
     this.filter,

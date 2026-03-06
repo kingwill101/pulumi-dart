@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse].
   /// [followupIntentName] The unique identifier of the followup intent. Format: `projects//agent/intents/`.
   /// [parentFollowupIntentName] The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.
-  GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse({
+  const GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse({
     required this.followupIntentName,
     required this.parentFollowupIntentName,
   });

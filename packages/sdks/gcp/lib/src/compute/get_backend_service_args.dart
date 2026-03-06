@@ -17,7 +17,7 @@ class GetBackendServiceArgs {
   /// Creates a new [GetBackendServiceArgs].
   /// [name] The name of the Backend Service.
   /// [project] The project in which the resource belongs. If it is not provided, the provider project is used.
-  GetBackendServiceArgs({
+  const GetBackendServiceArgs({
     required this.name,
     this.project,
   });

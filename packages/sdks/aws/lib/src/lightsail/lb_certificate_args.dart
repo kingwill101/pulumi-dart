@@ -26,7 +26,7 @@ class LbCertificateArgs {
   /// [name] SSL/TLS certificate name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subjectAlternativeNames] Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
-  LbCertificateArgs({
+  const LbCertificateArgs({
     this.domainName,
     required this.lbName,
     this.name,

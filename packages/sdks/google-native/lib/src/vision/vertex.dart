@@ -12,7 +12,7 @@ class Vertex {
   /// Creates a new [Vertex].
   /// [x] X coordinate.
   /// [y] Y coordinate.
-  Vertex({
+  const Vertex({
     this.x,
     this.y,
   });

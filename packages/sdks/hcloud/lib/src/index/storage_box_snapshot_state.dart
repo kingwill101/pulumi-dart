@@ -21,7 +21,7 @@ class StorageBoxSnapshotState {
   /// [labels] User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   /// [name] Name of the Storage Box Snapshot.
   /// [storageBoxId] ID of the Storage Box.
-  StorageBoxSnapshotState({
+  const StorageBoxSnapshotState({
     this.description,
     this.isAutomatic,
     this.labels,

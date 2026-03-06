@@ -21,7 +21,7 @@ class DeployPolicyRuleRolloutRestriction {
   /// [id] ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
   /// [invokers] What invoked the action. If left empty, all invoker types will be restricted.
   /// [timeWindows] Time window within which actions are restricted.
-  DeployPolicyRuleRolloutRestriction({
+  const DeployPolicyRuleRolloutRestriction({
     this.actions,
     required this.id,
     this.invokers,

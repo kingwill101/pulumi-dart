@@ -8,7 +8,7 @@ class GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository].
   /// [uri] Specific uri to the registry, e.g. '"https://registry-1.docker.io"'
-  GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository({
+  const GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository({
     required this.uri,
   });
 

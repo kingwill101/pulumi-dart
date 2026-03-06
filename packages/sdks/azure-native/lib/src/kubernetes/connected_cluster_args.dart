@@ -60,7 +60,7 @@ class ConnectedClusterArgs {
   /// [provisioningState] Provisioning state of the connected cluster resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ConnectedClusterArgs({
+  const ConnectedClusterArgs({
     this.aadProfile,
     required this.agentPublicKeyCertificate,
     this.arcAgentProfile,

@@ -9,7 +9,7 @@ class SshPublicKeyResponse {
 
   /// Creates a new [SshPublicKeyResponse].
   /// [certificateData] The certificate for SSH.
-  SshPublicKeyResponse({
+  const SshPublicKeyResponse({
     this.certificateData,
   });
 

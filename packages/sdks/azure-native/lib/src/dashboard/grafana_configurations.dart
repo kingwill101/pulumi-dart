@@ -23,7 +23,7 @@ class GrafanaConfigurations {
   /// [smtp] Email server settings.
   /// [snapshots] Grafana Snapshots settings
   /// [users] Grafana users settings
-  GrafanaConfigurations({
+  const GrafanaConfigurations({
     this.security,
     this.smtp,
     this.snapshots,

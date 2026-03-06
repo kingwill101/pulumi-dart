@@ -31,7 +31,7 @@ class DataPolicyState {
   /// [name] Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
   /// [policyTag] Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
   /// [project] The ID of the project in which the resource belongs.
-  DataPolicyState({
+  const DataPolicyState({
     this.dataMaskingPolicy,
     this.dataPolicyId,
     this.dataPolicyType,

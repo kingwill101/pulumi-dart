@@ -11,7 +11,7 @@ class NodePoolNetworkConfigAdditionalNodeNetworkConfig {
   /// Creates a new [NodePoolNetworkConfigAdditionalNodeNetworkConfig].
   /// [network] Name of the VPC where the additional interface belongs.
   /// [subnetwork] Name of the subnetwork where the additional interface belongs.
-  NodePoolNetworkConfigAdditionalNodeNetworkConfig({
+  const NodePoolNetworkConfigAdditionalNodeNetworkConfig({
     this.network,
     this.subnetwork,
   });

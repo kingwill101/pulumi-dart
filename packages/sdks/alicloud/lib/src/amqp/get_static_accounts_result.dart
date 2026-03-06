@@ -20,7 +20,7 @@ class GetStaticAccountsResult {
   /// [ids] Required.
   /// [instanceId] Amqp instance ID.
   /// [outputFile] Optional.
-  GetStaticAccountsResult({
+  const GetStaticAccountsResult({
     required this.accounts,
     required this.id,
     required this.ids,

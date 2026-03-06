@@ -17,7 +17,7 @@ class SourceConfigResponseDatastreamV1alpha1 {
   /// [mysqlSourceConfig] MySQL data source configuration
   /// [oracleSourceConfig] Oracle data source configuration
   /// [sourceConnectionProfileName] Source connection profile identifier.
-  SourceConfigResponseDatastreamV1alpha1({
+  const SourceConfigResponseDatastreamV1alpha1({
     required this.mysqlSourceConfig,
     required this.oracleSourceConfig,
     required this.sourceConnectionProfileName,

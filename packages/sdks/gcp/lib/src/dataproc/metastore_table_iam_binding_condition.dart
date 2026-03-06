@@ -11,7 +11,7 @@ class MetastoreTableIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  MetastoreTableIamBindingCondition({
+  const MetastoreTableIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

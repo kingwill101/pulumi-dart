@@ -14,7 +14,7 @@ class WorkloadSpec {
   /// Creates a new [WorkloadSpec].
   /// [controllerRef] ControllerRef is an optional reference to the controlling object, such as a Deployment or Job. This field is intended for use by tools like CLIs to provide a link back to the original workload definition. When set, it cannot be changed.
   /// [podGroups] PodGroups is the list of pod groups that make up the Workload. The maximum number of pod groups is 8. This field is immutable.
-  WorkloadSpec({
+  const WorkloadSpec({
     this.controllerRef,
     required this.podGroups,
   });

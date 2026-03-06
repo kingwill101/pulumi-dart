@@ -26,7 +26,7 @@ class ResourceState {
   /// [machineTypes] Generally refers to the type or instance type of a computing resource. See `machine_types` below.
   /// [resourceId] The ID of the Resource.
   /// [userAccessParam] Used to define the access parameters for the user. See `user_access_param` below.
-  ResourceState({
+  const ResourceState({
     this.clusterDesc,
     this.clusterId,
     this.clusterName,

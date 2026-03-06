@@ -36,7 +36,7 @@ class VolumeArgs {
   /// [size] The size of the block storage volume in GiB. If updated, can only be expanded.
   /// [snapshotId] The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
   /// [tags] A list of the tags to be applied to this Volume.
-  VolumeArgs({
+  const VolumeArgs({
     this.description,
     this.filesystemType,
     this.initialFilesystemLabel,

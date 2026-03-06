@@ -19,7 +19,7 @@ class MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse {
   /// [events] List of error events.
   /// [id] Result identifier
   /// [resultType] Result type
-  MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse({
+  const MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse({
     this.errorMessage,
     this.events,
     required this.id,

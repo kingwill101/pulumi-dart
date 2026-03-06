@@ -10,7 +10,7 @@ class GetLaunchTemplateCapacityReservationSpecification {
   /// Creates a new [GetLaunchTemplateCapacityReservationSpecification].
   /// [capacityReservationPreference] Required.
   /// [capacityReservationTargets] Required.
-  GetLaunchTemplateCapacityReservationSpecification({
+  const GetLaunchTemplateCapacityReservationSpecification({
     required this.capacityReservationPreference,
     required this.capacityReservationTargets,
   });

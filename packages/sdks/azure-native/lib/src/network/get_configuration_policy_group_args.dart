@@ -18,7 +18,7 @@ class GetConfigurationPolicyGroupArgs {
   /// [configurationPolicyGroupName] The name of the ConfigurationPolicyGroup being retrieved.
   /// [resourceGroupName] The resource group name of the VpnServerConfiguration.
   /// [vpnServerConfigurationName] The name of the VpnServerConfiguration.
-  GetConfigurationPolicyGroupArgs({
+  const GetConfigurationPolicyGroupArgs({
     required this.configurationPolicyGroupName,
     required this.resourceGroupName,
     required this.vpnServerConfigurationName,

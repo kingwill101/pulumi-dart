@@ -13,7 +13,7 @@ class DefenderForContainersGcpOfferingResponseVmScanners {
   /// Creates a new [DefenderForContainersGcpOfferingResponseVmScanners].
   /// [configuration] Configuration for VM scanning
   /// [enabled] Is VM scanning enabled
-  DefenderForContainersGcpOfferingResponseVmScanners({
+  const DefenderForContainersGcpOfferingResponseVmScanners({
     this.configuration,
     this.enabled,
   });

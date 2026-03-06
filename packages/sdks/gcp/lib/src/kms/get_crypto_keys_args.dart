@@ -22,7 +22,7 @@ class GetCryptoKeysArgs {
   /// Creates a new [GetCryptoKeysArgs].
   /// [filter] The filter argument is used to add a filter query parameter that limits which keys are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
   /// [keyRing] The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
-  GetCryptoKeysArgs({
+  const GetCryptoKeysArgs({
     this.filter,
     required this.keyRing,
   });

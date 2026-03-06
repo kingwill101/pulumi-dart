@@ -31,7 +31,7 @@ class UserProfileArgs {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userProfileName] The name for the User Profile.
   /// [userSettings] The user settings. See User Settings below.
-  UserProfileArgs({
+  const UserProfileArgs({
     required this.domainId,
     this.region,
     this.singleSignOnUserIdentifier,

@@ -66,7 +66,7 @@ class GetMigrationJobDatamigrationV1beta1Result {
   /// [type] The migration job type.
   /// [updateTime] The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   /// [vpcPeeringConnectivity] The details of the VPC network that the source database is located in.
-  GetMigrationJobDatamigrationV1beta1Result({
+  const GetMigrationJobDatamigrationV1beta1Result({
     required this.createTime,
     required this.destination,
     required this.destinationDatabase,

@@ -39,7 +39,7 @@ class GetGatewayConnectionIpsecPolicy {
   /// [pfsGroup] The DH group used in IKE phase 2 for new child SA.
   /// [saDatasize] The IPSec SA payload size in KB. Must be at least
   /// [saLifetime] The IPSec SA lifetime in seconds. Must be at least
-  GetGatewayConnectionIpsecPolicy({
+  const GetGatewayConnectionIpsecPolicy({
     required this.dhGroup,
     required this.ikeEncryption,
     required this.ikeIntegrity,

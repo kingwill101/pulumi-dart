@@ -18,7 +18,7 @@ class AnimationResponse {
   /// [animationEnd] End previous animation.
   /// [animationFade] Display overlay object with fade animation.
   /// [animationStatic] Display static overlay object.
-  AnimationResponse({
+  const AnimationResponse({
     required this.animationEnd,
     required this.animationFade,
     required this.animationStatic,

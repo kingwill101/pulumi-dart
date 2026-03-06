@@ -16,7 +16,7 @@ class OsProperties {
   /// [customImageId] Specify the referenced Test Base Custom Image Id if available.
   /// [osName] The name of the OS.
   /// [releaseProperties] The properties of the OS release.
-  OsProperties({
+  const OsProperties({
     this.customImageId,
     this.osName,
     this.releaseProperties,

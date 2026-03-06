@@ -11,7 +11,7 @@ class EventBusLogConfig {
   /// Creates a new [EventBusLogConfig].
   /// [includeDetail] Whether EventBridge include detailed event information in the records it generates. Valid values are `NONE` and `FULL`.
   /// [level] Level of logging detail to include. Valid values are `OFF`, `ERROR`, `INFO`, and `TRACE`.
-  EventBusLogConfig({
+  const EventBusLogConfig({
     this.includeDetail,
     this.level,
   });

@@ -12,7 +12,7 @@ class MHSMGeoReplicatedRegion {
   /// Creates a new [MHSMGeoReplicatedRegion].
   /// [isPrimary] A boolean value that indicates whether the region is the primary region or a secondary region.
   /// [name] Name of the geo replicated region.
-  MHSMGeoReplicatedRegion({
+  const MHSMGeoReplicatedRegion({
     this.isPrimary,
     this.name,
   });

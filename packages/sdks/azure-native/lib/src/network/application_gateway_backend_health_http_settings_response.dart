@@ -14,7 +14,7 @@ class ApplicationGatewayBackendHealthHttpSettingsResponse {
   /// Creates a new [ApplicationGatewayBackendHealthHttpSettingsResponse].
   /// [backendHttpSettings] Reference to an ApplicationGatewayBackendHttpSettings resource.
   /// [servers] List of ApplicationGatewayBackendHealthServer resources.
-  ApplicationGatewayBackendHealthHttpSettingsResponse({
+  const ApplicationGatewayBackendHealthHttpSettingsResponse({
     this.backendHttpSettings,
     this.servers,
   });

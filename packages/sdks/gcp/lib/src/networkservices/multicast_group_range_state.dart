@@ -17,7 +17,7 @@ class MulticastGroupRangeState {
 
   /// Creates a new [MulticastGroupRangeState].
   /// [state] (Output)
-  MulticastGroupRangeState({
+  const MulticastGroupRangeState({
     this.state,
   });
 

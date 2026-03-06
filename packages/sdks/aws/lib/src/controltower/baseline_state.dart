@@ -38,7 +38,7 @@ class BaselineState {
   /// [tagsAll] A map of tags assigned to the landing zone, including those inherited from the provider `default_tags` configuration block.
   /// [targetIdentifier] The ARN of the target on which the baseline will be enabled. Only OUs are supported as targets.
   /// [timeouts] Optional.
-  BaselineState({
+  const BaselineState({
     this.arn,
     this.baselineIdentifier,
     this.baselineVersion,

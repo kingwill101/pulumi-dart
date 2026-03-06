@@ -44,7 +44,7 @@ class SnapshotPolicyArgs {
   /// [tags] Optional.
   /// [targetCopyRegions] Optional.
   /// [timePoints] The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-  SnapshotPolicyArgs({
+  const SnapshotPolicyArgs({
     this.autoSnapshotPolicyName,
     this.copiedSnapshotsRetentionDays,
     this.copyEncryptionConfiguration,

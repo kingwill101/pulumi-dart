@@ -29,7 +29,7 @@ class AkriConnectorsMqttConnectionConfiguration {
   /// [protocol] The protocol to use for the connection. Currently only `mqtt` is supported.
   /// [sessionExpirySeconds] Session expiry in seconds.
   /// [tls] TLS configuration.
-  AkriConnectorsMqttConnectionConfiguration({
+  const AkriConnectorsMqttConnectionConfiguration({
     this.authentication,
     this.host,
     this.keepAliveSeconds,

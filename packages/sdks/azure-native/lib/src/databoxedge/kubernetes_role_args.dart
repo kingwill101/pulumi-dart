@@ -36,7 +36,7 @@ class KubernetesRoleArgs {
   /// [name] The role name.
   /// [resourceGroupName] The resource group name.
   /// [roleStatus] Role status.
-  KubernetesRoleArgs({
+  const KubernetesRoleArgs({
     required this.deviceName,
     required this.hostPlatform,
     required this.kind,

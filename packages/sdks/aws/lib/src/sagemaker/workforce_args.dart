@@ -31,7 +31,7 @@ class WorkforceArgs {
   /// [sourceIpConfig] A list of IP address ranges Used to create an allow list of IP addresses for a private workforce. By default, a workforce isn't restricted to specific IP addresses. see Source Ip Config details below.
   /// [workforceName] The name of the Workforce (must be unique).
   /// [workforceVpcConfig] configure a workforce using VPC. see Workforce VPC Config details below.
-  WorkforceArgs({
+  const WorkforceArgs({
     this.cognitoConfig,
     this.oidcConfig,
     this.region,

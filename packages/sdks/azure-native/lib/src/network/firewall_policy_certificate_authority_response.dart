@@ -12,7 +12,7 @@ class FirewallPolicyCertificateAuthorityResponse {
   /// Creates a new [FirewallPolicyCertificateAuthorityResponse].
   /// [keyVaultSecretId] Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
   /// [name] Name of the CA certificate.
-  FirewallPolicyCertificateAuthorityResponse({
+  const FirewallPolicyCertificateAuthorityResponse({
     this.keyVaultSecretId,
     this.name,
   });

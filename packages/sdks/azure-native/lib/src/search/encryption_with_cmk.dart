@@ -10,7 +10,7 @@ class EncryptionWithCmk {
 
   /// Creates a new [EncryptionWithCmk].
   /// [enforcement] Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key.
-  EncryptionWithCmk({
+  const EncryptionWithCmk({
     this.enforcement,
   });
 

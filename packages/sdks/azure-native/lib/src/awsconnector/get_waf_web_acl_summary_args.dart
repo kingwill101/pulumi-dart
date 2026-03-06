@@ -15,7 +15,7 @@ class GetWafWebAclSummaryArgs {
   /// Creates a new [GetWafWebAclSummaryArgs].
   /// [name] Name of WafWebACLSummary
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetWafWebAclSummaryArgs({
+  const GetWafWebAclSummaryArgs({
     required this.name,
     required this.resourceGroupName,
   });

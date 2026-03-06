@@ -9,7 +9,7 @@ class ReplicaSecretmanagerV1beta1 {
 
   /// Creates a new [ReplicaSecretmanagerV1beta1].
   /// [location] The canonical IDs of the location to replicate data. For example: `"us-east1"`.
-  ReplicaSecretmanagerV1beta1({
+  const ReplicaSecretmanagerV1beta1({
     this.location,
   });
 

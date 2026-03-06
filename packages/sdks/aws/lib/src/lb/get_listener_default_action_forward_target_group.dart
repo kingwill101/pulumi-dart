@@ -10,7 +10,7 @@ class GetListenerDefaultActionForwardTargetGroup {
   /// Creates a new [GetListenerDefaultActionForwardTargetGroup].
   /// [arn] ARN of the listener. Required if `load_balancer_arn` and `port` is not set.
   /// [weight] Required.
-  GetListenerDefaultActionForwardTargetGroup({
+  const GetListenerDefaultActionForwardTargetGroup({
     required this.arn,
     required this.weight,
   });

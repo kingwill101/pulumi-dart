@@ -9,7 +9,7 @@ class HttpLoadBalancingContainerV1beta1 {
 
   /// Creates a new [HttpLoadBalancingContainerV1beta1].
   /// [disabled] Whether the HTTP Load Balancing controller is enabled in the cluster. When enabled, it runs a small pod in the cluster that manages the load balancers.
-  HttpLoadBalancingContainerV1beta1({
+  const HttpLoadBalancingContainerV1beta1({
     this.disabled,
   });
 

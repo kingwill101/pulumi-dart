@@ -18,7 +18,7 @@ class GetShareSubscriptionArgs {
   /// [accountName] The name of the share account.
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the shareSubscription.
-  GetShareSubscriptionArgs({
+  const GetShareSubscriptionArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.shareSubscriptionName,

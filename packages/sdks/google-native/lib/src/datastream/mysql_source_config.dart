@@ -19,7 +19,7 @@ class MysqlSourceConfig {
   /// [includeObjects] MySQL objects to retrieve from the source.
   /// [maxConcurrentBackfillTasks] Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
   /// [maxConcurrentCdcTasks] Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
-  MysqlSourceConfig({
+  const MysqlSourceConfig({
     this.excludeObjects,
     this.includeObjects,
     this.maxConcurrentBackfillTasks,

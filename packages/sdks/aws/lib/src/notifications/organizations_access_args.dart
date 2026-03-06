@@ -15,7 +15,7 @@ class OrganizationsAccessArgs {
   /// Creates a new [OrganizationsAccessArgs].
   /// [enabled] Whether to enable organizations access for AWS User Notifications in AWS Organizations. When set to `true`, enables organizations access. When set to `false`, disables organizations access.
   /// [timeouts] Optional.
-  OrganizationsAccessArgs({
+  const OrganizationsAccessArgs({
     required this.enabled,
     this.timeouts,
   });

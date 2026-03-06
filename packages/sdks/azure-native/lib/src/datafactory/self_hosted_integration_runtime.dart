@@ -20,7 +20,7 @@ class SelfHostedIntegrationRuntime {
   /// [linkedInfo] The base definition of a linked integration runtime.
   /// [selfContainedInteractiveAuthoringEnabled] An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
   /// [type] The type of integration runtime.
-  SelfHostedIntegrationRuntime({
+  const SelfHostedIntegrationRuntime({
     this.description,
     this.linkedInfo,
     this.selfContainedInteractiveAuthoringEnabled,

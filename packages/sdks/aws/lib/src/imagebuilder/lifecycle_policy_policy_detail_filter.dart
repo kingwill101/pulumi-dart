@@ -19,7 +19,7 @@ class LifecyclePolicyPolicyDetailFilter {
   /// [type] Filter resources based on either age or count. Valid values: `AGE` or `COUNT`.
   /// [unit] Defines the unit of time that the lifecycle policy uses to determine impacted resources. This is required for age-based rules. Valid values: `DAYS`, `WEEKS`, `MONTHS` or `YEARS`.
   /// [value] The number of units for the time period or for the count. For example, a value of 6 might refer to six months or six AMIs.
-  LifecyclePolicyPolicyDetailFilter({
+  const LifecyclePolicyPolicyDetailFilter({
     this.retainAtLeast,
     required this.type,
     this.unit,

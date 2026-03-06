@@ -15,7 +15,7 @@ class GetSessionTemplateArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [sessionTemplateId] Required.
-  GetSessionTemplateArgs({
+  const GetSessionTemplateArgs({
     required this.location,
     this.project,
     required this.sessionTemplateId,

@@ -13,7 +13,7 @@ class CatalogSyncErrorResponse {
   /// Creates a new [CatalogSyncErrorResponse].
   /// [errorDetails] Errors associated with the file.
   /// [path] The path of the file the error is associated with.
-  CatalogSyncErrorResponse({
+  const CatalogSyncErrorResponse({
     required this.errorDetails,
     required this.path,
   });

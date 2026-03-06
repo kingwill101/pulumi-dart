@@ -40,7 +40,7 @@ class GroupMembershipState {
   /// [roles] The MembershipRoles that apply to the Membership.
   /// [type] The type of the membership.
   /// [updateTime] The time when the Membership was last updated.
-  GroupMembershipState({
+  const GroupMembershipState({
     this.createIgnoreAlreadyExists,
     this.createTime,
     this.group,

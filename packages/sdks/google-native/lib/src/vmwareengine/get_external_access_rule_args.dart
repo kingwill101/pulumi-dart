@@ -17,7 +17,7 @@ class GetExternalAccessRuleArgs {
   /// [location] Required.
   /// [networkPolicyId] Required.
   /// [project] Optional.
-  GetExternalAccessRuleArgs({
+  const GetExternalAccessRuleArgs({
     required this.externalAccessRuleId,
     required this.location,
     required this.networkPolicyId,

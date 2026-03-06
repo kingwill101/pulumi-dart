@@ -13,7 +13,7 @@ class TriggerWebhookConfig {
   /// Creates a new [TriggerWebhookConfig].
   /// [secret] Resource name for the secret required as a URL parameter.
   /// [state] (Output)
-  TriggerWebhookConfig({
+  const TriggerWebhookConfig({
     required this.secret,
     this.state,
   });

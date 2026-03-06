@@ -9,7 +9,7 @@ class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseC
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCaptcha].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
-  WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCaptcha({
+  const WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCaptcha({
     this.customRequestHandling,
   });
 

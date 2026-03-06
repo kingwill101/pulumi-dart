@@ -11,7 +11,7 @@ class AspectTypeIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AspectTypeIamBindingCondition({
+  const AspectTypeIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

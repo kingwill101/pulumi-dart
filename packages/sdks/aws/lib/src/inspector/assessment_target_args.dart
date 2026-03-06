@@ -18,7 +18,7 @@ class AssessmentTargetArgs {
   /// [name] The name of the assessment target.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceGroupArn] Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
-  AssessmentTargetArgs({
+  const AssessmentTargetArgs({
     this.name,
     this.region,
     this.resourceGroupArn,

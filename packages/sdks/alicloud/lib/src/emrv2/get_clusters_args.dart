@@ -42,7 +42,7 @@ class GetClustersArgs {
   /// [paymentTypes] The cluster payment types.
   /// [resourceGroupId] The Resource Group ID.
   /// [tags] A mapping of tags to assign to the resource.
-  GetClustersArgs({
+  const GetClustersArgs({
     this.clusterName,
     this.clusterStates,
     this.clusterTypes,

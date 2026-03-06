@@ -14,7 +14,7 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
   /// Creates a new [ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector].
   /// [method] Value for `method` should be a valid method name for the corresponding
   /// [permission] Value for permission should be a valid Cloud IAM permission for the
-  ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector({
+  const ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector({
     this.method,
     this.permission,
   });

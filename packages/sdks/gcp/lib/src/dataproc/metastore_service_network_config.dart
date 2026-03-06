@@ -13,7 +13,7 @@ class MetastoreServiceNetworkConfig {
   /// Creates a new [MetastoreServiceNetworkConfig].
   /// [consumers] The consumer-side network configuration for the Dataproc Metastore instance.
   /// [customRoutesEnabled] Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
-  MetastoreServiceNetworkConfig({
+  const MetastoreServiceNetworkConfig({
     required this.consumers,
     this.customRoutesEnabled,
   });

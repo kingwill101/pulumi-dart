@@ -10,7 +10,7 @@ class FleetObservabilityFleetObservabilityMonitoringStateResponse {
 
   /// Creates a new [FleetObservabilityFleetObservabilityMonitoringStateResponse].
   /// [state] The base feature state of fleet monitoring feature.
-  FleetObservabilityFleetObservabilityMonitoringStateResponse({
+  const FleetObservabilityFleetObservabilityMonitoringStateResponse({
     required this.state,
   });
 

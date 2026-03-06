@@ -11,7 +11,7 @@ class ImportFile {
   /// Creates a new [ImportFile].
   /// [content] The contents of the file.
   /// [name] The name of the file.
-  ImportFile({
+  const ImportFile({
     this.content,
     this.name,
   });

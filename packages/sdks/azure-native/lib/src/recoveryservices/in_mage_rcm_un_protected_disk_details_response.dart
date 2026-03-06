@@ -15,7 +15,7 @@ class InMageRcmUnProtectedDiskDetailsResponse {
   /// [capacityInBytes] The disk capacity in bytes.
   /// [diskId] The disk Id.
   /// [diskName] The disk name.
-  InMageRcmUnProtectedDiskDetailsResponse({
+  const InMageRcmUnProtectedDiskDetailsResponse({
     required this.capacityInBytes,
     required this.diskId,
     required this.diskName,

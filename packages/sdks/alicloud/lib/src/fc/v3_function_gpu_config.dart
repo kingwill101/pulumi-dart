@@ -14,7 +14,7 @@ class V3FunctionGpuConfig {
   /// Creates a new [V3FunctionGpuConfig].
   /// [gpuMemorySize] GPU memory specification, unit: MB, multiple of 1024MB
   /// [gpuType] GPU card architecture.
-  V3FunctionGpuConfig({
+  const V3FunctionGpuConfig({
     this.gpuMemorySize,
     this.gpuType,
   });

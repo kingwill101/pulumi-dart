@@ -148,7 +148,7 @@ class GetWorkspaceResult {
   /// [v1LegacyMode] Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
   /// [workspaceHubConfig] WorkspaceHub's configuration object.
   /// [workspaceId] The immutable id associated with this workspace.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     this.allowPublicAccessWhenBehindVnet,
     this.applicationInsights,
     this.associatedWorkspaces,

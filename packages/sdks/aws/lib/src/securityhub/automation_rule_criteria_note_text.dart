@@ -9,7 +9,7 @@ class AutomationRuleCriteriaNoteText {
   /// Creates a new [AutomationRuleCriteriaNoteText].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaNoteText({
+  const AutomationRuleCriteriaNoteText({
     required this.comparison,
     required this.value,
   });

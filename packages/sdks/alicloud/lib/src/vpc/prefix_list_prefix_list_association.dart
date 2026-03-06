@@ -29,7 +29,7 @@ class PrefixListPrefixListAssociation {
   /// [resourceType] The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
   /// [resourceUid] The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
   /// [status] Resource attribute fields that represent the status of the resource.
-  PrefixListPrefixListAssociation({
+  const PrefixListPrefixListAssociation({
     this.ownerId,
     this.prefixListId,
     this.reason,

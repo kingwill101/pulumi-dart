@@ -21,7 +21,7 @@ class GetAddonReleasesArgs {
   /// [ids] A list of ARMS Addon Release IDs.
   /// [nameRegex] A regex string to filter results by ARMS Addon Release name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAddonReleasesArgs({
+  const GetAddonReleasesArgs({
     required this.environmentId,
     this.ids,
     this.nameRegex,

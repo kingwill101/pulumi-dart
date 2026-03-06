@@ -42,7 +42,7 @@ class CertificateState {
   /// [state] Optional.
   /// [type] The type of certificate to provision. Can be either
   /// [uuid] The UUID of the certificate
-  CertificateState({
+  const CertificateState({
     this.certificateChain,
     this.domains,
     this.leafCertificate,

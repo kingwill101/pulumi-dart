@@ -27,7 +27,7 @@ class GetServiceCertificatesArgs {
   /// [lang] The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
   /// [nameRegex] A regex string to filter results by Ssl Certificates name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetServiceCertificatesArgs({
+  const GetServiceCertificatesArgs({
     this.enableDetails,
     this.ids,
     this.keyword,

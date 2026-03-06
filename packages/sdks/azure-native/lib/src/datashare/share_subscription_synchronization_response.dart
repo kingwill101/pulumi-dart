@@ -27,7 +27,7 @@ class ShareSubscriptionSynchronizationResponse {
   /// [status] Raw Status
   /// [synchronizationId] Synchronization id
   /// [synchronizationMode] Synchronization Mode
-  ShareSubscriptionSynchronizationResponse({
+  const ShareSubscriptionSynchronizationResponse({
     required this.durationMs,
     required this.endTime,
     required this.message,

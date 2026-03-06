@@ -12,7 +12,7 @@ class BigDataPoolParametrizationReferenceResponse {
   /// Creates a new [BigDataPoolParametrizationReferenceResponse].
   /// [referenceName] Reference big data pool name. Type: string (or Expression with resultType string).
   /// [type] Big data pool reference type.
-  BigDataPoolParametrizationReferenceResponse({
+  const BigDataPoolParametrizationReferenceResponse({
     required this.referenceName,
     required this.type,
   });

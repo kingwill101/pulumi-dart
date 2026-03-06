@@ -18,7 +18,7 @@ class GetConfigurationGroupSchemaArgs {
   /// [configurationGroupSchemaName] The name of the configuration group schema.
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConfigurationGroupSchemaArgs({
+  const GetConfigurationGroupSchemaArgs({
     required this.configurationGroupSchemaName,
     required this.publisherName,
     required this.resourceGroupName,

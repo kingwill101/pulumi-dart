@@ -11,7 +11,7 @@ class TrafficManagerExternalEndpointCustomHeader {
   /// Creates a new [TrafficManagerExternalEndpointCustomHeader].
   /// [name] The name of the custom header.
   /// [value] The value of custom header. Applicable for HTTP and HTTPS protocol.
-  TrafficManagerExternalEndpointCustomHeader({
+  const TrafficManagerExternalEndpointCustomHeader({
     required this.name,
     required this.value,
   });

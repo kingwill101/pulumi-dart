@@ -10,7 +10,7 @@ class InstanceDirectoryServices {
 
   /// Creates a new [InstanceDirectoryServices].
   /// [ldap] Configuration for LDAP servers.
-  InstanceDirectoryServices({
+  const InstanceDirectoryServices({
     this.ldap,
   });
 

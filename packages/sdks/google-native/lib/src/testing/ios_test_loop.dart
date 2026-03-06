@@ -13,7 +13,7 @@ class IosTestLoop {
   /// Creates a new [IosTestLoop].
   /// [appIpa] The .ipa of the application to test.
   /// [scenarios] The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
-  IosTestLoop({
+  const IosTestLoop({
     required this.appIpa,
     this.scenarios,
   });

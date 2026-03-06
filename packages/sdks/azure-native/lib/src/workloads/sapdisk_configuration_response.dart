@@ -14,7 +14,7 @@ class SAPDiskConfigurationResponse {
   /// Creates a new [SAPDiskConfigurationResponse].
   /// [recommendedConfiguration] The recommended disk details for a given VM Sku.
   /// [supportedConfigurations] The list of supported disks for a given VM Sku.
-  SAPDiskConfigurationResponse({
+  const SAPDiskConfigurationResponse({
     this.recommendedConfiguration,
     this.supportedConfigurations,
   });

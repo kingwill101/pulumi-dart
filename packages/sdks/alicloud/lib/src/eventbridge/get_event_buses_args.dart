@@ -24,7 +24,7 @@ class GetEventBusesArgs {
   /// [namePrefix] The name prefix.
   /// [nameRegex] A regex string to filter results by Event Bus name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEventBusesArgs({
+  const GetEventBusesArgs({
     this.eventBusType,
     this.ids,
     this.namePrefix,

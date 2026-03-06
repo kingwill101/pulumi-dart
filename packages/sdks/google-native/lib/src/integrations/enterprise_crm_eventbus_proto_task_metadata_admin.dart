@@ -10,7 +10,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataAdmin {
   /// Creates a new [EnterpriseCrmEventbusProtoTaskMetadataAdmin].
   /// [googleGroupEmail] Optional.
   /// [userEmail] Optional.
-  EnterpriseCrmEventbusProtoTaskMetadataAdmin({
+  const EnterpriseCrmEventbusProtoTaskMetadataAdmin({
     this.googleGroupEmail,
     this.userEmail,
   });

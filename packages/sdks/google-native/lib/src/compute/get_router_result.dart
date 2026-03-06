@@ -53,7 +53,7 @@ class GetRouterResult {
   /// [region] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
-  GetRouterResult({
+  const GetRouterResult({
     required this.bgp,
     required this.bgpPeers,
     required this.creationTimestamp,

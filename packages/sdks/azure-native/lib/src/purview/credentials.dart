@@ -12,7 +12,7 @@ class Credentials {
   /// Creates a new [Credentials].
   /// [identityId] Identity identifier for UserAssign type.
   /// [type] Identity Type.
-  Credentials({
+  const Credentials({
     this.identityId,
     this.type,
   });

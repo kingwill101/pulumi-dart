@@ -15,7 +15,7 @@ class GetApplicationArgs {
   /// Creates a new [GetApplicationArgs].
   /// [applicationResourceName] The identity of the application.
   /// [resourceGroupName] Azure resource group name
-  GetApplicationArgs({
+  const GetApplicationArgs({
     required this.applicationResourceName,
     required this.resourceGroupName,
   });

@@ -20,7 +20,7 @@ class AlertConfigurationSinkEventStore {
   /// [eventStore] Event Library Name.
   /// [project] Project Name.
   /// [roleArn] Roles used to write alarm data to the event Library.
-  AlertConfigurationSinkEventStore({
+  const AlertConfigurationSinkEventStore({
     this.enabled,
     this.endpoint,
     this.eventStore,

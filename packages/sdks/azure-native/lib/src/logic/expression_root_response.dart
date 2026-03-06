@@ -22,7 +22,7 @@ class ExpressionRootResponse {
   /// [subexpressions] The sub expressions.
   /// [text] The text.
   /// [value] Optional.
-  ExpressionRootResponse({
+  const ExpressionRootResponse({
     this.error,
     this.path,
     this.subexpressions,

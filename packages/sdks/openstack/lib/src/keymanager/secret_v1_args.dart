@@ -52,7 +52,7 @@ class SecretV1Args {
   /// [payloadContentType] (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
   /// [region] The region in which to obtain the V1 KeyManager client.
   /// [secretType] Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
-  SecretV1Args({
+  const SecretV1Args({
     this.acl,
     this.algorithm,
     this.bitLength,

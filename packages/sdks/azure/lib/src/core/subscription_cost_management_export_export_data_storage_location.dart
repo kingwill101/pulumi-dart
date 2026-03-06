@@ -13,7 +13,7 @@ class SubscriptionCostManagementExportExportDataStorageLocation {
   /// Creates a new [SubscriptionCostManagementExportExportDataStorageLocation].
   /// [containerId] The Resource Manager ID of the container where exports will be uploaded. Changing this forces a new resource to be created.
   /// [rootFolderPath] The path of the directory where exports will be uploaded. Changing this forces a new resource to be created.
-  SubscriptionCostManagementExportExportDataStorageLocation({
+  const SubscriptionCostManagementExportExportDataStorageLocation({
     required this.containerId,
     required this.rootFolderPath,
   });

@@ -20,7 +20,7 @@ class AuthConfigDecryptedCredentialOidcToken {
   /// [serviceAccountEmail] The service account email to be used as the identity for the token.
   /// [token] (Output)
   /// [tokenExpireTime] (Output)
-  AuthConfigDecryptedCredentialOidcToken({
+  const AuthConfigDecryptedCredentialOidcToken({
     this.audience,
     this.serviceAccountEmail,
     this.token,

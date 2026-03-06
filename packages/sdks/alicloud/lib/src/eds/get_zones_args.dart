@@ -12,7 +12,7 @@ class GetZonesArgs {
 
   /// Creates a new [GetZonesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetZonesArgs({
+  const GetZonesArgs({
     this.outputFile,
   });
 

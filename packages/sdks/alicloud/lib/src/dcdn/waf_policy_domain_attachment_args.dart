@@ -15,7 +15,7 @@ class WafPolicyDomainAttachmentArgs {
   /// Creates a new [WafPolicyDomainAttachmentArgs].
   /// [domainName] Access the accelerated domain name of the specified protection policy.
   /// [policyId] The protection policy ID. Only one input is supported.
-  WafPolicyDomainAttachmentArgs({
+  const WafPolicyDomainAttachmentArgs({
     required this.domainName,
     required this.policyId,
   });

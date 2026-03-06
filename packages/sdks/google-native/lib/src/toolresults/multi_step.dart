@@ -16,7 +16,7 @@ class MultiStep {
   /// [multistepNumber] Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
   /// [primaryStep] Present if it is a primary (original) step.
   /// [primaryStepId] Step Id of the primary (original) step, which might be this step.
-  MultiStep({
+  const MultiStep({
     this.multistepNumber,
     this.primaryStep,
     this.primaryStepId,

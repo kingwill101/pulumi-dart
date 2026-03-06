@@ -18,7 +18,7 @@ class DatascanDataDiscoverySpecBigqueryPublishingConfig {
   /// [location] The location of the BigQuery dataset to publish BigLake external or non-BigLake external tables to.
   /// [project] The project of the BigQuery dataset to publish BigLake external or non-BigLake external tables to. If not specified, the project of the Cloud Storage bucket will be used. The format is "projects/{project_id_or_number}".
   /// [tableType] Determines whether to publish discovered tables as BigLake external tables or non-BigLake external tables.
-  DatascanDataDiscoverySpecBigqueryPublishingConfig({
+  const DatascanDataDiscoverySpecBigqueryPublishingConfig({
     this.connection,
     this.location,
     this.project,

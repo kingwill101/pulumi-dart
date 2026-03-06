@@ -19,7 +19,7 @@ class CatalogTableOptimizerConfiguration {
   /// [orphanFileDeletionConfiguration] The configuration block for an orphan file deletion optimizer. See Orphan File Deletion Configuration for additional details.
   /// [retentionConfiguration] The configuration block for a snapshot retention optimizer. See Retention Configuration for additional details.
   /// [roleArn] The ARN of the IAM role to use for the table optimizer.
-  CatalogTableOptimizerConfiguration({
+  const CatalogTableOptimizerConfiguration({
     required this.enabled,
     this.orphanFileDeletionConfiguration,
     this.retentionConfiguration,

@@ -8,7 +8,7 @@ class DomainDevicesShmemServer {
 
   /// Creates a new [DomainDevicesShmemServer].
   /// [path] Specifies the path for the server related to the shared memory device.
-  DomainDevicesShmemServer({
+  const DomainDevicesShmemServer({
     this.path,
   });
 

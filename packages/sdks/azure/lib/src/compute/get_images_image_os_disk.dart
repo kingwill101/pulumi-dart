@@ -26,7 +26,7 @@ class GetImagesImageOsDisk {
   /// [osState] the State of the OS used in the Image.
   /// [osType] the type of Operating System used on the OS Disk.
   /// [sizeGb] the size of this Data Disk in GB.
-  GetImagesImageOsDisk({
+  const GetImagesImageOsDisk({
     required this.blobUri,
     required this.caching,
     required this.diskEncryptionSetId,

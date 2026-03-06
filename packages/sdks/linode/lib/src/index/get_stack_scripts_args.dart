@@ -23,7 +23,7 @@ class GetStackScriptsArgs {
   /// [latest] If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-  GetStackScriptsArgs({
+  const GetStackScriptsArgs({
     this.filters,
     this.latest,
     this.order,

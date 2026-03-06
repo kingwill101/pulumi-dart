@@ -10,7 +10,7 @@ class NetworkPolicy {
 
   /// Creates a new [NetworkPolicy].
   /// [networkInterfaces] Network configurations.
-  NetworkPolicy({
+  const NetworkPolicy({
     this.networkInterfaces,
   });
 

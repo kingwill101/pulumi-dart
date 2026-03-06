@@ -33,7 +33,7 @@ class GetFrontdoorFirewallPolicyResult {
   /// [redirectUrl] The redirect URL for the client.
   /// [resourceGroupName] Required.
   /// [skuName] The sku's pricing tier for this Front Door Firewall Policy.
-  GetFrontdoorFirewallPolicyResult({
+  const GetFrontdoorFirewallPolicyResult({
     required this.captchaCookieExpirationInMinutes,
     required this.enabled,
     required this.frontendEndpointIds,

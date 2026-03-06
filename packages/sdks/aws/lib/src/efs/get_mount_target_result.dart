@@ -52,7 +52,7 @@ class GetMountTargetResult {
   /// [region] Required.
   /// [securityGroups] List of VPC security group IDs attached to the mount target.
   /// [subnetId] ID of the mount target's subnet.
-  GetMountTargetResult({
+  const GetMountTargetResult({
     this.accessPointId,
     required this.availabilityZoneId,
     required this.availabilityZoneName,

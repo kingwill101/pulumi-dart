@@ -23,7 +23,7 @@ class GlobalNetworkEndpointState {
   /// [ipAddress] IPv4 address external endpoint.
   /// [port] Port number of the external endpoint.
   /// [project] The ID of the project in which the resource belongs.
-  GlobalNetworkEndpointState({
+  const GlobalNetworkEndpointState({
     this.fqdn,
     this.globalNetworkEndpointGroup,
     this.ipAddress,

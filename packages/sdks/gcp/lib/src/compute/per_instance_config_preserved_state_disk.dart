@@ -26,7 +26,7 @@ class PerInstanceConfigPreservedStateDisk {
   /// [deviceName] A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
   /// [mode] The mode of the disk.
   /// [source] The URI of an existing persistent disk to attach under the specified device-name in the format
-  PerInstanceConfigPreservedStateDisk({
+  const PerInstanceConfigPreservedStateDisk({
     this.deleteRule,
     required this.deviceName,
     this.mode,

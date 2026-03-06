@@ -12,7 +12,7 @@ class IsolationDomainProperties {
   /// Creates a new [IsolationDomainProperties].
   /// [encapsulation] Type of encapsulation.
   /// [neighborGroupIds] List of Neighbor Group IDs.
-  IsolationDomainProperties({
+  const IsolationDomainProperties({
     this.encapsulation,
     this.neighborGroupIds,
   });

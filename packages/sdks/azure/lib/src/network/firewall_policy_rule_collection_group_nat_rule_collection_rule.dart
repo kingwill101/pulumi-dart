@@ -32,7 +32,7 @@ class FirewallPolicyRuleCollectionGroupNatRuleCollectionRule {
   /// [translatedAddress] Specifies the translated address.
   /// [translatedFqdn] Specifies the translated FQDN.
   /// [translatedPort] Specifies the translated port.
-  FirewallPolicyRuleCollectionGroupNatRuleCollectionRule({
+  const FirewallPolicyRuleCollectionGroupNatRuleCollectionRule({
     this.description,
     this.destinationAddress,
     this.destinationPorts,

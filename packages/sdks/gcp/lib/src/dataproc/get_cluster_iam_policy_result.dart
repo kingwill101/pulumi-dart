@@ -20,7 +20,7 @@ class GetClusterIamPolicyResult {
   /// [policyData] (Computed) The policy data
   /// [project] Required.
   /// [region] Required.
-  GetClusterIamPolicyResult({
+  const GetClusterIamPolicyResult({
     required this.cluster,
     required this.etag,
     required this.id,

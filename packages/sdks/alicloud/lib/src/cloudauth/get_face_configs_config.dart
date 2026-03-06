@@ -14,7 +14,7 @@ class GetFaceConfigsConfig {
   /// [bizName] Scene name.
   /// [bizType] Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
   /// [gmtUpdated] The Update Time.
-  GetFaceConfigsConfig({
+  const GetFaceConfigsConfig({
     required this.bizName,
     required this.bizType,
     required this.gmtUpdated,

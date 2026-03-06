@@ -8,7 +8,7 @@ class GcpIntegrationsMemCache {
 
   /// Creates a new [GcpIntegrationsMemCache].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsMemCache({
+  const GcpIntegrationsMemCache({
     this.metricsPollingInterval,
   });
 

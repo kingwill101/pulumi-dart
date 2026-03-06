@@ -25,7 +25,7 @@ class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
   /// [name] The name of the query parameter to match. The query parameter must exist in the
   /// [presentMatch] Specifies that the queryParameterMatch matches if the request contains the query
   /// [regexMatch] The queryParameterMatch matches if the value of the parameter matches the
-  URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch({
+  const URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch({
     this.exactMatch,
     required this.name,
     this.presentMatch,

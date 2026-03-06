@@ -15,7 +15,7 @@ class PreventionDiscoveryConfigActionTagResourcesTagCondition {
   /// Creates a new [PreventionDiscoveryConfigActionTagResourcesTagCondition].
   /// [sensitivityScore] Conditions attaching the tag to a resource on its profile having this sensitivity score.
   /// [tag] The tag value to attach to resources.
-  PreventionDiscoveryConfigActionTagResourcesTagCondition({
+  const PreventionDiscoveryConfigActionTagResourcesTagCondition({
     this.sensitivityScore,
     this.tag,
   });

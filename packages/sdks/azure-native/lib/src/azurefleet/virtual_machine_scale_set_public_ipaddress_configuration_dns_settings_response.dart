@@ -17,7 +17,7 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse {
   /// Creates a new [VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse].
   /// [domainNameLabel] The Domain name label.The concatenation of the domain name label and vm index
   /// [domainNameLabelScope] The Domain name label scope.The concatenation of the hashed domain name label
-  VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse({
+  const VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse({
     required this.domainNameLabel,
     this.domainNameLabelScope,
   });

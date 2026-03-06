@@ -16,7 +16,7 @@ class GetTopicIamPolicyArgs {
   /// Creates a new [GetTopicIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [topic] Used to find the parent resource to bind the IAM policy to
-  GetTopicIamPolicyArgs({
+  const GetTopicIamPolicyArgs({
     this.project,
     required this.topic,
   });

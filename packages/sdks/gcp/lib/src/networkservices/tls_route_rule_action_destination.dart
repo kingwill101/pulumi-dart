@@ -11,7 +11,7 @@ class TlsRouteRuleActionDestination {
   /// Creates a new [TlsRouteRuleActionDestination].
   /// [serviceName] The URL of a BackendService to route traffic to.
   /// [weight] Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-  TlsRouteRuleActionDestination({
+  const TlsRouteRuleActionDestination({
     this.serviceName,
     this.weight,
   });

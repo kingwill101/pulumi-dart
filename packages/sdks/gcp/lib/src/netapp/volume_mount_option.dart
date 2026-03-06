@@ -27,7 +27,7 @@ class VolumeMountOption {
   /// [instructions] (Output)
   /// [ipAddress] (Output)
   /// [protocol] (Output)
-  VolumeMountOption({
+  const VolumeMountOption({
     this.export,
     this.exportFull,
     this.instructions,

@@ -10,7 +10,7 @@ class DiskParams {
 
   /// Creates a new [DiskParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the disk. Tag keys and values have the
-  DiskParams({
+  const DiskParams({
     this.resourceManagerTags,
   });
 

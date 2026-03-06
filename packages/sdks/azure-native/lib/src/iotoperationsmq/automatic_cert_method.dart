@@ -30,7 +30,7 @@ class AutomaticCertMethod {
   /// [san] Additional SANs to include in the certificate.
   /// [secretName] Secret for storing server certificate. Any existing data will be overwritten.
   /// [secretNamespace] Certificate K8S namespace. Omit to use default namespace.
-  AutomaticCertMethod({
+  const AutomaticCertMethod({
     this.duration,
     required this.issuerRef,
     this.privateKey,

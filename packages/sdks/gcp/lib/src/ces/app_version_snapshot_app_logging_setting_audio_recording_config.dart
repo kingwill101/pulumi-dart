@@ -26,7 +26,7 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
   /// Creates a new [AppVersionSnapshotAppLoggingSettingAudioRecordingConfig].
   /// [gcsBucket] (Output)
   /// [gcsPathPrefix] (Output)
-  AppVersionSnapshotAppLoggingSettingAudioRecordingConfig({
+  const AppVersionSnapshotAppLoggingSettingAudioRecordingConfig({
     this.gcsBucket,
     this.gcsPathPrefix,
   });

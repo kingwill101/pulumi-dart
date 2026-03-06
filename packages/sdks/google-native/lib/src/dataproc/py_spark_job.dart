@@ -31,7 +31,7 @@ class PySparkJob {
   /// [mainPythonFileUri] The HCFS URI of the main Python file to use as the driver. Must be a .py file.
   /// [properties] Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
   /// [pythonFileUris] Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-  PySparkJob({
+  const PySparkJob({
     this.archiveUris,
     this.args,
     this.fileUris,

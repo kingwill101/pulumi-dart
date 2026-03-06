@@ -8,7 +8,7 @@ class TargetRun {
 
   /// Creates a new [TargetRun].
   /// [location] Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
-  TargetRun({
+  const TargetRun({
     required this.location,
   });
 

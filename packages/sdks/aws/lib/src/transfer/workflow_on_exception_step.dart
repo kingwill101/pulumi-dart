@@ -27,7 +27,7 @@ class WorkflowOnExceptionStep {
   /// [deleteStepDetails] Details for a step that deletes the file.
   /// [tagStepDetails] Details for a step that creates one or more tags.
   /// [type] Required.
-  WorkflowOnExceptionStep({
+  const WorkflowOnExceptionStep({
     this.copyStepDetails,
     this.customStepDetails,
     this.decryptStepDetails,

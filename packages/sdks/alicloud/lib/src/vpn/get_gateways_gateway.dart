@@ -77,7 +77,7 @@ class GetGatewaysGateway {
   /// [vpcId] Use the VPC ID as the search key.
   /// [vpnType] - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
   /// [vswitchId] - The ID of the vSwitch to which the VPN gateway is attached.
-  GetGatewaysGateway({
+  const GetGatewaysGateway({
     required this.autoPropagate,
     required this.businessStatus,
     required this.createTime,

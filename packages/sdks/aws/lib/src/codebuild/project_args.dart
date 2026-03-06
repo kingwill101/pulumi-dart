@@ -112,7 +112,7 @@ class ProjectArgs {
   /// [sourceVersion] Version of the build input to be built for this project. If not specified, the latest
   /// [tags] Map of tags to assign to the resource. If configured with a provider
   /// [vpcConfig] Configuration block. Detailed below.
-  ProjectArgs({
+  const ProjectArgs({
     required this.artifacts,
     this.autoRetryLimit,
     this.badgeEnabled,

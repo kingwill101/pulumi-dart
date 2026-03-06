@@ -23,7 +23,7 @@ class GetVPNGatewayArgs {
   /// [name] The name of the VPN gateway.
   /// [project] The project in which the resource belongs. If it
   /// [region] The region in which the resource belongs. If it
-  GetVPNGatewayArgs({
+  const GetVPNGatewayArgs({
     required this.name,
     this.project,
     this.region,

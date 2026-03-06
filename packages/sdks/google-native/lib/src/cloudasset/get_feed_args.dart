@@ -15,7 +15,7 @@ class GetFeedArgs {
   /// [feedId] Required.
   /// [v1Id] Required.
   /// [v1Id1] Required.
-  GetFeedArgs({
+  const GetFeedArgs({
     required this.feedId,
     required this.v1Id,
     required this.v1Id1,

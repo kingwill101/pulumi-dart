@@ -9,7 +9,7 @@ class ScaleDownBehaviorEnumValue {
 
   /// Creates a new [ScaleDownBehaviorEnumValue].
   /// [value] Property value
-  ScaleDownBehaviorEnumValue({
+  const ScaleDownBehaviorEnumValue({
     this.value,
   });
 

@@ -22,7 +22,7 @@ class ListWebAppAzureStorageAccountsResult {
   /// [name] Resource Name.
   /// [properties] Azure storage accounts.
   /// [type] Resource type.
-  ListWebAppAzureStorageAccountsResult({
+  const ListWebAppAzureStorageAccountsResult({
     required this.id,
     this.kind,
     required this.name,

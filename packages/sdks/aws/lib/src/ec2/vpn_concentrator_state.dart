@@ -29,7 +29,7 @@ class VpnConcentratorState {
   /// [transitGatewayId] ID of the transit gateway to attach the VPN concentrator to.
   /// [type] Type of VPN concentrator. Valid value: `ipsec.1`.
   /// [vpnConcentratorId] ID of the VPN Concentrator.
-  VpnConcentratorState({
+  const VpnConcentratorState({
     this.region,
     this.tags,
     this.tagsAll,

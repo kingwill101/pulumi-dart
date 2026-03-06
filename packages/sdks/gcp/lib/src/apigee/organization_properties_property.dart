@@ -11,7 +11,7 @@ class OrganizationPropertiesProperty {
   /// Creates a new [OrganizationPropertiesProperty].
   /// [name] Name of the property.
   /// [value] Value of the property.
-  OrganizationPropertiesProperty({
+  const OrganizationPropertiesProperty({
     this.name,
     this.value,
   });

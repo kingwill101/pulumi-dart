@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionProxyArgs {
   /// [accountName] Account name.
   /// [privateEndpointConnectionProxyId] The ID of the private endpoint connection proxy object.
   /// [resourceGroupName] The resource group name.
-  GetPrivateEndpointConnectionProxyArgs({
+  const GetPrivateEndpointConnectionProxyArgs({
     required this.accountName,
     required this.privateEndpointConnectionProxyId,
     required this.resourceGroupName,

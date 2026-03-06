@@ -20,7 +20,7 @@ class PerformanceDataResponse {
   /// [perfDataEndTime] Gets or sets the end time to consider performance data for assessment.
   /// [perfDataStartTime] Gets or sets the start time to consider performance data for assessment.
   /// [timeRange] Time Range for which the historic utilization data should be considered for
-  PerformanceDataResponse({
+  const PerformanceDataResponse({
     this.percentile,
     this.perfDataEndTime,
     this.perfDataStartTime,

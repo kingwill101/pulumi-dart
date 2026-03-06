@@ -11,7 +11,7 @@ class GetListenerRuleTransformHostHeaderRewriteConfigRewrite {
   /// Creates a new [GetListenerRuleTransformHostHeaderRewriteConfigRewrite].
   /// [regex] Regular expression to match in the input string.
   /// [replace] Replacement string to use when rewriting the matched input.
-  GetListenerRuleTransformHostHeaderRewriteConfigRewrite({
+  const GetListenerRuleTransformHostHeaderRewriteConfigRewrite({
     required this.regex,
     required this.replace,
   });

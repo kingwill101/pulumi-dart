@@ -24,7 +24,7 @@ class FlowProfileMetadataResponse {
   /// [pipeline] The name of the parent Pipeline Azure resource associated with this FlowProfile.
   /// [replicationScenario] The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation. See the FlowProfilePatchProperties to see updateable properties.
   /// [status] The operational status of the FlowProfile.
-  FlowProfileMetadataResponse({
+  const FlowProfileMetadataResponse({
     required this.description,
     required this.flowProfileId,
     required this.name,

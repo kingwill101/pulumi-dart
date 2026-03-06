@@ -30,7 +30,7 @@ class GetSapVirtualInstanceInvokeSapSupportedSkuArgs {
   /// [highAvailabilityType] The high availability type.
   /// [location] The name of the Azure region.
   /// [sapProduct] Defines the SAP Product type.
-  GetSapVirtualInstanceInvokeSapSupportedSkuArgs({
+  const GetSapVirtualInstanceInvokeSapSupportedSkuArgs({
     required this.appLocation,
     required this.databaseType,
     required this.deploymentType,

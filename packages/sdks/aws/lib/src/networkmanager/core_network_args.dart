@@ -54,7 +54,7 @@ class CoreNetworkArgs {
   /// [description] Description of the Core Network.
   /// [globalNetworkId] ID of the global network that a core network will be a part of.
   /// [tags] Key-value tags for the Core Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  CoreNetworkArgs({
+  const CoreNetworkArgs({
     this.basePolicyDocument,
     this.basePolicyRegions,
     this.createBasePolicy,

@@ -30,7 +30,7 @@ class VMwareClusterVcenter {
   /// [folder] The name of the vCenter folder for the user cluster.
   /// [resourcePool] The name of the vCenter resource pool for the user cluster.
   /// [storagePolicyName] The name of the vCenter storage policy for the user cluster.
-  VMwareClusterVcenter({
+  const VMwareClusterVcenter({
     this.address,
     this.caCertData,
     this.cluster,

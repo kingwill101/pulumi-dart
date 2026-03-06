@@ -21,7 +21,7 @@ class DataEncryptionResponse {
   /// [primaryKeyURI] Primary key uri
   /// [primaryUserAssignedIdentityId] Primary user identity resource id
   /// [type] The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk.
-  DataEncryptionResponse({
+  const DataEncryptionResponse({
     this.geoBackupKeyURI,
     this.geoBackupUserAssignedIdentityId,
     this.primaryKeyURI,

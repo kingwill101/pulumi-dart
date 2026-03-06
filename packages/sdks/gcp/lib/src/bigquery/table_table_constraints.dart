@@ -18,7 +18,7 @@ class TableTableConstraints {
   /// Creates a new [TableTableConstraints].
   /// [foreignKeys] Present only if the table has a foreign key.
   /// [primaryKey] Represents the primary key constraint
-  TableTableConstraints({
+  const TableTableConstraints({
     this.foreignKeys,
     this.primaryKey,
   });

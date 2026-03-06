@@ -14,7 +14,7 @@ class ListenerRuleActionFixedResponse {
   /// [contentType] The content type. Valid values are `text/plain`, `text/css`, `text/html`, `application/javascript` and `application/json`.
   /// [messageBody] The message body.
   /// [statusCode] The HTTP response code. Valid values are `2XX`, `4XX`, or `5XX`.
-  ListenerRuleActionFixedResponse({
+  const ListenerRuleActionFixedResponse({
     required this.contentType,
     this.messageBody,
     this.statusCode,

@@ -9,7 +9,7 @@ class ContainerGroupDnsConfigOption {
   /// Creates a new [ContainerGroupDnsConfigOption].
   /// [name] Optional.
   /// [value] Optional.
-  ContainerGroupDnsConfigOption({
+  const ContainerGroupDnsConfigOption({
     this.name,
     this.value,
   });

@@ -7,7 +7,7 @@ class BillingGroupMetadata {
 
   /// Creates a new [BillingGroupMetadata].
   /// [creationDate] Required.
-  BillingGroupMetadata({
+  const BillingGroupMetadata({
     required this.creationDate,
   });
 

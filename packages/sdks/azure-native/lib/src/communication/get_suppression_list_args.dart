@@ -21,7 +21,7 @@ class GetSuppressionListArgs {
   /// [emailServiceName] The name of the EmailService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [suppressionListName] The name of the suppression list.
-  GetSuppressionListArgs({
+  const GetSuppressionListArgs({
     required this.domainName,
     required this.emailServiceName,
     required this.resourceGroupName,

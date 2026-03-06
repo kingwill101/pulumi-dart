@@ -33,7 +33,7 @@ class InternetGatewayArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [type] Gateway Type of the resource.
-  InternetGatewayArgs({
+  const InternetGatewayArgs({
     this.annotation,
     this.internetGatewayName,
     this.internetGatewayRuleId,

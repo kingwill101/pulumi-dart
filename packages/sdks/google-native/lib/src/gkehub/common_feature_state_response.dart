@@ -22,7 +22,7 @@ class CommonFeatureStateResponse {
   /// [clusterupgrade] ClusterUpgrade fleet-level state.
   /// [fleetobservability] FleetObservability feature state.
   /// [state] The "running state" of the Feature in this Hub.
-  CommonFeatureStateResponse({
+  const CommonFeatureStateResponse({
     required this.appdevexperience,
     required this.clusterupgrade,
     required this.fleetobservability,

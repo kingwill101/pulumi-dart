@@ -107,7 +107,7 @@ class OpenZfsFileSystemState {
   /// [throughputCapacity] Throughput (MB/s) of the file system. Valid values depend on `deployment_type`. Must be one of `64`, `128`, `256`, `512`, `1024`, `2048`, `3072`, `4096` for `SINGLE_AZ_1`. Must be one of `160`, `320`, `640`, `1280`, `2560`, `3840`, `5120`, `7680`, `10240` for `SINGLE_AZ_2`.
   /// [vpcId] Identifier of the Virtual Private Cloud for the file system.
   /// [weeklyMaintenanceStartTime] The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-  OpenZfsFileSystemState({
+  const OpenZfsFileSystemState({
     this.arn,
     this.automaticBackupRetentionDays,
     this.backupId,

@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2BucketingConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2BucketingConfigResponse].
   /// [buckets] Set of buckets. Ranges must be non-overlapping.
-  GooglePrivacyDlpV2BucketingConfigResponse({
+  const GooglePrivacyDlpV2BucketingConfigResponse({
     required this.buckets,
   });
 

@@ -18,7 +18,7 @@ class GetNfsSnapshotArgs {
   /// [nameRegex] Optional.
   /// [region] The region where the NFS snapshot is located.
   /// [shareId] Required.
-  GetNfsSnapshotArgs({
+  const GetNfsSnapshotArgs({
     this.name,
     this.nameRegex,
     this.region,

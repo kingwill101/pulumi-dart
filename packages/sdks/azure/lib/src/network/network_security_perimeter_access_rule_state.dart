@@ -27,7 +27,7 @@ class NetworkSecurityPerimeterAccessRuleState {
   /// [networkSecurityPerimeterProfileId] The ID of the Network Security Perimeter Profile within which this Access Rule is created. Changing this forces a new Network Security Perimeter Access Rule to be created.
   /// [serviceTags] Specifies a list of service tags. Can only be specified when direction is set to `Inbound`. Conflicts with `address_prefixes`, `fqdns`, and `subscription_ids`.
   /// [subscriptionIds] Specifies a list of subscription IDs this rule applies to. Can only be specified when direction is set to `Inbound`. Conflicts with `address_prefixes`, `fqdns`, and `service_tags`.
-  NetworkSecurityPerimeterAccessRuleState({
+  const NetworkSecurityPerimeterAccessRuleState({
     this.addressPrefixes,
     this.direction,
     this.fqdns,

@@ -47,7 +47,7 @@ class GetDomainResult {
   /// [tags] An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [ttlSec] 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
   /// [type] If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-  GetDomainResult({
+  const GetDomainResult({
     required this.axfrIps,
     required this.description,
     this.domain,

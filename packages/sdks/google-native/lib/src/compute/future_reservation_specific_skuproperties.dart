@@ -15,7 +15,7 @@ class FutureReservationSpecificSKUProperties {
   /// [instanceProperties] Properties of the SKU instances being reserved.
   /// [sourceInstanceTemplate] The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
   /// [totalCount] Total number of instances for which capacity assurance is requested at a future time period.
-  FutureReservationSpecificSKUProperties({
+  const FutureReservationSpecificSKUProperties({
     this.instanceProperties,
     this.sourceInstanceTemplate,
     this.totalCount,

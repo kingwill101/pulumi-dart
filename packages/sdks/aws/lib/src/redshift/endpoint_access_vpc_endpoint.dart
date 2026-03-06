@@ -15,7 +15,7 @@ class EndpointAccessVpcEndpoint {
   /// [networkInterfaces] One or more network interfaces of the endpoint. Also known as an interface endpoint. See details below.
   /// [vpcEndpointId] The connection endpoint ID for connecting an Amazon Redshift cluster through the proxy.
   /// [vpcId] The VPC identifier that the endpoint is associated.
-  EndpointAccessVpcEndpoint({
+  const EndpointAccessVpcEndpoint({
     this.networkInterfaces,
     this.vpcEndpointId,
     this.vpcId,

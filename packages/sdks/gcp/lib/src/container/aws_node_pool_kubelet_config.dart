@@ -17,7 +17,7 @@ class AwsNodePoolKubeletConfig {
   /// [cpuCfsQuotaPeriod] Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
   /// [cpuManagerPolicy] The CpuManagerPolicy to use for the node. Defaults to "none".
   /// [podPidsLimit] Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
-  AwsNodePoolKubeletConfig({
+  const AwsNodePoolKubeletConfig({
     this.cpuCfsQuota,
     this.cpuCfsQuotaPeriod,
     this.cpuManagerPolicy,

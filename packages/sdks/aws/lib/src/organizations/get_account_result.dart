@@ -34,7 +34,7 @@ class GetAccountResult {
   /// [parentId] Parent Organizational Unit ID or Root ID for the account.
   /// [state] State of the account in the organization.
   /// [tags] Map of tags for the resource.
-  GetAccountResult({
+  const GetAccountResult({
     required this.accountId,
     required this.arn,
     required this.email,

@@ -9,7 +9,7 @@ class MarketplaceSaaSInfoResponseMarketplaceSubscription {
 
   /// Creates a new [MarketplaceSaaSInfoResponseMarketplaceSubscription].
   /// [id] Marketplace Subscription Id. This is a GUID-formatted string.
-  MarketplaceSaaSInfoResponseMarketplaceSubscription({
+  const MarketplaceSaaSInfoResponseMarketplaceSubscription({
     this.id,
   });
 

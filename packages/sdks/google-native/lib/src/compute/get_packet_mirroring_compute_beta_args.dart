@@ -15,7 +15,7 @@ class GetPacketMirroringComputeBetaArgs {
   /// [packetMirroring] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetPacketMirroringComputeBetaArgs({
+  const GetPacketMirroringComputeBetaArgs({
     required this.packetMirroring,
     this.project,
     required this.region,

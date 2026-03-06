@@ -29,7 +29,7 @@ class StorageCapacityUnitArgs {
   /// [periodUnit] The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
   /// [startTime] The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
   /// [storageCapacityUnitName] The name of the Storage Capacity Unit.
-  StorageCapacityUnitArgs({
+  const StorageCapacityUnitArgs({
     required this.capacity,
     this.description,
     this.period,

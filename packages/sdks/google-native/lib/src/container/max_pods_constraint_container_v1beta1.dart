@@ -9,7 +9,7 @@ class MaxPodsConstraintContainerV1beta1 {
 
   /// Creates a new [MaxPodsConstraintContainerV1beta1].
   /// [maxPodsPerNode] Constraint enforced on the max num of pods per node.
-  MaxPodsConstraintContainerV1beta1({
+  const MaxPodsConstraintContainerV1beta1({
     this.maxPodsPerNode,
   });
 

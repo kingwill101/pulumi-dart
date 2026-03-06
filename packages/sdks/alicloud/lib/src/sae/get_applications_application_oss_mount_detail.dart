@@ -17,7 +17,7 @@ class GetApplicationsApplicationOssMountDetail {
   /// [bucketPath] The path of the bucket.
   /// [mountPath] The Container mount path.
   /// [readOnly] Whether the container path has readable permission to mount directory resources.
-  GetApplicationsApplicationOssMountDetail({
+  const GetApplicationsApplicationOssMountDetail({
     required this.bucketName,
     required this.bucketPath,
     required this.mountPath,

@@ -21,7 +21,7 @@ class GetAvailabilityGroupListenerArgs {
   /// [expand] The child resources to include in the response.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlVirtualMachineGroupName] Name of the SQL virtual machine group.
-  GetAvailabilityGroupListenerArgs({
+  const GetAvailabilityGroupListenerArgs({
     required this.availabilityGroupListenerName,
     this.expand,
     required this.resourceGroupName,

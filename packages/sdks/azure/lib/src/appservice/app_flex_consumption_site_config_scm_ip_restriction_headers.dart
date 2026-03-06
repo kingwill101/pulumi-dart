@@ -17,7 +17,7 @@ class AppFlexConsumptionSiteConfigScmIpRestrictionHeaders {
   /// [xFdHealthProbe] Specifies if a Front Door Health Probe should be expected. The only possible value is `1`.
   /// [xForwardedFors] Specifies a list of addresses for which matching should be applied. Omitting this value means allow any.
   /// [xForwardedHosts] Specifies a list of Hosts for which matching should be applied.
-  AppFlexConsumptionSiteConfigScmIpRestrictionHeaders({
+  const AppFlexConsumptionSiteConfigScmIpRestrictionHeaders({
     this.xAzureFdids,
     this.xFdHealthProbe,
     this.xForwardedFors,

@@ -15,7 +15,7 @@ class GetHyperparameterTuningJobArgs {
   /// [hyperparameterTuningJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetHyperparameterTuningJobArgs({
+  const GetHyperparameterTuningJobArgs({
     required this.hyperparameterTuningJobId,
     required this.location,
     this.project,

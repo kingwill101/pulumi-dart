@@ -26,7 +26,7 @@ class GetPeeringAttachmentArgs {
   /// [id] Identifier of the EC2 Transit Gateway Peering Attachment.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Mapping of tags, each pair of which must exactly match
-  GetPeeringAttachmentArgs({
+  const GetPeeringAttachmentArgs({
     this.filters,
     this.id,
     this.region,

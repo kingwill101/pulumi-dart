@@ -27,7 +27,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
   /// [day] Required. The day of week that maintenance updates occur.
   /// [duration] Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
   /// [startTime] Required. Start time of the window in UTC time.
-  InstanceMaintenancePolicyWeeklyMaintenanceWindow({
+  const InstanceMaintenancePolicyWeeklyMaintenanceWindow({
     required this.day,
     required this.duration,
     required this.startTime,

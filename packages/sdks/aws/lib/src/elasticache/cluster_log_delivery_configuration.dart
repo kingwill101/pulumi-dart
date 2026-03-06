@@ -17,7 +17,7 @@ class ClusterLogDeliveryConfiguration {
   /// [destinationType] For CloudWatch Logs use `cloudwatch-logs` or for Kinesis Data Firehose use `kinesis-firehose`.
   /// [logFormat] Valid values are `json` or `text`
   /// [logType] Valid values are  `slow-log` or `engine-log`. Max 1 of each.
-  ClusterLogDeliveryConfiguration({
+  const ClusterLogDeliveryConfiguration({
     required this.destination,
     required this.destinationType,
     required this.logFormat,

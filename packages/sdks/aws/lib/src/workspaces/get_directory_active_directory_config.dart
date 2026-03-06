@@ -11,7 +11,7 @@ class GetDirectoryActiveDirectoryConfig {
   /// Creates a new [GetDirectoryActiveDirectoryConfig].
   /// [domainName] Fully qualified domain name of the AWS Directory Service directory.
   /// [serviceAccountSecretArn] ARN of the Secrets Manager secret that contains the credentials for the service account.
-  GetDirectoryActiveDirectoryConfig({
+  const GetDirectoryActiveDirectoryConfig({
     required this.domainName,
     required this.serviceAccountSecretArn,
   });

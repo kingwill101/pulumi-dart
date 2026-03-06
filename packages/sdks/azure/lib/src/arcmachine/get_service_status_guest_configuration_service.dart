@@ -11,7 +11,7 @@ class GetServiceStatusGuestConfigurationService {
   /// Creates a new [GetServiceStatusGuestConfigurationService].
   /// [startupType] The behavior of the service when the Arc-enabled machine starts up.
   /// [status] The current status of the service.
-  GetServiceStatusGuestConfigurationService({
+  const GetServiceStatusGuestConfigurationService({
     required this.startupType,
     required this.status,
   });

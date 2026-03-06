@@ -23,7 +23,7 @@ class GetBackupPlanAssociationsAssociation {
   /// [name] The full name of the backup plan association resource.
   /// [resource] The resource to which the backup plan is applied.
   /// [rulesConfigInfos] A list containing information about the backup rules. Each object in the list contains:
-  GetBackupPlanAssociationsAssociation({
+  const GetBackupPlanAssociationsAssociation({
     required this.backupPlan,
     required this.createTime,
     required this.dataSource,

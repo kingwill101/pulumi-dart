@@ -71,7 +71,7 @@ class DeploymentArgs {
   /// [sku] Specifies the NGINX Deployment SKU.
   /// [tags] A mapping of tags which should be assigned to the NGINX Deployment.
   /// [webApplicationFirewall] A `web_application_firewall` blocks as defined below.
-  DeploymentArgs({
+  const DeploymentArgs({
     this.autoScaleProfiles,
     this.automaticUpgradeChannel,
     this.capacity,

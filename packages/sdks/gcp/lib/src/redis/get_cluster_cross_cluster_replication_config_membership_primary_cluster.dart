@@ -11,7 +11,7 @@ class GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster {
   /// Creates a new [GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster].
   /// [cluster] The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
   /// [uid] The unique id of the primary cluster.
-  GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster({
+  const GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster({
     required this.cluster,
     required this.uid,
   });

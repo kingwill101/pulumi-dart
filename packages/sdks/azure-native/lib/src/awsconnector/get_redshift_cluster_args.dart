@@ -15,7 +15,7 @@ class GetRedshiftClusterArgs {
   /// Creates a new [GetRedshiftClusterArgs].
   /// [name] Name of RedshiftCluster
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRedshiftClusterArgs({
+  const GetRedshiftClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

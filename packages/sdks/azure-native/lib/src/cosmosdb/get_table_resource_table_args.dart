@@ -18,7 +18,7 @@ class GetTableResourceTableArgs {
   /// [accountName] Cosmos DB database account name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tableName] Cosmos DB table name.
-  GetTableResourceTableArgs({
+  const GetTableResourceTableArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.tableName,

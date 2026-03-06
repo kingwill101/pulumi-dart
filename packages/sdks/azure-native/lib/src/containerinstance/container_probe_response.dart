@@ -29,7 +29,7 @@ class ContainerProbeResponse {
   /// [periodSeconds] The period seconds.
   /// [successThreshold] The success threshold.
   /// [timeoutSeconds] The timeout seconds.
-  ContainerProbeResponse({
+  const ContainerProbeResponse({
     this.exec,
     this.failureThreshold,
     this.httpGet,

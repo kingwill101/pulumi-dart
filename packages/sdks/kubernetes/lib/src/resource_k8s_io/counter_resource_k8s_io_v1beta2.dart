@@ -9,7 +9,7 @@ class CounterResourceK8sIoV1beta2 {
 
   /// Creates a new [CounterResourceK8sIoV1beta2].
   /// [value] Value defines how much of a certain device counter is available.
-  CounterResourceK8sIoV1beta2({
+  const CounterResourceK8sIoV1beta2({
     required this.value,
   });
 

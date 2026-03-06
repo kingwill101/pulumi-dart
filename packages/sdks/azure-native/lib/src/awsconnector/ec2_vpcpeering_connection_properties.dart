@@ -31,7 +31,7 @@ class Ec2VPCPeeringConnectionProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2VPCPeeringConnectionProperties({
+  const Ec2VPCPeeringConnectionProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

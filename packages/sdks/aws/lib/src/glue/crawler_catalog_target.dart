@@ -24,7 +24,7 @@ class CrawlerCatalogTarget {
   /// [dlqEventQueueArn] A valid Amazon SQS ARN.
   /// [eventQueueArn] A valid Amazon SQS ARN.
   /// [tables] A list of catalog tables to be synchronized.
-  CrawlerCatalogTarget({
+  const CrawlerCatalogTarget({
     this.connectionName,
     required this.databaseName,
     this.dlqEventQueueArn,

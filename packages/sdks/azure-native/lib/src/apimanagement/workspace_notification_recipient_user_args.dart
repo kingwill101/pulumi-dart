@@ -24,7 +24,7 @@ class WorkspaceNotificationRecipientUserArgs {
   /// [serviceName] The name of the API Management service.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceNotificationRecipientUserArgs({
+  const WorkspaceNotificationRecipientUserArgs({
     required this.notificationName,
     required this.resourceGroupName,
     required this.serviceName,

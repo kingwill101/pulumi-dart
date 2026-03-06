@@ -13,7 +13,7 @@ class ApplicationApplicationConfigurationRunConfiguration {
   /// Creates a new [ApplicationApplicationConfigurationRunConfiguration].
   /// [applicationRestoreConfiguration] The restore behavior of a restarting application.
   /// [flinkRunConfiguration] The starting parameters for a Flink-based Kinesis Data Analytics application.
-  ApplicationApplicationConfigurationRunConfiguration({
+  const ApplicationApplicationConfigurationRunConfiguration({
     this.applicationRestoreConfiguration,
     this.flinkRunConfiguration,
   });

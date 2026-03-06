@@ -8,7 +8,7 @@ class VmwareAdminClusterAddonNodeAutoResizeConfig {
 
   /// Creates a new [VmwareAdminClusterAddonNodeAutoResizeConfig].
   /// [enabled] Whether to enable controle plane node auto resizing.
-  VmwareAdminClusterAddonNodeAutoResizeConfig({
+  const VmwareAdminClusterAddonNodeAutoResizeConfig({
     required this.enabled,
   });
 

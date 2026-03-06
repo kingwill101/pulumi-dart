@@ -12,7 +12,7 @@ class FirewallLogConfigResponseComputeV1 {
   /// Creates a new [FirewallLogConfigResponseComputeV1].
   /// [enable] This field denotes whether to enable logging for a particular firewall rule.
   /// [metadata] This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs.
-  FirewallLogConfigResponseComputeV1({
+  const FirewallLogConfigResponseComputeV1({
     required this.enable,
     required this.metadata,
   });

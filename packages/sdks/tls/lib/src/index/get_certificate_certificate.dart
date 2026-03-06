@@ -42,7 +42,7 @@ class GetCertificateCertificate {
   /// [signatureAlgorithm] The algorithm used to sign the certificate.
   /// [subject] The entity the certificate belongs to, roughly following [RFC2253](https://tools.ietf.org/html/rfc2253).
   /// [version] The version the certificate is in.
-  GetCertificateCertificate({
+  const GetCertificateCertificate({
     required this.certPem,
     required this.isCa,
     required this.issuer,

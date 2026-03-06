@@ -14,7 +14,7 @@ class DomainDefaultSpaceSettingsJupyterLabAppSettingsCustomImage {
   /// [appImageConfigName] The name of the App Image Config.
   /// [imageName] The name of the Custom Image.
   /// [imageVersionNumber] The version number of the Custom Image.
-  DomainDefaultSpaceSettingsJupyterLabAppSettingsCustomImage({
+  const DomainDefaultSpaceSettingsJupyterLabAppSettingsCustomImage({
     required this.appImageConfigName,
     required this.imageName,
     this.imageVersionNumber,

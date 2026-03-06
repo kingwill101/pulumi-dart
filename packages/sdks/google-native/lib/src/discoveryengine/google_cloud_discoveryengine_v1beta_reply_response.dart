@@ -17,7 +17,7 @@ class GoogleCloudDiscoveryengineV1betaReplyResponse {
   /// [references] References in the reply.
   /// [reply] DEPRECATED: use `summary` instead. Text reply.
   /// [summary] Summary based on search results.
-  GoogleCloudDiscoveryengineV1betaReplyResponse({
+  const GoogleCloudDiscoveryengineV1betaReplyResponse({
     required this.references,
     required this.reply,
     required this.summary,

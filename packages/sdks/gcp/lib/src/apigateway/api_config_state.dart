@@ -64,7 +64,7 @@ class ApiConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [serviceConfigId] The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
-  ApiConfigState({
+  const ApiConfigState({
     this.api,
     this.apiConfigId,
     this.apiConfigIdPrefix,

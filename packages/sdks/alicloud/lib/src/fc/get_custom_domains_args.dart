@@ -18,7 +18,7 @@ class GetCustomDomainsArgs {
   /// [ids] A list of functions ids.
   /// [nameRegex] A regex string to filter results by Function Compute custom domain name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetCustomDomainsArgs({
+  const GetCustomDomainsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

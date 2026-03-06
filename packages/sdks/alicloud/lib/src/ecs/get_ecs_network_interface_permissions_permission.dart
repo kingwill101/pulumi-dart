@@ -26,7 +26,7 @@ class GetEcsNetworkInterfacePermissionsPermission {
   /// [permission] The permissions of the Network Interface.
   /// [serviceName] Alibaba Cloud service name.
   /// [status] The Status of the Network Interface Permissions.
-  GetEcsNetworkInterfacePermissionsPermission({
+  const GetEcsNetworkInterfacePermissionsPermission({
     required this.accountId,
     required this.id,
     required this.networkInterfaceId,

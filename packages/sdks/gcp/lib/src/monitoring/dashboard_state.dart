@@ -13,7 +13,7 @@ class DashboardState {
   /// Creates a new [DashboardState].
   /// [dashboardJson] The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
   /// [project] The ID of the project in which the resource belongs.
-  DashboardState({
+  const DashboardState({
     this.dashboardJson,
     this.project,
   });

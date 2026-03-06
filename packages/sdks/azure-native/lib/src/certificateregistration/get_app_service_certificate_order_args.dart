@@ -15,7 +15,7 @@ class GetAppServiceCertificateOrderArgs {
   /// Creates a new [GetAppServiceCertificateOrderArgs].
   /// [certificateOrderName] Name of the certificate order..
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetAppServiceCertificateOrderArgs({
+  const GetAppServiceCertificateOrderArgs({
     required this.certificateOrderName,
     required this.resourceGroupName,
   });

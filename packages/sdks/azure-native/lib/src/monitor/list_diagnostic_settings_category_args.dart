@@ -12,7 +12,7 @@ class ListDiagnosticSettingsCategoryArgs {
 
   /// Creates a new [ListDiagnosticSettingsCategoryArgs].
   /// [resourceUri] The identifier of the resource.
-  ListDiagnosticSettingsCategoryArgs({
+  const ListDiagnosticSettingsCategoryArgs({
     required this.resourceUri,
   });
 

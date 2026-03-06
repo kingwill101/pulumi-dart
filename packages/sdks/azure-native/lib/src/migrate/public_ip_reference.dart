@@ -9,7 +9,7 @@ class PublicIpReference {
 
   /// Creates a new [PublicIpReference].
   /// [sourceArmResourceId] Gets the ARM resource ID of the tracked resource being referenced.
-  PublicIpReference({
+  const PublicIpReference({
     required this.sourceArmResourceId,
   });
 

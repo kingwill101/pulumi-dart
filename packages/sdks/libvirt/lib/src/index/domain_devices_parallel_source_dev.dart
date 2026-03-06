@@ -12,7 +12,7 @@ class DomainDevicesParallelSourceDev {
   /// Creates a new [DomainDevicesParallelSourceDev].
   /// [path] Specifies the path to the device file for the EGD backend.
   /// [secLabels] Configures the security label settings for the device source in the EGD backend.
-  DomainDevicesParallelSourceDev({
+  const DomainDevicesParallelSourceDev({
     required this.path,
     this.secLabels,
   });

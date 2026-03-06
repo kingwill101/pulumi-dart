@@ -18,7 +18,7 @@ class GetArcSettingArgs {
   /// [arcSettingName] The name of the proxy resource holding details of HCI ArcSetting information.
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetArcSettingArgs({
+  const GetArcSettingArgs({
     required this.arcSettingName,
     required this.clusterName,
     required this.resourceGroupName,

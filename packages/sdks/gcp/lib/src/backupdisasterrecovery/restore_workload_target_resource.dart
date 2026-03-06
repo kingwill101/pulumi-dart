@@ -10,7 +10,7 @@ class RestoreWorkloadTargetResource {
 
   /// Creates a new [RestoreWorkloadTargetResource].
   /// [gcpResource] Output only. Details of the native Google Cloud resource created as part of restore.
-  RestoreWorkloadTargetResource({
+  const RestoreWorkloadTargetResource({
     this.gcpResource,
   });
 

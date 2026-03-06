@@ -12,7 +12,7 @@ class VirtualDirectoryResponse {
   /// Creates a new [VirtualDirectoryResponse].
   /// [physicalPath] Physical path.
   /// [virtualPath] Path to virtual application.
-  VirtualDirectoryResponse({
+  const VirtualDirectoryResponse({
     this.physicalPath,
     this.virtualPath,
   });

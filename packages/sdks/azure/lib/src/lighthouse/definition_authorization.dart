@@ -17,7 +17,7 @@ class DefinitionAuthorization {
   /// [principalDisplayName] The display name of the security group/service principal/user that would be assigned permissions to the projected subscription.
   /// [principalId] Principal ID of the security group/service principal/user that would be assigned permissions to the projected subscription.
   /// [roleDefinitionId] The role definition identifier. This role will define the permissions that are granted to the principal. This cannot be an `Owner` role.
-  DefinitionAuthorization({
+  const DefinitionAuthorization({
     this.delegatedRoleDefinitionIds,
     this.principalDisplayName,
     required this.principalId,

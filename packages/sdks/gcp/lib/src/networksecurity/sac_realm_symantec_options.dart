@@ -17,7 +17,7 @@ class SacRealmSymantecOptions {
   /// [availableSymantecSites] (Output)
   /// [secretPath] API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
   /// [symantecConnectionState] (Output)
-  SacRealmSymantecOptions({
+  const SacRealmSymantecOptions({
     this.availableSymantecSites,
     this.secretPath,
     this.symantecConnectionState,

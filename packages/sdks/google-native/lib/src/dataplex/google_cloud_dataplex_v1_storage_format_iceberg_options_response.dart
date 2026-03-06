@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse {
 
   /// Creates a new [GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse].
   /// [metadataLocation] Optional. The location of where the iceberg metadata is present, must be within the table path
-  GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse({
+  const GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse({
     required this.metadataLocation,
   });
 

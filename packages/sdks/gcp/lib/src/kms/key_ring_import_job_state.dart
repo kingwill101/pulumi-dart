@@ -44,7 +44,7 @@ class KeyRingImportJobState {
   /// [protectionLevel] The protection level of the ImportJob. This must match the protectionLevel of the
   /// [publicKeys] The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
   /// [state] The current state of the ImportJob, indicating if it can be used.
-  KeyRingImportJobState({
+  const KeyRingImportJobState({
     this.attestations,
     this.expireTime,
     this.importJobId,

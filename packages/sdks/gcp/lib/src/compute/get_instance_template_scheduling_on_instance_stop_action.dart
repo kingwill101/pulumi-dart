@@ -8,7 +8,7 @@ class GetInstanceTemplateSchedulingOnInstanceStopAction {
 
   /// Creates a new [GetInstanceTemplateSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] If true, the contents of any attached Local SSD disks will be discarded.
-  GetInstanceTemplateSchedulingOnInstanceStopAction({
+  const GetInstanceTemplateSchedulingOnInstanceStopAction({
     required this.discardLocalSsd,
   });
 

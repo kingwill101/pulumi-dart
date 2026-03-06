@@ -15,7 +15,7 @@ class InstanceInitialReplication {
   /// Creates a new [InstanceInitialReplication].
   /// [replicas] The replication role.
   /// [role] The replication role.
-  InstanceInitialReplication({
+  const InstanceInitialReplication({
     this.replicas,
     this.role,
   });

@@ -24,7 +24,7 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptions {
   /// [cryptoHashConfig] Crypto hash config for CharacterMaskField.
   /// [dateShiftConfig] Date shifting config for CharacterMaskField.
   /// [keepExtensions] Configure keeping extensions by default.
-  GoogleCloudHealthcareV1beta1DeidentifyOptions({
+  const GoogleCloudHealthcareV1beta1DeidentifyOptions({
     this.characterMaskConfig,
     this.contextualDeid,
     this.cryptoHashConfig,

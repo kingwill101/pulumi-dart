@@ -13,7 +13,7 @@ class ThreatOverride {
   /// Creates a new [ThreatOverride].
   /// [action] Threat action override. For some threat types, only a subset of actions applies.
   /// [threatId] Vendor-specific ID of a threat to override.
-  ThreatOverride({
+  const ThreatOverride({
     required this.action,
     required this.threatId,
   });

@@ -23,7 +23,7 @@ class GetRepositoryCleanupPolicyCondition {
   /// [tagPrefixes] Match versions by tag prefix. Applied on any prefix match.
   /// [tagState] Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
   /// [versionNamePrefixes] Match versions by version name prefix. Applied on any prefix match.
-  GetRepositoryCleanupPolicyCondition({
+  const GetRepositoryCleanupPolicyCondition({
     required this.newerThan,
     required this.olderThan,
     required this.packageNamePrefixes,

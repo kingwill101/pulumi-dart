@@ -61,7 +61,7 @@ class GetSubnetPoolResult {
   /// [shared] See Argument Reference above.
   /// [tags] Optional.
   /// [updatedAt] The time at which subnetpool was created.
-  GetSubnetPoolResult({
+  const GetSubnetPoolResult({
     required this.addressScopeId,
     required this.allTags,
     required this.createdAt,

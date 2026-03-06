@@ -16,7 +16,7 @@ class VirtualMachineInstancePropertiesStorageProfileOsDisk {
   /// [id] The Azure Resource ID for a Virtual Hard Disk.
   /// [managedDisk] The managed disk parameters.
   /// [osType] This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: Windows, Linux.
-  VirtualMachineInstancePropertiesStorageProfileOsDisk({
+  const VirtualMachineInstancePropertiesStorageProfileOsDisk({
     this.id,
     this.managedDisk,
     this.osType,

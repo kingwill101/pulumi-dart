@@ -40,7 +40,7 @@ class GetStorageBoxesStorageBox {
   /// [storageBoxType] Name of the Storage Box Type.
   /// [system] Host system of the Storage Box.
   /// [username] Primary username of the Storage Box.
-  GetStorageBoxesStorageBox({
+  const GetStorageBoxesStorageBox({
     required this.accessSettings,
     required this.deleteProtection,
     required this.id,

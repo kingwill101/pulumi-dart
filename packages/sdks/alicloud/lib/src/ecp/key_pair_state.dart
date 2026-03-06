@@ -12,7 +12,7 @@ class KeyPairState {
   /// Creates a new [KeyPairState].
   /// [keyPairName] The Key Name.
   /// [publicKeyBody] The public key body.
-  KeyPairState({
+  const KeyPairState({
     this.keyPairName,
     this.publicKeyBody,
   });

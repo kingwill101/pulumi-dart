@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2InfoTypeTransformationsResponse {
 
   /// Creates a new [GooglePrivacyDlpV2InfoTypeTransformationsResponse].
   /// [transformations_] Transformation for each infoType. Cannot specify more than one for a given infoType.
-  GooglePrivacyDlpV2InfoTypeTransformationsResponse({
+  const GooglePrivacyDlpV2InfoTypeTransformationsResponse({
     required this.transformations_,
   });
 

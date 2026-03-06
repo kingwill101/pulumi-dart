@@ -11,7 +11,7 @@ class ServiceSourceConfigurationAuthenticationConfiguration {
   /// Creates a new [ServiceSourceConfigurationAuthenticationConfiguration].
   /// [accessRoleArn] ARN of the IAM role that grants the App Runner service access to a source repository. Required for ECR image repositories (but not for ECR Public)
   /// [connectionArn] ARN of the App Runner connection that enables the App Runner service to connect to a source repository. Required for GitHub code repositories.
-  ServiceSourceConfigurationAuthenticationConfiguration({
+  const ServiceSourceConfigurationAuthenticationConfiguration({
     this.accessRoleArn,
     this.connectionArn,
   });

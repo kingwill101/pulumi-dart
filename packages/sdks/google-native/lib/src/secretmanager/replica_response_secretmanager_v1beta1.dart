@@ -9,7 +9,7 @@ class ReplicaResponseSecretmanagerV1beta1 {
 
   /// Creates a new [ReplicaResponseSecretmanagerV1beta1].
   /// [location] The canonical IDs of the location to replicate data. For example: `"us-east1"`.
-  ReplicaResponseSecretmanagerV1beta1({
+  const ReplicaResponseSecretmanagerV1beta1({
     required this.location,
   });
 

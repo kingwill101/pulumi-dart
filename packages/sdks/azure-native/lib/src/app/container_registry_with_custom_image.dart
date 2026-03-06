@@ -12,7 +12,7 @@ class ContainerRegistryWithCustomImage {
   /// Creates a new [ContainerRegistryWithCustomImage].
   /// [image] Full name that the final image should be uploaded as, including both image name and tag.
   /// [server] Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
-  ContainerRegistryWithCustomImage({
+  const ContainerRegistryWithCustomImage({
     this.image,
     required this.server,
   });

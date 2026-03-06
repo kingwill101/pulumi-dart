@@ -11,7 +11,7 @@ class ApiProductGraphqlOperationGroupOperationConfigAttribute {
   /// Creates a new [ApiProductGraphqlOperationGroupOperationConfigAttribute].
   /// [name] Key of the attribute.
   /// [value] Value of the attribute.
-  ApiProductGraphqlOperationGroupOperationConfigAttribute({
+  const ApiProductGraphqlOperationGroupOperationConfigAttribute({
     this.name,
     this.value,
   });

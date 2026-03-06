@@ -15,7 +15,7 @@ class CloudControlParameterSpecSubParameterSubstitutionRule {
   /// Creates a new [CloudControlParameterSpecSubParameterSubstitutionRule].
   /// [attributeSubstitutionRule] Attribute at the given path is substituted entirely.
   /// [placeholderSubstitutionRule] Placeholder is substituted in the rendered string.
-  CloudControlParameterSpecSubParameterSubstitutionRule({
+  const CloudControlParameterSpecSubParameterSubstitutionRule({
     this.attributeSubstitutionRule,
     this.placeholderSubstitutionRule,
   });

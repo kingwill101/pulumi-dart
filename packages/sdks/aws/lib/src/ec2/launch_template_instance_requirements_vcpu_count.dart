@@ -11,7 +11,7 @@ class LaunchTemplateInstanceRequirementsVcpuCount {
   /// Creates a new [LaunchTemplateInstanceRequirementsVcpuCount].
   /// [max] Maximum.
   /// [min] Minimum.
-  LaunchTemplateInstanceRequirementsVcpuCount({
+  const LaunchTemplateInstanceRequirementsVcpuCount({
     this.max,
     required this.min,
   });

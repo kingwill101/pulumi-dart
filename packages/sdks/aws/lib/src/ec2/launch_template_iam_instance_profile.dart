@@ -11,7 +11,7 @@ class LaunchTemplateIamInstanceProfile {
   /// Creates a new [LaunchTemplateIamInstanceProfile].
   /// [arn] The Amazon Resource Name (ARN) of the instance profile. Conflicts with `name`.
   /// [name] The name of the instance profile.
-  LaunchTemplateIamInstanceProfile({
+  const LaunchTemplateIamInstanceProfile({
     this.arn,
     this.name,
   });

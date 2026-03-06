@@ -30,7 +30,7 @@ class GetVaultResult {
   /// [systemData] Required.
   /// [tags] Gets or sets the resource tags.
   /// [type] Gets or sets the type of the resource.
-  GetVaultResult({
+  const GetVaultResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

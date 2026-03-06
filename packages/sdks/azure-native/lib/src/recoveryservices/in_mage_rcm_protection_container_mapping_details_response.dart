@@ -13,7 +13,7 @@ class InMageRcmProtectionContainerMappingDetailsResponse {
   /// Creates a new [InMageRcmProtectionContainerMappingDetailsResponse].
   /// [enableAgentAutoUpgrade] A value indicating whether the flag for enable agent auto upgrade.
   /// [instanceType] Gets the class type. Overridden in derived classes.
-  InMageRcmProtectionContainerMappingDetailsResponse({
+  const InMageRcmProtectionContainerMappingDetailsResponse({
     required this.enableAgentAutoUpgrade,
     required this.instanceType,
   });

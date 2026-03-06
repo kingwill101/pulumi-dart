@@ -13,7 +13,7 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec {
   /// Creates a new [GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec].
   /// [goal] The optimization goal of the metric.
   /// [metricId] The ID of the metric. Must not contain whitespaces.
-  GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec({
+  const GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec({
     required this.goal,
     required this.metricId,
   });

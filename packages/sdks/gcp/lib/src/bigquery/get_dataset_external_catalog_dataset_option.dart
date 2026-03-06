@@ -13,7 +13,7 @@ class GetDatasetExternalCatalogDatasetOption {
   /// Creates a new [GetDatasetExternalCatalogDatasetOption].
   /// [defaultStorageLocationUri] The storage location URI for all tables in the dataset. Equivalent to hive metastore's
   /// [parameters] A map of key value pairs defining the parameters and properties of the open source schema.
-  GetDatasetExternalCatalogDatasetOption({
+  const GetDatasetExternalCatalogDatasetOption({
     required this.defaultStorageLocationUri,
     required this.parameters,
   });

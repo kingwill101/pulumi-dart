@@ -34,7 +34,7 @@ class ReplicationRuleResponse {
   /// [priority] The priority indicates which rule has precedence whenever two or more replication rules conflict. Amazon S3 will attempt to replicate objects according to all replication rules. However, if there are two or more rules with the same destination bucket, then objects will be replicated according to the rule with the highest priority. The higher the number, the higher the priority.  For more information, see [Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html) in the *Amazon S3 User Guide*.
   /// [sourceSelectionCriteria] A container that describes additional filters for identifying the source objects that you want to replicate. You can choose to enable or disable the replication of these objects. A container that describes additional filters for identifying the source objects that you want to replicate. You can choose to enable or disable the replication of these objects.
   /// [status] Specifies whether the rule is enabled.
-  ReplicationRuleResponse({
+  const ReplicationRuleResponse({
     this.deleteMarkerReplication,
     this.destination,
     this.filter,

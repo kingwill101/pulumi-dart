@@ -9,7 +9,7 @@ class NfsProtocolProperties {
 
   /// Creates a new [NfsProtocolProperties].
   /// [rootSquash] Root squash defines how root users on clients are mapped to the NFS share.
-  NfsProtocolProperties({
+  const NfsProtocolProperties({
     this.rootSquash,
   });
 

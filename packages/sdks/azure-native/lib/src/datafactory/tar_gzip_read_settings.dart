@@ -13,7 +13,7 @@ class TarGZipReadSettings {
   /// Creates a new [TarGZipReadSettings].
   /// [preserveCompressionFileNameAsFolder] Preserve the compression file name as folder path. Type: boolean (or Expression with resultType boolean).
   /// [type] The Compression setting type.
-  TarGZipReadSettings({
+  const TarGZipReadSettings({
     this.preserveCompressionFileNameAsFolder,
     required this.type,
   });

@@ -68,7 +68,7 @@ class DashboardState {
   /// [themeArn] The Amazon Resource Name (ARN) of the theme that is being used for this dashboard. The theme ARN must exist in the same AWS account where you create the dashboard.
   /// [versionDescription] A description of the current dashboard version being created/updated.
   /// [versionNumber] The version number of the dashboard version.
-  DashboardState({
+  const DashboardState({
     this.arn,
     this.awsAccountId,
     this.createdTime,

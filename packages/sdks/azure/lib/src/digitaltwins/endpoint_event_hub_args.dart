@@ -24,7 +24,7 @@ class EndpointEventHubArgs {
   /// [eventhubPrimaryConnectionString] The primary connection string of the Event Hub Authorization Rule with a minimum of `send` permission.
   /// [eventhubSecondaryConnectionString] The secondary connection string of the Event Hub Authorization Rule with a minimum of `send` permission.
   /// [name] The name which should be used for this Digital Twins Event Hub Endpoint. Changing this forces a new Digital Twins Event Hub Endpoint to be created.
-  EndpointEventHubArgs({
+  const EndpointEventHubArgs({
     this.deadLetterStorageSecret,
     required this.digitalTwinsId,
     required this.eventhubPrimaryConnectionString,

@@ -21,7 +21,7 @@ class AzureCredentials {
   /// [kind] Kind of auth github does for deploying the template
   /// [subscriptionId] Subscription Id.
   /// [tenantId] Tenant Id.
-  AzureCredentials({
+  const AzureCredentials({
     this.clientId,
     this.clientSecret,
     this.kind,

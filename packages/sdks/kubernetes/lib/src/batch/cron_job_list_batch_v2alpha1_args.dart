@@ -23,7 +23,7 @@ class CronJobListBatchV2alpha1Args {
   /// [items] items is the list of CronJobs.
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  CronJobListBatchV2alpha1Args({
+  const CronJobListBatchV2alpha1Args({
     this.apiVersion,
     required this.items,
     this.kind,

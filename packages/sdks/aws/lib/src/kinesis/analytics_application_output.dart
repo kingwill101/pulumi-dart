@@ -29,7 +29,7 @@ class AnalyticsApplicationOutput {
   /// [lambda] The Lambda function destination. See Lambda below for more details.
   /// [name] The Name of the in-application stream.
   /// [schema] The Schema format of the data written to the destination. See Destination Schema below for more details.
-  AnalyticsApplicationOutput({
+  const AnalyticsApplicationOutput({
     this.id,
     this.kinesisFirehose,
     this.kinesisStream,

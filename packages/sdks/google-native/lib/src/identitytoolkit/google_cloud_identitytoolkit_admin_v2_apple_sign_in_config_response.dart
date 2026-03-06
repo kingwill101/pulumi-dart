@@ -12,7 +12,7 @@ class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse {
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse].
   /// [bundleIds] A list of Bundle ID's usable by this project
   /// [codeFlowConfig] Required.
-  GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse({
+  const GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse({
     required this.bundleIds,
     required this.codeFlowConfig,
   });

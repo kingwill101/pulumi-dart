@@ -13,7 +13,7 @@ class AttestationContaineranalysisV1beta1 {
   /// Creates a new [AttestationContaineranalysisV1beta1].
   /// [genericSignedAttestation] Optional.
   /// [pgpSignedAttestation] A PGP signed attestation.
-  AttestationContaineranalysisV1beta1({
+  const AttestationContaineranalysisV1beta1({
     this.genericSignedAttestation,
     this.pgpSignedAttestation,
   });

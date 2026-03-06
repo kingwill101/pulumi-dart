@@ -25,7 +25,7 @@ class GetInstancesResult {
   /// [nameRegex] Optional.
   /// [names] A list of instance names.
   /// [outputFile] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

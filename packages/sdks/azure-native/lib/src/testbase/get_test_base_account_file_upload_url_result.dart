@@ -11,7 +11,7 @@ class GetTestBaseAccountFileUploadUrlResult {
   /// Creates a new [GetTestBaseAccountFileUploadUrlResult].
   /// [blobPath] The blob path of the uploaded package. It will be used as the 'blobPath' property of PackageResource.
   /// [uploadUrl] The URL used for uploading the package.
-  GetTestBaseAccountFileUploadUrlResult({
+  const GetTestBaseAccountFileUploadUrlResult({
     required this.blobPath,
     required this.uploadUrl,
   });

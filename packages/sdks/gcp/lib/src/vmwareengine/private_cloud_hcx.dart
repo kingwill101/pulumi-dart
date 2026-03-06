@@ -18,7 +18,7 @@ class PrivateCloudHcx {
   /// [internalIp] Internal IP address of the appliance.
   /// [state] State of the appliance.
   /// [version] Version of the appliance.
-  PrivateCloudHcx({
+  const PrivateCloudHcx({
     this.fqdn,
     this.internalIp,
     this.state,

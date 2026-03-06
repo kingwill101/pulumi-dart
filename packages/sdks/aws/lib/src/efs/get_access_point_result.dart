@@ -35,7 +35,7 @@ class GetAccessPointResult {
   /// [region] Required.
   /// [rootDirectories] Single element list containing information on the directory on the Amazon EFS file system that the access point provides access to.
   /// [tags] Key-value mapping of resource tags.
-  GetAccessPointResult({
+  const GetAccessPointResult({
     required this.accessPointId,
     required this.arn,
     required this.fileSystemArn,

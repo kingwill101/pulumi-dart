@@ -14,7 +14,7 @@ class GenaiKnowledgeBaseDataSourceSpacesDataSource {
   /// [bucketName] The name of the Spaces bucket
   /// [itemPath] The path to the item in the bucket
   /// [region] The region of the Spaces bucket
-  GenaiKnowledgeBaseDataSourceSpacesDataSource({
+  const GenaiKnowledgeBaseDataSourceSpacesDataSource({
     this.bucketName,
     this.itemPath,
     this.region,

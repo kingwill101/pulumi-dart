@@ -11,7 +11,7 @@ class GetTagsFilterNotTags {
   /// [key] Optional.
   /// [matchOptions] Optional.
   /// [values] Optional.
-  GetTagsFilterNotTags({
+  const GetTagsFilterNotTags({
     this.key,
     this.matchOptions,
     this.values,

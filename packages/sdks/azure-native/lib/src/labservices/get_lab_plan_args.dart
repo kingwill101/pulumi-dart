@@ -15,7 +15,7 @@ class GetLabPlanArgs {
   /// Creates a new [GetLabPlanArgs].
   /// [labPlanName] The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLabPlanArgs({
+  const GetLabPlanArgs({
     required this.labPlanName,
     required this.resourceGroupName,
   });

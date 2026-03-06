@@ -13,7 +13,7 @@ class ResourceRequest {
   /// Creates a new [ResourceRequest].
   /// [namedResources] NamedResources describes a request for resources with the named resources model.
   /// [vendorParameters] VendorParameters are arbitrary setup parameters for the requested resource. They are ignored while allocating a claim.
-  ResourceRequest({
+  const ResourceRequest({
     this.namedResources,
     this.vendorParameters,
   });

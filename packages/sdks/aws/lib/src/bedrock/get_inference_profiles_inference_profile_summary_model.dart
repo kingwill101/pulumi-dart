@@ -8,7 +8,7 @@ class GetInferenceProfilesInferenceProfileSummaryModel {
 
   /// Creates a new [GetInferenceProfilesInferenceProfileSummaryModel].
   /// [modelArn] Amazon Resource Name (ARN) of the model.
-  GetInferenceProfilesInferenceProfileSummaryModel({
+  const GetInferenceProfilesInferenceProfileSummaryModel({
     required this.modelArn,
   });
 

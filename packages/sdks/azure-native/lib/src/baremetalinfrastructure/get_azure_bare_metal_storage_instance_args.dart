@@ -15,7 +15,7 @@ class GetAzureBareMetalStorageInstanceArgs {
   /// Creates a new [GetAzureBareMetalStorageInstanceArgs].
   /// [azureBareMetalStorageInstanceName] Name of the Azure Bare Metal Storage Instance, also known as the ResourceName.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAzureBareMetalStorageInstanceArgs({
+  const GetAzureBareMetalStorageInstanceArgs({
     required this.azureBareMetalStorageInstanceName,
     required this.resourceGroupName,
   });

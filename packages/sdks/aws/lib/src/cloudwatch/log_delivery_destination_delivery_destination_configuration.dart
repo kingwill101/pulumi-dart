@@ -8,7 +8,7 @@ class LogDeliveryDestinationDeliveryDestinationConfiguration {
 
   /// Creates a new [LogDeliveryDestinationDeliveryDestinationConfiguration].
   /// [destinationResourceArn] The ARN of the AWS destination that this delivery destination represents. Required when `delivery_destination_configuration` is specified.
-  LogDeliveryDestinationDeliveryDestinationConfiguration({
+  const LogDeliveryDestinationDeliveryDestinationConfiguration({
     this.destinationResourceArn,
   });
 

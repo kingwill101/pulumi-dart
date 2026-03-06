@@ -17,7 +17,7 @@ class IdcApplicationServiceIntegration {
   /// [lakeFormation] List of scopes set up for Lake Formation integration. Refer to the lake_formation documentation for more details.
   /// [redshift] List of scopes set up for Redshift integration. Refer to the redshift documentation for more details.
   /// [s3AccessGrants] List of scopes set up for S3 Access Grants integration. Refer to the s3_access_grants documentation for more details.
-  IdcApplicationServiceIntegration({
+  const IdcApplicationServiceIntegration({
     this.lakeFormation,
     this.redshift,
     this.s3AccessGrants,

@@ -10,7 +10,7 @@ class EnterprisePolicyIdentity {
 
   /// Creates a new [EnterprisePolicyIdentity].
   /// [type] The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
-  EnterprisePolicyIdentity({
+  const EnterprisePolicyIdentity({
     this.type,
   });
 

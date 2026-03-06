@@ -57,7 +57,7 @@ class GetCustomDomainResult {
   /// [redirectTarget] A domain name that this `CustomDomain` should direct traffic towards. If specified, Hosting will respond to requests against this custom domain with an HTTP 301 code, and route traffic to the specified `redirect_target` instead.
   /// [requiredDnsUpdates] A set of updates you should make to the domain name's DNS records to let Hosting serve secure content on its behalf.
   /// [updateTime] The last time the `CustomDomain` was updated.
-  GetCustomDomainResult({
+  const GetCustomDomainResult({
     required this.annotations,
     required this.cert,
     required this.certPreference,

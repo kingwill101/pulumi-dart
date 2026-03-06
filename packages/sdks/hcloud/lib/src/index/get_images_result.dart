@@ -23,7 +23,7 @@ class GetImagesResult {
   /// [withArchitectures] Optional.
   /// [withSelector] Optional.
   /// [withStatuses] Optional.
-  GetImagesResult({
+  const GetImagesResult({
     required this.id,
     required this.images,
     this.includeDeprecated,

@@ -11,7 +11,7 @@ class GetConnectorSftpConfig {
   /// Creates a new [GetConnectorSftpConfig].
   /// [trustedHostKeys] List of the public portions of the host keys that are used to identify the servers the connector is connected to.
   /// [userSecretId] Identifier for the secret in AWS Secrets Manager that contains the SFTP user's private key, and/or password.
-  GetConnectorSftpConfig({
+  const GetConnectorSftpConfig({
     required this.trustedHostKeys,
     required this.userSecretId,
   });

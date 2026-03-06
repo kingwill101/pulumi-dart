@@ -26,7 +26,7 @@ class SpringCloudServiceNetwork {
   /// [readTimeoutSeconds] Ingress read time out in seconds.
   /// [serviceRuntimeNetworkResourceGroup] Specifies the Name of the resource group containing network resources of Azure Spring Cloud Service Runtime. Changing this forces a new resource to be created.
   /// [serviceRuntimeSubnetId] Specifies the ID of the Subnet where the Service Runtime components of the Spring Cloud Service will exist. Changing this forces a new resource to be created.
-  SpringCloudServiceNetwork({
+  const SpringCloudServiceNetwork({
     this.appNetworkResourceGroup,
     required this.appSubnetId,
     required this.cidrRanges,

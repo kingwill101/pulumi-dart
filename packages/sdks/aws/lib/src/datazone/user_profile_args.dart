@@ -29,7 +29,7 @@ class UserProfileArgs {
   /// [timeouts] Optional.
   /// [userIdentifier] The user identifier.
   /// [userType] The user type.
-  UserProfileArgs({
+  const UserProfileArgs({
     required this.domainIdentifier,
     this.region,
     this.status,

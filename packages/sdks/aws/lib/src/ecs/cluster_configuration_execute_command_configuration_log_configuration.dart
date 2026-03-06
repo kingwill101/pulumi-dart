@@ -20,7 +20,7 @@ class ClusterConfigurationExecuteCommandConfigurationLogConfiguration {
   /// [s3BucketEncryptionEnabled] Whether to enable encryption on the logs sent to S3. If not specified, encryption will be disabled.
   /// [s3BucketName] Name of the S3 bucket to send logs to.
   /// [s3KeyPrefix] Optional folder in the S3 bucket to place logs in.
-  ClusterConfigurationExecuteCommandConfigurationLogConfiguration({
+  const ClusterConfigurationExecuteCommandConfigurationLogConfiguration({
     this.cloudWatchEncryptionEnabled,
     this.cloudWatchLogGroupName,
     this.s3BucketEncryptionEnabled,

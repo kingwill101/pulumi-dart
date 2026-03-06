@@ -10,7 +10,7 @@ class NodePlacementConfiguration {
 
   /// Creates a new [NodePlacementConfiguration].
   /// [policy] Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
-  NodePlacementConfiguration({
+  const NodePlacementConfiguration({
     this.policy,
   });
 

@@ -27,7 +27,7 @@ class GetProducerImageShareGroupMemberResult {
   /// [status] The status of the member.
   /// [tokenUuid] Required.
   /// [updated] When the member was last updated.
-  GetProducerImageShareGroupMemberResult({
+  const GetProducerImageShareGroupMemberResult({
     required this.created,
     required this.expiry,
     required this.id,

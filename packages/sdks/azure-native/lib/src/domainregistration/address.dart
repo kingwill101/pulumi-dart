@@ -24,7 +24,7 @@ class Address {
   /// [country] The country for the address.
   /// [postalCode] The postal code for the address.
   /// [state] The state or province for the address.
-  Address({
+  const Address({
     required this.address1,
     this.address2,
     required this.city,

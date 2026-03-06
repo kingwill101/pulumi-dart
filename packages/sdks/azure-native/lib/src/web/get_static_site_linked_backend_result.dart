@@ -32,7 +32,7 @@ class GetStaticSiteLinkedBackendResult {
   /// [provisioningState] The provisioning state of the linking process.
   /// [region] The region of the backend linked to the static site
   /// [type] Resource type.
-  GetStaticSiteLinkedBackendResult({
+  const GetStaticSiteLinkedBackendResult({
     required this.azureApiVersion,
     this.backendResourceId,
     required this.createdOn,

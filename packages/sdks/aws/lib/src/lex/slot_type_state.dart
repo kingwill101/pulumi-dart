@@ -45,7 +45,7 @@ class SlotTypeState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [valueSelectionStrategy] Determines the slot resolution strategy that Amazon Lex
   /// [version] The version of the slot type.
-  SlotTypeState({
+  const SlotTypeState({
     this.checksum,
     this.createVersion,
     this.createdDate,

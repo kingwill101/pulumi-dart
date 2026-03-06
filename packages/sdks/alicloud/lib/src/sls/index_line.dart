@@ -20,7 +20,7 @@ class IndexLine {
   /// [excludeKeys] List of excluded fields
   /// [includeKeys] Include field list
   /// [tokens] Delimiter
-  IndexLine({
+  const IndexLine({
     required this.caseSensitive,
     required this.chn,
     this.excludeKeys,

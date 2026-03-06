@@ -24,7 +24,7 @@ class ZypperSettingsResponseOsconfigV1beta {
   /// [severities] Install only patches with these severities. Common severities include critical, important, moderate, and low.
   /// [withOptional] Adds the `--with-optional` flag to `zypper patch`.
   /// [withUpdate] Adds the `--with-update` flag, to `zypper patch`.
-  ZypperSettingsResponseOsconfigV1beta({
+  const ZypperSettingsResponseOsconfigV1beta({
     required this.categories,
     required this.excludes,
     required this.exclusivePatches,

@@ -42,7 +42,7 @@ class ControlState {
   /// [tagsAll] Optional.
   /// [testingInformation] Steps to follow to determine if the control is satisfied.
   /// [type] Type of control, such as a custom control or a standard control.
-  ControlState({
+  const ControlState({
     this.actionPlanInstructions,
     this.actionPlanTitle,
     this.arn,

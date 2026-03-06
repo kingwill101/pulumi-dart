@@ -18,7 +18,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStateme
   /// [fieldToMatch] The part of a web request that you want AWS WAF to inspect. See Field to Match below for details.
   /// [sensitivityLevel] Sensitivity that you want AWS WAF to use to inspect for SQL injection attacks. Valid values include: `LOW`, `HIGH`.
   /// [textTransformations] Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement({
     this.fieldToMatch,
     this.sensitivityLevel,
     required this.textTransformations,

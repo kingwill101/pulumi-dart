@@ -55,7 +55,7 @@ class GetAutonomousDatabaseBackupResult {
   /// [timeEnded] The date and time the backup was completed.
   /// [timeStarted] The date and time the backup started.
   /// [type] Required.
-  GetAutonomousDatabaseBackupResult({
+  const GetAutonomousDatabaseBackupResult({
     required this.automatic,
     required this.autonomousDatabaseBackupOcid,
     required this.autonomousDatabaseId,

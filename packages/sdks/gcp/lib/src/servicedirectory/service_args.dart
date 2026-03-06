@@ -22,7 +22,7 @@ class ServiceArgs {
   /// [metadata] Metadata for the service. This data can be consumed
   /// [namespace] The resource name of the namespace this service will belong to.
   /// [serviceId] The Resource ID must be 1-63 characters long, including digits,
-  ServiceArgs({
+  const ServiceArgs({
     this.metadata,
     required this.namespace,
     required this.serviceId,

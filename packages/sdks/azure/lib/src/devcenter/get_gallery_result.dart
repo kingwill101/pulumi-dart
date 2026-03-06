@@ -15,7 +15,7 @@ class GetGalleryResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [sharedGalleryId] The ID of the Shared Gallery connected to the Dev Center Gallery.
-  GetGalleryResult({
+  const GetGalleryResult({
     required this.devCenterId,
     required this.id,
     required this.name,

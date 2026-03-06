@@ -10,7 +10,7 @@ class ResourcePolicyResourceStatusResponse {
 
   /// Creates a new [ResourcePolicyResourceStatusResponse].
   /// [instanceSchedulePolicy] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
-  ResourcePolicyResourceStatusResponse({
+  const ResourcePolicyResourceStatusResponse({
     required this.instanceSchedulePolicy,
   });
 

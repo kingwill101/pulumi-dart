@@ -15,7 +15,7 @@ class GetServerGroupsSlbServerGroup {
   /// [id] VServer group ID.
   /// [name] VServer group name.
   /// [servers] ECS instances associated to the group. Each element contains the following attributes:
-  GetServerGroupsSlbServerGroup({
+  const GetServerGroupsSlbServerGroup({
     required this.id,
     required this.name,
     required this.servers,

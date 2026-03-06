@@ -12,7 +12,7 @@ class ClusterZoneResponse {
   /// Creates a new [ClusterZoneResponse].
   /// [hosts] List of hosts belonging to the availability zone in a cluster
   /// [zone] Availability zone identifier
-  ClusterZoneResponse({
+  const ClusterZoneResponse({
     required this.hosts,
     required this.zone,
   });

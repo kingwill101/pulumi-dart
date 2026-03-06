@@ -11,7 +11,7 @@ class FeatureSubset {
   /// Creates a new [FeatureSubset].
   /// [features] [Required] The list of features to include.
   /// [filterType] Expected value is 'FeatureSubset'.
-  FeatureSubset({
+  const FeatureSubset({
     required this.features,
     required this.filterType,
   });

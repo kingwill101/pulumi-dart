@@ -33,7 +33,7 @@ class GetAccountResult {
   /// [systemId] The internally assigned unique identifier of the resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAccountResult({
+  const GetAccountResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

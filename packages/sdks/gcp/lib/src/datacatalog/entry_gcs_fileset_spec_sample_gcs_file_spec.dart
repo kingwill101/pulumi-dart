@@ -11,7 +11,7 @@ class EntryGcsFilesetSpecSampleGcsFileSpec {
   /// Creates a new [EntryGcsFilesetSpecSampleGcsFileSpec].
   /// [filePath] The full file path
   /// [sizeBytes] The size of the file, in bytes.
-  EntryGcsFilesetSpecSampleGcsFileSpec({
+  const EntryGcsFilesetSpecSampleGcsFileSpec({
     this.filePath,
     this.sizeBytes,
   });

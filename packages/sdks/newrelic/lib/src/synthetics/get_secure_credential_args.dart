@@ -15,7 +15,7 @@ class GetSecureCredentialArgs {
   /// Creates a new [GetSecureCredentialArgs].
   /// [accountId] The account in New Relic associated with the secure credential. Defaults to the account associated with the API key used.
   /// [key] The secure credential's key name.  Regardless of the case used in the configuration, the provider will provide an upcased key to the underlying API.
-  GetSecureCredentialArgs({
+  const GetSecureCredentialArgs({
     this.accountId,
     required this.key,
   });

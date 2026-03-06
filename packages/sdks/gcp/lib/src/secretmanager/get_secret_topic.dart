@@ -9,7 +9,7 @@ class GetSecretTopic {
 
   /// Creates a new [GetSecretTopic].
   /// [name] The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
-  GetSecretTopic({
+  const GetSecretTopic({
     required this.name,
   });
 

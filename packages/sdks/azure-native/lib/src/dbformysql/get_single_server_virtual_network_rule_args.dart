@@ -18,7 +18,7 @@ class GetSingleServerVirtualNetworkRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
   /// [virtualNetworkRuleName] The name of the virtual network rule.
-  GetSingleServerVirtualNetworkRuleArgs({
+  const GetSingleServerVirtualNetworkRuleArgs({
     required this.resourceGroupName,
     required this.serverName,
     required this.virtualNetworkRuleName,

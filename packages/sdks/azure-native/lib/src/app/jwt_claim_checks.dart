@@ -12,7 +12,7 @@ class JwtClaimChecks {
   /// Creates a new [JwtClaimChecks].
   /// [allowedClientApplications] The list of the allowed client applications.
   /// [allowedGroups] The list of the allowed groups.
-  JwtClaimChecks({
+  const JwtClaimChecks({
     this.allowedClientApplications,
     this.allowedGroups,
   });

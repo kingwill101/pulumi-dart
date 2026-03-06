@@ -18,7 +18,7 @@ class DestinationResponse {
   /// [bucketArn] The Amazon Resource Name (ARN) of the bucket to which data is exported.
   /// [format] Specifies the file format used when exporting data to Amazon S3.  *Allowed values*: ``CSV`` | ``ORC`` | ``Parquet``
   /// [prefix] The prefix to use when exporting data. The prefix is prepended to all results.
-  DestinationResponse({
+  const DestinationResponse({
     this.bucketAccountId,
     this.bucketArn,
     this.format,

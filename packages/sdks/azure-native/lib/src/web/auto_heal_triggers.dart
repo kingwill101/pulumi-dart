@@ -28,7 +28,7 @@ class AutoHealTriggers {
   /// [slowRequestsWithPath] A rule based on multiple Slow Requests Rule with path
   /// [statusCodes] A rule based on status codes.
   /// [statusCodesRange] A rule based on status codes ranges.
-  AutoHealTriggers({
+  const AutoHealTriggers({
     this.privateBytesInKB,
     this.requests,
     this.slowRequests,

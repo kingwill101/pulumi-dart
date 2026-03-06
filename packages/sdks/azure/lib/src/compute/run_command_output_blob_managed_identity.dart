@@ -11,7 +11,7 @@ class RunCommandOutputBlobManagedIdentity {
   /// Creates a new [RunCommandOutputBlobManagedIdentity].
   /// [clientId] The client ID of the managed identity.
   /// [objectId] The object ID of the managed identity.
-  RunCommandOutputBlobManagedIdentity({
+  const RunCommandOutputBlobManagedIdentity({
     this.clientId,
     this.objectId,
   });

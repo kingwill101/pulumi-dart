@@ -17,7 +17,7 @@ class GetDicomStoreHealthcareV1beta1Args {
   /// [dicomStoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDicomStoreHealthcareV1beta1Args({
+  const GetDicomStoreHealthcareV1beta1Args({
     required this.datasetId,
     required this.dicomStoreId,
     required this.location,

@@ -24,7 +24,7 @@ class GetVpcEndpointConnectionsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [serviceId] The ID of the Vpc Endpoint Service.
   /// [status] The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
-  GetVpcEndpointConnectionsArgs({
+  const GetVpcEndpointConnectionsArgs({
     this.endpointId,
     this.endpointOwnerId,
     this.outputFile,

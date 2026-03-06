@@ -18,7 +18,7 @@ class IscsiPathArgs {
   /// [networkBlock] CIDR Block for iSCSI path.
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  IscsiPathArgs({
+  const IscsiPathArgs({
     required this.networkBlock,
     required this.privateCloudName,
     required this.resourceGroupName,

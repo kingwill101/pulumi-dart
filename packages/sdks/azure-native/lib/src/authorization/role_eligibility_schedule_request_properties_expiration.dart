@@ -15,7 +15,7 @@ class RoleEligibilityScheduleRequestPropertiesExpiration {
   /// [duration] Duration of the role eligibility schedule in TimeSpan.
   /// [endDateTime] End DateTime of the role eligibility schedule.
   /// [type] Type of the role eligibility schedule expiration
-  RoleEligibilityScheduleRequestPropertiesExpiration({
+  const RoleEligibilityScheduleRequestPropertiesExpiration({
     this.duration,
     this.endDateTime,
     this.type,

@@ -59,7 +59,7 @@ class OauthClientArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [oauthClientId] Required. The ID to use for the OauthClient, which becomes the final component of
   /// [project] The ID of the project in which the resource belongs.
-  OauthClientArgs({
+  const OauthClientArgs({
     required this.allowedGrantTypes,
     required this.allowedRedirectUris,
     required this.allowedScopes,

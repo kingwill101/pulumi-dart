@@ -38,7 +38,7 @@ class ChannelArgs {
   /// [provisioningState] Provisioning state of the channel.
   /// [readinessState] The readiness state of the corresponding partner topic.
   /// [resourceGroupName] The name of the resource group within the partners subscription.
-  ChannelArgs({
+  const ChannelArgs({
     this.channelName,
     this.channelType,
     this.expirationTimeIfNotActivatedUtc,

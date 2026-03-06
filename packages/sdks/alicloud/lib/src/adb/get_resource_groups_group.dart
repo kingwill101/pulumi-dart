@@ -29,7 +29,7 @@ class GetResourceGroupsGroup {
   /// [id] The `key` of the resource supplied above.The value is formulated as `&lt;db_cluster_id&gt;:&lt;group_name&gt;`.
   /// [nodeNum] The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
   /// [user] Binding User.
-  GetResourceGroupsGroup({
+  const GetResourceGroupsGroup({
     required this.createTime,
     required this.dbClusterId,
     required this.groupName,

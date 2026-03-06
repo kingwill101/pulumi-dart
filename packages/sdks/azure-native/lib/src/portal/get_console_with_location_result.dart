@@ -12,7 +12,7 @@ class GetConsoleWithLocationResult {
   /// Creates a new [GetConsoleWithLocationResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [properties] Cloud shell console properties.
-  GetConsoleWithLocationResult({
+  const GetConsoleWithLocationResult({
     required this.azureApiVersion,
     required this.properties,
   });

@@ -19,7 +19,7 @@ class AccessConnectorIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
   /// [type] Specifies the type of Managed Service Identity that should be configured on the Databricks Access Connector. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`.
-  AccessConnectorIdentity({
+  const AccessConnectorIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

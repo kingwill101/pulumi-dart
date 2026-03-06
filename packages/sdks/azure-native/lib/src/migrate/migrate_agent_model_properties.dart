@@ -20,7 +20,7 @@ class MigrateAgentModelProperties {
   /// [customProperties] MigrateAgent model custom properties.
   /// [machineId] Gets or sets the machine Id where MigrateAgent is running.
   /// [machineName] Gets or sets the machine name where MigrateAgent is running.
-  MigrateAgentModelProperties({
+  const MigrateAgentModelProperties({
     this.authenticationIdentity,
     this.customProperties,
     this.machineId,

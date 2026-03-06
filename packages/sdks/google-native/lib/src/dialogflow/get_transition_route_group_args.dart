@@ -21,7 +21,7 @@ class GetTransitionRouteGroupArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [transitionRouteGroupId] Required.
-  GetTransitionRouteGroupArgs({
+  const GetTransitionRouteGroupArgs({
     required this.agentId,
     required this.flowId,
     this.languageCode,

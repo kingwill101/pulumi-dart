@@ -20,7 +20,7 @@ class BucketNotificationLambdaFunction {
   /// [filterSuffix] Object key name suffix.
   /// [id] Unique identifier for each of the notification configurations.
   /// [lambdaFunctionArn] Lambda function ARN.
-  BucketNotificationLambdaFunction({
+  const BucketNotificationLambdaFunction({
     required this.events,
     this.filterPrefix,
     this.filterSuffix,

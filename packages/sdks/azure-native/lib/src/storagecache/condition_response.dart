@@ -12,7 +12,7 @@ class ConditionResponse {
   /// Creates a new [ConditionResponse].
   /// [message] The issue requiring attention.
   /// [timestamp] The time when the condition was raised.
-  ConditionResponse({
+  const ConditionResponse({
     required this.message,
     required this.timestamp,
   });

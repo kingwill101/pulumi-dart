@@ -15,7 +15,7 @@ class GetDirectoryBucketsResult {
   /// [buckets] Buckets names.
   /// [id] Required.
   /// [region] Required.
-  GetDirectoryBucketsResult({
+  const GetDirectoryBucketsResult({
     required this.arns,
     required this.buckets,
     required this.id,

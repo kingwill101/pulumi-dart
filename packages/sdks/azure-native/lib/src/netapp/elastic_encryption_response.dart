@@ -17,7 +17,7 @@ class ElasticEncryptionResponse {
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
   /// [keyVaultProperties] Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  ElasticEncryptionResponse({
+  const ElasticEncryptionResponse({
     this.identity,
     this.keySource,
     this.keyVaultProperties,

@@ -76,7 +76,7 @@ class TaskSetState {
   /// [taskSetId] The ID of the task set.
   /// [waitUntilStable] Whether the provider should wait until the task set has reached `STEADY_STATE`.
   /// [waitUntilStableTimeout] Wait timeout for task set to reach `STEADY_STATE`. Valid time units include `ns`, `us` (or `µs`), `ms`, `s`, `m`, and `h`. Default `10m`.
-  TaskSetState({
+  const TaskSetState({
     this.arn,
     this.capacityProviderStrategies,
     this.cluster,

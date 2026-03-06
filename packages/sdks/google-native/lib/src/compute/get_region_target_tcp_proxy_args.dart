@@ -15,7 +15,7 @@ class GetRegionTargetTcpProxyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [targetTcpProxy] Required.
-  GetRegionTargetTcpProxyArgs({
+  const GetRegionTargetTcpProxyArgs({
     this.project,
     required this.region,
     required this.targetTcpProxy,

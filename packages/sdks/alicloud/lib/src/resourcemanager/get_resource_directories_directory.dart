@@ -23,7 +23,7 @@ class GetResourceDirectoriesDirectory {
   /// [resourceDirectoryId] The ID of the resource directory.
   /// [rootFolderId] The ID of the root folder.
   /// [status] (Available in 1.120.0+.) The status of the control policy.
-  GetResourceDirectoriesDirectory({
+  const GetResourceDirectoriesDirectory({
     required this.id,
     required this.masterAccountId,
     required this.masterAccountName,

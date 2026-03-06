@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2Conditions {
 
   /// Creates a new [GooglePrivacyDlpV2Conditions].
   /// [conditions] A collection of conditions.
-  GooglePrivacyDlpV2Conditions({
+  const GooglePrivacyDlpV2Conditions({
     this.conditions,
   });
 

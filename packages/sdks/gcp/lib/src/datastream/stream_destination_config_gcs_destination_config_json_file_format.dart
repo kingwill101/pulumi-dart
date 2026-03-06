@@ -13,7 +13,7 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
   /// Creates a new [StreamDestinationConfigGcsDestinationConfigJsonFileFormat].
   /// [compression] Compression of the loaded JSON file.
   /// [schemaFileFormat] The schema file format along JSON data files.
-  StreamDestinationConfigGcsDestinationConfigJsonFileFormat({
+  const StreamDestinationConfigGcsDestinationConfigJsonFileFormat({
     this.compression,
     this.schemaFileFormat,
   });

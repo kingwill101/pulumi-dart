@@ -15,7 +15,7 @@ class GetInstanceTemplateArgs {
   /// [instanceTemplate] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetInstanceTemplateArgs({
+  const GetInstanceTemplateArgs({
     required this.instanceTemplate,
     this.project,
     this.view,

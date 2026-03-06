@@ -8,7 +8,7 @@ class VirtualGatewaySpecListenerTlsCertificateAcm {
 
   /// Creates a new [VirtualGatewaySpecListenerTlsCertificateAcm].
   /// [certificateArn] ARN for the certificate.
-  VirtualGatewaySpecListenerTlsCertificateAcm({
+  const VirtualGatewaySpecListenerTlsCertificateAcm({
     required this.certificateArn,
   });
 

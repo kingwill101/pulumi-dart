@@ -8,7 +8,7 @@ class WorkloadEntitySearchQuery {
 
   /// Creates a new [WorkloadEntitySearchQuery].
   /// [query] A valid entity search query; empty, and null values are considered invalid.
-  WorkloadEntitySearchQuery({
+  const WorkloadEntitySearchQuery({
     required this.query,
   });
 

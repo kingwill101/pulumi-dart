@@ -27,7 +27,7 @@ class GetDocumentDiscoveryengineV1betaResult {
   /// [parentDocumentId] The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
   /// [schemaId] The identifier of the schema located in the same data store.
   /// [structData] The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
-  GetDocumentDiscoveryengineV1betaResult({
+  const GetDocumentDiscoveryengineV1betaResult({
     required this.content,
     required this.derivedStructData,
     required this.jsonData,

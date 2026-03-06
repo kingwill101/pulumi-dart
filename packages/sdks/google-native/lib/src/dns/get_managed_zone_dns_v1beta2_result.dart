@@ -58,7 +58,7 @@ class GetManagedZoneDnsV1beta2Result {
   /// [reverseLookupConfig] The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
   /// [serviceDirectoryConfig] This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
   /// [visibility] The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-  GetManagedZoneDnsV1beta2Result({
+  const GetManagedZoneDnsV1beta2Result({
     required this.cloudLoggingConfig,
     required this.creationTime,
     required this.description,

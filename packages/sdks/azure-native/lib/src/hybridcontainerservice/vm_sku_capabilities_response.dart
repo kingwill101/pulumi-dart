@@ -12,7 +12,7 @@ class VmSkuCapabilitiesResponse {
   /// Creates a new [VmSkuCapabilitiesResponse].
   /// [name] Name of the VM SKU capability
   /// [value] Value of the VM SKU capability
-  VmSkuCapabilitiesResponse({
+  const VmSkuCapabilitiesResponse({
     required this.name,
     required this.value,
   });

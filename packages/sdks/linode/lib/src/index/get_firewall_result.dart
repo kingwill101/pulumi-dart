@@ -51,7 +51,7 @@ class GetFirewallResult {
   /// [status] The status of the firewall. (`enabled`, `disabled`, `deleted`)
   /// [tags] The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
   /// [updated] When this firewall was last updated.
-  GetFirewallResult({
+  const GetFirewallResult({
     required this.created,
     required this.devices,
     required this.disabled,

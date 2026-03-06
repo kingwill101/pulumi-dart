@@ -18,7 +18,7 @@ class ChannelPartnerLinkArgs {
   /// [accountId] Required.
   /// [linkState] State of the channel partner link.
   /// [resellerCloudIdentityId] Cloud Identity ID of the linked reseller.
-  ChannelPartnerLinkArgs({
+  const ChannelPartnerLinkArgs({
     required this.accountId,
     required this.linkState,
     required this.resellerCloudIdentityId,

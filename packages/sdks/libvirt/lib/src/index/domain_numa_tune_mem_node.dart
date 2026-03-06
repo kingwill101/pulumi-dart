@@ -14,7 +14,7 @@ class DomainNumaTuneMemNode {
   /// [cellId] Sets the cell ID for the NUMA nodes, identifying the specific physical memory locality.
   /// [mode] Defines the allocation mode for memory on NUMA nodes, which can optimize performance based on architecture.
   /// [nodeset] Specifies the nodeset for memory allocation within the NUMA architecture, impacting memory distribution.
-  DomainNumaTuneMemNode({
+  const DomainNumaTuneMemNode({
     required this.cellId,
     required this.mode,
     required this.nodeset,

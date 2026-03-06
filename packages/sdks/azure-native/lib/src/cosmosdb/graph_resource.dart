@@ -9,7 +9,7 @@ class GraphResource {
 
   /// Creates a new [GraphResource].
   /// [id] Name of the Cosmos DB Graph
-  GraphResource({
+  const GraphResource({
     required this.id,
   });
 

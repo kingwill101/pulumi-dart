@@ -11,7 +11,7 @@ class GetOrganizationArgs {
 
   /// Creates a new [GetOrganizationArgs].
   /// [organizationId] Required.
-  GetOrganizationArgs({
+  const GetOrganizationArgs({
     required this.organizationId,
   });
 

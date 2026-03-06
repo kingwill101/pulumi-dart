@@ -23,7 +23,7 @@ class IdentityProperties {
   /// [tenantId] The tenant ID of resource.
   /// [type] The identity type.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity
-  IdentityProperties({
+  const IdentityProperties({
     this.principalId,
     this.tenantId,
     this.type,

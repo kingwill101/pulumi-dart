@@ -9,7 +9,7 @@ class GetManagedPrefixListEntry {
   /// Creates a new [GetManagedPrefixListEntry].
   /// [cidr] Required.
   /// [description] Required.
-  GetManagedPrefixListEntry({
+  const GetManagedPrefixListEntry({
     required this.cidr,
     required this.description,
   });

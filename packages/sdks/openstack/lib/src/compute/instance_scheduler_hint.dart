@@ -44,7 +44,7 @@ class InstanceSchedulerHint {
   /// [queries] A conditional query that a compute node must pass in
   /// [sameHosts] A list of instance UUIDs. The instance will be
   /// [targetCell] The name of a cell to host the instance.
-  InstanceSchedulerHint({
+  const InstanceSchedulerHint({
     this.additionalProperties,
     this.buildNearHostIp,
     this.differentCells,

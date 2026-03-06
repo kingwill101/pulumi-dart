@@ -13,7 +13,7 @@ class AutoscalingSettings {
   /// Creates a new [AutoscalingSettings].
   /// [algorithm] The algorithm to use for autoscaling.
   /// [maxNumWorkers] The maximum number of workers to cap scaling at.
-  AutoscalingSettings({
+  const AutoscalingSettings({
     this.algorithm,
     this.maxNumWorkers,
   });

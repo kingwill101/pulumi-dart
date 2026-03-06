@@ -9,7 +9,7 @@ class ReadPoolConfigResponse {
 
   /// Creates a new [ReadPoolConfigResponse].
   /// [nodeCount] Read capacity, i.e. number of nodes in a read pool instance.
-  ReadPoolConfigResponse({
+  const ReadPoolConfigResponse({
     required this.nodeCount,
   });
 

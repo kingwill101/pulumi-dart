@@ -18,7 +18,7 @@ class ComputeEnginePreferencesMigrationcenterV1alpha1 {
   /// [licenseType] License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
   /// [machinePreferences] Preferences concerning the machine types to consider on Compute Engine.
   /// [persistentDiskType] Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
-  ComputeEnginePreferencesMigrationcenterV1alpha1({
+  const ComputeEnginePreferencesMigrationcenterV1alpha1({
     this.licenseType,
     this.machinePreferences,
     this.persistentDiskType,

@@ -18,7 +18,7 @@ class GetSchemaVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaName] The name of the Schema
   /// [schemaVersionName] The name of the SchemaVersion
-  GetSchemaVersionArgs({
+  const GetSchemaVersionArgs({
     required this.resourceGroupName,
     required this.schemaName,
     required this.schemaVersionName,

@@ -56,7 +56,7 @@ class OpenZfsVolumeArgs {
   /// [tags] A map of tags to assign to the file system. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userAndGroupQuotas] Specify how much storage users or groups can use on the volume. Maximum number of items defined by [FSx for OpenZFS Resource quota](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limits.html#limits-openzfs-resources-file-system). See `user_and_group_quotas` Block Below.
   /// [volumeType] Optional.
-  OpenZfsVolumeArgs({
+  const OpenZfsVolumeArgs({
     this.copyTagsToSnapshots,
     this.dataCompressionType,
     this.deleteVolumeOptions,

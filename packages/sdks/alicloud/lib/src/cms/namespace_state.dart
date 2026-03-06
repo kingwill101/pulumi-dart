@@ -21,7 +21,7 @@ class NamespaceState {
   /// [description] The description of the namespace.
   /// [namespace] The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
   /// [specification] The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
-  NamespaceState({
+  const NamespaceState({
     this.description,
     this.namespace,
     this.specification,

@@ -12,7 +12,7 @@ class ServiceMeshMembershipSpecResponse {
   /// Creates a new [ServiceMeshMembershipSpecResponse].
   /// [controlPlane] Deprecated: use `management` instead Enables automatic control plane management.
   /// [management] Enables automatic Service Mesh management.
-  ServiceMeshMembershipSpecResponse({
+  const ServiceMeshMembershipSpecResponse({
     required this.controlPlane,
     required this.management,
   });

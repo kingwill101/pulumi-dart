@@ -30,7 +30,7 @@ class GetAclsResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] Optional.
   /// [status] Optional.
-  GetAclsResult({
+  const GetAclsResult({
     this.aclIds,
     this.aclName,
     required this.acls,

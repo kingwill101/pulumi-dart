@@ -17,7 +17,7 @@ class GetDataScanIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDataScanIamPolicyArgs({
+  const GetDataScanIamPolicyArgs({
     required this.dataScanId,
     required this.location,
     this.optionsRequestedPolicyVersion,

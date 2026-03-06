@@ -27,7 +27,7 @@ class EventHubReceiver {
   /// [subscriptionId] The Id for the subscription containing this event hub
   /// [tenantId] The tenant Id for the subscription containing this event hub
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  EventHubReceiver({
+  const EventHubReceiver({
     required this.eventHubName,
     required this.eventHubNameSpace,
     this.managedIdentity,

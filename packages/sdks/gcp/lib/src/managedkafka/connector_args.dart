@@ -30,7 +30,7 @@ class ConnectorArgs {
   /// [location] ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   /// [project] The ID of the project in which the resource belongs.
   /// [taskRestartPolicy] A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
-  ConnectorArgs({
+  const ConnectorArgs({
     this.configs,
     required this.connectCluster,
     required this.connectorId,

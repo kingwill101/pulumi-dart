@@ -8,7 +8,7 @@ class ShareInfoElementResponse {
 
   /// Creates a new [ShareInfoElementResponse].
   /// [vmUri] A relative URI containing the ID of the VM that has the disk attached.
-  ShareInfoElementResponse({
+  const ShareInfoElementResponse({
     required this.vmUri,
   });
 

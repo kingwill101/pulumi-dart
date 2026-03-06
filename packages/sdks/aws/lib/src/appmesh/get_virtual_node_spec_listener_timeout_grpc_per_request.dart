@@ -9,7 +9,7 @@ class GetVirtualNodeSpecListenerTimeoutGrpcPerRequest {
   /// Creates a new [GetVirtualNodeSpecListenerTimeoutGrpcPerRequest].
   /// [unit] Required.
   /// [value] Required.
-  GetVirtualNodeSpecListenerTimeoutGrpcPerRequest({
+  const GetVirtualNodeSpecListenerTimeoutGrpcPerRequest({
     required this.unit,
     required this.value,
   });

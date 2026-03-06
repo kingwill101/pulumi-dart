@@ -12,7 +12,7 @@ class GlusterFsSectionResponse {
   /// Creates a new [GlusterFsSectionResponse].
   /// [serverAddress] The server address of one of the servers that hosts the GlusterFS. Can be either the IP address or server name.
   /// [volumeName] The name of the created GlusterFS volume.
-  GlusterFsSectionResponse({
+  const GlusterFsSectionResponse({
     required this.serverAddress,
     required this.volumeName,
   });

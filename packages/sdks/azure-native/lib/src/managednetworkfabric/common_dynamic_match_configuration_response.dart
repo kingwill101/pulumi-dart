@@ -18,7 +18,7 @@ class CommonDynamicMatchConfigurationResponse {
   /// [ipGroups] List of IP Groups.
   /// [portGroups] List of the port groups.
   /// [vlanGroups] List of vlan groups.
-  CommonDynamicMatchConfigurationResponse({
+  const CommonDynamicMatchConfigurationResponse({
     this.ipGroups,
     this.portGroups,
     this.vlanGroups,

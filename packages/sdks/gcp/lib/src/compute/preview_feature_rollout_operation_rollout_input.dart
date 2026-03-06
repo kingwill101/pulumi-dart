@@ -9,7 +9,7 @@ class PreviewFeatureRolloutOperationRolloutInput {
 
   /// Creates a new [PreviewFeatureRolloutOperationRolloutInput].
   /// [predefinedRolloutPlan] Predefined rollout plans.
-  PreviewFeatureRolloutOperationRolloutInput({
+  const PreviewFeatureRolloutOperationRolloutInput({
     required this.predefinedRolloutPlan,
   });
 

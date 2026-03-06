@@ -32,7 +32,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
   /// [queryConfig] Configs of query.
   /// [suggestionFeature] The suggestion feature.
   /// [suggestionTriggerSettings] Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION, FAQ, and DIALOGFLOW_ASSIST will use this field.
-  GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig({
+  const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig({
     this.conversationModelConfig,
     this.conversationProcessConfig,
     this.disableAgentQueryLogging,

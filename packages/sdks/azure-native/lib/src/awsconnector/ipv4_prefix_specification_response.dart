@@ -9,7 +9,7 @@ class Ipv4PrefixSpecificationResponse {
 
   /// Creates a new [Ipv4PrefixSpecificationResponse].
   /// [ipv4Prefix] Property ipv4Prefix
-  Ipv4PrefixSpecificationResponse({
+  const Ipv4PrefixSpecificationResponse({
     this.ipv4Prefix,
   });
 

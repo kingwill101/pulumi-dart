@@ -27,7 +27,7 @@ class KeyAttributesResponse {
   /// [notBefore] Not before date in seconds since 1970-01-01T00:00:00Z.
   /// [recoveryLevel] The deletion recovery level currently in effect for the object. If it contains 'Purgeable', then the object can be permanently deleted by a privileged user; otherwise, only the system can purge the object at the end of the retention interval.
   /// [updated] Last updated time in seconds since 1970-01-01T00:00:00Z.
-  KeyAttributesResponse({
+  const KeyAttributesResponse({
     required this.created,
     this.enabled,
     this.expires,

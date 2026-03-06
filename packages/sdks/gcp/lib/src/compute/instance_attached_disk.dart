@@ -46,7 +46,7 @@ class InstanceAttachedDisk {
   /// [kmsKeySelfLink] The self_link of the encryption key that is
   /// [mode] Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
   /// [source] The name or self_link of the disk to attach to this instance.
-  InstanceAttachedDisk({
+  const InstanceAttachedDisk({
     this.deviceName,
     this.diskEncryptionKeyRaw,
     this.diskEncryptionKeyRsa,

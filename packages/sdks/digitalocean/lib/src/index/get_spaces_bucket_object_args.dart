@@ -23,7 +23,7 @@ class GetSpacesBucketObjectArgs {
   /// [range] Optional.
   /// [region] The slug of the region where the bucket is stored.
   /// [versionId] Specific version ID of the object returned (defaults to latest version)
-  GetSpacesBucketObjectArgs({
+  const GetSpacesBucketObjectArgs({
     required this.bucket,
     required this.key,
     this.range,

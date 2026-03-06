@@ -13,7 +13,7 @@ class RuntimeResponseJava {
   /// Creates a new [RuntimeResponseJava].
   /// [enableMetrics] Enable jmx core metrics for the java app
   /// [javaAgent] Diagnostic capabilities achieved by java agent
-  RuntimeResponseJava({
+  const RuntimeResponseJava({
     this.enableMetrics,
     this.javaAgent,
   });

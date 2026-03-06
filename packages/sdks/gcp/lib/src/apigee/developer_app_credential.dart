@@ -39,7 +39,7 @@ class DeveloperAppCredential {
   /// [issuedAt] (Output)
   /// [scopes] Scopes to apply to the developer app.
   /// [status] Status of the credential. Valid values include approved or revoked.
-  DeveloperAppCredential({
+  const DeveloperAppCredential({
     this.apiProducts,
     this.attributes,
     this.consumerKey,

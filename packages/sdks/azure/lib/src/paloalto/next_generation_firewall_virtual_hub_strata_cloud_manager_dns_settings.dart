@@ -13,7 +13,7 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings {
   /// [azureDnsServers] Optional.
   /// [dnsServers] A list of DNS servers to use. Conflicts with `dns_settings[0].use_azure_dns`.
   /// [useAzureDns] Should Azure DNS servers be used? Conflicts with `dns_settings[0].dns_servers`. Defaults to `false`.
-  NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings({
+  const NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings({
     this.azureDnsServers,
     this.dnsServers,
     this.useAzureDns,

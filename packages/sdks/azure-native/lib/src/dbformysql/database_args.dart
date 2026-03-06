@@ -24,7 +24,7 @@ class DatabaseArgs {
   /// [databaseName] The name of the database.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.charset,
     this.collation,
     this.databaseName,

@@ -17,7 +17,7 @@ class GetRouteSpecHttpRoute {
   /// [matches] Required.
   /// [retryPolicies] Required.
   /// [timeouts] Required.
-  GetRouteSpecHttpRoute({
+  const GetRouteSpecHttpRoute({
     required this.actions,
     required this.matches,
     required this.retryPolicies,

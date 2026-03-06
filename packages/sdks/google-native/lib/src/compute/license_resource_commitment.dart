@@ -15,7 +15,7 @@ class LicenseResourceCommitment {
   /// [amount] The number of licenses purchased.
   /// [coresPerLicense] Specifies the core range of the instance for which this license applies.
   /// [license] Any applicable license URI.
-  LicenseResourceCommitment({
+  const LicenseResourceCommitment({
     this.amount,
     this.coresPerLicense,
     this.license,

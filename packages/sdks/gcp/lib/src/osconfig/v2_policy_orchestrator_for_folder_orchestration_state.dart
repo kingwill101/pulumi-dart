@@ -17,7 +17,7 @@ class V2PolicyOrchestratorForFolderOrchestrationState {
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationState].
   /// [currentIterationStates] (Output)
   /// [previousIterationStates] (Output)
-  V2PolicyOrchestratorForFolderOrchestrationState({
+  const V2PolicyOrchestratorForFolderOrchestrationState({
     this.currentIterationStates,
     this.previousIterationStates,
   });

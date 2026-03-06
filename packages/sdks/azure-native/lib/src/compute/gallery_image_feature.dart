@@ -15,7 +15,7 @@ class GalleryImageFeature {
   /// [name] The name of the gallery image feature.
   /// [startsAtVersion] The minimum gallery image version which supports this feature.
   /// [value] The value of the gallery image feature.
-  GalleryImageFeature({
+  const GalleryImageFeature({
     this.name,
     this.startsAtVersion,
     this.value,

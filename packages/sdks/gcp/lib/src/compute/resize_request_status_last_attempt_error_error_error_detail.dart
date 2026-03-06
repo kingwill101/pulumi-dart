@@ -29,7 +29,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
   /// [helps] (Output)
   /// [localizedMessages] (Output)
   /// [quotaInfos] (Output)
-  ResizeRequestStatusLastAttemptErrorErrorErrorDetail({
+  const ResizeRequestStatusLastAttemptErrorErrorErrorDetail({
     this.errorInfos,
     this.helps,
     this.localizedMessages,

@@ -58,7 +58,7 @@ class ServiceNowLinkedServiceResponse {
   /// [usePeerVerification] Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
   /// [username] The user name used to connect to the ServiceNow server for Basic and OAuth2 authentication.
   /// [version] Version of the linked service.
-  ServiceNowLinkedServiceResponse({
+  const ServiceNowLinkedServiceResponse({
     this.annotations,
     required this.authenticationType,
     this.clientId,

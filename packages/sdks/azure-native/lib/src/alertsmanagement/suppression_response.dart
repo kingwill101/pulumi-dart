@@ -40,7 +40,7 @@ class SuppressionResponse {
   /// [status] Indicates if the given action rule is enabled or disabled
   /// [suppressionConfig] suppression configuration for the action rule
   /// [type] Indicates type of action rule
-  SuppressionResponse({
+  const SuppressionResponse({
     this.conditions,
     required this.createdAt,
     required this.createdBy,

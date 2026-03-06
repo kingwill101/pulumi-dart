@@ -11,7 +11,7 @@ class GetPortAllowedAddressPair {
   /// Creates a new [GetPortAllowedAddressPair].
   /// [ipAddress] The additional IP address.
   /// [macAddress] The MAC address of the port.
-  GetPortAllowedAddressPair({
+  const GetPortAllowedAddressPair({
     required this.ipAddress,
     required this.macAddress,
   });

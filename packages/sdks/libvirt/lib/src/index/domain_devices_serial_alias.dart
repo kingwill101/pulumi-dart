@@ -8,7 +8,7 @@ class DomainDevicesSerialAlias {
 
   /// Creates a new [DomainDevicesSerialAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesSerialAlias({
+  const DomainDevicesSerialAlias({
     required this.name,
   });
 

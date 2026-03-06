@@ -13,7 +13,7 @@ class ImageScanStatusResponse {
   /// Creates a new [ImageScanStatusResponse].
   /// [description] &lt;p&gt;The description of the image scan status.&lt;/p&gt;
   /// [status] &lt;p&gt;The current state of an image scan.&lt;/p&gt;
-  ImageScanStatusResponse({
+  const ImageScanStatusResponse({
     this.description,
     this.status,
   });

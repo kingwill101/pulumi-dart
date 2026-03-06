@@ -27,7 +27,7 @@ class CustomDataSourceLinkedServiceResponse {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  CustomDataSourceLinkedServiceResponse({
+  const CustomDataSourceLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.description,

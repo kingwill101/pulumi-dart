@@ -23,7 +23,7 @@ class PreventionJobTriggerInspectJob {
   /// [inspectConfig] The core content of the template.
   /// [inspectTemplateName] The name of the template to run when this job is triggered.
   /// [storageConfig] Information on where to inspect
-  PreventionJobTriggerInspectJob({
+  const PreventionJobTriggerInspectJob({
     this.actions,
     this.inspectConfig,
     this.inspectTemplateName,

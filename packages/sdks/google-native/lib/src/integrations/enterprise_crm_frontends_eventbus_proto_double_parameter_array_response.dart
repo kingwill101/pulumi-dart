@@ -7,7 +7,7 @@ class EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse].
   /// [doubleValues] Required.
-  EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse({
+  const EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse({
     required this.doubleValues,
   });
 

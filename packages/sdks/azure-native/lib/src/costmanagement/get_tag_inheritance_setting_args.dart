@@ -15,7 +15,7 @@ class GetTagInheritanceSettingArgs {
   /// Creates a new [GetTagInheritanceSettingArgs].
   /// [scope] The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
   /// [type] Setting type.
-  GetTagInheritanceSettingArgs({
+  const GetTagInheritanceSettingArgs({
     required this.scope,
     required this.type,
   });

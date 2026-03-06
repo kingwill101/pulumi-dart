@@ -18,7 +18,7 @@ class GetUsersResult {
   /// [nameRegex] Optional.
   /// [names] Set of Names of the matched IAM users.
   /// [pathPrefix] Optional.
-  GetUsersResult({
+  const GetUsersResult({
     required this.arns,
     required this.id,
     this.nameRegex,

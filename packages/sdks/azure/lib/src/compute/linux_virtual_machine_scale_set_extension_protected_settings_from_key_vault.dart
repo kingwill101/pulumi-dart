@@ -11,7 +11,7 @@ class LinuxVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault {
   /// Creates a new [LinuxVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault].
   /// [secretUrl] The URL to the Key Vault Secret which stores the protected settings.
   /// [sourceVaultId] The ID of the source Key Vault.
-  LinuxVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault({
+  const LinuxVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault({
     required this.secretUrl,
     required this.sourceVaultId,
   });

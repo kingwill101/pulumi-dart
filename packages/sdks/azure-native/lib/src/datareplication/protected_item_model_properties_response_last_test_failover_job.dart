@@ -26,7 +26,7 @@ class ProtectedItemModelPropertiesResponseLastTestFailoverJob {
   /// [scenarioName] Gets or sets protection scenario name.
   /// [startTime] Gets or sets start time of the workflow.
   /// [state] Gets or sets workflow state.
-  ProtectedItemModelPropertiesResponseLastTestFailoverJob({
+  const ProtectedItemModelPropertiesResponseLastTestFailoverJob({
     required this.displayName,
     required this.endTime,
     required this.id,

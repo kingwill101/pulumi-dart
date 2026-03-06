@@ -31,7 +31,7 @@ class GetInboundSsoAssignmentResult {
   /// [ssoMode] Inbound SSO behavior.
   /// [targetGroup] Immutable. Must be of the form `groups/{group}`.
   /// [targetOrgUnit] Immutable. Must be of the form `orgUnits/{org_unit}`.
-  GetInboundSsoAssignmentResult({
+  const GetInboundSsoAssignmentResult({
     required this.customer,
     required this.name,
     required this.rank,

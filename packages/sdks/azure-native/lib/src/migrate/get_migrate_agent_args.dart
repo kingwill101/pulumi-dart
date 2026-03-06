@@ -21,7 +21,7 @@ class GetMigrateAgentArgs {
   /// [modernizeProjectName] ModernizeProject name.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [subscriptionId] Azure Subscription Id in which project was created.
-  GetMigrateAgentArgs({
+  const GetMigrateAgentArgs({
     required this.agentName,
     required this.modernizeProjectName,
     required this.resourceGroupName,

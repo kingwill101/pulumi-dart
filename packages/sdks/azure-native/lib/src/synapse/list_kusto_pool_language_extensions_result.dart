@@ -10,7 +10,7 @@ class ListKustoPoolLanguageExtensionsResult {
 
   /// Creates a new [ListKustoPoolLanguageExtensionsResult].
   /// [value] The list of language extensions.
-  ListKustoPoolLanguageExtensionsResult({
+  const ListKustoPoolLanguageExtensionsResult({
     this.value,
   });
 

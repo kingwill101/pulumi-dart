@@ -24,7 +24,7 @@ class GetVaultResult {
   /// [recoveryPoints] Number of recovery points that are stored in a backup vault.
   /// [region] Required.
   /// [tags] Metadata that you can assign to help organize the resources that you create.
-  GetVaultResult({
+  const GetVaultResult({
     required this.arn,
     required this.id,
     required this.kmsKeyArn,

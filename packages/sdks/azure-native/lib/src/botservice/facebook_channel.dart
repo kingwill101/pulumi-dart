@@ -20,7 +20,7 @@ class FacebookChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to bot facebook channel
-  FacebookChannel({
+  const FacebookChannel({
     required this.channelName,
     this.etag,
     this.location,

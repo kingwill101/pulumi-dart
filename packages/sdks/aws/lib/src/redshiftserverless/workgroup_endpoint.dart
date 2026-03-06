@@ -15,7 +15,7 @@ class WorkgroupEndpoint {
   /// [address] The DNS address of the VPC endpoint.
   /// [port] The port number on which the cluster accepts incoming connections.
   /// [vpcEndpoints] The VPC endpoint or the Redshift Serverless workgroup. See `VPC Endpoint` below.
-  WorkgroupEndpoint({
+  const WorkgroupEndpoint({
     this.address,
     this.port,
     this.vpcEndpoints,

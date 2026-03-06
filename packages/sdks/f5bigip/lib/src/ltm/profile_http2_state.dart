@@ -45,7 +45,7 @@ class ProfileHttp2State {
   /// [name] Name of Profile should be full path.The full path is the combination of the `partition + profile name`,For example `/Common/test-http2-profile`.
   /// [receiveWindow] The flow-control size for upload streams, in KB. `Default: 32`.
   /// [writeSize] The total size of combined data frames, in bytes, that the HTTP/2 protocol sends in a single write function. `Default: 16384`".
-  ProfileHttp2State({
+  const ProfileHttp2State({
     this.activationModes,
     this.concurrentStreamsPerConnection,
     this.connectionIdleTimeout,

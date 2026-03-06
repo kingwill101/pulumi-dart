@@ -12,7 +12,7 @@ class RouterApplianceInstanceResponse {
   /// Creates a new [RouterApplianceInstanceResponse].
   /// [ipAddress] The IP address on the VM to use for peering.
   /// [virtualMachine] The URI of the VM.
-  RouterApplianceInstanceResponse({
+  const RouterApplianceInstanceResponse({
     required this.ipAddress,
     required this.virtualMachine,
   });

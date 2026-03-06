@@ -40,7 +40,7 @@ class CloudExadataInfrastructureArgs {
   /// [location] Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] Various properties of Exadata Infrastructure.
-  CloudExadataInfrastructureArgs({
+  const CloudExadataInfrastructureArgs({
     required this.cloudExadataInfrastructureId,
     this.deletionProtection,
     this.displayName,

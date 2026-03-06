@@ -55,7 +55,7 @@ class DatacenterAddressLocationResponseResponse {
   /// [street3] Street address line 3
   /// [supportedCarriersForReturnShipment] List of supported carriers for return shipment.
   /// [zip] Zip code
-  DatacenterAddressLocationResponseResponse({
+  const DatacenterAddressLocationResponseResponse({
     required this.additionalShippingInformation,
     required this.addressType,
     required this.city,

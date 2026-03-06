@@ -41,7 +41,7 @@ class StatefulSet {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Spec defines the desired identities of pods in this set.
   /// [status] Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.
-  StatefulSet({
+  const StatefulSet({
     this.apiVersion,
     this.kind,
     this.metadata,

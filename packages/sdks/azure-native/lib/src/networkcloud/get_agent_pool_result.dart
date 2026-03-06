@@ -82,7 +82,7 @@ class GetAgentPoolResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [upgradeSettings] The configuration of the agent pool.
   /// [vmSkuName] The name of the VM SKU that determines the size of resources allocated for node VMs.
-  GetAgentPoolResult({
+  const GetAgentPoolResult({
     this.administratorConfiguration,
     this.agentOptions,
     this.attachedNetworkConfiguration,

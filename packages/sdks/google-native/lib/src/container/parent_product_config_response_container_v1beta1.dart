@@ -12,7 +12,7 @@ class ParentProductConfigResponseContainerV1beta1 {
   /// Creates a new [ParentProductConfigResponseContainerV1beta1].
   /// [labels] Labels contain the configuration of the parent product.
   /// [productName] Name of the parent product associated with the cluster.
-  ParentProductConfigResponseContainerV1beta1({
+  const ParentProductConfigResponseContainerV1beta1({
     required this.labels,
     required this.productName,
   });

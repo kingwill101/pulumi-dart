@@ -21,7 +21,7 @@ class HybridMonitorSlsTaskSlsProcessConfig {
   /// [filter] The conditions that are used to filter logs imported from Log Service. See `filter` below.
   /// [groupBies] The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
   /// [statistics] The method that is used to aggregate logs imported from Log Service. See `statistics` below.
-  HybridMonitorSlsTaskSlsProcessConfig({
+  const HybridMonitorSlsTaskSlsProcessConfig({
     this.expresses,
     this.filter,
     this.groupBies,

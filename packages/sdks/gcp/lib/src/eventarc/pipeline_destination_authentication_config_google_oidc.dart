@@ -19,7 +19,7 @@ class PipelineDestinationAuthenticationConfigGoogleOidc {
   /// Creates a new [PipelineDestinationAuthenticationConfigGoogleOidc].
   /// [audience] Audience to be used to generate the OIDC Token. The audience claim
   /// [serviceAccount] Service account email used to generate the OIDC Token.
-  PipelineDestinationAuthenticationConfigGoogleOidc({
+  const PipelineDestinationAuthenticationConfigGoogleOidc({
     this.audience,
     required this.serviceAccount,
   });

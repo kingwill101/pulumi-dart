@@ -26,7 +26,7 @@ class CapacityReservationArgs {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetDpus] Number of data processing units requested. Must be at least `24` units.
   /// [timeouts] Optional.
-  CapacityReservationArgs({
+  const CapacityReservationArgs({
     this.name,
     this.region,
     this.tags,

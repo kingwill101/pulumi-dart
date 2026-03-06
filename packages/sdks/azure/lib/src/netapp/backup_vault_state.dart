@@ -21,7 +21,7 @@ class BackupVaultState {
   /// [name] The name of the NetApp Backup Vault. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the NetApp Backup Vault should be created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  BackupVaultState({
+  const BackupVaultState({
     this.accountName,
     this.location,
     this.name,

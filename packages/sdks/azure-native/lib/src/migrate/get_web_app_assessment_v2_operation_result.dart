@@ -113,7 +113,7 @@ class GetWebAppAssessmentV2OperationResult {
   /// [timeRange] Time Range for which the historic utilization data should be considered for
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedTimestamp] Date and Time when assessment was last updated.
-  GetWebAppAssessmentV2OperationResult({
+  const GetWebAppAssessmentV2OperationResult({
     this.appSvcContainerSettings,
     this.appSvcNativeSettings,
     this.assessmentType,

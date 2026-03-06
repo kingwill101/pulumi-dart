@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSlack {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSlack].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesSlack({
+  const FlowSourceFlowConfigSourceConnectorPropertiesSlack({
     required this.object_,
   });
 

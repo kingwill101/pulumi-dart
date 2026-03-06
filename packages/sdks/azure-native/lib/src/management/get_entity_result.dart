@@ -16,7 +16,7 @@ class GetEntityResult {
   /// [count] Total count of records that match the filter.
   /// [nextLink] The link to the next page of items
   /// [value] The EntityInfo items on this page
-  GetEntityResult({
+  const GetEntityResult({
     this.count,
     this.nextLink,
     required this.value,

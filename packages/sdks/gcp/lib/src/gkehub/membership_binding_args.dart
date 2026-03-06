@@ -32,7 +32,7 @@ class MembershipBindingArgs {
   /// [membershipId] Id of the membership
   /// [project] The ID of the project in which the resource belongs.
   /// [scope] A Workspace resource name in the format
-  MembershipBindingArgs({
+  const MembershipBindingArgs({
     this.labels,
     required this.location,
     required this.membershipBindingId,

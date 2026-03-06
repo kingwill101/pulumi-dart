@@ -19,7 +19,7 @@ class BackendServiceCustomMetric {
   /// Creates a new [BackendServiceCustomMetric].
   /// [dryRun] If true, the metric data is not used for load balancing.
   /// [name] Name of a custom utilization signal. The name must be 1-64 characters
-  BackendServiceCustomMetric({
+  const BackendServiceCustomMetric({
     required this.dryRun,
     required this.name,
   });

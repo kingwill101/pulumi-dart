@@ -44,7 +44,7 @@ class LoadBalancerMonitor {
   /// [port] The target port.
   /// [timeout] The timeout for the health check, in seconds. The value range is 1-10.
   /// [type] The type of monitor protocol, such as HTTP, used for health checks. When the value is off, it indicates that no check is performed.
-  LoadBalancerMonitor({
+  const LoadBalancerMonitor({
     this.consecutiveDown,
     this.consecutiveUp,
     this.expectedCodes,

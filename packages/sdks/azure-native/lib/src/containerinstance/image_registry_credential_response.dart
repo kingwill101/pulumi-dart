@@ -24,7 +24,7 @@ class ImageRegistryCredentialResponse {
   /// [passwordReference] The reference for the private registry password.
   /// [server] The Docker image registry server without a protocol such as "http" and "https".
   /// [username] The username for the private registry.
-  ImageRegistryCredentialResponse({
+  const ImageRegistryCredentialResponse({
     this.identity,
     this.identityUrl,
     this.password,

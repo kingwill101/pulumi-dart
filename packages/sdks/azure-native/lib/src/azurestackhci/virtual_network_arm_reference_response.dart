@@ -9,7 +9,7 @@ class VirtualNetworkArmReferenceResponse {
 
   /// Creates a new [VirtualNetworkArmReferenceResponse].
   /// [resourceId] The Azure Resource ID for a Virtual Network.
-  VirtualNetworkArmReferenceResponse({
+  const VirtualNetworkArmReferenceResponse({
     this.resourceId,
   });
 

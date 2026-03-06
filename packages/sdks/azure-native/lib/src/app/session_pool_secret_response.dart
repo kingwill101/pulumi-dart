@@ -9,7 +9,7 @@ class SessionPoolSecretResponse {
 
   /// Creates a new [SessionPoolSecretResponse].
   /// [name] Secret Name.
-  SessionPoolSecretResponse({
+  const SessionPoolSecretResponse({
     this.name,
   });
 

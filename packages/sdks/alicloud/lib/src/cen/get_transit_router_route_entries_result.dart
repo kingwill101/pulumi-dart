@@ -34,7 +34,7 @@ class GetTransitRouterRouteEntriesResult {
   /// [transitRouterRouteEntryNames] Optional.
   /// [transitRouterRouteEntryStatus] The status of the route entry in CEN.
   /// [transitRouterRouteTableId] Required.
-  GetTransitRouterRouteEntriesResult({
+  const GetTransitRouterRouteEntriesResult({
     required this.entries,
     required this.id,
     required this.ids,

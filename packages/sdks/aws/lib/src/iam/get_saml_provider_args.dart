@@ -15,7 +15,7 @@ class GetSamlProviderArgs {
   /// Creates a new [GetSamlProviderArgs].
   /// [arn] ARN assigned by AWS for the provider.
   /// [tags] Tags attached to the SAML provider.
-  GetSamlProviderArgs({
+  const GetSamlProviderArgs({
     required this.arn,
     this.tags,
   });

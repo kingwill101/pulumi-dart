@@ -18,7 +18,7 @@ class AccessPackageState {
   /// [description] The description of the access package.
   /// [displayName] The display name of the access package.
   /// [hidden] Whether the access package is hidden from the requestor.
-  AccessPackageState({
+  const AccessPackageState({
     this.catalogId,
     this.description,
     this.displayName,

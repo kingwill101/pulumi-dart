@@ -20,7 +20,7 @@ class TableDataSet {
   /// [tableDisplayOptions] Optional. Table display options for configuring how the table is rendered.
   /// [tableTemplate] Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
   /// [timeSeriesQuery] Fields for querying time series data from the Stackdriver metrics API.
-  TableDataSet({
+  const TableDataSet({
     this.minAlignmentPeriod,
     this.tableDisplayOptions,
     this.tableTemplate,

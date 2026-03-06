@@ -49,7 +49,7 @@ class GetCacheRedisConfiguration {
   /// [rdbBackupMaxSnapshotCount] The maximum number of snapshots that can be created as a backup.
   /// [rdbStorageConnectionString] The Connection String to the Storage Account. Only supported for Premium SKUs.
   /// [storageAccountSubscriptionId] The ID of the Subscription containing the Storage Account.
-  GetCacheRedisConfiguration({
+  const GetCacheRedisConfiguration({
     required this.activeDirectoryAuthenticationEnabled,
     required this.aofBackupEnabled,
     required this.aofStorageConnectionString0,

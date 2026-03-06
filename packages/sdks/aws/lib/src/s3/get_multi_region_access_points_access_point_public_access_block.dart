@@ -17,7 +17,7 @@ class GetMultiRegionAccessPointsAccessPointPublicAccessBlock {
   /// [blockPublicPolicy] Whether Amazon S3 should block public bucket policies for buckets in this account.
   /// [ignorePublicAcls] Whether Amazon S3 should ignore public ACLs for buckets in this account.
   /// [restrictPublicBuckets] Whether Amazon S3 should restrict public bucket policies for buckets in this account.
-  GetMultiRegionAccessPointsAccessPointPublicAccessBlock({
+  const GetMultiRegionAccessPointsAccessPointPublicAccessBlock({
     required this.blockPublicAcls,
     required this.blockPublicPolicy,
     required this.ignorePublicAcls,

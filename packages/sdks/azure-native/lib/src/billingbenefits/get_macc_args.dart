@@ -15,7 +15,7 @@ class GetMaccArgs {
   /// Creates a new [GetMaccArgs].
   /// [maccName] Name of primary MACC.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMaccArgs({
+  const GetMaccArgs({
     required this.maccName,
     required this.resourceGroupName,
   });

@@ -40,7 +40,7 @@ class AgentKnowledgeBaseStorageConfiguration {
   /// [redisEnterpriseCloudConfiguration] The storage configuration of the knowledge base in Redis Enterprise Cloud. See `redis_enterprise_cloud_configuration` block for details.
   /// [s3VectorsConfiguration] The storage configuration of the knowledge base in Amazon S3 Vectors. See `s3_vectors_configuration` block for details.
   /// [type] Vector store service in which the knowledge base is stored. Valid Values: `MONGO_DB_ATLAS`, `OPENSEARCH_SERVERLESS`, `OPENSEARCH_MANAGED_CLUSTER`, `PINECONE`, `REDIS_ENTERPRISE_CLOUD`, `RDS`, `S3_VECTORS`, `NEPTUNE_ANALYTICS`.
-  AgentKnowledgeBaseStorageConfiguration({
+  const AgentKnowledgeBaseStorageConfiguration({
     this.mongoDbAtlasConfiguration,
     this.neptuneAnalyticsConfiguration,
     this.opensearchManagedClusterConfiguration,

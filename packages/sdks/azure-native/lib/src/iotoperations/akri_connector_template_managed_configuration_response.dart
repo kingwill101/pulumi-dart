@@ -14,7 +14,7 @@ class AkriConnectorTemplateManagedConfigurationResponse {
   /// Creates a new [AkriConnectorTemplateManagedConfigurationResponse].
   /// [managedConfigurationSettings] The managed configuration settings.
   /// [runtimeConfigurationType] Runtime configuration types.
-  AkriConnectorTemplateManagedConfigurationResponse({
+  const AkriConnectorTemplateManagedConfigurationResponse({
     required this.managedConfigurationSettings,
     required this.runtimeConfigurationType,
   });

@@ -22,7 +22,7 @@ class TableArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [signedIdentifiers] List of stored access policies specified on the table.
   /// [tableName] A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
-  TableArgs({
+  const TableArgs({
     required this.accountName,
     required this.resourceGroupName,
     this.signedIdentifiers,

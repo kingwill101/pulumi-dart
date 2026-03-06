@@ -15,7 +15,7 @@ class GetVpnSiteArgs {
   /// Creates a new [GetVpnSiteArgs].
   /// [resourceGroupName] The resource group name of the VpnSite.
   /// [vpnSiteName] The name of the VpnSite being retrieved.
-  GetVpnSiteArgs({
+  const GetVpnSiteArgs({
     required this.resourceGroupName,
     required this.vpnSiteName,
   });

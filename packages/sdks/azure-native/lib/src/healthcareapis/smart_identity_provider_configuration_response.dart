@@ -13,7 +13,7 @@ class SmartIdentityProviderConfigurationResponse {
   /// Creates a new [SmartIdentityProviderConfigurationResponse].
   /// [applications] The array of identity provider applications for SMART on FHIR authentication.
   /// [authority] The identity provider token authority also known as the token issuing authority.
-  SmartIdentityProviderConfigurationResponse({
+  const SmartIdentityProviderConfigurationResponse({
     this.applications,
     this.authority,
   });

@@ -23,7 +23,7 @@ class AzurermPortalDashboardResult {
   /// [name] Optional.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the shared Azure Portal dashboard.
-  AzurermPortalDashboardResult({
+  const AzurermPortalDashboardResult({
     required this.dashboardProperties,
     this.displayName,
     required this.id,

@@ -27,7 +27,7 @@ class ContributorInsightRuleState {
   /// [ruleState] State of the rule. Valid values are `ENABLED` and `DISABLED`.
   /// [tags] Optional.
   /// [tagsAll] Optional.
-  ContributorInsightRuleState({
+  const ContributorInsightRuleState({
     this.region,
     this.resourceArn,
     this.ruleDefinition,

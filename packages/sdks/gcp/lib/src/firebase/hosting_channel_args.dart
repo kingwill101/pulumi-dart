@@ -34,7 +34,7 @@ class HostingChannelArgs {
   /// [retainedReleaseCount] The number of previous releases to retain on the channel for rollback or other
   /// [siteId] Required. The ID of the site in which to create this channel.
   /// [ttl] Input only. A time-to-live for this channel. Sets `expire_time` to the provided
-  HostingChannelArgs({
+  const HostingChannelArgs({
     required this.channelId,
     this.expireTime,
     this.labels,

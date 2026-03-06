@@ -16,7 +16,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetect
   /// [attributionScoreDriftThresholds] Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
   /// [defaultDriftThreshold] Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
   /// [driftThresholds] Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
-  GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse({
+  const GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse({
     required this.attributionScoreDriftThresholds,
     required this.defaultDriftThreshold,
     required this.driftThresholds,

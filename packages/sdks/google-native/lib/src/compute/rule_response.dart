@@ -29,7 +29,7 @@ class RuleResponse {
   /// [logConfigs] This is deprecated and has no effect. Do not use.
   /// [notIns] This is deprecated and has no effect. Do not use.
   /// [permissions] This is deprecated and has no effect. Do not use.
-  RuleResponse({
+  const RuleResponse({
     required this.action,
     required this.conditions,
     required this.description,

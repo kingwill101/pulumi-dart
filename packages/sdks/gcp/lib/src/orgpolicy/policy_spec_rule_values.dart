@@ -11,7 +11,7 @@ class PolicySpecRuleValues {
   /// Creates a new [PolicySpecRuleValues].
   /// [allowedValues] List of values allowed at this resource.
   /// [deniedValues] List of values denied at this resource.
-  PolicySpecRuleValues({
+  const PolicySpecRuleValues({
     this.allowedValues,
     this.deniedValues,
   });

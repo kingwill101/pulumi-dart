@@ -15,7 +15,7 @@ class GetInstanceDatabaseIamPolicyArgs {
   /// [databaseId] Required.
   /// [instanceId] Required.
   /// [project] Optional.
-  GetInstanceDatabaseIamPolicyArgs({
+  const GetInstanceDatabaseIamPolicyArgs({
     required this.databaseId,
     required this.instanceId,
     this.project,

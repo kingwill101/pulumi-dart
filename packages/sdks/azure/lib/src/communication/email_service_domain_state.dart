@@ -31,7 +31,7 @@ class EmailServiceDomainState {
   /// [tags] A mapping of tags which should be assigned to the Email Communication Service.
   /// [userEngagementTrackingEnabled] Describes user engagement tracking is enabled or disabled. Defaults to `false`.
   /// [verificationRecords] (Optional) An `verification_records` block as defined below.
-  EmailServiceDomainState({
+  const EmailServiceDomainState({
     this.domainManagement,
     this.emailServiceId,
     this.fromSenderDomain,

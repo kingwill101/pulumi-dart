@@ -16,7 +16,7 @@ class GetBrokerNodesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [nodeInfoLists] Required.
   /// [region] Required.
-  GetBrokerNodesResult({
+  const GetBrokerNodesResult({
     required this.clusterArn,
     required this.id,
     required this.nodeInfoLists,

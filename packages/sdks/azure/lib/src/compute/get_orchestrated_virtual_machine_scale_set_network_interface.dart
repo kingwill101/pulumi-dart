@@ -27,7 +27,7 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterface {
   /// [name] The name of this Orchestrated Virtual Machine Scale Set.
   /// [networkSecurityGroupId] The identifier for the network security group.
   /// [primary] If this ip_configuration is the primary one.
-  GetOrchestratedVirtualMachineScaleSetNetworkInterface({
+  const GetOrchestratedVirtualMachineScaleSetNetworkInterface({
     required this.acceleratedNetworkingEnabled,
     required this.dnsServers,
     required this.ipConfigurations,

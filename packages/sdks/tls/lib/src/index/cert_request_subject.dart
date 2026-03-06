@@ -35,7 +35,7 @@ class CertRequestSubject {
   /// [province] Distinguished name: `ST`
   /// [serialNumber] Distinguished name: `SERIALNUMBER`
   /// [streetAddresses] Distinguished name: `STREET`
-  CertRequestSubject({
+  const CertRequestSubject({
     this.commonName,
     this.country,
     this.emailAddress,

@@ -40,7 +40,7 @@ class VirtualMachineSizeResponse {
   /// [premiumIO] Specifies if the virtual machine size supports premium IO.
   /// [supportedComputeTypes] Specifies the compute types supported by the virtual machine size.
   /// [vCPUs] The number of vCPUs supported by the virtual machine size.
-  VirtualMachineSizeResponse({
+  const VirtualMachineSizeResponse({
     this.estimatedVMPrices,
     required this.family,
     required this.gpus,

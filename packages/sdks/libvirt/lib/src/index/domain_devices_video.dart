@@ -24,7 +24,7 @@ class DomainDevicesVideo {
   /// [alias] Configures the alias for the persistent storage device, allowing for easier identification within the domain.
   /// [driver] Configures the driver properties for the video device.
   /// [model] Defines the specific model of the video device being used.
-  DomainDevicesVideo({
+  const DomainDevicesVideo({
     this.acpi,
     this.address,
     this.alias,

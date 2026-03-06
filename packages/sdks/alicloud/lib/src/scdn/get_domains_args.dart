@@ -27,7 +27,7 @@ class GetDomainsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The Resource Group ID.
   /// [status] The status of the resource. Valid values: "check_failed", "checking", "configure_failed", "configuring", "offline", "online".
-  GetDomainsArgs({
+  const GetDomainsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

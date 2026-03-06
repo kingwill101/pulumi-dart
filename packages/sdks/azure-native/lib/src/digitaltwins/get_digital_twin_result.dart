@@ -51,7 +51,7 @@ class GetDigitalTwinResult {
   /// [systemData] Metadata pertaining to creation and last modification of the DigitalTwinsInstance.
   /// [tags] The resource tags.
   /// [type] The resource type.
-  GetDigitalTwinResult({
+  const GetDigitalTwinResult({
     required this.azureApiVersion,
     required this.createdTime,
     required this.hostName,

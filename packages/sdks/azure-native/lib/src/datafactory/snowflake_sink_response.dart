@@ -35,7 +35,7 @@ class SnowflakeSinkResponse {
   /// [type] Copy sink type.
   /// [writeBatchSize] Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   /// [writeBatchTimeout] Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  SnowflakeSinkResponse({
+  const SnowflakeSinkResponse({
     this.disableMetricsCollection,
     this.importSettings,
     this.maxConcurrentConnections,

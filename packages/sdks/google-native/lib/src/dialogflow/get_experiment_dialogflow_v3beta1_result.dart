@@ -56,7 +56,7 @@ class GetExperimentDialogflowV3beta1Result {
   /// [startTime] Start time of this experiment.
   /// [state] The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT-&gt;RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT-&gt;DONE or RUNNING-&gt;DONE.
   /// [variantsHistory] The history of updates to the experiment variants.
-  GetExperimentDialogflowV3beta1Result({
+  const GetExperimentDialogflowV3beta1Result({
     required this.createTime,
     required this.definition,
     required this.description,

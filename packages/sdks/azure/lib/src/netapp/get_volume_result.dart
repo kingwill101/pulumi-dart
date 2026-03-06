@@ -71,7 +71,7 @@ class GetVolumeResult {
   /// [subnetId] The ID of a Subnet in which the NetApp Volume resides.
   /// [volumePath] The unique file path of the volume.
   /// [zone] The Availability Zone in which the Volume is located.
-  GetVolumeResult({
+  const GetVolumeResult({
     required this.acceptGrowCapacityPoolForShortTermCloneSplit,
     required this.accountName,
     required this.dataProtectionBackupPolicies,

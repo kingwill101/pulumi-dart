@@ -27,7 +27,7 @@ class SslVpnClientCertState {
   /// [name] The name of the client certificate.
   /// [sslVpnServerId] The ID of the SSL-VPN server.
   /// [status] The status of the client certificate.
-  SslVpnClientCertState({
+  const SslVpnClientCertState({
     this.caCert,
     this.clientCert,
     this.clientConfig,

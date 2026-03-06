@@ -8,7 +8,7 @@ class WorkspaceLoggingConfiguration {
 
   /// Creates a new [WorkspaceLoggingConfiguration].
   /// [logGroupArn] The ARN of the CloudWatch log group to which the vended log data will be published. This log group must exist. The ARN must end with `:*`
-  WorkspaceLoggingConfiguration({
+  const WorkspaceLoggingConfiguration({
     required this.logGroupArn,
   });
 

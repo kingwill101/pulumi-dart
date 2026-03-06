@@ -13,7 +13,7 @@ class GlobalSecondaryIndexProjection {
   /// Creates a new [GlobalSecondaryIndexProjection].
   /// [nonKeyAttributes] Specifies which additional attributes to include in the index.
   /// [projectionType] The set of attributes represented in the index.
-  GlobalSecondaryIndexProjection({
+  const GlobalSecondaryIndexProjection({
     this.nonKeyAttributes,
     required this.projectionType,
   });

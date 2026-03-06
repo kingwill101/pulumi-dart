@@ -23,7 +23,7 @@ class QuerySelector {
   /// [queryString] Azure Resource Graph (ARG) Query Language query for target resources.
   /// [subscriptionIds] Subscription id list to scope resource query.
   /// [type] Enum of the selector type.
-  QuerySelector({
+  const QuerySelector({
     this.filter,
     required this.id,
     required this.queryString,

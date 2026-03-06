@@ -31,7 +31,7 @@ class GlossaryArgs {
   /// [location] Optional.
   /// [name] The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
   /// [project] Optional.
-  GlossaryArgs({
+  const GlossaryArgs({
     this.displayName,
     required this.inputConfig,
     this.languageCodesSet,

@@ -12,7 +12,7 @@ class ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsResponse {
   /// Creates a new [ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsResponse].
   /// [preflightOptions] The preflight options.
   /// [preflightSupported] Whether preflight is supported.
-  ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsResponse({
+  const ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsResponse({
     this.preflightOptions,
     this.preflightSupported,
   });

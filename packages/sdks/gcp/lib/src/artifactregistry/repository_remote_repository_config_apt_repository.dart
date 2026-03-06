@@ -10,7 +10,7 @@ class RepositoryRemoteRepositoryConfigAptRepository {
 
   /// Creates a new [RepositoryRemoteRepositoryConfigAptRepository].
   /// [publicRepository] One of the publicly available Apt repositories supported by Artifact Registry.
-  RepositoryRemoteRepositoryConfigAptRepository({
+  const RepositoryRemoteRepositoryConfigAptRepository({
     this.publicRepository,
   });
 

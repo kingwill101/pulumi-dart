@@ -18,7 +18,7 @@ class AuthorizationRule {
   /// [brokerResources] Give access to Broker methods and topics.
   /// [principals] Give access to clients based on the following properties.
   /// [stateStoreResources] Give access to state store resources.
-  AuthorizationRule({
+  const AuthorizationRule({
     required this.brokerResources,
     required this.principals,
     this.stateStoreResources,

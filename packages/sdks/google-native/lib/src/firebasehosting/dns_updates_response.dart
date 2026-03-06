@@ -16,7 +16,7 @@ class DnsUpdatesResponse {
   /// [checkTime] The last time Hosting checked your custom domain's DNS records.
   /// [desired] The set of DNS records Hosting needs to serve secure content on the domain.
   /// [discovered] The set of DNS records Hosting discovered when inspecting a domain.
-  DnsUpdatesResponse({
+  const DnsUpdatesResponse({
     required this.checkTime,
     required this.desired,
     required this.discovered,

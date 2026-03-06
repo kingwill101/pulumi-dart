@@ -12,7 +12,7 @@ class InstanceAcceleratorConfig {
   /// Creates a new [InstanceAcceleratorConfig].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Type of this accelerator.
-  InstanceAcceleratorConfig({
+  const InstanceAcceleratorConfig({
     required this.coreCount,
     required this.type,
   });

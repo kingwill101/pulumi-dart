@@ -15,7 +15,7 @@ class HttpHeaderOptionResponse {
   /// [headerName] The name of the header.
   /// [headerValue] The value of the header to add.
   /// [replace] If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false.
-  HttpHeaderOptionResponse({
+  const HttpHeaderOptionResponse({
     required this.headerName,
     required this.headerValue,
     required this.replace,

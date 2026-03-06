@@ -21,7 +21,7 @@ class GetScriptArgs {
   /// [databaseName] The name of the database in the Kusto cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scriptName] The name of the Kusto database script.
-  GetScriptArgs({
+  const GetScriptArgs({
     required this.clusterName,
     required this.databaseName,
     required this.resourceGroupName,

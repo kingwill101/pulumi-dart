@@ -32,7 +32,7 @@ class GetClustersResult {
   /// [outputFile] Optional.
   /// [requestPars] Optional.
   /// [status] The status of MSE Cluster.
-  GetClustersResult({
+  const GetClustersResult({
     this.clusterAliasName,
     required this.clusters,
     this.enableDetails,

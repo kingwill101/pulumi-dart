@@ -10,7 +10,7 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
   /// Creates a new [ContainerGroupVolumeConfigFileVolumeConfigFileToPath].
   /// [content] The content of the configuration file. Maximum size: 32 KB.
   /// [path] Optional.
-  ContainerGroupVolumeConfigFileVolumeConfigFileToPath({
+  const ContainerGroupVolumeConfigFileVolumeConfigFileToPath({
     this.content,
     this.path,
   });

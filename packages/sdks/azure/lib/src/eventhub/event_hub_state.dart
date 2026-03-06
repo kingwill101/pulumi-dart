@@ -42,7 +42,7 @@ class EventHubState {
   /// [resourceGroupName] Optional.
   /// [retentionDescription] A `retention_description` block as defined below.
   /// [status] Specifies the status of the Event Hub resource. Possible values are `Active`, `Disabled` and `SendDisabled`. Defaults to `Active`.
-  EventHubState({
+  const EventHubState({
     this.captureDescription,
     this.messageRetention,
     this.name,

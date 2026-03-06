@@ -68,7 +68,7 @@ class MachineAssessmentSettings {
   /// [scalingFactor] Percentage of buffer that user wants on performance metrics when recommending
   /// [sizingCriterion] Assessment sizing criterion.
   /// [vmUptime] Gets or sets the duration for which the VMs are up in the on-premises
-  MachineAssessmentSettings({
+  const MachineAssessmentSettings({
     this.azureDiskTypes,
     this.azureHybridUseBenefit,
     this.azureLocation,

@@ -20,7 +20,7 @@ class SecretReplica {
   /// [region] Region for replicating the secret.
   /// [status] Status can be `InProgress`, `Failed`, or `InSync`.
   /// [statusMessage] Message such as `Replication succeeded` or `Secret with this name already exists in this region`.
-  SecretReplica({
+  const SecretReplica({
     this.kmsKeyId,
     this.lastAccessedDate,
     required this.region,

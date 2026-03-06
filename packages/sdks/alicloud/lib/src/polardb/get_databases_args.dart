@@ -15,7 +15,7 @@ class GetDatabasesArgs {
   /// Creates a new [GetDatabasesArgs].
   /// [dbClusterId] The polarDB cluster ID.
   /// [nameRegex] A regex string to filter results by database name.
-  GetDatabasesArgs({
+  const GetDatabasesArgs({
     required this.dbClusterId,
     this.nameRegex,
   });

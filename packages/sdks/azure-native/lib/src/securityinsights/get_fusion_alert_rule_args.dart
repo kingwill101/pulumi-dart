@@ -18,7 +18,7 @@ class GetFusionAlertRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleId] Alert rule ID
   /// [workspaceName] The name of the workspace.
-  GetFusionAlertRuleArgs({
+  const GetFusionAlertRuleArgs({
     required this.resourceGroupName,
     required this.ruleId,
     required this.workspaceName,

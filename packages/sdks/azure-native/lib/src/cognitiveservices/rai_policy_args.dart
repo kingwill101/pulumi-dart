@@ -25,7 +25,7 @@ class RaiPolicyArgs {
   /// [raiPolicyName] The name of the RaiPolicy associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  RaiPolicyArgs({
+  const RaiPolicyArgs({
     required this.accountName,
     this.properties,
     this.raiPolicyName,

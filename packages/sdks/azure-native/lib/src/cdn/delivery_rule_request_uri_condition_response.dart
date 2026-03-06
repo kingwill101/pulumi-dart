@@ -14,7 +14,7 @@ class DeliveryRuleRequestUriConditionResponse {
   /// Creates a new [DeliveryRuleRequestUriConditionResponse].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleRequestUriConditionResponse({
+  const DeliveryRuleRequestUriConditionResponse({
     required this.name,
     required this.parameters,
   });

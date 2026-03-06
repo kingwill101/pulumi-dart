@@ -18,7 +18,7 @@ class WorkspaceNetworkOutboundRuleFqdnArgs {
   /// [destinationFqdn] Specifies the fully qualified domain name to allow for outbound traffic.
   /// [name] Specifies the name of the Machine Learning Workspace FQDN Network Outbound Rule. Changing this forces a new resource to be created.
   /// [workspaceId] Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
-  WorkspaceNetworkOutboundRuleFqdnArgs({
+  const WorkspaceNetworkOutboundRuleFqdnArgs({
     required this.destinationFqdn,
     this.name,
     required this.workspaceId,

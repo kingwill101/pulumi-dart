@@ -13,7 +13,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema {
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema].
   /// [inlinePayloads] Inline tool definition. See `inline_payload` below.
   /// [s3] S3-based tool definition. See `s3` below.
-  AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema({
+  const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema({
     this.inlinePayloads,
     this.s3,
   });

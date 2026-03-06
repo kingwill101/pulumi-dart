@@ -23,7 +23,7 @@ class GetIntegrationExportersResult {
   /// [integrationExporters] A list of Integration Exporters. Each element contains the following attributes:
   /// [integrationType] The type of prometheus integration.
   /// [outputFile] Optional.
-  GetIntegrationExportersResult({
+  const GetIntegrationExportersResult({
     required this.clusterId,
     required this.id,
     required this.ids,

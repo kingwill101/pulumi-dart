@@ -23,7 +23,7 @@ class RegistryTaskFileStep {
   /// [taskFilePath] The task template file path relative to the source context.
   /// [valueFilePath] The parameters file path relative to the source context.
   /// [values] Specifies a map of values that can be passed when running a task.
-  RegistryTaskFileStep({
+  const RegistryTaskFileStep({
     this.contextAccessToken,
     this.contextPath,
     this.secretValues,

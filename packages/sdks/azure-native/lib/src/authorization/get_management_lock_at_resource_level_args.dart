@@ -30,7 +30,7 @@ class GetManagementLockAtResourceLevelArgs {
   /// [resourceName] The name of the resource.
   /// [resourceProviderNamespace] The namespace of the resource provider.
   /// [resourceType] The type of the resource.
-  GetManagementLockAtResourceLevelArgs({
+  const GetManagementLockAtResourceLevelArgs({
     required this.apiVersion,
     required this.lockName,
     required this.parentResourcePath,

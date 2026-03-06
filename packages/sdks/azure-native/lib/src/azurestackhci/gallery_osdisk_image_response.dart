@@ -9,7 +9,7 @@ class GalleryOSDiskImageResponse {
 
   /// Creates a new [GalleryOSDiskImageResponse].
   /// [sizeInMB] This property indicates the size of the VHD to be created.
-  GalleryOSDiskImageResponse({
+  const GalleryOSDiskImageResponse({
     required this.sizeInMB,
   });
 

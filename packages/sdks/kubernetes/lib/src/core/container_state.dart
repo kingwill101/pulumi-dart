@@ -18,7 +18,7 @@ class ContainerState {
   /// [running] Details about a running container
   /// [terminated] Details about a terminated container
   /// [waiting] Details about a waiting container
-  ContainerState({
+  const ContainerState({
     this.running,
     this.terminated,
     this.waiting,

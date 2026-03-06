@@ -50,7 +50,7 @@ class GetTenantActionGroupResult {
   /// [type] Azure resource type
   /// [voiceReceivers] The list of voice receivers that are part of this tenant action group.
   /// [webhookReceivers] The list of webhook receivers that are part of this tenant action group.
-  GetTenantActionGroupResult({
+  const GetTenantActionGroupResult({
     required this.azureApiVersion,
     this.azureAppPushReceivers,
     this.emailReceivers,

@@ -13,7 +13,7 @@ class GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse {
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse].
   /// [state] Describes the state of the MultiFactor Authentication type.
   /// [totpProviderConfig] TOTP MFA provider config for this project.
-  GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse({
+  const GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse({
     required this.state,
     required this.totpProviderConfig,
   });

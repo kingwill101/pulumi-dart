@@ -8,7 +8,7 @@ class GetAccountCapability {
 
   /// Creates a new [GetAccountCapability].
   /// [name] Specifies the name of the CosmosDB Account.
-  GetAccountCapability({
+  const GetAccountCapability({
     required this.name,
   });
 

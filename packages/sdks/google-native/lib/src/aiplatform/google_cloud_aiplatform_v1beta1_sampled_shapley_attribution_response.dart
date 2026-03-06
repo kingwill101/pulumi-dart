@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse].
   /// [pathCount] The number of feature permutations to consider when approximating the Shapley values. Valid range of its value is [1, 50], inclusively.
-  GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse({
+  const GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse({
     required this.pathCount,
   });
 

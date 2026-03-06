@@ -8,7 +8,7 @@ class RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference {
 
   /// Creates a new [RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference].
   /// [referenceArn] Set of Managed Prefix IP ARN(s)
-  RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference({
+  const RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference({
     required this.referenceArn,
   });
 

@@ -13,7 +13,7 @@ class CspmMonitorGithubOfferingResponse {
   /// Creates a new [CspmMonitorGithubOfferingResponse].
   /// [description] The offering description.
   /// [offeringType] The type of the security offering.
-  CspmMonitorGithubOfferingResponse({
+  const CspmMonitorGithubOfferingResponse({
     required this.description,
     required this.offeringType,
   });

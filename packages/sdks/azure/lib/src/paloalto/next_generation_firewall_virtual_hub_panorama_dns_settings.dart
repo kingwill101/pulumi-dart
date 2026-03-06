@@ -13,7 +13,7 @@ class NextGenerationFirewallVirtualHubPanoramaDnsSettings {
   /// [azureDnsServers] Optional.
   /// [dnsServers] Specifies a list of DNS servers to proxy. Conflicts with `dns_settings[0].use_azure_dns`.
   /// [useAzureDns] Should Azure DNS servers be used? Conflicts with `dns_settings[0].dns_servers`. Defaults to `false`.
-  NextGenerationFirewallVirtualHubPanoramaDnsSettings({
+  const NextGenerationFirewallVirtualHubPanoramaDnsSettings({
     this.azureDnsServers,
     this.dnsServers,
     this.useAzureDns,

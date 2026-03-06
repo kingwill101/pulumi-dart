@@ -25,7 +25,7 @@ class AccountArgs {
   /// [location] Location of the azure resource.
   /// [resourceGroupName] The resource group name.
   /// [tags] Tags on the azure resource.
-  AccountArgs({
+  const AccountArgs({
     this.accountName,
     required this.identity,
     this.location,

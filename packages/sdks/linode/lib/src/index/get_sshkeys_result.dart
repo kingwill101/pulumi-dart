@@ -19,7 +19,7 @@ class GetSshkeysResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [sshkeys] Required.
-  GetSshkeysResult({
+  const GetSshkeysResult({
     this.filters,
     required this.id,
     this.order,

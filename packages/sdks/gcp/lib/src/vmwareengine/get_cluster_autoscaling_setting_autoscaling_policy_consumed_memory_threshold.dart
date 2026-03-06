@@ -11,7 +11,7 @@ class GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold {
   /// Creates a new [GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold].
   /// [scaleIn] The utilization triggering the scale-in operation in percent.
   /// [scaleOut] The utilization triggering the scale-out operation in percent.
-  GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold({
+  const GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold({
     required this.scaleIn,
     required this.scaleOut,
   });

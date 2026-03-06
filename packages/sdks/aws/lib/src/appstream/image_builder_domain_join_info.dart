@@ -11,7 +11,7 @@ class ImageBuilderDomainJoinInfo {
   /// Creates a new [ImageBuilderDomainJoinInfo].
   /// [directoryName] Fully qualified name of the directory (for example, corp.example.com).
   /// [organizationalUnitDistinguishedName] Distinguished name of the organizational unit for computer accounts.
-  ImageBuilderDomainJoinInfo({
+  const ImageBuilderDomainJoinInfo({
     this.directoryName,
     this.organizationalUnitDistinguishedName,
   });

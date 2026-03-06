@@ -11,7 +11,7 @@ class ClusterNodeGroupAckConfigCustomAnnotation {
   /// Creates a new [ClusterNodeGroupAckConfigCustomAnnotation].
   /// [key] The tag key for this scaling rule specific metrics trigger.
   /// [value] The tag value for this scaling rule specific metrics trigger.
-  ClusterNodeGroupAckConfigCustomAnnotation({
+  const ClusterNodeGroupAckConfigCustomAnnotation({
     required this.key,
     this.value,
   });

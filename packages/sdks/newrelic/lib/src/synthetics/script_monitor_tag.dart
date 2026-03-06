@@ -11,7 +11,7 @@ class ScriptMonitorTag {
   /// Creates a new [ScriptMonitorTag].
   /// [key] Name of the tag key.
   /// [values] Values associated with the tag key.
-  ScriptMonitorTag({
+  const ScriptMonitorTag({
     required this.key,
     required this.values,
   });

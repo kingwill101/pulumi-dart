@@ -12,7 +12,7 @@ class HttpErrorRangeParameters {
   /// Creates a new [HttpErrorRangeParameters].
   /// [begin] The inclusive start of the http status code range.
   /// [end] The inclusive end of the http status code range.
-  HttpErrorRangeParameters({
+  const HttpErrorRangeParameters({
     this.begin,
     this.end,
   });

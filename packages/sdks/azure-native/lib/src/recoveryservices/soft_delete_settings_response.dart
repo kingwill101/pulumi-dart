@@ -13,7 +13,7 @@ class SoftDeleteSettingsResponse {
   /// [enhancedSecurityState] Optional.
   /// [softDeleteRetentionPeriodInDays] Soft delete retention period in days
   /// [softDeleteState] Optional.
-  SoftDeleteSettingsResponse({
+  const SoftDeleteSettingsResponse({
     this.enhancedSecurityState,
     this.softDeleteRetentionPeriodInDays,
     this.softDeleteState,

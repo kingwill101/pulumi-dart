@@ -8,7 +8,7 @@ class BareMetalClusterNetworkConfigSrIovConfig {
 
   /// Creates a new [BareMetalClusterNetworkConfigSrIovConfig].
   /// [enabled] Whether to install the SR-IOV operator.
-  BareMetalClusterNetworkConfigSrIovConfig({
+  const BareMetalClusterNetworkConfigSrIovConfig({
     this.enabled,
   });
 

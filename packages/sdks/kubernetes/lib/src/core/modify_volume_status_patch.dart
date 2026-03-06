@@ -21,7 +21,7 @@ class ModifyVolumeStatusPatch {
   /// Creates a new [ModifyVolumeStatusPatch].
   /// [status] status is the status of the ControllerModifyVolume operation. It can be in any of following states:
   /// [targetVolumeAttributesClassName] targetVolumeAttributesClassName is the name of the VolumeAttributesClass the PVC currently being reconciled
-  ModifyVolumeStatusPatch({
+  const ModifyVolumeStatusPatch({
     this.status,
     this.targetVolumeAttributesClassName,
   });

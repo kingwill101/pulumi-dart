@@ -15,7 +15,7 @@ class ApplicationAssignmentConfigurationState {
   /// [applicationArn] ARN of the application.
   /// [assignmentRequired] Indicates whether users must have an explicit assignment to access the application. If `false`, all users have access to the application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ApplicationAssignmentConfigurationState({
+  const ApplicationAssignmentConfigurationState({
     this.applicationArn,
     this.assignmentRequired,
     this.region,

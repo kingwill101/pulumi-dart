@@ -11,7 +11,7 @@ class DeveloperAppAttribute {
   /// Creates a new [DeveloperAppAttribute].
   /// [name] Key of the attribute
   /// [value] Value of the attribute
-  DeveloperAppAttribute({
+  const DeveloperAppAttribute({
     this.name,
     this.value,
   });

@@ -10,7 +10,7 @@ class WeeklyScheduleResponse {
   /// Creates a new [WeeklyScheduleResponse].
   /// [scheduleRunDays] Optional.
   /// [scheduleRunTimes] List of times of day this schedule has to be run.
-  WeeklyScheduleResponse({
+  const WeeklyScheduleResponse({
     this.scheduleRunDays,
     this.scheduleRunTimes,
   });

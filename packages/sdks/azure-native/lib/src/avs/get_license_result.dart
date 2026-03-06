@@ -11,7 +11,7 @@ class GetLicenseResult {
   /// Creates a new [GetLicenseResult].
   /// [kind] License kind
   /// [provisioningState] The state of the license provisioning
-  GetLicenseResult({
+  const GetLicenseResult({
     required this.kind,
     required this.provisioningState,
   });

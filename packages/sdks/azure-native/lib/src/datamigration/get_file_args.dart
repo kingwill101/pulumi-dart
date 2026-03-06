@@ -21,7 +21,7 @@ class GetFileArgs {
   /// [groupName] Name of the resource group
   /// [projectName] Name of the project
   /// [serviceName] Name of the service
-  GetFileArgs({
+  const GetFileArgs({
     required this.fileName,
     required this.groupName,
     required this.projectName,

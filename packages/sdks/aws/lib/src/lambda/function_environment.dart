@@ -8,7 +8,7 @@ class FunctionEnvironment {
 
   /// Creates a new [FunctionEnvironment].
   /// [variables] Map of environment variables available to your Lambda function during execution.
-  FunctionEnvironment({
+  const FunctionEnvironment({
     this.variables,
   });
 

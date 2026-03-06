@@ -35,7 +35,7 @@ class GetApiIssueResult {
   /// [title] The issue title.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userId] A resource identifier for the user created the issue.
-  GetApiIssueResult({
+  const GetApiIssueResult({
     this.apiId,
     required this.azureApiVersion,
     this.createdDate,

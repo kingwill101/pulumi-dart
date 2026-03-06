@@ -41,7 +41,7 @@ class MulticastProducerAssociationArgs {
   /// [multicastProducerAssociationId] A unique name for the multicast producer association.
   /// [network] The resource name of the multicast producer VPC network.
   /// [project] The ID of the project in which the resource belongs.
-  MulticastProducerAssociationArgs({
+  const MulticastProducerAssociationArgs({
     this.description,
     this.labels,
     required this.location,

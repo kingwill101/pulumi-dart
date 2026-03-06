@@ -13,7 +13,7 @@ class GetRepositoriesResult {
   /// [id] AWS Region.
   /// [names] A list if AWS Elastic Container Registries for the region.
   /// [region] Required.
-  GetRepositoriesResult({
+  const GetRepositoriesResult({
     required this.id,
     required this.names,
     required this.region,

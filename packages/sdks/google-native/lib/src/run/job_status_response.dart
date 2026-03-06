@@ -20,7 +20,7 @@ class JobStatusResponse {
   /// [executionCount] Number of executions created for this job.
   /// [latestCreatedExecution] A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution.
   /// [observedGeneration] The 'generation' of the job that was last processed by the controller.
-  JobStatusResponse({
+  const JobStatusResponse({
     required this.conditions,
     required this.executionCount,
     required this.latestCreatedExecution,

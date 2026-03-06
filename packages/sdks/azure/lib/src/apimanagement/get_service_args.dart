@@ -18,7 +18,7 @@ class GetServiceArgs {
   /// [name] The name of the API Management service.
   /// [resourceGroupName] The Name of the Resource Group in which the API Management Service exists.
   /// [tags] A mapping of tags assigned to the resource.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

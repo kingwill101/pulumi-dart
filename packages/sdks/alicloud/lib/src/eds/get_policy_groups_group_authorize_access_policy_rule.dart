@@ -11,7 +11,7 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
   /// Creates a new [GetPolicyGroupsGroupAuthorizeAccessPolicyRule].
   /// [cidrIp] The cidrip of authorize access rule..
   /// [description] The description of authorize access rule.
-  GetPolicyGroupsGroupAuthorizeAccessPolicyRule({
+  const GetPolicyGroupsGroupAuthorizeAccessPolicyRule({
     required this.cidrIp,
     required this.description,
   });

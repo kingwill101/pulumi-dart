@@ -17,7 +17,7 @@ class GetConsentStoreHealthcareV1beta1Args {
   /// [datasetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConsentStoreHealthcareV1beta1Args({
+  const GetConsentStoreHealthcareV1beta1Args({
     required this.consentStoreId,
     required this.datasetId,
     required this.location,

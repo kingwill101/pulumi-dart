@@ -33,7 +33,7 @@ class ConnectorState {
   /// [project] The ID of the project in which the resource belongs.
   /// [state] The current state of the connect. Possible values: `STATE_UNSPECIFIED`, `UNASSIGNED`, `RUNNING`, `PAUSED`, `FAILED`, `RESTARTING`, and `STOPPED`.
   /// [taskRestartPolicy] A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
-  ConnectorState({
+  const ConnectorState({
     this.configs,
     this.connectCluster,
     this.connectorId,

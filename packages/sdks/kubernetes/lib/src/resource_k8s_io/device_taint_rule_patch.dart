@@ -26,7 +26,7 @@ class DeviceTaintRulePatch {
   /// [metadata] Standard object metadata
   /// [spec] Spec specifies the selector and one taint.
   /// [status] Status provides information about what was requested in the spec.
-  DeviceTaintRulePatch({
+  const DeviceTaintRulePatch({
     this.apiVersion,
     this.kind,
     this.metadata,

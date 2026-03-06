@@ -10,7 +10,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams].
   /// [entries] A list of parameter map entries.
-  AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams({
+  const AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams({
     this.entries,
   });
 

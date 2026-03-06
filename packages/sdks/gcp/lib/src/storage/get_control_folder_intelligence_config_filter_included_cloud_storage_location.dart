@@ -8,7 +8,7 @@ class GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation {
 
   /// Creates a new [GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation].
   /// [locations] List of locations.
-  GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation({
+  const GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation({
     required this.locations,
   });
 

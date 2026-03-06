@@ -30,7 +30,7 @@ class TriggerRecurrenceState {
   /// [schedule] A `schedule` block as specified below.
   /// [startTime] Specifies the start date and time for this trigger in RFC3339 format: `2000-01-02T03:04:05Z`.
   /// [timeZone] Specifies the time zone for this trigger. Supported time zone options are listed [here](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)
-  TriggerRecurrenceState({
+  const TriggerRecurrenceState({
     this.frequency,
     this.interval,
     this.logicAppId,

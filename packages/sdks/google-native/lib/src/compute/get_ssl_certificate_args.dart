@@ -13,7 +13,7 @@ class GetSslCertificateArgs {
   /// Creates a new [GetSslCertificateArgs].
   /// [project] Optional.
   /// [sslCertificate] Required.
-  GetSslCertificateArgs({
+  const GetSslCertificateArgs({
     this.project,
     required this.sslCertificate,
   });

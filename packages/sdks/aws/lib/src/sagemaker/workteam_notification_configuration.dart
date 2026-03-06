@@ -8,7 +8,7 @@ class WorkteamNotificationConfiguration {
 
   /// Creates a new [WorkteamNotificationConfiguration].
   /// [notificationTopicArn] The ARN for the SNS topic to which notifications should be published.
-  WorkteamNotificationConfiguration({
+  const WorkteamNotificationConfiguration({
     this.notificationTopicArn,
   });
 

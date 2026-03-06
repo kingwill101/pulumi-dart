@@ -210,7 +210,7 @@ class DomainArgs {
   /// [vcpuCurrent] Sets the number of vCPUs that are initially online at boot via the vcpu element’s current attribute, as a positive integer not exceeding domain.vcpu.
   /// [vcpuPlacement] Sets the vCPU placement policy via the vcpu element’s placement attribute, typically "static" or "auto", controlling whether libvirt chooses NUMA/CPU placement automatically.
   /// [vcpus] Enables per‑vCPU configuration; when present, it contains one or more vcpu entries that can individually control online state and pinning.
-  DomainArgs({
+  const DomainArgs({
     this.autostart,
     this.blockIoTune,
     this.bootloader,

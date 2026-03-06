@@ -40,7 +40,7 @@ class PoolArgs {
   /// [source] Source location for the storage pool
   /// [target] Target path and permissions for the storage pool
   /// [type] Specifies the type of the storage pool being defined.
-  PoolArgs({
+  const PoolArgs({
     this.allocationUnit,
     this.availableUnit,
     this.capacityUnit,

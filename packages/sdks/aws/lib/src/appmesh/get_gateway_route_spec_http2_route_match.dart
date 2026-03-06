@@ -21,7 +21,7 @@ class GetGatewayRouteSpecHttp2RouteMatch {
   /// [port] Required.
   /// [prefix] Required.
   /// [queryParameters] Required.
-  GetGatewayRouteSpecHttp2RouteMatch({
+  const GetGatewayRouteSpecHttp2RouteMatch({
     required this.headers,
     required this.hostnames,
     required this.paths,

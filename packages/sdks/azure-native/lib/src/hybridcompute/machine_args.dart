@@ -73,7 +73,7 @@ class MachineArgs {
   /// [serviceStatuses] Statuses of dependent services that are reported back to ARM.
   /// [tags] Resource tags.
   /// [vmId] Specifies the hybrid machine unique ID.
-  MachineArgs({
+  const MachineArgs({
     this.agentUpgrade,
     this.clientPublicKey,
     this.expand,

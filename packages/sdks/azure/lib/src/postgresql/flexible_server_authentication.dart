@@ -18,7 +18,7 @@ class FlexibleServerAuthentication {
   /// [activeDirectoryAuthEnabled] Whether Active Directory authentication is allowed to access the PostgreSQL Flexible Server. Defaults to `false`.
   /// [passwordAuthEnabled] Whether password authentication is allowed to access the PostgreSQL Flexible Server. Defaults to `true`.
   /// [tenantId] The Tenant ID of the Azure Active Directory which is used by the Active Directory authentication. `active_directory_auth_enabled` must be set to `true`.
-  FlexibleServerAuthentication({
+  const FlexibleServerAuthentication({
     this.activeDirectoryAuthEnabled,
     this.passwordAuthEnabled,
     this.tenantId,

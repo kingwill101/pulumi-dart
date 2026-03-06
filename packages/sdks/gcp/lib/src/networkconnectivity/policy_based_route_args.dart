@@ -53,7 +53,7 @@ class PolicyBasedRouteArgs {
   /// [priority] The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
   /// [project] The ID of the project in which the resource belongs.
   /// [virtualMachine] VM instances to which this policy-based route applies to.
-  PolicyBasedRouteArgs({
+  const PolicyBasedRouteArgs({
     this.description,
     required this.filter,
     this.interconnectAttachment,

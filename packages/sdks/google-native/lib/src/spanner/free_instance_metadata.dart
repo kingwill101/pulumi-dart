@@ -10,7 +10,7 @@ class FreeInstanceMetadata {
 
   /// Creates a new [FreeInstanceMetadata].
   /// [expireBehavior] Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
-  FreeInstanceMetadata({
+  const FreeInstanceMetadata({
     this.expireBehavior,
   });
 

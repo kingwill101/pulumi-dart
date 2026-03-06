@@ -12,7 +12,7 @@ class RuleProperties {
   /// Creates a new [RuleProperties].
   /// [action] Specify action.
   /// [addressList] List of Addresses to be allowed or denied.
-  RuleProperties({
+  const RuleProperties({
     required this.action,
     required this.addressList,
   });

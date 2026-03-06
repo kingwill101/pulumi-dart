@@ -8,7 +8,7 @@ class DashboardDashboardPublishOptionsSheetControlsOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsSheetControlsOption].
   /// [visibilityState] Visibility state. Possibles values: EXPANDED, COLLAPSED.
-  DashboardDashboardPublishOptionsSheetControlsOption({
+  const DashboardDashboardPublishOptionsSheetControlsOption({
     this.visibilityState,
   });
 

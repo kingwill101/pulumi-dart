@@ -52,7 +52,7 @@ class GetInstanceResult {
   /// [serviceRole] Service role of the instance.
   /// [status] State of the instance.
   /// [tags] A map of tags to assigned to the instance.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.arn,
     required this.autoResolveBestVoicesEnabled,
     required this.contactFlowLogsEnabled,

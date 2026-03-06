@@ -17,7 +17,7 @@ class GetDomainsDomainCertInfo {
   /// [certType] Certificate Type. Value Range: Upload: Certificate. CAS: Certificate Authority Certificate. Free: Free Certificate.
   /// [sslProtocol] Whether to Enable SSL Certificate. Valid Values: on, off.
   /// [sslPub] If You Enable HTTPS Here Key.
-  GetDomainsDomainCertInfo({
+  const GetDomainsDomainCertInfo({
     required this.certName,
     required this.certType,
     required this.sslProtocol,

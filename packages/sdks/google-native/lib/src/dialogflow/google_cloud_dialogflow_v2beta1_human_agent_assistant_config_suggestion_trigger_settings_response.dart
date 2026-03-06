@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSett
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsResponse].
   /// [noSmallTalk] Do not trigger if last utterance is small talk.
   /// [onlyEndUser] Only trigger suggestion if participant role of last utterance is END_USER.
-  GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsResponse({
+  const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsResponse({
     required this.noSmallTalk,
     required this.onlyEndUser,
   });

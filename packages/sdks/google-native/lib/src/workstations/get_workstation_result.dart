@@ -47,7 +47,7 @@ class GetWorkstationResult {
   /// [state] Current state of the workstation.
   /// [uid] A system-assigned unique identifier for this workstation.
   /// [updateTime] Time when this workstation was most recently updated.
-  GetWorkstationResult({
+  const GetWorkstationResult({
     required this.annotations,
     required this.createTime,
     required this.deleteTime,

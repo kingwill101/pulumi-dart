@@ -15,7 +15,7 @@ class GetNetworkFabricTopologyArgs {
   /// Creates a new [GetNetworkFabricTopologyArgs].
   /// [networkFabricName] Name of the Network Fabric.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkFabricTopologyArgs({
+  const GetNetworkFabricTopologyArgs({
     required this.networkFabricName,
     required this.resourceGroupName,
   });

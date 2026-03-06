@@ -12,7 +12,7 @@ class KeyValuePair {
   /// Creates a new [KeyValuePair].
   /// [key] The name of the setting for the action.
   /// [value] The value of the setting for the action.
-  KeyValuePair({
+  const KeyValuePair({
     required this.key,
     required this.value,
   });

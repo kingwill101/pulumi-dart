@@ -26,7 +26,7 @@ class GetVirtualHubRouteTableResult {
   /// [routes] A `route` block as defined below.
   /// [virtualHubId] The ID of the Virtual Hub within which this route table is created
   /// [virtualHubName] Required.
-  GetVirtualHubRouteTableResult({
+  const GetVirtualHubRouteTableResult({
     required this.id,
     required this.labels,
     required this.name,

@@ -15,7 +15,7 @@ class GetCapacityReservationGroupArgs {
   /// Creates a new [GetCapacityReservationGroupArgs].
   /// [groupId] Group ID
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCapacityReservationGroupArgs({
+  const GetCapacityReservationGroupArgs({
     required this.groupId,
     required this.resourceGroupName,
   });

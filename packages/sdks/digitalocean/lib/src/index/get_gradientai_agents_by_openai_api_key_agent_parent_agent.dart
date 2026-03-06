@@ -50,7 +50,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent {
   /// [name] Name of the Agent
   /// [projectId] Project ID of the Agent
   /// [region] Region where the Agent is deployed
-  GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent({
+  const GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent({
     required this.agentId,
     this.anthropicApiKeys,
     this.apiKeyInfos,

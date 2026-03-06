@@ -9,7 +9,7 @@ class SpacesBucketVersioning {
 
   /// Creates a new [SpacesBucketVersioning].
   /// [enabled] Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
-  SpacesBucketVersioning({
+  const SpacesBucketVersioning({
     this.enabled,
   });
 

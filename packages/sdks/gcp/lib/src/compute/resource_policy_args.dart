@@ -53,7 +53,7 @@ class ResourcePolicyArgs {
   /// [region] Region where resource policy resides.
   /// [snapshotSchedulePolicy] Policy for creating snapshots of persistent disks.
   /// [workloadPolicy] Represents the workload policy.
-  ResourcePolicyArgs({
+  const ResourcePolicyArgs({
     this.description,
     this.diskConsistencyGroupPolicy,
     this.groupPlacementPolicy,

@@ -15,7 +15,7 @@ class ParameterGroupStatusResponse {
   /// [nodeIdsToReboot] &lt;p&gt;The node IDs of one or more nodes to be rebooted.&lt;/p&gt;
   /// [parameterApplyStatus] &lt;p&gt;The status of parameter updates. &lt;/p&gt;
   /// [parameterGroupName] &lt;p&gt;The name of the parameter group.&lt;/p&gt;
-  ParameterGroupStatusResponse({
+  const ParameterGroupStatusResponse({
     this.nodeIdsToReboot,
     this.parameterApplyStatus,
     this.parameterGroupName,

@@ -44,7 +44,7 @@ class AdditionalLocationResponse {
   /// [sku] SKU properties of the API Management service.
   /// [virtualNetworkConfiguration] Virtual network configuration for the location.
   /// [zones] A list of availability zones denoting where the resource needs to come from.
-  AdditionalLocationResponse({
+  const AdditionalLocationResponse({
     this.disableGateway,
     required this.gatewayRegionalUrl,
     required this.location,

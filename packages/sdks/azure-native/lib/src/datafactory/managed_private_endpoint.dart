@@ -15,7 +15,7 @@ class ManagedPrivateEndpoint {
   /// [fqdns] Fully qualified domain names
   /// [groupId] The groupId to which the managed private endpoint is created
   /// [privateLinkResourceId] The ARM resource ID of the resource to which the managed private endpoint is created
-  ManagedPrivateEndpoint({
+  const ManagedPrivateEndpoint({
     this.fqdns,
     this.groupId,
     this.privateLinkResourceId,

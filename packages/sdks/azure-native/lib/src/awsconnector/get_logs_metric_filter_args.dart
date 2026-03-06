@@ -15,7 +15,7 @@ class GetLogsMetricFilterArgs {
   /// Creates a new [GetLogsMetricFilterArgs].
   /// [name] Name of LogsMetricFilter
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLogsMetricFilterArgs({
+  const GetLogsMetricFilterArgs({
     required this.name,
     required this.resourceGroupName,
   });

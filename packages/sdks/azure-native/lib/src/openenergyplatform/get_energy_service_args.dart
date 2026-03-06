@@ -15,7 +15,7 @@ class GetEnergyServiceArgs {
   /// Creates a new [GetEnergyServiceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The resource name.
-  GetEnergyServiceArgs({
+  const GetEnergyServiceArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

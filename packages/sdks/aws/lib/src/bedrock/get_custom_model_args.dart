@@ -15,7 +15,7 @@ class GetCustomModelArgs {
   /// Creates a new [GetCustomModelArgs].
   /// [modelId] Name or ARN of the custom model.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCustomModelArgs({
+  const GetCustomModelArgs({
     required this.modelId,
     this.region,
   });

@@ -16,7 +16,7 @@ class QueryParameterResponse {
   /// [name] [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
   /// [parameterType] [Required] The type of this parameter.
   /// [parameterValue] [Required] The value of this parameter.
-  QueryParameterResponse({
+  const QueryParameterResponse({
     required this.name,
     required this.parameterType,
     required this.parameterValue,

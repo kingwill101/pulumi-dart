@@ -26,7 +26,7 @@ class GetSqlResourceSqlRoleAssignmentResult {
   /// [roleDefinitionId] The unique identifier for the associated Role Definition.
   /// [scope] The data plane resource path for which access is being granted through this Role Assignment.
   /// [type] The type of Azure resource.
-  GetSqlResourceSqlRoleAssignmentResult({
+  const GetSqlResourceSqlRoleAssignmentResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -9,7 +9,7 @@ class GetInstancePerformanceConfigFixedIop {
 
   /// Creates a new [GetInstancePerformanceConfigFixedIop].
   /// [maxIops] The number of IOPS to provision for the instance.
-  GetInstancePerformanceConfigFixedIop({
+  const GetInstancePerformanceConfigFixedIop({
     required this.maxIops,
   });
 

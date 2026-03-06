@@ -34,7 +34,7 @@ class EnvironmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags of the resource.
   /// [userName] The name of the user profile.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.armTemplateDisplayName,
     this.deploymentProperties,
     required this.labName,

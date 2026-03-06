@@ -15,7 +15,7 @@ class GetLogicalNetworkArgs {
   /// Creates a new [GetLogicalNetworkArgs].
   /// [logicalNetworkName] Name of the logical network
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLogicalNetworkArgs({
+  const GetLogicalNetworkArgs({
     required this.logicalNetworkName,
     required this.resourceGroupName,
   });

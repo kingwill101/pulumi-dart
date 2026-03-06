@@ -23,7 +23,7 @@ class GetNpmPackagesNpmPackage {
   /// [tags] The tags associated with the Npm package.
   /// [updateTime] The time, as a RFC 3339 string, this package was updated.
   /// [version] Version of this package.
-  GetNpmPackagesNpmPackage({
+  const GetNpmPackagesNpmPackage({
     required this.createTime,
     required this.name,
     required this.packageName,

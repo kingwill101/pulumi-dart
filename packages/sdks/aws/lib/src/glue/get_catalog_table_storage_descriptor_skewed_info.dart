@@ -14,7 +14,7 @@ class GetCatalogTableStorageDescriptorSkewedInfo {
   /// [skewedColumnNames] List of names of columns that contain skewed values.
   /// [skewedColumnValueLocationMaps] List of values that appear so frequently as to be considered skewed.
   /// [skewedColumnValues] Map of skewed values to the columns that contain them.
-  GetCatalogTableStorageDescriptorSkewedInfo({
+  const GetCatalogTableStorageDescriptorSkewedInfo({
     required this.skewedColumnNames,
     required this.skewedColumnValueLocationMaps,
     required this.skewedColumnValues,

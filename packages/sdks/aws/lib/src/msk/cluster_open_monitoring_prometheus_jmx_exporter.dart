@@ -8,7 +8,7 @@ class ClusterOpenMonitoringPrometheusJmxExporter {
 
   /// Creates a new [ClusterOpenMonitoringPrometheusJmxExporter].
   /// [enabledInBroker] Indicates whether you want to enable or disable the Node Exporter.
-  ClusterOpenMonitoringPrometheusJmxExporter({
+  const ClusterOpenMonitoringPrometheusJmxExporter({
     required this.enabledInBroker,
   });
 

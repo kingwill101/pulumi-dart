@@ -65,7 +65,7 @@ class ZonalDbClusterArgs {
   /// [usedTime] The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
   /// [vpcId] The id of the ENS VPC.
   /// [vswitchId] The ENS virtual switch ID to launch DB instances in one VPC.
-  ZonalDbClusterArgs({
+  const ZonalDbClusterArgs({
     this.autoRenewPeriod,
     this.clusterVersion,
     this.creationCategory,

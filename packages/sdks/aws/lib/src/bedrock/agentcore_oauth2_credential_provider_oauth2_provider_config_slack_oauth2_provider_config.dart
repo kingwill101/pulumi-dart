@@ -21,7 +21,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderCo
   /// [clientSecret] Optional.
   /// [clientSecretWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [oauthDiscoveries] OAuth discovery configuration. See `oauth_discovery` below.
-  AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfig({
+  const AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfig({
     this.clientCredentialsWoVersion,
     this.clientId,
     this.clientIdWo,

@@ -12,7 +12,7 @@ class ClientInfoDetailResponse {
   /// Creates a new [ClientInfoDetailResponse].
   /// [key] The key of detailed client information.
   /// [value] The value of detailed client information.
-  ClientInfoDetailResponse({
+  const ClientInfoDetailResponse({
     required this.key,
     required this.value,
   });

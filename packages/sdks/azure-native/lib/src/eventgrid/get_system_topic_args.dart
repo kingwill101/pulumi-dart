@@ -15,7 +15,7 @@ class GetSystemTopicArgs {
   /// Creates a new [GetSystemTopicArgs].
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [systemTopicName] Name of the system topic.
-  GetSystemTopicArgs({
+  const GetSystemTopicArgs({
     required this.resourceGroupName,
     required this.systemTopicName,
   });

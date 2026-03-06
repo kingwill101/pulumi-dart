@@ -11,7 +11,7 @@ class GetAppSpecJobGit {
   /// Creates a new [GetAppSpecJobGit].
   /// [branch] The name of the branch to use.
   /// [repoCloneUrl] The clone URL of the repo.
-  GetAppSpecJobGit({
+  const GetAppSpecJobGit({
     this.branch,
     this.repoCloneUrl,
   });

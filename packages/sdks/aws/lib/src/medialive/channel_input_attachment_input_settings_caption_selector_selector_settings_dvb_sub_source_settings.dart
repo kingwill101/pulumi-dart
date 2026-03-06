@@ -11,7 +11,7 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSo
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings].
   /// [ocrLanguage] If you will configure a WebVTT caption description that references this caption selector, use this field to provide the language to consider when translating the image-based source to text.
   /// [pid] When using DVB-Sub with Burn-In or SMPTE-TT, use this PID for the source content. Unused for DVB-Sub passthrough. All DVB-Sub content is passed through, regardless of selectors.
-  ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings({
+  const ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings({
     this.ocrLanguage,
     this.pid,
   });

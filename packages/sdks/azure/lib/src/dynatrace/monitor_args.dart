@@ -43,7 +43,7 @@ class MonitorArgs {
   /// [resourceGroupName] The name of the Resource Group where the Dynatrace monitor should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [user] User's information. A `user` block as defined below. Changing this forces a new resource to be created.
-  MonitorArgs({
+  const MonitorArgs({
     this.environmentProperties,
     required this.identity,
     this.location,

@@ -30,7 +30,7 @@ class VariableArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [value] Gets or sets the value of the variable.
   /// [variableName] The variable name.
-  VariableArgs({
+  const VariableArgs({
     required this.automationAccountName,
     this.description,
     this.isEncrypted,

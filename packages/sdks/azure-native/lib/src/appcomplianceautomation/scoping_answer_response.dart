@@ -12,7 +12,7 @@ class ScopingAnswerResponse {
   /// Creates a new [ScopingAnswerResponse].
   /// [answers] Question answer value list.
   /// [questionId] Question id.
-  ScopingAnswerResponse({
+  const ScopingAnswerResponse({
     required this.answers,
     required this.questionId,
   });

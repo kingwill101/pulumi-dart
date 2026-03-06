@@ -17,7 +17,7 @@ class InferencePool {
   /// [description] Description of the resource.
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [scaleUnitConfiguration] Gets or sets ScaleUnitConfiguration for the inference pool. Used if PoolType=ScaleUnit.
-  InferencePool({
+  const InferencePool({
     this.description,
     this.properties,
     this.scaleUnitConfiguration,

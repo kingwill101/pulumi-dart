@@ -13,7 +13,7 @@ class MonitoringAccountDestination {
   /// Creates a new [MonitoringAccountDestination].
   /// [accountResourceId] The resource ID of the monitoring account.
   /// [name] A friendly name for the destination.
-  MonitoringAccountDestination({
+  const MonitoringAccountDestination({
     this.accountResourceId,
     this.name,
   });

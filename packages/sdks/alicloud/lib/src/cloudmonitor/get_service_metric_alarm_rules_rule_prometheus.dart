@@ -18,7 +18,7 @@ class GetServiceMetricAlarmRulesRulePrometheus {
   /// [level] The alert level.
   /// [promQl] The PromQL query statement.
   /// [times] The number of consecutive triggers.
-  GetServiceMetricAlarmRulesRulePrometheus({
+  const GetServiceMetricAlarmRulesRulePrometheus({
     required this.annotations,
     required this.level,
     required this.promQl,

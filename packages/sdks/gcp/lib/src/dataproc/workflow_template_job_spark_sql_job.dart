@@ -25,7 +25,7 @@ class WorkflowTemplateJobSparkSqlJob {
   /// [queryFileUri] The HCFS URI of the script that contains SQL queries.
   /// [queryList] A list of queries.
   /// [scriptVariables] Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-  WorkflowTemplateJobSparkSqlJob({
+  const WorkflowTemplateJobSparkSqlJob({
     this.jarFileUris,
     this.loggingConfig,
     this.properties,

@@ -9,7 +9,7 @@ class BareMetalAdminNodeAccessConfigResponse {
 
   /// Creates a new [BareMetalAdminNodeAccessConfigResponse].
   /// [loginUser] LoginUser is the user name used to access node machines. It defaults to "root" if not set.
-  BareMetalAdminNodeAccessConfigResponse({
+  const BareMetalAdminNodeAccessConfigResponse({
     required this.loginUser,
   });
 

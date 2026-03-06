@@ -24,7 +24,7 @@ class ConfigurationArgs {
   /// [serverName] The name of the server.
   /// [source] Source of the configuration.
   /// [value] Value of the configuration.
-  ConfigurationArgs({
+  const ConfigurationArgs({
     this.configurationName,
     required this.resourceGroupName,
     required this.serverName,

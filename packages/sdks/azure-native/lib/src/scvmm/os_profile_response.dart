@@ -15,7 +15,7 @@ class OsProfileResponse {
   /// [computerName] Gets or sets computer name.
   /// [osName] Gets or sets os name.
   /// [osType] Gets or sets the type of the os.
-  OsProfileResponse({
+  const OsProfileResponse({
     this.computerName,
     required this.osName,
     required this.osType,

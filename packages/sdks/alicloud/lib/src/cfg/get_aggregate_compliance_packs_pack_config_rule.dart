@@ -15,7 +15,7 @@ class GetAggregateCompliancePacksPackConfigRule {
   /// [configRuleId] The ID of the rule.
   /// [configRuleParameters] A list of parameter rules.
   /// [managedRuleIdentifier] Managed Rule Identifier.
-  GetAggregateCompliancePacksPackConfigRule({
+  const GetAggregateCompliancePacksPackConfigRule({
     required this.configRuleId,
     required this.configRuleParameters,
     required this.managedRuleIdentifier,

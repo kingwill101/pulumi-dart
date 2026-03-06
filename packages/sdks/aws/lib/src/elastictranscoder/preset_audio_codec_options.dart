@@ -17,7 +17,7 @@ class PresetAudioCodecOptions {
   /// [bitOrder] The order the bits of a PCM sample are stored in. The supported value is LittleEndian. (PCM Only)
   /// [profile] If you specified AAC for Audio:Codec, choose the AAC profile for the output file.
   /// [signed] Whether audio samples are represented with negative and positive numbers (signed) or only positive numbers (unsigned). The supported value is Signed. (PCM Only)
-  PresetAudioCodecOptions({
+  const PresetAudioCodecOptions({
     this.bitDepth,
     this.bitOrder,
     this.profile,

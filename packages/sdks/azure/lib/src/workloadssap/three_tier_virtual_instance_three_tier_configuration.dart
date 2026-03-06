@@ -40,7 +40,7 @@ class ThreeTierVirtualInstanceThreeTierConfiguration {
   /// [resourceNames] A `resource_names` block as defined below. Changing this forces a new resource to be created.
   /// [secondaryIpEnabled] Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed. Defaults to `false`. Changing this forces a new resource to be created.
   /// [transportCreateAndMount] A `transport_create_and_mount` block as defined below. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfiguration({
+  const ThreeTierVirtualInstanceThreeTierConfiguration({
     required this.appResourceGroupName,
     required this.applicationServerConfiguration,
     required this.centralServerConfiguration,

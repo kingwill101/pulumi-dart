@@ -11,7 +11,7 @@ class GetLoadBalancerAccessLogs {
   /// [bucket] Required.
   /// [enabled] Required.
   /// [prefix] Required.
-  GetLoadBalancerAccessLogs({
+  const GetLoadBalancerAccessLogs({
     required this.bucket,
     required this.enabled,
     required this.prefix,

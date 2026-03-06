@@ -9,7 +9,7 @@ class DomainOsNvRamSourceDataStore {
 
   /// Creates a new [DomainOsNvRamSourceDataStore].
   /// [format] Defines the format of the data store used in the backing store source configuration.
-  DomainOsNvRamSourceDataStore({
+  const DomainOsNvRamSourceDataStore({
     this.format,
   });
 

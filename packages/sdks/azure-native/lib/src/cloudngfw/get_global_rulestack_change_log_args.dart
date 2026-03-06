@@ -12,7 +12,7 @@ class GetGlobalRulestackChangeLogArgs {
 
   /// Creates a new [GetGlobalRulestackChangeLogArgs].
   /// [globalRulestackName] GlobalRulestack resource name
-  GetGlobalRulestackChangeLogArgs({
+  const GetGlobalRulestackChangeLogArgs({
     required this.globalRulestackName,
   });
 

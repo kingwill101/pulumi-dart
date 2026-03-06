@@ -29,7 +29,7 @@ class VersionArgs {
   /// [siteId] Required.
   /// [sizeBytes] The self-reported size of the version. This value is used for a pre-emptive quota check for legacy version uploads.
   /// [versionId] A unique id for the new version. This is was only specified for legacy version creations, and should be blank.
-  VersionArgs({
+  const VersionArgs({
     this.config,
     this.labels,
     this.name,

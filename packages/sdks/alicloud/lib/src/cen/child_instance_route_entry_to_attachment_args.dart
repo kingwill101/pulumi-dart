@@ -24,7 +24,7 @@ class ChildInstanceRouteEntryToAttachmentArgs {
   /// [destinationCidrBlock] DestinationCidrBlock
   /// [dryRun] Whether to perform pre-check on this request, including permission and instance status verification.
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
-  ChildInstanceRouteEntryToAttachmentArgs({
+  const ChildInstanceRouteEntryToAttachmentArgs({
     required this.cenId,
     required this.childInstanceRouteTableId,
     required this.destinationCidrBlock,

@@ -13,7 +13,7 @@ class DicomServiceStorage {
   /// Creates a new [DicomServiceStorage].
   /// [fileSystemName] The filesystem name of connected storage account. Changing this forces a new Healthcare DICOM Service to be created.
   /// [storageAccountId] The resource ID of connected storage account. Changing this forces a new Healthcare DICOM Service to be created.
-  DicomServiceStorage({
+  const DicomServiceStorage({
     required this.fileSystemName,
     required this.storageAccountId,
   });

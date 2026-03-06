@@ -9,7 +9,7 @@ class AttestationAuthority {
 
   /// Creates a new [AttestationAuthority].
   /// [hint] Optional.
-  AttestationAuthority({
+  const AttestationAuthority({
     this.hint,
   });
 

@@ -25,7 +25,7 @@ class SchemaPackage {
   /// [schematizedParsingType] Determines how messages that fail to parse are handled.
   /// [types] Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
   /// [unexpectedSegmentHandling] Determines how unexpected segments (segments not matched to the schema) are handled.
-  SchemaPackage({
+  const SchemaPackage({
     this.ignoreMinOccurs,
     this.schemas,
     this.schematizedParsingType,

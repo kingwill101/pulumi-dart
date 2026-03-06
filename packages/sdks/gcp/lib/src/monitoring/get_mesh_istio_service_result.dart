@@ -32,7 +32,7 @@ class GetMeshIstioServiceResult {
   /// [serviceNamespace] Required.
   /// [telemetries] Configuration for how to query telemetry on the Service. Structure is documented below.
   /// [userLabels] Required.
-  GetMeshIstioServiceResult({
+  const GetMeshIstioServiceResult({
     required this.displayName,
     required this.id,
     required this.meshUid,

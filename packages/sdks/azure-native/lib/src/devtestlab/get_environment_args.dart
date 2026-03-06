@@ -24,7 +24,7 @@ class GetEnvironmentArgs {
   /// [name] The name of the DtlEnvironment
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user profile.
-  GetEnvironmentArgs({
+  const GetEnvironmentArgs({
     this.expand,
     required this.labName,
     required this.name,

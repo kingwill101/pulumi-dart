@@ -114,7 +114,7 @@ class PoolState {
   /// [userAccounts] A `user_accounts` block that describes the list of user accounts to be created on each node in the pool as defined below.
   /// [vmSize] Specifies the size of the VM created in the Batch pool. Changing this forces a new resource to be created.
   /// [windows] A `windows` block that describes the Windows configuration in the pool as defined below.
-  PoolState({
+  const PoolState({
     this.accountName,
     this.autoScale,
     this.certificates,

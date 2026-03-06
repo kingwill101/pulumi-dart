@@ -18,7 +18,7 @@ class DomainAdvancedSecurityOptions {
   /// [enabled] Whether advanced security is enabled.
   /// [internalUserDatabaseEnabled] Whether the internal user database is enabled. Default is `false`.
   /// [masterUserOptions] Configuration block for the main user. Detailed below.
-  DomainAdvancedSecurityOptions({
+  const DomainAdvancedSecurityOptions({
     this.anonymousAuthEnabled,
     required this.enabled,
     this.internalUserDatabaseEnabled,

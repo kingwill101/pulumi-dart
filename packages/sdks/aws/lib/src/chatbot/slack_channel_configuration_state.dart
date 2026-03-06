@@ -53,7 +53,7 @@ class SlackChannelConfigurationState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [userAuthorizationRequired] Enables use of a user role requirement in your chat configuration.
-  SlackChannelConfigurationState({
+  const SlackChannelConfigurationState({
     this.chatConfigurationArn,
     this.configurationName,
     this.guardrailPolicyArns,

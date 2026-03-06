@@ -13,7 +13,7 @@ class DevToolPortalFeatureSettingsResponse {
   /// Creates a new [DevToolPortalFeatureSettingsResponse].
   /// [applicationAccelerator] Detail of Accelerator plugin
   /// [applicationLiveView] Detail of App Live View plugin
-  DevToolPortalFeatureSettingsResponse({
+  const DevToolPortalFeatureSettingsResponse({
     this.applicationAccelerator,
     this.applicationLiveView,
   });

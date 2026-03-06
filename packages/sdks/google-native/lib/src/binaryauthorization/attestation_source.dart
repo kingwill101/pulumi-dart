@@ -9,7 +9,7 @@ class AttestationSource {
 
   /// Creates a new [AttestationSource].
   /// [containerAnalysisAttestationProjects] The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
-  AttestationSource({
+  const AttestationSource({
     this.containerAnalysisAttestationProjects,
   });
 

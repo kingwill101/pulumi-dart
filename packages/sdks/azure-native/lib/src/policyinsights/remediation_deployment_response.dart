@@ -28,7 +28,7 @@ class RemediationDeploymentResponse {
   /// [remediatedResourceId] Resource ID of the resource that is being remediated by the deployment.
   /// [resourceLocation] Location of the resource that is being remediated.
   /// [status] Status of the remediation deployment.
-  RemediationDeploymentResponse({
+  const RemediationDeploymentResponse({
     required this.createdOn,
     required this.deploymentId,
     required this.error,

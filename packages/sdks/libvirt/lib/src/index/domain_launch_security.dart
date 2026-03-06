@@ -20,7 +20,7 @@ class DomainLaunchSecurity {
   /// [sev] Configures Secure Encrypted Virtualization (SEV) features for the domain.
   /// [sevsnp] Configures protection mode for SEV-Shared Non-Pageable (SEV-SNP) in the domain.
   /// [tdx] Configures Trusted Domain Extensions (TDX) security features for the domain.
-  DomainLaunchSecurity({
+  const DomainLaunchSecurity({
     this.s390pv,
     this.sev,
     this.sevsnp,

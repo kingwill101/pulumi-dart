@@ -30,7 +30,7 @@ class InMageRcmSyncDetailsResponse {
   /// [progressPercentage] Progress in percentage. Progress percentage is calculated based on processed bytes.
   /// [startTime] The start time.
   /// [transferredBytes] The transferred bytes from source VM to azure for the disk.
-  InMageRcmSyncDetailsResponse({
+  const InMageRcmSyncDetailsResponse({
     required this.last15MinutesTransferredBytes,
     required this.lastDataTransferTimeUtc,
     required this.lastRefreshTime,

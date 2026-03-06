@@ -25,7 +25,7 @@ class GetEndpointAclServiceArgs {
   /// [endpointType] The type of endpoint. Valid values: `internet`.
   /// [instanceId] The ID of the CR Instance.
   /// [moduleName] The ModuleName. Valid values: `Registry`.
-  GetEndpointAclServiceArgs({
+  const GetEndpointAclServiceArgs({
     required this.enable,
     required this.endpointType,
     required this.instanceId,

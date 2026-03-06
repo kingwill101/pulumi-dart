@@ -24,7 +24,7 @@ class GetCapacityPoolBucketArgs {
   /// [poolName] The name of the capacity pool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] The name of the volume
-  GetCapacityPoolBucketArgs({
+  const GetCapacityPoolBucketArgs({
     required this.accountName,
     required this.bucketName,
     required this.poolName,

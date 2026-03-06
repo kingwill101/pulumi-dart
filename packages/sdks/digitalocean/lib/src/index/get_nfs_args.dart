@@ -15,7 +15,7 @@ class GetNfsArgs {
   /// Creates a new [GetNfsArgs].
   /// [name] The name of the NFS share.
   /// [region] The region where the NFS share is located.
-  GetNfsArgs({
+  const GetNfsArgs({
     required this.name,
     this.region,
   });

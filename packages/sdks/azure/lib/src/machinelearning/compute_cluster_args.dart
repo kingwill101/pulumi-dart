@@ -54,7 +54,7 @@ class ComputeClusterArgs {
   /// [tags] A mapping of tags which should be assigned to the Machine Learning Compute Cluster.
   /// [vmPriority] The priority of the VM. Changing this forces a new Machine Learning Compute Cluster to be created. Accepted values are `Dedicated` and `LowPriority`.
   /// [vmSize] The size of the VM. Changing this forces a new Machine Learning Compute Cluster to be created.
-  ComputeClusterArgs({
+  const ComputeClusterArgs({
     this.description,
     this.identity,
     this.localAuthEnabled,

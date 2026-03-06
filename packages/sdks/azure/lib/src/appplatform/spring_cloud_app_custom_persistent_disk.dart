@@ -20,7 +20,7 @@ class SpringCloudAppCustomPersistentDisk {
   /// [readOnlyEnabled] Indicates whether the persistent disk is a readOnly one.
   /// [shareName] The share name of the Azure File share.
   /// [storageName] The name of the Spring Cloud Storage.
-  SpringCloudAppCustomPersistentDisk({
+  const SpringCloudAppCustomPersistentDisk({
     this.mountOptions,
     required this.mountPath,
     this.readOnlyEnabled,

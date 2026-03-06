@@ -10,7 +10,7 @@ class CorsRules {
 
   /// Creates a new [CorsRules].
   /// [corsRules] The list of CORS rules. You can include up to five CorsRule elements in the request.
-  CorsRules({
+  const CorsRules({
     this.corsRules,
   });
 

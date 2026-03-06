@@ -42,7 +42,7 @@ class AnalyticsApplicationInputs {
   /// [schema] The Schema format of the data in the streaming source. See Source Schema below for more details.
   /// [startingPositionConfigurations] The point at which the application starts processing records from the streaming source.
   /// [streamNames] Optional.
-  AnalyticsApplicationInputs({
+  const AnalyticsApplicationInputs({
     this.id,
     this.kinesisFirehose,
     this.kinesisStream,

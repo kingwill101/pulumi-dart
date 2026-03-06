@@ -11,7 +11,7 @@ class GetPolicyAssignmentNonComplianceMessage {
   /// Creates a new [GetPolicyAssignmentNonComplianceMessage].
   /// [content] The non-compliance message text.
   /// [policyDefinitionReferenceId] The ID of the Policy Definition that the non-compliance message applies to.
-  GetPolicyAssignmentNonComplianceMessage({
+  const GetPolicyAssignmentNonComplianceMessage({
     required this.content,
     required this.policyDefinitionReferenceId,
   });

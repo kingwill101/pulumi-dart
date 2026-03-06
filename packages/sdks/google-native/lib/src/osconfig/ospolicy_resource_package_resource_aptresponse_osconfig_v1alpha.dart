@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha {
 
   /// Creates a new [OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha({
+  const OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha({
     required this.name,
   });
 

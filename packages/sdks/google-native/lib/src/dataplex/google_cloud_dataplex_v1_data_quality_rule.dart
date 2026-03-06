@@ -54,7 +54,7 @@ class GoogleCloudDataplexV1DataQualityRule {
   /// [tableConditionExpectation] Aggregate rule which evaluates whether the provided expression is true for a table.
   /// [threshold] Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
   /// [uniquenessExpectation] Row-level rule which evaluates whether each column value is unique.
-  GoogleCloudDataplexV1DataQualityRule({
+  const GoogleCloudDataplexV1DataQualityRule({
     this.column,
     this.description,
     required this.dimension,

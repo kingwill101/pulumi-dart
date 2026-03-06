@@ -30,7 +30,7 @@ class IAMMemberArgs {
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  IAMMemberArgs({
+  const IAMMemberArgs({
     this.condition,
     required this.folder,
     required this.member,

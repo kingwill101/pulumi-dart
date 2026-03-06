@@ -31,7 +31,7 @@ class CodeBuildSourceCredentialsInfoProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CodeBuildSourceCredentialsInfoProperties({
+  const CodeBuildSourceCredentialsInfoProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

@@ -28,7 +28,7 @@ class AwsIamServerCertificateProperties {
   /// [privateKey] Property privateKey
   /// [serverCertificateName] Property serverCertificateName
   /// [tags] Property tags
-  AwsIamServerCertificateProperties({
+  const AwsIamServerCertificateProperties({
     this.arn,
     this.certificateBody,
     this.certificateChain,

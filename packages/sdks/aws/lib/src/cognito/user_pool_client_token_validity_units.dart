@@ -14,7 +14,7 @@ class UserPoolClientTokenValidityUnits {
   /// [accessToken] Time unit in for the value in `access_token_validity`, defaults to `hours`.
   /// [idToken] Time unit in for the value in `id_token_validity`, defaults to `hours`.
   /// [refreshToken] Time unit in for the value in `refresh_token_validity`, defaults to `days`.
-  UserPoolClientTokenValidityUnits({
+  const UserPoolClientTokenValidityUnits({
     this.accessToken,
     this.idToken,
     this.refreshToken,

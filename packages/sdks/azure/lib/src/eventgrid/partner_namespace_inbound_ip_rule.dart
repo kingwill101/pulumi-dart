@@ -11,7 +11,7 @@ class PartnerNamespaceInboundIpRule {
   /// Creates a new [PartnerNamespaceInboundIpRule].
   /// [action] The action to take when the rule is matched. The only possible value is `Allow`. Defaults to `Allow`.
   /// [ipMask] The IP mask (CIDR) to match on.
-  PartnerNamespaceInboundIpRule({
+  const PartnerNamespaceInboundIpRule({
     this.action,
     required this.ipMask,
   });

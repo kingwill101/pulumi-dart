@@ -8,7 +8,7 @@ class GetSigningProfileSigningMaterial {
 
   /// Creates a new [GetSigningProfileSigningMaterial].
   /// [certificateArn] ARN of the certificate used for signing.
-  GetSigningProfileSigningMaterial({
+  const GetSigningProfileSigningMaterial({
     required this.certificateArn,
   });
 

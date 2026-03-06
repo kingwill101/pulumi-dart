@@ -12,7 +12,7 @@ class TimeSpanResponse {
   /// Creates a new [TimeSpanResponse].
   /// [end] The end of a time span
   /// [start] The start of a time span
-  TimeSpanResponse({
+  const TimeSpanResponse({
     this.end,
     this.start,
   });

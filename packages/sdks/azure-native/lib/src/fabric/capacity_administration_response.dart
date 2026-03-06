@@ -9,7 +9,7 @@ class CapacityAdministrationResponse {
 
   /// Creates a new [CapacityAdministrationResponse].
   /// [members] An array of administrator user identities.
-  CapacityAdministrationResponse({
+  const CapacityAdministrationResponse({
     required this.members,
   });
 

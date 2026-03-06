@@ -12,7 +12,7 @@ class VMInfoResponse {
   /// Creates a new [VMInfoResponse].
   /// [id] Azure resource Id of the VM.
   /// [uuid] UUID(Universally Unique Identifier) of the VM.
-  VMInfoResponse({
+  const VMInfoResponse({
     required this.id,
     required this.uuid,
   });

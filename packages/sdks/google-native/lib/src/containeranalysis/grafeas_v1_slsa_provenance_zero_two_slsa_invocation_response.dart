@@ -13,7 +13,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse {
   /// [configSource] Required.
   /// [environment] Required.
   /// [parameters] Required.
-  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse({
+  const GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse({
     required this.configSource,
     required this.environment,
     required this.parameters,

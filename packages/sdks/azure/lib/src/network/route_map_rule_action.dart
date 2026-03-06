@@ -12,7 +12,7 @@ class RouteMapRuleAction {
   /// Creates a new [RouteMapRuleAction].
   /// [parameters] A `parameter` block as defined below. Required if `type` is anything other than `Drop`.
   /// [type] The type of the action to be taken. Possible values are `Add`, `Drop`, `Remove`, `Replace` and `Unknown`.
-  RouteMapRuleAction({
+  const RouteMapRuleAction({
     this.parameters,
     required this.type,
   });

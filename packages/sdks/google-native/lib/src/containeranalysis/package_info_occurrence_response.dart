@@ -34,7 +34,7 @@ class PackageInfoOccurrenceResponse {
   /// [summaryDescription] A short description of the package
   /// [title] Identify the full name of the package as given by the Package Originator
   /// [version] Identify the version of the package
-  PackageInfoOccurrenceResponse({
+  const PackageInfoOccurrenceResponse({
     required this.comment,
     required this.filename,
     required this.homePage,

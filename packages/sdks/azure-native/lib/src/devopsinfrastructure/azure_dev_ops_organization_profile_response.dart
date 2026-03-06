@@ -18,7 +18,7 @@ class AzureDevOpsOrganizationProfileResponse {
   /// [kind] Discriminator property for OrganizationProfile.
   /// [organizations] The list of Azure DevOps organizations the pool should be present in.
   /// [permissionProfile] The type of permission which determines which accounts are admins on the Azure DevOps pool.
-  AzureDevOpsOrganizationProfileResponse({
+  const AzureDevOpsOrganizationProfileResponse({
     required this.kind,
     required this.organizations,
     this.permissionProfile,

@@ -15,7 +15,7 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfig {
   /// [largeDataDeliveryS3Config] S3 configuration for delivering a large amount of data. See `large_data_delivery_s3_config` Block for details.
   /// [logGroupName] Log group name.
   /// [roleArn] The role ARN.
-  InvocationLoggingConfigurationLoggingConfigCloudwatchConfig({
+  const InvocationLoggingConfigurationLoggingConfigCloudwatchConfig({
     this.largeDataDeliveryS3Config,
     required this.logGroupName,
     required this.roleArn,

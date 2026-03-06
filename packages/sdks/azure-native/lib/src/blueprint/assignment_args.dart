@@ -46,7 +46,7 @@ class AssignmentArgs {
   /// [resourceGroups] Names and locations of resource group placeholders.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   /// [scope] The target subscription scope of the blueprint assignment (format: '/subscriptions/{subscriptionId}'). For management group level assignments, the property is required.
-  AssignmentArgs({
+  const AssignmentArgs({
     this.assignmentName,
     this.blueprintId,
     this.description,

@@ -21,7 +21,7 @@ class GetSiteMonitorsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [taskId] Task ID.
   /// [taskType] Task Type.
-  GetSiteMonitorsArgs({
+  const GetSiteMonitorsArgs({
     this.ids,
     this.outputFile,
     this.taskId,

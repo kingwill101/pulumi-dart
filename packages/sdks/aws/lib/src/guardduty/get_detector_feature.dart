@@ -15,7 +15,7 @@ class GetDetectorFeature {
   /// [additionalConfigurations] Additional feature configuration.
   /// [name] The name of the detector feature.
   /// [status] Current status of the detector.
-  GetDetectorFeature({
+  const GetDetectorFeature({
     required this.additionalConfigurations,
     required this.name,
     required this.status,

@@ -19,7 +19,7 @@ class ManagedIdentityResponse {
   /// [tenantId] The tenant ID of the workspace managed identity
   /// [type] The type of managed identity for the workspace
   /// [userAssignedIdentities] The user assigned managed identities.
-  ManagedIdentityResponse({
+  const ManagedIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

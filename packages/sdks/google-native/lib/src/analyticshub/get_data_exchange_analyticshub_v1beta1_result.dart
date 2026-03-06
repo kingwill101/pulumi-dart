@@ -26,7 +26,7 @@ class GetDataExchangeAnalyticshubV1beta1Result {
   /// [listingCount] Number of listings contained in the data exchange.
   /// [name] The resource name of the data exchange. e.g. `projects/myproject/locations/US/dataExchanges/123`.
   /// [primaryContact] Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
-  GetDataExchangeAnalyticshubV1beta1Result({
+  const GetDataExchangeAnalyticshubV1beta1Result({
     required this.description,
     required this.displayName,
     required this.documentation,

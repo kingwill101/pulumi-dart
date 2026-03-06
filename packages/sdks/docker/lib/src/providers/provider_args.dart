@@ -36,7 +36,7 @@ class ProviderArgs {
   /// [keyMaterial] PEM-encoded content of Docker client private key
   /// [registryAuth] Optional.
   /// [sshOpts] Additional SSH option flags to be appended when using `ssh://` protocol
-  ProviderArgs({
+  const ProviderArgs({
     this.caMaterial,
     this.certMaterial,
     this.certPath,

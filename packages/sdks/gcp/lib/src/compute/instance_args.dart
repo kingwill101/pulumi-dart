@@ -183,7 +183,7 @@ class InstanceArgs {
   /// [shieldedInstanceConfig] Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// [tags] A list of network tags to attach to the instance.
   /// [zone] The zone that the machine should be created in. If it is not provided, the provider zone is used.
-  InstanceArgs({
+  const InstanceArgs({
     this.advancedMachineFeatures,
     this.allowStoppingForUpdate,
     this.attachedDisks,

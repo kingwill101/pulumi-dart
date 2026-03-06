@@ -98,7 +98,7 @@ class RdsDbProxyArgs {
   /// [upgradeTime] The time when you want to upgrade the database proxy version of the instance. Valid values:
   /// [vpcId] The ID of the virtual private cloud (VPC) to which the instance belongs.
   /// [vswitchId] The ID of the vSwitch that is associated with the specified VPC.
-  RdsDbProxyArgs({
+  const RdsDbProxyArgs({
     this.dbProxyConnectStringPort,
     this.dbProxyConnectionPrefix,
     this.dbProxyEndpointReadWriteMode,

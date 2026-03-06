@@ -8,7 +8,7 @@ class RuntimeTemplateIdleShutdownConfig {
 
   /// Creates a new [RuntimeTemplateIdleShutdownConfig].
   /// [idleTimeout] The duration after which the runtime is automatically shut down. An input of 0s disables the idle shutdown feature, and a valid range is [10m, 24h].
-  RuntimeTemplateIdleShutdownConfig({
+  const RuntimeTemplateIdleShutdownConfig({
     this.idleTimeout,
   });
 

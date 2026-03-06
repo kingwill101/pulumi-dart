@@ -26,7 +26,7 @@ class WebAclLoggingConfigurationArgs {
   /// [redactedFields] Configuration for parts of the request that you want to keep out of the logs. Up to 100 `redacted_fields` blocks are supported. See Redacted Fields below for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] Amazon Resource Name (ARN) of the web ACL that you want to associate with `log_destination_configs`.
-  WebAclLoggingConfigurationArgs({
+  const WebAclLoggingConfigurationArgs({
     required this.logDestinationConfigs,
     this.loggingFilter,
     this.redactedFields,

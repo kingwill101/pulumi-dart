@@ -16,7 +16,7 @@ class GraphQuery {
   /// [baseQuery] Gets or sets the base query for the graph.
   /// [legend] Gets or sets the legend for the graph.
   /// [metricName] Gets or sets the metric name that the query is checking. For example: 'Total data receive'.
-  GraphQuery({
+  const GraphQuery({
     required this.baseQuery,
     required this.legend,
     required this.metricName,

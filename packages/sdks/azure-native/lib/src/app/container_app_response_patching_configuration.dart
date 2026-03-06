@@ -9,7 +9,7 @@ class ContainerAppResponsePatchingConfiguration {
 
   /// Creates a new [ContainerAppResponsePatchingConfiguration].
   /// [patchingMode] Patching mode for the container app. Null or default in this field will be interpreted as Automatic by RP. Automatic mode will automatically apply available patches. Manual mode will require the user to manually apply patches. Disabled mode will stop patch detection and auto patching.
-  ContainerAppResponsePatchingConfiguration({
+  const ContainerAppResponsePatchingConfiguration({
     this.patchingMode,
   });
 

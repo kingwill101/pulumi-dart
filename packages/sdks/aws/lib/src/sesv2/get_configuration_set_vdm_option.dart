@@ -13,7 +13,7 @@ class GetConfigurationSetVdmOption {
   /// Creates a new [GetConfigurationSetVdmOption].
   /// [dashboardOptions] Specifies additional settings for your VDM configuration as applicable to the Dashboard.
   /// [guardianOptions] Specifies additional settings for your VDM configuration as applicable to the Guardian.
-  GetConfigurationSetVdmOption({
+  const GetConfigurationSetVdmOption({
     required this.dashboardOptions,
     required this.guardianOptions,
   });

@@ -75,7 +75,7 @@ class CurationState {
   /// [pluginInstanceActions] The plugin instances and associated actions that are using the curation.
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] The time at which the curation was last updated.
-  CurationState({
+  const CurationState({
     this.createTime,
     this.curationId,
     this.description,

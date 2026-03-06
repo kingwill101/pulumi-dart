@@ -11,7 +11,7 @@ class GlobalSecondaryIndexWarmThroughput {
   /// Creates a new [GlobalSecondaryIndexWarmThroughput].
   /// [readUnitsPerSecond] Number of read operations this index can instantaneously support.
   /// [writeUnitsPerSecond] Number of write operations this index can instantaneously support.
-  GlobalSecondaryIndexWarmThroughput({
+  const GlobalSecondaryIndexWarmThroughput({
     required this.readUnitsPerSecond,
     required this.writeUnitsPerSecond,
   });

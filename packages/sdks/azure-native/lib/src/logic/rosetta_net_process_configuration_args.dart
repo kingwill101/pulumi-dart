@@ -50,7 +50,7 @@ class RosettaNetProcessConfigurationArgs {
   /// [responderRoleSettings] The RosettaNet responder role settings.
   /// [rosettaNetProcessConfigurationName] The integration account RosettaNet ProcessConfiguration name.
   /// [tags] The resource tags.
-  RosettaNetProcessConfigurationArgs({
+  const RosettaNetProcessConfigurationArgs({
     required this.activitySettings,
     this.description,
     required this.initiatorRoleSettings,

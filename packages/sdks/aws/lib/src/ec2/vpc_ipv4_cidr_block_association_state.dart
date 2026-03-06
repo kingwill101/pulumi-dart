@@ -21,7 +21,7 @@ class VpcIpv4CidrBlockAssociationState {
   /// [ipv4NetmaskLength] The netmask length of the IPv4 CIDR you want to allocate to this VPC. Requires specifying a `ipv4_ipam_pool_id`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcId] The ID of the VPC to make the association with.
-  VpcIpv4CidrBlockAssociationState({
+  const VpcIpv4CidrBlockAssociationState({
     this.cidrBlock,
     this.ipv4IpamPoolId,
     this.ipv4NetmaskLength,

@@ -24,7 +24,7 @@ class BudgetTimePeriod {
   /// Creates a new [BudgetTimePeriod].
   /// [endDate] The end date for the budget.
   /// [startDate] The start date for the budget.
-  BudgetTimePeriod({
+  const BudgetTimePeriod({
     this.endDate,
     required this.startDate,
   });

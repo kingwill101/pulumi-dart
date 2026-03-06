@@ -14,7 +14,7 @@ class LinkedIntegrationRuntimeKeyAuthorizationResponse {
   /// Creates a new [LinkedIntegrationRuntimeKeyAuthorizationResponse].
   /// [authorizationType] The authorization type for integration runtime sharing.
   /// [key] The key used for authorization.
-  LinkedIntegrationRuntimeKeyAuthorizationResponse({
+  const LinkedIntegrationRuntimeKeyAuthorizationResponse({
     required this.authorizationType,
     required this.key,
   });

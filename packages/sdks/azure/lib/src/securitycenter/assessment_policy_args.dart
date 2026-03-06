@@ -33,7 +33,7 @@ class AssessmentPolicyArgs {
   /// [severity] The severity level of the Security Center Assessment. Possible values are `Low`, `Medium` and `High`. Defaults to `Medium`.
   /// [threats] A list of the threat impacts for the Security Center Assessment. Possible values are `AccountBreach`, `DataExfiltration`, `DataSpillage`, `DenialOfService`, `ElevationOfPrivilege`, `MaliciousInsider`, `MissingCoverage` and `ThreatResistance`.
   /// [userImpact] The user impact of the Security Center Assessment. Possible values are `Low`, `Moderate` and `High`.
-  AssessmentPolicyArgs({
+  const AssessmentPolicyArgs({
     this.categories,
     required this.description,
     required this.displayName,

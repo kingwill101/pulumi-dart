@@ -16,7 +16,7 @@ class Override {
   /// [kind] The override kind.
   /// [selectors] The list of the selector expressions.
   /// [value] The value to override the policy property.
-  Override({
+  const Override({
     this.kind,
     this.selectors,
     this.value,

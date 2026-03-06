@@ -11,7 +11,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount {
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount].
   /// [email] (Optional)
   /// [scopes] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount({
+  const RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount({
     this.email,
     this.scopes,
   });

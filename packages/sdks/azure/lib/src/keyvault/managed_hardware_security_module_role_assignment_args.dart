@@ -24,7 +24,7 @@ class ManagedHardwareSecurityModuleRoleAssignmentArgs {
   /// [principalId] The principal ID to be assigned to this role. It can point to a user, service principal, or security group. Changing this forces a new Managed Hardware Security Module to be created.
   /// [roleDefinitionId] The resource ID of the role definition to assign. Changing this forces a new Managed Hardware Security Module to be created.
   /// [scope] Specifies the scope to create the role assignment. Changing this forces a new Managed Hardware Security Module to be created.
-  ManagedHardwareSecurityModuleRoleAssignmentArgs({
+  const ManagedHardwareSecurityModuleRoleAssignmentArgs({
     required this.managedHsmId,
     this.name,
     required this.principalId,

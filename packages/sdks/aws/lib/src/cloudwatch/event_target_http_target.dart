@@ -14,7 +14,7 @@ class EventTargetHttpTarget {
   /// [headerParameters] Enables you to specify HTTP headers to add to the request.
   /// [pathParameterValues] The list of values that correspond sequentially to any path variables in your endpoint ARN (for example `arn:aws:execute-api:us-east-1:123456:myapi/*/POST/pets/*`).
   /// [queryStringParameters] Represents keys/values of query string parameters that are appended to the invoked endpoint.
-  EventTargetHttpTarget({
+  const EventTargetHttpTarget({
     this.headerParameters,
     this.pathParameterValues,
     this.queryStringParameters,

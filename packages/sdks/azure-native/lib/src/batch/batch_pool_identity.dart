@@ -13,7 +13,7 @@ class BatchPoolIdentity {
   /// Creates a new [BatchPoolIdentity].
   /// [type] The type of identity used for the Batch Pool.
   /// [userAssignedIdentities] The list of user identities associated with the Batch pool.
-  BatchPoolIdentity({
+  const BatchPoolIdentity({
     required this.type,
     this.userAssignedIdentities,
   });

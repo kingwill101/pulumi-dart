@@ -8,7 +8,7 @@ class GetRoutingProfileMediaConcurrencyCrossChannelBehavior {
 
   /// Creates a new [GetRoutingProfileMediaConcurrencyCrossChannelBehavior].
   /// [behaviorType] Cross-channel behavior for routing contacts across multiple channels. Valid values are `ROUTE_CURRENT_CHANNEL_ONLY`, `ROUTE_ANY_CHANNEL`.
-  GetRoutingProfileMediaConcurrencyCrossChannelBehavior({
+  const GetRoutingProfileMediaConcurrencyCrossChannelBehavior({
     required this.behaviorType,
   });
 

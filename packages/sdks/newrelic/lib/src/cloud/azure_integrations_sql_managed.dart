@@ -11,7 +11,7 @@ class AzureIntegrationsSqlManaged {
   /// Creates a new [AzureIntegrationsSqlManaged].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsSqlManaged({
+  const AzureIntegrationsSqlManaged({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

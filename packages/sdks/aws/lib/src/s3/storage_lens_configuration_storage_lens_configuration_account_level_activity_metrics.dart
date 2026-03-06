@@ -8,7 +8,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetric
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics].
   /// [enabled] Whether the activity metrics are enabled.
-  StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics({
+  const StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics({
     this.enabled,
   });
 

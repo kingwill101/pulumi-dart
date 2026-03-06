@@ -16,7 +16,7 @@ class ScaleSetOsProfileLinuxConfig {
   /// Creates a new [ScaleSetOsProfileLinuxConfig].
   /// [disablePasswordAuthentication] Specifies whether password authentication should be disabled. Defaults to `false`. Changing this forces a new resource to be created.
   /// [sshKeys] One or more `ssh_keys` blocks as defined below.
-  ScaleSetOsProfileLinuxConfig({
+  const ScaleSetOsProfileLinuxConfig({
     this.disablePasswordAuthentication,
     this.sshKeys,
   });

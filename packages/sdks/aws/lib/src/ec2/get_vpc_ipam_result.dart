@@ -63,7 +63,7 @@ class GetVpcIpamResult {
   /// [stateMessage] State message of the IPAM.
   /// [tags] Tags of the IPAM resource.
   /// [tier] IPAM Tier.
-  GetVpcIpamResult({
+  const GetVpcIpamResult({
     required this.arn,
     required this.defaultResourceDiscoveryAssociationId,
     required this.defaultResourceDiscoveryId,

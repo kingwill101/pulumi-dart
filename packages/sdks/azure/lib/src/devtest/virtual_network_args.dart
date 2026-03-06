@@ -28,7 +28,7 @@ class VirtualNetworkArgs {
   /// [resourceGroupName] The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   /// [subnet] A `subnet` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  VirtualNetworkArgs({
+  const VirtualNetworkArgs({
     this.description,
     required this.labName,
     this.name,

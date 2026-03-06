@@ -56,7 +56,7 @@ class RepositoryState {
   /// [region] A reference to the region
   /// [serviceAccount] The service account to run workflow invocations under.
   /// [workspaceCompilationOverrides] If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
-  RepositoryState({
+  const RepositoryState({
     this.deletionPolicy,
     this.displayName,
     this.effectiveLabels,

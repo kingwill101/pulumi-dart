@@ -15,7 +15,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration {
   /// [logDriver] The log driver to use for the container.
   /// [options] The configuration options to send to the log driver.
   /// [secretOptions] The secrets to pass to the log configuration.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration({
     required this.logDriver,
     required this.options,
     required this.secretOptions,

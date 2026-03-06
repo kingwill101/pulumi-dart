@@ -9,7 +9,7 @@ class RecorderStatusEnumValue {
 
   /// Creates a new [RecorderStatusEnumValue].
   /// [value] Property value
-  RecorderStatusEnumValue({
+  const RecorderStatusEnumValue({
     this.value,
   });
 

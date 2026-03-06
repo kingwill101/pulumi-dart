@@ -13,7 +13,7 @@ class TagSettingsProperties {
   /// Creates a new [TagSettingsProperties].
   /// [filterOperator] Filter VMs by Any or All specified tags.
   /// [tags] Dictionary of tags with its list of values.
-  TagSettingsProperties({
+  const TagSettingsProperties({
     this.filterOperator,
     this.tags,
   });

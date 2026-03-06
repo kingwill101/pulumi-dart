@@ -15,7 +15,7 @@ class InterconnectCircuitInfoResponseComputeV1 {
   /// [customerDemarcId] Customer-side demarc ID for this circuit.
   /// [googleCircuitId] Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
   /// [googleDemarcId] Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by Google to the customer in the LOA.
-  InterconnectCircuitInfoResponseComputeV1({
+  const InterconnectCircuitInfoResponseComputeV1({
     required this.customerDemarcId,
     required this.googleCircuitId,
     required this.googleDemarcId,

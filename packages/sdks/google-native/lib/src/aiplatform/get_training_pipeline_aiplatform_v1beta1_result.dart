@@ -60,7 +60,7 @@ class GetTrainingPipelineAiplatformV1beta1Result {
   /// [trainingTaskInputs] The training task's parameter(s), as specified in the training_task_definition's `inputs`.
   /// [trainingTaskMetadata] The metadata information as specified in the training_task_definition's `metadata`. This metadata is an auxiliary runtime and final information about the training task. While the pipeline is running this information is populated only at a best effort basis. Only present if the pipeline's training_task_definition contains `metadata` object.
   /// [updateTime] Time when the TrainingPipeline was most recently updated.
-  GetTrainingPipelineAiplatformV1beta1Result({
+  const GetTrainingPipelineAiplatformV1beta1Result({
     required this.createTime,
     required this.displayName,
     required this.encryptionSpec,

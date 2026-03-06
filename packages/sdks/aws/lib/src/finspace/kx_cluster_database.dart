@@ -18,7 +18,7 @@ class KxClusterDatabase {
   /// [changesetId] A unique identifier of the changeset that is associated with the cluster.
   /// [databaseName] Name of the KX database.
   /// [dataviewName] The name of the dataview to be used for caching historical data on disk. You cannot update to a different dataview name once a cluster is created. Use `lifecycle` `ignore_changes` for database to prevent any undesirable behaviors.
-  KxClusterDatabase({
+  const KxClusterDatabase({
     this.cacheConfigurations,
     this.changesetId,
     required this.databaseName,

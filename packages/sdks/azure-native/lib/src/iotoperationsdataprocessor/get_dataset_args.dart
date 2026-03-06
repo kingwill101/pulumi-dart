@@ -18,7 +18,7 @@ class GetDatasetArgs {
   /// [datasetName] Name of dataset.
   /// [instanceName] Name of instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDatasetArgs({
+  const GetDatasetArgs({
     required this.datasetName,
     required this.instanceName,
     required this.resourceGroupName,

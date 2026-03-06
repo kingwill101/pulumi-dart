@@ -17,7 +17,7 @@ class GetUserArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [userId] Required.
-  GetUserArgs({
+  const GetUserArgs({
     required this.clusterId,
     required this.location,
     this.project,

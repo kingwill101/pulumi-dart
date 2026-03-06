@@ -18,7 +18,7 @@ class FactoryIdentityResponse {
   /// [tenantId] The client tenant id of the identity.
   /// [type] The identity type.
   /// [userAssignedIdentities] List of user assigned identities for the factory.
-  FactoryIdentityResponse({
+  const FactoryIdentityResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

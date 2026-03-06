@@ -47,7 +47,7 @@ class MulticastGroupConsumerActivationArgs {
   /// [multicastGroupConsumerActivationId] A unique name for the multicast group consumer activation.
   /// [multicastGroupRangeActivation] The resource name of the multicast group range activation created by the
   /// [project] The ID of the project in which the resource belongs.
-  MulticastGroupConsumerActivationArgs({
+  const MulticastGroupConsumerActivationArgs({
     this.description,
     this.labels,
     required this.location,

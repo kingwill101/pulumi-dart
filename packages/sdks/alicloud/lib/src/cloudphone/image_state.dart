@@ -15,7 +15,7 @@ class ImageState {
   /// [imageName] The image name.
   /// [instanceId] The instance ID.
   /// [status] The status of the mirror.
-  ImageState({
+  const ImageState({
     this.imageName,
     this.instanceId,
     this.status,

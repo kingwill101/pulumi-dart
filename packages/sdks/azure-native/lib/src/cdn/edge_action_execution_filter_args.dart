@@ -33,7 +33,7 @@ class EdgeActionExecutionFilterArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [versionId] The referenced versionId of the edgeaction version
-  EdgeActionExecutionFilterArgs({
+  const EdgeActionExecutionFilterArgs({
     required this.edgeActionName,
     this.executionFilter,
     required this.executionFilterIdentifierHeaderName,

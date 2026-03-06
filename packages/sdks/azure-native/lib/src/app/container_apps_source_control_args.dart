@@ -30,7 +30,7 @@ class ContainerAppsSourceControlArgs {
   /// [repoUrl] The repo url which will be integrated to ContainerApp.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceControlName] Name of the Container App SourceControl.
-  ContainerAppsSourceControlArgs({
+  const ContainerAppsSourceControlArgs({
     this.branch,
     required this.containerAppName,
     this.githubActionConfiguration,

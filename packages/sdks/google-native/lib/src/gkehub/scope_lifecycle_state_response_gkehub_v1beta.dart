@@ -9,7 +9,7 @@ class ScopeLifecycleStateResponseGkehubV1beta {
 
   /// Creates a new [ScopeLifecycleStateResponseGkehubV1beta].
   /// [code] The current state of the scope resource.
-  ScopeLifecycleStateResponseGkehubV1beta({
+  const ScopeLifecycleStateResponseGkehubV1beta({
     required this.code,
   });
 

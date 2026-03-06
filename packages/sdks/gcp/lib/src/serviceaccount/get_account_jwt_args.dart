@@ -21,7 +21,7 @@ class GetAccountJwtArgs {
   /// [expiresIn] Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
   /// [payload] The JSON-encoded JWT claims set to include in the self-signed JWT.
   /// [targetServiceAccount] The email of the service account that will sign the JWT.
-  GetAccountJwtArgs({
+  const GetAccountJwtArgs({
     this.delegates,
     this.expiresIn,
     required this.payload,

@@ -11,7 +11,7 @@ class GetSpacesKeyGrant {
   /// Creates a new [GetSpacesKeyGrant].
   /// [bucket] The name of the bucket to grant the key access to.
   /// [permission] The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
-  GetSpacesKeyGrant({
+  const GetSpacesKeyGrant({
     required this.bucket,
     required this.permission,
   });

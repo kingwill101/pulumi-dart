@@ -18,7 +18,7 @@ class SpacesBucketLoggingState {
   /// [region] The region where the bucket resides.
   /// [targetBucket] The name of the bucket which will store the logs.
   /// [targetPrefix] The prefix for the log files.
-  SpacesBucketLoggingState({
+  const SpacesBucketLoggingState({
     this.bucket,
     this.region,
     this.targetBucket,

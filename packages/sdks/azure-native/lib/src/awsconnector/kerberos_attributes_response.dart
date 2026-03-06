@@ -21,7 +21,7 @@ class KerberosAttributesResponse {
   /// [crossRealmTrustPrincipalPassword] &lt;p&gt;Required only when establishing a cross-realm trust with a KDC in a different realm. The cross-realm principal password, which must be identical across realms.&lt;/p&gt;
   /// [kdcAdminPassword] &lt;p&gt;The password used within the cluster for the kadmin service on the cluster-dedicated KDC, which maintains Kerberos principals, password policies, and keytabs for the cluster.&lt;/p&gt;
   /// [realm] &lt;p&gt;The name of the Kerberos realm to which all nodes in a cluster belong. For example, &lt;code&gt;EC2.INTERNAL&lt;/code&gt;. &lt;/p&gt;
-  KerberosAttributesResponse({
+  const KerberosAttributesResponse({
     this.adDomainJoinPassword,
     this.adDomainJoinUser,
     this.crossRealmTrustPrincipalPassword,

@@ -14,7 +14,7 @@ class ClusterNetwork {
   /// [securityGroupIds] Security group to which the cluster belongs.
   /// [vpcId] VpcId to which the cluster belongs.
   /// [vswitches] Switch to which the cluster belongs.
-  ClusterNetwork({
+  const ClusterNetwork({
     this.securityGroupIds,
     required this.vpcId,
     required this.vswitches,

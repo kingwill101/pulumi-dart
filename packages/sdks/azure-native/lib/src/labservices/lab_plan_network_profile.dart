@@ -9,7 +9,7 @@ class LabPlanNetworkProfile {
 
   /// Creates a new [LabPlanNetworkProfile].
   /// [subnetId] The external subnet resource id
-  LabPlanNetworkProfile({
+  const LabPlanNetworkProfile({
     this.subnetId,
   });
 

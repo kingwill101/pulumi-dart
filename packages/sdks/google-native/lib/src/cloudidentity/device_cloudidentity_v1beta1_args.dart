@@ -34,7 +34,7 @@ class DeviceCloudidentityV1beta1Args {
   /// [lastSyncTime] Most recent time when device synced with this service.
   /// [serialNumber] Serial Number of device. Example: HT82V1A01076.
   /// [wifiMacAddresses] WiFi MAC addresses of device.
-  DeviceCloudidentityV1beta1Args({
+  const DeviceCloudidentityV1beta1Args({
     this.assetTag,
     this.clientTypes,
     this.customer,

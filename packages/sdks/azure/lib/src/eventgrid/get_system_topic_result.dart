@@ -35,7 +35,7 @@ class GetSystemTopicResult {
   /// [sourceResourceId] The ID of the Event Grid System Topic ARM Source.
   /// [tags] A mapping of tags which are assigned to the Event Grid System Topic.
   /// [topicType] The Topic Type of the Event Grid System Topic.
-  GetSystemTopicResult({
+  const GetSystemTopicResult({
     required this.id,
     required this.identities,
     required this.location,

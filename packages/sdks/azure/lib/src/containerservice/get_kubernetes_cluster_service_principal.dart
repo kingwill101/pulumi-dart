@@ -8,7 +8,7 @@ class GetKubernetesClusterServicePrincipal {
 
   /// Creates a new [GetKubernetesClusterServicePrincipal].
   /// [clientId] The Client ID of the user-defined Managed Identity assigned to the Kubelets.
-  GetKubernetesClusterServicePrincipal({
+  const GetKubernetesClusterServicePrincipal({
     required this.clientId,
   });
 

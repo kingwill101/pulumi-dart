@@ -29,7 +29,7 @@ class IdentityProviderConfigOidc {
   /// [requiredClaims] The key value pairs that describe required claims in the identity token.
   /// [usernameClaim] The JWT claim that the provider will use as the username.
   /// [usernamePrefix] A prefix that is prepended to username claims.
-  IdentityProviderConfigOidc({
+  const IdentityProviderConfigOidc({
     required this.clientId,
     this.groupsClaim,
     this.groupsPrefix,

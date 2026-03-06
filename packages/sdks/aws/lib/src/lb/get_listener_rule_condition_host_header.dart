@@ -11,7 +11,7 @@ class GetListenerRuleConditionHostHeader {
   /// Creates a new [GetListenerRuleConditionHostHeader].
   /// [regexValues] Set of regular expressions to compare against the request URL.
   /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
-  GetListenerRuleConditionHostHeader({
+  const GetListenerRuleConditionHostHeader({
     required this.regexValues,
     required this.values,
   });

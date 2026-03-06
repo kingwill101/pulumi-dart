@@ -37,7 +37,7 @@ class GetJobAgentResult {
   /// [state] The state of the job agent.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetJobAgentResult({
+  const GetJobAgentResult({
     required this.azureApiVersion,
     required this.databaseId,
     required this.id,

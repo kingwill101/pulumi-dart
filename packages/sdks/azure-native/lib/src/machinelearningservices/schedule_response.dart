@@ -32,7 +32,7 @@ class ScheduleResponse {
   /// [provisioningState] Provisioning state for the schedule.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [trigger] [Required] Specifies the trigger details
-  ScheduleResponse({
+  const ScheduleResponse({
     required this.action,
     this.description,
     this.displayName,

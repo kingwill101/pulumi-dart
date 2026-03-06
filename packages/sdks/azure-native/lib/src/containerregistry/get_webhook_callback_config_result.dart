@@ -11,7 +11,7 @@ class GetWebhookCallbackConfigResult {
   /// Creates a new [GetWebhookCallbackConfigResult].
   /// [customHeaders] Custom headers that will be added to the webhook notifications.
   /// [serviceUri] The service URI for the webhook to post notifications.
-  GetWebhookCallbackConfigResult({
+  const GetWebhookCallbackConfigResult({
     this.customHeaders,
     required this.serviceUri,
   });

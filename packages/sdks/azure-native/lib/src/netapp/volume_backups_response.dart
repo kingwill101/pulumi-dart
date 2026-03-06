@@ -18,7 +18,7 @@ class VolumeBackupsResponse {
   /// [policyEnabled] Policy enabled
   /// [volumeName] Volume name
   /// [volumeResourceId] ResourceId used to identify the Volume
-  VolumeBackupsResponse({
+  const VolumeBackupsResponse({
     this.backupsCount,
     this.policyEnabled,
     this.volumeName,

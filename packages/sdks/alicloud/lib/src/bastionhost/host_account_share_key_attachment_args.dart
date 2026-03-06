@@ -18,7 +18,7 @@ class HostAccountShareKeyAttachmentArgs {
   /// [hostAccountId] The ID list of the host account.
   /// [hostShareKeyId] The ID of the host shared key.
   /// [instanceId] The ID of the Bastion machine instance.
-  HostAccountShareKeyAttachmentArgs({
+  const HostAccountShareKeyAttachmentArgs({
     required this.hostAccountId,
     required this.hostShareKeyId,
     required this.instanceId,

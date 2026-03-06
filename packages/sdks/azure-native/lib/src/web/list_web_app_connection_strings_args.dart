@@ -15,7 +15,7 @@ class ListWebAppConnectionStringsArgs {
   /// Creates a new [ListWebAppConnectionStringsArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppConnectionStringsArgs({
+  const ListWebAppConnectionStringsArgs({
     required this.name,
     required this.resourceGroupName,
   });

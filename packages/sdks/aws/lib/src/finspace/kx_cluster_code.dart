@@ -14,7 +14,7 @@ class KxClusterCode {
   /// [s3Bucket] Unique name for the S3 bucket.
   /// [s3Key] Full S3 path (excluding bucket) to the .zip file that contains the code to be loaded onto the cluster when it’s started.
   /// [s3ObjectVersion] Version of an S3 Object.
-  KxClusterCode({
+  const KxClusterCode({
     required this.s3Bucket,
     required this.s3Key,
     this.s3ObjectVersion,

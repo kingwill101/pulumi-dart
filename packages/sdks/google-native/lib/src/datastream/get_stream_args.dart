@@ -15,7 +15,7 @@ class GetStreamArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [streamId] Required.
-  GetStreamArgs({
+  const GetStreamArgs({
     required this.location,
     this.project,
     required this.streamId,

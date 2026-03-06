@@ -21,7 +21,7 @@ class DomainState {
   /// [groupId] Id of the group in which the domain will add. If not supplied, then use default group.
   /// [name] Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   /// [resourceGroupId] The Id of resource group which the dns belongs.
-  DomainState({
+  const DomainState({
     this.dnsServers,
     this.domainId,
     this.groupId,

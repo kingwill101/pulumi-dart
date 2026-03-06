@@ -17,7 +17,7 @@ class GetSharedTargetsTarget {
   /// [resourceShareId] The resource share ID of resource manager.
   /// [status] The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
   /// [targetId] The ID of the Shared Target.
-  GetSharedTargetsTarget({
+  const GetSharedTargetsTarget({
     required this.id,
     required this.resourceShareId,
     required this.status,

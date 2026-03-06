@@ -16,7 +16,7 @@ class AiEndpointIamPolicyState {
   /// [location] Optional.
   /// [policyData] Optional.
   /// [project] Optional.
-  AiEndpointIamPolicyState({
+  const AiEndpointIamPolicyState({
     this.endpoint,
     this.etag,
     this.location,

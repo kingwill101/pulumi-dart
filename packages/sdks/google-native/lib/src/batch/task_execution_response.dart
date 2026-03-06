@@ -9,7 +9,7 @@ class TaskExecutionResponse {
 
   /// Creates a new [TaskExecutionResponse].
   /// [exitCode] When task is completed as the status of FAILED or SUCCEEDED, exit code is for one task execution result, default is 0 as success.
-  TaskExecutionResponse({
+  const TaskExecutionResponse({
     required this.exitCode,
   });
 

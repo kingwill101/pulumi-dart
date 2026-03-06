@@ -14,7 +14,7 @@ class WorkflowTemplatePlacementDataprocV1beta2 {
   /// Creates a new [WorkflowTemplatePlacementDataprocV1beta2].
   /// [clusterSelector] Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
   /// [managedCluster] Optional. A cluster that is managed by the workflow.
-  WorkflowTemplatePlacementDataprocV1beta2({
+  const WorkflowTemplatePlacementDataprocV1beta2({
     this.clusterSelector,
     this.managedCluster,
   });

@@ -9,7 +9,7 @@ class GraphQLApiIntrospectionConfigEnumValueResponse {
 
   /// Creates a new [GraphQLApiIntrospectionConfigEnumValueResponse].
   /// [value] Property value
-  GraphQLApiIntrospectionConfigEnumValueResponse({
+  const GraphQLApiIntrospectionConfigEnumValueResponse({
     this.value,
   });
 

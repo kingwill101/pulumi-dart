@@ -24,7 +24,7 @@ class GetVolumeArgs {
   /// [poolName] The name of the NetApp pool where the NetApp volume exists.
   /// [resourceGroupName] The Name of the Resource Group where the NetApp Volume exists.
   /// [securityStyle] Volume security style
-  GetVolumeArgs({
+  const GetVolumeArgs({
     required this.accountName,
     required this.name,
     required this.poolName,

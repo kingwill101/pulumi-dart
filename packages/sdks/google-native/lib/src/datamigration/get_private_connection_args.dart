@@ -15,7 +15,7 @@ class GetPrivateConnectionArgs {
   /// [location] Required.
   /// [privateConnectionId] Required.
   /// [project] Optional.
-  GetPrivateConnectionArgs({
+  const GetPrivateConnectionArgs({
     required this.location,
     required this.privateConnectionId,
     this.project,

@@ -50,7 +50,7 @@ class VolumeState {
   /// [pool] Name of the storage pool where the volume will be created
   /// [target] Optional.
   /// [type] Specifies the type of the storage volume, allowing for distinction of different volume types.
-  VolumeState({
+  const VolumeState({
     this.allocation,
     this.allocationUnit,
     this.backingStore,

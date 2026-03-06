@@ -11,7 +11,7 @@ class PlanTriggerCondition {
   /// Creates a new [PlanTriggerCondition].
   /// [associatedAlarmName] Name of the associated alarm.
   /// [condition] Condition to check. Valid values: `red`, `green`.
-  PlanTriggerCondition({
+  const PlanTriggerCondition({
     required this.associatedAlarmName,
     required this.condition,
   });

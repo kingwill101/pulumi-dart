@@ -31,7 +31,7 @@ class ReferenceDataSetArgs {
   /// [referenceDataSetName] Name of the reference data set.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [tags] Key-value pairs of additional properties for the resource.
-  ReferenceDataSetArgs({
+  const ReferenceDataSetArgs({
     this.dataStringComparisonBehavior,
     required this.environmentName,
     required this.keyProperties,

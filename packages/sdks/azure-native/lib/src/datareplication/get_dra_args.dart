@@ -18,7 +18,7 @@ class GetDraArgs {
   /// [fabricAgentName] The fabric agent (Dra) name.
   /// [fabricName] The fabric name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDraArgs({
+  const GetDraArgs({
     required this.fabricAgentName,
     required this.fabricName,
     required this.resourceGroupName,

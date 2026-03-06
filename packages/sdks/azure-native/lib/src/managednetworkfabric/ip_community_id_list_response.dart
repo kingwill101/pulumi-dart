@@ -9,7 +9,7 @@ class IpCommunityIdListResponse {
 
   /// Creates a new [IpCommunityIdListResponse].
   /// [ipCommunityIds] List of IP Community resource IDs.
-  IpCommunityIdListResponse({
+  const IpCommunityIdListResponse({
     this.ipCommunityIds,
   });
 

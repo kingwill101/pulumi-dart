@@ -12,7 +12,7 @@ class IncidentServiceConnectionResponse {
   /// Creates a new [IncidentServiceConnectionResponse].
   /// [id] GUID value representing the connection ID for the incident management service.
   /// [name] The name of the connection.
-  IncidentServiceConnectionResponse({
+  const IncidentServiceConnectionResponse({
     required this.id,
     required this.name,
   });

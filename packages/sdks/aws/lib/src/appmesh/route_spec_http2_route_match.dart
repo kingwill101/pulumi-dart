@@ -30,7 +30,7 @@ class RouteSpecHttp2RouteMatch {
   /// [prefix] Path with which to match requests.
   /// [queryParameters] Client request query parameters to match on.
   /// [scheme] Client request header scheme to match on. Valid values: `http`, `https`.
-  RouteSpecHttp2RouteMatch({
+  const RouteSpecHttp2RouteMatch({
     this.headers,
     this.method,
     this.path,

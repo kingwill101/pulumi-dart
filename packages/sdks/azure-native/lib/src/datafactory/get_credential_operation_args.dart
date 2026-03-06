@@ -18,7 +18,7 @@ class GetCredentialOperationArgs {
   /// [credentialName] Credential name
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
-  GetCredentialOperationArgs({
+  const GetCredentialOperationArgs({
     required this.credentialName,
     required this.factoryName,
     required this.resourceGroupName,

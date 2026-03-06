@@ -9,7 +9,7 @@ class AccountApiKeysResponse {
   /// Creates a new [AccountApiKeysResponse].
   /// [key1] Optional.
   /// [key2] Optional.
-  AccountApiKeysResponse({
+  const AccountApiKeysResponse({
     this.key1,
     this.key2,
   });

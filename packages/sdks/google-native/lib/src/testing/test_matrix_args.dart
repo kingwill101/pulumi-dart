@@ -37,7 +37,7 @@ class TestMatrixArgs {
   /// [requestId] A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
   /// [resultStorage] Where the results for the matrix are written.
   /// [testSpecification] How to run the test.
-  TestMatrixArgs({
+  const TestMatrixArgs({
     this.clientInfo,
     required this.environmentMatrix,
     this.failFast,

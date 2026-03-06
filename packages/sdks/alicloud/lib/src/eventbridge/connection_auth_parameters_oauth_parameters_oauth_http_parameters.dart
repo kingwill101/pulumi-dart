@@ -17,7 +17,7 @@ class ConnectionAuthParametersOauthParametersOauthHttpParameters {
   /// [bodyParameters] The parameters that are configured for the request body. See `body_parameters` below.
   /// [headerParameters] The parameters that are configured for the request header. See `header_parameters` below.
   /// [queryStringParameters] The parameters that are configured for the request path. See `query_string_parameters` below.
-  ConnectionAuthParametersOauthParametersOauthHttpParameters({
+  const ConnectionAuthParametersOauthParametersOauthHttpParameters({
     this.bodyParameters,
     this.headerParameters,
     this.queryStringParameters,

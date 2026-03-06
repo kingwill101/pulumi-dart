@@ -10,7 +10,7 @@ class ResponsePolicyNetwork {
 
   /// Creates a new [ResponsePolicyNetwork].
   /// [networkUrl] The fully qualified URL of the VPC network to bind to.
-  ResponsePolicyNetwork({
+  const ResponsePolicyNetwork({
     required this.networkUrl,
   });
 

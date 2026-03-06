@@ -24,7 +24,7 @@ class GetInstancesArgs {
   /// [nameRegex] A regex string to apply to the instance name.
   /// [outputFile] The name of file that can save the collection of instances after running `pulumi preview`.
   /// [tags] A mapping of tags to assign to the resource.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.availabilityZone,
     this.ids,
     this.nameRegex,

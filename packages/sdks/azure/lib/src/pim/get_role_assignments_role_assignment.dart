@@ -35,7 +35,7 @@ class GetRoleAssignmentsRoleAssignment {
   /// [roleAssignmentName] The name of the Role Assignment.
   /// [roleAssignmentScope] The scope of the Role Assignment.
   /// [roleDefinitionId] The ID of the Role Definition.
-  GetRoleAssignmentsRoleAssignment({
+  const GetRoleAssignmentsRoleAssignment({
     required this.condition,
     required this.conditionVersion,
     required this.delegatedManagedIdentityResourceId,

@@ -15,7 +15,7 @@ class GetVirtualMachineTemplateArgs {
   /// Creates a new [GetVirtualMachineTemplateArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [virtualMachineTemplateName] Name of the VirtualMachineTemplate.
-  GetVirtualMachineTemplateArgs({
+  const GetVirtualMachineTemplateArgs({
     required this.resourceGroupName,
     required this.virtualMachineTemplateName,
   });

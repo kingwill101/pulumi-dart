@@ -29,7 +29,7 @@ class DomainDevicesIommuDriver {
   /// [iotlb] Enables the IOTLB (Input/Output Translation Lookaside Buffer) feature for the IOMMU driver, optimizing memory translation for I/O devices.
   /// [passthrough] Controls the passthrough capability of the IOMMU driver, allowing direct device assignments.
   /// [xtSup] Configures the XT (Extended Translation) support for the IOMMU driver, enabling advanced memory translation features.
-  DomainDevicesIommuDriver({
+  const DomainDevicesIommuDriver({
     this.awBits,
     this.cachingMode,
     this.dmaTranslation,

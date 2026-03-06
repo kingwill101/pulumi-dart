@@ -50,7 +50,7 @@ class JobConfig {
   /// [overlays] List of overlays on the output video, in descending Z-order.
   /// [pubsubDestination] Destination on Pub/Sub.
   /// [spriteSheets] List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
-  JobConfig({
+  const JobConfig({
     this.adBreaks,
     this.editList,
     this.elementaryStreams,

@@ -8,7 +8,7 @@ class InputSecurityGroupWhitelistRule {
 
   /// Creates a new [InputSecurityGroupWhitelistRule].
   /// [cidr] The IPv4 CIDR that's whitelisted.
-  InputSecurityGroupWhitelistRule({
+  const InputSecurityGroupWhitelistRule({
     required this.cidr,
   });
 

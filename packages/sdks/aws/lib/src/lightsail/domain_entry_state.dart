@@ -26,7 +26,7 @@ class DomainEntryState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [target] Target of the domain entry.
   /// [type] Type of record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `SOA`, `SRV`, `TXT`.
-  DomainEntryState({
+  const DomainEntryState({
     this.domainName,
     this.isAlias,
     this.name,

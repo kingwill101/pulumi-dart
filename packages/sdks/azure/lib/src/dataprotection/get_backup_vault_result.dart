@@ -29,7 +29,7 @@ class GetBackupVaultResult {
   /// [redundancy] Specifies the backup storage redundancy.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags which are assigned to the Backup Vault.
-  GetBackupVaultResult({
+  const GetBackupVaultResult({
     required this.datastoreType,
     required this.id,
     required this.identities,

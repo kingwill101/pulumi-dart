@@ -15,7 +15,7 @@ class GetAssignmentArgs {
   /// Creates a new [GetAssignmentArgs].
   /// [assignmentName] Name of the blueprint assignment.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
-  GetAssignmentArgs({
+  const GetAssignmentArgs({
     required this.assignmentName,
     required this.resourceScope,
   });

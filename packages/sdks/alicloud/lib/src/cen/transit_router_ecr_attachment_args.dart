@@ -30,7 +30,7 @@ class TransitRouterEcrAttachmentArgs {
   /// [transitRouterAttachmentDescription] TransitRouterAttachmentDescription
   /// [transitRouterEcrAttachmentName] TransitRouterAttachmentName
   /// [transitRouterId] TransitRouterId
-  TransitRouterEcrAttachmentArgs({
+  const TransitRouterEcrAttachmentArgs({
     this.cenId,
     required this.ecrId,
     this.ecrOwnerId,

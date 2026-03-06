@@ -35,7 +35,7 @@ class InstanceState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [verifiedAccessTrustProviders] One or more blocks of providing information about the AWS Verified Access Trust Providers. See verified_access_trust_providers below for details.One or more blocks
-  InstanceState({
+  const InstanceState({
     this.cidrEndpointsCustomSubdomain,
     this.creationTime,
     this.description,

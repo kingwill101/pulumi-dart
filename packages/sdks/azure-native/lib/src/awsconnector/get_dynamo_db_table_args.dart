@@ -15,7 +15,7 @@ class GetDynamoDbTableArgs {
   /// Creates a new [GetDynamoDbTableArgs].
   /// [name] Name of DynamoDBTable
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDynamoDbTableArgs({
+  const GetDynamoDbTableArgs({
     required this.name,
     required this.resourceGroupName,
   });

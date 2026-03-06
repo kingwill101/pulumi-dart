@@ -41,7 +41,7 @@ class GetIpamIpamScopesResult {
   /// [resourceGroupId] The ID of the resource group.
   /// [scopes] A list of Ipam Scope Entries. Each element contains the following attributes:
   /// [tags] The tag of the resource.
-  GetIpamIpamScopesResult({
+  const GetIpamIpamScopesResult({
     required this.id,
     required this.ids,
     this.ipamId,

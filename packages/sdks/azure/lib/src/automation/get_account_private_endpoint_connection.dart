@@ -11,7 +11,7 @@ class GetAccountPrivateEndpointConnection {
   /// Creates a new [GetAccountPrivateEndpointConnection].
   /// [id] The ID of the Automation Account
   /// [name] The name of the Automation Account.
-  GetAccountPrivateEndpointConnection({
+  const GetAccountPrivateEndpointConnection({
     required this.id,
     required this.name,
   });

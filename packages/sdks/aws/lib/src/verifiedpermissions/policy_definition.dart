@@ -13,7 +13,7 @@ class PolicyDefinition {
   /// Creates a new [PolicyDefinition].
   /// [static] The static policy statement. See Static below.
   /// [templateLinked] The template linked policy. See Template Linked below.
-  PolicyDefinition({
+  const PolicyDefinition({
     this.static,
     this.templateLinked,
   });

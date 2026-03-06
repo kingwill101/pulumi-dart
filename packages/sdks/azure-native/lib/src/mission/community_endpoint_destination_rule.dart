@@ -24,7 +24,7 @@ class CommunityEndpointDestinationRule {
   /// [ports] Port. Can include multiple ports separated by commas or a range indicated by a hyphen.
   /// [protocols] Protocols. Options specified by Endpoint Protocol Enum.
   /// [transitHubResourceId] Transit Hub Resource Id.
-  CommunityEndpointDestinationRule({
+  const CommunityEndpointDestinationRule({
     this.destination,
     this.destinationType,
     this.endpointRuleName,

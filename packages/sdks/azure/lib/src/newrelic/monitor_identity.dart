@@ -14,7 +14,7 @@ class MonitorIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Identity of this Azure Native New Relic Monitor.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Identity of this Azure Native New Relic Monitor.
   /// [type] Specifies the identity type of the Azure Native New Relic Monitor. The only possible value is `SystemAssigned`. Changing this forces a new Azure Native New Relic Monitor to be created.
-  MonitorIdentity({
+  const MonitorIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

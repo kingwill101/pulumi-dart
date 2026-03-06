@@ -19,7 +19,7 @@ class GetDatabaseInstanceLatestRecoveryTimeResult {
   /// [latestRecoveryTime] Timestamp, identifies the latest recovery time of the source instance.
   /// [project] The ID of the project in which the resource belongs.
   /// [sourceInstanceDeletionTime] Optional.
-  GetDatabaseInstanceLatestRecoveryTimeResult({
+  const GetDatabaseInstanceLatestRecoveryTimeResult({
     required this.id,
     required this.instance,
     required this.latestRecoveryTime,

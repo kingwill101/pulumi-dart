@@ -36,7 +36,7 @@ class RouteFilterRuleArgs {
   /// [routeFilterName] The name of the route filter.
   /// [routeFilterRuleType] The rule type of the rule.
   /// [ruleName] The name of the route filter rule.
-  RouteFilterRuleArgs({
+  const RouteFilterRuleArgs({
     required this.access,
     required this.communities,
     this.id,

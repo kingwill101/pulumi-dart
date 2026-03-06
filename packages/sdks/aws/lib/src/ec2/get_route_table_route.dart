@@ -47,7 +47,7 @@ class GetRouteTableRoute {
   /// [transitGatewayId] EC2 Transit Gateway ID.
   /// [vpcEndpointId] VPC Endpoint ID.
   /// [vpcPeeringConnectionId] VPC Peering ID.
-  GetRouteTableRoute({
+  const GetRouteTableRoute({
     required this.carrierGatewayId,
     required this.cidrBlock,
     required this.coreNetworkArn,

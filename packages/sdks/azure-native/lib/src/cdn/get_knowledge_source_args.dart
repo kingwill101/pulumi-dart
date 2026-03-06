@@ -18,7 +18,7 @@ class GetKnowledgeSourceArgs {
   /// [knowledgeSourceName] The name of the knowledge source.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [webAgentName] The name of the web agent.
-  GetKnowledgeSourceArgs({
+  const GetKnowledgeSourceArgs({
     required this.knowledgeSourceName,
     required this.resourceGroupName,
     required this.webAgentName,

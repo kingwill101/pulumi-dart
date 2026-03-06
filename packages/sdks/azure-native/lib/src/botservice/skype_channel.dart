@@ -20,7 +20,7 @@ class SkypeChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Skype channel resource
-  SkypeChannel({
+  const SkypeChannel({
     required this.channelName,
     this.etag,
     this.location,

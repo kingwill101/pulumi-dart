@@ -17,7 +17,7 @@ class VpcEndpointServicePrivateDnsNameConfiguration {
   /// [state] Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is `verified`.
   /// [type] Endpoint service verification type, for example `TXT`.
   /// [value] Value the service provider adds to the private DNS name domain record before verification.
-  VpcEndpointServicePrivateDnsNameConfiguration({
+  const VpcEndpointServicePrivateDnsNameConfiguration({
     this.name,
     this.state,
     this.type,

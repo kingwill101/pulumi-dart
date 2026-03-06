@@ -18,7 +18,7 @@ class GetConfigurationServiceArgs {
   /// [configurationServiceName] The name of Application Configuration Service.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  GetConfigurationServiceArgs({
+  const GetConfigurationServiceArgs({
     required this.configurationServiceName,
     required this.resourceGroupName,
     required this.serviceName,

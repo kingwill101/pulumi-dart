@@ -32,7 +32,7 @@ class GetCurationProfileResult {
   /// [scopes] Resources that have access to the shared resources that are a part of this curation profile.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCurationProfileResult({
+  const GetCurationProfileResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

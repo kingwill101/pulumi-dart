@@ -12,7 +12,7 @@ class InstanceSharedIpsState {
   /// Creates a new [InstanceSharedIpsState].
   /// [addresses] The set of IPs to share with the Linode.
   /// [linodeId] The ID of the Linode to share the IPs to.
-  InstanceSharedIpsState({
+  const InstanceSharedIpsState({
     this.addresses,
     this.linodeId,
   });

@@ -23,7 +23,7 @@ class GoogleCloudApigeeV1GrpcOperationConfig {
   /// [methods] List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy. Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
   /// [quota] Quota parameters to be enforced for the methods and API source combination. If none are specified, quota enforcement will not be done.
   /// [service] gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
-  GoogleCloudApigeeV1GrpcOperationConfig({
+  const GoogleCloudApigeeV1GrpcOperationConfig({
     required this.apiSource,
     this.attributes,
     this.methods,

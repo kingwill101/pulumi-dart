@@ -10,7 +10,7 @@ class ArtifactManifestPropertiesFormat {
 
   /// Creates a new [ArtifactManifestPropertiesFormat].
   /// [artifacts] The artifacts list.
-  ArtifactManifestPropertiesFormat({
+  const ArtifactManifestPropertiesFormat({
     this.artifacts,
   });
 

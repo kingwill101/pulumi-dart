@@ -14,7 +14,7 @@ class GetInterfaceVpcIpv4Address {
   /// [address] The VPC IPv4 address.
   /// [nat11Address] The 1:1 NAT address for this VPC IPv4 address.
   /// [primary] Whether this is the primary VPC IPv4 address.
-  GetInterfaceVpcIpv4Address({
+  const GetInterfaceVpcIpv4Address({
     required this.address,
     required this.nat11Address,
     required this.primary,

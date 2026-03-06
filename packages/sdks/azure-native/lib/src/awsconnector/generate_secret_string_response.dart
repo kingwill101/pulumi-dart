@@ -36,7 +36,7 @@ class GenerateSecretStringResponse {
   /// [passwordLength] The length of the password. If you don't include this parameter, the default length is 32 characters.
   /// [requireEachIncludedType] Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation. If you don't include this switch, the password contains at least one of every character type.
   /// [secretStringTemplate] A template that the generated string must match. When you make a change to this property, a new secret version is created.
-  GenerateSecretStringResponse({
+  const GenerateSecretStringResponse({
     this.excludeCharacters,
     this.excludeLowercase,
     this.excludeNumbers,

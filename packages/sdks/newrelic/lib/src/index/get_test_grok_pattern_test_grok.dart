@@ -15,7 +15,7 @@ class GetTestGrokPatternTestGrok {
   /// [attributes] Nested list containing information about any attributes that were extracted.
   /// [logLine] The log line that was tested against.
   /// [matched] Whether the Grok pattern matched.
-  GetTestGrokPatternTestGrok({
+  const GetTestGrokPatternTestGrok({
     required this.attributes,
     required this.logLine,
     required this.matched,

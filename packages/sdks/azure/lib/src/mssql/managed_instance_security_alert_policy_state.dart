@@ -35,7 +35,7 @@ class ManagedInstanceSecurityAlertPolicyState {
   /// [retentionDays] Specifies the number of days to keep in the Threat Detection audit logs. Defaults to `0`.
   /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account. This is mandatory when you use `storage_endpoint` to specify a storage account blob endpoint.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://example.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
-  ManagedInstanceSecurityAlertPolicyState({
+  const ManagedInstanceSecurityAlertPolicyState({
     this.disabledAlerts,
     this.emailAccountAdminsEnabled,
     this.emailAddresses,

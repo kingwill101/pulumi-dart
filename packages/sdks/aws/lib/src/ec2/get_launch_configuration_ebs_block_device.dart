@@ -32,7 +32,7 @@ class GetLaunchConfigurationEbsBlockDevice {
   /// [throughput] Throughput of the volume.
   /// [volumeSize] Size of the volume.
   /// [volumeType] Type of the volume.
-  GetLaunchConfigurationEbsBlockDevice({
+  const GetLaunchConfigurationEbsBlockDevice({
     required this.deleteOnTermination,
     required this.deviceName,
     required this.encrypted,

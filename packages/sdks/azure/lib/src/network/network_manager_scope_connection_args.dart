@@ -24,7 +24,7 @@ class NetworkManagerScopeConnectionArgs {
   /// [networkManagerId] Specifies the ID of the Network Manager Scope Connection. Changing this forces a new Network Manager Scope Connection to be created.
   /// [targetScopeId] Specifies the Resource ID of the target scope which the Network Manager is connected to. It should be either Subscription ID or Management Group ID.
   /// [tenantId] Specifies the Tenant ID of the Resource which the Network Manager is connected to.
-  NetworkManagerScopeConnectionArgs({
+  const NetworkManagerScopeConnectionArgs({
     this.description,
     this.name,
     required this.networkManagerId,

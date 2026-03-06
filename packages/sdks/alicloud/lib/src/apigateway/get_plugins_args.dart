@@ -31,7 +31,7 @@ class GetPluginsArgs {
   /// [pluginName] The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
   /// [pluginType] The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
   /// [tags] A mapping of tags to assign to the resource.
-  GetPluginsArgs({
+  const GetPluginsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

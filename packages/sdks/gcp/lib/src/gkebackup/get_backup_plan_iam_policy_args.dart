@@ -22,7 +22,7 @@ class GetBackupPlanIamPolicyArgs {
   /// [location] The region of the Backup Plan.
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetBackupPlanIamPolicyArgs({
+  const GetBackupPlanIamPolicyArgs({
     this.location,
     required this.name,
     this.project,

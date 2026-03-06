@@ -53,7 +53,7 @@ class WorkloadImpactProperties {
   /// [performance] Details about performance issue. Applicable for performance impacts.
   /// [startDateTime] Time at which impact was observed
   /// [workload] Information about the impacted workload
-  WorkloadImpactProperties({
+  const WorkloadImpactProperties({
     this.additionalProperties,
     this.armCorrelationIds,
     this.clientIncidentDetails,

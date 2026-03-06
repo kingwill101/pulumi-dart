@@ -105,7 +105,7 @@ class FunctionArgs {
   /// [timeout] The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
   /// [vpcConnector] The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
   /// [vpcConnectorEgressSettings] The egress settings for the connector, controlling what traffic is diverted through it.
-  FunctionArgs({
+  const FunctionArgs({
     this.availableMemoryMb,
     this.buildEnvironmentVariables,
     this.buildWorkerPool,

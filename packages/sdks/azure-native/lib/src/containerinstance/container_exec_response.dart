@@ -9,7 +9,7 @@ class ContainerExecResponse {
 
   /// Creates a new [ContainerExecResponse].
   /// [command] The commands to execute within the container.
-  ContainerExecResponse({
+  const ContainerExecResponse({
     this.command,
   });
 

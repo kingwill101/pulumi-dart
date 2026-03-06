@@ -43,7 +43,7 @@ class MongoDbCollectionInfoResponse {
   /// [shardKey] The shard key on the collection, or null if the collection is not sharded
   /// [supportsSharding] Whether the database has sharding enabled. Note that the migration task will enable sharding on the target if necessary.
   /// [viewOf] The name of the collection that this is a view of, if IsView is true
-  MongoDbCollectionInfoResponse({
+  const MongoDbCollectionInfoResponse({
     required this.averageDocumentSize,
     required this.dataSize,
     required this.databaseName,

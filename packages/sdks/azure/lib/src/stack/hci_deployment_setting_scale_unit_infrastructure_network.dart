@@ -23,7 +23,7 @@ class HciDeploymentSettingScaleUnitInfrastructureNetwork {
   /// [gateway] Specifies the default gateway that should be used for the provided IP address space. It should be in the format of an IPv4 IP address. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [ipPools] One or more `ip_pool` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [subnetMask] Specifies the subnet mask that matches the provided IP address space. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitInfrastructureNetwork({
+  const HciDeploymentSettingScaleUnitInfrastructureNetwork({
     this.dhcpEnabled,
     required this.dnsServers,
     required this.gateway,

@@ -95,7 +95,7 @@ class ServiceState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [tlsClientCertEnabled] Whether to request client certificate during TLS handshake? Defaults to `false`.
   /// [upstreamEndpoints] An `upstream_endpoint` block as documented below. Using this block requires the SignalR service to be Serverless. When creating multiple blocks they will be processed in the order they are defined in.
-  ServiceState({
+  const ServiceState({
     this.aadAuthEnabled,
     this.connectivityLogsEnabled,
     this.cors,

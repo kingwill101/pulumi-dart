@@ -23,7 +23,7 @@ class ClusterScalingConfiguration {
   /// [secondsBeforeTimeout] Amount of time, in seconds, that Aurora Serverless v1 tries to find a scaling point to perform seamless scaling before enforcing the timeout action. Valid values are `60` through `600`. Defaults to `300`.
   /// [secondsUntilAutoPause] Time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
   /// [timeoutAction] Action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v1.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
-  ClusterScalingConfiguration({
+  const ClusterScalingConfiguration({
     this.autoPause,
     this.maxCapacity,
     this.minCapacity,

@@ -13,7 +13,7 @@ class ServerPublicNet {
   /// [ipv4Enabled] Optional.
   /// [ipv6] Optional.
   /// [ipv6Enabled] Optional.
-  ServerPublicNet({
+  const ServerPublicNet({
     this.ipv4,
     this.ipv4Enabled,
     this.ipv6,

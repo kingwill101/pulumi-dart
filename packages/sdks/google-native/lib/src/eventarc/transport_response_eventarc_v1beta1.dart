@@ -10,7 +10,7 @@ class TransportResponseEventarcV1beta1 {
 
   /// Creates a new [TransportResponseEventarcV1beta1].
   /// [pubsub] The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-  TransportResponseEventarcV1beta1({
+  const TransportResponseEventarcV1beta1({
     required this.pubsub,
   });
 

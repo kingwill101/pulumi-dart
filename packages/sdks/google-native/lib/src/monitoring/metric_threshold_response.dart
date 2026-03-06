@@ -39,7 +39,7 @@ class MetricThresholdResponse {
   /// [forecastOptions] When this field is present, the MetricThreshold condition forecasts whether the time series is predicted to violate the threshold within the forecast_horizon. When this field is not set, the MetricThreshold tests the current value of the timeseries against the threshold.
   /// [thresholdValue] A value against which to compare the time series.
   /// [trigger] The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
-  MetricThresholdResponse({
+  const MetricThresholdResponse({
     required this.aggregations,
     required this.comparison,
     required this.denominatorAggregations,

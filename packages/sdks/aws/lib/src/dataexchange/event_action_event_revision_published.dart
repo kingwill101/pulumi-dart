@@ -9,7 +9,7 @@ class EventActionEventRevisionPublished {
 
   /// Creates a new [EventActionEventRevisionPublished].
   /// [dataSetId] The ID of the data set to monitor for revision publications.
-  EventActionEventRevisionPublished({
+  const EventActionEventRevisionPublished({
     required this.dataSetId,
   });
 

@@ -16,7 +16,7 @@ class AwsElasticBeanstalkApplicationPropertiesResponse {
   /// [applicationName] A name for the Elastic Beanstalk application. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the application name.
   /// [description] Your description of the application.
   /// [resourceLifecycleConfig] Specifies an application resource lifecycle configuration to prevent your application from accumulating too many versions.
-  AwsElasticBeanstalkApplicationPropertiesResponse({
+  const AwsElasticBeanstalkApplicationPropertiesResponse({
     this.applicationName,
     this.description,
     this.resourceLifecycleConfig,

@@ -36,7 +36,7 @@ class ServerPropertiesForDefaultCreate {
   /// [sslEnforcement] Enable ssl enforcement or not when connect to server.
   /// [storageProfile] Storage profile of a server.
   /// [version] Server version.
-  ServerPropertiesForDefaultCreate({
+  const ServerPropertiesForDefaultCreate({
     required this.administratorLogin,
     required this.administratorLoginPassword,
     required this.createMode,

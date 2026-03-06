@@ -12,7 +12,7 @@ class BackupRetentionSettingsResponse {
   /// Creates a new [BackupRetentionSettingsResponse].
   /// [retainedBackups] Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
   /// [retentionUnit] The unit that 'retained_backups' represents.
-  BackupRetentionSettingsResponse({
+  const BackupRetentionSettingsResponse({
     required this.retainedBackups,
     required this.retentionUnit,
   });

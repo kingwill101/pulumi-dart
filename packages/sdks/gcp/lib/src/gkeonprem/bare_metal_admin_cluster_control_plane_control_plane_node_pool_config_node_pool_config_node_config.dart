@@ -14,7 +14,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
   /// Creates a new [BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig].
   /// [labels] The labels assigned to nodes of this node pool.
   /// [nodeIp] (Optional)
-  BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig({
+  const BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig({
     this.labels,
     this.nodeIp,
   });

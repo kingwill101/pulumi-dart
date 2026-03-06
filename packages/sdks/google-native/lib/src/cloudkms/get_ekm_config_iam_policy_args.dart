@@ -15,7 +15,7 @@ class GetEkmConfigIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetEkmConfigIamPolicyArgs({
+  const GetEkmConfigIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

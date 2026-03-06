@@ -12,7 +12,7 @@ class RoleEligibilityScheduleRequestPropertiesTicketInfo {
   /// Creates a new [RoleEligibilityScheduleRequestPropertiesTicketInfo].
   /// [ticketNumber] Ticket number for the role eligibility
   /// [ticketSystem] Ticket system name for the role eligibility
-  RoleEligibilityScheduleRequestPropertiesTicketInfo({
+  const RoleEligibilityScheduleRequestPropertiesTicketInfo({
     this.ticketNumber,
     this.ticketSystem,
   });

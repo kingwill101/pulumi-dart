@@ -78,7 +78,7 @@ class GetClusterResult {
   /// [usedMemoryGB] Gets the used physical memory on the cluster in GB.
   /// [uuid] Gets or sets a unique identifier for this resource.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this cluster resides.
-  GetClusterResult({
+  const GetClusterResult({
     required this.azureApiVersion,
     required this.customResourceName,
     required this.datastoreIds,

@@ -30,7 +30,7 @@ class StaticSiteUserARMResourceResponse {
   /// [roles] The roles for the static site user, in free-form string format
   /// [type] Resource type.
   /// [userId] The user id for the static site user.
-  StaticSiteUserARMResourceResponse({
+  const StaticSiteUserARMResourceResponse({
     required this.displayName,
     required this.id,
     this.kind,

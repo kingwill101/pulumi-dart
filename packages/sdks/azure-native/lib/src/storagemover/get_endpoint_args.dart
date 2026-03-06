@@ -18,7 +18,7 @@ class GetEndpointArgs {
   /// [endpointName] The name of the Endpoint resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
-  GetEndpointArgs({
+  const GetEndpointArgs({
     required this.endpointName,
     required this.resourceGroupName,
     required this.storageMoverName,

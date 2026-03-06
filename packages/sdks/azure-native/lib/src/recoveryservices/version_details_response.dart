@@ -15,7 +15,7 @@ class VersionDetailsResponse {
   /// [expiryDate] Version expiry date.
   /// [status] A value indicating whether security update required.
   /// [version] The agent version.
-  VersionDetailsResponse({
+  const VersionDetailsResponse({
     this.expiryDate,
     this.status,
     this.version,

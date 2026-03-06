@@ -18,7 +18,7 @@ class ServiceTagDestination {
   /// [portRanges] Optional.
   /// [protocol] Optional.
   /// [serviceTag] Optional.
-  ServiceTagDestination({
+  const ServiceTagDestination({
     this.action,
     this.addressPrefixes,
     this.portRanges,

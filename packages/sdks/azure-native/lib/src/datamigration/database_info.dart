@@ -9,7 +9,7 @@ class DatabaseInfo {
 
   /// Creates a new [DatabaseInfo].
   /// [sourceDatabaseName] Name of the database
-  DatabaseInfo({
+  const DatabaseInfo({
     required this.sourceDatabaseName,
   });
 

@@ -21,7 +21,7 @@ class MoverState {
   /// [name] Specifies the name which should be used for this Storage Mover. Changing this forces a new Storage Mover to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Storage Mover should exist. Changing this forces a new Storage Mover to be created.
   /// [tags] A mapping of tags which should be assigned to the Storage Mover.
-  MoverState({
+  const MoverState({
     this.description,
     this.location,
     this.name,

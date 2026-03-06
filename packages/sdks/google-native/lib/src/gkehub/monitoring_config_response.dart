@@ -21,7 +21,7 @@ class MonitoringConfigResponse {
   /// [kubernetesMetricsPrefix] Optional. Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos.
   /// [location] Optional. Location used to report Metrics
   /// [project] Optional. Project used to report Metrics
-  MonitoringConfigResponse({
+  const MonitoringConfigResponse({
     required this.cluster,
     required this.clusterHash,
     required this.kubernetesMetricsPrefix,

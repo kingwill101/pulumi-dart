@@ -9,7 +9,7 @@ class GceConfidentialInstanceConfig {
 
   /// Creates a new [GceConfidentialInstanceConfig].
   /// [enableConfidentialCompute] Optional. Whether the instance has confidential compute enabled.
-  GceConfidentialInstanceConfig({
+  const GceConfidentialInstanceConfig({
     this.enableConfidentialCompute,
   });
 

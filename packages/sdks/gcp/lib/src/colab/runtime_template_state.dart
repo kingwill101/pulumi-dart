@@ -77,7 +77,7 @@ class RuntimeTemplateState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [shieldedVmConfig] Runtime Shielded VM spec.
   /// [softwareConfig] The notebook software configuration of the notebook runtime.
-  RuntimeTemplateState({
+  const RuntimeTemplateState({
     this.dataPersistentDiskSpec,
     this.description,
     this.displayName,

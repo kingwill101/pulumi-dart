@@ -152,7 +152,7 @@ class CapacityPoolVolumeArgs {
   /// [volumeSpecName] Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
   /// [volumeType] What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
   /// [zones] Availability Zone
-  CapacityPoolVolumeArgs({
+  const CapacityPoolVolumeArgs({
     required this.accountName,
     this.avsDataStore,
     this.backupId,

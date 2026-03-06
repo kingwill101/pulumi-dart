@@ -15,7 +15,7 @@ class ThreatIntelligenceGranularMarkingModel {
   /// [language] Language granular marking model
   /// [markingRef] marking reference granular marking model
   /// [selectors] granular marking model selectors
-  ThreatIntelligenceGranularMarkingModel({
+  const ThreatIntelligenceGranularMarkingModel({
     this.language,
     this.markingRef,
     this.selectors,

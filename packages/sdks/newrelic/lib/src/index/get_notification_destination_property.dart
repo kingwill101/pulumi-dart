@@ -17,7 +17,7 @@ class GetNotificationDestinationProperty {
   /// [key] Notification property key.
   /// [label] Notification property label.
   /// [value] Notification property value.
-  GetNotificationDestinationProperty({
+  const GetNotificationDestinationProperty({
     this.displayValue,
     required this.key,
     this.label,

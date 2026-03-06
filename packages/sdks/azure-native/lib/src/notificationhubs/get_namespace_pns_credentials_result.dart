@@ -60,7 +60,7 @@ class GetNamespacePnsCredentialsResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [wnsCredential] Description of a NotificationHub WnsCredential.
   /// [xiaomiCredential] Description of a NotificationHub XiaomiCredential.
-  GetNamespacePnsCredentialsResult({
+  const GetNamespacePnsCredentialsResult({
     this.admCredential,
     this.apnsCredential,
     this.baiduCredential,

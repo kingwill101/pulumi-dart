@@ -46,7 +46,7 @@ class SessionTemplateEnvironmentConfigExecutionConfig {
   /// [stagingBucket] A Cloud Storage bucket used to stage workload dependencies, config files, and store
   /// [subnetworkUri] Subnetwork configuration for workload execution.
   /// [ttl] The duration after which the workload will be terminated.
-  SessionTemplateEnvironmentConfigExecutionConfig({
+  const SessionTemplateEnvironmentConfigExecutionConfig({
     this.authenticationConfig,
     this.idleTtl,
     this.kmsKey,

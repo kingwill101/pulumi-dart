@@ -7,7 +7,7 @@ class WorkspaceConnectionSharedAccessSignature {
 
   /// Creates a new [WorkspaceConnectionSharedAccessSignature].
   /// [sas] Optional.
-  WorkspaceConnectionSharedAccessSignature({
+  const WorkspaceConnectionSharedAccessSignature({
     this.sas,
   });
 

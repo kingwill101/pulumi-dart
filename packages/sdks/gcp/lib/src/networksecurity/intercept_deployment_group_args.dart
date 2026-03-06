@@ -34,7 +34,7 @@ class InterceptDeploymentGroupArgs {
   /// [location] The cloud location of the deployment group, currently restricted to `global`.
   /// [network] The network that will be used for all child deployments, for example:
   /// [project] The ID of the project in which the resource belongs.
-  InterceptDeploymentGroupArgs({
+  const InterceptDeploymentGroupArgs({
     this.description,
     required this.interceptDeploymentGroupId,
     this.labels,

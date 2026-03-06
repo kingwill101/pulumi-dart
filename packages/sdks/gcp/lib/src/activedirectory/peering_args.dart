@@ -33,7 +33,7 @@ class PeeringArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [status] The current state of this Peering.
   /// [statusMessage] Additional information about the current status of this peering, if available.
-  PeeringArgs({
+  const PeeringArgs({
     required this.authorizedNetwork,
     required this.domainResource,
     this.labels,

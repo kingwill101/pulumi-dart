@@ -29,7 +29,7 @@ class SourceProvenanceResponse {
   /// [resolvedRepoSource] A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
   /// [resolvedStorageSource] A copy of the build's `source.storage_source`, if exists, with any generations resolved.
   /// [resolvedStorageSourceManifest] A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
-  SourceProvenanceResponse({
+  const SourceProvenanceResponse({
     required this.fileHashes,
     required this.resolvedConnectedRepository,
     required this.resolvedGitSource,

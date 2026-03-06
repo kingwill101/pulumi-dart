@@ -27,7 +27,7 @@ class RouterStatusResult {
   /// [network] The network name or resource link to the parent
   /// [project] Optional.
   /// [region] Required.
-  RouterStatusResult({
+  const RouterStatusResult({
     required this.bestRoutes,
     required this.bestRoutesForRouters,
     required this.id,

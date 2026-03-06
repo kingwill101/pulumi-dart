@@ -25,7 +25,7 @@ class NetworkInsightsAnalysisReturnPathComponentRouteTableRoute {
   /// [origin] Optional.
   /// [transitGatewayId] Optional.
   /// [vpcPeeringConnectionId] Optional.
-  NetworkInsightsAnalysisReturnPathComponentRouteTableRoute({
+  const NetworkInsightsAnalysisReturnPathComponentRouteTableRoute({
     this.destinationCidr,
     this.destinationPrefixListId,
     this.egressOnlyInternetGatewayId,

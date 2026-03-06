@@ -29,7 +29,7 @@ class CustomerGatewayArgs {
   /// [ipAddress] The IP address of the customer gateway.
   /// [name] . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
   /// [tags] tag.
-  CustomerGatewayArgs({
+  const CustomerGatewayArgs({
     this.asn,
     this.customerGatewayName,
     this.description,

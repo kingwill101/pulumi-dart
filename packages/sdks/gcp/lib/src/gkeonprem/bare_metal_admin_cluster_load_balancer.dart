@@ -25,7 +25,7 @@ class BareMetalAdminClusterLoadBalancer {
   /// [manualLbConfig] A nested object resource.
   /// [portConfig] Specifies the load balancer ports.
   /// [vipConfig] Specified the Bare Metal Load Balancer Config
-  BareMetalAdminClusterLoadBalancer({
+  const BareMetalAdminClusterLoadBalancer({
     this.bgpLbConfig,
     this.manualLbConfig,
     required this.portConfig,

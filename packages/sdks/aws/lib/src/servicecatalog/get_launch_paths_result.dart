@@ -19,7 +19,7 @@ class GetLaunchPathsResult {
   /// [productId] Required.
   /// [region] Required.
   /// [summaries] Block with information about the launch path. See details below.
-  GetLaunchPathsResult({
+  const GetLaunchPathsResult({
     this.acceptLanguage,
     required this.id,
     required this.productId,

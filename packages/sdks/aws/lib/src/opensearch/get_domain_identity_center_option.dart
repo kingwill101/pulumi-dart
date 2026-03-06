@@ -17,7 +17,7 @@ class GetDomainIdentityCenterOption {
   /// [identityCenterInstanceArn] ARN of the IAM Identity Center instance to create an OpenSearch UI application that uses IAM Identity Center for authentication.
   /// [rolesKey] Attribute that contains the backend role identifier (such as group name or group ID) in IAM Identity Center.
   /// [subjectKey] Attribute that contains the subject identifier (such as username, user ID, or email) in IAM Identity Center.
-  GetDomainIdentityCenterOption({
+  const GetDomainIdentityCenterOption({
     required this.enabledApiAccess,
     required this.identityCenterInstanceArn,
     required this.rolesKey,

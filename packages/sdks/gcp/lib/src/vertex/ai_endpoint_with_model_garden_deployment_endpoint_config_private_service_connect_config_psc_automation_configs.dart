@@ -28,7 +28,7 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
   /// [network] Required. The full name of the Google Compute Engine network.
   /// [projectId] Required. Project id used to create forwarding rule.
   /// [state] (Output)
-  AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs({
+  const AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs({
     this.errorMessage,
     this.forwardingRule,
     this.ipAddress,

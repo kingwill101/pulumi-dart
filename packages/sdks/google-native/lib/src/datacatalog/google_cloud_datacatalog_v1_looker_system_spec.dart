@@ -24,7 +24,7 @@ class GoogleCloudDatacatalogV1LookerSystemSpec {
   /// [parentModelId] ID of the parent Model. Empty if it does not exist.
   /// [parentViewDisplayName] Name of the parent View. Empty if it does not exist.
   /// [parentViewId] ID of the parent View. Empty if it does not exist.
-  GoogleCloudDatacatalogV1LookerSystemSpec({
+  const GoogleCloudDatacatalogV1LookerSystemSpec({
     this.parentInstanceDisplayName,
     this.parentInstanceId,
     this.parentModelDisplayName,

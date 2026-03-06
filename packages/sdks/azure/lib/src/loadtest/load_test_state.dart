@@ -32,7 +32,7 @@ class LoadTestState {
   /// [name] Specifies the name of this Load Test. Changing this forces a new Load Test to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group within which this Load Test should exist. Changing this forces a new Load Test to be created.
   /// [tags] A mapping of tags which should be assigned to the Load Test.
-  LoadTestState({
+  const LoadTestState({
     this.dataPlaneUri,
     this.description,
     this.encryption,

@@ -13,7 +13,7 @@ class ClusterClusterConfigEndpointConfig {
   /// Creates a new [ClusterClusterConfigEndpointConfig].
   /// [enableHttpPortAccess] The flag to enable http access to specific ports
   /// [httpPorts] The map of port descriptions to URLs. Will only be populated if
-  ClusterClusterConfigEndpointConfig({
+  const ClusterClusterConfigEndpointConfig({
     required this.enableHttpPortAccess,
     this.httpPorts,
   });

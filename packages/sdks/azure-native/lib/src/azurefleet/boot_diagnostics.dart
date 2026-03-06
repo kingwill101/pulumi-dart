@@ -17,7 +17,7 @@ class BootDiagnostics {
   /// Creates a new [BootDiagnostics].
   /// [enabled] Whether boot diagnostics should be enabled on the Virtual Machine.
   /// [storageUri] Uri of the storage account to use for placing the console output and
-  BootDiagnostics({
+  const BootDiagnostics({
     this.enabled,
     this.storageUri,
   });

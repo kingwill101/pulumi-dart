@@ -9,7 +9,7 @@ class InstantRPAdditionalDetails {
   /// Creates a new [InstantRPAdditionalDetails].
   /// [azureBackupRGNamePrefix] Optional.
   /// [azureBackupRGNameSuffix] Optional.
-  InstantRPAdditionalDetails({
+  const InstantRPAdditionalDetails({
     this.azureBackupRGNamePrefix,
     this.azureBackupRGNameSuffix,
   });

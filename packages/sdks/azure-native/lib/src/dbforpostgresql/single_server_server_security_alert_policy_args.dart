@@ -40,7 +40,7 @@ class SingleServerServerSecurityAlertPolicyArgs {
   /// [state] Specifies the state of the policy, whether it is enabled or disabled.
   /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
-  SingleServerServerSecurityAlertPolicyArgs({
+  const SingleServerServerSecurityAlertPolicyArgs({
     this.disabledAlerts,
     this.emailAccountAdmins,
     this.emailAddresses,

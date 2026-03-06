@@ -20,7 +20,7 @@ class FacebookResponse {
   /// [graphApiVersion] The version of the Facebook api to be used while logging in.
   /// [login] The configuration settings of the login flow.
   /// [registration] The configuration settings of the app registration for the Facebook provider.
-  FacebookResponse({
+  const FacebookResponse({
     this.enabled,
     this.graphApiVersion,
     this.login,

@@ -9,7 +9,7 @@ class VirtualGatewaySpecBackendDefaultsClientPolicy {
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicy].
   /// [tls] Transport Layer Security (TLS) client policy.
-  VirtualGatewaySpecBackendDefaultsClientPolicy({
+  const VirtualGatewaySpecBackendDefaultsClientPolicy({
     this.tls,
   });
 

@@ -31,7 +31,7 @@ class ServerGroupState {
   /// [region] The region in which to obtain the V2 Compute client.
   /// [rules] The rules which are applied to specified `policy`. Currently,
   /// [valueSpecs] Map of additional options.
-  ServerGroupState({
+  const ServerGroupState({
     this.members,
     this.name,
     this.policies,

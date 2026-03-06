@@ -22,7 +22,7 @@ class GetIpGroupsResult {
   /// [names] A list of IP Group Names.
   /// [resourceGroupName] Required.
   /// [tags] Required.
-  GetIpGroupsResult({
+  const GetIpGroupsResult({
     required this.id,
     required this.ids,
     required this.location,

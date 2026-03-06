@@ -19,7 +19,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
   /// [forceRemediateForFirstEntries] A boolean value, if true Firewall Manager uses this setting when it finds policy violations that involve conflicts between the custom entries and the policy entries. If false Firewall Manager marks the network ACL as noncompliant and does not try to remediate.
   /// [forceRemediateForLastEntries] A boolean value, if true Firewall Manager uses this setting when it finds policy violations that involve conflicts between the custom entries and the policy entries. If false Firewall Manager marks the network ACL as noncompliant and does not try to remediate.
   /// [lastEntries] The rules that you want to run last in the Firewall Manager managed network ACLs. Firewall manager creates entries with ID value between 32000 and 32766. See the `last_entry` block.
-  PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet({
+  const PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet({
     this.firstEntries,
     required this.forceRemediateForFirstEntries,
     required this.forceRemediateForLastEntries,

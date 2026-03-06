@@ -8,7 +8,7 @@ class ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
 
   /// Creates a new [ClusterNodePoolNetworkConfigNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for NodePools in the cluster.
-  ClusterNodePoolNetworkConfigNetworkPerformanceConfig({
+  const ClusterNodePoolNetworkConfigNetworkPerformanceConfig({
     required this.totalEgressBandwidthTier,
   });
 

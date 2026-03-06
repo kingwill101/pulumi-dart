@@ -15,7 +15,7 @@ class GetInstanceZoneDistributionConfig {
   /// Creates a new [GetInstanceZoneDistributionConfig].
   /// [mode] Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
   /// [zone] Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
-  GetInstanceZoneDistributionConfig({
+  const GetInstanceZoneDistributionConfig({
     required this.mode,
     required this.zone,
   });

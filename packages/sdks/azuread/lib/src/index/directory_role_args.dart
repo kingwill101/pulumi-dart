@@ -17,7 +17,7 @@ class DirectoryRoleArgs {
   /// Creates a new [DirectoryRoleArgs].
   /// [displayName] The display name of the directory role to activate. Changing this forces a new resource to be created.
   /// [templateId] The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-  DirectoryRoleArgs({
+  const DirectoryRoleArgs({
     this.displayName,
     this.templateId,
   });

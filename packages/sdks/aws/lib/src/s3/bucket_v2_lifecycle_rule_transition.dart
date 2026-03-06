@@ -14,7 +14,7 @@ class BucketV2LifecycleRuleTransition {
   /// [date] Specifies the date after which you want the corresponding action to take effect.
   /// [days] Specifies the number of days after object creation when the specific rule action takes effect.
   /// [storageClass] Specifies the Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
-  BucketV2LifecycleRuleTransition({
+  const BucketV2LifecycleRuleTransition({
     this.date,
     this.days,
     required this.storageClass,

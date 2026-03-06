@@ -37,7 +37,7 @@ class WorkspaceNamedValueArgs {
   /// [tags] Optional tags that when provided can be used to filter the NamedValue list.
   /// [value] Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceNamedValueArgs({
+  const WorkspaceNamedValueArgs({
     required this.displayName,
     this.keyVault,
     this.namedValueId,

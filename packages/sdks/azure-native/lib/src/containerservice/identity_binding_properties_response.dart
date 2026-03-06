@@ -17,7 +17,7 @@ class IdentityBindingPropertiesResponse {
   /// [managedIdentity] Managed identity profile for the identity binding.
   /// [oidcIssuer] The OIDC issuer URL of the IdentityBinding.
   /// [provisioningState] The status of the last operation.
-  IdentityBindingPropertiesResponse({
+  const IdentityBindingPropertiesResponse({
     required this.managedIdentity,
     required this.oidcIssuer,
     required this.provisioningState,

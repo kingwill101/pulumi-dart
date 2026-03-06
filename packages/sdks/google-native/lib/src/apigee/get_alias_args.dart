@@ -17,7 +17,7 @@ class GetAliasArgs {
   /// [environmentId] Required.
   /// [keystoreId] Required.
   /// [organizationId] Required.
-  GetAliasArgs({
+  const GetAliasArgs({
     required this.aliasId,
     required this.environmentId,
     required this.keystoreId,

@@ -14,7 +14,7 @@ class GetBrokerMaintenanceWindowStartTime {
   /// [dayOfWeek] Day of the week.
   /// [timeOfDay] Time, in 24-hour format.
   /// [timeZone] Time zone in either the Country/City format or the UTC offset format.
-  GetBrokerMaintenanceWindowStartTime({
+  const GetBrokerMaintenanceWindowStartTime({
     required this.dayOfWeek,
     required this.timeOfDay,
     required this.timeZone,

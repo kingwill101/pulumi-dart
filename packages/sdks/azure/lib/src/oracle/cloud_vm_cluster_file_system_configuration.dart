@@ -11,7 +11,7 @@ class CloudVmClusterFileSystemConfiguration {
   /// Creates a new [CloudVmClusterFileSystemConfiguration].
   /// [mountPoint] The mount path of the file system.
   /// [sizeInGb] The size of the virtual machine's file system.
-  CloudVmClusterFileSystemConfiguration({
+  const CloudVmClusterFileSystemConfiguration({
     this.mountPoint,
     this.sizeInGb,
   });

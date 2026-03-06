@@ -13,7 +13,7 @@ class ConfidentialInstanceConfigComputeBeta {
   /// Creates a new [ConfidentialInstanceConfigComputeBeta].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential instance.
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled.
-  ConfidentialInstanceConfigComputeBeta({
+  const ConfidentialInstanceConfigComputeBeta({
     this.confidentialInstanceType,
     this.enableConfidentialCompute,
   });

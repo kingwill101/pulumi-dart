@@ -11,7 +11,7 @@ class SiteDeliveryTaskHttpDeliveryStandardAuthParam {
   /// [expiredTime] Optional.
   /// [privateKey] Optional.
   /// [urlPath] Optional.
-  SiteDeliveryTaskHttpDeliveryStandardAuthParam({
+  const SiteDeliveryTaskHttpDeliveryStandardAuthParam({
     this.expiredTime,
     this.privateKey,
     this.urlPath,

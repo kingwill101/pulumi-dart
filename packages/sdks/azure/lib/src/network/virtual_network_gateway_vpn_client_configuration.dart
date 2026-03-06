@@ -56,7 +56,7 @@ class VirtualNetworkGatewayVpnClientConfiguration {
   /// [virtualNetworkGatewayClientConnections] One or more `virtual_network_gateway_client_connection` blocks as defined below.
   /// [vpnAuthTypes] List of the vpn authentication types for the virtual network gateway.
   /// [vpnClientProtocols] List of the protocols supported by the vpn client.
-  VirtualNetworkGatewayVpnClientConfiguration({
+  const VirtualNetworkGatewayVpnClientConfiguration({
     this.aadAudience,
     this.aadIssuer,
     this.aadTenant,

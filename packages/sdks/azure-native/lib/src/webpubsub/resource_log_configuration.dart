@@ -10,7 +10,7 @@ class ResourceLogConfiguration {
 
   /// Creates a new [ResourceLogConfiguration].
   /// [categories] Gets or sets the list of category configurations.
-  ResourceLogConfiguration({
+  const ResourceLogConfiguration({
     this.categories,
   });
 

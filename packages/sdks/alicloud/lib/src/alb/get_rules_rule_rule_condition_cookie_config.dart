@@ -9,7 +9,7 @@ class GetRulesRuleRuleConditionCookieConfig {
 
   /// Creates a new [GetRulesRuleRuleConditionCookieConfig].
   /// [values] Add one or more IP addresses or IP address segments.
-  GetRulesRuleRuleConditionCookieConfig({
+  const GetRulesRuleRuleConditionCookieConfig({
     required this.values,
   });
 

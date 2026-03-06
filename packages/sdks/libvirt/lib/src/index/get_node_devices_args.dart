@@ -11,7 +11,7 @@ class GetNodeDevicesArgs {
 
   /// Creates a new [GetNodeDevicesArgs].
   /// [capability] Optional.
-  GetNodeDevicesArgs({
+  const GetNodeDevicesArgs({
     this.capability,
   });
 

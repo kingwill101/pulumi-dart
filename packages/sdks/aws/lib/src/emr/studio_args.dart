@@ -56,7 +56,7 @@ class StudioArgs {
   /// [userRole] The IAM user role that users and groups assume when logged in to an Amazon EMR Studio. Only specify a User Role when you use Amazon Web Services SSO authentication. The permissions attached to the User Role can be scoped down for each user or group using session policies.
   /// [vpcId] The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate with the Studio.
   /// [workspaceSecurityGroupId] The ID of the Amazon EMR Studio Workspace security group. The Workspace security group allows outbound network traffic to resources in the Engine security group, and it must be in the same VPC specified by `vpc_id`.
-  StudioArgs({
+  const StudioArgs({
     required this.authMode,
     required this.defaultS3Location,
     this.description,

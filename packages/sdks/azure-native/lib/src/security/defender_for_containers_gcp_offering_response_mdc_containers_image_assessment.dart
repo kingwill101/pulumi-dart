@@ -15,7 +15,7 @@ class DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment {
   /// [enabled] Is Microsoft Defender container image assessment enabled
   /// [serviceAccountEmailAddress] The service account email address in GCP for this feature
   /// [workloadIdentityProviderId] The workload identity provider id in GCP for this feature
-  DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment({
+  const DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment({
     this.enabled,
     this.serviceAccountEmailAddress,
     this.workloadIdentityProviderId,

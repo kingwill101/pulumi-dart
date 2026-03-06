@@ -15,7 +15,7 @@ class ListWebAppApplicationSettingsArgs {
   /// Creates a new [ListWebAppApplicationSettingsArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppApplicationSettingsArgs({
+  const ListWebAppApplicationSettingsArgs({
     required this.name,
     required this.resourceGroupName,
   });

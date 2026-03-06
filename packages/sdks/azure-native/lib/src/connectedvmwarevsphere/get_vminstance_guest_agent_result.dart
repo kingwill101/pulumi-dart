@@ -52,7 +52,7 @@ class GetVMInstanceGuestAgentResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] Gets or sets a unique identifier for this resource.
-  GetVMInstanceGuestAgentResult({
+  const GetVMInstanceGuestAgentResult({
     required this.azureApiVersion,
     this.credentials,
     required this.customResourceName,

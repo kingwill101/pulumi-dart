@@ -12,7 +12,7 @@ class ObjectReferenceDefinitionResponse {
   /// Creates a new [ObjectReferenceDefinitionResponse].
   /// [name] Name of the object
   /// [namespace] Namespace of the object
-  ObjectReferenceDefinitionResponse({
+  const ObjectReferenceDefinitionResponse({
     this.name,
     this.namespace,
   });

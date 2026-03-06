@@ -14,7 +14,7 @@ class AppImageConfigJupyterLabImageConfigContainerConfig {
   /// [containerArguments] The arguments for the container when you're running the application.
   /// [containerEntrypoints] The entrypoint used to run the application in the container.
   /// [containerEnvironmentVariables] The environment variables to set in the container.
-  AppImageConfigJupyterLabImageConfigContainerConfig({
+  const AppImageConfigJupyterLabImageConfigContainerConfig({
     this.containerArguments,
     this.containerEntrypoints,
     this.containerEnvironmentVariables,

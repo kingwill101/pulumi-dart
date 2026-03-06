@@ -27,7 +27,7 @@ class ApplicationCredentialAccessRule {
   /// [method] The request method that the application credential is
   /// [path] The API path that the application credential is permitted
   /// [service] The service type identifier for the service that the
-  ApplicationCredentialAccessRule({
+  const ApplicationCredentialAccessRule({
     this.id,
     required this.method,
     required this.path,

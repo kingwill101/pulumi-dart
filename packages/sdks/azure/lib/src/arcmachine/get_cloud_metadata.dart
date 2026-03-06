@@ -8,7 +8,7 @@ class GetCloudMetadata {
 
   /// Creates a new [GetCloudMetadata].
   /// [provider] Specifies the cloud provider. For example `Azure`, `AWS` and `GCP`.
-  GetCloudMetadata({
+  const GetCloudMetadata({
     required this.provider,
   });
 

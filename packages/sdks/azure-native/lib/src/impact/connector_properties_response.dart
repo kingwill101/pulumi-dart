@@ -21,7 +21,7 @@ class ConnectorPropertiesResponse {
   /// [lastRunTimeStamp] last run time stamp of this connector in UTC time zone
   /// [provisioningState] Resource provisioning state.
   /// [tenantId] tenant id of this connector
-  ConnectorPropertiesResponse({
+  const ConnectorPropertiesResponse({
     required this.connectorId,
     required this.connectorType,
     required this.lastRunTimeStamp,

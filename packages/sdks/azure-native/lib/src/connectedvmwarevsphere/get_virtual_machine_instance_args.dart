@@ -12,7 +12,7 @@ class GetVirtualMachineInstanceArgs {
 
   /// Creates a new [GetVirtualMachineInstanceArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  GetVirtualMachineInstanceArgs({
+  const GetVirtualMachineInstanceArgs({
     required this.resourceUri,
   });
 

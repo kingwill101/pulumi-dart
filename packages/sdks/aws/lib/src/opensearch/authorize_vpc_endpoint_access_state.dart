@@ -19,7 +19,7 @@ class AuthorizeVpcEndpointAccessState {
   /// [authorizedPrincipals] Information about the Amazon Web Services account or service that was provided access to the domain. See authorized principal attribute for further details.
   /// [domainName] Name of OpenSearch Service domain to provide access to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AuthorizeVpcEndpointAccessState({
+  const AuthorizeVpcEndpointAccessState({
     this.account,
     this.authorizedPrincipals,
     this.domainName,

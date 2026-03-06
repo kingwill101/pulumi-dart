@@ -10,7 +10,7 @@ class WorkflowOnExceptionStepTagStepDetailsTag {
   /// Creates a new [WorkflowOnExceptionStepTagStepDetailsTag].
   /// [key] Required.
   /// [value] The value that corresponds to the key.
-  WorkflowOnExceptionStepTagStepDetailsTag({
+  const WorkflowOnExceptionStepTagStepDetailsTag({
     required this.key,
     required this.value,
   });

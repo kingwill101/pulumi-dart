@@ -21,7 +21,7 @@ class GetRegionsArgs {
   /// [current] Set to true to match only the region configured in the provider.
   /// [name] The name of the region to select, such as `eu-central-1`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetRegionsArgs({
+  const GetRegionsArgs({
     this.current,
     this.name,
     this.outputFile,

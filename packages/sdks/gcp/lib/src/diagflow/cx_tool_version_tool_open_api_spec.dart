@@ -24,7 +24,7 @@ class CxToolVersionToolOpenApiSpec {
   /// [serviceDirectoryConfig] Optional. Service Directory configuration.
   /// [textSchema] The OpenAPI schema specified as a text.
   /// [tlsConfig] Optional. TLS configuration for the HTTPS verification.
-  CxToolVersionToolOpenApiSpec({
+  const CxToolVersionToolOpenApiSpec({
     this.authentication,
     this.serviceDirectoryConfig,
     required this.textSchema,

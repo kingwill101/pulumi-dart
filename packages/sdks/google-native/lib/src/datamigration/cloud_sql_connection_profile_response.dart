@@ -22,7 +22,7 @@ class CloudSqlConnectionProfileResponse {
   /// [privateIp] The Cloud SQL database instance's private IP.
   /// [publicIp] The Cloud SQL database instance's public IP.
   /// [settings] Immutable. Metadata used to create the destination Cloud SQL database.
-  CloudSqlConnectionProfileResponse({
+  const CloudSqlConnectionProfileResponse({
     required this.additionalPublicIp,
     required this.cloudSqlId,
     required this.privateIp,

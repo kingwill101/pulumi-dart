@@ -9,7 +9,7 @@ class HibernationOptionsResponse {
 
   /// Creates a new [HibernationOptionsResponse].
   /// [configured] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, your instance is enabled for hibernation; otherwise, it is not enabled for hibernation.&lt;/p&gt;
-  HibernationOptionsResponse({
+  const HibernationOptionsResponse({
     this.configured,
   });
 

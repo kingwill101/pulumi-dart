@@ -85,7 +85,7 @@ class GetPreRuleResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] tag for rule
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPreRuleResult({
+  const GetPreRuleResult({
     this.actionType,
     this.applications,
     this.auditComment,

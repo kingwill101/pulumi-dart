@@ -17,7 +17,7 @@ class ListAccessClustersResult {
   /// [data] List of clusters
   /// [kind] Type of response
   /// [metadata] Metadata of the list
-  ListAccessClustersResult({
+  const ListAccessClustersResult({
     this.data,
     this.kind,
     this.metadata,

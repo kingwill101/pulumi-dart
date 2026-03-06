@@ -14,7 +14,7 @@ class AppSpecFunctionCorsAllowOrigins {
   /// [exact] Exact string match.
   /// [prefix] Prefix-based match.
   /// [regex] RE2 style regex-based match.
-  AppSpecFunctionCorsAllowOrigins({
+  const AppSpecFunctionCorsAllowOrigins({
     this.exact,
     this.prefix,
     this.regex,

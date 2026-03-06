@@ -15,7 +15,7 @@ class GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponse {
   /// [maxBlobSequenceLength] The largest blob sequence length (number of blobs) of all data points in this time series, if its ValueType is BLOB_SEQUENCE.
   /// [maxStep] Max step index of all data points within a TensorboardTimeSeries.
   /// [maxWallTime] Max wall clock timestamp of all data points within a TensorboardTimeSeries.
-  GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponse({
+  const GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponse({
     required this.maxBlobSequenceLength,
     required this.maxStep,
     required this.maxWallTime,

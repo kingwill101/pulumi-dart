@@ -11,7 +11,7 @@ class SetCommonInstanceMetadataOperationMetadataResponse {
   /// Creates a new [SetCommonInstanceMetadataOperationMetadataResponse].
   /// [clientOperationId] The client operation id.
   /// [perLocationOperations] Status information per location (location name is key). Example key: zones/us-central1-a
-  SetCommonInstanceMetadataOperationMetadataResponse({
+  const SetCommonInstanceMetadataOperationMetadataResponse({
     required this.clientOperationId,
     required this.perLocationOperations,
   });

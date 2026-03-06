@@ -9,7 +9,7 @@ class FeaturesetSpecificationResponse {
 
   /// Creates a new [FeaturesetSpecificationResponse].
   /// [path] Specifies the spec path
-  FeaturesetSpecificationResponse({
+  const FeaturesetSpecificationResponse({
     this.path,
   });
 

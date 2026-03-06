@@ -21,7 +21,7 @@ class GetPrivateLinkServicePrivateEndpointConnectionArgs {
   /// [peConnectionName] The name of the private end point connection.
   /// [resourceGroupName] The name of the resource group.
   /// [serviceName] The name of the private link service.
-  GetPrivateLinkServicePrivateEndpointConnectionArgs({
+  const GetPrivateLinkServicePrivateEndpointConnectionArgs({
     this.expand,
     required this.peConnectionName,
     required this.resourceGroupName,

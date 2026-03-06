@@ -18,7 +18,7 @@ class GetVirtualNetworkGatewayResiliencyInformationArgs {
   /// [attemptRefresh] Attempt to recalculate the Resiliency Information for the gateway
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayName] The name of the virtual network gateway.
-  GetVirtualNetworkGatewayResiliencyInformationArgs({
+  const GetVirtualNetworkGatewayResiliencyInformationArgs({
     this.attemptRefresh,
     required this.resourceGroupName,
     required this.virtualNetworkGatewayName,

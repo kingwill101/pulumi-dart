@@ -30,7 +30,7 @@ class AppVersionArgs {
   /// [displayName] The display name of the app version.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
-  AppVersionArgs({
+  const AppVersionArgs({
     required this.app,
     required this.appVersionId,
     this.description,

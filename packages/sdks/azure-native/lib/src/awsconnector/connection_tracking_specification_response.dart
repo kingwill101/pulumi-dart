@@ -15,7 +15,7 @@ class ConnectionTrackingSpecificationResponse {
   /// [tcpEstablishedTimeout] Property tcpEstablishedTimeout
   /// [udpStreamTimeout] Property udpStreamTimeout
   /// [udpTimeout] Property udpTimeout
-  ConnectionTrackingSpecificationResponse({
+  const ConnectionTrackingSpecificationResponse({
     this.tcpEstablishedTimeout,
     this.udpStreamTimeout,
     this.udpTimeout,

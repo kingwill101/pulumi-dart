@@ -8,7 +8,7 @@ class NodePoolNodeConfigHostMaintenancePolicy {
 
   /// Creates a new [NodePoolNodeConfigHostMaintenancePolicy].
   /// [maintenanceInterval] .
-  NodePoolNodeConfigHostMaintenancePolicy({
+  const NodePoolNodeConfigHostMaintenancePolicy({
     required this.maintenanceInterval,
   });
 

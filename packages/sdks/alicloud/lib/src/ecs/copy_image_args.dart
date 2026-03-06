@@ -29,7 +29,7 @@ class CopyImageArgs {
   /// [sourceImageId] Required.
   /// [sourceRegionId] Required.
   /// [tags] Optional.
-  CopyImageArgs({
+  const CopyImageArgs({
     this.deleteAutoSnapshot,
     this.description,
     this.encrypted,

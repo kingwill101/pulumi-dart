@@ -13,7 +13,7 @@ class ChildConfigurationFilter {
   /// Creates a new [ChildConfigurationFilter].
   /// [childConfigurationTypes] Filter to fetch all child configurations belonging to the given list of configuration types.
   /// [hierarchyInformations] The list of child configuration hierarchy customer wants to filter for the given configuration.
-  ChildConfigurationFilter({
+  const ChildConfigurationFilter({
     this.childConfigurationTypes,
     this.hierarchyInformations,
   });

@@ -13,7 +13,7 @@ class ElasticAccountPropertiesResponse {
   /// Creates a new [ElasticAccountPropertiesResponse].
   /// [encryption] Encryption settings
   /// [provisioningState] Azure lifecycle management.
-  ElasticAccountPropertiesResponse({
+  const ElasticAccountPropertiesResponse({
     this.encryption,
     required this.provisioningState,
   });

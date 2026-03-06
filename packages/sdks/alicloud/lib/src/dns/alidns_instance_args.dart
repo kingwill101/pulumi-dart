@@ -30,7 +30,7 @@ class AlidnsInstanceArgs {
   /// [renewPeriod] Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
   /// [renewalStatus] Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
   /// [versionCode] Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
-  AlidnsInstanceArgs({
+  const AlidnsInstanceArgs({
     required this.dnsSecurity,
     required this.domainNumbers,
     this.paymentType,

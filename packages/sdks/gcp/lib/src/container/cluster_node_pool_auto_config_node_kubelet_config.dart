@@ -8,7 +8,7 @@ class ClusterNodePoolAutoConfigNodeKubeletConfig {
 
   /// Creates a new [ClusterNodePoolAutoConfigNodeKubeletConfig].
   /// [insecureKubeletReadonlyPortEnabled] Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
-  ClusterNodePoolAutoConfigNodeKubeletConfig({
+  const ClusterNodePoolAutoConfigNodeKubeletConfig({
     this.insecureKubeletReadonlyPortEnabled,
   });
 

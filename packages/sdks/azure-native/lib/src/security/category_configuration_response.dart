@@ -18,7 +18,7 @@ class CategoryConfigurationResponse {
   /// Creates a new [CategoryConfigurationResponse].
   /// [category] Rule categories.
   /// [minimumSeverityLevel] Gets or sets minimum severity level for a given category.
-  CategoryConfigurationResponse({
+  const CategoryConfigurationResponse({
     this.category,
     this.minimumSeverityLevel,
   });

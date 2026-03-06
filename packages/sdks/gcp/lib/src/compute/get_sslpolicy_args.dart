@@ -18,7 +18,7 @@ class GetSSLPolicyArgs {
   /// Creates a new [GetSSLPolicyArgs].
   /// [name] The name of the SSL Policy.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetSSLPolicyArgs({
+  const GetSSLPolicyArgs({
     required this.name,
     this.project,
   });

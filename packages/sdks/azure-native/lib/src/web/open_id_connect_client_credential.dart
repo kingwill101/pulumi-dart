@@ -13,7 +13,7 @@ class OpenIdConnectClientCredential {
   /// Creates a new [OpenIdConnectClientCredential].
   /// [clientSecretSettingName] The app setting that contains the client secret for the custom Open ID Connect provider.
   /// [method] The method that should be used to authenticate the user.
-  OpenIdConnectClientCredential({
+  const OpenIdConnectClientCredential({
     this.clientSecretSettingName,
     this.method,
   });

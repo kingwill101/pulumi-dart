@@ -16,7 +16,7 @@ class IpConfigurationResponsePublicIPAddressConfiguration {
   /// [ipTags] Specifies the list of IP tags associated with the public IP address.
   /// [name] Name of the network interface.
   /// [publicIPAddressVersion] Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-  IpConfigurationResponsePublicIPAddressConfiguration({
+  const IpConfigurationResponsePublicIPAddressConfiguration({
     this.ipTags,
     required this.name,
     this.publicIPAddressVersion,

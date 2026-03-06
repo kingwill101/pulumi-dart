@@ -15,7 +15,7 @@ class ManagedInstanceOperationStatusResponse {
   /// [id] Operation id
   /// [operationName] Operation Name
   /// [operationState] Operation status
-  ManagedInstanceOperationStatusResponse({
+  const ManagedInstanceOperationStatusResponse({
     required this.id,
     required this.operationName,
     required this.operationState,

@@ -14,7 +14,7 @@ class LinuxVirtualMachinePlan {
   /// [name] Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
   /// [product] Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
   /// [publisher] Specifies the Publisher of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-  LinuxVirtualMachinePlan({
+  const LinuxVirtualMachinePlan({
     required this.name,
     required this.product,
     required this.publisher,

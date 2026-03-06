@@ -54,7 +54,7 @@ class HostedConnectionState {
   /// [region] (**Deprecated**) The AWS Region where the connection is located. Use `connection_region` instead.
   /// [state] The state of the connection. Possible values include: ordering, requested, pending, available, down, deleting, deleted, rejected, unknown. See [AllocateHostedConnection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_AllocateHostedConnection.html) for a description of each connection state.
   /// [vlan] The dedicated VLAN provisioned to the hosted connection.
-  HostedConnectionState({
+  const HostedConnectionState({
     this.awsDevice,
     this.bandwidth,
     this.connectionId,

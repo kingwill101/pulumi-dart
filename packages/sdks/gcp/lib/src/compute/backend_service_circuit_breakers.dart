@@ -32,7 +32,7 @@ class BackendServiceCircuitBreakers {
   /// [maxRequests] The maximum number of parallel requests to the backend cluster.
   /// [maxRequestsPerConnection] Maximum requests for a single backend connection. This parameter
   /// [maxRetries] The maximum number of parallel retries to the backend cluster.
-  BackendServiceCircuitBreakers({
+  const BackendServiceCircuitBreakers({
     this.connectTimeout,
     this.maxConnections,
     this.maxPendingRequests,

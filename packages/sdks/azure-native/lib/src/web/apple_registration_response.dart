@@ -12,7 +12,7 @@ class AppleRegistrationResponse {
   /// Creates a new [AppleRegistrationResponse].
   /// [clientId] The Client ID of the app used for login.
   /// [clientSecretSettingName] The app setting name that contains the client secret.
-  AppleRegistrationResponse({
+  const AppleRegistrationResponse({
     this.clientId,
     this.clientSecretSettingName,
   });

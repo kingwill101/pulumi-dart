@@ -36,7 +36,7 @@ class PolicyArgs {
   /// [resourceGroupName] The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [threshold] The Threshold for this Policy.
-  PolicyArgs({
+  const PolicyArgs({
     this.description,
     required this.evaluatorType,
     this.factData,

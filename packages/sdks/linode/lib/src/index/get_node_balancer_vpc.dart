@@ -11,7 +11,7 @@ class GetNodeBalancerVpc {
   /// Creates a new [GetNodeBalancerVpc].
   /// [ipv4Range] A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
   /// [subnetId] The ID of a subnet to assign to this NodeBalancer.
-  GetNodeBalancerVpc({
+  const GetNodeBalancerVpc({
     required this.ipv4Range,
     required this.subnetId,
   });

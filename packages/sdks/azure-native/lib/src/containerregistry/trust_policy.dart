@@ -12,7 +12,7 @@ class TrustPolicy {
   /// Creates a new [TrustPolicy].
   /// [status] The value that indicates whether the policy is enabled or not.
   /// [type] The type of trust policy.
-  TrustPolicy({
+  const TrustPolicy({
     this.status,
     this.type,
   });

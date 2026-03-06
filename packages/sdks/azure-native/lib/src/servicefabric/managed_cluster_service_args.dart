@@ -31,7 +31,7 @@ class ManagedClusterServiceArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [serviceName] The name of the service resource in the format of {applicationName}~{serviceName}.
   /// [tags] Azure resource tags.
-  ManagedClusterServiceArgs({
+  const ManagedClusterServiceArgs({
     required this.applicationName,
     required this.clusterName,
     this.location,

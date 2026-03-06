@@ -26,7 +26,7 @@ class GetAlertContactsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [phoneNum] Optional.
-  GetAlertContactsResult({
+  const GetAlertContactsResult({
     this.alertContactName,
     required this.contacts,
     this.email,

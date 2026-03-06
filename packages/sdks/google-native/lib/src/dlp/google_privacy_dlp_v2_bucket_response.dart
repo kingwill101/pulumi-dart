@@ -16,7 +16,7 @@ class GooglePrivacyDlpV2BucketResponse {
   /// [max] Upper bound of the range, exclusive; type must match min.
   /// [min] Lower bound of the range, inclusive. Type should be the same as max if used.
   /// [replacementValue] Replacement value for this bucket.
-  GooglePrivacyDlpV2BucketResponse({
+  const GooglePrivacyDlpV2BucketResponse({
     required this.max,
     required this.min,
     required this.replacementValue,

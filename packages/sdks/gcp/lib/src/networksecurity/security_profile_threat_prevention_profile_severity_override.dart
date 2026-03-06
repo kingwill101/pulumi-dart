@@ -13,7 +13,7 @@ class SecurityProfileThreatPreventionProfileSeverityOverride {
   /// Creates a new [SecurityProfileThreatPreventionProfileSeverityOverride].
   /// [action] Threat action override.
   /// [severity] Severity level to match.
-  SecurityProfileThreatPreventionProfileSeverityOverride({
+  const SecurityProfileThreatPreventionProfileSeverityOverride({
     required this.action,
     required this.severity,
   });

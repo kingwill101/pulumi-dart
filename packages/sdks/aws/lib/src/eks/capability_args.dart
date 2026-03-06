@@ -37,7 +37,7 @@ class CapabilityArgs {
   /// [tags] Key-value map of resource tags.
   /// [timeouts] Optional.
   /// [type] Type of the capability. Valid values: `ACK`, `KRO`, `ARGOCD`.
-  CapabilityArgs({
+  const CapabilityArgs({
     required this.capabilityName,
     required this.clusterName,
     this.configuration,

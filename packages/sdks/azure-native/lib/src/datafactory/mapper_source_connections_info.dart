@@ -14,7 +14,7 @@ class MapperSourceConnectionsInfo {
   /// Creates a new [MapperSourceConnectionsInfo].
   /// [connection] Source connection details.
   /// [sourceEntities] List of source tables for a source connection.
-  MapperSourceConnectionsInfo({
+  const MapperSourceConnectionsInfo({
     this.connection,
     this.sourceEntities,
   });

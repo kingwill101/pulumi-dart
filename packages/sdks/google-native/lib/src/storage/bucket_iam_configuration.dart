@@ -17,7 +17,7 @@ class BucketIamConfiguration {
   /// [bucketPolicyOnly] The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
   /// [publicAccessPrevention] The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
   /// [uniformBucketLevelAccess] The bucket's uniform bucket-level access configuration.
-  BucketIamConfiguration({
+  const BucketIamConfiguration({
     this.bucketPolicyOnly,
     this.publicAccessPrevention,
     this.uniformBucketLevelAccess,

@@ -22,7 +22,7 @@ class DeploymentAtTenantScopeArgs {
   /// [location] The location to store the deployment data.
   /// [properties] The deployment properties.
   /// [tags] Deployment tags
-  DeploymentAtTenantScopeArgs({
+  const DeploymentAtTenantScopeArgs({
     this.deploymentName,
     this.location,
     required this.properties,

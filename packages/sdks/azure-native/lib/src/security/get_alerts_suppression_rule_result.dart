@@ -39,7 +39,7 @@ class GetAlertsSuppressionRuleResult {
   /// [state] Possible states of the rule
   /// [suppressionAlertsScope] The suppression conditions
   /// [type] Resource type
-  GetAlertsSuppressionRuleResult({
+  const GetAlertsSuppressionRuleResult({
     required this.alertType,
     required this.azureApiVersion,
     this.comment,

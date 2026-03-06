@@ -13,7 +13,7 @@ class RequestConfigurationResponse {
   /// Creates a new [RequestConfigurationResponse].
   /// [maxConcurrentRequestsPerInstance] The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
   /// [requestTimeout] The scoring timeout in ISO 8601 format.
-  RequestConfigurationResponse({
+  const RequestConfigurationResponse({
     this.maxConcurrentRequestsPerInstance,
     this.requestTimeout,
   });

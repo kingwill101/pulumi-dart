@@ -39,7 +39,7 @@ class DataCollectionEndpointState {
   /// [publicNetworkAccessEnabled] Whether network access from public internet to the Data Collection Endpoint are allowed. Possible values are `true` and `false`. Default to `true`.
   /// [resourceGroupName] The name of the Resource Group where the Data Collection Endpoint should exist. Changing this forces a new Data Collection Endpoint to be created.
   /// [tags] A mapping of tags which should be assigned to the Data Collection Endpoint.
-  DataCollectionEndpointState({
+  const DataCollectionEndpointState({
     this.configurationAccessEndpoint,
     this.description,
     this.immutableId,

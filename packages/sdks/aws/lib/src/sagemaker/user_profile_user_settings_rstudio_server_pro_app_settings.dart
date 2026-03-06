@@ -11,7 +11,7 @@ class UserProfileUserSettingsRStudioServerProAppSettings {
   /// Creates a new [UserProfileUserSettingsRStudioServerProAppSettings].
   /// [accessStatus] Indicates whether the current user has access to the RStudioServerPro app. Valid values are `ENABLED` and `DISABLED`.
   /// [userGroup] The level of permissions that the user has within the RStudioServerPro app. This value defaults to `R_STUDIO_USER`. The `R_STUDIO_ADMIN` value allows the user access to the RStudio Administrative Dashboard. Valid values are `R_STUDIO_USER` and `R_STUDIO_ADMIN`.
-  UserProfileUserSettingsRStudioServerProAppSettings({
+  const UserProfileUserSettingsRStudioServerProAppSettings({
     this.accessStatus,
     this.userGroup,
   });

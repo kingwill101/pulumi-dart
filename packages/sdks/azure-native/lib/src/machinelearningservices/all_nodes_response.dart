@@ -10,7 +10,7 @@ class AllNodesResponse {
 
   /// Creates a new [AllNodesResponse].
   /// [nodesValueType] The enumerated types for the nodes value
-  AllNodesResponse({
+  const AllNodesResponse({
     required this.nodesValueType,
   });
 

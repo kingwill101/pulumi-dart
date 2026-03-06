@@ -9,7 +9,7 @@ class OnlineExperimentationWorkspaceSku {
 
   /// Creates a new [OnlineExperimentationWorkspaceSku].
   /// [name] The name of the SKU. Ex - F0, P0. It is typically a letter+number code
-  OnlineExperimentationWorkspaceSku({
+  const OnlineExperimentationWorkspaceSku({
     required this.name,
   });
 

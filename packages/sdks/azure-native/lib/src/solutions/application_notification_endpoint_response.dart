@@ -9,7 +9,7 @@ class ApplicationNotificationEndpointResponse {
 
   /// Creates a new [ApplicationNotificationEndpointResponse].
   /// [uri] The managed application notification endpoint uri.
-  ApplicationNotificationEndpointResponse({
+  const ApplicationNotificationEndpointResponse({
     required this.uri,
   });
 

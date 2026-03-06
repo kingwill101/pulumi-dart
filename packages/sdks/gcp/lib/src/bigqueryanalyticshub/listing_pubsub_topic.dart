@@ -12,7 +12,7 @@ class ListingPubsubTopic {
   /// Creates a new [ListingPubsubTopic].
   /// [dataAffinityRegions] Region hint on where the data might be published. Data affinity regions are modifiable.
   /// [topic] Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
-  ListingPubsubTopic({
+  const ListingPubsubTopic({
     this.dataAffinityRegions,
     required this.topic,
   });

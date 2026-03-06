@@ -29,7 +29,7 @@ class GetFoldersResult {
   /// [outputFile] Optional.
   /// [parentFolderId] (Available since v1.114.0) The ID of the parent folder. **Note:** `parent_folder_id` takes effect only if `enable_details` is set to `true`.
   /// [queryKeyword] Optional.
-  GetFoldersResult({
+  const GetFoldersResult({
     this.enableDetails,
     required this.folders,
     required this.id,

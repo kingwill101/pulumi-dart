@@ -12,7 +12,7 @@ class GetRaiExternalSafetyProviderArgs {
 
   /// Creates a new [GetRaiExternalSafetyProviderArgs].
   /// [safetyProviderName] The name of the Rai External Safety Provider associated with the Cognitive Services Account
-  GetRaiExternalSafetyProviderArgs({
+  const GetRaiExternalSafetyProviderArgs({
     required this.safetyProviderName,
   });
 

@@ -12,7 +12,7 @@ class SubnetDelegation {
   /// Creates a new [SubnetDelegation].
   /// [name] A name for this delegation.
   /// [serviceDelegation] A `service_delegation` block as defined below.
-  SubnetDelegation({
+  const SubnetDelegation({
     required this.name,
     required this.serviceDelegation,
   });

@@ -11,7 +11,7 @@ class IndexUserTokenConfigurationsJsonTokenTypeConfiguration {
   /// Creates a new [IndexUserTokenConfigurationsJsonTokenTypeConfiguration].
   /// [groupAttributeField] The group attribute field. Minimum length of 1. Maximum length of 2048.
   /// [userNameAttributeField] The user name attribute field. Minimum length of 1. Maximum length of 2048.
-  IndexUserTokenConfigurationsJsonTokenTypeConfiguration({
+  const IndexUserTokenConfigurationsJsonTokenTypeConfiguration({
     required this.groupAttributeField,
     required this.userNameAttributeField,
   });

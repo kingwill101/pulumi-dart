@@ -10,7 +10,7 @@ class DataprocMetricConfigResponse {
 
   /// Creates a new [DataprocMetricConfigResponse].
   /// [metrics] Metrics sources to enable.
-  DataprocMetricConfigResponse({
+  const DataprocMetricConfigResponse({
     required this.metrics,
   });
 

@@ -26,7 +26,7 @@ class GetEngineNamespacesArgs {
   /// [ids] A list of Engine Namespace IDs. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
   /// [instanceId] The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEngineNamespacesArgs({
+  const GetEngineNamespacesArgs({
     this.acceptLanguage,
     this.clusterId,
     this.ids,

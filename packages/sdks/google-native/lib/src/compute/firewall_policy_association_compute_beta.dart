@@ -11,7 +11,7 @@ class FirewallPolicyAssociationComputeBeta {
   /// Creates a new [FirewallPolicyAssociationComputeBeta].
   /// [attachmentTarget] The target that the firewall policy is attached to.
   /// [name] The name for an association.
-  FirewallPolicyAssociationComputeBeta({
+  const FirewallPolicyAssociationComputeBeta({
     this.attachmentTarget,
     this.name,
   });

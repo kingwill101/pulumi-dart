@@ -9,7 +9,7 @@ class ClusterManagedServerCaCaCert {
 
   /// Creates a new [ClusterManagedServerCaCaCert].
   /// [certificates] (Output)
-  ClusterManagedServerCaCaCert({
+  const ClusterManagedServerCaCaCert({
     this.certificates,
   });
 

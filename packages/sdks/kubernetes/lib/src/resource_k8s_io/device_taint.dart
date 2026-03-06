@@ -20,7 +20,7 @@ class DeviceTaint {
   /// [key] The taint key to be applied to a device. Must be a label name.
   /// [timeAdded] TimeAdded represents the time at which the taint was added. Added automatically during create or update if not set.
   /// [value] The taint value corresponding to the taint key. Must be a label value.
-  DeviceTaint({
+  const DeviceTaint({
     required this.effect,
     required this.key,
     this.timeAdded,

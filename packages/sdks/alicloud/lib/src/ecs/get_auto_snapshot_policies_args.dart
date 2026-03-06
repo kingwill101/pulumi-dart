@@ -24,7 +24,7 @@ class GetAutoSnapshotPoliciesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
   /// [tags] A mapping of tags to assign to the resource.
-  GetAutoSnapshotPoliciesArgs({
+  const GetAutoSnapshotPoliciesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

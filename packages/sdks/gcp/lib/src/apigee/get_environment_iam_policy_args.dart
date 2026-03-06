@@ -17,7 +17,7 @@ class GetEnvironmentIamPolicyArgs {
   /// Creates a new [GetEnvironmentIamPolicyArgs].
   /// [envId] Used to find the parent resource to bind the IAM policy to
   /// [orgId] The Apigee Organization associated with the Apigee environment,
-  GetEnvironmentIamPolicyArgs({
+  const GetEnvironmentIamPolicyArgs({
     required this.envId,
     required this.orgId,
   });

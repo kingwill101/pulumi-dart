@@ -18,7 +18,7 @@ class SnmpArgs {
   /// [allowedaddresses] Configures hosts or networks from which snmpd can accept traffic. Entries go directly into hosts.allow.
   /// [sysContact] Specifies the contact information for the system administrator.
   /// [sysLocation] Describes the system's physical location.
-  SnmpArgs({
+  const SnmpArgs({
     this.allowedaddresses,
     this.sysContact,
     this.sysLocation,

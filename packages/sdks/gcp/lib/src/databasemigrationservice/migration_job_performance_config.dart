@@ -9,7 +9,7 @@ class MigrationJobPerformanceConfig {
 
   /// Creates a new [MigrationJobPerformanceConfig].
   /// [dumpParallelLevel] Initial dump parallelism level.
-  MigrationJobPerformanceConfig({
+  const MigrationJobPerformanceConfig({
     this.dumpParallelLevel,
   });
 

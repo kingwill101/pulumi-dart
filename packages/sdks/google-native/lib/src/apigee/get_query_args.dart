@@ -15,7 +15,7 @@ class GetQueryArgs {
   /// [environmentId] Required.
   /// [organizationId] Required.
   /// [queryId] Required.
-  GetQueryArgs({
+  const GetQueryArgs({
     required this.environmentId,
     required this.organizationId,
     required this.queryId,

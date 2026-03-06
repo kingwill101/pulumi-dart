@@ -64,7 +64,7 @@ class MemberArgs {
   /// [tags] A list of simple strings assigned to the member.
   /// [tenantId] Required for admins. The UUID of the tenant who owns
   /// [weight] A positive integer value that indicates the relative
-  MemberArgs({
+  const MemberArgs({
     required this.address,
     this.adminStateUp,
     this.backup,

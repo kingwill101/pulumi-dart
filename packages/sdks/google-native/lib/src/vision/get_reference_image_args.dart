@@ -17,7 +17,7 @@ class GetReferenceImageArgs {
   /// [productId] Required.
   /// [project] Optional.
   /// [referenceImageId] Required.
-  GetReferenceImageArgs({
+  const GetReferenceImageArgs({
     required this.location,
     required this.productId,
     this.project,

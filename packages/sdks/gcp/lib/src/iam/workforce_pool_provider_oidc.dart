@@ -46,7 +46,7 @@ class WorkforcePoolProviderOidc {
   /// [issuerUri] The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
   /// [jwksJson] OIDC JWKs in JSON String format. For details on definition of a
   /// [webSsoConfig] Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
-  WorkforcePoolProviderOidc({
+  const WorkforcePoolProviderOidc({
     required this.clientId,
     this.clientSecret,
     required this.issuerUri,

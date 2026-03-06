@@ -30,7 +30,7 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse {
   /// [supportsWorkProfile] Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
   /// [verifiedBoot] Whether Android verified boot status is GREEN.
   /// [verifyAppsEnabled] Whether Google Play Protect Verify Apps is enabled.
-  GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse({
+  const GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse({
     required this.ctsProfileMatch,
     required this.enabledUnknownSources,
     required this.hasPotentiallyHarmfulApps,

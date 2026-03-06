@@ -47,7 +47,7 @@ class GetPolicyDefinitionVersionResult {
   /// [systemData] The system metadata relating to this resource.
   /// [type] The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
   /// [version] The policy definition version in #.#.# format.
-  GetPolicyDefinitionVersionResult({
+  const GetPolicyDefinitionVersionResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

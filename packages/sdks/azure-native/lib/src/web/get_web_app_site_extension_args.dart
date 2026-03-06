@@ -18,7 +18,7 @@ class GetWebAppSiteExtensionArgs {
   /// [name] Site name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [siteExtensionId] Site extension name.
-  GetWebAppSiteExtensionArgs({
+  const GetWebAppSiteExtensionArgs({
     required this.name,
     required this.resourceGroupName,
     required this.siteExtensionId,

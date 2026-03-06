@@ -11,7 +11,7 @@ class DirectoryCertificateBasedAuthProperties {
   /// Creates a new [DirectoryCertificateBasedAuthProperties].
   /// [certificateAuthorityArn] The Amazon Resource Name (ARN) of the certificate manager private certificate authority (ACM-PCA) that is used for certificate-based authentication.
   /// [status] Status of certificate-based authentication. Default `DISABLED`.
-  DirectoryCertificateBasedAuthProperties({
+  const DirectoryCertificateBasedAuthProperties({
     this.certificateAuthorityArn,
     this.status,
   });

@@ -8,7 +8,7 @@ class DefaultScaleSettings {
 
   /// Creates a new [DefaultScaleSettings].
   /// [scaleType] Expected value is 'Default'.
-  DefaultScaleSettings({
+  const DefaultScaleSettings({
     required this.scaleType,
   });
 

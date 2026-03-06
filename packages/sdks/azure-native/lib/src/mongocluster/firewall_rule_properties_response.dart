@@ -15,7 +15,7 @@ class FirewallRulePropertiesResponse {
   /// [endIpAddress] The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
   /// [provisioningState] The provisioning state of the firewall rule.
   /// [startIpAddress] The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
-  FirewallRulePropertiesResponse({
+  const FirewallRulePropertiesResponse({
     required this.endIpAddress,
     required this.provisioningState,
     required this.startIpAddress,

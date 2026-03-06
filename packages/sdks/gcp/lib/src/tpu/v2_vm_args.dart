@@ -85,7 +85,7 @@ class V2VmArgs {
   /// [shieldedInstanceConfig] Shielded Instance options.
   /// [tags] Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
   /// [zone] The GCP location for the TPU. If it is not provided, the provider zone is used.
-  V2VmArgs({
+  const V2VmArgs({
     this.acceleratorConfig,
     this.acceleratorType,
     this.cidrBlock,

@@ -18,7 +18,7 @@ class DatabaseAccountConnectionStringResponse {
   /// [description] Description of the connection string
   /// [keyKind] Kind of the connection string key
   /// [type] Type of the connection string
-  DatabaseAccountConnectionStringResponse({
+  const DatabaseAccountConnectionStringResponse({
     required this.connectionString,
     required this.description,
     required this.keyKind,

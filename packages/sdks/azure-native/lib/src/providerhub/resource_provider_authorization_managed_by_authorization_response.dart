@@ -15,7 +15,7 @@ class ResourceProviderAuthorizationManagedByAuthorizationResponse {
   /// [additionalAuthorizations] Optional.
   /// [allowManagedByInheritance] Indicates whether the managed by resource role definition ID should be inherited.
   /// [managedByResourceRoleDefinitionId] The managed by resource role definition ID for the application.
-  ResourceProviderAuthorizationManagedByAuthorizationResponse({
+  const ResourceProviderAuthorizationManagedByAuthorizationResponse({
     this.additionalAuthorizations,
     this.allowManagedByInheritance,
     this.managedByResourceRoleDefinitionId,

@@ -11,7 +11,7 @@ class GetEnvironmentEntryResult {
   /// Creates a new [GetEnvironmentEntryResult].
   /// [name] Resource URI that can be used to identify the scope of the key value map entries.
   /// [value] Data or payload that is being retrieved and associated with the unique key.
-  GetEnvironmentEntryResult({
+  const GetEnvironmentEntryResult({
     required this.name,
     required this.value,
   });

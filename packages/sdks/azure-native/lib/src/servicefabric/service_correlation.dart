@@ -12,7 +12,7 @@ class ServiceCorrelation {
   /// Creates a new [ServiceCorrelation].
   /// [scheme] The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
   /// [serviceName] The Arm Resource ID of the service that the correlation relationship is established with.
-  ServiceCorrelation({
+  const ServiceCorrelation({
     required this.scheme,
     required this.serviceName,
   });

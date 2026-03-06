@@ -14,7 +14,7 @@ class ConnectivityCollectionResponse {
   /// Creates a new [ConnectivityCollectionResponse].
   /// [groups] The collection of connectivity related Managed Network Groups within the Managed Network
   /// [peerings] The collection of Managed Network Peering Policies within the Managed Network
-  ConnectivityCollectionResponse({
+  const ConnectivityCollectionResponse({
     required this.groups,
     required this.peerings,
   });

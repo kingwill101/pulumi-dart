@@ -14,7 +14,7 @@ class JobTemplateInitContainerEnv {
   /// [name] The name of the environment variable.
   /// [secretName] Name of the Container App secret from which to pull the environment variable value.
   /// [value] The value of the environment variable.
-  JobTemplateInitContainerEnv({
+  const JobTemplateInitContainerEnv({
     required this.name,
     this.secretName,
     this.value,

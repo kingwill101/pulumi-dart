@@ -14,7 +14,7 @@ class MonitorTagRuleLogFilter {
   /// [action] Allowed values Include or Exclude.
   /// [name] Name of the Tag.
   /// [value] Value of the Tag.
-  MonitorTagRuleLogFilter({
+  const MonitorTagRuleLogFilter({
     required this.action,
     required this.name,
     required this.value,

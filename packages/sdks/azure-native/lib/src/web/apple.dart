@@ -17,7 +17,7 @@ class Apple {
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the Apple provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
   /// [login] The configuration settings of the login flow.
   /// [registration] The configuration settings of the Apple registration.
-  Apple({
+  const Apple({
     this.enabled,
     this.login,
     this.registration,

@@ -16,7 +16,7 @@ class GetNsxCredentialsResult {
   /// [parent] Required.
   /// [password] The password of the NSX Credential.
   /// [username] The username of the NSX Credential.
-  GetNsxCredentialsResult({
+  const GetNsxCredentialsResult({
     required this.id,
     required this.parent,
     required this.password,

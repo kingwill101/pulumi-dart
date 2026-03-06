@@ -9,7 +9,7 @@ class GoogleCloudChannelV1AssociationInfoResponse {
 
   /// Creates a new [GoogleCloudChannelV1AssociationInfoResponse].
   /// [baseEntitlement] The name of the base entitlement, for which this entitlement is an add-on.
-  GoogleCloudChannelV1AssociationInfoResponse({
+  const GoogleCloudChannelV1AssociationInfoResponse({
     required this.baseEntitlement,
   });
 

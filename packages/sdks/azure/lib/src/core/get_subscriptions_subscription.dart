@@ -32,7 +32,7 @@ class GetSubscriptionsSubscription {
   /// [subscriptionId] The subscription GUID.
   /// [tags] A mapping of tags assigned to the resource.
   /// [tenantId] The subscription tenant ID.
-  GetSubscriptionsSubscription({
+  const GetSubscriptionsSubscription({
     required this.displayName,
     required this.id,
     required this.locationPlacementId,

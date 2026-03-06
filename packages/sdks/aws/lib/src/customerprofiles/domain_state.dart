@@ -40,7 +40,7 @@ class DomainState {
   /// [ruleBasedMatching] A block that specifies the process of matching duplicate profiles using the Rule-Based matching. Documented below.
   /// [tags] Tags to apply to the domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  DomainState({
+  const DomainState({
     this.arn,
     this.deadLetterQueueUrl,
     this.defaultEncryptionKey,

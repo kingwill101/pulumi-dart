@@ -17,7 +17,7 @@ class PrivateEndpointConnectionPropertiesResponse {
   /// [privateEndpoint] ARM id for the private endpoint resource corresponding to the connection.
   /// [privateLinkServiceConnectionState] State of the private endpoint connection.
   /// [provisioningState] Indicates whether there is an ongoing operation on the private endpoint.
-  PrivateEndpointConnectionPropertiesResponse({
+  const PrivateEndpointConnectionPropertiesResponse({
     required this.privateEndpoint,
     this.privateLinkServiceConnectionState,
     required this.provisioningState,

@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesis
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput].
   /// [resourceArn] The ARN of the delivery stream.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput({
     required this.resourceArn,
   });
 

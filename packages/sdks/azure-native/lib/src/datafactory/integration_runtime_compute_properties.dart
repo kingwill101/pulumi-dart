@@ -34,7 +34,7 @@ class IntegrationRuntimeComputeProperties {
   /// [numberOfNodes] The required number of nodes for managed integration runtime.
   /// [pipelineExternalComputeScaleProperties] PipelineExternalComputeScale properties for managed integration runtime.
   /// [vNetProperties] VNet properties for managed integration runtime.
-  IntegrationRuntimeComputeProperties({
+  const IntegrationRuntimeComputeProperties({
     this.copyComputeScaleProperties,
     this.dataFlowProperties,
     this.location,

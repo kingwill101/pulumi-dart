@@ -48,7 +48,7 @@ class RegionBackendServiceCdnPolicy {
   /// [negativeCachingPolicies] Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
   /// [serveWhileStale] Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
   /// [signedUrlCacheMaxAgeSec] Maximum number of seconds the response to a signed URL request
-  RegionBackendServiceCdnPolicy({
+  const RegionBackendServiceCdnPolicy({
     this.cacheKeyPolicy,
     this.cacheMode,
     this.clientTtl,

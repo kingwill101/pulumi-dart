@@ -16,7 +16,7 @@ class DeploymentConfigTrafficRoutingConfig {
   /// [timeBasedCanary] The time based canary configuration information. If `type` is `TimeBasedLinear`, use `time_based_linear` instead.
   /// [timeBasedLinear] The time based linear configuration information. If `type` is `TimeBasedCanary`, use `time_based_canary` instead.
   /// [type] Type of traffic routing config. One of `TimeBasedCanary`, `TimeBasedLinear`, `AllAtOnce`.
-  DeploymentConfigTrafficRoutingConfig({
+  const DeploymentConfigTrafficRoutingConfig({
     this.timeBasedCanary,
     this.timeBasedLinear,
     this.type,

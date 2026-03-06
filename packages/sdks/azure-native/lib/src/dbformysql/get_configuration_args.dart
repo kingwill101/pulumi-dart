@@ -18,7 +18,7 @@ class GetConfigurationArgs {
   /// [configurationName] The name of the server configuration.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  GetConfigurationArgs({
+  const GetConfigurationArgs({
     required this.configurationName,
     required this.resourceGroupName,
     required this.serverName,

@@ -30,7 +30,7 @@ class LogTailConfigState {
   /// [name] The Logtail configuration name, which is unique in the same project.
   /// [outputType] The output type. Currently, only LogService is supported.
   /// [project] The project name to the log store belongs.
-  LogTailConfigState({
+  const LogTailConfigState({
     this.inputDetail,
     this.inputType,
     this.lastModifyTime,

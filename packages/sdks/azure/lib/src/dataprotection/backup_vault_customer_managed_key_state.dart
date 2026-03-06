@@ -12,7 +12,7 @@ class BackupVaultCustomerManagedKeyState {
   /// Creates a new [BackupVaultCustomerManagedKeyState].
   /// [dataProtectionBackupVaultId] The ID of the Backup Vault. Changing this forces a new resource to be created.
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to Encrypt the data in this Backup Vault.
-  BackupVaultCustomerManagedKeyState({
+  const BackupVaultCustomerManagedKeyState({
     this.dataProtectionBackupVaultId,
     this.keyVaultKeyId,
   });

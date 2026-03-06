@@ -21,7 +21,7 @@ class ToolClientFunction {
   /// [name] The function name.
   /// [parameters] Represents a select subset of an OpenAPI 3.0 schema object.
   /// [response] Represents a select subset of an OpenAPI 3.0 schema object.
-  ToolClientFunction({
+  const ToolClientFunction({
     this.description,
     required this.name,
     this.parameters,

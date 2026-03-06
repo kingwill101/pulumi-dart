@@ -20,7 +20,7 @@ class WorkflowDestination {
   /// [notificationTriggers] List of triggers to notify about in this destination configuration.
   /// [type] (Required) The type of the destination. One of: (EMAIL, EVENT_BRIDGE, PAGERDUTY_ACCOUNT_INTEGRATION, PAGERDUTY_SERVICE_INTEGRATION, SERVICE_NOW, SERVICE_NOW_APP, WEBHOOK, MOBILE_PUSH, SLACK, JIRA, MICROSOFT_TEAMS, WORKFLOW_AUTOMATION).
   /// [updateOriginalMessage] Update original notification message (Slack channels only)
-  WorkflowDestination({
+  const WorkflowDestination({
     required this.channelId,
     this.name,
     this.notificationTriggers,

@@ -11,7 +11,7 @@ class FilterFilterCriteriaLambdaFunctionRuntime {
   /// Creates a new [FilterFilterCriteriaLambdaFunctionRuntime].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaLambdaFunctionRuntime({
+  const FilterFilterCriteriaLambdaFunctionRuntime({
     required this.comparison,
     required this.value,
   });

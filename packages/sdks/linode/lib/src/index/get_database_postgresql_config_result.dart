@@ -20,7 +20,7 @@ class GetDatabasePostgresqlConfigResult {
   /// [pglookouts] Required.
   /// [sharedBuffersPercentages] Required.
   /// [workMems] Required.
-  GetDatabasePostgresqlConfigResult({
+  const GetDatabasePostgresqlConfigResult({
     required this.id,
     required this.pgStatMonitorEnables,
     required this.pglookouts,

@@ -39,7 +39,7 @@ class SpriteSheetResponse {
   /// [spriteWidthPixels] The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
   /// [startTimeOffset] Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
   /// [totalCount] Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.
-  SpriteSheetResponse({
+  const SpriteSheetResponse({
     required this.columnCount,
     required this.endTimeOffset,
     required this.filePrefix,

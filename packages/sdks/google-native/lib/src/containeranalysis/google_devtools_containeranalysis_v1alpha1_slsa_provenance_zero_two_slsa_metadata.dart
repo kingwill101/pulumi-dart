@@ -22,7 +22,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata {
   /// [buildStartedOn] The timestamp of when the build started.
   /// [completeness] Indicates that the builder claims certain fields in this message to be complete.
   /// [reproducible] If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
-  GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata({
+  const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata({
     this.buildFinishedOn,
     this.buildInvocationId,
     this.buildStartedOn,

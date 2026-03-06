@@ -29,7 +29,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [privateLinkServiceConnectionState] Connection State of the Private Endpoint Connection.
   /// [resourceGroupName] Name of an Azure Resource group.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     required this.automationAccountName,
     this.groupIds,
     this.privateEndpoint,

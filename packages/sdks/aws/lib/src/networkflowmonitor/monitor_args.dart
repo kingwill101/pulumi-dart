@@ -34,7 +34,7 @@ class MonitorArgs {
   /// [scopeArn] The Amazon Resource Name (ARN) of the scope for the monitor. Cannot be changed after creation.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  MonitorArgs({
+  const MonitorArgs({
     required this.localResources,
     required this.monitorName,
     this.region,

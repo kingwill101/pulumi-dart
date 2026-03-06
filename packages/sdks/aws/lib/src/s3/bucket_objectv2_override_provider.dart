@@ -9,7 +9,7 @@ class BucketObjectv2OverrideProvider {
 
   /// Creates a new [BucketObjectv2OverrideProvider].
   /// [defaultTags] Override the provider `default_tags` configuration block.
-  BucketObjectv2OverrideProvider({
+  const BucketObjectv2OverrideProvider({
     this.defaultTags,
   });
 

@@ -9,7 +9,7 @@ class DomainOffPeakWindowOptionsOffPeakWindow {
 
   /// Creates a new [DomainOffPeakWindowOptionsOffPeakWindow].
   /// [windowStartTime] 10h window for updates
-  DomainOffPeakWindowOptionsOffPeakWindow({
+  const DomainOffPeakWindowOptionsOffPeakWindow({
     this.windowStartTime,
   });
 

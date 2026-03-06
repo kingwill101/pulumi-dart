@@ -15,7 +15,7 @@ class GetAssociatedTenantArgs {
   /// Creates a new [GetAssociatedTenantArgs].
   /// [associatedTenantName] The ID that uniquely identifies a tenant.
   /// [billingAccountName] The ID that uniquely identifies a billing account.
-  GetAssociatedTenantArgs({
+  const GetAssociatedTenantArgs({
     required this.associatedTenantName,
     required this.billingAccountName,
   });

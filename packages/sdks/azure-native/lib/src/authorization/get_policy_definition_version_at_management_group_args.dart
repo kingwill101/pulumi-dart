@@ -18,7 +18,7 @@ class GetPolicyDefinitionVersionAtManagementGroupArgs {
   /// [managementGroupName] The name of the management group. The name is case insensitive.
   /// [policyDefinitionName] The name of the policy definition.
   /// [policyDefinitionVersion] The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  GetPolicyDefinitionVersionAtManagementGroupArgs({
+  const GetPolicyDefinitionVersionAtManagementGroupArgs({
     required this.managementGroupName,
     required this.policyDefinitionName,
     required this.policyDefinitionVersion,

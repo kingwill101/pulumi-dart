@@ -11,7 +11,7 @@ class GroupExternalId {
   /// Creates a new [GroupExternalId].
   /// [id] The identifier issued to this resource by an external identity provider.
   /// [issuer] The issuer for an external identifier.
-  GroupExternalId({
+  const GroupExternalId({
     this.id,
     this.issuer,
   });

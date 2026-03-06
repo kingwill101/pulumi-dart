@@ -9,7 +9,7 @@ class GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
 
   /// Creates a new [GoogleCloudChannelV1RepricingConfigEntitlementGranularity].
   /// [entitlement] Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
-  GoogleCloudChannelV1RepricingConfigEntitlementGranularity({
+  const GoogleCloudChannelV1RepricingConfigEntitlementGranularity({
     this.entitlement,
   });
 

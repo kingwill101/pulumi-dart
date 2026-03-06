@@ -14,7 +14,7 @@ class SingleServerFullResourceNames {
   /// Creates a new [SingleServerFullResourceNames].
   /// [namingPatternType] The pattern type to be used for resource naming.
   /// [virtualMachine] The resource names object for virtual machine and related resources.
-  SingleServerFullResourceNames({
+  const SingleServerFullResourceNames({
     required this.namingPatternType,
     this.virtualMachine,
   });

@@ -28,7 +28,7 @@ class GetPrivateZonesResult {
   /// [outputFile] Optional.
   /// [status] The status of the PrivateZone service.
   /// [zones] A list of CEN private zones. Each element contains the following attributes:
-  GetPrivateZonesResult({
+  const GetPrivateZonesResult({
     required this.cenId,
     this.hostRegionId,
     required this.id,

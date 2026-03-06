@@ -28,7 +28,7 @@ class SpeechEndpointDeploymentResourcePropertiesResponse {
   /// [sku] Optional.
   /// [type] Kind of the deployment.
   /// [versionUpgradeOption] Deployment model version upgrade option.
-  SpeechEndpointDeploymentResourcePropertiesResponse({
+  const SpeechEndpointDeploymentResourcePropertiesResponse({
     this.failureReason,
     required this.model,
     required this.provisioningState,

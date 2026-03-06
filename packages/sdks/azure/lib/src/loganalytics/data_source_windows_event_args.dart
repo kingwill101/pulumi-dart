@@ -24,7 +24,7 @@ class DataSourceWindowsEventArgs {
   /// [name] The name which should be used for this Log Analytics Windows Event DataSource. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Log Analytics Windows Event DataSource should exist. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   /// [workspaceName] The name of the Log Analytics Workspace where the Log Analytics Windows Event DataSource should exist. Changing this forces a new Log Analytics Windows Event DataSource to be created.
-  DataSourceWindowsEventArgs({
+  const DataSourceWindowsEventArgs({
     required this.eventLogName,
     required this.eventTypes,
     this.name,

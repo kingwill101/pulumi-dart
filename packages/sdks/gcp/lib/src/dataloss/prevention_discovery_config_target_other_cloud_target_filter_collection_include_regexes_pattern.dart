@@ -13,7 +13,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern].
   /// [amazonS3BucketRegex] Regex for Cloud Storage.
-  PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern({
     this.amazonS3BucketRegex,
   });
 

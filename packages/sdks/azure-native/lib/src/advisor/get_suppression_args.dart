@@ -18,7 +18,7 @@ class GetSuppressionArgs {
   /// [name] The name of the suppression.
   /// [recommendationId] The recommendation ID.
   /// [resourceUri] The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
-  GetSuppressionArgs({
+  const GetSuppressionArgs({
     required this.name,
     required this.recommendationId,
     required this.resourceUri,

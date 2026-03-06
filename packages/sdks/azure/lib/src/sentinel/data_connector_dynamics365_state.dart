@@ -17,7 +17,7 @@ class DataConnectorDynamics365State {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this Dynamics 365 Data Connector resides in. Changing this forces a new Dynamics 365 Data Connector to be created.
   /// [name] The name which should be used for this Dynamics 365 Data Connector. Changing this forces a new Dynamics 365 Data Connector to be created.
   /// [tenantId] The ID of the tenant that this Dynamics 365 Data Connector connects to. Changing this forces a new Dynamics 365 Data Connector to be created.
-  DataConnectorDynamics365State({
+  const DataConnectorDynamics365State({
     this.logAnalyticsWorkspaceId,
     this.name,
     this.tenantId,

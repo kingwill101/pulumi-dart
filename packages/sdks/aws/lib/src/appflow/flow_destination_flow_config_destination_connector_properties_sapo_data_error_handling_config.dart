@@ -14,7 +14,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandli
   /// [bucketName] Name of the Amazon S3 bucket.
   /// [bucketPrefix] Amazon S3 bucket prefix.
   /// [failOnFirstDestinationError] If the flow should fail after the first instance of a failure when attempting to place data in the destination.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig({
     this.bucketName,
     this.bucketPrefix,
     this.failOnFirstDestinationError,

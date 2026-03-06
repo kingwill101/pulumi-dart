@@ -38,7 +38,7 @@ class FileShareProperties {
   /// [publicAccessProperties] The set of properties for control public access.
   /// [publicNetworkAccess] Gets or sets allow or disallow public network access to azure managed file share
   /// [redundancy] The chosen redundancy level of the file share.
-  FileShareProperties({
+  const FileShareProperties({
     this.mediaTier,
     this.mountName,
     this.nfsProtocolProperties,

@@ -76,7 +76,7 @@ class WorkloadAssuredworkloadsV1beta1Args {
   /// [provisionedResourcesParent] Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
   /// [resourceSettings] Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
   /// [violationNotificationsEnabled] Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
-  WorkloadAssuredworkloadsV1beta1Args({
+  const WorkloadAssuredworkloadsV1beta1Args({
     this.billingAccount,
     this.cjisSettings,
     required this.complianceRegime,

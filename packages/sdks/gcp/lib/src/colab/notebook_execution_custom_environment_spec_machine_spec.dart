@@ -14,7 +14,7 @@ class NotebookExecutionCustomEnvironmentSpecMachineSpec {
   /// [acceleratorCount] The number of accelerators used by the runtime.
   /// [acceleratorType] The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
   /// [machineType] The Compute Engine machine type selected for the runtime.
-  NotebookExecutionCustomEnvironmentSpecMachineSpec({
+  const NotebookExecutionCustomEnvironmentSpecMachineSpec({
     this.acceleratorCount,
     this.acceleratorType,
     this.machineType,

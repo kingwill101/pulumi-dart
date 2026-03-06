@@ -15,7 +15,7 @@ class AppHostingBackendCodebase {
   /// Creates a new [AppHostingBackendCodebase].
   /// [repository] The resource name for the Developer Connect
   /// [rootDirectory] If `repository` is provided, the directory relative to the root of the
-  AppHostingBackendCodebase({
+  const AppHostingBackendCodebase({
     required this.repository,
     this.rootDirectory,
   });

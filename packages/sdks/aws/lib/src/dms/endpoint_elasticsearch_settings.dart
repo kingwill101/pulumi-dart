@@ -20,7 +20,7 @@ class EndpointElasticsearchSettings {
   /// [fullLoadErrorPercentage] Maximum percentage of records that can fail to be written before a full load operation stops. Default is `10`.
   /// [serviceAccessRoleArn] ARN of the IAM Role with permissions to write to the OpenSearch cluster.
   /// [useNewMappingType] Enable to migrate documentation using the documentation type `_doc`. OpenSearch and an Elasticsearch clusters only support the _doc documentation type in versions 7.x and later. The default value is `false`.
-  EndpointElasticsearchSettings({
+  const EndpointElasticsearchSettings({
     required this.endpointUri,
     this.errorRetryDuration,
     this.fullLoadErrorPercentage,

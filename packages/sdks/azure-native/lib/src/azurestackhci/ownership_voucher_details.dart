@@ -12,7 +12,7 @@ class OwnershipVoucherDetails {
   /// Creates a new [OwnershipVoucherDetails].
   /// [ownerKeyType] Owner key type
   /// [ownershipVoucher] Ownership voucher in base64 encoded format
-  OwnershipVoucherDetails({
+  const OwnershipVoucherDetails({
     required this.ownerKeyType,
     required this.ownershipVoucher,
   });

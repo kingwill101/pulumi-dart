@@ -22,7 +22,7 @@ class AuditAnnotationPatchAdmissionregistrationK8sIoV1beta1 {
   /// Creates a new [AuditAnnotationPatchAdmissionregistrationK8sIoV1beta1].
   /// [key] key specifies the audit annotation key. The audit annotation keys of a ValidatingAdmissionPolicy must be unique. The key must be a qualified name ([A-Za-z0-9][-A-Za-z0-9_.]*) no more than 63 bytes in length.
   /// [valueExpression] valueExpression represents the expression which is evaluated by CEL to produce an audit annotation value. The expression must evaluate to either a string or null value. If the expression evaluates to a string, the audit annotation is included with the string value. If the expression evaluates to null or empty string the audit annotation will be omitted. The valueExpression may be no longer than 5kb in length. If the result of the valueExpression is more than 10kb in length, it will be truncated to 10kb.
-  AuditAnnotationPatchAdmissionregistrationK8sIoV1beta1({
+  const AuditAnnotationPatchAdmissionregistrationK8sIoV1beta1({
     this.key,
     this.valueExpression,
   });

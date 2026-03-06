@@ -65,7 +65,7 @@ class GetSubscriptionResult {
   /// [state] An output-only field indicating whether or not the subscription can receive messages.
   /// [topic] The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
   /// [topicMessageRetentionDuration] Indicates the minimum duration for which a message is retained after it is published to the subscription's topic. If this field is set, messages published to the subscription's topic in the last `topic_message_retention_duration` are always available to subscribers. See the `message_retention_duration` field in `Topic`. This field is set only in responses from the server; it is ignored if it is set in any requests.
-  GetSubscriptionResult({
+  const GetSubscriptionResult({
     required this.ackDeadlineSeconds,
     required this.bigqueryConfig,
     required this.cloudStorageConfig,

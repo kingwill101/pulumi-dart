@@ -75,7 +75,7 @@ class ManagedDatabaseArgs {
   /// [storageContainerSasToken] Conditional. If createMode is RestoreExternalBackup and storageContainerIdentity is not ManagedIdentity, this value is required. Specifies the storage container sas token.
   /// [storageContainerUri] Conditional. If createMode is RestoreExternalBackup, this value is required. Specifies the uri of the storage container where backups for this restore are stored.
   /// [tags] Resource tags.
-  ManagedDatabaseArgs({
+  const ManagedDatabaseArgs({
     this.autoCompleteRestore,
     this.catalogCollation,
     this.collation,

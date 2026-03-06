@@ -7,7 +7,7 @@ class GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModific
 
   /// Creates a new [GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification].
   /// [status] Required.
-  GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification({
+  const GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification({
     required this.status,
   });
 

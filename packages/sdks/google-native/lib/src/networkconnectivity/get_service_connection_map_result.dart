@@ -48,7 +48,7 @@ class GetServiceConnectionMapResult {
   /// [serviceClassUri] The service class uri this ServiceConnectionMap is for.
   /// [token] The token provided by the consumer. This token authenticates that the consumer can create a connecton within the specified project and network.
   /// [updateTime] Time when the ServiceConnectionMap was updated.
-  GetServiceConnectionMapResult({
+  const GetServiceConnectionMapResult({
     required this.consumerPscConfigs,
     required this.consumerPscConnections,
     required this.createTime,

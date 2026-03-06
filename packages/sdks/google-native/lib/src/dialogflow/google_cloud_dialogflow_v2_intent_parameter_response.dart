@@ -30,7 +30,7 @@ class GoogleCloudDialogflowV2IntentParameterResponse {
   /// [name] The unique identifier of this parameter.
   /// [prompts] Optional. The collection of prompts that the agent can present to the user in order to collect a value for the parameter.
   /// [value] Optional. The definition of the parameter value. It can be: - a constant string, - a parameter value defined as `$parameter_name`, - an original parameter value defined as `$parameter_name.original`, - a parameter value from some context defined as `#context_name.parameter_name`.
-  GoogleCloudDialogflowV2IntentParameterResponse({
+  const GoogleCloudDialogflowV2IntentParameterResponse({
     required this.defaultValue,
     required this.displayName,
     required this.entityTypeDisplayName,

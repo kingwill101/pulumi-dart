@@ -15,7 +15,7 @@ class ListSqlMigrationServiceMonitoringDataArgs {
   /// Creates a new [ListSqlMigrationServiceMonitoringDataArgs].
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [sqlMigrationServiceName] Name of the SQL Migration Service.
-  ListSqlMigrationServiceMonitoringDataArgs({
+  const ListSqlMigrationServiceMonitoringDataArgs({
     required this.resourceGroupName,
     required this.sqlMigrationServiceName,
   });

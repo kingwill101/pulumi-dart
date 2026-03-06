@@ -18,7 +18,7 @@ class GetImportSqlCollectorOperationArgs {
   /// [importSqlCollectorsName] Import SQL Collector arm name.
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetImportSqlCollectorOperationArgs({
+  const GetImportSqlCollectorOperationArgs({
     required this.importSqlCollectorsName,
     required this.projectName,
     required this.resourceGroupName,

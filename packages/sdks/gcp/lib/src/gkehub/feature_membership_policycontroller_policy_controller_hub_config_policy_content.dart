@@ -13,7 +13,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
   /// Creates a new [FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent].
   /// [bundles] map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
   /// [templateLibrary] Configures the installation of the Template Library. Structure is documented below.
-  FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent({
+  const FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent({
     this.bundles,
     this.templateLibrary,
   });

@@ -69,7 +69,7 @@ class AdConnectorOfficeSiteState {
   /// [subDomainDnsAddresses] The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
   /// [subDomainName] The domain name of the enterprise AD subdomain.
   /// [verifyCode] The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
-  AdConnectorOfficeSiteState({
+  const AdConnectorOfficeSiteState({
     this.adConnectorOfficeSiteName,
     this.adHostname,
     this.bandwidth,

@@ -12,7 +12,7 @@ class PublicKeyCredentialResponse {
   /// Creates a new [PublicKeyCredentialResponse].
   /// [format] The format of the key.
   /// [key] The key data.
-  PublicKeyCredentialResponse({
+  const PublicKeyCredentialResponse({
     required this.format,
     required this.key,
   });

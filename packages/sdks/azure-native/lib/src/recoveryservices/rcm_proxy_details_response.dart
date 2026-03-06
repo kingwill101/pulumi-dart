@@ -37,7 +37,7 @@ class RcmProxyDetailsResponse {
   /// [lastHeartbeatUtc] The last heartbeat received from the RCM proxy.
   /// [name] The RCM proxy name.
   /// [version] The version.
-  RcmProxyDetailsResponse({
+  const RcmProxyDetailsResponse({
     required this.biosId,
     required this.clientAuthenticationType,
     required this.fabricObjectId,

@@ -34,7 +34,7 @@ class AvailabilitySetState {
   /// [proximityPlacementGroupId] The ID of the Proximity Placement Group to which this Virtual Machine should be assigned. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the availability set. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  AvailabilitySetState({
+  const AvailabilitySetState({
     this.location,
     this.managed,
     this.name,

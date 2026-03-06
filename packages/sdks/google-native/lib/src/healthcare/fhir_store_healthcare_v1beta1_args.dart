@@ -65,7 +65,7 @@ class FhirStoreHealthcareV1beta1Args {
   /// [streamConfigs] A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
   /// [validationConfig] Configuration for how to validate incoming FHIR resources against configured profiles.
   /// [version] Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
-  FhirStoreHealthcareV1beta1Args({
+  const FhirStoreHealthcareV1beta1Args({
     this.complexDataTypeReferenceParsing,
     this.consentConfig,
     required this.datasetId,

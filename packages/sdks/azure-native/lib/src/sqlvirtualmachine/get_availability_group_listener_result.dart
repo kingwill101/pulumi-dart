@@ -46,7 +46,7 @@ class GetAvailabilityGroupListenerResult {
   /// [provisioningState] Provisioning state to track the async operation status.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAvailabilityGroupListenerResult({
+  const GetAvailabilityGroupListenerResult({
     this.availabilityGroupConfiguration,
     this.availabilityGroupName,
     required this.azureApiVersion,

@@ -63,7 +63,7 @@ class PrivateVirtualInterfaceState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vlan] The VLAN ID.
   /// [vpnGatewayId] The ID of the virtual private gateway to which to connect the virtual interface.
-  PrivateVirtualInterfaceState({
+  const PrivateVirtualInterfaceState({
     this.addressFamily,
     this.amazonAddress,
     this.amazonSideAsn,

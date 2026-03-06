@@ -65,7 +65,7 @@ class GoogleCloudDialogflowV2IntentMessage {
   /// [suggestions] The suggestion chips for Actions on Google.
   /// [tableCard] Table card for Actions on Google.
   /// [text] The text response.
-  GoogleCloudDialogflowV2IntentMessage({
+  const GoogleCloudDialogflowV2IntentMessage({
     this.basicCard,
     this.browseCarouselCard,
     this.card,

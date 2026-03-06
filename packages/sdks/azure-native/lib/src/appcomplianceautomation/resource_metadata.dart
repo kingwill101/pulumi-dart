@@ -21,7 +21,7 @@ class ResourceMetadata {
   /// [resourceKind] Resource kind.
   /// [resourceOrigin] Resource Origin.
   /// [resourceType] Resource type. e.g. "Microsoft.Compute/virtualMachines"
-  ResourceMetadata({
+  const ResourceMetadata({
     this.accountId,
     required this.resourceId,
     this.resourceKind,

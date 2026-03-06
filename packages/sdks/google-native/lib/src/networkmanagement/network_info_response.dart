@@ -15,7 +15,7 @@ class NetworkInfoResponse {
   /// [displayName] Name of a Compute Engine network.
   /// [matchedIpRange] The IP range that matches the test.
   /// [uri] URI of a Compute Engine network.
-  NetworkInfoResponse({
+  const NetworkInfoResponse({
     required this.displayName,
     required this.matchedIpRange,
     required this.uri,

@@ -42,7 +42,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse 
   /// [targetServer] Target server name
   /// [targetServerType] Target server type.
   /// [targetServerVersion] Target server version
-  MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse({
+  const MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse({
     this.databaseCount,
     required this.endedOn,
     required this.id,

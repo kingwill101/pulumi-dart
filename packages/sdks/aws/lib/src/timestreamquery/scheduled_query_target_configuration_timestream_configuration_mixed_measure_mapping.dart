@@ -21,7 +21,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappin
   /// [multiMeasureAttributeMappings] Configuration block for attribute mappings for `MULTI` value measures. Required when `measure_value_type` is `MULTI`. See below.
   /// [sourceColumn] Source column from which measure-value is to be read for result materialization.
   /// [targetMeasureName] Target measure name to be used. If not provided, the target measure name by default is `measure_name`, if provided, or `source_column` otherwise.
-  ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping({
+  const ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping({
     this.measureName,
     required this.measureValueType,
     this.multiMeasureAttributeMappings,

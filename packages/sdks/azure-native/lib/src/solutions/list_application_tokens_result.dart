@@ -10,7 +10,7 @@ class ListApplicationTokensResult {
 
   /// Creates a new [ListApplicationTokensResult].
   /// [value] The array of managed identity tokens.
-  ListApplicationTokensResult({
+  const ListApplicationTokensResult({
     this.value,
   });
 

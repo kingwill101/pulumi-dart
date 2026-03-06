@@ -68,7 +68,7 @@ class HaVpnGatewayState {
   /// [selfLink] The URI of the created resource.
   /// [stackType] The stack type for this VPN gateway to identify the IP protocols that are enabled.
   /// [vpnInterfaces] A list of interfaces on this VPN gateway.
-  HaVpnGatewayState({
+  const HaVpnGatewayState({
     this.description,
     this.effectiveLabels,
     this.gatewayIpVersion,

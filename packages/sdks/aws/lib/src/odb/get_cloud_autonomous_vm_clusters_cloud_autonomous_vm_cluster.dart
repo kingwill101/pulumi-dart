@@ -29,7 +29,7 @@ class GetCloudAutonomousVmClustersCloudAutonomousVmCluster {
   /// [ociUrl] The URL for accessing the OCI console page for this Autonomous VM cluster.
   /// [ocid] The Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
   /// [odbNetworkId] The unique identifier of the ODB network associated with this Autonomous VM cluster.
-  GetCloudAutonomousVmClustersCloudAutonomousVmCluster({
+  const GetCloudAutonomousVmClustersCloudAutonomousVmCluster({
     required this.arn,
     required this.cloudExadataInfrastructureId,
     required this.displayName,

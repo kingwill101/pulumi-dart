@@ -9,7 +9,7 @@ class MonitorNotificationSettingsResponse {
 
   /// Creates a new [MonitorNotificationSettingsResponse].
   /// [emailNotificationSettings] The AML notification email settings.
-  MonitorNotificationSettingsResponse({
+  const MonitorNotificationSettingsResponse({
     this.emailNotificationSettings,
   });
 

@@ -30,7 +30,7 @@ class SlbAttachmentState {
   /// [type] The type of the bound SLB instance.
   /// [vserverGroupId] The ID of the virtual server (VServer) group associated with the intranet SLB instance.
   /// [vswitchId] VPC related vswitch ID.
-  SlbAttachmentState({
+  const SlbAttachmentState({
     this.appId,
     this.listenerPort,
     this.slbId,

@@ -15,7 +15,7 @@ class Transition {
   /// [storageClass] The storage class to which you want the object to transition.
   /// [transitionDate] Indicates when objects are transitioned to the specified storage class. The date value must be in ISO 8601 format. The time is always midnight UTC. The date value in ISO 8601 format. The timezone is always UTC. (YYYY-MM-DDThh:mm:ssZ)
   /// [transitionInDays] Indicates the number of days after creation when objects are transitioned to the specified storage class. The value must be a positive integer.
-  Transition({
+  const Transition({
     this.storageClass,
     this.transitionDate,
     this.transitionInDays,

@@ -89,7 +89,7 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
   /// [telephonySynthesizeSpeech] Synthesizes speech in Telephony Gateway.
   /// [telephonyTransferCall] Transfers the call in Telephony Gateway.
   /// [text] Returns a text response.
-  GoogleCloudDialogflowV2beta1IntentMessage({
+  const GoogleCloudDialogflowV2beta1IntentMessage({
     this.basicCard,
     this.browseCarouselCard,
     this.card,

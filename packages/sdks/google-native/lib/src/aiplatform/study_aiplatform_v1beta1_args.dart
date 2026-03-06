@@ -20,7 +20,7 @@ class StudyAiplatformV1beta1Args {
   /// [location] Optional.
   /// [project] Optional.
   /// [studySpec] Configuration of the Study.
-  StudyAiplatformV1beta1Args({
+  const StudyAiplatformV1beta1Args({
     required this.displayName,
     this.location,
     this.project,

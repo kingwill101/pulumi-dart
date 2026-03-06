@@ -18,7 +18,7 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfig {
   /// Creates a new [AnalysisRuleAnnotatorSelectorSummarizationConfig].
   /// [conversationProfile] Resource name of the Dialogflow conversation profile.
   /// [summarizationModel] Default summarization model to be used.
-  AnalysisRuleAnnotatorSelectorSummarizationConfig({
+  const AnalysisRuleAnnotatorSelectorSummarizationConfig({
     this.conversationProfile,
     this.summarizationModel,
   });

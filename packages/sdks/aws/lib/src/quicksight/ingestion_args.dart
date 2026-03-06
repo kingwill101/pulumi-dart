@@ -26,7 +26,7 @@ class IngestionArgs {
   /// [ingestionId] ID for the ingestion.
   /// [ingestionType] Type of ingestion to be created. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  IngestionArgs({
+  const IngestionArgs({
     this.awsAccountId,
     required this.dataSetId,
     required this.ingestionId,

@@ -24,7 +24,7 @@ class ClusterState {
   /// [name] The name which should be used for this Azure VMware Solution Cluster. Changing this forces a new Azure VMware Solution Cluster to be created.
   /// [skuName] The Cluster SKU to use. Possible values are `av20`, `av36`, `av36t`, `av36p`, `av48`, `av48t`, `av36pt`, `av52`, `av52t`, and `av64`. Changing this forces a new Azure VMware Solution Cluster to be created.
   /// [vmwareCloudId] The ID of the Azure VMware Solution Private Cloud in which to create this Cluster. Changing this forces a new Azure VMware Solution Cluster to be created.
-  ClusterState({
+  const ClusterState({
     this.clusterNodeCount,
     this.clusterNumber,
     this.hosts,

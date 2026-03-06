@@ -9,7 +9,7 @@ class Action {
 
   /// Creates a new [Action].
   /// [type] The type of action.
-  Action({
+  const Action({
     this.type,
   });
 

@@ -53,7 +53,7 @@ class GetSecretParametersParameter {
   /// [updatedBy] The user who updated the encryption parameter.
   /// [updatedDate] The time when the encryption parameter was updated.
   /// [value] (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
-  GetSecretParametersParameter({
+  const GetSecretParametersParameter({
     required this.constraints,
     required this.createTime,
     required this.createdBy,

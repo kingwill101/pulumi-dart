@@ -12,7 +12,7 @@ class BlobRestoreRangeResponse {
   /// Creates a new [BlobRestoreRangeResponse].
   /// [endRange] Blob end range. This is exclusive. Empty means account end.
   /// [startRange] Blob start range. This is inclusive. Empty means account start.
-  BlobRestoreRangeResponse({
+  const BlobRestoreRangeResponse({
     required this.endRange,
     required this.startRange,
   });

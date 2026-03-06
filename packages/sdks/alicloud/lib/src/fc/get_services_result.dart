@@ -23,7 +23,7 @@ class GetServicesResult {
   /// [names] A list of FC services names.
   /// [outputFile] Optional.
   /// [services] A list of FC services. Each element contains the following attributes:
-  GetServicesResult({
+  const GetServicesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

@@ -8,7 +8,7 @@ class ProjectCustomModuleCustomConfigResourceSelector {
 
   /// Creates a new [ProjectCustomModuleCustomConfigResourceSelector].
   /// [resourceTypes] The resource types to run the detector on.
-  ProjectCustomModuleCustomConfigResourceSelector({
+  const ProjectCustomModuleCustomConfigResourceSelector({
     required this.resourceTypes,
   });
 

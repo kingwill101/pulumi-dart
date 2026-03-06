@@ -21,7 +21,7 @@ class SSHKeyResponse {
   /// [expirationTimeStamp] Certificate expiration timestamp (Unix).
   /// [privateKey] Private Key.
   /// [publicKey] Public Key.
-  SSHKeyResponse({
+  const SSHKeyResponse({
     required this.certificate,
     required this.creationTimeStamp,
     required this.expirationTimeStamp,

@@ -25,7 +25,7 @@ class ApplicationGatewayPrivateLinkConfigurationResponse {
   /// [name] Name of the private link configuration that is unique within an Application Gateway.
   /// [provisioningState] The provisioning state of the application gateway private link configuration.
   /// [type] Type of the resource.
-  ApplicationGatewayPrivateLinkConfigurationResponse({
+  const ApplicationGatewayPrivateLinkConfigurationResponse({
     required this.etag,
     this.id,
     this.ipConfigurations,

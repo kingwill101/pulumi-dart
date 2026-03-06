@@ -12,7 +12,7 @@ class GetInstanceBackupsArgs {
 
   /// Creates a new [GetInstanceBackupsArgs].
   /// [linodeId] The Linode instance's ID.
-  GetInstanceBackupsArgs({
+  const GetInstanceBackupsArgs({
     required this.linodeId,
   });
 

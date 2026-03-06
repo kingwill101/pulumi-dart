@@ -9,7 +9,7 @@ class LogicalNetworkPropertiesDhcpOptions {
 
   /// Creates a new [LogicalNetworkPropertiesDhcpOptions].
   /// [dnsServers] The list of DNS servers IP addresses.
-  LogicalNetworkPropertiesDhcpOptions({
+  const LogicalNetworkPropertiesDhcpOptions({
     this.dnsServers,
   });
 

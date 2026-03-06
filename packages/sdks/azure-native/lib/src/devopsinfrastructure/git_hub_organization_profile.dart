@@ -14,7 +14,7 @@ class GitHubOrganizationProfile {
   /// Creates a new [GitHubOrganizationProfile].
   /// [kind] Discriminator property for OrganizationProfile.
   /// [organizations] The list of GitHub organizations/repositories the pool should be present in.
-  GitHubOrganizationProfile({
+  const GitHubOrganizationProfile({
     required this.kind,
     required this.organizations,
   });

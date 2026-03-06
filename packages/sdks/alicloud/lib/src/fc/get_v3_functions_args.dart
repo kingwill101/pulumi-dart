@@ -24,7 +24,7 @@ class GetV3FunctionsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [prefix] A prefix string to filter results by function name.
   /// [resourceGroupId] Resource Group ID
-  GetV3FunctionsArgs({
+  const GetV3FunctionsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -11,7 +11,7 @@ class RoutingIdentityInfoResponse {
   /// Creates a new [RoutingIdentityInfoResponse].
   /// [type] Routing identity type for topic spaces configuration.
   /// [userAssignedIdentity] Optional.
-  RoutingIdentityInfoResponse({
+  const RoutingIdentityInfoResponse({
     this.type,
     this.userAssignedIdentity,
   });

@@ -8,7 +8,7 @@ class AgentAgentCollaboratorAgentDescriptor {
 
   /// Creates a new [AgentAgentCollaboratorAgentDescriptor].
   /// [aliasArn] ARN of the Alias of an Agent to use as the collaborator.
-  AgentAgentCollaboratorAgentDescriptor({
+  const AgentAgentCollaboratorAgentDescriptor({
     required this.aliasArn,
   });
 

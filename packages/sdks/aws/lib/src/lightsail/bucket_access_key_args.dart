@@ -15,7 +15,7 @@ class BucketAccessKeyArgs {
   /// Creates a new [BucketAccessKeyArgs].
   /// [bucketName] Name of the bucket that the access key will belong to and grant access to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  BucketAccessKeyArgs({
+  const BucketAccessKeyArgs({
     required this.bucketName,
     this.region,
   });

@@ -15,7 +15,7 @@ class SnapshotArgs {
   /// Creates a new [SnapshotArgs].
   /// [diskId] The ID of the disk.
   /// [snapshotName] The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
-  SnapshotArgs({
+  const SnapshotArgs({
     required this.diskId,
     required this.snapshotName,
   });

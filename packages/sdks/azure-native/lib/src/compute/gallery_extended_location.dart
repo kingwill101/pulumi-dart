@@ -11,7 +11,7 @@ class GalleryExtendedLocation {
   /// Creates a new [GalleryExtendedLocation].
   /// [name] Optional.
   /// [type] It is type of the extended location.
-  GalleryExtendedLocation({
+  const GalleryExtendedLocation({
     this.name,
     this.type,
   });

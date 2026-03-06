@@ -26,7 +26,7 @@ class LocalRulestackCertificateState {
   /// [name] The name which should be used for this Palo Alto Networks Rulestack Certificate.
   /// [rulestackId] The ID of the TODO. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   /// [selfSigned] Should a Self Signed Certificate be used. Defaults to `false`. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
-  LocalRulestackCertificateState({
+  const LocalRulestackCertificateState({
     this.auditComment,
     this.description,
     this.keyVaultCertificateId,

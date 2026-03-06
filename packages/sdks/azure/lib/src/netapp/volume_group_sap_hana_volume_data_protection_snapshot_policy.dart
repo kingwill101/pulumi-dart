@@ -8,7 +8,7 @@ class VolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy {
 
   /// Creates a new [VolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy].
   /// [snapshotPolicyId] Resource ID of the snapshot policy to apply to the volume.
-  VolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy({
+  const VolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy({
     required this.snapshotPolicyId,
   });
 

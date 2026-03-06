@@ -18,7 +18,7 @@ class GetDevToolPortalArgs {
   /// [devToolPortalName] The name of Dev Tool Portal.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  GetDevToolPortalArgs({
+  const GetDevToolPortalArgs({
     required this.devToolPortalName,
     required this.resourceGroupName,
     required this.serviceName,

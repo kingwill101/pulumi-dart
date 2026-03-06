@@ -26,7 +26,7 @@ class NetworkDnsSrV {
   /// [service] Specifies the service name associated with the SRV record.
   /// [target] Indicates the target host name to contact for the specified service.
   /// [weight] Sets the weight for load balancing among SRV records.
-  NetworkDnsSrV({
+  const NetworkDnsSrV({
     this.domain,
     this.port,
     this.priority,

@@ -37,7 +37,7 @@ class GetContentitemResult {
   /// [sqlScript] Sql Script related configurations.
   /// [uid] System generated globally unique ID for the content. This ID will be different if the content is deleted and re-created with the same name.
   /// [updateTime] The time when the content was last updated.
-  GetContentitemResult({
+  const GetContentitemResult({
     required this.createTime,
     required this.dataText,
     required this.description,

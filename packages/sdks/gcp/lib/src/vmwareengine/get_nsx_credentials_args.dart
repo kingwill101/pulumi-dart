@@ -12,7 +12,7 @@ class GetNsxCredentialsArgs {
 
   /// Creates a new [GetNsxCredentialsArgs].
   /// [parent] The resource name of the private cloud which contains the NSX.
-  GetNsxCredentialsArgs({
+  const GetNsxCredentialsArgs({
     required this.parent,
   });
 

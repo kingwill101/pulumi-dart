@@ -12,7 +12,7 @@ class ReadinessCheck {
   /// Creates a new [ReadinessCheck].
   /// [path] Optional. Path to which the request should be sent.
   /// [port] Optional. Port to which the request should be sent.
-  ReadinessCheck({
+  const ReadinessCheck({
     this.path,
     this.port,
   });

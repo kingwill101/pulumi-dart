@@ -22,7 +22,7 @@ class TaskTaskReportConfig {
   /// [reportOverrides] Configuration block containing the configuration of the reporting level for aspects of your task report. See `report_overrides` below.
   /// [s3Destination] Configuration block containing the configuration for the Amazon S3 bucket where DataSync uploads your task report. See `s3_destination` below.
   /// [s3ObjectVersioning] Specifies whether your task report includes the new version of each object transferred into an S3 bucket. This only applies if you enable versioning on your bucket. Keep in mind that setting this to INCLUDE can increase the duration of your task execution. Valid values: `INCLUDE` and `NONE`.
-  TaskTaskReportConfig({
+  const TaskTaskReportConfig({
     this.outputType,
     this.reportLevel,
     this.reportOverrides,

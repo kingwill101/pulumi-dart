@@ -25,7 +25,7 @@ class IcebergCatalogArgs {
   /// [credentialMode] The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
   /// [name] The name of the IcebergCatalog. Format:
   /// [project] The ID of the project in which the resource belongs.
-  IcebergCatalogArgs({
+  const IcebergCatalogArgs({
     required this.catalogType,
     this.credentialMode,
     this.name,

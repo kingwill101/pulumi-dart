@@ -14,7 +14,7 @@ class PolicyStepScalingPolicyConfigurationStepAdjustment {
   /// [metricIntervalLowerBound] Lower bound for the difference between the alarm threshold and the CloudWatch metric. Without a value, AWS will treat this bound as negative infinity.
   /// [metricIntervalUpperBound] Upper bound for the difference between the alarm threshold and the CloudWatch metric. Without a value, AWS will treat this bound as infinity. The upper bound must be greater than the lower bound.
   /// [scalingAdjustment] Number of members by which to scale, when the adjustment bounds are breached. A positive value scales up. A negative value scales down.
-  PolicyStepScalingPolicyConfigurationStepAdjustment({
+  const PolicyStepScalingPolicyConfigurationStepAdjustment({
     this.metricIntervalLowerBound,
     this.metricIntervalUpperBound,
     required this.scalingAdjustment,

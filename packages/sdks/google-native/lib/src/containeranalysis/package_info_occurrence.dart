@@ -22,7 +22,7 @@ class PackageInfoOccurrence {
   /// [id] Uniquely identify any element in an SPDX document which may be referenced by other elements
   /// [licenseConcluded] package or alternative values, if the governing license cannot be determined
   /// [sourceInfo] Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-  PackageInfoOccurrence({
+  const PackageInfoOccurrence({
     this.comment,
     this.filename,
     this.id,

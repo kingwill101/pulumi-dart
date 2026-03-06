@@ -12,7 +12,7 @@ class GetChildAccountArgs {
 
   /// Creates a new [GetChildAccountArgs].
   /// [euuid] The unique EUUID of this Child Account.
-  GetChildAccountArgs({
+  const GetChildAccountArgs({
     required this.euuid,
   });
 

@@ -40,7 +40,7 @@ class GetPlanMemberResult {
   /// [tags] Resource tags.
   /// [tier] The tier of the member.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPlanMemberResult({
+  const GetPlanMemberResult({
     required this.azureApiVersion,
     required this.id,
     this.memberId,

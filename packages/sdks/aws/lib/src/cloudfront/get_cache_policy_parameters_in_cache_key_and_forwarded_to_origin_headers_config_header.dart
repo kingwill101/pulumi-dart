@@ -8,7 +8,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader 
 
   /// Creates a new [GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader].
   /// [items] List of item names (`cookies`, `headers`, or `query_strings`).
-  GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader({
+  const GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader({
     required this.items,
   });
 

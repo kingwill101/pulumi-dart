@@ -12,7 +12,7 @@ class OrderBy {
   /// Creates a new [OrderBy].
   /// [field] Describes the actual column name to sort by
   /// [order] Describes if results should be in ascending/descending order
-  OrderBy({
+  const OrderBy({
     this.field,
     this.order,
   });

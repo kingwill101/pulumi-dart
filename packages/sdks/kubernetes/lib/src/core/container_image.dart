@@ -12,7 +12,7 @@ class ContainerImage {
   /// Creates a new [ContainerImage].
   /// [names] Names by which this image is known. e.g. ["kubernetes.example/hyperkube:v1.0.7", "cloud-vendor.registry.example/cloud-vendor/hyperkube:v1.0.7"]
   /// [sizeBytes] The size of the image in bytes.
-  ContainerImage({
+  const ContainerImage({
     required this.names,
     this.sizeBytes,
   });

@@ -44,7 +44,7 @@ class IntentDialogflowV3beta1Args {
   /// [priority] The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
   /// [project] Optional.
   /// [trainingPhrases] The collection of training phrases the agent is trained on to identify the intent.
-  IntentDialogflowV3beta1Args({
+  const IntentDialogflowV3beta1Args({
     required this.agentId,
     this.description,
     required this.displayName,

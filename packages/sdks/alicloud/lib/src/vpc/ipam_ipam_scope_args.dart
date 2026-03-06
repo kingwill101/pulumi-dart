@@ -32,7 +32,7 @@ class IpamIpamScopeArgs {
   /// [ipamScopeType] IPAM scope of action type:
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
-  IpamIpamScopeArgs({
+  const IpamIpamScopeArgs({
     required this.ipamId,
     this.ipamScopeDescription,
     this.ipamScopeName,

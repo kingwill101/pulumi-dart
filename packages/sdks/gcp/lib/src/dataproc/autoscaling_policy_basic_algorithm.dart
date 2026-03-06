@@ -15,7 +15,7 @@ class AutoscalingPolicyBasicAlgorithm {
   /// Creates a new [AutoscalingPolicyBasicAlgorithm].
   /// [cooldownPeriod] Duration between scaling events. A scaling period starts after the
   /// [yarnConfig] YARN autoscaling configuration.
-  AutoscalingPolicyBasicAlgorithm({
+  const AutoscalingPolicyBasicAlgorithm({
     this.cooldownPeriod,
     required this.yarnConfig,
   });

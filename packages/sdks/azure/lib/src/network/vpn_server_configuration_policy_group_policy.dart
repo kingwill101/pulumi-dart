@@ -14,7 +14,7 @@ class VpnServerConfigurationPolicyGroupPolicy {
   /// [name] The name of the VPN Server Configuration Policy member.
   /// [type] The attribute type of the VPN Server Configuration Policy member. Possible values are `AADGroupId`, `CertificateGroupId` and `RadiusAzureGroupId`.
   /// [value] The value of the attribute that is used for the VPN Server Configuration Policy member.
-  VpnServerConfigurationPolicyGroupPolicy({
+  const VpnServerConfigurationPolicyGroupPolicy({
     required this.name,
     required this.type,
     required this.value,

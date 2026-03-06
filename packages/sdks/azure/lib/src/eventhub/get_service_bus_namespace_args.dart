@@ -15,7 +15,7 @@ class GetServiceBusNamespaceArgs {
   /// Creates a new [GetServiceBusNamespaceArgs].
   /// [name] Specifies the name of the ServiceBus Namespace.
   /// [resourceGroupName] Specifies the name of the Resource Group where the ServiceBus Namespace exists.
-  GetServiceBusNamespaceArgs({
+  const GetServiceBusNamespaceArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -15,7 +15,7 @@ class GetLbTrafficExtensionArgs {
   /// [lbTrafficExtensionId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetLbTrafficExtensionArgs({
+  const GetLbTrafficExtensionArgs({
     required this.lbTrafficExtensionId,
     required this.location,
     this.project,

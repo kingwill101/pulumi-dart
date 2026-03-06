@@ -44,7 +44,7 @@ class GetSpacecraftResult {
   /// [tleLine1] Line 1 of the two-line element set (TLE).
   /// [tleLine2] Line 2 of the two-line element set (TLE).
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSpacecraftResult({
+  const GetSpacecraftResult({
     required this.azureApiVersion,
     required this.id,
     required this.links,

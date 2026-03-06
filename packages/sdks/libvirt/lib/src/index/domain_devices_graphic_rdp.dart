@@ -30,7 +30,7 @@ class DomainDevicesGraphicRdp {
   /// [port] Configures the port for the RDP connection to the virtual machine's graphics.
   /// [replaceUser] Determines if the default RDP user should be replaced with a specified one.
   /// [username] Sets the username for RDP authentication on the graphics connection.
-  DomainDevicesGraphicRdp({
+  const DomainDevicesGraphicRdp({
     this.autoPort,
     this.listen,
     this.listeners,

@@ -81,7 +81,7 @@ class SiteConnectionState {
   /// [tenantId] The owner of the connection. Required if admin wants to
   /// [valueSpecs] Map of additional options.
   /// [vpnserviceId] The ID of the VPN service. Changing this creates a new connection.
-  SiteConnectionState({
+  const SiteConnectionState({
     this.adminStateUp,
     this.description,
     this.dpds,

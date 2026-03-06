@@ -54,7 +54,7 @@ class ListShareSynchronizationDetailsArgs {
   /// [startTime] start time of synchronization
   /// [status] Raw Status
   /// [synchronizationId] Synchronization id
-  ListShareSynchronizationDetailsArgs({
+  const ListShareSynchronizationDetailsArgs({
     required this.accountName,
     this.consumerEmail,
     this.consumerName,

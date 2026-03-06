@@ -21,7 +21,7 @@ class GetNotificationChannelArgs {
   /// [labName] The name of the lab.
   /// [name] The name of the NotificationChannel
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNotificationChannelArgs({
+  const GetNotificationChannelArgs({
     this.expand,
     required this.labName,
     required this.name,

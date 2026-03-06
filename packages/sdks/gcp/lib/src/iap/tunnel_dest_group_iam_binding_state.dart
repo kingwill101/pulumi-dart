@@ -46,7 +46,7 @@ class TunnelDestGroupIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the tunnel group. Must be the same as the network resources in the group.
   /// [role] The role that should be applied. Only one
-  TunnelDestGroupIamBindingState({
+  const TunnelDestGroupIamBindingState({
     this.condition,
     this.destGroup,
     this.etag,

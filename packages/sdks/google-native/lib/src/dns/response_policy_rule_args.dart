@@ -32,7 +32,7 @@ class ResponsePolicyRuleArgs {
   /// [project] Optional.
   /// [responsePolicy] Required.
   /// [ruleName] An identifier for this rule. Must be unique with the ResponsePolicy.
-  ResponsePolicyRuleArgs({
+  const ResponsePolicyRuleArgs({
     this.behavior,
     this.clientOperationId,
     this.dnsName,

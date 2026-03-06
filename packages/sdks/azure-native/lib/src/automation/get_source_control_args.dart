@@ -18,7 +18,7 @@ class GetSourceControlArgs {
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [sourceControlName] The name of source control.
-  GetSourceControlArgs({
+  const GetSourceControlArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
     required this.sourceControlName,

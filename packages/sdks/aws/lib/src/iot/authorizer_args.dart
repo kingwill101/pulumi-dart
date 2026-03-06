@@ -36,7 +36,7 @@ class AuthorizerArgs {
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tokenKeyName] The name of the token key used to extract the token from the HTTP headers. This value is required if signing is enabled in your authorizer.
   /// [tokenSigningPublicKeys] The public keys used to verify the digital signature returned by your custom authentication service. This value is required if signing is enabled in your authorizer.
-  AuthorizerArgs({
+  const AuthorizerArgs({
     required this.authorizerFunctionArn,
     this.enableCachingForHttp,
     this.name,

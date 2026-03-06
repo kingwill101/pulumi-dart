@@ -12,7 +12,7 @@ class GetLoadBalancerTypesResult {
   /// Creates a new [GetLoadBalancerTypesResult].
   /// [id] The ID of this resource.
   /// [loadBalancerTypes] Required.
-  GetLoadBalancerTypesResult({
+  const GetLoadBalancerTypesResult({
     required this.id,
     required this.loadBalancerTypes,
   });

@@ -14,7 +14,7 @@ class ExtensionsInstanceErrorStatus {
   /// [code] The status code, which should be an enum value of google.rpc.Code.
   /// [details] A list of messages that carry the error details.
   /// [message] A developer-facing error message, which should be in English.
-  ExtensionsInstanceErrorStatus({
+  const ExtensionsInstanceErrorStatus({
     this.code,
     this.details,
     this.message,

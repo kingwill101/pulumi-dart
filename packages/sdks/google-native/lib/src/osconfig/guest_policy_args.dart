@@ -39,7 +39,7 @@ class GuestPolicyArgs {
   /// [packages] The software packages to be managed by this policy.
   /// [project] Optional.
   /// [recipes] A list of Recipes to install on the VM instance.
-  GuestPolicyArgs({
+  const GuestPolicyArgs({
     required this.assignment,
     this.description,
     this.etag,

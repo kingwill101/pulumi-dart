@@ -18,7 +18,7 @@ class GetUserArgs {
   /// [mongoClusterName] The name of the mongo cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the mongo cluster user.
-  GetUserArgs({
+  const GetUserArgs({
     required this.mongoClusterName,
     required this.resourceGroupName,
     required this.userName,

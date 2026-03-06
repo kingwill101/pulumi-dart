@@ -18,7 +18,7 @@ class GetVariableArgs {
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [variableName] The name of variable.
-  GetVariableArgs({
+  const GetVariableArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
     required this.variableName,

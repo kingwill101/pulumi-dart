@@ -12,7 +12,7 @@ class GetLocationsArgs {
 
   /// Creates a new [GetLocationsArgs].
   /// [project] The ID of the project.
-  GetLocationsArgs({
+  const GetLocationsArgs({
     this.project,
   });
 

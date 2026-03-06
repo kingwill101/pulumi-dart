@@ -18,7 +18,7 @@ class GetDynamicConfigurationArgs {
   /// [configurationName] Name of the Configuration
   /// [dynamicConfigurationName] Name of the dynamic configuration
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDynamicConfigurationArgs({
+  const GetDynamicConfigurationArgs({
     required this.configurationName,
     required this.dynamicConfigurationName,
     required this.resourceGroupName,

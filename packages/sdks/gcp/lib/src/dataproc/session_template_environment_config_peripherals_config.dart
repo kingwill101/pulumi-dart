@@ -13,7 +13,7 @@ class SessionTemplateEnvironmentConfigPeripheralsConfig {
   /// Creates a new [SessionTemplateEnvironmentConfigPeripheralsConfig].
   /// [metastoreService] Resource name of an existing Dataproc Metastore service.
   /// [sparkHistoryServerConfig] The Spark History Server configuration for the workload.
-  SessionTemplateEnvironmentConfigPeripheralsConfig({
+  const SessionTemplateEnvironmentConfigPeripheralsConfig({
     this.metastoreService,
     this.sparkHistoryServerConfig,
   });

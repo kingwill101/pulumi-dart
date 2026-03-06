@@ -9,7 +9,7 @@ class MaterializationComputeResourceResponse {
 
   /// Creates a new [MaterializationComputeResourceResponse].
   /// [instanceType] Specifies the instance type
-  MaterializationComputeResourceResponse({
+  const MaterializationComputeResourceResponse({
     this.instanceType,
   });
 

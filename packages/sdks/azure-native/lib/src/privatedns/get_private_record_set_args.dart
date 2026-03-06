@@ -21,7 +21,7 @@ class GetPrivateRecordSetArgs {
   /// [recordType] The type of DNS record in this record set.
   /// [relativeRecordSetName] The name of the record set, relative to the name of the zone.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateRecordSetArgs({
+  const GetPrivateRecordSetArgs({
     required this.privateZoneName,
     required this.recordType,
     required this.relativeRecordSetName,

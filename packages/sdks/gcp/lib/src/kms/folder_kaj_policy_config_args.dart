@@ -19,7 +19,7 @@ class FolderKajPolicyConfigArgs {
   /// Creates a new [FolderKajPolicyConfigArgs].
   /// [defaultKeyAccessJustificationPolicy] The default key access justification policy used when a CryptoKey is
   /// [folder] The numeric folder number for which to retrieve config.
-  FolderKajPolicyConfigArgs({
+  const FolderKajPolicyConfigArgs({
     this.defaultKeyAccessJustificationPolicy,
     required this.folder,
   });

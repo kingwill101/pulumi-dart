@@ -59,7 +59,7 @@ class DomainArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [tags] Resource tags.
   /// [targetDnsType] Target DNS type (would be used for migration)
-  DomainArgs({
+  const DomainArgs({
     this.authCode,
     this.autoRenew,
     required this.consent,

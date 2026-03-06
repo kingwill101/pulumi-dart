@@ -9,7 +9,7 @@ class SecurityPolicyCloudArmorConfig {
 
   /// Creates a new [SecurityPolicyCloudArmorConfig].
   /// [enableMl] If set to true, enables Cloud Armor Machine Learning.
-  SecurityPolicyCloudArmorConfig({
+  const SecurityPolicyCloudArmorConfig({
     this.enableMl,
   });
 

@@ -184,7 +184,7 @@ class GetAutonomousDatabaseResult {
   /// [usedDataStorageSizeInGbs] The storage space consumed by Autonomous Database in GBs.
   /// [usedDataStorageSizeInTbs] The amount of storage that has been used, in terabytes.
   /// [virtualNetworkId] The ID to an Azure Resource Manager vnet resource.
-  GetAutonomousDatabaseResult({
+  const GetAutonomousDatabaseResult({
     required this.actualUsedDataStorageSizeInTbs,
     required this.allocatedStorageSizeInTbs,
     required this.allowedIps,

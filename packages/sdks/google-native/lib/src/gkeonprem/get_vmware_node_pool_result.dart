@@ -50,7 +50,7 @@ class GetVmwareNodePoolResult {
   /// [status] ResourceStatus representing the detailed VMware node pool state.
   /// [uid] The unique identifier of the node pool.
   /// [updateTime] The time at which this node pool was last updated.
-  GetVmwareNodePoolResult({
+  const GetVmwareNodePoolResult({
     required this.annotations,
     required this.config,
     required this.createTime,

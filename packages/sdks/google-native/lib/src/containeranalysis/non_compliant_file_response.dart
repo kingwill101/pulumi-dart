@@ -15,7 +15,7 @@ class NonCompliantFileResponse {
   /// [displayCommand] Command to display the non-compliant files.
   /// [path] Empty if `display_command` is set.
   /// [reason] Explains why a file is non compliant for a CIS check.
-  NonCompliantFileResponse({
+  const NonCompliantFileResponse({
     required this.displayCommand,
     required this.path,
     required this.reason,

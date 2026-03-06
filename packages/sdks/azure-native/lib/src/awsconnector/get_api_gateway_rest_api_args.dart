@@ -15,7 +15,7 @@ class GetApiGatewayRestApiArgs {
   /// Creates a new [GetApiGatewayRestApiArgs].
   /// [name] Name of ApiGatewayRestApi
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetApiGatewayRestApiArgs({
+  const GetApiGatewayRestApiArgs({
     required this.name,
     required this.resourceGroupName,
   });

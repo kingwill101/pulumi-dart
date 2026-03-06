@@ -36,7 +36,7 @@ class AzureSynapseArtifactsLinkedService {
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
   /// [workspaceResourceId] The resource ID of the Synapse workspace. The format should be: /subscriptions/{subscriptionID}/resourceGroups/{resourceGroup}/providers/Microsoft.Synapse/workspaces/{workspaceName}. Type: string (or Expression with resultType string).
-  AzureSynapseArtifactsLinkedService({
+  const AzureSynapseArtifactsLinkedService({
     this.annotations,
     this.authentication,
     this.connectVia,

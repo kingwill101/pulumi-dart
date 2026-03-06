@@ -17,7 +17,7 @@ class GetRbacrolebindingArgs {
   /// [project] Optional.
   /// [rbacrolebindingId] Required.
   /// [scopeId] Required.
-  GetRbacrolebindingArgs({
+  const GetRbacrolebindingArgs({
     required this.location,
     this.project,
     required this.rbacrolebindingId,

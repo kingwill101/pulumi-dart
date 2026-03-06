@@ -36,7 +36,7 @@ class WsfcDomainProfile {
   /// [sqlServiceAccount] Account name under which SQL service will run on all participating SQL virtual machines in the cluster.
   /// [storageAccountPrimaryKey] Primary key of the witness storage account.
   /// [storageAccountUrl] Fully qualified ARM resource id of the witness storage account.
-  WsfcDomainProfile({
+  const WsfcDomainProfile({
     this.clusterBootstrapAccount,
     this.clusterOperatorAccount,
     this.clusterSubnetType,

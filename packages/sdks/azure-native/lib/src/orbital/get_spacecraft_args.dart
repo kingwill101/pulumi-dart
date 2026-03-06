@@ -15,7 +15,7 @@ class GetSpacecraftArgs {
   /// Creates a new [GetSpacecraftArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spacecraftName] Spacecraft ID.
-  GetSpacecraftArgs({
+  const GetSpacecraftArgs({
     required this.resourceGroupName,
     required this.spacecraftName,
   });

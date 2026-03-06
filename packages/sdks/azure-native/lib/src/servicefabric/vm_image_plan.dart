@@ -18,7 +18,7 @@ class VmImagePlan {
   /// [product] Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
   /// [promotionCode] The promotion code.
   /// [publisher] The publisher ID.
-  VmImagePlan({
+  const VmImagePlan({
     this.name,
     this.product,
     this.promotionCode,

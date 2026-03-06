@@ -15,7 +15,7 @@ class GetSpokeArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [spokeId] Required.
-  GetSpokeArgs({
+  const GetSpokeArgs({
     required this.location,
     this.project,
     required this.spokeId,

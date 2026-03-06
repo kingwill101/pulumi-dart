@@ -18,7 +18,7 @@ class AlertRuleMachineLearningBehaviorAnalyticsState {
   /// [enabled] Should this Sentinel Machine Learning Behavior Analytics Alert Rule be enabled? Defaults to `true`.
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace this SentinelMachine Learning Behavior Analytics Alert Rule belongs to. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   /// [name] The name which should be used for this SentinelMachine Learning Behavior Analytics Alert Rule. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
-  AlertRuleMachineLearningBehaviorAnalyticsState({
+  const AlertRuleMachineLearningBehaviorAnalyticsState({
     this.alertRuleTemplateGuid,
     this.enabled,
     this.logAnalyticsWorkspaceId,

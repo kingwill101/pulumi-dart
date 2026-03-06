@@ -18,7 +18,7 @@ class SqlConnectivityUpdateSettings {
   /// [port] SQL Server port.
   /// [sqlAuthUpdatePassword] SQL Server sysadmin login password.
   /// [sqlAuthUpdateUserName] SQL Server sysadmin login to create.
-  SqlConnectivityUpdateSettings({
+  const SqlConnectivityUpdateSettings({
     this.connectivityType,
     this.port,
     this.sqlAuthUpdatePassword,

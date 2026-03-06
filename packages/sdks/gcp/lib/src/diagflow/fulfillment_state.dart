@@ -30,7 +30,7 @@ class FulfillmentState {
   /// [genericWebService] Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
   /// [name] The unique identifier of the fulfillment.
   /// [project] The ID of the project in which the resource belongs.
-  FulfillmentState({
+  const FulfillmentState({
     this.displayName,
     this.enabled,
     this.features,

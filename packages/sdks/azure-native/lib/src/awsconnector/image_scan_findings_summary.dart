@@ -15,7 +15,7 @@ class ImageScanFindingsSummary {
   /// [findingSeverityCounts] &lt;p&gt;The image vulnerability counts, sorted by severity.&lt;/p&gt;
   /// [imageScanCompletedAt] &lt;p&gt;The time of the last completed image scan.&lt;/p&gt;
   /// [vulnerabilitySourceUpdatedAt] &lt;p&gt;The time when the vulnerability data was last scanned.&lt;/p&gt;
-  ImageScanFindingsSummary({
+  const ImageScanFindingsSummary({
     this.findingSeverityCounts,
     this.imageScanCompletedAt,
     this.vulnerabilitySourceUpdatedAt,

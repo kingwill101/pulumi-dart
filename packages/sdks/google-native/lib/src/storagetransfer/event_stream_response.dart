@@ -15,7 +15,7 @@ class EventStreamResponse {
   /// [eventStreamExpirationTime] Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
   /// [eventStreamStartTime] Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
   /// [name] Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
-  EventStreamResponse({
+  const EventStreamResponse({
     required this.eventStreamExpirationTime,
     required this.eventStreamStartTime,
     required this.name,

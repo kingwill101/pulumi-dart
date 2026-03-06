@@ -52,7 +52,7 @@ class KxEnvironmentState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [transitGatewayConfiguration] Transit gateway and network configuration that is used to connect the KX environment to an internal network. Defined below.
-  KxEnvironmentState({
+  const KxEnvironmentState({
     this.arn,
     this.availabilityZones,
     this.createdTimestamp,

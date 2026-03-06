@@ -12,7 +12,7 @@ class ConnectionMonitorSuccessThreshold {
   /// Creates a new [ConnectionMonitorSuccessThreshold].
   /// [checksFailedPercent] The maximum percentage of failed checks permitted for a test to evaluate as successful.
   /// [roundTripTimeMs] The maximum round-trip time in milliseconds permitted for a test to evaluate as successful.
-  ConnectionMonitorSuccessThreshold({
+  const ConnectionMonitorSuccessThreshold({
     this.checksFailedPercent,
     this.roundTripTimeMs,
   });

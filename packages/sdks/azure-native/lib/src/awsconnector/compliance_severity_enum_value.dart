@@ -9,7 +9,7 @@ class ComplianceSeverityEnumValue {
 
   /// Creates a new [ComplianceSeverityEnumValue].
   /// [value] Property value
-  ComplianceSeverityEnumValue({
+  const ComplianceSeverityEnumValue({
     this.value,
   });
 

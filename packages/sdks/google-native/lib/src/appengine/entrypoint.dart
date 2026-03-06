@@ -9,7 +9,7 @@ class Entrypoint {
 
   /// Creates a new [Entrypoint].
   /// [shell] The format should be a shell command that can be fed to bash -c.
-  Entrypoint({
+  const Entrypoint({
     this.shell,
   });
 

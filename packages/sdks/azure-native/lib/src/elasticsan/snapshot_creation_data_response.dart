@@ -9,7 +9,7 @@ class SnapshotCreationDataResponse {
 
   /// Creates a new [SnapshotCreationDataResponse].
   /// [sourceId] Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
-  SnapshotCreationDataResponse({
+  const SnapshotCreationDataResponse({
     required this.sourceId,
   });
 

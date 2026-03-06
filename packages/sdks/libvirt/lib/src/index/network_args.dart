@@ -84,7 +84,7 @@ class NetworkArgs {
   /// [trustGuestRxFilters] Controls whether the network as a whole trusts guests' receive-side filtering settings, corresponding to the yes/no trustGuestRxFilters flag on the network definition.
   /// [virtualPort] Configures virtual port profile information for this port group, enabling integration with external network switching or SDN systems.
   /// [vlan] Configures VLAN tagging behavior for this portgroup, allowing one or more VLAN tags to be applied to guest connections when the underlying network supports VLAN offload.
-  NetworkArgs({
+  const NetworkArgs({
     this.autostart,
     this.bandwidth,
     this.bridge,

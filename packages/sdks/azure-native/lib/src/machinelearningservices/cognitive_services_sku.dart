@@ -15,7 +15,7 @@ class CognitiveServicesSku {
   /// [name] Optional.
   /// [size] Optional.
   /// [tier] Optional.
-  CognitiveServicesSku({
+  const CognitiveServicesSku({
     this.capacity,
     this.family,
     this.name,

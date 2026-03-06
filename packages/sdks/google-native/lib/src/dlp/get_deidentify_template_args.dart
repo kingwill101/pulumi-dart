@@ -15,7 +15,7 @@ class GetDeidentifyTemplateArgs {
   /// [deidentifyTemplateId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDeidentifyTemplateArgs({
+  const GetDeidentifyTemplateArgs({
     required this.deidentifyTemplateId,
     required this.location,
     this.project,

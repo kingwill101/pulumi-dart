@@ -15,7 +15,7 @@ class GetDataAttributeBindingArgs {
   /// [dataAttributeBindingId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDataAttributeBindingArgs({
+  const GetDataAttributeBindingArgs({
     required this.dataAttributeBindingId,
     required this.location,
     this.project,

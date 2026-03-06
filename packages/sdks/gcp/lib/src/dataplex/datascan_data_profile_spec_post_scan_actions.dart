@@ -10,7 +10,7 @@ class DatascanDataProfileSpecPostScanActions {
 
   /// Creates a new [DatascanDataProfileSpecPostScanActions].
   /// [bigqueryExport] If set, results will be exported to the provided BigQuery table.
-  DatascanDataProfileSpecPostScanActions({
+  const DatascanDataProfileSpecPostScanActions({
     this.bigqueryExport,
   });
 

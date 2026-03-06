@@ -17,7 +17,7 @@ class OneDashboardPageWidgetLineYAxisRight {
   /// [yAxisRightMin] , `y_axis_right_max` - (Optional) Attributes which help specify a range of minimum and maximum values, which adjust the right Y axis to display the data within the specified minimum and maximum value for the axis.
   /// [yAxisRightSeries] (Optional) An attribute which takes a list of strings, specifying a selection of series' displayed in the line chart to be adjusted against the values of the right Y-axis.
   /// [yAxisRightZero] (Optional) An attribute that specifies if the values on the graph to be rendered need to be fit to scale, or printed within the specified range from `y_axis_right_min` (or 0 if it is not defined) to `y_axis_right_max`. Use `y_axis_right_zero = true` with a combination of `y_axis_right_min` and `y_axis_right_max` to render values from 0 or the specified minimum to the maximum, and `y_axis_right_zero = false` to fit the graph to scale.
-  OneDashboardPageWidgetLineYAxisRight({
+  const OneDashboardPageWidgetLineYAxisRight({
     this.yAxisRightMax,
     this.yAxisRightMin,
     this.yAxisRightSeries,

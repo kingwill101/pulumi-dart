@@ -26,7 +26,7 @@ class GetAlertContactGroupsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetAlertContactGroupsResult({
+  const GetAlertContactGroupsResult({
     this.alertContactGroupName,
     this.contactId,
     this.contactName,

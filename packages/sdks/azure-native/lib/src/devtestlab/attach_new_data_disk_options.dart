@@ -15,7 +15,7 @@ class AttachNewDataDiskOptions {
   /// [diskName] The name of the disk to be attached.
   /// [diskSizeGiB] Size of the disk to be attached in Gibibytes.
   /// [diskType] The storage type for the disk (i.e. Standard, Premium).
-  AttachNewDataDiskOptions({
+  const AttachNewDataDiskOptions({
     this.diskName,
     this.diskSizeGiB,
     this.diskType,

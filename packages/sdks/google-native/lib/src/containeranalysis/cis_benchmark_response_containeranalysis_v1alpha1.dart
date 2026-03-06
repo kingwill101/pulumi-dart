@@ -12,7 +12,7 @@ class CisBenchmarkResponseContaineranalysisV1alpha1 {
   /// Creates a new [CisBenchmarkResponseContaineranalysisV1alpha1].
   /// [profileLevel] The profile level of this CIS benchmark check.
   /// [severity] The severity level of this CIS benchmark check.
-  CisBenchmarkResponseContaineranalysisV1alpha1({
+  const CisBenchmarkResponseContaineranalysisV1alpha1({
     required this.profileLevel,
     required this.severity,
   });

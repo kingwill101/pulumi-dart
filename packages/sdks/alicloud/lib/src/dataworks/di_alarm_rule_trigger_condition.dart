@@ -27,7 +27,7 @@ class DiAlarmRuleTriggerCondition {
   /// [duration] Alarm calculation time interval, unit minute
   /// [severity] Severity, optional enumeration value:
   /// [threshold] Alarm threshold.
-  DiAlarmRuleTriggerCondition({
+  const DiAlarmRuleTriggerCondition({
     this.ddlReportTags,
     this.duration,
     this.severity,

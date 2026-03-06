@@ -98,7 +98,7 @@ class DatabaseClusterState {
   /// [uri] The full URI for connecting to the database cluster.
   /// [user] Username for the cluster's default user.
   /// [version] Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-  DatabaseClusterState({
+  const DatabaseClusterState({
     this.backupRestore,
     this.clusterUrn,
     this.database,

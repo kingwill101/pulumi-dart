@@ -12,7 +12,7 @@ class LabelClass {
   /// Creates a new [LabelClass].
   /// [displayName] Display name of the label class.
   /// [subclasses] Dictionary of subclasses of the label class.
-  LabelClass({
+  const LabelClass({
     this.displayName,
     this.subclasses,
   });

@@ -28,7 +28,7 @@ class ComputeProfile {
   /// [baseVirtualMachineProfile] Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
   /// [computeApiVersion] Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
   /// [platformFaultDomainCount] Specifies the number of fault domains to use when creating the underlying VMSS.
-  ComputeProfile({
+  const ComputeProfile({
     this.additionalVirtualMachineCapabilities,
     required this.baseVirtualMachineProfile,
     this.computeApiVersion,

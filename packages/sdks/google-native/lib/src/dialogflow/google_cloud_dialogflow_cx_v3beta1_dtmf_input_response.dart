@@ -12,7 +12,7 @@ class GoogleCloudDialogflowCxV3beta1DtmfInputResponse {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1DtmfInputResponse].
   /// [digits] The dtmf digits.
   /// [finishDigit] The finish digit (if any).
-  GoogleCloudDialogflowCxV3beta1DtmfInputResponse({
+  const GoogleCloudDialogflowCxV3beta1DtmfInputResponse({
     required this.digits,
     required this.finishDigit,
   });

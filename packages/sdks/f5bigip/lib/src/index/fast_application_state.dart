@@ -22,7 +22,7 @@ class FastApplicationState {
   /// [fastJson] Path/Filename of Declarative FAST JSON which is a json file used with builtin ```file``` function
   /// [template] Name of installed FAST template used to create FAST application. This parameter is required when creating new resource.
   /// [tenant] A FAST tenant name on which you want to manage application.
-  FastApplicationState({
+  const FastApplicationState({
     this.application,
     this.fastJson,
     this.template,

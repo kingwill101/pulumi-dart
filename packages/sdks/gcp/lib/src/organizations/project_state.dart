@@ -56,7 +56,7 @@ class ProjectState {
   /// [projectId] The project ID. Changing this forces a new project to be created.
   /// [pulumiLabels] The combination of labels configured directly on the resource and default labels configured on the provider.
   /// [tags] A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
-  ProjectState({
+  const ProjectState({
     this.autoCreateNetwork,
     this.billingAccount,
     this.deletionPolicy,

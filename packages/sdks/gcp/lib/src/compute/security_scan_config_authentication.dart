@@ -15,7 +15,7 @@ class SecurityScanConfigAuthentication {
   /// Creates a new [SecurityScanConfigAuthentication].
   /// [customAccount] Describes authentication configuration that uses a custom account.
   /// [googleAccount] Describes authentication configuration that uses a Google account.
-  SecurityScanConfigAuthentication({
+  const SecurityScanConfigAuthentication({
     this.customAccount,
     this.googleAccount,
   });

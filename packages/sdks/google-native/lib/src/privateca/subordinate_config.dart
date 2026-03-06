@@ -13,7 +13,7 @@ class SubordinateConfig {
   /// Creates a new [SubordinateConfig].
   /// [certificateAuthority] This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
   /// [pemIssuerChain] Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
-  SubordinateConfig({
+  const SubordinateConfig({
     required this.certificateAuthority,
     required this.pemIssuerChain,
   });

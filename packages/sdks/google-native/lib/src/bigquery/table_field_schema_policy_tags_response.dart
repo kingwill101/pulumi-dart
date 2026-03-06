@@ -8,7 +8,7 @@ class TableFieldSchemaPolicyTagsResponse {
 
   /// Creates a new [TableFieldSchemaPolicyTagsResponse].
   /// [names] A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-  TableFieldSchemaPolicyTagsResponse({
+  const TableFieldSchemaPolicyTagsResponse({
     required this.names,
   });
 

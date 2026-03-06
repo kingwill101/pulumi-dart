@@ -97,7 +97,7 @@ class WafPolicyArgs {
   /// [templateName] Specifies the name of the template used for the policy creation.
   /// [type] The type of policy you want to create. The default policy type is `security`.
   /// [urls] In a security policy, you can manually specify the HTTP URLs that are allowed (or disallowed) in traffic to the web application being protected. If you are using automatic policy building (and the policy includes learning URLs), the system can determine which URLs to add, based on legitimate traffic.
-  WafPolicyArgs({
+  const WafPolicyArgs({
     this.applicationLanguage,
     this.caseInsensitive,
     this.description,

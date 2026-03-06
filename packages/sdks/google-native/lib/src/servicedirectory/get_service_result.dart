@@ -19,7 +19,7 @@ class GetServiceResult {
   /// [endpoints] Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
   /// [name] Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
   /// [uid] The globally unique identifier of the service in the UUID4 format.
-  GetServiceResult({
+  const GetServiceResult({
     required this.annotations,
     required this.endpoints,
     required this.name,

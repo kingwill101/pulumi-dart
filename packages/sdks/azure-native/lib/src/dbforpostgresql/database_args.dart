@@ -24,7 +24,7 @@ class DatabaseArgs {
   /// [databaseName] Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.charset,
     this.collation,
     this.databaseName,

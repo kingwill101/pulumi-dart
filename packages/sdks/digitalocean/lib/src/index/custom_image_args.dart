@@ -27,7 +27,7 @@ class CustomImageArgs {
   /// [regions] A list of regions. (Currently only one is supported).
   /// [tags] A list of optional tags for the image.
   /// [url] A URL from which the custom Linux virtual machine image may be retrieved.
-  CustomImageArgs({
+  const CustomImageArgs({
     this.description,
     this.distribution,
     this.name,

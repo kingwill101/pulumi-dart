@@ -18,7 +18,7 @@ class CustomerManagedKeyArgs {
   /// [customerManagedKeyId] The ID the of the Customer Managed Key to associate with the Data Factory.
   /// [dataFactoryId] The ID of the Data Factory Resource the Customer Managed Key will be associated with. Changing this forces a new resource to be created.
   /// [userAssignedIdentityId] The User Assigned Identity ID that will be used to access Key Vaults that contain the encryption keys.
-  CustomerManagedKeyArgs({
+  const CustomerManagedKeyArgs({
     required this.customerManagedKeyId,
     required this.dataFactoryId,
     this.userAssignedIdentityId,

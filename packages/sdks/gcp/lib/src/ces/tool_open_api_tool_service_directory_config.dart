@@ -14,7 +14,7 @@ class ToolOpenApiToolServiceDirectoryConfig {
 
   /// Creates a new [ToolOpenApiToolServiceDirectoryConfig].
   /// [service] (Output)
-  ToolOpenApiToolServiceDirectoryConfig({
+  const ToolOpenApiToolServiceDirectoryConfig({
     this.service,
   });
 

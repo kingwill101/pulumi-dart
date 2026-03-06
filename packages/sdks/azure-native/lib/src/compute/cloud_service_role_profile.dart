@@ -10,7 +10,7 @@ class CloudServiceRoleProfile {
 
   /// Creates a new [CloudServiceRoleProfile].
   /// [roles] List of roles for the cloud service.
-  CloudServiceRoleProfile({
+  const CloudServiceRoleProfile({
     this.roles,
   });
 

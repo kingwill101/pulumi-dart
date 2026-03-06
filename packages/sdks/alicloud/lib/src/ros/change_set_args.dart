@@ -64,7 +64,7 @@ class ChangeSetArgs {
   /// [templateUrl] The template url.
   /// [timeoutInMinutes] Timeout In Minutes.
   /// [usePreviousParameters] The use previous parameters.
-  ChangeSetArgs({
+  const ChangeSetArgs({
     required this.changeSetName,
     this.changeSetType,
     this.description,

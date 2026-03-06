@@ -12,7 +12,7 @@ class HoneypotProbeHoneypotBindList {
   /// Creates a new [HoneypotProbeHoneypotBindList].
   /// [bindPortLists] List of listening ports.See the following `Block BindPortList`.
   /// [honeypotId] Honeypot ID.
-  HoneypotProbeHoneypotBindList({
+  const HoneypotProbeHoneypotBindList({
     this.bindPortLists,
     this.honeypotId,
   });

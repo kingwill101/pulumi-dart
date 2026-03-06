@@ -24,7 +24,7 @@ class NamedQueryState {
   /// [query] Text of the query itself. In other words, all query statements. Maximum length of 262144.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroup] Workgroup to which the query belongs. Defaults to `primary`
-  NamedQueryState({
+  const NamedQueryState({
     this.database,
     this.description,
     this.name,

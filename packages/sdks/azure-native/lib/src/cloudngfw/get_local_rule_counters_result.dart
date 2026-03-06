@@ -36,7 +36,7 @@ class GetLocalRuleCountersResult {
   /// [ruleName] rule name
   /// [ruleStackName] rule Stack Name
   /// [timestamp] timestamp of response
-  GetLocalRuleCountersResult({
+  const GetLocalRuleCountersResult({
     this.appSeen,
     this.firewallName,
     this.hitCount,

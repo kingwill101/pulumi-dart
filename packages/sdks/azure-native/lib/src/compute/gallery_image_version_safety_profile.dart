@@ -12,7 +12,7 @@ class GalleryImageVersionSafetyProfile {
   /// Creates a new [GalleryImageVersionSafetyProfile].
   /// [allowDeletionOfReplicatedLocations] Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
   /// [blockDeletionBeforeEndOfLife] Indicates whether or not the deletion is blocked for this Gallery Image Version if its End Of Life has not expired.
-  GalleryImageVersionSafetyProfile({
+  const GalleryImageVersionSafetyProfile({
     this.allowDeletionOfReplicatedLocations,
     this.blockDeletionBeforeEndOfLife,
   });

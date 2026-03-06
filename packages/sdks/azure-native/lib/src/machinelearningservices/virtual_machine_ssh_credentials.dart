@@ -18,7 +18,7 @@ class VirtualMachineSshCredentials {
   /// [privateKeyData] Private key data
   /// [publicKeyData] Public key data
   /// [username] Username of admin account
-  VirtualMachineSshCredentials({
+  const VirtualMachineSshCredentials({
     this.password,
     this.privateKeyData,
     this.publicKeyData,

@@ -26,7 +26,7 @@ class ReplicaSetRoleArgs {
   /// [dbInstanceId] The instance ID.
   /// [networkType] The network type of the connection string. Valid values:
   /// [roleId] The role ID in the replica set.
-  ReplicaSetRoleArgs({
+  const ReplicaSetRoleArgs({
     this.connectionPort,
     this.connectionPrefix,
     required this.dbInstanceId,

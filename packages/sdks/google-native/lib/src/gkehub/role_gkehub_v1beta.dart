@@ -10,7 +10,7 @@ class RoleGkehubV1beta {
 
   /// Creates a new [RoleGkehubV1beta].
   /// [predefinedRole] predefined_role is the Kubernetes default role to use
-  RoleGkehubV1beta({
+  const RoleGkehubV1beta({
     this.predefinedRole,
   });
 

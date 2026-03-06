@@ -12,7 +12,7 @@ class InstanceIpVpcNat11 {
   /// [address] The resulting IPv4 address.
   /// [subnetId] Required.
   /// [vpcId] Required.
-  InstanceIpVpcNat11({
+  const InstanceIpVpcNat11({
     required this.address,
     required this.subnetId,
     required this.vpcId,

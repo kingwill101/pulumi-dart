@@ -11,7 +11,7 @@ class ObjectStorageBucketCert {
   /// Creates a new [ObjectStorageBucketCert].
   /// [certificate] The Base64 encoded and PEM formatted SSL certificate.
   /// [privateKey] The private key associated with the TLS/SSL certificate.
-  ObjectStorageBucketCert({
+  const ObjectStorageBucketCert({
     required this.certificate,
     required this.privateKey,
   });

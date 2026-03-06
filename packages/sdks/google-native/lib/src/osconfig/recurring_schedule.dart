@@ -32,7 +32,7 @@ class RecurringSchedule {
   /// [timeOfDay] Time of the day to run a recurring deployment.
   /// [timeZone] Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
   /// [weekly] Schedule with weekly executions.
-  RecurringSchedule({
+  const RecurringSchedule({
     this.endTime,
     required this.frequency,
     required this.monthly,

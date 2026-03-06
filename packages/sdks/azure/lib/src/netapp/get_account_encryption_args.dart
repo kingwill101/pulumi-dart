@@ -12,7 +12,7 @@ class GetAccountEncryptionArgs {
 
   /// Creates a new [GetAccountEncryptionArgs].
   /// [netappAccountId] The ID of the NetApp account where customer managed keys-based encryption is enabled.
-  GetAccountEncryptionArgs({
+  const GetAccountEncryptionArgs({
     required this.netappAccountId,
   });
 

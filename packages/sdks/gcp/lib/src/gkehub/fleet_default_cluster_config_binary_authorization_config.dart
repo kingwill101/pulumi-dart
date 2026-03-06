@@ -14,7 +14,7 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfig {
   /// Creates a new [FleetDefaultClusterConfigBinaryAuthorizationConfig].
   /// [evaluationMode] Mode of operation for binauthz policy evaluation.
   /// [policyBindings] Binauthz policies that apply to this cluster.
-  FleetDefaultClusterConfigBinaryAuthorizationConfig({
+  const FleetDefaultClusterConfigBinaryAuthorizationConfig({
     this.evaluationMode,
     this.policyBindings,
   });

@@ -120,7 +120,7 @@ class UnitOperationState {
   /// [updateTime] The timestamp when the resource was last updated. Any
   /// [upgrade] Upgrade is the unit operation that upgrades a provisioned unit, which may
   /// [waitForCompletion] If true, wait for the UnitOperation to reach a terminal state (SUCCEEDED, FAILED, CANCELLED)
-  UnitOperationState({
+  const UnitOperationState({
     this.annotations,
     this.conditions,
     this.createTime,

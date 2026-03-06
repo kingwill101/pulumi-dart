@@ -12,7 +12,7 @@ class GoogleCloudContentwarehouseV1RemoveFromFolderAction {
   /// Creates a new [GoogleCloudContentwarehouseV1RemoveFromFolderAction].
   /// [condition] Condition of the action to be executed.
   /// [folder] Name of the folder under which new document is to be added. Format: projects/{project_number}/locations/{location}/documents/{document_id}.
-  GoogleCloudContentwarehouseV1RemoveFromFolderAction({
+  const GoogleCloudContentwarehouseV1RemoveFromFolderAction({
     this.condition,
     this.folder,
   });

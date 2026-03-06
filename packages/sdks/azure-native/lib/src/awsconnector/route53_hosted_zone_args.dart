@@ -25,7 +25,7 @@ class Route53HostedZoneArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  Route53HostedZoneArgs({
+  const Route53HostedZoneArgs({
     this.location,
     this.name,
     this.properties,

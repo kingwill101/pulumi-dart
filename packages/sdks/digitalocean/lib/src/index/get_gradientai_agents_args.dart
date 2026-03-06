@@ -17,7 +17,7 @@ class GetGradientaiAgentsArgs {
   /// [filters] Optional.
   /// [onlyDeployed] Optional.
   /// [sorts] Optional.
-  GetGradientaiAgentsArgs({
+  const GetGradientaiAgentsArgs({
     this.filters,
     this.onlyDeployed,
     this.sorts,

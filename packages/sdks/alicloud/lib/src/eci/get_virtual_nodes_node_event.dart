@@ -26,7 +26,7 @@ class GetVirtualNodesNodeEvent {
   /// [name] The name of the event.
   /// [reason] The causes of the incident.
   /// [type] The Event type.
-  GetVirtualNodesNodeEvent({
+  const GetVirtualNodesNodeEvent({
     required this.count,
     required this.firstTimestamp,
     required this.lastTimestamp,

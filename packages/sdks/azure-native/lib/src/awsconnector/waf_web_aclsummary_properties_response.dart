@@ -34,7 +34,7 @@ class WafWebACLSummaryPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  WafWebACLSummaryPropertiesResponse({
+  const WafWebACLSummaryPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

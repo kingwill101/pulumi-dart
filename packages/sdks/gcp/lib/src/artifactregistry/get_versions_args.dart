@@ -27,7 +27,7 @@ class GetVersionsArgs {
   /// [project] The project ID in which the resource belongs. If it is not provided, the provider project is used.
   /// [repositoryId] The last part of the repository name to fetch from.
   /// [view] The view, which determines what version information is returned in a response. Possible values are `"BASIC"` and `"FULL"`. Defaults to `"BASIC"`.
-  GetVersionsArgs({
+  const GetVersionsArgs({
     this.filter,
     required this.location,
     required this.packageName,

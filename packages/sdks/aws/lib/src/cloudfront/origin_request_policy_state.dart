@@ -30,7 +30,7 @@ class OriginRequestPolicyState {
   /// [headersConfig] Object that determines whether any HTTP headers (and if so, which headers) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Headers Config for more information.
   /// [name] Unique name to identify the origin request policy.
   /// [queryStringsConfig] Object that determines whether any URL query strings in viewer requests (and if so, which query strings) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Query String Config for more information.
-  OriginRequestPolicyState({
+  const OriginRequestPolicyState({
     this.arn,
     this.comment,
     this.cookiesConfig,

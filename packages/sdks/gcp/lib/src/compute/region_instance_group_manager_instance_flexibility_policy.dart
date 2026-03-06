@@ -9,7 +9,7 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicy {
 
   /// Creates a new [RegionInstanceGroupManagerInstanceFlexibilityPolicy].
   /// [instanceSelections] Named instance selections configuring properties that the group will use when creating new VMs.
-  RegionInstanceGroupManagerInstanceFlexibilityPolicy({
+  const RegionInstanceGroupManagerInstanceFlexibilityPolicy({
     this.instanceSelections,
   });
 

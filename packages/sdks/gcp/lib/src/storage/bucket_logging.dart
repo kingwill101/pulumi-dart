@@ -12,7 +12,7 @@ class BucketLogging {
   /// Creates a new [BucketLogging].
   /// [logBucket] The bucket that will receive log objects.
   /// [logObjectPrefix] The object prefix for log objects. If it's not provided,
-  BucketLogging({
+  const BucketLogging({
     required this.logBucket,
     this.logObjectPrefix,
   });

@@ -21,7 +21,7 @@ class SpacesBucketLoggingArgs {
   /// [region] The region where the bucket resides.
   /// [targetBucket] The name of the bucket which will store the logs.
   /// [targetPrefix] The prefix for the log files.
-  SpacesBucketLoggingArgs({
+  const SpacesBucketLoggingArgs({
     required this.bucket,
     required this.region,
     required this.targetBucket,

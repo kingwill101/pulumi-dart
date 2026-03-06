@@ -23,7 +23,7 @@ class GetAutoscalingPolicyIamPolicyArgs {
   /// [location] The  location where the autoscaling policy should reside.
   /// [policyId] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetAutoscalingPolicyIamPolicyArgs({
+  const GetAutoscalingPolicyIamPolicyArgs({
     this.location,
     required this.policyId,
     this.project,

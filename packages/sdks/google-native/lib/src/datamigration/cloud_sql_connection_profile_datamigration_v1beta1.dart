@@ -10,7 +10,7 @@ class CloudSqlConnectionProfileDatamigrationV1beta1 {
 
   /// Creates a new [CloudSqlConnectionProfileDatamigrationV1beta1].
   /// [settings] Immutable. Metadata used to create the destination Cloud SQL database.
-  CloudSqlConnectionProfileDatamigrationV1beta1({
+  const CloudSqlConnectionProfileDatamigrationV1beta1({
     this.settings,
   });
 

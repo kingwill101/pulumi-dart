@@ -11,7 +11,7 @@ class GetTablesTable {
   /// Creates a new [GetTablesTable].
   /// [labels] User-provided table labels, in key/value pairs.
   /// [tableId] The name of the table.
-  GetTablesTable({
+  const GetTablesTable({
     required this.labels,
     required this.tableId,
   });

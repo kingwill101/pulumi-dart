@@ -20,7 +20,7 @@ class GetJobIamPolicyResult {
   /// [policyData] (Computed) The policy data
   /// [project] Required.
   /// [region] Required.
-  GetJobIamPolicyResult({
+  const GetJobIamPolicyResult({
     required this.etag,
     required this.id,
     required this.jobId,

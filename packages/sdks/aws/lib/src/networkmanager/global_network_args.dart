@@ -15,7 +15,7 @@ class GlobalNetworkArgs {
   /// Creates a new [GlobalNetworkArgs].
   /// [description] Description of the Global Network.
   /// [tags] Key-value tags for the Global Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  GlobalNetworkArgs({
+  const GlobalNetworkArgs({
     this.description,
     this.tags,
   });

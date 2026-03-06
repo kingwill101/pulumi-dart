@@ -22,7 +22,7 @@ class GetComponentsResult {
   /// [names] Set of names of the matched Image Builder Components.
   /// [owner] Optional.
   /// [region] Required.
-  GetComponentsResult({
+  const GetComponentsResult({
     required this.arns,
     this.filters,
     required this.id,

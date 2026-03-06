@@ -93,7 +93,7 @@ class SecretArgs {
   /// [ttl] The TTL for the Secret.
   /// [versionAliases] Mapping from version alias to version name.
   /// [versionDestroyTtl] Secret Version TTL after destruction request.
-  SecretArgs({
+  const SecretArgs({
     this.annotations,
     this.deletionProtection,
     this.expireTime,

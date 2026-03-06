@@ -21,7 +21,7 @@ class DomainMappingStatusCondition {
   /// [reason] (Output)
   /// [status] (Output)
   /// [type] Resource record type. Example: `AAAA`.
-  DomainMappingStatusCondition({
+  const DomainMappingStatusCondition({
     this.message,
     this.reason,
     this.status,

@@ -11,7 +11,7 @@ class DefaultRolloutSpecificationRestOfTheWorldGroupTwoResponse {
   /// Creates a new [DefaultRolloutSpecificationRestOfTheWorldGroupTwoResponse].
   /// [regions] Optional.
   /// [waitDuration] The wait duration.
-  DefaultRolloutSpecificationRestOfTheWorldGroupTwoResponse({
+  const DefaultRolloutSpecificationRestOfTheWorldGroupTwoResponse({
     this.regions,
     this.waitDuration,
   });

@@ -15,7 +15,7 @@ class ExponentialResponse {
   /// [growthFactor] Must be greater than 1.
   /// [numFiniteBuckets] Must be greater than 0.
   /// [scale] Must be greater than 0.
-  ExponentialResponse({
+  const ExponentialResponse({
     required this.growthFactor,
     required this.numFiniteBuckets,
     required this.scale,

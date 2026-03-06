@@ -8,7 +8,7 @@ class InteractiveQueryClusterComponentVersion {
 
   /// Creates a new [InteractiveQueryClusterComponentVersion].
   /// [interactiveHive] The version of Interactive Query which should be used for this HDInsight Interactive Query Cluster. Changing this forces a new resource to be created.
-  InteractiveQueryClusterComponentVersion({
+  const InteractiveQueryClusterComponentVersion({
     required this.interactiveHive,
   });
 

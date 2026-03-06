@@ -7,7 +7,7 @@ class GetGatewayRouteSpecHttp2RouteActionRewritePath {
 
   /// Creates a new [GetGatewayRouteSpecHttp2RouteActionRewritePath].
   /// [exact] Required.
-  GetGatewayRouteSpecHttp2RouteActionRewritePath({
+  const GetGatewayRouteSpecHttp2RouteActionRewritePath({
     required this.exact,
   });
 

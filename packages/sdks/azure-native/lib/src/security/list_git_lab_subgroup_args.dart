@@ -18,7 +18,7 @@ class ListGitLabSubgroupArgs {
   /// [groupFQName] The GitLab group fully-qualified name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
-  ListGitLabSubgroupArgs({
+  const ListGitLabSubgroupArgs({
     required this.groupFQName,
     required this.resourceGroupName,
     required this.securityConnectorName,

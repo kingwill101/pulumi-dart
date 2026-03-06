@@ -21,7 +21,7 @@ class ContainerStateResponse {
   /// [finishTime] Date/time when the container state finished.
   /// [startTime] Date/time when the container state started.
   /// [state] The state of this container
-  ContainerStateResponse({
+  const ContainerStateResponse({
     this.detailStatus,
     this.exitCode,
     this.finishTime,

@@ -33,7 +33,7 @@ class ApiState {
   /// [name] The ID of the API proxy.
   /// [orgId] The Apigee Organization name associated with the Apigee instance.
   /// [revisions] A list of revisions of this API proxy.
-  ApiState({
+  const ApiState({
     this.configBundle,
     this.detectMd5hash,
     this.latestRevisionId,

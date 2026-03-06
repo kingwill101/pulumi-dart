@@ -9,7 +9,7 @@ class ServiceAttributesCriticality {
 
   /// Creates a new [ServiceAttributesCriticality].
   /// [type] Criticality type.
-  ServiceAttributesCriticality({
+  const ServiceAttributesCriticality({
     required this.type,
   });
 

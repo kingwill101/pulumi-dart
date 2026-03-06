@@ -8,7 +8,7 @@ class AccountBlobPropertiesRestorePolicy {
 
   /// Creates a new [AccountBlobPropertiesRestorePolicy].
   /// [days] Specifies the number of days that the blob can be restored, between `1` and `365` days. This must be less than the `days` specified for `delete_retention_policy`.
-  AccountBlobPropertiesRestorePolicy({
+  const AccountBlobPropertiesRestorePolicy({
     required this.days,
   });
 

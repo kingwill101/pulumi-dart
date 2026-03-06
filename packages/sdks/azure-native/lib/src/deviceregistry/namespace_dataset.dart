@@ -26,7 +26,7 @@ class NamespaceDataset {
   /// [destinations] Destinations for a dataset.
   /// [name] Name of the dataset.
   /// [typeRef] URI or type definition ID.
-  NamespaceDataset({
+  const NamespaceDataset({
     this.dataPoints,
     this.dataSource,
     this.datasetConfiguration,

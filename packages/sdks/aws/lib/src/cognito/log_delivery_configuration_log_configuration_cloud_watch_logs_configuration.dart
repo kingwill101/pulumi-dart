@@ -8,7 +8,7 @@ class LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration {
 
   /// Creates a new [LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration].
   /// [logGroupArn] The ARN of the CloudWatch Logs log group to which the logs should be delivered.
-  LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration({
+  const LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration({
     this.logGroupArn,
   });
 

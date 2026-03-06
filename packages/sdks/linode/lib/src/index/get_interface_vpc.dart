@@ -16,7 +16,7 @@ class GetInterfaceVpc {
   /// [ipv4] The IPv4 configuration for the VPC interface.
   /// [ipv6] The IPv6 configuration for the VPC interface.
   /// [subnetId] The ID of the VPC subnet.
-  GetInterfaceVpc({
+  const GetInterfaceVpc({
     required this.ipv4,
     required this.ipv6,
     required this.subnetId,

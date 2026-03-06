@@ -16,7 +16,7 @@ class GetImagesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [images] Required.
   /// [project] Optional.
-  GetImagesResult({
+  const GetImagesResult({
     this.filter,
     required this.id,
     required this.images,

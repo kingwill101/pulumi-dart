@@ -13,7 +13,7 @@ class ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifi
   /// Creates a new [ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications].
   /// [softDeleteTTL] The soft delete TTL.
   /// [subscriptionStateOverrideActions] The subscription state override actions.
-  ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications({
+  const ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications({
     this.softDeleteTTL,
     this.subscriptionStateOverrideActions,
   });

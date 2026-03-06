@@ -9,7 +9,7 @@ class EnterpriseConfigResponseContainerV1beta1 {
 
   /// Creates a new [EnterpriseConfigResponseContainerV1beta1].
   /// [clusterTier] [Output only] cluster_tier specifies the premium tier of the cluster.
-  EnterpriseConfigResponseContainerV1beta1({
+  const EnterpriseConfigResponseContainerV1beta1({
     required this.clusterTier,
   });
 

@@ -25,7 +25,7 @@ class GetInstanceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The self link of the instance. One of `name` or `self_link` must be provided.
   /// [zone] The zone of the instance. If `self_link` is provided, this
-  GetInstanceArgs({
+  const GetInstanceArgs({
     this.name,
     this.project,
     this.selfLink,

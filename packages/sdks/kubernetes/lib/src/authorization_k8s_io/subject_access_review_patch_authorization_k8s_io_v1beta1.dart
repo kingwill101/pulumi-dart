@@ -23,7 +23,7 @@ class SubjectAccessReviewPatchAuthorizationK8sIoV1beta1 {
   /// [metadata] Optional.
   /// [spec] Spec holds information about the request being evaluated
   /// [status] Status is filled in by the server and indicates whether the request is allowed or not
-  SubjectAccessReviewPatchAuthorizationK8sIoV1beta1({
+  const SubjectAccessReviewPatchAuthorizationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

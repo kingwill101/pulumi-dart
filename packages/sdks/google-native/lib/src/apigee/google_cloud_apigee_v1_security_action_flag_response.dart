@@ -10,7 +10,7 @@ class GoogleCloudApigeeV1SecurityActionFlagResponse {
 
   /// Creates a new [GoogleCloudApigeeV1SecurityActionFlagResponse].
   /// [headers] Optional. A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction. Limit 5 headers per SecurityAction. At least one is mandatory.
-  GoogleCloudApigeeV1SecurityActionFlagResponse({
+  const GoogleCloudApigeeV1SecurityActionFlagResponse({
     required this.headers,
   });
 

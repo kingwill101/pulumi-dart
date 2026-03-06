@@ -30,7 +30,7 @@ class GetTemplateApplicationsResult {
   /// [productCode] Cloud service name abbreviation.&gt; For more information about cloud services that support quota centers, see Cloud services that support quota centers.
   /// [quotaActionCode] The quota ID.
   /// [quotaCategory] The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
-  GetTemplateApplicationsResult({
+  const GetTemplateApplicationsResult({
     required this.applications,
     this.batchQuotaApplicationId,
     required this.id,

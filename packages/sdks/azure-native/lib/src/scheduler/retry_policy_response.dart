@@ -14,7 +14,7 @@ class RetryPolicyResponse {
   /// [retryCount] Gets or sets the number of times a retry should be attempted.
   /// [retryInterval] Gets or sets the retry interval between retries, specify duration in ISO 8601 format.
   /// [retryType] Gets or sets the retry strategy to be used.
-  RetryPolicyResponse({
+  const RetryPolicyResponse({
     this.retryCount,
     this.retryInterval,
     this.retryType,

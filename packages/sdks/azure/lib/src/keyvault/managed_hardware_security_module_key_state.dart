@@ -38,7 +38,7 @@ class ManagedHardwareSecurityModuleKeyState {
   /// [notBeforeDate] Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   /// [tags] A mapping of tags to assign to the resource.
   /// [versionedId] The versioned Key Vault Secret Managed Hardware Security Module Key ID.
-  ManagedHardwareSecurityModuleKeyState({
+  const ManagedHardwareSecurityModuleKeyState({
     this.curve,
     this.expirationDate,
     this.keyOpts,

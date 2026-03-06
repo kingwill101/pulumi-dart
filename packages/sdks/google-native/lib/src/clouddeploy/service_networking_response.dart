@@ -15,7 +15,7 @@ class ServiceNetworkingResponse {
   /// [deployment] Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
   /// [disablePodOverprovisioning] Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
   /// [service] Name of the Kubernetes Service.
-  ServiceNetworkingResponse({
+  const ServiceNetworkingResponse({
     required this.deployment,
     required this.disablePodOverprovisioning,
     required this.service,

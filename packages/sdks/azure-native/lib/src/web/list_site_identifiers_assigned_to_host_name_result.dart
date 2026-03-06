@@ -13,7 +13,7 @@ class ListSiteIdentifiersAssignedToHostNameResult {
   /// Creates a new [ListSiteIdentifiersAssignedToHostNameResult].
   /// [nextLink] Link to next page of resources.
   /// [value] Collection of resources.
-  ListSiteIdentifiersAssignedToHostNameResult({
+  const ListSiteIdentifiersAssignedToHostNameResult({
     required this.nextLink,
     required this.value,
   });

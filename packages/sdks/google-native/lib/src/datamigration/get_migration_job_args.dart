@@ -15,7 +15,7 @@ class GetMigrationJobArgs {
   /// [location] Required.
   /// [migrationJobId] Required.
   /// [project] Optional.
-  GetMigrationJobArgs({
+  const GetMigrationJobArgs({
     required this.location,
     required this.migrationJobId,
     this.project,

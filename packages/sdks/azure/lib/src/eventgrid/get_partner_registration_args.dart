@@ -15,7 +15,7 @@ class GetPartnerRegistrationArgs {
   /// Creates a new [GetPartnerRegistrationArgs].
   /// [name] The name of the EventGrid Partner Registration resource.
   /// [resourceGroupName] The name of the resource group in which the EventGrid Partner Registration exists.
-  GetPartnerRegistrationArgs({
+  const GetPartnerRegistrationArgs({
     required this.name,
     required this.resourceGroupName,
   });

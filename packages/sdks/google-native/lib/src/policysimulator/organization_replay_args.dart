@@ -17,7 +17,7 @@ class OrganizationReplayArgs {
   /// [config] The configuration used for the `Replay`.
   /// [location] Optional.
   /// [organizationId] Required.
-  OrganizationReplayArgs({
+  const OrganizationReplayArgs({
     required this.config,
     this.location,
     required this.organizationId,

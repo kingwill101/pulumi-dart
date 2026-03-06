@@ -25,7 +25,7 @@ class ContributorInsightRuleArgs {
   /// [ruleName] Unique name of the rule.
   /// [ruleState] State of the rule. Valid values are `ENABLED` and `DISABLED`.
   /// [tags] Optional.
-  ContributorInsightRuleArgs({
+  const ContributorInsightRuleArgs({
     this.region,
     required this.ruleDefinition,
     required this.ruleName,

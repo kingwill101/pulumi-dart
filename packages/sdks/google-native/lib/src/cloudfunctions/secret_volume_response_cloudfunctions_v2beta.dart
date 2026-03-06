@@ -19,7 +19,7 @@ class SecretVolumeResponseCloudfunctionsV2beta {
   /// [project] Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
   /// [secret] Name of the secret in secret manager (not the full resource name).
   /// [versions] List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
-  SecretVolumeResponseCloudfunctionsV2beta({
+  const SecretVolumeResponseCloudfunctionsV2beta({
     required this.mountPath,
     required this.project,
     required this.secret,

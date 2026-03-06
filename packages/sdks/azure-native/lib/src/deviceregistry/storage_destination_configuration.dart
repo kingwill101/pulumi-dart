@@ -9,7 +9,7 @@ class StorageDestinationConfiguration {
 
   /// Creates a new [StorageDestinationConfiguration].
   /// [path] The storage destination path.
-  StorageDestinationConfiguration({
+  const StorageDestinationConfiguration({
     required this.path,
   });
 

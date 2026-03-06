@@ -25,7 +25,7 @@ class IoTHubStreamInputDataSource {
   /// [sharedAccessPolicyKey] The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
   /// [sharedAccessPolicyName] The shared access policy name for the IoT Hub. This policy must contain at least the Service connect permission. Required on PUT (CreateOrReplace) requests.
   /// [type] Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
-  IoTHubStreamInputDataSource({
+  const IoTHubStreamInputDataSource({
     this.consumerGroupName,
     this.endpoint,
     this.iotHubNamespace,

@@ -72,7 +72,7 @@ class FloatingIpState {
   /// [tags] A set of string tags for the floating IP.
   /// [tenantId] The target tenant ID in which to allocate the floating
   /// [valueSpecs] Map of additional options.
-  FloatingIpState({
+  const FloatingIpState({
     this.address,
     this.allTags,
     this.description,

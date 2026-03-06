@@ -15,7 +15,7 @@ class RoutingPolicyResponse {
   /// [destinations] List of all destinations which this routing policy is applicable to (for example: Internet, PrivateTraffic).
   /// [name] The unique name for the routing policy.
   /// [nextHop] The next hop resource id on which this routing policy is applicable to.
-  RoutingPolicyResponse({
+  const RoutingPolicyResponse({
     required this.destinations,
     required this.name,
     required this.nextHop,

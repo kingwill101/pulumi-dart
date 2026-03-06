@@ -18,7 +18,7 @@ class EnclaveDefaultSettingsModelResponse {
   /// [keyVaultResourceId] Key Vault Resource Id.
   /// [logAnalyticsResourceIdCollection] Log Analytics Resource Ids.
   /// [storageAccountResourceId] Storage Account Resource Id.
-  EnclaveDefaultSettingsModelResponse({
+  const EnclaveDefaultSettingsModelResponse({
     this.diagnosticDestination,
     required this.keyVaultResourceId,
     required this.logAnalyticsResourceIdCollection,

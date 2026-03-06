@@ -61,7 +61,7 @@ class AccountState {
   /// [status] Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
   /// [tags] The tag of the resource
   /// [type] Member type. The value of ResourceAccount indicates the resource account
-  AccountState({
+  const AccountState({
     this.abandonAbleCheckIds,
     this.abandonableCheckIds,
     this.accountNamePrefix,

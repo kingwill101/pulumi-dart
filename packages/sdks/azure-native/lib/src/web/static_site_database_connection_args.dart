@@ -33,7 +33,7 @@ class StaticSiteDatabaseConnectionArgs {
   /// [region] The region of the database resource.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [resourceId] The resource id of the database.
-  StaticSiteDatabaseConnectionArgs({
+  const StaticSiteDatabaseConnectionArgs({
     this.connectionIdentity,
     this.connectionString,
     this.databaseConnectionName,

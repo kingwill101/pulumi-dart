@@ -12,7 +12,7 @@ class WafRuleSharedMatchCriteriaCriteria {
   /// [criterias] Optional.
   /// [logic] Optional.
   /// [matchType] Optional.
-  WafRuleSharedMatchCriteriaCriteria({
+  const WafRuleSharedMatchCriteriaCriteria({
     this.criterias,
     this.logic,
     this.matchType,

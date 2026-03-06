@@ -33,7 +33,7 @@ class LinkArgs {
   /// [siteId] ID of the site.
   /// [tags] Key-value tags for the link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Type of the link.
-  LinkArgs({
+  const LinkArgs({
     required this.bandwidth,
     this.description,
     required this.globalNetworkId,

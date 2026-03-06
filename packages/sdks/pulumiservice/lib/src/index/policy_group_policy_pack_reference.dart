@@ -21,7 +21,7 @@ class PolicyGroupPolicyPackReference {
   /// [name] The name of the policy pack.
   /// [version] The version of the policy pack.
   /// [versionTag] The version tag of the policy pack.
-  PolicyGroupPolicyPackReference({
+  const PolicyGroupPolicyPackReference({
     this.config,
     this.displayName,
     required this.name,

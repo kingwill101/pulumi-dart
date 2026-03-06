@@ -34,7 +34,7 @@ class SessionAuthModel {
   /// [sessionTimeoutInMinutes] Session timeout in minutes.
   /// [type] Type of paging
   /// [userName] The user name attribute key value.
-  SessionAuthModel({
+  const SessionAuthModel({
     this.headers,
     this.isPostPayloadJson,
     required this.password,

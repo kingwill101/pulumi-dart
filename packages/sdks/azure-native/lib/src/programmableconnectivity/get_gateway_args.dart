@@ -15,7 +15,7 @@ class GetGatewayArgs {
   /// Creates a new [GetGatewayArgs].
   /// [gatewayName] Azure Programmable Connectivity Gateway Name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGatewayArgs({
+  const GetGatewayArgs({
     required this.gatewayName,
     required this.resourceGroupName,
   });

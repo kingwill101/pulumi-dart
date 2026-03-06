@@ -12,7 +12,7 @@ class ResourcePolicyHourlyCycleComputeBeta {
   /// Creates a new [ResourcePolicyHourlyCycleComputeBeta].
   /// [hoursInCycle] Defines a schedule with units measured in hours. The value determines how many hours pass between the start of each cycle.
   /// [startTime] Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
-  ResourcePolicyHourlyCycleComputeBeta({
+  const ResourcePolicyHourlyCycleComputeBeta({
     this.hoursInCycle,
     this.startTime,
   });

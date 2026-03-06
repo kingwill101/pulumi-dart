@@ -18,7 +18,7 @@ class GetTaskArgs {
   /// [projectName] Migrate Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [taskName] Task ARM name
-  GetTaskArgs({
+  const GetTaskArgs({
     required this.projectName,
     required this.resourceGroupName,
     required this.taskName,

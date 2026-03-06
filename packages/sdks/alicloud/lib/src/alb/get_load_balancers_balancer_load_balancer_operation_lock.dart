@@ -11,7 +11,7 @@ class GetLoadBalancersBalancerLoadBalancerOperationLock {
   /// Creates a new [GetLoadBalancersBalancerLoadBalancerOperationLock].
   /// [lockReason] The Locking of the Reasons.
   /// [lockType] The Locking of the Type.
-  GetLoadBalancersBalancerLoadBalancerOperationLock({
+  const GetLoadBalancersBalancerLoadBalancerOperationLock({
     required this.lockReason,
     required this.lockType,
   });

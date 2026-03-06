@@ -22,7 +22,7 @@ class FeaturestoreEntityContainerEntityArgs {
   /// [name] Container name. This is case-sensitive.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  FeaturestoreEntityContainerEntityArgs({
+  const FeaturestoreEntityContainerEntityArgs({
     required this.featurestoreEntityContainerProperties,
     this.name,
     required this.resourceGroupName,

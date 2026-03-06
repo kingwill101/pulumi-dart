@@ -8,7 +8,7 @@ class ApplicationLivenessV2Exec {
 
   /// Creates a new [ApplicationLivenessV2Exec].
   /// [commands] Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-  ApplicationLivenessV2Exec({
+  const ApplicationLivenessV2Exec({
     this.commands,
   });
 

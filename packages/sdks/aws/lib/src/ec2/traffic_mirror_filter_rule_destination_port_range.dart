@@ -11,7 +11,7 @@ class TrafficMirrorFilterRuleDestinationPortRange {
   /// Creates a new [TrafficMirrorFilterRuleDestinationPortRange].
   /// [fromPort] Starting port of the range
   /// [toPort] Ending port of the range
-  TrafficMirrorFilterRuleDestinationPortRange({
+  const TrafficMirrorFilterRuleDestinationPortRange({
     this.fromPort,
     this.toPort,
   });

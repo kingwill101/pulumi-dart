@@ -16,7 +16,7 @@ class MonitorIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Identity of this Datadog Monitor.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Identity of this Datadog Monitor.
   /// [type] Specifies the identity type of the Datadog Monitor. At this time the only allowed value is `SystemAssigned`.
-  MonitorIdentity({
+  const MonitorIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

@@ -35,7 +35,7 @@ class PresetVideoWatermark {
   /// [target] A value that determines how Elastic Transcoder interprets values that you specified for `video_watermarks.horizontal_offset`, `video_watermarks.vertical_offset`, `video_watermarks.max_width`, and `video_watermarks.max_height`. Valid values are `Content` and `Frame`.
   /// [verticalAlign] The vertical position of the watermark unless you specify a nonzero value for `vertical_align`. Valid values are `Top`, `Bottom`, `Center`.
   /// [verticalOffset] The amount by which you want the vertical position of the watermark to be offset from the position specified by `vertical_align`
-  PresetVideoWatermark({
+  const PresetVideoWatermark({
     this.horizontalAlign,
     this.horizontalOffset,
     this.id,

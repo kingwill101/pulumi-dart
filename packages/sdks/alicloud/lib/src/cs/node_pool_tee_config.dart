@@ -8,7 +8,7 @@ class NodePoolTeeConfig {
 
   /// Creates a new [NodePoolTeeConfig].
   /// [teeEnable] Specifies whether to enable confidential computing for the cluster.
-  NodePoolTeeConfig({
+  const NodePoolTeeConfig({
     this.teeEnable,
   });
 

@@ -12,7 +12,7 @@ class ResourceRangeResponse {
   /// Creates a new [ResourceRangeResponse].
   /// [max] The maximum number of the resource.
   /// [min] The minimum number of the resource.
-  ResourceRangeResponse({
+  const ResourceRangeResponse({
     this.max,
     this.min,
   });

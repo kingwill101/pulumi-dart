@@ -30,7 +30,7 @@ class ProfileMonitorConfig {
   /// [protocol] The protocol used by the monitoring checks, supported values are `HTTP`, `HTTPS` and `TCP`.
   /// [timeoutInSeconds] The amount of time the Traffic Manager probing agent should wait before considering that check a failure when a health check probe is sent to the endpoint. If `interval_in_seconds` is set to `30`, then `timeout_in_seconds` can be between `5` and `10`. The default value is `10`. If `interval_in_seconds` is set to `10`, then valid values are between `5` and `9` and `timeout_in_seconds` is required.
   /// [toleratedNumberOfFailures] The number of failures a Traffic Manager probing agent tolerates before marking that endpoint as unhealthy. Valid values are between `0` and `9`. The default value is `3`
-  ProfileMonitorConfig({
+  const ProfileMonitorConfig({
     this.customHeaders,
     this.expectedStatusCodeRanges,
     this.intervalInSeconds,

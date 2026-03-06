@@ -11,7 +11,7 @@ class BareMetalClusterNetworkConfigIslandModeCidr {
   /// Creates a new [BareMetalClusterNetworkConfigIslandModeCidr].
   /// [podAddressCidrBlocks] All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
   /// [serviceAddressCidrBlocks] All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
-  BareMetalClusterNetworkConfigIslandModeCidr({
+  const BareMetalClusterNetworkConfigIslandModeCidr({
     required this.podAddressCidrBlocks,
     required this.serviceAddressCidrBlocks,
   });

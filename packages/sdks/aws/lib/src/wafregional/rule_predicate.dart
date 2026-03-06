@@ -11,7 +11,7 @@ class RulePredicate {
   /// [dataId] Required.
   /// [negated] Required.
   /// [type] Required.
-  RulePredicate({
+  const RulePredicate({
     required this.dataId,
     required this.negated,
     required this.type,

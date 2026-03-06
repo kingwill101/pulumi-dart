@@ -11,7 +11,7 @@ class BuildMetadataResponse {
   /// [finishedOn] Required.
   /// [invocationId] Required.
   /// [startedOn] Required.
-  BuildMetadataResponse({
+  const BuildMetadataResponse({
     required this.finishedOn,
     required this.invocationId,
     required this.startedOn,

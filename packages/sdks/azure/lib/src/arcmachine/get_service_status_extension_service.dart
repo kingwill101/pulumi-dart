@@ -11,7 +11,7 @@ class GetServiceStatusExtensionService {
   /// Creates a new [GetServiceStatusExtensionService].
   /// [startupType] The behavior of the service when the Arc-enabled machine starts up.
   /// [status] The current status of the service.
-  GetServiceStatusExtensionService({
+  const GetServiceStatusExtensionService({
     required this.startupType,
     required this.status,
   });

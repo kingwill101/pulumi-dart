@@ -48,7 +48,7 @@ class GetEnvironmentResult {
   /// [resourceGroupName] Required.
   /// [staticIpAddress] The Static IP address of the Environment.
   /// [tags] A mapping of tags assigned to the resource.
-  GetEnvironmentResult({
+  const GetEnvironmentResult({
     required this.customDomainVerificationId,
     required this.defaultDomain,
     required this.dockerBridgeCidr,

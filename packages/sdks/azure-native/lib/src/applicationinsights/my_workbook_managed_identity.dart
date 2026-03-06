@@ -9,7 +9,7 @@ class MyWorkbookManagedIdentity {
 
   /// Creates a new [MyWorkbookManagedIdentity].
   /// [type] The identity type.
-  MyWorkbookManagedIdentity({
+  const MyWorkbookManagedIdentity({
     this.type,
   });
 

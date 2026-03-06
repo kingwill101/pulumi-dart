@@ -12,7 +12,7 @@ class AzureFirewallIpGroupsResponse {
   /// Creates a new [AzureFirewallIpGroupsResponse].
   /// [changeNumber] The iteration number.
   /// [id] Resource ID.
-  AzureFirewallIpGroupsResponse({
+  const AzureFirewallIpGroupsResponse({
     required this.changeNumber,
     required this.id,
   });

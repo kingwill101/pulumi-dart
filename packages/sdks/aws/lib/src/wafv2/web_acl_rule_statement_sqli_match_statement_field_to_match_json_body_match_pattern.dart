@@ -10,7 +10,7 @@ class WebAclRuleStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern {
   /// Creates a new [WebAclRuleStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  WebAclRuleStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern({
+  const WebAclRuleStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

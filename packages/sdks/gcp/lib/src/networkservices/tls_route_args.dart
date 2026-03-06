@@ -33,7 +33,7 @@ class TlsRouteArgs {
   /// [name] Name of the TlsRoute resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] Rules that define how traffic is routed and handled.
-  TlsRouteArgs({
+  const TlsRouteArgs({
     this.description,
     this.gateways,
     this.meshes,

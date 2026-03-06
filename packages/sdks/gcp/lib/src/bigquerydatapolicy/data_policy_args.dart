@@ -31,7 +31,7 @@ class DataPolicyArgs {
   /// [location] The name of the location of the data policy.
   /// [policyTag] Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
   /// [project] The ID of the project in which the resource belongs.
-  DataPolicyArgs({
+  const DataPolicyArgs({
     this.dataMaskingPolicy,
     required this.dataPolicyId,
     required this.dataPolicyType,

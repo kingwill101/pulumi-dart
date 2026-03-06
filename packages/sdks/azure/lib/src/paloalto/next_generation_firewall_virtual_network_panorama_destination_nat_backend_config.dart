@@ -11,7 +11,7 @@ class NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig {
   /// Creates a new [NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig].
   /// [port] The port number to send traffic to.
   /// [publicIpAddress] The IP Address to send the traffic to.
-  NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig({
+  const NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig({
     required this.port,
     required this.publicIpAddress,
   });

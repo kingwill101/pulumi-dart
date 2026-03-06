@@ -46,7 +46,7 @@ class GetRouteTablesArgs {
   /// [status] The status of resource. Valid values: `Available` and `Pending`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] Vpc id of the route table.
-  GetRouteTablesArgs({
+  const GetRouteTablesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

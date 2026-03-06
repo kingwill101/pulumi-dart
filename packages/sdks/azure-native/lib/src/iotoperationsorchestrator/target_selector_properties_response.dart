@@ -9,7 +9,7 @@ class TargetSelectorPropertiesResponse {
 
   /// Creates a new [TargetSelectorPropertiesResponse].
   /// [name] Name of the target.
-  TargetSelectorPropertiesResponse({
+  const TargetSelectorPropertiesResponse({
     this.name,
   });
 

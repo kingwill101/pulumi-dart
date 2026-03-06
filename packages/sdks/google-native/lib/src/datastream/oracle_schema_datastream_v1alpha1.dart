@@ -13,7 +13,7 @@ class OracleSchemaDatastreamV1alpha1 {
   /// Creates a new [OracleSchemaDatastreamV1alpha1].
   /// [oracleTables] Tables in the schema.
   /// [schemaName] Schema name.
-  OracleSchemaDatastreamV1alpha1({
+  const OracleSchemaDatastreamV1alpha1({
     this.oracleTables,
     this.schemaName,
   });

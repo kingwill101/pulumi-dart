@@ -18,7 +18,7 @@ class AutomationTriggeringRuleResponse {
   /// [operator] A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType.
   /// [propertyJPath] The JPath of the entity model property that should be checked.
   /// [propertyType] The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
-  AutomationTriggeringRuleResponse({
+  const AutomationTriggeringRuleResponse({
     this.expectedValue,
     this.operator,
     this.propertyJPath,

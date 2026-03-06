@@ -17,7 +17,7 @@ class GetDomainVpcOption {
   /// [securityGroupIds] Security groups used by the domain.
   /// [subnetIds] Subnets used by the domain.
   /// [vpcId] VPC used by the domain.
-  GetDomainVpcOption({
+  const GetDomainVpcOption({
     required this.availabilityZones,
     required this.securityGroupIds,
     required this.subnetIds,

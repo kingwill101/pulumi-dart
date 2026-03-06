@@ -15,7 +15,7 @@ class GetApplicationProvidersApplicationProvider {
   /// [applicationProviderArn] ARN of the application provider.
   /// [displayDatas] An object describing how IAM Identity Center represents the application provider in the portal. See `display_data` below.
   /// [federationProtocol] Protocol that the application provider uses to perform federation. Valid values are `SAML` and `OAUTH`.
-  GetApplicationProvidersApplicationProvider({
+  const GetApplicationProvidersApplicationProvider({
     required this.applicationProviderArn,
     required this.displayDatas,
     required this.federationProtocol,

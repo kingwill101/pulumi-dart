@@ -15,7 +15,7 @@ class FunctionSyncConfig {
   /// [conflictDetection] Conflict Detection strategy to use. Valid values are `NONE` and `VERSION`.
   /// [conflictHandler] Conflict Resolution strategy to perform in the event of a conflict. Valid values are `NONE`, `OPTIMISTIC_CONCURRENCY`, `AUTOMERGE`, and `LAMBDA`.
   /// [lambdaConflictHandlerConfig] Lambda Conflict Handler Config when configuring `LAMBDA` as the Conflict Handler. See `lambda_conflict_handler_config` Block for details.
-  FunctionSyncConfig({
+  const FunctionSyncConfig({
     this.conflictDetection,
     this.conflictHandler,
     this.lambdaConflictHandlerConfig,

@@ -13,7 +13,7 @@ class GetGenaiKnowledgeBasesFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGenaiKnowledgeBasesFilter({
+  const GetGenaiKnowledgeBasesFilter({
     this.all,
     required this.key,
     this.matchBy,

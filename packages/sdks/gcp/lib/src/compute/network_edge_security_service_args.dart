@@ -25,7 +25,7 @@ class NetworkEdgeSecurityServiceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the gateway security policy.
   /// [securityPolicy] The resource URL for the network edge security service associated with this network edge security service.
-  NetworkEdgeSecurityServiceArgs({
+  const NetworkEdgeSecurityServiceArgs({
     this.description,
     this.name,
     this.project,

@@ -12,7 +12,7 @@ class PrivateIpAddressSpecification {
   /// Creates a new [PrivateIpAddressSpecification].
   /// [primary] Property primary
   /// [privateIpAddress] Property privateIpAddress
-  PrivateIpAddressSpecification({
+  const PrivateIpAddressSpecification({
     this.primary,
     this.privateIpAddress,
   });

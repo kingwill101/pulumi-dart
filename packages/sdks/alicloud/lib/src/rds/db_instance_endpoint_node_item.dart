@@ -11,7 +11,7 @@ class DbInstanceEndpointNodeItem {
   /// Creates a new [DbInstanceEndpointNodeItem].
   /// [nodeId] The ID of the node.
   /// [weight] The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
-  DbInstanceEndpointNodeItem({
+  const DbInstanceEndpointNodeItem({
     required this.nodeId,
     required this.weight,
   });

@@ -29,7 +29,7 @@ class RegistryEnterpriseRepoState {
   /// [repoId] The ID of the repository.
   /// [repoType] The type of the repository. Valid values:
   /// [summary] The summary about the repository.
-  RegistryEnterpriseRepoState({
+  const RegistryEnterpriseRepoState({
     this.detail,
     this.instanceId,
     this.name,

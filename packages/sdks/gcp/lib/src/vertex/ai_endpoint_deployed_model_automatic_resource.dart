@@ -13,7 +13,7 @@ class AiEndpointDeployedModelAutomaticResource {
   /// Creates a new [AiEndpointDeployedModelAutomaticResource].
   /// [maxReplicaCount] (Output)
   /// [minReplicaCount] (Output)
-  AiEndpointDeployedModelAutomaticResource({
+  const AiEndpointDeployedModelAutomaticResource({
     this.maxReplicaCount,
     this.minReplicaCount,
   });

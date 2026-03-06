@@ -48,7 +48,7 @@ class GetResolverFirewallRuleGroupAssociationResult {
   /// [status] The current status of the association.
   /// [statusMessage] Additional information about the status of the response, if available.
   /// [vpcId] The unique identifier of the VPC that is associated with the rule group.
-  GetResolverFirewallRuleGroupAssociationResult({
+  const GetResolverFirewallRuleGroupAssociationResult({
     required this.arn,
     required this.creationTime,
     required this.creatorRequestId,

@@ -19,7 +19,7 @@ class SamlProviderArgs {
   /// [description] The description.
   /// [encodedsamlMetadataDocument] The metadata file which is Base64-encoded.
   /// [samlProviderName] The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
-  SamlProviderArgs({
+  const SamlProviderArgs({
     this.description,
     required this.encodedsamlMetadataDocument,
     required this.samlProviderName,

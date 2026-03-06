@@ -12,7 +12,7 @@ class NetworkRuleSetIpRule {
   /// Creates a new [NetworkRuleSetIpRule].
   /// [filterName] The readable name of the IP rule.
   /// [ipMask] The CIDR block defining the IP range.
-  NetworkRuleSetIpRule({
+  const NetworkRuleSetIpRule({
     this.filterName,
     this.ipMask,
   });

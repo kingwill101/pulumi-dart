@@ -11,7 +11,7 @@ class FutureReservationAggregateReservationReservedResourceAccelerator {
   /// Creates a new [FutureReservationAggregateReservationReservedResourceAccelerator].
   /// [acceleratorCount] Number of accelerators of specified type.
   /// [acceleratorType] Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
-  FutureReservationAggregateReservationReservedResourceAccelerator({
+  const FutureReservationAggregateReservationReservedResourceAccelerator({
     this.acceleratorCount,
     this.acceleratorType,
   });

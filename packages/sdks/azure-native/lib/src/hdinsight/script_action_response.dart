@@ -15,7 +15,7 @@ class ScriptActionResponse {
   /// [name] The name of the script action.
   /// [parameters] The parameters for the script provided.
   /// [uri] The URI to the script.
-  ScriptActionResponse({
+  const ScriptActionResponse({
     required this.name,
     required this.parameters,
     required this.uri,

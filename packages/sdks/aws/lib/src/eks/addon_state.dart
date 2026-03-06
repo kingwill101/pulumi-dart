@@ -66,7 +66,7 @@ class AddonState {
   /// [serviceAccountRoleArn] The Amazon Resource Name (ARN) of an
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
-  AddonState({
+  const AddonState({
     this.addonName,
     this.addonVersion,
     this.arn,

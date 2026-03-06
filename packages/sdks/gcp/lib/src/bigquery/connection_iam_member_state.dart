@@ -49,7 +49,7 @@ class ConnectionIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  ConnectionIamMemberState({
+  const ConnectionIamMemberState({
     this.condition,
     this.connectionId,
     this.etag,

@@ -13,7 +13,7 @@ class RepoId {
   /// Creates a new [RepoId].
   /// [projectRepoId] A combination of a project ID and a repo name.
   /// [uid] A server-assigned, globally unique identifier.
-  RepoId({
+  const RepoId({
     this.projectRepoId,
     this.uid,
   });

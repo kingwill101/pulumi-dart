@@ -27,7 +27,7 @@ class GetDedicatedHostGroupResult {
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the resource.
   /// [zones] A list of Availability Zones in which this Dedicated Host Group is located.
-  GetDedicatedHostGroupResult({
+  const GetDedicatedHostGroupResult({
     required this.automaticPlacementEnabled,
     required this.id,
     required this.location,

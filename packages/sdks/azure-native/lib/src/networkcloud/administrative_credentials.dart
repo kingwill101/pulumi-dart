@@ -11,7 +11,7 @@ class AdministrativeCredentials {
   /// Creates a new [AdministrativeCredentials].
   /// [password] The password of the administrator of the device used during initialization.
   /// [username] The username of the administrator of the device used during initialization.
-  AdministrativeCredentials({
+  const AdministrativeCredentials({
     required this.password,
     required this.username,
   });

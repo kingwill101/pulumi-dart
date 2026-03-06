@@ -11,7 +11,7 @@ class GremlinGraphIndexPolicyCompositeIndexIndex {
   /// Creates a new [GremlinGraphIndexPolicyCompositeIndexIndex].
   /// [order] Order of the index. Possible values are `Ascending` or `Descending`.
   /// [path] Path for which the indexing behaviour applies to.
-  GremlinGraphIndexPolicyCompositeIndexIndex({
+  const GremlinGraphIndexPolicyCompositeIndexIndex({
     required this.order,
     required this.path,
   });

@@ -24,7 +24,7 @@ class GatewayResiliencyRecommendationResponse {
   /// [recommendationText] Recommendation details
   /// [recommendationTitle] Recommendation Title
   /// [severity] Impact associated with the recommendation
-  GatewayResiliencyRecommendationResponse({
+  const GatewayResiliencyRecommendationResponse({
     this.callToActionLink,
     this.callToActionText,
     this.recommendationId,

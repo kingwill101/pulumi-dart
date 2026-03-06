@@ -22,7 +22,7 @@ class AveragePartitionLoadScalingTrigger {
   /// [metricName] The name of the metric for which usage should be tracked.
   /// [scaleInterval] The period in seconds on which a decision is made whether to scale or not. This property should come in ISO 8601 format "hh:mm:ss".
   /// [upperLoadThreshold] The upper limit of the load beyond which a scale out operation should be performed.
-  AveragePartitionLoadScalingTrigger({
+  const AveragePartitionLoadScalingTrigger({
     required this.kind,
     required this.lowerLoadThreshold,
     required this.metricName,

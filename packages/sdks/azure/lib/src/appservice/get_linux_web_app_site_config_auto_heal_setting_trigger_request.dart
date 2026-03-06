@@ -11,7 +11,7 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest {
   /// Creates a new [GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest].
   /// [count] The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
   /// [interval] The time interval in the form `hh:mm:ss`.
-  GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest({
+  const GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest({
     required this.count,
     required this.interval,
   });

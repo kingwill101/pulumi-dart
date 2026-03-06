@@ -33,7 +33,7 @@ class EdgeMachineReportedPropertiesResponse {
   /// [osProfile] OS Properties for edge machine.
   /// [sbeDeploymentPackageInfo] Solution builder extension (SBE) deployment package information.
   /// [storageProfile] Storage related information for edge machine.
-  EdgeMachineReportedPropertiesResponse({
+  const EdgeMachineReportedPropertiesResponse({
     required this.extensionProfile,
     required this.hardwareProfile,
     required this.lastUpdated,

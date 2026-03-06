@@ -15,7 +15,7 @@ class GetFrontdoorProfileArgs {
   /// Creates a new [GetFrontdoorProfileArgs].
   /// [name] Specifies the name of the Front Door Profile.
   /// [resourceGroupName] The name of the Resource Group where this Front Door Profile exists.
-  GetFrontdoorProfileArgs({
+  const GetFrontdoorProfileArgs({
     required this.name,
     required this.resourceGroupName,
   });

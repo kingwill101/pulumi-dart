@@ -36,7 +36,7 @@ class PolicyState {
   /// [policySettings] A `policy_settings` block as defined below.
   /// [resourceGroupName] The name of the resource group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Web Application Firewall Policy.
-  PolicyState({
+  const PolicyState({
     this.customRules,
     this.httpListenerIds,
     this.location,

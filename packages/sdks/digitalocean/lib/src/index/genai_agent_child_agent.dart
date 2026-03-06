@@ -50,7 +50,7 @@ class GenaiAgentChildAgent {
   /// [name] Name of the Agent
   /// [projectId] Project ID of the Agent
   /// [region] Region where the Agent is deployed
-  GenaiAgentChildAgent({
+  const GenaiAgentChildAgent({
     this.agentId,
     this.anthropicApiKeys,
     this.apiKeyInfos,

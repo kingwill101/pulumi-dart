@@ -33,7 +33,7 @@ class GetWorkspaceResult {
   /// [status] Status of the Prometheus workspace.
   /// [tags] Tags assigned to the resource.
   /// [workspaceId] Required.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.alias,
     required this.arn,
     required this.createdDate,

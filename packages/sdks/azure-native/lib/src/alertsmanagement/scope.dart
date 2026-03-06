@@ -12,7 +12,7 @@ class Scope {
   /// Creates a new [Scope].
   /// [scopeType] type of target scope
   /// [values] list of ARM IDs of the given scope type which will be the target of the given action rule.
-  Scope({
+  const Scope({
     this.scopeType,
     this.values,
   });

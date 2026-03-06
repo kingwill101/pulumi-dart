@@ -14,7 +14,7 @@ class ArcMachineIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity assigned to this Arc Machine. At this time the only possible value is `SystemAssigned`.
-  ArcMachineIdentity({
+  const ArcMachineIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

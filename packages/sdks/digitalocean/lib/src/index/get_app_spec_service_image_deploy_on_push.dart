@@ -8,7 +8,7 @@ class GetAppSpecServiceImageDeployOnPush {
 
   /// Creates a new [GetAppSpecServiceImageDeployOnPush].
   /// [enabled] Whether to automatically deploy images pushed to DOCR.
-  GetAppSpecServiceImageDeployOnPush({
+  const GetAppSpecServiceImageDeployOnPush({
     this.enabled,
   });
 

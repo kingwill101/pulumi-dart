@@ -63,7 +63,7 @@ class GetClusterNodePool {
   /// [queuedProvisionings] Specifies the configuration of queued provisioning
   /// [upgradeSettings] Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
   /// [version] Required.
-  GetClusterNodePool({
+  const GetClusterNodePool({
     required this.autoscalings,
     required this.initialNodeCount,
     required this.instanceGroupUrls,

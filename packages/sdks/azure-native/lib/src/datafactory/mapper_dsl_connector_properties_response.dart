@@ -12,7 +12,7 @@ class MapperDslConnectorPropertiesResponse {
   /// Creates a new [MapperDslConnectorPropertiesResponse].
   /// [name] Name of the property.
   /// [value] Value of the property.
-  MapperDslConnectorPropertiesResponse({
+  const MapperDslConnectorPropertiesResponse({
     this.name,
     this.value,
   });

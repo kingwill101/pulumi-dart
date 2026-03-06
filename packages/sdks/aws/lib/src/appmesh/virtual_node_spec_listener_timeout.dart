@@ -21,7 +21,7 @@ class VirtualNodeSpecListenerTimeout {
   /// [http] Timeouts for HTTP listeners.
   /// [http2] Timeouts for HTTP2 listeners.
   /// [tcp] Timeouts for TCP listeners.
-  VirtualNodeSpecListenerTimeout({
+  const VirtualNodeSpecListenerTimeout({
     this.grpc,
     this.http,
     this.http2,

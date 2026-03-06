@@ -22,7 +22,7 @@ class StorageContainerStatusResponse {
   /// [errorCode] StorageContainer provisioning error code
   /// [errorMessage] Descriptive error message
   /// [provisioningStatus] Storage container's provisioning status
-  StorageContainerStatusResponse({
+  const StorageContainerStatusResponse({
     this.availableSizeMB,
     this.containerSizeMB,
     this.errorCode,

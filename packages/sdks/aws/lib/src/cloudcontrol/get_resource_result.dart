@@ -21,7 +21,7 @@ class GetResourceResult {
   /// [roleArn] Optional.
   /// [typeName] Required.
   /// [typeVersionId] Optional.
-  GetResourceResult({
+  const GetResourceResult({
     required this.id,
     required this.identifier,
     required this.properties,

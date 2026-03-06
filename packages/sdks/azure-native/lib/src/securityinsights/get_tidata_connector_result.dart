@@ -38,7 +38,7 @@ class GetTIDataConnectorResult {
   /// [tenantId] The tenant id to connect to, and get the data from.
   /// [tipLookbackPeriod] The lookback period for the feed to be imported.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetTIDataConnectorResult({
+  const GetTIDataConnectorResult({
     required this.azureApiVersion,
     required this.dataTypes,
     this.etag,

@@ -20,7 +20,7 @@ class GetVersionResult {
   /// [name] The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
   /// [status] The status of this version. This field is read-only and cannot be set by create and update methods.
   /// [versionNumber] The sequential number of this version. This field is read-only which means it cannot be set by create and update methods.
-  GetVersionResult({
+  const GetVersionResult({
     required this.createTime,
     required this.description,
     required this.name,

@@ -31,7 +31,7 @@ class SacRealmArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [securityService] SSE service provider associated with the realm.
   /// [symantecOptions] Configuration required for Symantec realms.
-  SacRealmArgs({
+  const SacRealmArgs({
     this.labels,
     this.name,
     this.project,

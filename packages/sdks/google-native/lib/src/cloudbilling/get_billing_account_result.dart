@@ -20,7 +20,7 @@ class GetBillingAccountResult {
   /// [name] The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.
   /// [open] True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
   /// [parent] The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update the account's parent resource if it is a organization. Format: - organizations/{organization_id}, for example: organizations/12345678 - billingAccounts/{billing_account_id}, for example: `billingAccounts/012345-567890-ABCDEF`
-  GetBillingAccountResult({
+  const GetBillingAccountResult({
     required this.displayName,
     required this.masterBillingAccount,
     required this.name,

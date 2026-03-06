@@ -9,7 +9,7 @@ class ConnectionEventingConfigAuthConfigUserPasswordPassword {
 
   /// Creates a new [ConnectionEventingConfigAuthConfigUserPasswordPassword].
   /// [secretVersion] The resource name of the secret version in the format,
-  ConnectionEventingConfigAuthConfigUserPasswordPassword({
+  const ConnectionEventingConfigAuthConfigUserPasswordPassword({
     required this.secretVersion,
   });
 

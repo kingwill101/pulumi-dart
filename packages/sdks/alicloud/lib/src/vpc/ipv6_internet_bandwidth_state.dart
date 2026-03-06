@@ -21,7 +21,7 @@ class Ipv6InternetBandwidthState {
   /// [ipv6AddressId] The ID of the IPv6 address instance.
   /// [ipv6GatewayId] The ID of the IPv6 gateway to which the IPv6 address belongs.
   /// [status] The status of the resource.
-  Ipv6InternetBandwidthState({
+  const Ipv6InternetBandwidthState({
     this.bandwidth,
     this.internetChargeType,
     this.ipv6AddressId,

@@ -38,7 +38,7 @@ class ScalingPlanState {
   /// [schedules] One or more `schedule` blocks as defined below.
   /// [tags] A mapping of tags which should be assigned to the Virtual Desktop Scaling Plan .
   /// [timeZone] Specifies the Time Zone which should be used by the Scaling Plan for time based events, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
-  ScalingPlanState({
+  const ScalingPlanState({
     this.description,
     this.exclusionTag,
     this.friendlyName,

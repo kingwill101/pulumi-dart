@@ -18,7 +18,7 @@ class UpgradeDistributionResponseContaineranalysisV1alpha1 {
   /// [cpeUri] Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
   /// [cve] The cve that would be resolved by this upgrade.
   /// [severity] The severity as specified by the upstream operating system.
-  UpgradeDistributionResponseContaineranalysisV1alpha1({
+  const UpgradeDistributionResponseContaineranalysisV1alpha1({
     required this.classification,
     required this.cpeUri,
     required this.cve,

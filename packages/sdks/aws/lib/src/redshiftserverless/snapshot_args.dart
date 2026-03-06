@@ -21,7 +21,7 @@ class SnapshotArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [retentionPeriod] How long to retain the created snapshot. Default value is `-1`.
   /// [snapshotName] The name of the snapshot.
-  SnapshotArgs({
+  const SnapshotArgs({
     required this.namespaceName,
     this.region,
     this.retentionPeriod,

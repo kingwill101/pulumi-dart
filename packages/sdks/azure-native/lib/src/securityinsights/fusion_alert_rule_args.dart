@@ -28,7 +28,7 @@ class FusionAlertRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleId] Alert rule ID
   /// [workspaceName] The name of the workspace.
-  FusionAlertRuleArgs({
+  const FusionAlertRuleArgs({
     required this.alertRuleTemplateName,
     required this.enabled,
     required this.kind,

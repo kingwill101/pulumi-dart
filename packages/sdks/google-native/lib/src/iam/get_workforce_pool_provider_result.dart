@@ -37,7 +37,7 @@ class GetWorkforcePoolProviderResult {
   /// [oidc] An OpenId Connect 1.0 identity provider configuration.
   /// [saml] A SAML identity provider configuration.
   /// [state] The state of the provider.
-  GetWorkforcePoolProviderResult({
+  const GetWorkforcePoolProviderResult({
     required this.attributeCondition,
     required this.attributeMapping,
     required this.description,

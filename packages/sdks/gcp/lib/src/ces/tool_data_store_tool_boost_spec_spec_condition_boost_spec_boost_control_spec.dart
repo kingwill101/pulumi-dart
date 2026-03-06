@@ -32,7 +32,7 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
   /// [controlPoints] The control points used to define the curve. The monotonic function
   /// [fieldName] The name of the field whose value will be used to determine the
   /// [interpolationType] The interpolation type to be applied to connect the control points
-  ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec({
+  const ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec({
     this.attributeType,
     this.controlPoints,
     this.fieldName,

@@ -54,7 +54,7 @@ class GetProvisioningConfigResult {
   /// [updateTime] Last update timestamp.
   /// [volumes] Volumes to be created.
   /// [vpcScEnabled] If true, VPC SC is enabled for the cluster.
-  GetProvisioningConfigResult({
+  const GetProvisioningConfigResult({
     required this.cloudConsoleUri,
     required this.customId,
     required this.email,

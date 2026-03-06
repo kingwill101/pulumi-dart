@@ -12,7 +12,7 @@ class WorkloadNetworkSegmentSubnetResponse {
   /// Creates a new [WorkloadNetworkSegmentSubnetResponse].
   /// [dhcpRanges] DHCP Range assigned for subnet.
   /// [gatewayAddress] Gateway address.
-  WorkloadNetworkSegmentSubnetResponse({
+  const WorkloadNetworkSegmentSubnetResponse({
     this.dhcpRanges,
     this.gatewayAddress,
   });

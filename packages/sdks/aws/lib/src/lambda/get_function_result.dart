@@ -133,7 +133,7 @@ class GetFunctionResult {
   /// [tracingConfig] Tracing settings of the function. See below.
   /// [version] Version of the Lambda function returned. If `qualifier` is not set, this will resolve to the most recent published version. If no published version of the function exists, `version` will resolve to `$LATEST`.
   /// [vpcConfig] VPC configuration associated with your Lambda function. See below.
-  GetFunctionResult({
+  const GetFunctionResult({
     required this.architectures,
     required this.arn,
     required this.capacityProviderConfigs,

@@ -12,7 +12,7 @@ class DefaultPatchBaselineState {
   /// Creates a new [DefaultPatchBaselineState].
   /// [patchBaselineId] The ID of the patch baseline.
   /// [patchBaselineName] The name of the patch baseline.
-  DefaultPatchBaselineState({
+  const DefaultPatchBaselineState({
     this.patchBaselineId,
     this.patchBaselineName,
   });

@@ -27,7 +27,7 @@ class RegistryImageArgs {
   /// [sourceImage] The source image to push to the registry.
   /// [tag] The tag to use for the pushed image. If not provided, it defaults to `latest`.
   /// [triggers] A map of arbitrary strings that, when changed, will force the `docker.RegistryImage` resource to be replaced. This can be used to repush a local image
-  RegistryImageArgs({
+  const RegistryImageArgs({
     this.insecureSkipVerify,
     this.keepRemotely,
     required this.repositoryUrl,

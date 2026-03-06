@@ -15,7 +15,7 @@ class GetRepositoryArgs {
   /// Creates a new [GetRepositoryArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repositoryName] Name for the repository. This needs to be less than 100 characters.
-  GetRepositoryArgs({
+  const GetRepositoryArgs({
     this.region,
     required this.repositoryName,
   });

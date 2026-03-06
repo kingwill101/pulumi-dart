@@ -9,7 +9,7 @@ class ScheduledQueryNotificationConfiguration {
 
   /// Creates a new [ScheduledQueryNotificationConfiguration].
   /// [snsConfiguration] Configuration block for details about the Amazon Simple Notification Service (SNS) configuration. See below.
-  ScheduledQueryNotificationConfiguration({
+  const ScheduledQueryNotificationConfiguration({
     required this.snsConfiguration,
   });
 

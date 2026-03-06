@@ -35,7 +35,7 @@ class GetSqlPoolWorkloadClassifierResult {
   /// [name] The name of the resource
   /// [startTime] The workload classifier start time for classification.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSqlPoolWorkloadClassifierResult({
+  const GetSqlPoolWorkloadClassifierResult({
     required this.azureApiVersion,
     this.context,
     this.endTime,

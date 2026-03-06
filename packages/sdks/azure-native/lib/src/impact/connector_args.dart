@@ -16,7 +16,7 @@ class ConnectorArgs {
   /// Creates a new [ConnectorArgs].
   /// [connectorName] The name of the connector
   /// [properties] The resource-specific properties for this resource.
-  ConnectorArgs({
+  const ConnectorArgs({
     this.connectorName,
     this.properties,
   });

@@ -34,7 +34,7 @@ class ParameterContract {
   /// [type] Parameter type.
   /// [typeName] Type name defined by the schema.
   /// [values] Parameter values.
-  ParameterContract({
+  const ParameterContract({
     this.defaultValue,
     this.description,
     this.examples,

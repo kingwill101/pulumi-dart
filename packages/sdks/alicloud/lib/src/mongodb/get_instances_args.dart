@@ -36,7 +36,7 @@ class GetInstancesArgs {
   /// [outputFile] The name of file that can save the collection of instances after running `pulumi preview`.
   /// [status] The instance status.
   /// [tags] A mapping of tags to assign to the resource.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.availabilityZone,
     this.enableDetails,
     this.ids,

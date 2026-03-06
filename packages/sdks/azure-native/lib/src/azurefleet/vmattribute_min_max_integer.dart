@@ -12,7 +12,7 @@ class VMAttributeMinMaxInteger {
   /// Creates a new [VMAttributeMinMaxInteger].
   /// [max] Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
   /// [min] Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
-  VMAttributeMinMaxInteger({
+  const VMAttributeMinMaxInteger({
     this.max,
     this.min,
   });

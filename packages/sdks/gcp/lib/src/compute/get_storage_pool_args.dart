@@ -18,7 +18,7 @@ class GetStoragePoolArgs {
   /// [name] The name of the Storage Pool.
   /// [project] The project in which the Storage Pool exists. If it is not provided, the provider project is used.
   /// [zone] The zone where the Storage Pool resides.
-  GetStoragePoolArgs({
+  const GetStoragePoolArgs({
     required this.name,
     this.project,
     required this.zone,

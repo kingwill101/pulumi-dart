@@ -11,7 +11,7 @@ class ApiDestinationHttpApiParameters {
   /// Creates a new [ApiDestinationHttpApiParameters].
   /// [endpoint] The endpoint of the API destination.
   /// [method] The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
-  ApiDestinationHttpApiParameters({
+  const ApiDestinationHttpApiParameters({
     required this.endpoint,
     required this.method,
   });

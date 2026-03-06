@@ -38,7 +38,7 @@ class CryptoKeyVersionState {
   /// [name] The resource name for this CryptoKeyVersion.
   /// [protectionLevel] The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
   /// [state] The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
-  CryptoKeyVersionState({
+  const CryptoKeyVersionState({
     this.algorithm,
     this.attestations,
     this.cryptoKey,

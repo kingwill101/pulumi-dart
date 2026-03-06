@@ -8,7 +8,7 @@ class ScraperDestinationAmp {
 
   /// Creates a new [ScraperDestinationAmp].
   /// [workspaceArn] The Amazon Resource Name (ARN) of the prometheus workspace.
-  ScraperDestinationAmp({
+  const ScraperDestinationAmp({
     required this.workspaceArn,
   });
 

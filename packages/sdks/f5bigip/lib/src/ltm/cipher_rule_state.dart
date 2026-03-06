@@ -21,7 +21,7 @@ class CipherRuleState {
   /// [dhGroups] Specifies the DH Groups algorithms, separated by colons (:).
   /// [name] Name of the Cipher Rule. Name should be in pattern `partition` + `cipher_rule_name`
   /// [signatureAlgorithms] Specifies the Signature Algorithms, separated by colons (:).
-  CipherRuleState({
+  const CipherRuleState({
     this.cipher,
     this.description,
     this.dhGroups,

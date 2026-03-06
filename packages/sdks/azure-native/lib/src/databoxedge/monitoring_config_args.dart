@@ -22,7 +22,7 @@ class MonitoringConfigArgs {
   /// [metricConfigurations] The metrics configuration details
   /// [resourceGroupName] The resource group name.
   /// [roleName] The role name.
-  MonitoringConfigArgs({
+  const MonitoringConfigArgs({
     required this.deviceName,
     required this.metricConfigurations,
     required this.resourceGroupName,

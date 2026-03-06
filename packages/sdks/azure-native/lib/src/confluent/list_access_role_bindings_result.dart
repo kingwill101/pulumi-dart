@@ -17,7 +17,7 @@ class ListAccessRoleBindingsResult {
   /// [data] List of role binding
   /// [kind] Type of response
   /// [metadata] Metadata of the list
-  ListAccessRoleBindingsResult({
+  const ListAccessRoleBindingsResult({
     this.data,
     this.kind,
     this.metadata,

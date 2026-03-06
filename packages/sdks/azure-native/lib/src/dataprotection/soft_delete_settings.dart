@@ -12,7 +12,7 @@ class SoftDeleteSettings {
   /// Creates a new [SoftDeleteSettings].
   /// [retentionDurationInDays] Soft delete retention duration
   /// [state] State of soft delete
-  SoftDeleteSettings({
+  const SoftDeleteSettings({
     this.retentionDurationInDays,
     this.state,
   });

@@ -132,7 +132,7 @@ class CloudExadataInfrastructureState {
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   /// [totalStorageSizeInGbs] The total amount of storage, in gigabytes (GB), on the Exadata infrastructure.
-  CloudExadataInfrastructureState({
+  const CloudExadataInfrastructureState({
     this.activatedStorageCount,
     this.additionalStorageCount,
     this.arn,

@@ -24,7 +24,7 @@ class GetInstancesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
   /// [tags] A mapping of tags to assign to the resource.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

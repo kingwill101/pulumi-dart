@@ -17,7 +17,7 @@ class IstioServiceMesh {
   /// [certificateAuthority] Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
   /// [components] Istio components configuration.
   /// [revisions] The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
-  IstioServiceMesh({
+  const IstioServiceMesh({
     this.certificateAuthority,
     this.components,
     this.revisions,

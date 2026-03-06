@@ -59,7 +59,7 @@ class NamespaceGkehubState {
   /// [states] State of the namespace resource.
   /// [uid] Google-generated UUID for this resource.
   /// [updateTime] Time the Namespace was updated in UTC.
-  NamespaceGkehubState({
+  const NamespaceGkehubState({
     this.createTime,
     this.deleteTime,
     this.effectiveLabels,

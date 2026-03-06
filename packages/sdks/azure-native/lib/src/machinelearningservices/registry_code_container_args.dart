@@ -22,7 +22,7 @@ class RegistryCodeContainerArgs {
   /// [codeName] Container name.
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  RegistryCodeContainerArgs({
+  const RegistryCodeContainerArgs({
     required this.codeContainerProperties,
     this.codeName,
     required this.registryName,

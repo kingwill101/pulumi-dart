@@ -41,7 +41,7 @@ class GetServicePrincipalsServicePrincipal {
   /// [signInAudience] The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
   /// [tags] A list of tags applied to the service principal.
   /// [type] Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
-  GetServicePrincipalsServicePrincipal({
+  const GetServicePrincipalsServicePrincipal({
     required this.accountEnabled,
     required this.appRoleAssignmentRequired,
     required this.applicationTenantId,

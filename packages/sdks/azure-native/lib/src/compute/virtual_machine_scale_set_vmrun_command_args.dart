@@ -66,7 +66,7 @@ class VirtualMachineScaleSetVMRunCommandArgs {
   /// [timeoutInSeconds] The timeout in seconds to execute the run command.
   /// [treatFailureAsDeploymentFailure] Optional. If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
   /// [vmScaleSetName] The name of the VirtualMachineScaleSet
-  VirtualMachineScaleSetVMRunCommandArgs({
+  const VirtualMachineScaleSetVMRunCommandArgs({
     this.asyncExecution,
     this.errorBlobManagedIdentity,
     this.errorBlobUri,

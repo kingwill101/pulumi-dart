@@ -9,7 +9,7 @@ class StandardIsolationResponse {
 
   /// Creates a new [StandardIsolationResponse].
   /// [priority] The priority of requests sent using this app profile.
-  StandardIsolationResponse({
+  const StandardIsolationResponse({
     required this.priority,
   });
 

@@ -16,7 +16,7 @@ class LiveTraceCategory {
   /// Creates a new [LiveTraceCategory].
   /// [enabled] Indicates whether or the live trace category is enabled.
   /// [name] Gets or sets the live trace category's name.
-  LiveTraceCategory({
+  const LiveTraceCategory({
     this.enabled,
     this.name,
   });

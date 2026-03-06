@@ -20,7 +20,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItemResponse {
   /// [image] Optional. The image to display.
   /// [info] Additional information about this option.
   /// [title] The title of the list item.
-  GoogleCloudDialogflowV2IntentMessageListSelectItemResponse({
+  const GoogleCloudDialogflowV2IntentMessageListSelectItemResponse({
     required this.description,
     required this.image,
     required this.info,

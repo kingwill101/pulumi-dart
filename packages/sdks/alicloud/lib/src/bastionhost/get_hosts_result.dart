@@ -36,7 +36,7 @@ class GetHostsResult {
   /// [source] Optional.
   /// [sourceInstanceId] Optional.
   /// [sourceInstanceState] Optional.
-  GetHostsResult({
+  const GetHostsResult({
     this.enableDetails,
     this.hostAddress,
     this.hostName,

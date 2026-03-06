@@ -44,7 +44,7 @@ class CloneJobResponseVmmigrationV1alpha1 {
   /// [stateTime] The time the state was last updated.
   /// [steps] The clone steps list representing its progress.
   /// [targetDetails] Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
-  CloneJobResponseVmmigrationV1alpha1({
+  const CloneJobResponseVmmigrationV1alpha1({
     required this.computeEngineDisksTargetDetails,
     required this.computeEngineTargetDetails,
     required this.computeEngineVmDetails,

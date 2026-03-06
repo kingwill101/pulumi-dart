@@ -10,7 +10,7 @@ class HeaderOverrideResponse {
 
   /// Creates a new [HeaderOverrideResponse].
   /// [header] header embodying a key and a value.
-  HeaderOverrideResponse({
+  const HeaderOverrideResponse({
     required this.header,
   });
 

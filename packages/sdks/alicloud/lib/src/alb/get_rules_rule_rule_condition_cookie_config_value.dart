@@ -11,7 +11,7 @@ class GetRulesRuleRuleConditionCookieConfigValue {
   /// Creates a new [GetRulesRuleRuleConditionCookieConfigValue].
   /// [key] The key of the query string.
   /// [value] The value of the query string.
-  GetRulesRuleRuleConditionCookieConfigValue({
+  const GetRulesRuleRuleConditionCookieConfigValue({
     required this.key,
     required this.value,
   });

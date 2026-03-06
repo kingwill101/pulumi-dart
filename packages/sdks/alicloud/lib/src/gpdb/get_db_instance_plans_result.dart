@@ -28,7 +28,7 @@ class GetDbInstancePlansResult {
   /// [planType] Optional.
   /// [plans] Required.
   /// [status] Optional.
-  GetDbInstancePlansResult({
+  const GetDbInstancePlansResult({
     required this.dbInstanceId,
     required this.id,
     required this.ids,

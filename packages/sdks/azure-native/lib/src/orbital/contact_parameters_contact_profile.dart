@@ -9,7 +9,7 @@ class ContactParametersContactProfile {
 
   /// Creates a new [ContactParametersContactProfile].
   /// [id] Resource ID.
-  ContactParametersContactProfile({
+  const ContactParametersContactProfile({
     required this.id,
   });
 

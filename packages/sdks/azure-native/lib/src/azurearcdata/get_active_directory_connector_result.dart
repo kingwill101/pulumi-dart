@@ -25,7 +25,7 @@ class GetActiveDirectoryConnectorResult {
   /// [properties] null
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetActiveDirectoryConnectorResult({
+  const GetActiveDirectoryConnectorResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -64,7 +64,7 @@ class SharedImageVersionState {
   /// [storageAccountId] The ID of the Storage Account where the Blob exists. Changing this forces a new resource to be created.
   /// [tags] A collection of tags which should be applied to this resource.
   /// [targetRegions] One or more `target_region` blocks as documented below.
-  SharedImageVersionState({
+  const SharedImageVersionState({
     this.blobUri,
     this.deletionOfReplicatedLocationsEnabled,
     this.endOfLifeDate,

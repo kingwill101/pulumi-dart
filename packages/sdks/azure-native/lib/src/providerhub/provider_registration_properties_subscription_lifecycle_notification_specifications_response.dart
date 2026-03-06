@@ -13,7 +13,7 @@ class ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificati
   /// Creates a new [ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse].
   /// [softDeleteTTL] The soft delete TTL.
   /// [subscriptionStateOverrideActions] The subscription state override actions.
-  ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse({
+  const ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse({
     this.softDeleteTTL,
     this.subscriptionStateOverrideActions,
   });

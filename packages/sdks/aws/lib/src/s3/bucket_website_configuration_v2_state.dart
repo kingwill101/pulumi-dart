@@ -41,7 +41,7 @@ class BucketWebsiteConfigurationV2State {
   /// [routingRules] List of rules that define when a redirect is applied and the redirect behavior. See below.
   /// [websiteDomain] Domain of the website endpoint. This is used to create Route 53 alias records.
   /// [websiteEndpoint] Website endpoint.
-  BucketWebsiteConfigurationV2State({
+  const BucketWebsiteConfigurationV2State({
     this.bucket,
     this.errorDocument,
     this.expectedBucketOwner,

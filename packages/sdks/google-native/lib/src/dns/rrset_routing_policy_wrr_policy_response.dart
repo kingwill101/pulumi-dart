@@ -11,7 +11,7 @@ class RRSetRoutingPolicyWrrPolicyResponse {
   /// Creates a new [RRSetRoutingPolicyWrrPolicyResponse].
   /// [items] Required.
   /// [kind] Required.
-  RRSetRoutingPolicyWrrPolicyResponse({
+  const RRSetRoutingPolicyWrrPolicyResponse({
     required this.items,
     required this.kind,
   });

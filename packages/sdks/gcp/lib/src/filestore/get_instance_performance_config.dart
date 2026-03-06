@@ -16,7 +16,7 @@ class GetInstancePerformanceConfig {
   /// Creates a new [GetInstancePerformanceConfig].
   /// [fixedIops] The instance will have a fixed provisioned IOPS value,
   /// [iopsPerTbs] The instance provisioned IOPS will change dynamically
-  GetInstancePerformanceConfig({
+  const GetInstancePerformanceConfig({
     required this.fixedIops,
     required this.iopsPerTbs,
   });

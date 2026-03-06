@@ -15,7 +15,7 @@ class GatewayOperatorResourceRequestsResponse {
   /// [cpu] Cpu allocated to each Spring Cloud Gateway Operator instance.
   /// [instanceCount] Instance count of the Spring Cloud Gateway Operator.
   /// [memory] Memory allocated to each Spring Cloud Gateway Operator instance.
-  GatewayOperatorResourceRequestsResponse({
+  const GatewayOperatorResourceRequestsResponse({
     required this.cpu,
     required this.instanceCount,
     required this.memory,

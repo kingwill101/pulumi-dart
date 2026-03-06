@@ -26,7 +26,7 @@ class NetworkAclEntriesIngress {
   /// [port] The port of the ingress entry.
   /// [protocol] The protocol of the ingress entry.
   /// [sourceCidrIp] The source ip of the ingress entry.
-  NetworkAclEntriesIngress({
+  const NetworkAclEntriesIngress({
     this.description,
     this.entryType,
     this.name,

@@ -11,7 +11,7 @@ class FilterFilterCriteriaNetworkProtocol {
   /// Creates a new [FilterFilterCriteriaNetworkProtocol].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaNetworkProtocol({
+  const FilterFilterCriteriaNetworkProtocol({
     required this.comparison,
     required this.value,
   });

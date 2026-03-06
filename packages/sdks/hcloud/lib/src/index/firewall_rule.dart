@@ -26,7 +26,7 @@ class FirewallRule {
   /// [port] Port of the Firewall Rule. Required when `protocol` is `tcp` or `udp`. You can use `any`
   /// [protocol] Protocol of the Firewall Rule. `tcp`, `icmp`, `udp`, `gre`, `esp`
   /// [sourceIps] List of IPs or CIDRs that are allowed within this Firewall Rule (when `direction`
-  FirewallRule({
+  const FirewallRule({
     this.description,
     this.destinationIps,
     required this.direction,

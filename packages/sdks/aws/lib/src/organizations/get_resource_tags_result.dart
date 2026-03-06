@@ -13,7 +13,7 @@ class GetResourceTagsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [resourceId] Required.
   /// [tags] Map of key=value pairs for each tag set on the resource.
-  GetResourceTagsResult({
+  const GetResourceTagsResult({
     required this.id,
     required this.resourceId,
     required this.tags,

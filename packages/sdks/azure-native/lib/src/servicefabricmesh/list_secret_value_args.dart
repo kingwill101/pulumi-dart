@@ -18,7 +18,7 @@ class ListSecretValueArgs {
   /// [resourceGroupName] Azure resource group name
   /// [secretResourceName] The name of the secret resource.
   /// [secretValueResourceName] The name of the secret resource value which is typically the version identifier for the value.
-  ListSecretValueArgs({
+  const ListSecretValueArgs({
     required this.resourceGroupName,
     required this.secretResourceName,
     required this.secretValueResourceName,

@@ -14,7 +14,7 @@ class WindowsVirtualMachineScaleSetPlan {
   /// [name] Specifies the name of the image from the marketplace. Changing this forces a new resource to be created.
   /// [product] Specifies the product of the image from the marketplace. Changing this forces a new resource to be created.
   /// [publisher] Specifies the publisher of the image. Changing this forces a new resource to be created.
-  WindowsVirtualMachineScaleSetPlan({
+  const WindowsVirtualMachineScaleSetPlan({
     required this.name,
     required this.product,
     required this.publisher,

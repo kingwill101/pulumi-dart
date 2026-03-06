@@ -9,7 +9,7 @@ class InsightFiltersResourcePartition {
   /// Creates a new [InsightFiltersResourcePartition].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourcePartition({
+  const InsightFiltersResourcePartition({
     required this.comparison,
     required this.value,
   });

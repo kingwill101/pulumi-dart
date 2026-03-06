@@ -16,7 +16,7 @@ class DiAlarmRuleNotificationSettings {
   /// [inhibitionInterval] Alarm suppression interval, in minutes
   /// [notificationChannels] Alarm notification Channel See `notification_channels` below.
   /// [notificationReceivers] List of alert notification recipients See `notification_receivers` below.
-  DiAlarmRuleNotificationSettings({
+  const DiAlarmRuleNotificationSettings({
     this.inhibitionInterval,
     this.notificationChannels,
     this.notificationReceivers,

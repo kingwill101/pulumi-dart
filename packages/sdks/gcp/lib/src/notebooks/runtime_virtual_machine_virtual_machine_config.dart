@@ -103,7 +103,7 @@ class RuntimeVirtualMachineVirtualMachineConfig {
   /// [subnet] The Compute Engine subnetwork to be used for machine
   /// [tags] The Compute Engine tags to add to runtime (see [Tagging instances]
   /// [zone] (Output)
-  RuntimeVirtualMachineVirtualMachineConfig({
+  const RuntimeVirtualMachineVirtualMachineConfig({
     this.acceleratorConfig,
     this.containerImages,
     required this.dataDisk,

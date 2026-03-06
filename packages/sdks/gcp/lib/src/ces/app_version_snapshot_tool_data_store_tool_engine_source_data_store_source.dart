@@ -17,7 +17,7 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource {
   /// Creates a new [AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource].
   /// [dataStores] (Output)
   /// [filter] (Output)
-  AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource({
+  const AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource({
     this.dataStores,
     this.filter,
   });

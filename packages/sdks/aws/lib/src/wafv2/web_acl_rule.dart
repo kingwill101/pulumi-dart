@@ -39,7 +39,7 @@ class WebAclRule {
   /// [ruleLabels] Labels to apply to web requests that match the rule match statement. See `rule_label` below for details.
   /// [statement] The AWS WAF processing statement for the rule, for example `byte_match_statement` or `geo_match_statement`. See `statement` below for details.
   /// [visibilityConfig] Defines and enables Amazon CloudWatch metrics and web request sample collection. See `visibility_config` below for details.
-  WebAclRule({
+  const WebAclRule({
     this.action,
     this.captchaConfig,
     this.challengeConfig,

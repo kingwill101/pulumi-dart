@@ -15,7 +15,7 @@ class UploadWatermarkResponse {
   /// [logs] Last uploaded date for logs from kubernetes cluster. Defaults to current date time
   /// [metrics] Last uploaded date for metrics from kubernetes cluster. Defaults to current date time
   /// [usages] Last uploaded date for usages from kubernetes cluster. Defaults to current date time
-  UploadWatermarkResponse({
+  const UploadWatermarkResponse({
     this.logs,
     this.metrics,
     this.usages,

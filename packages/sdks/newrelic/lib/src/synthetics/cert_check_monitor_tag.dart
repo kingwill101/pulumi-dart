@@ -11,7 +11,7 @@ class CertCheckMonitorTag {
   /// Creates a new [CertCheckMonitorTag].
   /// [key] Name of the tag key.
   /// [values] Values associated with the tag key.
-  CertCheckMonitorTag({
+  const CertCheckMonitorTag({
     required this.key,
     required this.values,
   });

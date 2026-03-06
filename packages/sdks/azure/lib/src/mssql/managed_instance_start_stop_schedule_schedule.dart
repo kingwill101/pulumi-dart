@@ -17,7 +17,7 @@ class ManagedInstanceStartStopScheduleSchedule {
   /// [startTime] Start time of the schedule in 24-hour format (e.g., `08:00`).
   /// [stopDay] Stop day of the schedule. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
   /// [stopTime] Stop time of the schedule in 24-hour format (e.g., `17:00`).
-  ManagedInstanceStartStopScheduleSchedule({
+  const ManagedInstanceStartStopScheduleSchedule({
     required this.startDay,
     required this.startTime,
     required this.stopDay,

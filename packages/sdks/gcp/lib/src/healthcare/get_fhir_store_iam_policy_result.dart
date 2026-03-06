@@ -16,7 +16,7 @@ class GetFhirStoreIamPolicyResult {
   /// [fhirStoreId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyData] (Computed) The policy data
-  GetFhirStoreIamPolicyResult({
+  const GetFhirStoreIamPolicyResult({
     required this.etag,
     required this.fhirStoreId,
     required this.id,

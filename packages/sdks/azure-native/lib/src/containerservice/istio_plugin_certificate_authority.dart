@@ -21,7 +21,7 @@ class IstioPluginCertificateAuthority {
   /// [keyObjectName] Intermediate certificate private key object name in Azure Key Vault.
   /// [keyVaultId] The resource ID of the Key Vault.
   /// [rootCertObjectName] Root certificate object name in Azure Key Vault.
-  IstioPluginCertificateAuthority({
+  const IstioPluginCertificateAuthority({
     this.certChainObjectName,
     this.certObjectName,
     this.keyObjectName,

@@ -22,7 +22,7 @@ class GroupArgs {
   /// [authenticationDomainId] The ID of the authentication domain to which the group to be created would belong.
   /// [name] The name of the group to be created.
   /// [userIds] A list of IDs of users to be included in the group to be created.
-  GroupArgs({
+  const GroupArgs({
     required this.authenticationDomainId,
     this.name,
     this.userIds,

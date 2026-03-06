@@ -26,7 +26,7 @@ class GetCertificateIssuerResult {
   /// [name] Required.
   /// [orgId] The organization ID with the third-party Certificate Issuer.
   /// [providerName] The name of the third-party Certificate Issuer.
-  GetCertificateIssuerResult({
+  const GetCertificateIssuerResult({
     required this.accountId,
     required this.admins,
     required this.id,

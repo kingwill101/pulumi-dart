@@ -37,7 +37,7 @@ class GuardrailLlmPromptSecurityCustomPolicy {
   /// [modelSettings] Model settings contains various configurations for the LLM model.
   /// [policyScope] Defines when to apply the policy check during the conversation. If set to
   /// [prompt] Policy prompt.
-  GuardrailLlmPromptSecurityCustomPolicy({
+  const GuardrailLlmPromptSecurityCustomPolicy({
     this.allowShortUtterance,
     this.failOpen,
     this.maxConversationMessages,

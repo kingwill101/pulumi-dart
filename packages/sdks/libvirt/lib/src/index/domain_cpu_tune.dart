@@ -64,7 +64,7 @@ class DomainCpuTune {
   /// [shares] Configures the relative weight of CPU resources assigned to the domain, influencing its priority in CPU scheduling.
   /// [vcpuPins] Enables pinning configurations for virtual CPUs, enhancing performance by binding specific virtual CPUs to physical cores.
   /// [vcpuScheds] Configures the scheduling parameters for virtual CPUs, impacting how CPU resources are allocated during execution.
-  DomainCpuTune({
+  const DomainCpuTune({
     this.cacheTunes,
     this.emulatorPeriod,
     this.emulatorPin,

@@ -15,7 +15,7 @@ class GetLinuxFunctionAppArgs {
   /// Creates a new [GetLinuxFunctionAppArgs].
   /// [name] The name which should be used for this Linux Function App.
   /// [resourceGroupName] The name of the Resource Group where the Linux Function App should exist.
-  GetLinuxFunctionAppArgs({
+  const GetLinuxFunctionAppArgs({
     required this.name,
     required this.resourceGroupName,
   });

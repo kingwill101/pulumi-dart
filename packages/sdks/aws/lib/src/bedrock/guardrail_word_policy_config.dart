@@ -13,7 +13,7 @@ class GuardrailWordPolicyConfig {
   /// Creates a new [GuardrailWordPolicyConfig].
   /// [managedWordListsConfigs] A config for the list of managed words. See Managed Word Lists Config for more information.
   /// [wordsConfigs] List of custom word configs. See Words Config for more information.
-  GuardrailWordPolicyConfig({
+  const GuardrailWordPolicyConfig({
     this.managedWordListsConfigs,
     this.wordsConfigs,
   });

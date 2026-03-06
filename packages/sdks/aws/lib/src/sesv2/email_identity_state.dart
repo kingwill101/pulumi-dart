@@ -39,7 +39,7 @@ class EmailIdentityState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [verificationStatus] The verification status of the identity. The status can be one of the following: `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
   /// [verifiedForSendingStatus] Specifies whether or not the identity is verified.
-  EmailIdentityState({
+  const EmailIdentityState({
     this.arn,
     this.configurationSetName,
     this.dkimSigningAttributes,

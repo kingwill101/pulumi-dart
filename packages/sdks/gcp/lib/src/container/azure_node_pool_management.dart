@@ -8,7 +8,7 @@ class AzureNodePoolManagement {
 
   /// Creates a new [AzureNodePoolManagement].
   /// [autoRepair] Optional. Whether or not the nodes will be automatically repaired.
-  AzureNodePoolManagement({
+  const AzureNodePoolManagement({
     this.autoRepair,
   });
 

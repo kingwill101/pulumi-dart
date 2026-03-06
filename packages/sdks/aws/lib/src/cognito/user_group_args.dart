@@ -27,7 +27,7 @@ class UserGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] The ARN of the IAM role to be associated with the user group.
   /// [userPoolId] The user pool ID.
-  UserGroupArgs({
+  const UserGroupArgs({
     this.description,
     this.name,
     this.precedence,

@@ -21,7 +21,7 @@ class GetQueueResult {
   /// [region] Required.
   /// [tags] Map of tags for the resource.
   /// [url] URL of the queue.
-  GetQueueResult({
+  const GetQueueResult({
     required this.arn,
     required this.id,
     required this.name,

@@ -11,7 +11,7 @@ class FhirStoreIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  FhirStoreIamBindingCondition({
+  const FhirStoreIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

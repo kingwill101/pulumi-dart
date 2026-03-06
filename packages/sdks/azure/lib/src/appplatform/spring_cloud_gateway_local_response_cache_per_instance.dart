@@ -11,7 +11,7 @@ class SpringCloudGatewayLocalResponseCachePerInstance {
   /// Creates a new [SpringCloudGatewayLocalResponseCachePerInstance].
   /// [size] Specifies the maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
   /// [timeToLive] Specifies the time before a cached entry is expired (300s, 5m, 1h...).
-  SpringCloudGatewayLocalResponseCachePerInstance({
+  const SpringCloudGatewayLocalResponseCachePerInstance({
     this.size,
     this.timeToLive,
   });

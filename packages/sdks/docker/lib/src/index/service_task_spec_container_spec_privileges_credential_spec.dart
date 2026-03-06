@@ -11,7 +11,7 @@ class ServiceTaskSpecContainerSpecPrivilegesCredentialSpec {
   /// Creates a new [ServiceTaskSpecContainerSpecPrivilegesCredentialSpec].
   /// [file] Load credential spec from this file
   /// [registry] Load credential spec from this value in the Windows registry
-  ServiceTaskSpecContainerSpecPrivilegesCredentialSpec({
+  const ServiceTaskSpecContainerSpecPrivilegesCredentialSpec({
     this.file,
     this.registry,
   });

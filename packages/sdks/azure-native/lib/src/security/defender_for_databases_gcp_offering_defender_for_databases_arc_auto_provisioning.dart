@@ -12,7 +12,7 @@ class DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning {
   /// Creates a new [DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning].
   /// [serviceAccountEmailAddress] The service account email address in GCP for this offering
   /// [workloadIdentityProviderId] The GCP workload identity provider id for this offering
-  DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning({
+  const DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning({
     this.serviceAccountEmailAddress,
     this.workloadIdentityProviderId,
   });

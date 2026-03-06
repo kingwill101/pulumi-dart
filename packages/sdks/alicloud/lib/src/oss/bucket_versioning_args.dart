@@ -15,7 +15,7 @@ class BucketVersioningArgs {
   /// Creates a new [BucketVersioningArgs].
   /// [bucket] The name of the bucket.
   /// [status] A bucket can be in one of the following versioning states: disabled, enabled, or suspended. By default, versioning is disabled for a bucket. Updating the value from Enabled or Suspended to Disabled will result in errors, because OSS does not support returning buckets to an unversioned state. .
-  BucketVersioningArgs({
+  const BucketVersioningArgs({
     required this.bucket,
     this.status,
   });

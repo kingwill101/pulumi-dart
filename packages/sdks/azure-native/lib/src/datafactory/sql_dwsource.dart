@@ -47,7 +47,7 @@ class SqlDWSource {
   /// [sqlReaderStoredProcedureName] Name of the stored procedure for a SQL Data Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
   /// [storedProcedureParameters] Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
   /// [type] Copy source type.
-  SqlDWSource({
+  const SqlDWSource({
     this.additionalColumns,
     this.disableMetricsCollection,
     this.isolationLevel,

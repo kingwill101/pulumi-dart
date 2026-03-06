@@ -21,7 +21,7 @@ class AlertRobotState {
   /// [dailyNocTime] The time of the daily notification.
   /// [robotAddr] The webhook url of the robot.
   /// [robotType] The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
-  AlertRobotState({
+  const AlertRobotState({
     this.alertRobotName,
     this.dailyNoc,
     this.dailyNocTime,

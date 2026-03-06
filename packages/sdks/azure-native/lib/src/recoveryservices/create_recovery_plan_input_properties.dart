@@ -23,7 +23,7 @@ class CreateRecoveryPlanInputProperties {
   /// [primaryFabricId] The primary fabric Id.
   /// [providerSpecificInput] The provider specific input.
   /// [recoveryFabricId] The recovery fabric Id.
-  CreateRecoveryPlanInputProperties({
+  const CreateRecoveryPlanInputProperties({
     this.failoverDeploymentModel,
     required this.groups,
     required this.primaryFabricId,

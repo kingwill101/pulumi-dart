@@ -8,7 +8,7 @@ class SqlContainerIndexingPolicyIncludedPath {
 
   /// Creates a new [SqlContainerIndexingPolicyIncludedPath].
   /// [path] Path for which the indexing behaviour applies to.
-  SqlContainerIndexingPolicyIncludedPath({
+  const SqlContainerIndexingPolicyIncludedPath({
     required this.path,
   });
 

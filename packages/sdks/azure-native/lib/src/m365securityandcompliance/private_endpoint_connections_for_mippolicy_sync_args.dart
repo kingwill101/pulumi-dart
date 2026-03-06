@@ -22,7 +22,7 @@ class PrivateEndpointConnectionsForMIPPolicySyncArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceName] The name of the service instance.
-  PrivateEndpointConnectionsForMIPPolicySyncArgs({
+  const PrivateEndpointConnectionsForMIPPolicySyncArgs({
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,
     required this.resourceGroupName,

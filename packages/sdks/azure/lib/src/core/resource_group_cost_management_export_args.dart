@@ -38,7 +38,7 @@ class ResourceGroupCostManagementExportArgs {
   /// [recurrencePeriodStartDate] The date the export will start capturing information.
   /// [recurrenceType] How often the requested information will be exported. Valid values include `Annually`, `Daily`, `Monthly`, `Weekly`.
   /// [resourceGroupId] The id of the resource group on which to create an export. Changing this forces a new resource to be created.
-  ResourceGroupCostManagementExportArgs({
+  const ResourceGroupCostManagementExportArgs({
     this.active,
     required this.exportDataOptions,
     required this.exportDataStorageLocation,

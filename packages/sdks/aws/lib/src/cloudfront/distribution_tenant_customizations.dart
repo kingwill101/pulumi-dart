@@ -17,7 +17,7 @@ class DistributionTenantCustomizations {
   /// [certificate] Certificate configuration for the tenant (maximum one).
   /// [geoRestriction] Geographic restrictions configuration for the tenant (maximum one).
   /// [webAcl] Web ACL configuration for the tenant (maximum one).
-  DistributionTenantCustomizations({
+  const DistributionTenantCustomizations({
     this.certificate,
     this.geoRestriction,
     this.webAcl,

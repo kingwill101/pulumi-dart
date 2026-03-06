@@ -11,7 +11,7 @@ class InfrastructureConfigurationInstanceMetadataOptions {
   /// Creates a new [InfrastructureConfigurationInstanceMetadataOptions].
   /// [httpPutResponseHopLimit] The number of hops that an instance can traverse to reach its destonation.
   /// [httpTokens] Whether a signed token is required for instance metadata retrieval requests. Valid values: `required`, `optional`.
-  InfrastructureConfigurationInstanceMetadataOptions({
+  const InfrastructureConfigurationInstanceMetadataOptions({
     this.httpPutResponseHopLimit,
     this.httpTokens,
   });

@@ -17,7 +17,7 @@ class GetDbInstancePlansPlanPlanConfigScaleOut {
   /// [planCronTime] The Cron Time of the plan.
   /// [planTaskStatus] The Status of the plan Task.
   /// [segmentNodeNum] The segment Node Num of the Plan.
-  GetDbInstancePlansPlanPlanConfigScaleOut({
+  const GetDbInstancePlansPlanPlanConfigScaleOut({
     required this.executeTime,
     required this.planCronTime,
     required this.planTaskStatus,

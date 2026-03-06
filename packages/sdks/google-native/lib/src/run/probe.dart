@@ -37,7 +37,7 @@ class Probe {
   /// [successThreshold] Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set.
   /// [tcpSocket] TCPSocket specifies an action involving a TCP port.
   /// [timeoutSeconds] Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds; if period_seconds is not set, must be less or equal than 10.
-  Probe({
+  const Probe({
     this.exec,
     this.failureThreshold,
     this.grpc,

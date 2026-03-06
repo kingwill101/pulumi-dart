@@ -44,7 +44,7 @@ class SingleNodeVirtualInstanceState {
   /// [sapProduct] The SAP Product type for the SAP Single Node Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   /// [singleServerConfiguration] A `single_server_configuration` block as defined below. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the SAP Single Node Virtual Instance.
-  SingleNodeVirtualInstanceState({
+  const SingleNodeVirtualInstanceState({
     this.appLocation,
     this.environment,
     this.identity,

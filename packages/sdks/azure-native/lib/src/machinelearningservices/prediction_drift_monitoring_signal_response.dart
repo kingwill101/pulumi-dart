@@ -28,7 +28,7 @@ class PredictionDriftMonitoringSignalResponse {
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [referenceData] [Required] The data to calculate drift against.
   /// [signalType] Expected value is 'PredictionDrift'.
-  PredictionDriftMonitoringSignalResponse({
+  const PredictionDriftMonitoringSignalResponse({
     this.featureDataTypeOverride,
     required this.metricThresholds,
     this.notificationTypes,

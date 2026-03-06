@@ -18,7 +18,7 @@ class KeyVaultCredentialSettingsResponse {
   /// [credentialName] Credential name.
   /// [enable] Enable or disable key vault credential setting.
   /// [servicePrincipalName] Service principal name to access key vault.
-  KeyVaultCredentialSettingsResponse({
+  const KeyVaultCredentialSettingsResponse({
     this.azureKeyVaultUrl,
     this.credentialName,
     this.enable,

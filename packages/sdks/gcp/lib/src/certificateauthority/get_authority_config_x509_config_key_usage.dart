@@ -17,7 +17,7 @@ class GetAuthorityConfigX509ConfigKeyUsage {
   /// [baseKeyUsages] Describes high-level ways in which a key may be used.
   /// [extendedKeyUsages] Describes high-level ways in which a key may be used.
   /// [unknownExtendedKeyUsages] An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-  GetAuthorityConfigX509ConfigKeyUsage({
+  const GetAuthorityConfigX509ConfigKeyUsage({
     required this.baseKeyUsages,
     required this.extendedKeyUsages,
     required this.unknownExtendedKeyUsages,

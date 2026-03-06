@@ -11,7 +11,7 @@ class CaPoolIssuancePolicyAllowedIssuanceModes {
   /// Creates a new [CaPoolIssuancePolicyAllowedIssuanceModes].
   /// [allowConfigBasedIssuance] When true, allows callers to create Certificates by specifying a CertificateConfig.
   /// [allowCsrBasedIssuance] When true, allows callers to create Certificates by specifying a CSR.
-  CaPoolIssuancePolicyAllowedIssuanceModes({
+  const CaPoolIssuancePolicyAllowedIssuanceModes({
     required this.allowConfigBasedIssuance,
     required this.allowCsrBasedIssuance,
   });

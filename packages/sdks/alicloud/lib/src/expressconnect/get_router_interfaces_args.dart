@@ -28,7 +28,7 @@ class GetRouterInterfacesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetRouterInterfacesArgs({
+  const GetRouterInterfacesArgs({
     this.filters,
     this.ids,
     this.includeReservationData,

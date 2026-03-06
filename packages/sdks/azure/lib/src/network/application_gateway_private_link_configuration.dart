@@ -21,7 +21,7 @@ class ApplicationGatewayPrivateLinkConfiguration {
   /// [id] The ID of the Rewrite Rule Set
   /// [ipConfigurations] One or more `ip_configuration` blocks as defined below.
   /// [name] The name of the private link configuration.
-  ApplicationGatewayPrivateLinkConfiguration({
+  const ApplicationGatewayPrivateLinkConfiguration({
     this.id,
     required this.ipConfigurations,
     required this.name,

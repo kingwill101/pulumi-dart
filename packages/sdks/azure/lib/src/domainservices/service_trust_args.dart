@@ -24,7 +24,7 @@ class ServiceTrustArgs {
   /// [password] The password of the inbound trust set in the on-premise Active Directory Domain Service.
   /// [trustedDomainDnsIps] Specifies a list of DNS IPs that are used to resolve the on-premise Active Directory Domain Service.
   /// [trustedDomainFqdn] The FQDN of the on-premise Active Directory Domain Service.
-  ServiceTrustArgs({
+  const ServiceTrustArgs({
     required this.domainServiceId,
     this.name,
     required this.password,

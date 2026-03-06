@@ -25,7 +25,7 @@ class NetworkInterface {
   /// [networkId] Gets or sets the ARM Id of the network resource to connect the virtual machine.
   /// [nicType] NIC type
   /// [powerOnBoot] Gets or sets the power on boot.
-  NetworkInterface({
+  const NetworkInterface({
     this.deviceKey,
     this.ipSettings,
     this.name,

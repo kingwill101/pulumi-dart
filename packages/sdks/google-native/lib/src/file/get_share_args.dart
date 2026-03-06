@@ -17,7 +17,7 @@ class GetShareArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [shareId] Required.
-  GetShareArgs({
+  const GetShareArgs({
     required this.instanceId,
     required this.location,
     this.project,

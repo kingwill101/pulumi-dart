@@ -34,7 +34,7 @@ class GetExpressRouteCircuitResult {
   /// [serviceProviderProperties] A `service_provider_properties` block for the ExpressRoute circuit as documented below
   /// [serviceProviderProvisioningState] The ExpressRoute circuit provisioning state from your chosen service provider. Possible values are `NotProvisioned`, `Provisioning`, `Provisioned`, and `Deprovisioning`.
   /// [sku] A `sku` block for the ExpressRoute circuit as documented below.
-  GetExpressRouteCircuitResult({
+  const GetExpressRouteCircuitResult({
     required this.id,
     required this.location,
     required this.name,

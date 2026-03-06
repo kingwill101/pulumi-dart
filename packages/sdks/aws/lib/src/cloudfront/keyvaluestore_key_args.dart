@@ -18,7 +18,7 @@ class KeyvaluestoreKeyArgs {
   /// [key] Key to put.
   /// [keyValueStoreArn] Amazon Resource Name (ARN) of the Key Value Store.
   /// [value] Value to put.
-  KeyvaluestoreKeyArgs({
+  const KeyvaluestoreKeyArgs({
     required this.key,
     required this.keyValueStoreArn,
     required this.value,

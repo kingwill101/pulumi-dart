@@ -17,7 +17,7 @@ class GetConsentStoreIamPolicyArgs {
   /// Creates a new [GetConsentStoreIamPolicyArgs].
   /// [consentStoreId] Used to find the parent resource to bind the IAM policy to
   /// [dataset] Identifies the dataset addressed by this request. Must be in the format
-  GetConsentStoreIamPolicyArgs({
+  const GetConsentStoreIamPolicyArgs({
     required this.consentStoreId,
     required this.dataset,
   });

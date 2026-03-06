@@ -12,7 +12,7 @@ class RolePolicyAttachmentState {
   /// Creates a new [RolePolicyAttachmentState].
   /// [policyArn] The ARN of the policy you want to apply
   /// [role] The name of the IAM role to which the policy should be applied
-  RolePolicyAttachmentState({
+  const RolePolicyAttachmentState({
     this.policyArn,
     this.role,
   });

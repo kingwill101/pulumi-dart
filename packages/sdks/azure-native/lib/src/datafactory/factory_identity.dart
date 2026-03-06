@@ -12,7 +12,7 @@ class FactoryIdentity {
   /// Creates a new [FactoryIdentity].
   /// [type] The identity type.
   /// [userAssignedIdentities] List of user assigned identities for the factory.
-  FactoryIdentity({
+  const FactoryIdentity({
     required this.type,
     this.userAssignedIdentities,
   });

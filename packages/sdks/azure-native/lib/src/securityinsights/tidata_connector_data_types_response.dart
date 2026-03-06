@@ -10,7 +10,7 @@ class TIDataConnectorDataTypesResponse {
 
   /// Creates a new [TIDataConnectorDataTypesResponse].
   /// [indicators] Data type for indicators connection.
-  TIDataConnectorDataTypesResponse({
+  const TIDataConnectorDataTypesResponse({
     required this.indicators,
   });
 

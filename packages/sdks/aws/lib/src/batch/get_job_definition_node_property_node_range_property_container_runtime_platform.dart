@@ -11,7 +11,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform {
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform].
   /// [cpuArchitecture] The vCPU architecture. The default value is X86_64. Valid values are X86_64 and ARM64.
   /// [operatingSystemFamily] The operating system for the compute environment. V
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform({
     required this.cpuArchitecture,
     required this.operatingSystemFamily,
   });

@@ -11,7 +11,7 @@ class ConfigurationFeatureTargetingFilterGroup {
   /// Creates a new [ConfigurationFeatureTargetingFilterGroup].
   /// [name] The name of the group.
   /// [rolloutPercentage] Rollout percentage of the group.
-  ConfigurationFeatureTargetingFilterGroup({
+  const ConfigurationFeatureTargetingFilterGroup({
     required this.name,
     required this.rolloutPercentage,
   });

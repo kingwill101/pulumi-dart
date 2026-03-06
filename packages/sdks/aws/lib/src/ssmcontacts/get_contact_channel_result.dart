@@ -29,7 +29,7 @@ class GetContactChannelResult {
   /// [name] Name of the contact channel.
   /// [region] Required.
   /// [type] Type of the contact channel.
-  GetContactChannelResult({
+  const GetContactChannelResult({
     required this.activationStatus,
     required this.arn,
     required this.contactId,

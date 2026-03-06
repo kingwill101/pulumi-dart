@@ -20,7 +20,7 @@ class StorageBoxSubaccountAccessSettings {
   /// [sambaEnabled] Whether the Samba subsystem is enabled.
   /// [sshEnabled] Whether the SSH subsystem is enabled.
   /// [webdavEnabled] Whether the WebDAV subsystem is enabled.
-  StorageBoxSubaccountAccessSettings({
+  const StorageBoxSubaccountAccessSettings({
     this.reachableExternally,
     this.readonly,
     this.sambaEnabled,

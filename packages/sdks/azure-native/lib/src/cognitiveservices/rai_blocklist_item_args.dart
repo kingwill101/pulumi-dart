@@ -28,7 +28,7 @@ class RaiBlocklistItemArgs {
   /// [raiBlocklistName] The name of the RaiBlocklist associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  RaiBlocklistItemArgs({
+  const RaiBlocklistItemArgs({
     required this.accountName,
     this.properties,
     this.raiBlocklistItemName,

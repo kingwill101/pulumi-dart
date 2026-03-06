@@ -61,7 +61,7 @@ class InMageRcmProtectedDiskDetailsResponse {
   /// [seedBlobUri] The uri of the seed blob.
   /// [seedManagedDiskId] The ARM Id of the seed managed disk.
   /// [targetManagedDiskId] The ARM Id of the target managed disk.
-  InMageRcmProtectedDiskDetailsResponse({
+  const InMageRcmProtectedDiskDetailsResponse({
     required this.capacityInBytes,
     this.customTargetDiskName,
     required this.dataPendingAtSourceAgentInMB,

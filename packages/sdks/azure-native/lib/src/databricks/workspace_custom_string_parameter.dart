@@ -9,7 +9,7 @@ class WorkspaceCustomStringParameter {
 
   /// Creates a new [WorkspaceCustomStringParameter].
   /// [value] The value which should be used for this field.
-  WorkspaceCustomStringParameter({
+  const WorkspaceCustomStringParameter({
     required this.value,
   });
 

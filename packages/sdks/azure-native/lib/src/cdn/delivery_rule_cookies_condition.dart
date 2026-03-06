@@ -14,7 +14,7 @@ class DeliveryRuleCookiesCondition {
   /// Creates a new [DeliveryRuleCookiesCondition].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleCookiesCondition({
+  const DeliveryRuleCookiesCondition({
     required this.name,
     required this.parameters,
   });

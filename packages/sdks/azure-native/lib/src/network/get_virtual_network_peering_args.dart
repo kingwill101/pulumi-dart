@@ -18,7 +18,7 @@ class GetVirtualNetworkPeeringArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkName] The name of the virtual network.
   /// [virtualNetworkPeeringName] The name of the virtual network peering.
-  GetVirtualNetworkPeeringArgs({
+  const GetVirtualNetworkPeeringArgs({
     required this.resourceGroupName,
     required this.virtualNetworkName,
     required this.virtualNetworkPeeringName,

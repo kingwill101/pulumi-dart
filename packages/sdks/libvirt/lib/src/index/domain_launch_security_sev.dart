@@ -23,7 +23,7 @@ class DomainLaunchSecuritySev {
   /// [policy] Sets the security policy for SEV operations within the domain.
   /// [reducedPhysBits] Configures the reduced physical bits setting for SEV to assign smaller address spaces.
   /// [session] Sets the SEV session identifier for managing virtual machine security.
-  DomainLaunchSecuritySev({
+  const DomainLaunchSecuritySev({
     this.cbitPos,
     required this.dhCert,
     this.kernelHashes,

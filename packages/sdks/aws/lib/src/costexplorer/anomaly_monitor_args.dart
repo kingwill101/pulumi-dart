@@ -24,7 +24,7 @@ class AnomalyMonitorArgs {
   /// [monitorType] The possible type values. Valid values: `DIMENSIONAL` | `CUSTOM`.
   /// [name] The name of the monitor.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  AnomalyMonitorArgs({
+  const AnomalyMonitorArgs({
     this.monitorDimension,
     this.monitorSpecification,
     required this.monitorType,

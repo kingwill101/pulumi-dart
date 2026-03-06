@@ -10,7 +10,7 @@ class GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse].
   /// [propertyDefinitions] List of property definitions.
-  GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse({
+  const GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse({
     required this.propertyDefinitions,
   });
 

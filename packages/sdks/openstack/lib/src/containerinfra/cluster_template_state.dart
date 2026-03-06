@@ -161,7 +161,7 @@ class ClusterTemplateState {
   /// [updatedAt] Optional.
   /// [userId] The user of the cluster template. Required if admin
   /// [volumeDriver] The name of the driver that is used for the
-  ClusterTemplateState({
+  const ClusterTemplateState({
     this.apiserverPort,
     this.clusterDistro,
     this.coe,

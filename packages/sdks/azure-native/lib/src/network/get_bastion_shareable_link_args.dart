@@ -19,7 +19,7 @@ class GetBastionShareableLinkArgs {
   /// [bastionHostName] The name of the Bastion Host.
   /// [resourceGroupName] The name of the resource group.
   /// [vms] List of VM references.
-  GetBastionShareableLinkArgs({
+  const GetBastionShareableLinkArgs({
     required this.bastionHostName,
     required this.resourceGroupName,
     this.vms,

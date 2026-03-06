@@ -50,7 +50,7 @@ class DataControllerPropertiesResponse {
   /// [provisioningState] The provisioning state of the Arc Data Controller resource.
   /// [uploadServicePrincipal] Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
   /// [uploadWatermark] Properties on upload watermark.  Mostly timestamp for each upload data type
-  DataControllerPropertiesResponse({
+  const DataControllerPropertiesResponse({
     this.basicLoginInformation,
     this.clusterId,
     this.extensionId,

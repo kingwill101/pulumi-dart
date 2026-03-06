@@ -18,7 +18,7 @@ class CassandraSchema {
   /// [clusterKeys] List of cluster key.
   /// [columns] List of Cassandra table columns.
   /// [partitionKeys] List of partition key.
-  CassandraSchema({
+  const CassandraSchema({
     this.clusterKeys,
     this.columns,
     this.partitionKeys,

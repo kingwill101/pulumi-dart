@@ -13,7 +13,7 @@ class ReplicationConfigurationReplicationConfigurationRule {
   /// Creates a new [ReplicationConfigurationReplicationConfigurationRule].
   /// [destinations] the details of a replication destination. A maximum of 25 are allowed per `rule`. See Destination.
   /// [repositoryFilters] filters for a replication rule. See Repository Filter.
-  ReplicationConfigurationReplicationConfigurationRule({
+  const ReplicationConfigurationReplicationConfigurationRule({
     required this.destinations,
     this.repositoryFilters,
   });

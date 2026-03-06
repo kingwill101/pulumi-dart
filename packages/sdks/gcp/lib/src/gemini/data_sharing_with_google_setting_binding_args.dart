@@ -33,7 +33,7 @@ class DataSharingWithGoogleSettingBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [settingBindingId] Required. Id of the setting binding.
   /// [target] Target of the binding.
-  DataSharingWithGoogleSettingBindingArgs({
+  const DataSharingWithGoogleSettingBindingArgs({
     required this.dataSharingWithGoogleSettingId,
     this.labels,
     this.location,

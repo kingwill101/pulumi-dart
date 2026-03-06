@@ -9,7 +9,7 @@ class GetFirewallPolicyThreatIntelligenceAllowlist {
   /// Creates a new [GetFirewallPolicyThreatIntelligenceAllowlist].
   /// [fqdns] Required.
   /// [ipAddresses] Required.
-  GetFirewallPolicyThreatIntelligenceAllowlist({
+  const GetFirewallPolicyThreatIntelligenceAllowlist({
     required this.fqdns,
     required this.ipAddresses,
   });

@@ -44,7 +44,7 @@ class GetRuleResult {
   /// [ruleSetName] The name of the rule set containing the rule.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetRuleResult({
+  const GetRuleResult({
     this.actions,
     required this.azureApiVersion,
     this.conditions,

@@ -22,7 +22,7 @@ class GetEnvironmentBlueprintResult {
   /// [managed] Required.
   /// [name] Required.
   /// [region] Required.
-  GetEnvironmentBlueprintResult({
+  const GetEnvironmentBlueprintResult({
     required this.blueprintProvider,
     required this.description,
     required this.domainId,

@@ -43,7 +43,7 @@ class ApplicationGatewayPathRuleResponse {
   /// [redirectConfiguration] Redirect configuration resource of URL path map path rule.
   /// [rewriteRuleSet] Rewrite rule set resource of URL path map path rule.
   /// [type] Type of the resource.
-  ApplicationGatewayPathRuleResponse({
+  const ApplicationGatewayPathRuleResponse({
     this.backendAddressPool,
     this.backendHttpSettings,
     required this.etag,

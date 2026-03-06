@@ -23,7 +23,7 @@ class GetKubernetesClusterIngressApplicationGateway {
   /// [ingressApplicationGatewayIdentities] An `ingress_application_gateway_identity` block as defined below.
   /// [subnetCidr] The subnet CIDR used to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. This attribute is only set when `subnet_cidr` is specified when configuring the `ingress_application_gateway` addon.
   /// [subnetId] The ID of the subnet on which to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. This attribute is only set when `subnet_id` is specified when configuring the `ingress_application_gateway` addon.
-  GetKubernetesClusterIngressApplicationGateway({
+  const GetKubernetesClusterIngressApplicationGateway({
     required this.effectiveGatewayId,
     required this.gatewayId,
     required this.gatewayName,

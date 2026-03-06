@@ -10,7 +10,7 @@ class AgentPoolStatusResponse {
 
   /// Creates a new [AgentPoolStatusResponse].
   /// [provisioningError] The error detail information of the agent pool. Preserves the detailed info of failure. If there was no error, this field is omitted.
-  AgentPoolStatusResponse({
+  const AgentPoolStatusResponse({
     required this.provisioningError,
   });
 

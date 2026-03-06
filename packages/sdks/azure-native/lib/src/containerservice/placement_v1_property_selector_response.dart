@@ -10,7 +10,7 @@ class PlacementV1PropertySelectorResponse {
 
   /// Creates a new [PlacementV1PropertySelectorResponse].
   /// [matchExpressions] MatchExpressions is an array of PropertySelectorRequirements. The requirements are AND'd.
-  PlacementV1PropertySelectorResponse({
+  const PlacementV1PropertySelectorResponse({
     required this.matchExpressions,
   });
 

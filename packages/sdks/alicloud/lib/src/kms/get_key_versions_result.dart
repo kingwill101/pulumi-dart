@@ -21,7 +21,7 @@ class GetKeyVersionsResult {
   /// [keyId] ID of the key.
   /// [outputFile] Optional.
   /// [versions] A list of KMS KeyVersions. Each element contains the following attributes:
-  GetKeyVersionsResult({
+  const GetKeyVersionsResult({
     required this.id,
     required this.ids,
     required this.keyId,

@@ -18,7 +18,7 @@ class ResourceProviderRegistrationArgs {
   /// Creates a new [ResourceProviderRegistrationArgs].
   /// [features] A list of `feature` blocks as defined below.
   /// [name] The namespace of the Resource Provider which should be registered. Changing this forces a new resource to be created.
-  ResourceProviderRegistrationArgs({
+  const ResourceProviderRegistrationArgs({
     this.features,
     this.name,
   });

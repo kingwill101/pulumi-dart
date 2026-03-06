@@ -19,7 +19,7 @@ class WorkloadNetworkDhcpRelay {
   /// [displayName] Display name of the DHCP entity.
   /// [revision] NSX revision number.
   /// [serverAddresses] DHCP Relay Addresses. Max 3.
-  WorkloadNetworkDhcpRelay({
+  const WorkloadNetworkDhcpRelay({
     required this.dhcpType,
     this.displayName,
     this.revision,

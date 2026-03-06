@@ -26,7 +26,7 @@ class GetInstanceAttachmentsAttachment {
   /// [region] The region of the instance attachment.
   /// [vpcId] The ID of attaching VPC to instance.
   /// [vpcName] The name of attaching VPC to instance.
-  GetInstanceAttachmentsAttachment({
+  const GetInstanceAttachmentsAttachment({
     required this.domain,
     required this.endpoint,
     required this.id,

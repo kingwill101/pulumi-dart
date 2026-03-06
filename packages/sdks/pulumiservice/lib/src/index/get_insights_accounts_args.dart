@@ -11,7 +11,7 @@ class GetInsightsAccountsArgs {
 
   /// Creates a new [GetInsightsAccountsArgs].
   /// [organizationName] Required.
-  GetInsightsAccountsArgs({
+  const GetInsightsAccountsArgs({
     required this.organizationName,
   });
 

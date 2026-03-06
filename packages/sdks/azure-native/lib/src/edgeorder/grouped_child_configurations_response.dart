@@ -14,7 +14,7 @@ class GroupedChildConfigurationsResponse {
   /// Creates a new [GroupedChildConfigurationsResponse].
   /// [categoryInformation] Category information.
   /// [childConfigurations] List of child configurations.
-  GroupedChildConfigurationsResponse({
+  const GroupedChildConfigurationsResponse({
     required this.categoryInformation,
     required this.childConfigurations,
   });

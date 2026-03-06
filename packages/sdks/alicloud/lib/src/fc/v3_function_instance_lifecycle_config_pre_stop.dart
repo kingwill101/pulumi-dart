@@ -11,7 +11,7 @@ class V3FunctionInstanceLifecycleConfigPreStop {
   /// Creates a new [V3FunctionInstanceLifecycleConfigPreStop].
   /// [handler] Function Handler: the call entry for the function compute system to run your function.
   /// [timeout] The maximum running time of the function, in seconds.
-  V3FunctionInstanceLifecycleConfigPreStop({
+  const V3FunctionInstanceLifecycleConfigPreStop({
     this.handler,
     this.timeout,
   });

@@ -9,7 +9,7 @@ class TargetHealthReasonEnumEnumValue {
 
   /// Creates a new [TargetHealthReasonEnumEnumValue].
   /// [value] Property value
-  TargetHealthReasonEnumEnumValue({
+  const TargetHealthReasonEnumEnumValue({
     this.value,
   });
 

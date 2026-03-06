@@ -11,7 +11,7 @@ class InstanceEnvironmentVar {
   /// Creates a new [InstanceEnvironmentVar].
   /// [key] Keys for environment variables
   /// [value] Values of environment variables
-  InstanceEnvironmentVar({
+  const InstanceEnvironmentVar({
     this.key,
     this.value,
   });

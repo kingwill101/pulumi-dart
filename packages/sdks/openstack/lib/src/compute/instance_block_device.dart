@@ -59,7 +59,7 @@ class InstanceBlockDevice {
   /// [uuid] The UUID of
   /// [volumeSize] The size of the volume to create (in gigabytes). Required
   /// [volumeType] The volume type that will be used, for example SSD
-  InstanceBlockDevice({
+  const InstanceBlockDevice({
     this.bootIndex,
     this.deleteOnTermination,
     this.destinationType,

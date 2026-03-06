@@ -15,7 +15,7 @@ class JsonFieldWithDefaultResponse {
   /// Creates a new [JsonFieldWithDefaultResponse].
   /// [defaultValue] The default value to be used for mapping when a SourceField is not provided or if there's no property with the specified name in the published JSON event payload.
   /// [sourceField] Name of a field in the input event schema that's to be used as the source of a mapping.
-  JsonFieldWithDefaultResponse({
+  const JsonFieldWithDefaultResponse({
     this.defaultValue,
     this.sourceField,
   });

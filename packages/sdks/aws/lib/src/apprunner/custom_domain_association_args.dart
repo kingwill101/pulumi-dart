@@ -21,7 +21,7 @@ class CustomDomainAssociationArgs {
   /// [enableWwwSubdomain] Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceArn] ARN of the App Runner service.
-  CustomDomainAssociationArgs({
+  const CustomDomainAssociationArgs({
     required this.domainName,
     this.enableWwwSubdomain,
     this.region,

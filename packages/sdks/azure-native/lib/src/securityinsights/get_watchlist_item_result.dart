@@ -55,7 +55,7 @@ class GetWatchlistItemResult {
   /// [updatedBy] Describes a user that updated the watchlist item
   /// [watchlistItemId] The id (a Guid) of the watchlist item
   /// [watchlistItemType] The type of the watchlist item
-  GetWatchlistItemResult({
+  const GetWatchlistItemResult({
     required this.azureApiVersion,
     this.created,
     this.createdBy,

@@ -13,7 +13,7 @@ class VirtualNetworkPropertiesResponse {
   /// Creates a new [VirtualNetworkPropertiesResponse].
   /// [id] Uri of the virtual network.
   /// [subnet] Properties of a subnet.
-  VirtualNetworkPropertiesResponse({
+  const VirtualNetworkPropertiesResponse({
     this.id,
     this.subnet,
   });

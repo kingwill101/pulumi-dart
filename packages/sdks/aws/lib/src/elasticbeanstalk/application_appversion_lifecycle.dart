@@ -17,7 +17,7 @@ class ApplicationAppversionLifecycle {
   /// [maxAgeInDays] The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
   /// [maxCount] The maximum number of application versions to retain ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
   /// [serviceRole] The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
-  ApplicationAppversionLifecycle({
+  const ApplicationAppversionLifecycle({
     this.deleteSourceFromS3,
     this.maxAgeInDays,
     this.maxCount,

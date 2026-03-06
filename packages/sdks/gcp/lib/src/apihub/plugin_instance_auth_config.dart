@@ -35,7 +35,7 @@ class PluginInstanceAuthConfig {
   /// [googleServiceAccountConfig] Config for Google service account authentication.
   /// [oauth2ClientCredentialsConfig] Parameters to support Oauth 2.0 client credentials grant authentication.
   /// [userPasswordConfig] Parameters to support Username and Password Authentication.
-  PluginInstanceAuthConfig({
+  const PluginInstanceAuthConfig({
     this.apiKeyConfig,
     required this.authType,
     this.googleServiceAccountConfig,

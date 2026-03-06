@@ -57,7 +57,7 @@ class WebAclRuleStatementSizeConstraintStatementFieldToMatch {
   /// [singleQueryArgument] Inspect a single query argument. See `single_query_argument` below for details.
   /// [uriFragment] Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See `uri_fragment` below for details.
   /// [uriPath] Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
-  WebAclRuleStatementSizeConstraintStatementFieldToMatch({
+  const WebAclRuleStatementSizeConstraintStatementFieldToMatch({
     this.allQueryArguments,
     this.body,
     this.cookies,

@@ -24,7 +24,7 @@ class GetRegionalParameterVersionRenderArgs {
   /// [parameter] The Parameter for obtaining the Regional Parameter Version.
   /// [parameterVersionId] The version of the regional parameter to get.
   /// [project] The project for retrieving the Regional Parameter Version. If it's not
-  GetRegionalParameterVersionRenderArgs({
+  const GetRegionalParameterVersionRenderArgs({
     this.location,
     required this.parameter,
     required this.parameterVersionId,

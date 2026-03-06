@@ -14,7 +14,7 @@ class AccessPosixProfile {
   /// [gid] The POSIX group ID used for all EFS operations by this user.
   /// [secondaryGids] The secondary POSIX group IDs used for all EFS operations by this user.
   /// [uid] The POSIX user ID used for all EFS operations by this user.
-  AccessPosixProfile({
+  const AccessPosixProfile({
     required this.gid,
     this.secondaryGids,
     required this.uid,

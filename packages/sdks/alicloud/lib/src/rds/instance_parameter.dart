@@ -11,7 +11,7 @@ class InstanceParameter {
   /// Creates a new [InstanceParameter].
   /// [name] The parameter name.
   /// [value] The parameter value.
-  InstanceParameter({
+  const InstanceParameter({
     required this.name,
     required this.value,
   });

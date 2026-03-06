@@ -21,7 +21,7 @@ class GetRegistryEnterpriseNamespacesArgs {
   /// [instanceId] ID of Container Registry Enterprise Edition instance.
   /// [nameRegex] A regex string to filter results by namespace name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetRegistryEnterpriseNamespacesArgs({
+  const GetRegistryEnterpriseNamespacesArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

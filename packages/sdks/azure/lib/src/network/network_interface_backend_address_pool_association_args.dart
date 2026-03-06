@@ -18,7 +18,7 @@ class NetworkInterfaceBackendAddressPoolAssociationArgs {
   /// [backendAddressPoolId] The ID of the Load Balancer Backend Address Pool which this Network Interface should be connected to. Changing this forces a new resource to be created.
   /// [ipConfigurationName] The Name of the IP Configuration within the Network Interface which should be connected to the Backend Address Pool. Changing this forces a new resource to be created.
   /// [networkInterfaceId] The ID of the Network Interface. Changing this forces a new resource to be created.
-  NetworkInterfaceBackendAddressPoolAssociationArgs({
+  const NetworkInterfaceBackendAddressPoolAssociationArgs({
     required this.backendAddressPoolId,
     required this.ipConfigurationName,
     required this.networkInterfaceId,

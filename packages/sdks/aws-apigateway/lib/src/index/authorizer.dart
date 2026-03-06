@@ -57,7 +57,7 @@ class Authorizer {
   /// [parameterName] parameterName is the name of the header or query parameter containing the authorization
   /// [providerARNs] The ARNs of the Cognito User Pools to use.
   /// [type] The type of the authorizer. This value must be one of the following:
-  Authorizer({
+  const Authorizer({
     this.authType,
     this.authorizerName,
     this.authorizerResultTtlInSeconds,

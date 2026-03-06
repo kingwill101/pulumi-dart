@@ -8,7 +8,7 @@ class DomainDevicesGraphicVncListenerSocket {
 
   /// Creates a new [DomainDevicesGraphicVncListenerSocket].
   /// [socket] Defines the socket's attributes for listener configurations in the Spice protocol.
-  DomainDevicesGraphicVncListenerSocket({
+  const DomainDevicesGraphicVncListenerSocket({
     this.socket,
   });
 

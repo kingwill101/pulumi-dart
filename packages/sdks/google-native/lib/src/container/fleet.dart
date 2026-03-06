@@ -9,7 +9,7 @@ class Fleet {
 
   /// Creates a new [Fleet].
   /// [project] The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
-  Fleet({
+  const Fleet({
     this.project,
   });
 

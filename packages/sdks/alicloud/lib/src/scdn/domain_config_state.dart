@@ -22,7 +22,7 @@ class DomainConfigState {
   /// [functionArgs] The args of the domain config.
   /// [functionName] The name of the domain config.
   /// [status] The status of this resource.
-  DomainConfigState({
+  const DomainConfigState({
     this.configId,
     this.domainName,
     this.functionArgs,

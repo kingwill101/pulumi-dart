@@ -106,7 +106,7 @@ class TaskDefinitionContainerDefinition {
   /// [user] Optional.
   /// [volumesFrom] Optional.
   /// [workingDirectory] Optional.
-  TaskDefinitionContainerDefinition({
+  const TaskDefinitionContainerDefinition({
     this.command,
     this.cpu,
     this.dependsOn,

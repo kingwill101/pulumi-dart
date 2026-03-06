@@ -19,7 +19,7 @@ class ForwardingRuleRuleAction {
   /// [order] Forwarding priority.
   /// [ruleActionType] The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
   /// [ruleActionValue] The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
-  ForwardingRuleRuleAction({
+  const ForwardingRuleRuleAction({
     this.forwardGroupConfig,
     required this.order,
     required this.ruleActionType,

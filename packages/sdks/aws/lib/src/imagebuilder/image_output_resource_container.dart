@@ -11,7 +11,7 @@ class ImageOutputResourceContainer {
   /// Creates a new [ImageOutputResourceContainer].
   /// [imageUris] Set of URIs for created containers.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ImageOutputResourceContainer({
+  const ImageOutputResourceContainer({
     this.imageUris,
     this.region,
   });

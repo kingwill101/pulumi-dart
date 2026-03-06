@@ -16,7 +16,7 @@ class AwsCredsAuthenticationDetailsProperties {
   /// [authenticationType] Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
   /// [awsAccessKeyId] Public key element of the AWS credential object (write only)
   /// [awsSecretAccessKey] Secret key element of the AWS credential object (write only)
-  AwsCredsAuthenticationDetailsProperties({
+  const AwsCredsAuthenticationDetailsProperties({
     required this.authenticationType,
     required this.awsAccessKeyId,
     required this.awsSecretAccessKey,

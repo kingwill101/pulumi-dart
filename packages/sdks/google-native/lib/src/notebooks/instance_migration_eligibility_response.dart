@@ -12,7 +12,7 @@ class InstanceMigrationEligibilityResponse {
   /// Creates a new [InstanceMigrationEligibilityResponse].
   /// [errors] Certain configurations make the UmN ineligible for an automatic migration. A manual migration is required.
   /// [warnings] Certain configurations will be defaulted during the migration.
-  InstanceMigrationEligibilityResponse({
+  const InstanceMigrationEligibilityResponse({
     required this.errors,
     required this.warnings,
   });

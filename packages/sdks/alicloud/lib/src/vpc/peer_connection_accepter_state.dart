@@ -55,7 +55,7 @@ class PeerConnectionAccepterState {
   /// [resourceGroupId] The ID of the new resource group.
   /// [status] The status of the resource
   /// [vpcId] The VPC ID of the initiator of the VPC peering connection.
-  PeerConnectionAccepterState({
+  const PeerConnectionAccepterState({
     this.acceptingOwnerUid,
     this.acceptingRegionId,
     this.acceptingVpcId,

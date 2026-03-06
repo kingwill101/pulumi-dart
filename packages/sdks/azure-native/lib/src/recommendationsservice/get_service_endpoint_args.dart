@@ -18,7 +18,7 @@ class GetServiceEndpointArgs {
   /// [accountName] The name of the RecommendationsService Account resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceEndpointName] The name of the ServiceEndpoint resource.
-  GetServiceEndpointArgs({
+  const GetServiceEndpointArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.serviceEndpointName,

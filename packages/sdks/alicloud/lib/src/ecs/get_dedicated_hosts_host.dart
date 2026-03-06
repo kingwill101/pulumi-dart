@@ -93,7 +93,7 @@ class GetDedicatedHostsHost {
   /// [supportedInstanceTypesLists] The list of ECS instance.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The zone ID of the ECS Dedicated Host.
-  GetDedicatedHostsHost({
+  const GetDedicatedHostsHost({
     required this.actionOnMaintenance,
     required this.autoPlacement,
     required this.autoReleaseTime,

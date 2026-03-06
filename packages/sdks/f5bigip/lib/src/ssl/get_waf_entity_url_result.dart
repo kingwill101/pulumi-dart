@@ -32,7 +32,7 @@ class GetWafEntityUrlResult {
   /// [protocol] Optional.
   /// [signatureOverridesDisables] Optional.
   /// [type] Optional.
-  GetWafEntityUrlResult({
+  const GetWafEntityUrlResult({
     this.crossOriginRequestsEnforcements,
     this.description,
     required this.id,

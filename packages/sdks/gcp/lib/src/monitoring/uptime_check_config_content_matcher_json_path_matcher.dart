@@ -13,7 +13,7 @@ class UptimeCheckConfigContentMatcherJsonPathMatcher {
   /// Creates a new [UptimeCheckConfigContentMatcherJsonPathMatcher].
   /// [jsonMatcher] Options to perform JSONPath content matching.
   /// [jsonPath] JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
-  UptimeCheckConfigContentMatcherJsonPathMatcher({
+  const UptimeCheckConfigContentMatcherJsonPathMatcher({
     this.jsonMatcher,
     required this.jsonPath,
   });

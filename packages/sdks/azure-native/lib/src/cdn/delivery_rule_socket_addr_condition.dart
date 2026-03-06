@@ -14,7 +14,7 @@ class DeliveryRuleSocketAddrCondition {
   /// Creates a new [DeliveryRuleSocketAddrCondition].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleSocketAddrCondition({
+  const DeliveryRuleSocketAddrCondition({
     required this.name,
     required this.parameters,
   });

@@ -8,7 +8,7 @@ class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance {
 
   /// Creates a new [SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance].
   /// [replacementStrategy] The replacement strategy to use. Only available for spot fleets with `fleet_type` set to `maintain`. Valid values: `launch`.
-  SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance({
+  const SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance({
     this.replacementStrategy,
   });
 

@@ -11,7 +11,7 @@ class NodePoolManagementAutoVulFixPolicy {
   /// Creates a new [NodePoolManagementAutoVulFixPolicy].
   /// [restartNode] Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
   /// [vulLevel] The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-  NodePoolManagementAutoVulFixPolicy({
+  const NodePoolManagementAutoVulFixPolicy({
     this.restartNode,
     this.vulLevel,
   });

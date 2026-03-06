@@ -23,7 +23,7 @@ class DomainDevicesTpm {
   /// [alias] Configures the alias for the persistent storage device, allowing for easier identification within the domain.
   /// [backend] Configures the backend settings for the TPM device, determining its operation mode.
   /// [model] Defines the model of the TPM device to be used by the domain.
-  DomainDevicesTpm({
+  const DomainDevicesTpm({
     this.acpi,
     this.address,
     this.alias,

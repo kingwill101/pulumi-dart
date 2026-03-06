@@ -8,7 +8,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfi
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration].
   /// [platformVersion] The AWS Fargate platform version where the jobs are running. A platform version is specified only for jobs that are running on Fargate resources.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration({
     required this.platformVersion,
   });
 

@@ -15,7 +15,7 @@ class GetDatacenterArgs {
   /// Creates a new [GetDatacenterArgs].
   /// [id] ID of the Datacenter.
   /// [name] Name of the Datacenter.
-  GetDatacenterArgs({
+  const GetDatacenterArgs({
     this.id,
     this.name,
   });

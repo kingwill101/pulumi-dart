@@ -15,7 +15,7 @@ class LinkedServiceReference {
   /// [parameters] Arguments for LinkedService.
   /// [referenceName] Reference LinkedService name.
   /// [type] Linked service reference type.
-  LinkedServiceReference({
+  const LinkedServiceReference({
     this.parameters,
     required this.referenceName,
     required this.type,

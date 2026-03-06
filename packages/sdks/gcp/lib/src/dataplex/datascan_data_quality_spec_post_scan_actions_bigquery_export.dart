@@ -9,7 +9,7 @@ class DatascanDataQualitySpecPostScanActionsBigqueryExport {
 
   /// Creates a new [DatascanDataQualitySpecPostScanActionsBigqueryExport].
   /// [resultsTable] The BigQuery table to export DataProfileScan results to.
-  DatascanDataQualitySpecPostScanActionsBigqueryExport({
+  const DatascanDataQualitySpecPostScanActionsBigqueryExport({
     this.resultsTable,
   });
 

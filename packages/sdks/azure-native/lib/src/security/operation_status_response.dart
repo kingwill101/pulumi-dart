@@ -12,7 +12,7 @@ class OperationStatusResponse {
   /// Creates a new [OperationStatusResponse].
   /// [code] The operation status code.
   /// [message] Additional information regarding the success/failure of the operation.
-  OperationStatusResponse({
+  const OperationStatusResponse({
     this.code,
     this.message,
   });

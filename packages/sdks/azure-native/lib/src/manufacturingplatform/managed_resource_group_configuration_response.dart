@@ -12,7 +12,7 @@ class ManagedResourceGroupConfigurationResponse {
   /// Creates a new [ManagedResourceGroupConfigurationResponse].
   /// [location] The resource group location.
   /// [name] The resource group name.
-  ManagedResourceGroupConfigurationResponse({
+  const ManagedResourceGroupConfigurationResponse({
     required this.location,
     required this.name,
   });

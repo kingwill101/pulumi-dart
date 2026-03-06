@@ -48,7 +48,7 @@ class GetLaunchTemplateNetworkInterface {
   /// [privateIpAddress] Required.
   /// [securityGroups] Required.
   /// [subnetId] Required.
-  GetLaunchTemplateNetworkInterface({
+  const GetLaunchTemplateNetworkInterface({
     required this.associateCarrierIpAddress,
     this.associatePublicIpAddress,
     required this.connectionTrackingSpecifications,

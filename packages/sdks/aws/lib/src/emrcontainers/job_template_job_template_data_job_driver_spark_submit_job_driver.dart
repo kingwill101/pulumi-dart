@@ -14,7 +14,7 @@ class JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver {
   /// [entryPoint] The entry point of job application.
   /// [entryPointArguments] The arguments for job application.
   /// [sparkSubmitParameters] The Spark submit parameters that are used for job runs.
-  JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver({
+  const JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver({
     required this.entryPoint,
     this.entryPointArguments,
     this.sparkSubmitParameters,

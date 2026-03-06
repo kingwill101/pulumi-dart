@@ -32,7 +32,7 @@ class GetDockerImagesDockerImage {
   /// [tags] A list of all tags associated with the image.
   /// [updateTime] The time, as a RFC 3339 string, this image was updated.
   /// [uploadTime] The time, as a RFC 3339 string, the image was uploaded. For example, `2014-10-02T15:01:23.045123456Z`.
-  GetDockerImagesDockerImage({
+  const GetDockerImagesDockerImage({
     required this.buildTime,
     required this.imageName,
     required this.imageSizeBytes,

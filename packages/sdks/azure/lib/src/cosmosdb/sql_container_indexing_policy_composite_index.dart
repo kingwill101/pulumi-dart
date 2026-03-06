@@ -9,7 +9,7 @@ class SqlContainerIndexingPolicyCompositeIndex {
 
   /// Creates a new [SqlContainerIndexingPolicyCompositeIndex].
   /// [indices] One or more `index` blocks as defined below.
-  SqlContainerIndexingPolicyCompositeIndex({
+  const SqlContainerIndexingPolicyCompositeIndex({
     required this.indices,
   });
 

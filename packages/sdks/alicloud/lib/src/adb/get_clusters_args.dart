@@ -37,7 +37,7 @@ class GetClustersArgs {
   /// [resourceGroupId] Optional.
   /// [status] The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
   /// [tags] A mapping of tags to assign to the resource.
-  GetClustersArgs({
+  const GetClustersArgs({
     this.description,
     this.descriptionRegex,
     this.enableDetails,

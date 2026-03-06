@@ -11,7 +11,7 @@ class AlertSeverityConfiguration {
   /// Creates a new [AlertSeverityConfiguration].
   /// [evalCondition] Severity when this condition is met.
   /// [severity] Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
-  AlertSeverityConfiguration({
+  const AlertSeverityConfiguration({
     required this.evalCondition,
     required this.severity,
   });

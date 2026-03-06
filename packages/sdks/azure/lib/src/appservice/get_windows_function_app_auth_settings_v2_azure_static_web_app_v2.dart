@@ -8,7 +8,7 @@ class GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2 {
 
   /// Creates a new [GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2].
   /// [clientId] The OAuth 2.0 client ID that was created for the app used for authentication.
-  GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2({
+  const GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2({
     required this.clientId,
   });
 

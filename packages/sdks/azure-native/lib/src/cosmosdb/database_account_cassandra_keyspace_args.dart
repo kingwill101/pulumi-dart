@@ -25,7 +25,7 @@ class DatabaseAccountCassandraKeyspaceArgs {
   /// [options] A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
   /// [resource] The standard JSON format of a Cassandra keyspace
   /// [resourceGroupName] Name of an Azure resource group.
-  DatabaseAccountCassandraKeyspaceArgs({
+  const DatabaseAccountCassandraKeyspaceArgs({
     required this.accountName,
     this.keyspaceName,
     required this.options,

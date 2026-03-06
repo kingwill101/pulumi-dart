@@ -50,7 +50,7 @@ class TopicSubscriptionArgs {
   /// [replayPolicy] JSON String with the archived message replay policy that will be used in the subscription. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/message-archiving-and-replay-subscriber.html) for more details.
   /// [subscriptionRoleArn] ARN of the IAM role to publish to Kinesis Data Firehose delivery stream. Refer to [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html).
   /// [topic] ARN of the SNS topic to subscribe to.
-  TopicSubscriptionArgs({
+  const TopicSubscriptionArgs({
     this.confirmationTimeoutInMinutes,
     this.deliveryPolicy,
     required this.endpoint,

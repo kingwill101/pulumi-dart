@@ -40,7 +40,7 @@ class DiskArgs {
   /// [size] The size of the disk instance. Unit: GiB.
   /// [snapshotId] The ID of the snapshot used to create the cloud disk.
   /// [tags] The label to which the instance is bound.
-  DiskArgs({
+  const DiskArgs({
     required this.category,
     this.diskName,
     this.encrypted,

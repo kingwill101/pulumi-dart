@@ -17,7 +17,7 @@ class UserPhoneConfig {
   /// [autoAccept] When Auto-Accept Call is enabled for an available agent, the agent connects to contacts automatically.
   /// [deskPhoneNumber] The phone number for the user's desk phone. Required if `phone_type` is set as `DESK_PHONE`.
   /// [phoneType] The phone type. Valid values are `DESK_PHONE` and `SOFT_PHONE`.
-  UserPhoneConfig({
+  const UserPhoneConfig({
     this.afterContactWorkTimeLimit,
     this.autoAccept,
     this.deskPhoneNumber,

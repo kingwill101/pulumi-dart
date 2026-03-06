@@ -30,7 +30,7 @@ class CVSSv3ResponseContaineranalysisV1beta1 {
   /// [privilegesRequired] Required.
   /// [scope] Required.
   /// [userInteraction] Required.
-  CVSSv3ResponseContaineranalysisV1beta1({
+  const CVSSv3ResponseContaineranalysisV1beta1({
     required this.attackComplexity,
     required this.attackVector,
     required this.availabilityImpact,

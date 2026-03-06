@@ -19,7 +19,7 @@ class AccessPolicyArgs {
   /// [policy] The definition of the access policy.
   /// [resourceGroupName] Name of the resource group that contains the vault.
   /// [vaultName] Name of the Key Vault.
-  AccessPolicyArgs({
+  const AccessPolicyArgs({
     required this.policy,
     required this.resourceGroupName,
     required this.vaultName,

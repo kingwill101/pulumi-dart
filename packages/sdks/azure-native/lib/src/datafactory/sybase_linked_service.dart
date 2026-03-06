@@ -49,7 +49,7 @@ class SybaseLinkedService {
   /// [type] Type of linked service.
   /// [username] Username for authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  SybaseLinkedService({
+  const SybaseLinkedService({
     this.annotations,
     this.authenticationType,
     this.connectVia,

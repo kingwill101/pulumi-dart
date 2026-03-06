@@ -87,7 +87,7 @@ class GetBigDataPoolResult {
   /// [sparkVersion] The Apache Spark version.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetBigDataPoolResult({
+  const GetBigDataPoolResult({
     this.autoPause,
     this.autoScale,
     required this.azureApiVersion,

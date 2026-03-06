@@ -64,7 +64,7 @@ class AwsCloudTrailTrailPropertiesResponse {
   /// [snsTopicName] Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.
   /// [tags] Property tags
   /// [trailName] Property trailName
-  AwsCloudTrailTrailPropertiesResponse({
+  const AwsCloudTrailTrailPropertiesResponse({
     this.advancedEventSelectors,
     this.arn,
     this.cloudWatchLogsLogGroupArn,

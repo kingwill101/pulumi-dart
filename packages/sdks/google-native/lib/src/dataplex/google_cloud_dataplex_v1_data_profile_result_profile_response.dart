@@ -10,7 +10,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileResponse {
 
   /// Creates a new [GoogleCloudDataplexV1DataProfileResultProfileResponse].
   /// [fields] List of fields with structural and profile information for each field.
-  GoogleCloudDataplexV1DataProfileResultProfileResponse({
+  const GoogleCloudDataplexV1DataProfileResultProfileResponse({
     required this.fields,
   });
 

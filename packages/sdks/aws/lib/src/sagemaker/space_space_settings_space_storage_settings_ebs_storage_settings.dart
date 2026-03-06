@@ -8,7 +8,7 @@ class SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings {
 
   /// Creates a new [SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings].
   /// [ebsVolumeSizeInGb] The size of an EBS storage volume for a space.
-  SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings({
+  const SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings({
     required this.ebsVolumeSizeInGb,
   });
 

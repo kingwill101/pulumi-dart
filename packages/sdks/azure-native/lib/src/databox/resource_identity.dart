@@ -12,7 +12,7 @@ class ResourceIdentity {
   /// Creates a new [ResourceIdentity].
   /// [type] Identity type
   /// [userAssignedIdentities] User Assigned Identities
-  ResourceIdentity({
+  const ResourceIdentity({
     this.type,
     this.userAssignedIdentities,
   });

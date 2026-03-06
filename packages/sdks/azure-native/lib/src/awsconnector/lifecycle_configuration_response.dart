@@ -10,7 +10,7 @@ class LifecycleConfigurationResponse {
 
   /// Creates a new [LifecycleConfigurationResponse].
   /// [rules] A lifecycle rule for individual objects in an Amazon S3 bucket.
-  LifecycleConfigurationResponse({
+  const LifecycleConfigurationResponse({
     this.rules,
   });
 

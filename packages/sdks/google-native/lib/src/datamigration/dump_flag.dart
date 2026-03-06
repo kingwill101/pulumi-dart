@@ -12,7 +12,7 @@ class DumpFlag {
   /// Creates a new [DumpFlag].
   /// [name] The name of the flag
   /// [value] The value of the flag.
-  DumpFlag({
+  const DumpFlag({
     this.name,
     this.value,
   });

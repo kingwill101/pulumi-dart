@@ -18,7 +18,7 @@ class ListFirewallPolicyIdpsSignaturesFilterValueArgs {
   /// [filterName] Describes the name of the column which values will be returned
   /// [firewallPolicyName] The name of the Firewall Policy.
   /// [resourceGroupName] The name of the resource group.
-  ListFirewallPolicyIdpsSignaturesFilterValueArgs({
+  const ListFirewallPolicyIdpsSignaturesFilterValueArgs({
     this.filterName,
     required this.firewallPolicyName,
     required this.resourceGroupName,

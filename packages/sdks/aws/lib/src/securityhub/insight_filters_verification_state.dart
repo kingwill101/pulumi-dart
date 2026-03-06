@@ -9,7 +9,7 @@ class InsightFiltersVerificationState {
   /// Creates a new [InsightFiltersVerificationState].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersVerificationState({
+  const InsightFiltersVerificationState({
     required this.comparison,
     required this.value,
   });

@@ -11,7 +11,7 @@ class HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool {
   /// Creates a new [HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool].
   /// [endingAddress] Specifies starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [startingAddress] Specifies ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool({
+  const HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool({
     required this.endingAddress,
     required this.startingAddress,
   });

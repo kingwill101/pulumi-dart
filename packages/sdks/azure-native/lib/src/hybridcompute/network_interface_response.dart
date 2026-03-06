@@ -10,7 +10,7 @@ class NetworkInterfaceResponse {
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [ipAddresses] The list of IP addresses in this interface.
-  NetworkInterfaceResponse({
+  const NetworkInterfaceResponse({
     this.ipAddresses,
   });
 

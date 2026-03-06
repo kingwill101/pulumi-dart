@@ -12,7 +12,7 @@ class RolePolicyAttachmentsExclusiveState {
   /// Creates a new [RolePolicyAttachmentsExclusiveState].
   /// [policyArns] A list of managed IAM policy ARNs to be attached to the role. Policies attached to this role but not configured in this argument will be removed.
   /// [roleName] IAM role name.
-  RolePolicyAttachmentsExclusiveState({
+  const RolePolicyAttachmentsExclusiveState({
     this.policyArns,
     this.roleName,
   });

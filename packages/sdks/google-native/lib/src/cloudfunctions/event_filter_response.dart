@@ -15,7 +15,7 @@ class EventFilterResponse {
   /// [attribute] The name of a CloudEvents attribute.
   /// [operator] Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
   /// [value] The value for the attribute.
-  EventFilterResponse({
+  const EventFilterResponse({
     required this.attribute,
     required this.operator,
     required this.value,

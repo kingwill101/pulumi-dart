@@ -23,7 +23,7 @@ class ApplicationGatewayTrustedRootCertificate {
   /// [id] The ID of the Rewrite Rule Set
   /// [keyVaultSecretId] The Secret ID of the (base-64 encoded unencrypted pfx) `Secret` or `Certificate` object stored in Azure KeyVault. You need to enable soft delete for the Key Vault to use this feature. Required if `data` is not set.
   /// [name] The Name of the Trusted Root Certificate to use.
-  ApplicationGatewayTrustedRootCertificate({
+  const ApplicationGatewayTrustedRootCertificate({
     this.data,
     this.id,
     this.keyVaultSecretId,

@@ -18,7 +18,7 @@ class PoolType {
   /// [azureDisk] Disk Pool Properties
   /// [elasticSan] Elastic San Pool Properties
   /// [ephemeralDisk] Ephemeral Pool Properties
-  PoolType({
+  const PoolType({
     this.azureDisk,
     this.elasticSan,
     this.ephemeralDisk,

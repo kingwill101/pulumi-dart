@@ -18,7 +18,7 @@ class GetAccountArgs {
   /// [name] Specifies the name of the Cognitive Services Account.
   /// [resourceGroupName] Specifies the name of the resource group where the Cognitive Services Account resides.
   /// [tags] A mapping of tags to assigned to the resource.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

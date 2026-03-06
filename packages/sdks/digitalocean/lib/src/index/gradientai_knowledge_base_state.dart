@@ -42,7 +42,7 @@ class GradientaiKnowledgeBaseState {
   /// [region] Optional.
   /// [tags] Optional.
   /// [vpcUuid] The unique identifier of the VPC to which the knowledge base belongs.
-  GradientaiKnowledgeBaseState({
+  const GradientaiKnowledgeBaseState({
     this.addedToAgentAt,
     this.createdAt,
     this.databaseId,

@@ -9,7 +9,7 @@ class ContainerGroupContainerPort {
   /// Creates a new [ContainerGroupContainerPort].
   /// [port] Optional.
   /// [protocol] Optional.
-  ContainerGroupContainerPort({
+  const ContainerGroupContainerPort({
     this.port,
     this.protocol,
   });

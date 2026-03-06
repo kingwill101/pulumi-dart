@@ -18,7 +18,7 @@ class GlusterfsPersistentVolumeSource {
   /// [endpointsNamespace] endpointsNamespace is the namespace that contains Glusterfs endpoint. If this field is empty, the EndpointNamespace defaults to the same namespace as the bound PVC. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
   /// [path] path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
   /// [readOnly] readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
-  GlusterfsPersistentVolumeSource({
+  const GlusterfsPersistentVolumeSource({
     required this.endpoints,
     this.endpointsNamespace,
     required this.path,

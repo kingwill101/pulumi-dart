@@ -18,7 +18,7 @@ class WorkerPoolScaling {
   /// [maxInstanceCount] The maximum count of instances distributed among revisions based on the specified instance split percentages.
   /// [minInstanceCount] The minimum count of instances distributed among revisions based on the specified instance split percentages.
   /// [scalingMode] The scaling mode for the worker pool. It defaults to MANUAL.
-  WorkerPoolScaling({
+  const WorkerPoolScaling({
     this.manualInstanceCount,
     this.maxInstanceCount,
     this.minInstanceCount,

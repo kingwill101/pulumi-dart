@@ -10,7 +10,7 @@ class StorageAccountDetails {
 
   /// Creates a new [StorageAccountDetails].
   /// [systemCreatedStorageAccount] Details of system created storage account to be used for the registry
-  StorageAccountDetails({
+  const StorageAccountDetails({
     this.systemCreatedStorageAccount,
   });
 

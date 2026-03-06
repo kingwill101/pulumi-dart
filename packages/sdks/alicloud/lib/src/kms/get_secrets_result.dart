@@ -32,7 +32,7 @@ class GetSecretsResult {
   /// [outputFile] Optional.
   /// [secrets] A list of KMS Secrets. Each element contains the following attributes:
   /// [tags] A mapping of tags to assign to the resource.
-  GetSecretsResult({
+  const GetSecretsResult({
     this.enableDetails,
     this.fetchTags,
     this.filters,

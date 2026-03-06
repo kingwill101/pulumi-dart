@@ -58,7 +58,7 @@ class ClassificationJobState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userPausedDetails] If the current status of the job is `USER_PAUSED`, specifies when the job was paused and when the job or job run will expire and be canceled if it isn't resumed. This value is present only if the value for `job-status` is `USER_PAUSED`.
-  ClassificationJobState({
+  const ClassificationJobState({
     this.createdAt,
     this.customDataIdentifierIds,
     this.description,

@@ -52,7 +52,7 @@ class GetProjectResult {
   /// [targetConnectionInfo] Information for connecting to target
   /// [targetPlatform] Target platform for the project
   /// [type] Required.
-  GetProjectResult({
+  const GetProjectResult({
     required this.azureApiVersion,
     this.azureAuthenticationInfo,
     required this.creationTime,

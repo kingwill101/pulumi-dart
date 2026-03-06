@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2PubSubCondition {
   /// Creates a new [GooglePrivacyDlpV2PubSubCondition].
   /// [minimumRiskScore] The minimum data risk score that triggers the condition.
   /// [minimumSensitivityScore] The minimum sensitivity level that triggers the condition.
-  GooglePrivacyDlpV2PubSubCondition({
+  const GooglePrivacyDlpV2PubSubCondition({
     this.minimumRiskScore,
     this.minimumSensitivityScore,
   });

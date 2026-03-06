@@ -33,7 +33,7 @@ class ApiSchemaArgs {
   /// [resourceGroupName] The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   /// [schemaId] A unique identifier for this API Schema. Changing this forces a new resource to be created.
   /// [value] The JSON escaped string defining the document representing the Schema.
-  ApiSchemaArgs({
+  const ApiSchemaArgs({
     required this.apiManagementName,
     required this.apiName,
     this.components,

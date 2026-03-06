@@ -19,7 +19,7 @@ class ManagedIdentityAuthenticationSettingPropertiesResponse {
   /// [displayName] Display name
   /// [managedIdentityName] Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
   /// [provisioningState] The status of the last operation.
-  ManagedIdentityAuthenticationSettingPropertiesResponse({
+  const ManagedIdentityAuthenticationSettingPropertiesResponse({
     required this.authenticationKind,
     this.displayName,
     required this.managedIdentityName,

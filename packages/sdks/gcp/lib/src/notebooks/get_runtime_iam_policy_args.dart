@@ -21,7 +21,7 @@ class GetRuntimeIamPolicyArgs {
   /// [location] A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   /// [runtimeName] Used to find the parent resource to bind the IAM policy to
-  GetRuntimeIamPolicyArgs({
+  const GetRuntimeIamPolicyArgs({
     this.location,
     this.project,
     required this.runtimeName,

@@ -15,7 +15,7 @@ class GetFunctionCloudfunctionsV2betaArgs {
   /// [functionId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFunctionCloudfunctionsV2betaArgs({
+  const GetFunctionCloudfunctionsV2betaArgs({
     required this.functionId,
     required this.location,
     this.project,

@@ -44,7 +44,7 @@ class GetIoTAddonResult {
   /// [systemData] Metadata pertaining to creation and last modification of Addon
   /// [type] The hierarchical type of the object.
   /// [version] Version of IoT running on the appliance.
-  GetIoTAddonResult({
+  const GetIoTAddonResult({
     required this.azureApiVersion,
     required this.hostPlatform,
     required this.hostPlatformType,

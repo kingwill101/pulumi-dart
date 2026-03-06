@@ -15,7 +15,7 @@ class GoogleCloudAiplatformV1SampleConfigResponse {
   /// [followingBatchSamplePercentage] The percentage of data needed to be labeled in each following batch (except the first batch).
   /// [initialBatchSamplePercentage] The percentage of data needed to be labeled in the first batch.
   /// [sampleStrategy] Field to choose sampling strategy. Sampling strategy will decide which data should be selected for human labeling in every batch.
-  GoogleCloudAiplatformV1SampleConfigResponse({
+  const GoogleCloudAiplatformV1SampleConfigResponse({
     required this.followingBatchSamplePercentage,
     required this.initialBatchSamplePercentage,
     required this.sampleStrategy,

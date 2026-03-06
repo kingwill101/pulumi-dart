@@ -18,7 +18,7 @@ class GetNetworksNetwork {
   /// [ipRange] Required.
   /// [labels] Required.
   /// [name] Required.
-  GetNetworksNetwork({
+  const GetNetworksNetwork({
     required this.deleteProtection,
     required this.exposeRoutesToVswitch,
     required this.id,

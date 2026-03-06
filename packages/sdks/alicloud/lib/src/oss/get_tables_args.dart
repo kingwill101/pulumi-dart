@@ -21,7 +21,7 @@ class GetTablesArgs {
   /// [instanceName] The name of OTS instance.
   /// [nameRegex] A regex string to filter results by table name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetTablesArgs({
+  const GetTablesArgs({
     this.ids,
     required this.instanceName,
     this.nameRegex,

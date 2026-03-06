@@ -74,7 +74,7 @@ class AwsSsmInstanceInformationProperties {
   /// [resourceType] &lt;p&gt;The type of instance. Instances are either EC2 instances or managed instances. &lt;/p&gt;
   /// [sourceId] &lt;p&gt;The ID of the source resource. For IoT Greengrass devices, &lt;code&gt;SourceId&lt;/code&gt; is the Thing name. &lt;/p&gt;
   /// [sourceType] &lt;p&gt;The type of the source resource. For IoT Greengrass devices, &lt;code&gt;SourceType&lt;/code&gt; is &lt;code&gt;AWS::IoT::Thing&lt;/code&gt;. &lt;/p&gt;
-  AwsSsmInstanceInformationProperties({
+  const AwsSsmInstanceInformationProperties({
     this.activationId,
     this.agentVersion,
     this.associationOverview,

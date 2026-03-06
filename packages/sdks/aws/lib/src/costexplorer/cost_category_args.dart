@@ -34,7 +34,7 @@ class CostCategoryArgs {
   /// [rules] Configuration block for the Cost Category rules used to categorize costs. See below.
   /// [splitChargeRules] Configuration block for the split charge rules used to allocate your charges between your Cost Category values. See below.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  CostCategoryArgs({
+  const CostCategoryArgs({
     this.defaultValue,
     this.effectiveStart,
     this.name,

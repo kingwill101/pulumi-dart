@@ -13,7 +13,7 @@ class ApplicationAcceleratorComponentResponse {
   /// [instances] Required.
   /// [name] Required.
   /// [resourceRequests] Optional.
-  ApplicationAcceleratorComponentResponse({
+  const ApplicationAcceleratorComponentResponse({
     required this.instances,
     required this.name,
     this.resourceRequests,

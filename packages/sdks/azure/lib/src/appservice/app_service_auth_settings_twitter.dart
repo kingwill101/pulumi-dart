@@ -11,7 +11,7 @@ class AppServiceAuthSettingsTwitter {
   /// Creates a new [AppServiceAuthSettingsTwitter].
   /// [consumerKey] The consumer key of the Twitter app used for login
   /// [consumerSecret] The consumer secret of the Twitter app used for login.
-  AppServiceAuthSettingsTwitter({
+  const AppServiceAuthSettingsTwitter({
     required this.consumerKey,
     required this.consumerSecret,
   });

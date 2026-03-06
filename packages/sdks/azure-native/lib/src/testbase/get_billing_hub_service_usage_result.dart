@@ -18,7 +18,7 @@ class GetBillingHubServiceUsageResult {
   /// [totalCharges] Optional.
   /// [totalUsedBillableHours] Optional.
   /// [totalUsedFreeHours] Optional.
-  GetBillingHubServiceUsageResult({
+  const GetBillingHubServiceUsageResult({
     this.nextRequest,
     this.packageUsageEntries,
     this.totalCharges,

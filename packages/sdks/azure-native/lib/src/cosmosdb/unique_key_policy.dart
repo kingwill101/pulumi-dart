@@ -10,7 +10,7 @@ class UniqueKeyPolicy {
 
   /// Creates a new [UniqueKeyPolicy].
   /// [uniqueKeys] List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
-  UniqueKeyPolicy({
+  const UniqueKeyPolicy({
     this.uniqueKeys,
   });
 

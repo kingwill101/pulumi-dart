@@ -8,7 +8,7 @@ class DomainDevicesRngBackendEgdSourceQemuvdAgentMouse {
 
   /// Creates a new [DomainDevicesRngBackendEgdSourceQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
-  DomainDevicesRngBackendEgdSourceQemuvdAgentMouse({
+  const DomainDevicesRngBackendEgdSourceQemuvdAgentMouse({
     required this.mode,
   });
 

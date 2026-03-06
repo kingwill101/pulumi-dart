@@ -14,7 +14,7 @@ class InstanceAccessLoggingConfig {
   /// Creates a new [InstanceAccessLoggingConfig].
   /// [enabled] Boolean flag that specifies whether the customer access log feature is enabled.
   /// [filter] Ship the access log entries that match the statusCode defined in the filter.
-  InstanceAccessLoggingConfig({
+  const InstanceAccessLoggingConfig({
     required this.enabled,
     this.filter,
   });

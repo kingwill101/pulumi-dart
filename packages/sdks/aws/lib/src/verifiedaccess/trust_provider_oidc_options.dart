@@ -19,7 +19,7 @@ class TrustProviderOidcOptions {
   /// [scope] Optional.
   /// [tokenEndpoint] Optional.
   /// [userInfoEndpoint] Optional.
-  TrustProviderOidcOptions({
+  const TrustProviderOidcOptions({
     this.authorizationEndpoint,
     this.clientId,
     required this.clientSecret,

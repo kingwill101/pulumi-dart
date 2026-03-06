@@ -57,7 +57,7 @@ class AwsNodePoolArgs {
   /// [subnetId] The subnet where the node pool node run.
   /// [updateSettings] Optional. Update settings control the speed and disruption of the node pool update.
   /// [version] The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
-  AwsNodePoolArgs({
+  const AwsNodePoolArgs({
     this.annotations,
     required this.autoscaling,
     required this.cluster,

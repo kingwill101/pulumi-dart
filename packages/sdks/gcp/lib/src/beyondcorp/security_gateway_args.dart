@@ -45,7 +45,7 @@ class SecurityGatewayArgs {
   /// [proxyProtocolConfig] Shared proxy configuration for all apps.
   /// [securityGatewayId] Optional. User-settable SecurityGateway resource ID.
   /// [serviceDiscovery] Settings related to the Service Discovery.
-  SecurityGatewayArgs({
+  const SecurityGatewayArgs({
     this.displayName,
     this.hubs,
     this.location,

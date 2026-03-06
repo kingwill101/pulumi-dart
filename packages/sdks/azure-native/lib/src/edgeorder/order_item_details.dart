@@ -27,7 +27,7 @@ class OrderItemDetails {
   /// [preferences] Customer notification Preferences.
   /// [productDetails] Represents product details.
   /// [siteDetails] Site Related Details.
-  OrderItemDetails({
+  const OrderItemDetails({
     this.notificationEmailList,
     this.orderItemMode,
     required this.orderItemType,

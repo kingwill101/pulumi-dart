@@ -15,7 +15,7 @@ class GetServiceConnectionTokenArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [serviceConnectionTokenId] Required.
-  GetServiceConnectionTokenArgs({
+  const GetServiceConnectionTokenArgs({
     required this.location,
     this.project,
     required this.serviceConnectionTokenId,

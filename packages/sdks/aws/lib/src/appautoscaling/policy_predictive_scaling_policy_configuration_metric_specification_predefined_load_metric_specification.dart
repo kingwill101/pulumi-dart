@@ -11,7 +11,7 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoa
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification].
   /// [predefinedMetricType] Metric type.
   /// [resourceLabel] Label that uniquely identifies a target group.
-  PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification({
+  const PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification({
     required this.predefinedMetricType,
     this.resourceLabel,
   });

@@ -60,7 +60,7 @@ class GetEntityResult {
   /// [type] Immutable. The type of entity.
   /// [uid] System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
   /// [updateTime] The time when the entity was last updated.
-  GetEntityResult({
+  const GetEntityResult({
     required this.access,
     required this.asset,
     required this.catalogEntry,

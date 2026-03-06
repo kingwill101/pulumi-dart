@@ -41,7 +41,7 @@ class VpcEndpointAssociationState {
   /// [vpcEndpointAssociationId] The unique identifier of the VPC endpoint association.
   /// [vpcEndpointAssociationStatuses] Nested list of information about the current status of the VPC Endpoint Association.
   /// [vpcId] The unique identifier of the VPC for the endpoint association.
-  VpcEndpointAssociationState({
+  const VpcEndpointAssociationState({
     this.description,
     this.firewallArn,
     this.region,

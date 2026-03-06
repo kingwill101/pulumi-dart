@@ -36,7 +36,7 @@ class GetAccessPointsPoint {
   /// [location] The Location of the Access Point.
   /// [status] The Physical Connection to Which the Access Point State.
   /// [type] The Physical Connection to Which the Network Type.
-  GetAccessPointsPoint({
+  const GetAccessPointsPoint({
     required this.accessPointFeatureModels,
     required this.accessPointId,
     required this.accessPointName,

@@ -33,7 +33,7 @@ class PrivateEndpointConnectionResponse {
   /// [provisioningState] Provisioning state of the Private Endpoint Connection.
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
-  PrivateEndpointConnectionResponse({
+  const PrivateEndpointConnectionResponse({
     required this.id,
     required this.location,
     required this.name,

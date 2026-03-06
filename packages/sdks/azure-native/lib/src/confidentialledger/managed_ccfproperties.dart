@@ -20,7 +20,7 @@ class ManagedCCFProperties {
   /// [memberIdentityCertificates] List of member identity certificates for  Managed CCF
   /// [nodeCount] Number of CCF nodes in the Managed CCF.
   /// [runningState] Object representing RunningState for Managed CCF.
-  ManagedCCFProperties({
+  const ManagedCCFProperties({
     this.deploymentType,
     this.memberIdentityCertificates,
     this.nodeCount,

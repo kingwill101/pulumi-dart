@@ -11,7 +11,7 @@ class AlertProcessingRuleActionGroupConditionSeverity {
   /// Creates a new [AlertProcessingRuleActionGroupConditionSeverity].
   /// [operator] The operator for a given condition. Possible values are `Equals` and `NotEquals`.
   /// [values] Specifies list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
-  AlertProcessingRuleActionGroupConditionSeverity({
+  const AlertProcessingRuleActionGroupConditionSeverity({
     required this.operator,
     required this.values,
   });

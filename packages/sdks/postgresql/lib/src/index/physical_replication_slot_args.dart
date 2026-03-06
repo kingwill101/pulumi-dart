@@ -12,7 +12,7 @@ class PhysicalReplicationSlotArgs {
 
   /// Creates a new [PhysicalReplicationSlotArgs].
   /// [name] The name of the replication slot.
-  PhysicalReplicationSlotArgs({
+  const PhysicalReplicationSlotArgs({
     this.name,
   });
 

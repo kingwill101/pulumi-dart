@@ -9,7 +9,7 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] The SKU name of the container registry. Required for registry creation.
-  Sku({
+  const Sku({
     required this.name,
   });
 

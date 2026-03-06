@@ -12,7 +12,7 @@ class CredentialsResponse {
   /// Creates a new [CredentialsResponse].
   /// [identityId] Identity identifier for UserAssign type.
   /// [type] Identity Type.
-  CredentialsResponse({
+  const CredentialsResponse({
     this.identityId,
     this.type,
   });

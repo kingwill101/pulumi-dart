@@ -42,7 +42,7 @@ class GetConfigurationSetResult {
   /// [tags] Key-value map of resource tags for the container recipe.
   /// [trackingOptions] An object that defines the open and click tracking options for emails that you send using the configuration set.
   /// [vdmOptions] An object that contains information about the VDM preferences for your configuration set.
-  GetConfigurationSetResult({
+  const GetConfigurationSetResult({
     required this.arn,
     required this.configurationSetName,
     required this.deliveryOptions,

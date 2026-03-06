@@ -25,7 +25,7 @@ class RepoState {
   /// [namespace] Name of container registry namespace where repository is located.
   /// [repoType] `PUBLIC` or `PRIVATE`, repo's visibility.
   /// [summary] The repository general information. It can contain 1 to 80 characters.
-  RepoState({
+  const RepoState({
     this.detail,
     this.domainList,
     this.name,

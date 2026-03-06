@@ -21,7 +21,7 @@ class MongoMigrationProgressDetailsResponse {
   /// [migrationStatus] Migration Status
   /// [processedDocumentCount] Processed Document Count
   /// [sourceDocumentCount] Source Document Count
-  MongoMigrationProgressDetailsResponse({
+  const MongoMigrationProgressDetailsResponse({
     required this.durationInSeconds,
     required this.migrationError,
     required this.migrationStatus,

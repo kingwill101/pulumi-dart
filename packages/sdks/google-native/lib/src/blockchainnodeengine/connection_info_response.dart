@@ -13,7 +13,7 @@ class ConnectionInfoResponse {
   /// Creates a new [ConnectionInfoResponse].
   /// [endpointInfo] The endpoint information through which to interact with a blockchain node.
   /// [serviceAttachment] A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
-  ConnectionInfoResponse({
+  const ConnectionInfoResponse({
     required this.endpointInfo,
     required this.serviceAttachment,
   });

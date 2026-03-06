@@ -12,7 +12,7 @@ class GetWindowsWebAppLogApplicationLog {
   /// Creates a new [GetWindowsWebAppLogApplicationLog].
   /// [azureBlobStorages] A `azure_blob_storage` block as defined above.
   /// [fileSystemLevel] The logging level.
-  GetWindowsWebAppLogApplicationLog({
+  const GetWindowsWebAppLogApplicationLog({
     required this.azureBlobStorages,
     required this.fileSystemLevel,
   });

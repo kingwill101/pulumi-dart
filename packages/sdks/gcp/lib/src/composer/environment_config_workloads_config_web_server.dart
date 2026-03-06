@@ -14,7 +14,7 @@ class EnvironmentConfigWorkloadsConfigWebServer {
   /// [cpu] CPU request and limit for Airflow web server.
   /// [memoryGb] Memory (GB) request and limit for Airflow web server.
   /// [storageGb] Storage (GB) request and limit for Airflow web server.
-  EnvironmentConfigWorkloadsConfigWebServer({
+  const EnvironmentConfigWorkloadsConfigWebServer({
     this.cpu,
     this.memoryGb,
     this.storageGb,

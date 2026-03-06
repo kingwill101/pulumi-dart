@@ -27,7 +27,7 @@ class ActionGroup {
   /// [scope] scope on which action rule will apply
   /// [status] Indicates if the given action rule is enabled or disabled
   /// [type] Indicates type of action rule
-  ActionGroup({
+  const ActionGroup({
     required this.actionGroupId,
     this.conditions,
     this.description,

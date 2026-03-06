@@ -9,7 +9,7 @@ class DomainDevicesControllerDriverIoThreads {
 
   /// Creates a new [DomainDevicesControllerDriverIoThreads].
   /// [ioThreads] Configures details for a specific I/O thread associated with the controller driver.
-  DomainDevicesControllerDriverIoThreads({
+  const DomainDevicesControllerDriverIoThreads({
     this.ioThreads,
   });
 

@@ -40,7 +40,7 @@ class Office365SourceResponse {
   /// [startTime] Start time of the requested range for this dataset. Type: string (or Expression with resultType string).
   /// [type] Copy source type.
   /// [userScopeFilterUri] The user scope uri. Type: string (or Expression with resultType string).
-  Office365SourceResponse({
+  const Office365SourceResponse({
     this.allowedGroups,
     this.dateFilterColumn,
     this.disableMetricsCollection,

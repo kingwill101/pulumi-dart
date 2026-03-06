@@ -15,7 +15,7 @@ class GetNamespaceIamPolicyArgs {
   /// [location] Required.
   /// [namespaceId] Required.
   /// [project] Optional.
-  GetNamespaceIamPolicyArgs({
+  const GetNamespaceIamPolicyArgs({
     required this.location,
     required this.namespaceId,
     this.project,

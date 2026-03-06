@@ -17,7 +17,7 @@ class GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args {
   /// [notebookRuntimeTemplateId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args({
+  const GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args({
     required this.location,
     required this.notebookRuntimeTemplateId,
     this.optionsRequestedPolicyVersion,

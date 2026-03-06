@@ -28,7 +28,7 @@ class OnlineExperimentationWorkspacePropertiesResponse {
   /// [logsExporterStorageAccountResourceId] The resource identifier of storage account where logs are exported from Log Analytics workspace. online experimentation workspace uses it generating experiment analysis results.
   /// [provisioningState] The provisioning state for the resource
   /// [workspaceId] The Id of the workspace.
-  OnlineExperimentationWorkspacePropertiesResponse({
+  const OnlineExperimentationWorkspacePropertiesResponse({
     required this.appConfigurationResourceId,
     this.encryption,
     required this.endpoint,

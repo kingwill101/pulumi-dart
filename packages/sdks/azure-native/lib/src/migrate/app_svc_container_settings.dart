@@ -9,7 +9,7 @@ class AppSvcContainerSettings {
 
   /// Creates a new [AppSvcContainerSettings].
   /// [isolationRequired] Gets or sets the isolation required.
-  AppSvcContainerSettings({
+  const AppSvcContainerSettings({
     required this.isolationRequired,
   });
 

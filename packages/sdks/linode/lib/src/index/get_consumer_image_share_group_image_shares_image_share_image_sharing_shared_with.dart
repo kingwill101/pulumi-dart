@@ -11,7 +11,7 @@ class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith {
   /// Creates a new [GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith].
   /// [sharegroupCount] The number of sharegroups the private image is present in.
   /// [sharegroupListUrl] The GET api url to view the sharegroups in which the image is shared.
-  GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith({
+  const GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith({
     required this.sharegroupCount,
     required this.sharegroupListUrl,
   });

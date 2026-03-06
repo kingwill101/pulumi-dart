@@ -15,7 +15,7 @@ class ClusterMaintenancePolicyMaintenanceExclusion {
   /// [exclusionName] Required.
   /// [exclusionOptions] MaintenanceExclusionOptions provides maintenance exclusion related options.
   /// [startTime] Required.
-  ClusterMaintenancePolicyMaintenanceExclusion({
+  const ClusterMaintenancePolicyMaintenanceExclusion({
     this.endTime,
     required this.exclusionName,
     this.exclusionOptions,

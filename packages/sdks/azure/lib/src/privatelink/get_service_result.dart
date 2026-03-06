@@ -39,7 +39,7 @@ class GetServiceResult {
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags to assign to the resource.
   /// [visibilitySubscriptionIds] The list of subscription(s) globally unique identifiers(GUID) that will be able to see the private link service.
-  GetServiceResult({
+  const GetServiceResult({
     required this.alias,
     required this.autoApprovalSubscriptionIds,
     required this.enableProxyProtocol,

@@ -16,7 +16,7 @@ class IntegrationServiceEnvironmenEncryptionKeyReference {
   /// [keyName] Gets the key name in the Key Vault.
   /// [keyVault] The key vault reference.
   /// [keyVersion] Gets the version of the key specified in the keyName property.
-  IntegrationServiceEnvironmenEncryptionKeyReference({
+  const IntegrationServiceEnvironmenEncryptionKeyReference({
     this.keyName,
     this.keyVault,
     this.keyVersion,

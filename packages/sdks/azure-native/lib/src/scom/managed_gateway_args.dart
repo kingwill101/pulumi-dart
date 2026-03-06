@@ -18,7 +18,7 @@ class ManagedGatewayArgs {
   /// [instanceName] Name of the SCOM managed instance.
   /// [managedGatewayName] The gateway resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ManagedGatewayArgs({
+  const ManagedGatewayArgs({
     required this.instanceName,
     this.managedGatewayName,
     required this.resourceGroupName,

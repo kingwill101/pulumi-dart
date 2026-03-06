@@ -23,7 +23,7 @@ class GetAdministrativeUnitResult {
   /// [members] A list of object IDs of members who are present in this administrative unit.
   /// [objectId] The object ID of the administrative unit.
   /// [visibility] Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
-  GetAdministrativeUnitResult({
+  const GetAdministrativeUnitResult({
     required this.description,
     required this.displayName,
     required this.id,

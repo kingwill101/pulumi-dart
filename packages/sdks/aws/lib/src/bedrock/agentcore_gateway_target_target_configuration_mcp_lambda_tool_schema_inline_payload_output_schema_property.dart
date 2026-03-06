@@ -25,7 +25,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
   /// [properties] Set of nested property definitions for object properties.
   /// [required] Whether this property is required. Defaults to `false`.
   /// [type] Data type of the property.
-  AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaProperty({
+  const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaProperty({
     this.description,
     this.items,
     required this.name,

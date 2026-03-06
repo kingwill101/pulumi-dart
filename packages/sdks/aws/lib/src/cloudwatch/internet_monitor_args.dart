@@ -40,7 +40,7 @@ class InternetMonitorArgs {
   /// [status] The status for a monitor. The accepted values for Status with the UpdateMonitor API call are the following: `ACTIVE` and `INACTIVE`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [trafficPercentageToMonitor] The percentage of the internet-facing traffic for your application that you want to monitor with this monitor.
-  InternetMonitorArgs({
+  const InternetMonitorArgs({
     this.healthEventsConfig,
     this.internetMeasurementsLogDelivery,
     this.maxCityNetworksToMonitor,

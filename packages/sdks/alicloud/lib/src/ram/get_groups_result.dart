@@ -26,7 +26,7 @@ class GetGroupsResult {
   /// [policyName] Optional.
   /// [policyType] Optional.
   /// [userName] Optional.
-  GetGroupsResult({
+  const GetGroupsResult({
     required this.groups,
     required this.id,
     this.nameRegex,

@@ -24,7 +24,7 @@ class MigrationConfigArgs {
   /// [postMigrationName] Name to access Standard Namespace after migration
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [targetNamespace] Existing premium Namespace ARM Id name which has no entities, will be used for migration
-  MigrationConfigArgs({
+  const MigrationConfigArgs({
     this.configName,
     required this.namespaceName,
     required this.postMigrationName,

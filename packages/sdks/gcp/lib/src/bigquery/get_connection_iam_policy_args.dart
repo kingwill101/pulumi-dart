@@ -27,7 +27,7 @@ class GetConnectionIamPolicyArgs {
   /// [connectionId] Used to find the parent resource to bind the IAM policy to
   /// [location] The geographic location where the connection should reside.
   /// [project] The ID of the project in which the resource belongs.
-  GetConnectionIamPolicyArgs({
+  const GetConnectionIamPolicyArgs({
     required this.connectionId,
     this.location,
     this.project,

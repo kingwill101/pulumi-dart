@@ -28,7 +28,7 @@ class GetTablesResult {
   /// [schemas] Optional.
   /// [tableTypes] Optional.
   /// [tables] A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-  GetTablesResult({
+  const GetTablesResult({
     required this.database,
     required this.id,
     this.likeAllPatterns,

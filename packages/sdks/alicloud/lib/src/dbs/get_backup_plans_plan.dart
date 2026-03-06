@@ -86,7 +86,7 @@ class GetBackupPlansPlan {
   /// [sourceEndpointSid] The Oracle SID name.
   /// [sourceEndpointUserName] The source endpoint username.
   /// [status] The status of the resource.
-  GetBackupPlansPlan({
+  const GetBackupPlansPlan({
     required this.backupGatewayId,
     required this.backupMethod,
     required this.backupObjects,

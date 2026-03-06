@@ -29,7 +29,7 @@ class GetCredentialResult {
   /// [name] The name of the resource
   /// [type] The type of the resource.
   /// [userName] Gets the user name of the credential.
-  GetCredentialResult({
+  const GetCredentialResult({
     required this.azureApiVersion,
     required this.creationTime,
     this.description,

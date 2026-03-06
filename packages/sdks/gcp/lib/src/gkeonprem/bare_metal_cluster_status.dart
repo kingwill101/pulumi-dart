@@ -19,7 +19,7 @@ class BareMetalClusterStatus {
   /// Creates a new [BareMetalClusterStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  BareMetalClusterStatus({
+  const BareMetalClusterStatus({
     this.conditions,
     this.errorMessage,
   });

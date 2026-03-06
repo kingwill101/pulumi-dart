@@ -15,7 +15,7 @@ class CidrCollectionState {
   /// [arn] The Amazon Resource Name (ARN) of the CIDR collection.
   /// [name] Unique name for the CIDR collection.
   /// [version] The lastest version of the CIDR collection.
-  CidrCollectionState({
+  const CidrCollectionState({
     this.arn,
     this.name,
     this.version,

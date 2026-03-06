@@ -62,7 +62,7 @@ class AzureMLExecutePipelineActivityResponse {
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
   /// [version] Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
-  AzureMLExecutePipelineActivityResponse({
+  const AzureMLExecutePipelineActivityResponse({
     this.continueOnStepFailure,
     this.dataPathAssignments,
     this.dependsOn,

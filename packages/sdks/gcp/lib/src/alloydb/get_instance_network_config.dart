@@ -24,7 +24,7 @@ class GetInstanceNetworkConfig {
   /// [authorizedExternalNetworks] A list of external networks authorized to access this instance. This
   /// [enableOutboundPublicIp] Enabling outbound public ip for the instance.
   /// [enablePublicIp] Enabling public ip for the instance. If a user wishes to disable this,
-  GetInstanceNetworkConfig({
+  const GetInstanceNetworkConfig({
     required this.allocatedIpRangeOverride,
     required this.authorizedExternalNetworks,
     required this.enableOutboundPublicIp,

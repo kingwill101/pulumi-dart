@@ -10,7 +10,7 @@ class StorageConfigurationResponse {
 
   /// Creates a new [StorageConfigurationResponse].
   /// [transportFileShareConfiguration] The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
-  StorageConfigurationResponse({
+  const StorageConfigurationResponse({
     this.transportFileShareConfiguration,
   });
 

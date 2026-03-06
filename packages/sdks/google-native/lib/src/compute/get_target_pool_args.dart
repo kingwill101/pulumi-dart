@@ -15,7 +15,7 @@ class GetTargetPoolArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [targetPool] Required.
-  GetTargetPoolArgs({
+  const GetTargetPoolArgs({
     this.project,
     required this.region,
     required this.targetPool,

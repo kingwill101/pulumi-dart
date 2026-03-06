@@ -18,7 +18,7 @@ class GetIdentityBindingArgs {
   /// [identityBindingName] The name of the identity binding.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  GetIdentityBindingArgs({
+  const GetIdentityBindingArgs({
     required this.identityBindingName,
     required this.resourceGroupName,
     required this.resourceName,

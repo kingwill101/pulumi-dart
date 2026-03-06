@@ -113,7 +113,7 @@ class BucketState {
   /// [url] The base URL of the bucket, in the format `gs://&lt;bucket-name&gt;`.
   /// [versioning] The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
   /// [website] Configuration if the bucket acts as a website. Structure is documented below.
-  BucketState({
+  const BucketState({
     this.autoclass,
     this.cors,
     this.customPlacementConfig,

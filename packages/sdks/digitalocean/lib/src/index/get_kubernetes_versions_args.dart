@@ -12,7 +12,7 @@ class GetKubernetesVersionsArgs {
 
   /// Creates a new [GetKubernetesVersionsArgs].
   /// [versionPrefix] If provided, Terraform will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
-  GetKubernetesVersionsArgs({
+  const GetKubernetesVersionsArgs({
     this.versionPrefix,
   });
 

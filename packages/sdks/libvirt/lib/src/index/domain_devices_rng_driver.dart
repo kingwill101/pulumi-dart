@@ -17,7 +17,7 @@ class DomainDevicesRngDriver {
   /// [iommu] Enables or disables I/O Memory Management Unit (IOMMU) for the random number generator driver.
   /// [packed] Indicates whether packed ring buffers are used for the random number generator driver.
   /// [pagePerVq] Configures the page per virtual queue setting for the random number generator driver.
-  DomainDevicesRngDriver({
+  const DomainDevicesRngDriver({
     this.ats,
     this.iommu,
     this.packed,

@@ -74,7 +74,7 @@ class CxPageArgs {
   /// [parent] The flow to create a page for.
   /// [transitionRouteGroups] Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
   /// [transitionRoutes] A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
-  CxPageArgs({
+  const CxPageArgs({
     this.advancedSettings,
     required this.displayName,
     this.entryFulfillment,

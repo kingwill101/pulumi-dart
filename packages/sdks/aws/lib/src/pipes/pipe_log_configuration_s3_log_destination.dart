@@ -17,7 +17,7 @@ class PipeLogConfigurationS3LogDestination {
   /// [bucketOwner] Amazon Web Services account that owns the Amazon S3 bucket to which EventBridge delivers the log records for the pipe.
   /// [outputFormat] EventBridge format for the log records. Valid values `json`, `plain` and `w3c`.
   /// [prefix] Prefix text with which to begin Amazon S3 log object names.
-  PipeLogConfigurationS3LogDestination({
+  const PipeLogConfigurationS3LogDestination({
     required this.bucketName,
     required this.bucketOwner,
     this.outputFormat,

@@ -36,7 +36,7 @@ class NamespaceAuthorizationRuleState {
   /// [secondaryConnectionString] The Secondary Connection String for the Azure Relay Namespace Authorization Rule.
   /// [secondaryKey] The Secondary Key for the Azure Relay Namespace Authorization Rule.
   /// [send] Grants send access to this Authorization Rule. Defaults to `false`.
-  NamespaceAuthorizationRuleState({
+  const NamespaceAuthorizationRuleState({
     this.listen,
     this.manage,
     this.name,

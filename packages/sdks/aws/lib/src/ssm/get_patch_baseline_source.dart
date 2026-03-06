@@ -14,7 +14,7 @@ class GetPatchBaselineSource {
   /// [configuration] Value of the yum repo configuration.
   /// [name] Name specified to identify the patch source.
   /// [products] Specific operating system versions a patch repository applies to.
-  GetPatchBaselineSource({
+  const GetPatchBaselineSource({
     required this.configuration,
     required this.name,
     required this.products,

@@ -34,7 +34,7 @@ class HostingSiteState {
   /// [project] The ID of the project in which the resource belongs.
   /// [siteId] Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
   /// [type] The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
-  HostingSiteState({
+  const HostingSiteState({
     this.appId,
     this.defaultUrl,
     this.name,

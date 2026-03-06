@@ -18,7 +18,7 @@ class GrantRuleToCenState {
   /// [cenOwnerId] The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
   /// [createTime] (Available since v1.263.0) The time when the instance was created.
   /// [instanceId] The ID of the VBR.
-  GrantRuleToCenState({
+  const GrantRuleToCenState({
     this.cenId,
     this.cenOwnerId,
     this.createTime,

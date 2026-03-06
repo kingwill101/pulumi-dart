@@ -17,7 +17,7 @@ class GetTestCaseDialogflowV3beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [testCaseId] Required.
-  GetTestCaseDialogflowV3beta1Args({
+  const GetTestCaseDialogflowV3beta1Args({
     required this.agentId,
     required this.location,
     this.project,

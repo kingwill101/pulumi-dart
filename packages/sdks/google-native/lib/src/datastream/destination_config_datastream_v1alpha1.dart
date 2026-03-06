@@ -13,7 +13,7 @@ class DestinationConfigDatastreamV1alpha1 {
   /// Creates a new [DestinationConfigDatastreamV1alpha1].
   /// [destinationConnectionProfileName] Destination connection profile identifier.
   /// [gcsDestinationConfig] GCS destination configuration.
-  DestinationConfigDatastreamV1alpha1({
+  const DestinationConfigDatastreamV1alpha1({
     required this.destinationConnectionProfileName,
     this.gcsDestinationConfig,
   });

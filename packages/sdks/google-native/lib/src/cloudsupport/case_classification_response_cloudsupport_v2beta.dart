@@ -9,7 +9,7 @@ class CaseClassificationResponseCloudsupportV2beta {
 
   /// Creates a new [CaseClassificationResponseCloudsupportV2beta].
   /// [displayName] A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
-  CaseClassificationResponseCloudsupportV2beta({
+  const CaseClassificationResponseCloudsupportV2beta({
     required this.displayName,
   });
 

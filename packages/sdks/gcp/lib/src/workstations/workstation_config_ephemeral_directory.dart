@@ -13,7 +13,7 @@ class WorkstationConfigEphemeralDirectory {
   /// Creates a new [WorkstationConfigEphemeralDirectory].
   /// [gcePd] An EphemeralDirectory backed by a Compute Engine persistent disk.
   /// [mountPath] Location of this directory in the running workstation.
-  WorkstationConfigEphemeralDirectory({
+  const WorkstationConfigEphemeralDirectory({
     this.gcePd,
     this.mountPath,
   });

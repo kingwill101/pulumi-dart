@@ -26,7 +26,7 @@ class Preferences {
   /// [notificationPreferences] Notification preferences.
   /// [termCommitmentPreferences] Preferences related to the Term commitment.
   /// [transportPreferences] Preferences related to the shipment logistics of the order.
-  Preferences({
+  const Preferences({
     this.encryptionPreferences,
     this.managementResourcePreferences,
     this.notificationPreferences,

@@ -22,7 +22,7 @@ class MetadataContaineranalysisV1alpha1 {
   /// [buildStartedOn] The timestamp of when the build started.
   /// [completeness] Indicates that the builder claims certain fields in this message to be complete.
   /// [reproducible] If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
-  MetadataContaineranalysisV1alpha1({
+  const MetadataContaineranalysisV1alpha1({
     this.buildFinishedOn,
     this.buildInvocationId,
     this.buildStartedOn,

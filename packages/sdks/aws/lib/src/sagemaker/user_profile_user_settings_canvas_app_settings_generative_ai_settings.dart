@@ -7,7 +7,7 @@ class UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings {
 
   /// Creates a new [UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings].
   /// [amazonBedrockRoleArn] Optional.
-  UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings({
+  const UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings({
     this.amazonBedrockRoleArn,
   });
 

@@ -19,7 +19,7 @@ class SiteArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] The name of the Site
-  SiteArgs({
+  const SiteArgs({
     this.properties,
     required this.resourceGroupName,
     this.siteName,

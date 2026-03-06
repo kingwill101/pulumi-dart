@@ -63,7 +63,7 @@ class GetNetworkTapRuleResult {
   /// [tags] Resource tags.
   /// [tapRulesUrl] Network Tap Rules file URL.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetNetworkTapRuleResult({
+  const GetNetworkTapRuleResult({
     required this.administrativeState,
     this.annotation,
     required this.azureApiVersion,

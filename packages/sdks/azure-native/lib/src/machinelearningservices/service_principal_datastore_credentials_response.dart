@@ -22,7 +22,7 @@ class ServicePrincipalDatastoreCredentialsResponse {
   /// [credentialsType] Enum to determine the datastore credentials type.
   /// [resourceUrl] Resource the service principal has access to.
   /// [tenantId] [Required] ID of the tenant to which the service principal belongs.
-  ServicePrincipalDatastoreCredentialsResponse({
+  const ServicePrincipalDatastoreCredentialsResponse({
     this.authorityUrl,
     required this.clientId,
     required this.credentialsType,

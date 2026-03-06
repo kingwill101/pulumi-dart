@@ -15,7 +15,7 @@ class HistoryDeliveryJobState {
   /// [createTime] The creation time of the resource
   /// [status] The status of the resource
   /// [trailName] The Track Name.
-  HistoryDeliveryJobState({
+  const HistoryDeliveryJobState({
     this.createTime,
     this.status,
     this.trailName,

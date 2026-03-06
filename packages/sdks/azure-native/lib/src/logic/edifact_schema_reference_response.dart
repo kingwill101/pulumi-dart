@@ -27,7 +27,7 @@ class EdifactSchemaReferenceResponse {
   /// [schemaName] The schema name.
   /// [senderApplicationId] The sender application id.
   /// [senderApplicationQualifier] The sender application qualifier.
-  EdifactSchemaReferenceResponse({
+  const EdifactSchemaReferenceResponse({
     this.associationAssignedCode,
     required this.messageId,
     required this.messageRelease,

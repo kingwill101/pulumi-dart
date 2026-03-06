@@ -24,7 +24,7 @@ class ServiceState {
   /// [skuName] The SKU name of the database migration service. Possible values are `Premium_4vCores`, `Standard_1vCores`, `Standard_2vCores` and `Standard_4vCores`. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the virtual subnet resource to which the database migration service should be joined. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assigned to the resource.
-  ServiceState({
+  const ServiceState({
     this.location,
     this.name,
     this.resourceGroupName,

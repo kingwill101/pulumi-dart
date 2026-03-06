@@ -21,7 +21,7 @@ class UserAssignedIdentityArgs {
   /// [resourceGroupName] The name of the Resource Group to which the identity belongs.
   /// [resourceName] The name of the identity resource.
   /// [tags] Resource tags.
-  UserAssignedIdentityArgs({
+  const UserAssignedIdentityArgs({
     this.location,
     required this.resourceGroupName,
     this.resourceName,

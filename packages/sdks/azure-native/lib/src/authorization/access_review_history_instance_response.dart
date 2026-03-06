@@ -39,7 +39,7 @@ class AccessReviewHistoryInstanceResponse {
   /// [runDateTime] Date time when the history data report is scheduled to be generated.
   /// [status] Status of the requested review history instance data. This is either requested, in-progress, done or error. The state transitions are as follows - Requested -&gt; InProgress -&gt; Done -&gt; Expired
   /// [type] The resource type.
-  AccessReviewHistoryInstanceResponse({
+  const AccessReviewHistoryInstanceResponse({
     this.displayName,
     required this.downloadUri,
     this.expiration,

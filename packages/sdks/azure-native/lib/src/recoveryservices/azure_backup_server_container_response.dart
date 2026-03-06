@@ -53,7 +53,7 @@ class AzureBackupServerContainerResponse {
   /// [protectionStatus] Protection status of the container.
   /// [registrationStatus] Status of registration of the container with the Recovery Services Vault.
   /// [upgradeAvailable] To check if upgrade available
-  AzureBackupServerContainerResponse({
+  const AzureBackupServerContainerResponse({
     this.backupManagementType,
     this.canReRegister,
     this.containerId,

@@ -12,7 +12,7 @@ class StorageQoSPolicyDetails {
   /// Creates a new [StorageQoSPolicyDetails].
   /// [id] The ID of the QoS policy.
   /// [name] The name of the policy.
-  StorageQoSPolicyDetails({
+  const StorageQoSPolicyDetails({
     this.id,
     this.name,
   });

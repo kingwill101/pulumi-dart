@@ -20,7 +20,7 @@ class GetActionGroupItsmReceiver {
   /// [region] The region of the workspace.
   /// [ticketConfiguration] A JSON blob for the configurations of the ITSM action. CreateMultipleWorkItems option will be part of this blob as well.
   /// [workspaceId] The Azure Log Analytics workspace ID where this connection is defined.
-  GetActionGroupItsmReceiver({
+  const GetActionGroupItsmReceiver({
     required this.connectionId,
     required this.name,
     required this.region,

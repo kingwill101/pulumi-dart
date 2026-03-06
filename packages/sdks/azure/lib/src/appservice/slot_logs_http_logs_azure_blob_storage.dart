@@ -13,7 +13,7 @@ class SlotLogsHttpLogsAzureBlobStorage {
   /// Creates a new [SlotLogsHttpLogsAzureBlobStorage].
   /// [retentionInDays] The number of days to retain logs for.
   /// [sasUrl] The URL to the storage container, with a Service SAS token appended.
-  SlotLogsHttpLogsAzureBlobStorage({
+  const SlotLogsHttpLogsAzureBlobStorage({
     required this.retentionInDays,
     required this.sasUrl,
   });

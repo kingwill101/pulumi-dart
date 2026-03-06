@@ -69,7 +69,7 @@ class ServicePerimeterArgs {
   /// [status] ServicePerimeter configuration. Specifies sets of resources,
   /// [title] Human readable title. Must be unique within the Policy.
   /// [useExplicitDryRunSpec] Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
-  ServicePerimeterArgs({
+  const ServicePerimeterArgs({
     this.description,
     this.name,
     required this.parent,

@@ -18,7 +18,7 @@ class GetGen2EnvironmentArgs {
   /// [environmentName] The name of the Time Series Insights environment associated with the specified resource group.
   /// [expand] Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetGen2EnvironmentArgs({
+  const GetGen2EnvironmentArgs({
     required this.environmentName,
     this.expand,
     required this.resourceGroupName,

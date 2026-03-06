@@ -21,7 +21,7 @@ class ApplicationGatewaySslPolicyResponse {
   /// [minProtocolVersion] Minimum version of Ssl protocol to be supported on application gateway.
   /// [policyName] Name of Ssl predefined policy.
   /// [policyType] Type of Ssl Policy.
-  ApplicationGatewaySslPolicyResponse({
+  const ApplicationGatewaySslPolicyResponse({
     this.cipherSuites,
     this.disabledSslProtocols,
     this.minProtocolVersion,

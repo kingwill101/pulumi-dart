@@ -20,7 +20,7 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse {
   /// [managedRules] The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
   /// [recaptchaKeys] The reCAPTCHA keys.
   /// [useAccountDefender] Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
-  GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse({
+  const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse({
     required this.emailPasswordEnforcementState,
     required this.managedRules,
     required this.recaptchaKeys,

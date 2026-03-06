@@ -11,7 +11,7 @@ class GetApplicationGatewayBackendHttpSettingConnectionDraining {
   /// Creates a new [GetApplicationGatewayBackendHttpSettingConnectionDraining].
   /// [drainTimeoutSec] The number of seconds connection draining is active.
   /// [enabled] Is the Web Application Firewall enabled?
-  GetApplicationGatewayBackendHttpSettingConnectionDraining({
+  const GetApplicationGatewayBackendHttpSettingConnectionDraining({
     required this.drainTimeoutSec,
     required this.enabled,
   });

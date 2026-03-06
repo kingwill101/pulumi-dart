@@ -21,7 +21,7 @@ class GetAccountConnectionResult {
   /// [name] The name of the resource
   /// [properties] Connection property base schema.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAccountConnectionResult({
+  const GetAccountConnectionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

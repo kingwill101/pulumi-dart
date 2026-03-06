@@ -24,7 +24,7 @@ class GetConnectorResult {
   /// [region] Required.
   /// [tags] A map of tags assigned to the resource.
   /// [version] Current version of the connector.
-  GetConnectorResult({
+  const GetConnectorResult({
     required this.arn,
     required this.description,
     required this.id,

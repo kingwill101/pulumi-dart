@@ -39,7 +39,7 @@ class GetProductsArgs {
   /// [suggestedPrice] The suggested price of the product.
   /// [supplierId] The supplier id of the product.
   /// [supplierNameKeyword] The supplier name keyword of the product.
-  GetProductsArgs({
+  const GetProductsArgs({
     this.categoryId,
     this.ids,
     this.nameRegex,

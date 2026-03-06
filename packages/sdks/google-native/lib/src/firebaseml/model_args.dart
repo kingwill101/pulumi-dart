@@ -28,7 +28,7 @@ class ModelArgs {
   /// [state] State common to all model types. Includes publishing and validation information.
   /// [tags] User defined tags which can be used to group/filter models during listing
   /// [tfliteModel] A TFLite Model
-  ModelArgs({
+  const ModelArgs({
     required this.displayName,
     this.name,
     this.project,

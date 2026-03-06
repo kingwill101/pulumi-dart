@@ -15,7 +15,7 @@ class VirtualNetworkGatewayPolicyGroupMemberResponse {
   /// [attributeType] The Vpn Policy member attribute type.
   /// [attributeValue] The value of Attribute used for this VirtualNetworkGatewayPolicyGroupMember.
   /// [name] Name of the VirtualNetworkGatewayPolicyGroupMember.
-  VirtualNetworkGatewayPolicyGroupMemberResponse({
+  const VirtualNetworkGatewayPolicyGroupMemberResponse({
     this.attributeType,
     this.attributeValue,
     this.name,

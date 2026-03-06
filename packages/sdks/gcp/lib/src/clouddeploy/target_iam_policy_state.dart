@@ -16,7 +16,7 @@ class TargetIamPolicyState {
   /// [name] Optional.
   /// [policyData] Optional.
   /// [project] Optional.
-  TargetIamPolicyState({
+  const TargetIamPolicyState({
     this.etag,
     this.location,
     this.name,

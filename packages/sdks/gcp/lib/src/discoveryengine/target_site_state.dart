@@ -64,7 +64,7 @@ class TargetSiteState {
   /// [targetSiteId] The unique id of the target site.
   /// [type] The possible target site types.
   /// [updateTime] The target site's last updated time.
-  TargetSiteState({
+  const TargetSiteState({
     this.dataStoreId,
     this.exactMatch,
     this.failureReasons,

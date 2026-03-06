@@ -31,7 +31,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettings {
   /// [multiplexGroupSettings] Optional.
   /// [rtmpGroupSettings] RTMP group settings. See RTMP Group Settings for more details.
   /// [udpGroupSettings] Optional.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettings({
     this.archiveGroupSettings,
     this.frameCaptureGroupSettings,
     this.hlsGroupSettings,

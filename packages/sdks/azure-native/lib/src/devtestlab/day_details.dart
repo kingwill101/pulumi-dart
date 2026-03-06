@@ -9,7 +9,7 @@ class DayDetails {
 
   /// Creates a new [DayDetails].
   /// [time] The time of day the schedule will occur.
-  DayDetails({
+  const DayDetails({
     this.time,
   });
 

@@ -21,7 +21,7 @@ class SchemaArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaName] The name of the Schema
   /// [tags] Resource tags.
-  SchemaArgs({
+  const SchemaArgs({
     this.location,
     required this.resourceGroupName,
     this.schemaName,

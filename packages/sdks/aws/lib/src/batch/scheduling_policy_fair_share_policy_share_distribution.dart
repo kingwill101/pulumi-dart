@@ -11,7 +11,7 @@ class SchedulingPolicyFairSharePolicyShareDistribution {
   /// Creates a new [SchedulingPolicyFairSharePolicyShareDistribution].
   /// [shareIdentifier] A fair share identifier or fair share identifier prefix. For more information, see [ShareAttributes](https://docs.aws.amazon.com/batch/latest/APIReference/API_ShareAttributes.html).
   /// [weightFactor] The weight factor for the fair share identifier. For more information, see [ShareAttributes](https://docs.aws.amazon.com/batch/latest/APIReference/API_ShareAttributes.html).
-  SchedulingPolicyFairSharePolicyShareDistribution({
+  const SchedulingPolicyFairSharePolicyShareDistribution({
     required this.shareIdentifier,
     this.weightFactor,
   });

@@ -11,7 +11,7 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration {
   /// Creates a new [AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration].
   /// [guardrailIdentifier] The unique identifier of the guardrail.
   /// [guardrailVersion] The version of the guardrail.
-  AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration({
+  const AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration({
     required this.guardrailIdentifier,
     required this.guardrailVersion,
   });

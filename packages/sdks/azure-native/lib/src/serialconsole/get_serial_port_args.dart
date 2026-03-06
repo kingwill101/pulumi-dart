@@ -24,7 +24,7 @@ class GetSerialPortArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [resourceProviderNamespace] The namespace of the resource provider.
   /// [serialPort] The name of the serial port to connect to.
-  GetSerialPortArgs({
+  const GetSerialPortArgs({
     required this.parentResource,
     required this.parentResourceType,
     required this.resourceGroupName,

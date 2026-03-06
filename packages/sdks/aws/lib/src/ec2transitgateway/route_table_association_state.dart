@@ -24,7 +24,7 @@ class RouteTableAssociationState {
   /// [resourceType] Type of the resource
   /// [transitGatewayAttachmentId] Identifier of EC2 Transit Gateway Attachment.
   /// [transitGatewayRouteTableId] Identifier of EC2 Transit Gateway Route Table.
-  RouteTableAssociationState({
+  const RouteTableAssociationState({
     this.region,
     this.replaceExistingAssociation,
     this.resourceId,

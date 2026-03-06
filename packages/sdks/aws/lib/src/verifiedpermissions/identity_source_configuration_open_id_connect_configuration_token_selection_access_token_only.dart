@@ -11,7 +11,7 @@ class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessT
   /// Creates a new [IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly].
   /// [audiences] The access token aud claim values that you want to accept in your policy store.
   /// [principalIdClaim] The claim that determines the principal in OIDC access tokens.
-  IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly({
+  const IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly({
     this.audiences,
     this.principalIdClaim,
   });

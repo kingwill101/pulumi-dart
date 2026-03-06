@@ -13,7 +13,7 @@ class AcceleratorPublicSetting {
   /// Creates a new [AcceleratorPublicSetting].
   /// [authType] The type of the auth setting.
   /// [caCertResourceId] Resource Id of CA certificate for https URL of Git repository.
-  AcceleratorPublicSetting({
+  const AcceleratorPublicSetting({
     required this.authType,
     this.caCertResourceId,
   });

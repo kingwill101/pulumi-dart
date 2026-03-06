@@ -24,7 +24,7 @@ class ClusterBootstrapScriptNodeSelector {
   /// [nodeGroupTypes] The bootstrap scripts execution target node group types.
   /// [nodeNames] The bootstrap scripts execution target node names.
   /// [nodeSelectType] The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-  ClusterBootstrapScriptNodeSelector({
+  const ClusterBootstrapScriptNodeSelector({
     this.nodeGroupId,
     this.nodeGroupIds,
     this.nodeGroupName,

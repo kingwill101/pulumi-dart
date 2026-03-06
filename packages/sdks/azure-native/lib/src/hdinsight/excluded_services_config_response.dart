@@ -12,7 +12,7 @@ class ExcludedServicesConfigResponse {
   /// Creates a new [ExcludedServicesConfigResponse].
   /// [excludedServicesConfigId] The config id of excluded services.
   /// [excludedServicesList] The list of excluded services.
-  ExcludedServicesConfigResponse({
+  const ExcludedServicesConfigResponse({
     this.excludedServicesConfigId,
     this.excludedServicesList,
   });

@@ -80,7 +80,7 @@ class VMAttributes {
   /// [rdmaSupport] Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
   /// [vCpuCount] The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
   /// [vmCategories] The VM category specified as a list. Optional parameter.
-  VMAttributes({
+  const VMAttributes({
     this.acceleratorCount,
     this.acceleratorManufacturers,
     this.acceleratorSupport,

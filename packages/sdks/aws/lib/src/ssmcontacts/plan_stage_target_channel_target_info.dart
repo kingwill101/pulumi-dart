@@ -11,7 +11,7 @@ class PlanStageTargetChannelTargetInfo {
   /// Creates a new [PlanStageTargetChannelTargetInfo].
   /// [contactChannelId] The Amazon Resource Name (ARN) of the contact channel.
   /// [retryIntervalInMinutes] The number of minutes to wait before retrying to send engagement if the engagement initially failed.
-  PlanStageTargetChannelTargetInfo({
+  const PlanStageTargetChannelTargetInfo({
     required this.contactChannelId,
     this.retryIntervalInMinutes,
   });

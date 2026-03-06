@@ -8,7 +8,7 @@ class VirtualGatewaySpecListenerConnectionPoolHttp2 {
 
   /// Creates a new [VirtualGatewaySpecListenerConnectionPoolHttp2].
   /// [maxRequests] Maximum number of inflight requests Envoy can concurrently support across hosts in upstream cluster. Minimum value of `1`.
-  VirtualGatewaySpecListenerConnectionPoolHttp2({
+  const VirtualGatewaySpecListenerConnectionPoolHttp2({
     required this.maxRequests,
   });
 

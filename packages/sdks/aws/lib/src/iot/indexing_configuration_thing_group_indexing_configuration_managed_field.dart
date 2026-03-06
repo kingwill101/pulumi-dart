@@ -11,7 +11,7 @@ class IndexingConfigurationThingGroupIndexingConfigurationManagedField {
   /// Creates a new [IndexingConfigurationThingGroupIndexingConfigurationManagedField].
   /// [name] The name of the field.
   /// [type] The data type of the field. Valid values: `Number`, `String`, `Boolean`.
-  IndexingConfigurationThingGroupIndexingConfigurationManagedField({
+  const IndexingConfigurationThingGroupIndexingConfigurationManagedField({
     this.name,
     this.type,
   });

@@ -7,7 +7,7 @@ class OriginRequestPolicyCookiesConfigCookies {
 
   /// Creates a new [OriginRequestPolicyCookiesConfigCookies].
   /// [items] Optional.
-  OriginRequestPolicyCookiesConfigCookies({
+  const OriginRequestPolicyCookiesConfigCookies({
     this.items,
   });
 

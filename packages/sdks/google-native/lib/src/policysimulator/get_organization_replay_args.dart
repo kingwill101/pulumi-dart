@@ -15,7 +15,7 @@ class GetOrganizationReplayArgs {
   /// [location] Required.
   /// [organizationId] Required.
   /// [replayId] Required.
-  GetOrganizationReplayArgs({
+  const GetOrganizationReplayArgs({
     required this.location,
     required this.organizationId,
     required this.replayId,

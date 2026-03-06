@@ -38,7 +38,7 @@ class PreventionJobTriggerInspectJobAction {
   /// [publishSummaryToCscc] Publish the result summary of a DlpJob to the Cloud Security Command Center.
   /// [publishToStackdriver] Enable Stackdriver metric dlp.googleapis.com/findingCount.
   /// [saveFindings] If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
-  PreventionJobTriggerInspectJobAction({
+  const PreventionJobTriggerInspectJobAction({
     this.deidentify,
     this.jobNotificationEmails,
     this.pubSub,

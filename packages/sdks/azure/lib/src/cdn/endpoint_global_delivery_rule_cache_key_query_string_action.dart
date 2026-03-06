@@ -11,7 +11,7 @@ class EndpointGlobalDeliveryRuleCacheKeyQueryStringAction {
   /// Creates a new [EndpointGlobalDeliveryRuleCacheKeyQueryStringAction].
   /// [behavior] The behavior of the cache key for query strings. Valid values are `Exclude`, `ExcludeAll`, `Include` and `IncludeAll`.
   /// [parameters] Comma separated list of parameter values.
-  EndpointGlobalDeliveryRuleCacheKeyQueryStringAction({
+  const EndpointGlobalDeliveryRuleCacheKeyQueryStringAction({
     required this.behavior,
     this.parameters,
   });

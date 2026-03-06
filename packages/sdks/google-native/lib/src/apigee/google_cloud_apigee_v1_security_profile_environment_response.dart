@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1SecurityProfileEnvironmentResponse {
   /// Creates a new [GoogleCloudApigeeV1SecurityProfileEnvironmentResponse].
   /// [attachTime] Time at which environment was attached to the security profile.
   /// [environment] Name of the environment.
-  GoogleCloudApigeeV1SecurityProfileEnvironmentResponse({
+  const GoogleCloudApigeeV1SecurityProfileEnvironmentResponse({
     required this.attachTime,
     required this.environment,
   });

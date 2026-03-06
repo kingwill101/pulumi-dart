@@ -9,7 +9,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes].
   /// [allowAudioInput] Required.
   /// [allowDtmfInput] Required.
-  V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes({
+  const V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes({
     required this.allowAudioInput,
     required this.allowDtmfInput,
   });

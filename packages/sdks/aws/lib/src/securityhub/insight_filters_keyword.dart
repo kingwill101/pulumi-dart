@@ -8,7 +8,7 @@ class InsightFiltersKeyword {
 
   /// Creates a new [InsightFiltersKeyword].
   /// [value] A value for the keyword.
-  InsightFiltersKeyword({
+  const InsightFiltersKeyword({
     required this.value,
   });
 

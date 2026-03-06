@@ -16,7 +16,7 @@ class MigrationSubstateDetailsResponse {
   /// [currentSubState] Substate of migration.
   /// [dbDetails] Optional.
   /// [validationDetails] Details for the validation for migration.
-  MigrationSubstateDetailsResponse({
+  const MigrationSubstateDetailsResponse({
     required this.currentSubState,
     this.dbDetails,
     this.validationDetails,

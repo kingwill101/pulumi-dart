@@ -9,7 +9,7 @@ class IdentityServiceConfigContainerV1beta1 {
 
   /// Creates a new [IdentityServiceConfigContainerV1beta1].
   /// [enabled] Whether to enable the Identity Service component
-  IdentityServiceConfigContainerV1beta1({
+  const IdentityServiceConfigContainerV1beta1({
     this.enabled,
   });
 

@@ -21,7 +21,7 @@ class RaiPolicyContentFilter {
   /// [enabled] If the ContentFilter is enabled.
   /// [name] Name of ContentFilter.
   /// [source] Content source to apply the Content Filters.
-  RaiPolicyContentFilter({
+  const RaiPolicyContentFilter({
     this.allowedContentLevel,
     this.blocking,
     this.enabled,

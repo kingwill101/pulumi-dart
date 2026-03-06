@@ -60,7 +60,7 @@ class HealthCheckTemplateArgs {
   /// [resourceGroupId] The ID of the resource group
   /// [tags] The tag of the resource
   /// [unhealthyThreshold] Specifies the number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail).
-  HealthCheckTemplateArgs({
+  const HealthCheckTemplateArgs({
     this.dryRun,
     this.healthCheckCodes,
     this.healthCheckConnectPort,

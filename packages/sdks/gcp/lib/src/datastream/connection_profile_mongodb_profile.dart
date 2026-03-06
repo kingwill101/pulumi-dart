@@ -40,7 +40,7 @@ class ConnectionProfileMongodbProfile {
   /// [sslConfig] SSL configuration for the MongoDB connection.
   /// [standardConnectionFormat] Standard connection format. Mutually exclusive with
   /// [username] Username for the MongoDB connection.
-  ConnectionProfileMongodbProfile({
+  const ConnectionProfileMongodbProfile({
     required this.hostAddresses,
     this.password,
     this.replicaSet,

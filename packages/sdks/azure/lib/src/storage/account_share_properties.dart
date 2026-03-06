@@ -17,7 +17,7 @@ class AccountShareProperties {
   /// [corsRules] A `cors_rule` block as defined below.
   /// [retentionPolicy] A `retention_policy` block as defined below.
   /// [smb] A `smb` block as defined below.
-  AccountShareProperties({
+  const AccountShareProperties({
     this.corsRules,
     this.retentionPolicy,
     this.smb,

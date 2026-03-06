@@ -52,7 +52,7 @@ class BackupInstanceResponse {
   /// [provisioningState] Specifies the provisioning state of the resource i.e. provisioning/updating/Succeeded/Failed
   /// [resourceGuardOperationRequests] ResourceGuardOperationRequests on which LAC check will be performed
   /// [validationType] Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
-  BackupInstanceResponse({
+  const BackupInstanceResponse({
     required this.currentProtectionState,
     required this.dataSourceInfo,
     this.dataSourceSetInfo,

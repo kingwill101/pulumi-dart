@@ -11,7 +11,7 @@ class GetVirtualNodeSpecListenerTimeoutGrpc {
   /// Creates a new [GetVirtualNodeSpecListenerTimeoutGrpc].
   /// [idles] Required.
   /// [perRequests] Required.
-  GetVirtualNodeSpecListenerTimeoutGrpc({
+  const GetVirtualNodeSpecListenerTimeoutGrpc({
     required this.idles,
     required this.perRequests,
   });

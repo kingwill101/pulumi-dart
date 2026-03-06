@@ -9,7 +9,7 @@ class AzureBareMetalStorageInstanceIdentity {
 
   /// Creates a new [AzureBareMetalStorageInstanceIdentity].
   /// [type] The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
-  AzureBareMetalStorageInstanceIdentity({
+  const AzureBareMetalStorageInstanceIdentity({
     this.type,
   });
 

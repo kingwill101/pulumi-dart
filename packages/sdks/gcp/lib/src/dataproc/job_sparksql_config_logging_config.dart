@@ -8,7 +8,7 @@ class JobSparksqlConfigLoggingConfig {
 
   /// Creates a new [JobSparksqlConfigLoggingConfig].
   /// [driverLogLevels] Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
-  JobSparksqlConfigLoggingConfig({
+  const JobSparksqlConfigLoggingConfig({
     required this.driverLogLevels,
   });
 

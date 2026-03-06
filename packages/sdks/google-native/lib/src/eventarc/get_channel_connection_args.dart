@@ -15,7 +15,7 @@ class GetChannelConnectionArgs {
   /// [channelConnectionId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetChannelConnectionArgs({
+  const GetChannelConnectionArgs({
     required this.channelConnectionId,
     required this.location,
     this.project,

@@ -39,7 +39,7 @@ class VpcIpamResourceDiscoveryAssociationState {
   /// [state] The lifecycle state of the association when you associate or disassociate a resource discovery.
   /// [tags] A map of tags to add to the IPAM resource discovery association resource.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  VpcIpamResourceDiscoveryAssociationState({
+  const VpcIpamResourceDiscoveryAssociationState({
     this.arn,
     this.ipamArn,
     this.ipamId,

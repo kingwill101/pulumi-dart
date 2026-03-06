@@ -9,7 +9,7 @@ class PlatformValuesEnumValueResponse {
 
   /// Creates a new [PlatformValuesEnumValueResponse].
   /// [value] Property value
-  PlatformValuesEnumValueResponse({
+  const PlatformValuesEnumValueResponse({
     this.value,
   });
 

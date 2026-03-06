@@ -26,7 +26,7 @@ class EndpointRedisSettings {
   /// [serverName] Fully qualified domain name of the endpoint.
   /// [sslCaCertificateArn] The Amazon Resource Name (ARN) for the certificate authority (CA) that DMS uses to connect to your Redis target endpoint.
   /// [sslSecurityProtocol] The plaintext option doesn't provide Transport Layer Security (TLS) encryption for traffic between endpoint and database. Options include `plaintext`, `ssl-encryption`. The default is `ssl-encryption`.
-  EndpointRedisSettings({
+  const EndpointRedisSettings({
     this.authPassword,
     required this.authType,
     this.authUserName,

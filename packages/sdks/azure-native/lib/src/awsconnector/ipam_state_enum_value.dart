@@ -9,7 +9,7 @@ class IpamStateEnumValue {
 
   /// Creates a new [IpamStateEnumValue].
   /// [value] Property value
-  IpamStateEnumValue({
+  const IpamStateEnumValue({
     this.value,
   });
 

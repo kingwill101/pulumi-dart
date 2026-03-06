@@ -12,7 +12,7 @@ class PolicyInfo {
   /// Creates a new [PolicyInfo].
   /// [policyId] Required.
   /// [policyParameters] Policy parameters for the backup instance
-  PolicyInfo({
+  const PolicyInfo({
     required this.policyId,
     this.policyParameters,
   });

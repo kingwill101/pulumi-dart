@@ -18,7 +18,7 @@ class GrantRuleToCenArgs {
   /// [cenId] The ID of the CEN instance to which you want to grant permissions.
   /// [cenOwnerId] The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
   /// [instanceId] The ID of the VBR.
-  GrantRuleToCenArgs({
+  const GrantRuleToCenArgs({
     required this.cenId,
     required this.cenOwnerId,
     required this.instanceId,

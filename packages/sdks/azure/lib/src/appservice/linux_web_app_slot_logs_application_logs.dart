@@ -12,7 +12,7 @@ class LinuxWebAppSlotLogsApplicationLogs {
   /// Creates a new [LinuxWebAppSlotLogsApplicationLogs].
   /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
   /// [fileSystemLevel] Log level. Possible values include `Off`, `Verbose`, `Information`, `Warning`, and `Error`.
-  LinuxWebAppSlotLogsApplicationLogs({
+  const LinuxWebAppSlotLogsApplicationLogs({
     this.azureBlobStorage,
     required this.fileSystemLevel,
   });

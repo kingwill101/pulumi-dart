@@ -13,7 +13,7 @@ class LabelingJobInputConfig {
   /// Creates a new [LabelingJobInputConfig].
   /// [dataAttributes] Attributes of the data. Fields are documented below.
   /// [dataSource] Location of the input data.. Fields are documented below.
-  LabelingJobInputConfig({
+  const LabelingJobInputConfig({
     this.dataAttributes,
     required this.dataSource,
   });

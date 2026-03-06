@@ -17,7 +17,7 @@ class ServiceTemplateContainerLivenessProbeHttpGet {
   /// [httpHeaders] Custom headers to set in the request. HTTP allows repeated headers.
   /// [path] Path to access on the HTTP server. Defaults to '/'.
   /// [port] Port number to access on the container. Must be in the range 1 to 65535.
-  ServiceTemplateContainerLivenessProbeHttpGet({
+  const ServiceTemplateContainerLivenessProbeHttpGet({
     this.httpHeaders,
     this.path,
     this.port,

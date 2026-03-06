@@ -21,7 +21,7 @@ class TieringPolicy {
   /// [duration] Number of days/weeks/months/years to retain backups in current tier before tiering.
   /// [durationType] Retention duration type: days/weeks/months/years
   /// [tieringMode] Tiering Mode to control automatic tiering of recovery points. Supported values are:
-  TieringPolicy({
+  const TieringPolicy({
     this.duration,
     this.durationType,
     this.tieringMode,

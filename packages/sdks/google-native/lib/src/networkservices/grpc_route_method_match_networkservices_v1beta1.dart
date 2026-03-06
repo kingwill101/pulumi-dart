@@ -19,7 +19,7 @@ class GrpcRouteMethodMatchNetworkservicesV1beta1 {
   /// [grpcMethod] Name of the method to match against. If unspecified, will match all methods.
   /// [grpcService] Name of the service to match against. If unspecified, will match all services.
   /// [type] Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
-  GrpcRouteMethodMatchNetworkservicesV1beta1({
+  const GrpcRouteMethodMatchNetworkservicesV1beta1({
     this.caseSensitive,
     required this.grpcMethod,
     required this.grpcService,

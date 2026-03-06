@@ -10,7 +10,7 @@ class LimitRangeSpec {
 
   /// Creates a new [LimitRangeSpec].
   /// [limits] Limits is the list of LimitRangeItem objects that are enforced.
-  LimitRangeSpec({
+  const LimitRangeSpec({
     required this.limits,
   });
 

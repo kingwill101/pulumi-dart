@@ -17,7 +17,7 @@ class AvsAssessmentPropertiesV2 {
   /// [fallbackMachineAssessmentArmId] Gets or sets the machine assessment ARM ID for VM fallback.
   /// [scope] Gets or sets the scope of assessment.
   /// [settings] Gets or sets the settings for the assessment.
-  AvsAssessmentPropertiesV2({
+  const AvsAssessmentPropertiesV2({
     this.fallbackMachineAssessmentArmId,
     this.scope,
     this.settings,

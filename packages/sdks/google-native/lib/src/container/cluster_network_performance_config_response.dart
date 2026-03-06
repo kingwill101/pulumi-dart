@@ -9,7 +9,7 @@ class ClusterNetworkPerformanceConfigResponse {
 
   /// Creates a new [ClusterNetworkPerformanceConfigResponse].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for NodePools in the cluster.
-  ClusterNetworkPerformanceConfigResponse({
+  const ClusterNetworkPerformanceConfigResponse({
     required this.totalEgressBandwidthTier,
   });
 

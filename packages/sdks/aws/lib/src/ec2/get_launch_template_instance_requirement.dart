@@ -62,7 +62,7 @@ class GetLaunchTemplateInstanceRequirement {
   /// [spotMaxPricePercentageOverLowestPrice] Required.
   /// [totalLocalStorageGbs] Required.
   /// [vcpuCounts] Required.
-  GetLaunchTemplateInstanceRequirement({
+  const GetLaunchTemplateInstanceRequirement({
     required this.acceleratorCounts,
     required this.acceleratorManufacturers,
     required this.acceleratorNames,

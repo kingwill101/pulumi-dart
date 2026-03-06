@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfigResponse 
 
   /// Creates a new [GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfigResponse].
   /// [userEmails] The email addresses to send the alert.
-  GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfigResponse({
+  const GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfigResponse({
     required this.userEmails,
   });
 

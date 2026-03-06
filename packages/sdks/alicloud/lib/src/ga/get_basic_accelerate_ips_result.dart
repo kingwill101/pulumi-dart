@@ -29,7 +29,7 @@ class GetBasicAccelerateIpsResult {
   /// [ips] A list of Global Accelerator Basic Accelerate IPs. Each element contains the following attributes:
   /// [outputFile] Optional.
   /// [status] The status of the Basic Accelerate IP instance.
-  GetBasicAccelerateIpsResult({
+  const GetBasicAccelerateIpsResult({
     this.accelerateIpAddress,
     this.accelerateIpId,
     required this.id,

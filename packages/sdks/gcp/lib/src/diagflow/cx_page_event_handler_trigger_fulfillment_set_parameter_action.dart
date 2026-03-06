@@ -11,7 +11,7 @@ class CxPageEventHandlerTriggerFulfillmentSetParameterAction {
   /// Creates a new [CxPageEventHandlerTriggerFulfillmentSetParameterAction].
   /// [parameter] Display name of the parameter.
   /// [value] The new JSON-encoded value of the parameter. A null value clears the parameter.
-  CxPageEventHandlerTriggerFulfillmentSetParameterAction({
+  const CxPageEventHandlerTriggerFulfillmentSetParameterAction({
     this.parameter,
     this.value,
   });

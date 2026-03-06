@@ -9,7 +9,7 @@ class PrivateEndpoint {
 
   /// Creates a new [PrivateEndpoint].
   /// [id] Full qualified Id of the private endpoint
-  PrivateEndpoint({
+  const PrivateEndpoint({
     this.id,
   });
 

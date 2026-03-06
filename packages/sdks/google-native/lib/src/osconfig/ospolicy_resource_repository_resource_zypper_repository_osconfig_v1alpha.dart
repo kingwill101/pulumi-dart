@@ -18,7 +18,7 @@ class OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha {
   /// [displayName] The display name of the repository.
   /// [gpgKeys] URIs of GPG keys.
   /// [id] A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
-  OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha({
+  const OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha({
     required this.baseUrl,
     this.displayName,
     this.gpgKeys,

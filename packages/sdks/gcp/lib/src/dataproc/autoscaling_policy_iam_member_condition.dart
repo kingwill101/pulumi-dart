@@ -11,7 +11,7 @@ class AutoscalingPolicyIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AutoscalingPolicyIamMemberCondition({
+  const AutoscalingPolicyIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -36,7 +36,7 @@ class MHSMPrivateEndpointConnectionArgs {
   /// [resourceGroupName] Name of the resource group that contains the managed HSM pool.
   /// [sku] SKU details
   /// [tags] Resource tags
-  MHSMPrivateEndpointConnectionArgs({
+  const MHSMPrivateEndpointConnectionArgs({
     this.identity,
     this.location,
     required this.name,

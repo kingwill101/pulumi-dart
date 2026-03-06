@@ -14,7 +14,7 @@ class WindowsVMGuestPatchAutomaticByPlatformSettingsResponse {
   /// Creates a new [WindowsVMGuestPatchAutomaticByPlatformSettingsResponse].
   /// [bypassPlatformSafetyChecksOnUserSchedule] Enables customer to schedule patching without accidental upgrades
   /// [rebootSetting] Specifies the reboot setting for all AutomaticByPlatform patch installation
-  WindowsVMGuestPatchAutomaticByPlatformSettingsResponse({
+  const WindowsVMGuestPatchAutomaticByPlatformSettingsResponse({
     this.bypassPlatformSafetyChecksOnUserSchedule,
     this.rebootSetting,
   });

@@ -16,7 +16,7 @@ class DatasetStateResponse {
   /// [deprecatedBy] Reference to better Dataset or a Definition
   /// [etag] eTag description
   /// [state] Dataset state
-  DatasetStateResponse({
+  const DatasetStateResponse({
     this.deprecatedBy,
     required this.etag,
     this.state,

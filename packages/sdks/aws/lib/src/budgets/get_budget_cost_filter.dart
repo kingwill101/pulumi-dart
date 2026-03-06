@@ -12,7 +12,7 @@ class GetBudgetCostFilter {
   /// Creates a new [GetBudgetCostFilter].
   /// [name] The name of a budget. Unique within accounts.
   /// [values] Required.
-  GetBudgetCostFilter({
+  const GetBudgetCostFilter({
     required this.name,
     required this.values,
   });

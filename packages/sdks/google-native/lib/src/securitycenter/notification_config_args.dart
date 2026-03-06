@@ -27,7 +27,7 @@ class NotificationConfigArgs {
   /// [project] Optional.
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
   /// [streamingConfig] The config for triggering streaming-based notifications.
-  NotificationConfigArgs({
+  const NotificationConfigArgs({
     required this.configId,
     this.description,
     this.name,

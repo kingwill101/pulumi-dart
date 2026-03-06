@@ -21,7 +21,7 @@ class SslCertArgs {
   /// [commonName] The common name to be used in the certificate to identify the
   /// [instance] The name of the Cloud SQL instance. Changing this
   /// [project] The ID of the project in which the resource belongs. If it
-  SslCertArgs({
+  const SslCertArgs({
     required this.commonName,
     required this.instance,
     this.project,

@@ -18,7 +18,7 @@ class NetworkAclAssociationArgs {
   /// [networkAclId] The ID of the network ACL.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetId] The ID of the associated Subnet.
-  NetworkAclAssociationArgs({
+  const NetworkAclAssociationArgs({
     required this.networkAclId,
     this.region,
     required this.subnetId,

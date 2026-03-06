@@ -8,7 +8,7 @@ class SchemaBundleProtoSchema {
 
   /// Creates a new [SchemaBundleProtoSchema].
   /// [protoDescriptors] Base64 encoded content of the file.
-  SchemaBundleProtoSchema({
+  const SchemaBundleProtoSchema({
     required this.protoDescriptors,
   });
 

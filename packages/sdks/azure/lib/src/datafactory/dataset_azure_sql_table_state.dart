@@ -40,7 +40,7 @@ class DatasetAzureSqlTableState {
   /// [schema] The schema name of the table in the Azure SQL Database.
   /// [schemaColumns] A `schema_column` block as defined below.
   /// [table] The table name of the table in the Azure SQL Database.
-  DatasetAzureSqlTableState({
+  const DatasetAzureSqlTableState({
     this.additionalProperties,
     this.annotations,
     this.dataFactoryId,

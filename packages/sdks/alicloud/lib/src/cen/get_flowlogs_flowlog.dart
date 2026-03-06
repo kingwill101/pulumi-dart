@@ -56,7 +56,7 @@ class GetFlowlogsFlowlog {
   /// [tags] The tag of the resource.
   /// [transitRouterAttachmentId] (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.&gt; This parameter is required.
   /// [transitRouterId] Transit Router ID
-  GetFlowlogsFlowlog({
+  const GetFlowlogsFlowlog({
     required this.cenId,
     required this.createTime,
     required this.description,

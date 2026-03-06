@@ -13,7 +13,7 @@ class GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse {
   /// Creates a new [GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse].
   /// [searchTrials] List of NasTrials that were started as part of search stage.
   /// [trainTrials] List of NasTrials that were started as part of train stage.
-  GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse({
+  const GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse({
     required this.searchTrials,
     required this.trainTrials,
   });

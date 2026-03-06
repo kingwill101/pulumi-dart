@@ -18,7 +18,7 @@ class DiskDetailsResponse {
   /// [vhdId] The VHD Id.
   /// [vhdName] The VHD name.
   /// [vhdType] The type of the volume.
-  DiskDetailsResponse({
+  const DiskDetailsResponse({
     this.maxSizeMB,
     this.vhdId,
     this.vhdName,

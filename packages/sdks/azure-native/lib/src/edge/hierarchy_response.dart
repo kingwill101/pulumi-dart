@@ -12,7 +12,7 @@ class HierarchyResponse {
   /// Creates a new [HierarchyResponse].
   /// [description] Description of Hierarchy
   /// [name] Name of Hierarchy
-  HierarchyResponse({
+  const HierarchyResponse({
     required this.description,
     required this.name,
   });

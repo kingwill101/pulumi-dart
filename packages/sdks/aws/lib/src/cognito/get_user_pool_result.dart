@@ -87,7 +87,7 @@ class GetUserPoolResult {
   /// [userPoolId] Required.
   /// [userPoolTags] (Deprecated) Map of tags assigned to the resource.
   /// [usernameAttributes] Specifies whether a user can use an email address or phone number as a username when they sign up.
-  GetUserPoolResult({
+  const GetUserPoolResult({
     required this.accountRecoverySettings,
     required this.adminCreateUserConfigs,
     required this.arn,

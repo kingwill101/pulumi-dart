@@ -20,7 +20,7 @@ class GetBucketReplicationConfigurationResult {
   /// [region] Required.
   /// [role] The ARN of the IAM role that Amazon S3 assumes when replicating objects.
   /// [rules] An unordered list of configuration blocks that define the rules managing replication.
-  GetBucketReplicationConfigurationResult({
+  const GetBucketReplicationConfigurationResult({
     required this.bucket,
     required this.id,
     required this.region,

@@ -15,7 +15,7 @@ class RegionInstanceTemplateSchedulingNodeAffinity {
   /// [key] The key for the node affinity label.
   /// [operator] The operator. Can be `IN` for node-affinities
   /// [values] Corresponds to the label values of a reservation resource.
-  RegionInstanceTemplateSchedulingNodeAffinity({
+  const RegionInstanceTemplateSchedulingNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

@@ -27,7 +27,7 @@ class GetServiceHybridDoubleWritesArgs {
   /// [sourceNamespace] Source Namespace.
   /// [sourceUserId] Source UserId.
   /// [userId] Target UserId.
-  GetServiceHybridDoubleWritesArgs({
+  const GetServiceHybridDoubleWritesArgs({
     this.ids,
     this.namespace,
     this.outputFile,

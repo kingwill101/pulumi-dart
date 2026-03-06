@@ -24,7 +24,7 @@ class FleetAnalyticArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageLocationType] The type of the fleet analytics resource.
   /// [storageLocationUri] The unique identifier of the fleet analytics resource.
-  FleetAnalyticArgs({
+  const FleetAnalyticArgs({
     this.fleetAnalyticsName,
     required this.fleetName,
     required this.resourceGroupName,

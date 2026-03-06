@@ -12,7 +12,7 @@ class PolicyViolationResponse {
   /// Creates a new [PolicyViolationResponse].
   /// [category] Describes the nature of the policy violation.
   /// [details] Describes specific details about why this policy violation was reported.
-  PolicyViolationResponse({
+  const PolicyViolationResponse({
     this.category,
     this.details,
   });

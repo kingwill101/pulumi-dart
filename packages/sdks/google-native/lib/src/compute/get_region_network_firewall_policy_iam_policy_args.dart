@@ -17,7 +17,7 @@ class GetRegionNetworkFirewallPolicyIamPolicyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetRegionNetworkFirewallPolicyIamPolicyArgs({
+  const GetRegionNetworkFirewallPolicyIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

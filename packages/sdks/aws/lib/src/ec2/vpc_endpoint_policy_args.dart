@@ -18,7 +18,7 @@ class VpcEndpointPolicyArgs {
   /// [policy] A policy to attach to the endpoint that controls access to the service. Defaults to full access. All `Gateway` and some `Interface` endpoints support policies - see the [relevant AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html) for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointId] The VPC Endpoint ID.
-  VpcEndpointPolicyArgs({
+  const VpcEndpointPolicyArgs({
     this.policy,
     this.region,
     required this.vpcEndpointId,

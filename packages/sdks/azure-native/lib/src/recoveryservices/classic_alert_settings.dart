@@ -10,7 +10,7 @@ class ClassicAlertSettings {
   /// Creates a new [ClassicAlertSettings].
   /// [alertsForCriticalOperations] Optional.
   /// [emailNotificationsForSiteRecovery] Optional.
-  ClassicAlertSettings({
+  const ClassicAlertSettings({
     this.alertsForCriticalOperations,
     this.emailNotificationsForSiteRecovery,
   });

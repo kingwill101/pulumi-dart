@@ -8,7 +8,7 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds {
 
   /// Creates a new [VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds].
   /// [secretName] Name of the secret for a virtual node's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
-  VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds({
+  const VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds({
     required this.secretName,
   });
 

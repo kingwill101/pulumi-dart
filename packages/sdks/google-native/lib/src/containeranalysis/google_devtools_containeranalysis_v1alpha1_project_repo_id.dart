@@ -12,7 +12,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId {
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId].
   /// [project] The ID of the project.
   /// [repoName] The name of the repo. Leave empty for the default repo.
-  GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId({
+  const GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId({
     this.project,
     this.repoName,
   });

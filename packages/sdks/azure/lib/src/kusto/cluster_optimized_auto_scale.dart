@@ -11,7 +11,7 @@ class ClusterOptimizedAutoScale {
   /// Creates a new [ClusterOptimizedAutoScale].
   /// [maximumInstances] The maximum number of allowed instances. Possible values range between `0` and `1000`.
   /// [minimumInstances] The minimum number of allowed instances. Possible values range between `0` and `1000`.
-  ClusterOptimizedAutoScale({
+  const ClusterOptimizedAutoScale({
     required this.maximumInstances,
     required this.minimumInstances,
   });

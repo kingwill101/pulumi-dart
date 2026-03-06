@@ -62,7 +62,7 @@ class NatGatewayResponse {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [zones] A list of availability zones denoting the zone in which Nat Gateway should be deployed.
-  NatGatewayResponse({
+  const NatGatewayResponse({
     required this.etag,
     this.id,
     this.idleTimeoutInMinutes,

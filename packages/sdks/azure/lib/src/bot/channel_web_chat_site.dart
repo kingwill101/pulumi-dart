@@ -17,7 +17,7 @@ class ChannelWebChatSite {
   /// [name] The name of the site.
   /// [storageEnabled] Is the storage site enabled for detailed logging? Defaults to `true`.
   /// [userUploadEnabled] Is the user upload enabled for this site? Defaults to `true`.
-  ChannelWebChatSite({
+  const ChannelWebChatSite({
     this.endpointParametersEnabled,
     required this.name,
     this.storageEnabled,

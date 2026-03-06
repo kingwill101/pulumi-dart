@@ -11,7 +11,7 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerIdentity {
   /// Creates a new [NextGenerationFirewallVirtualHubStrataCloudManagerIdentity].
   /// [identityIds] A list of User Assigned Managed Identity IDs to be assigned to this App Configuration.
   /// [type] The type of Managed Service Identity that should be configured on this App Configuration. The only possible value is `UserAssigned`.
-  NextGenerationFirewallVirtualHubStrataCloudManagerIdentity({
+  const NextGenerationFirewallVirtualHubStrataCloudManagerIdentity({
     required this.identityIds,
     required this.type,
   });

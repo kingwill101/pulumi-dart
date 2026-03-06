@@ -36,7 +36,7 @@ class KeystoresAliasesKeyCertFileArgs {
   /// [orgId] Organization ID associated with the alias, without organization/ prefix
   /// [password] Password for the Private Key if it's encrypted
   /// [timeouts] Optional.
-  KeystoresAliasesKeyCertFileArgs({
+  const KeystoresAliasesKeyCertFileArgs({
     required this.alias,
     required this.cert,
     required this.environment,

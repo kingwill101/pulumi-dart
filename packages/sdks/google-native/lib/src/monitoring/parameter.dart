@@ -12,7 +12,7 @@ class Parameter {
   /// Creates a new [Parameter].
   /// [doubleValue] A floating-point parameter value.
   /// [intValue] An integer parameter value.
-  Parameter({
+  const Parameter({
     this.doubleValue,
     this.intValue,
   });

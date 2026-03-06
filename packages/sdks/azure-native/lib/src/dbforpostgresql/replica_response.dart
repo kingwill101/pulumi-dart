@@ -15,7 +15,7 @@ class ReplicaResponse {
   /// [capacity] Maximum number of read replicas allowed for a server.
   /// [replicationState] Indicates the replication state of a read replica. This property is returned only when the target server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
   /// [role] Role of the server in a replication set.
-  ReplicaResponse({
+  const ReplicaResponse({
     required this.capacity,
     required this.replicationState,
     this.role,

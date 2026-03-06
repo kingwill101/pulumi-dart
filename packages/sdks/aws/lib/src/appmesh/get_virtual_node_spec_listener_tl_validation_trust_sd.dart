@@ -7,7 +7,7 @@ class GetVirtualNodeSpecListenerTlValidationTrustSd {
 
   /// Creates a new [GetVirtualNodeSpecListenerTlValidationTrustSd].
   /// [secretName] Required.
-  GetVirtualNodeSpecListenerTlValidationTrustSd({
+  const GetVirtualNodeSpecListenerTlValidationTrustSd({
     required this.secretName,
   });
 

@@ -15,7 +15,7 @@ class GetGroupLookupArgs {
 
   /// Creates a new [GetGroupLookupArgs].
   /// [groupKey] The EntityKey of the Group to lookup. A unique identifier for an entity in the Cloud Identity Groups API.
-  GetGroupLookupArgs({
+  const GetGroupLookupArgs({
     required this.groupKey,
   });
 

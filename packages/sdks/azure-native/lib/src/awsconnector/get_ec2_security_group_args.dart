@@ -15,7 +15,7 @@ class GetEc2SecurityGroupArgs {
   /// Creates a new [GetEc2SecurityGroupArgs].
   /// [name] Name of Ec2SecurityGroup
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2SecurityGroupArgs({
+  const GetEc2SecurityGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

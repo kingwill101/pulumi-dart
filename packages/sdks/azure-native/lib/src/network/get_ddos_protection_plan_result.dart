@@ -40,7 +40,7 @@ class GetDdosProtectionPlanResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [virtualNetworks] The list of virtual networks associated with the DDoS protection plan resource. This list is read-only.
-  GetDdosProtectionPlanResult({
+  const GetDdosProtectionPlanResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

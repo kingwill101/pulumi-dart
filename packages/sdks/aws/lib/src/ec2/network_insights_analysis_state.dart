@@ -60,7 +60,7 @@ class NetworkInsightsAnalysisState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [waitForCompletion] If enabled, the resource will wait for the Network Insights Analysis status to change to `succeeded` or `failed`. Setting this to `false` will skip the process. Default: `true`.
   /// [warningMessage] The warning message.
-  NetworkInsightsAnalysisState({
+  const NetworkInsightsAnalysisState({
     this.alternatePathHints,
     this.arn,
     this.explanations,

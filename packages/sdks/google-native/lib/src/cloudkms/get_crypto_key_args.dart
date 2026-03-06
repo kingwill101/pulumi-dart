@@ -17,7 +17,7 @@ class GetCryptoKeyArgs {
   /// [keyRingId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCryptoKeyArgs({
+  const GetCryptoKeyArgs({
     required this.cryptoKeyId,
     required this.keyRingId,
     required this.location,

@@ -8,7 +8,7 @@ class GetReservationReservationSharingPolicy {
 
   /// Creates a new [GetReservationReservationSharingPolicy].
   /// [serviceShareType] Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
-  GetReservationReservationSharingPolicy({
+  const GetReservationReservationSharingPolicy({
     required this.serviceShareType,
   });
 

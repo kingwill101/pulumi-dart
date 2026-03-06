@@ -21,7 +21,7 @@ class GetNetworkDdosProtectionPlanResult {
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the resource.
   /// [virtualNetworkIds] A list of IDs of the Virtual Networks associated with this DDoS Protection Plan.
-  GetNetworkDdosProtectionPlanResult({
+  const GetNetworkDdosProtectionPlanResult({
     required this.id,
     required this.location,
     required this.name,

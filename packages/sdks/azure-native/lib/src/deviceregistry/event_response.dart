@@ -22,7 +22,7 @@ class EventResponse {
   /// [name] The name of the event.
   /// [observabilityMode] An indication of how the event should be mapped to OpenTelemetry.
   /// [topic] Object that describes the topic information for the specific event.
-  EventResponse({
+  const EventResponse({
     this.eventConfiguration,
     required this.eventNotifier,
     required this.name,

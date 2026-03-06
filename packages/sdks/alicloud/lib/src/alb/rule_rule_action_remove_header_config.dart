@@ -7,7 +7,7 @@ class RuleRuleActionRemoveHeaderConfig {
 
   /// Creates a new [RuleRuleActionRemoveHeaderConfig].
   /// [key] Optional.
-  RuleRuleActionRemoveHeaderConfig({
+  const RuleRuleActionRemoveHeaderConfig({
     this.key,
   });
 

@@ -14,7 +14,7 @@ class HadoopClusterRolesWorkerNodeScriptAction {
   /// [name] The name of the script action.
   /// [parameters] The parameters for the script provided.
   /// [uri] The URI to the script.
-  HadoopClusterRolesWorkerNodeScriptAction({
+  const HadoopClusterRolesWorkerNodeScriptAction({
     required this.name,
     this.parameters,
     required this.uri,

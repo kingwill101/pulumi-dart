@@ -15,7 +15,7 @@ class GetArgs {
   /// Creates a new [GetArgs].
   /// [name] The name of this Azure Arc machine.
   /// [resourceGroupName] The name of the Resource Group where the Hybrid Compute exists.
-  GetArgs({
+  const GetArgs({
     required this.name,
     required this.resourceGroupName,
   });

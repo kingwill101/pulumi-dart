@@ -12,7 +12,7 @@ class OSPolicyResourceFileRemoteResponseOsconfigV1alpha {
   /// Creates a new [OSPolicyResourceFileRemoteResponseOsconfigV1alpha].
   /// [sha256Checksum] SHA256 checksum of the remote file.
   /// [uri] URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
-  OSPolicyResourceFileRemoteResponseOsconfigV1alpha({
+  const OSPolicyResourceFileRemoteResponseOsconfigV1alpha({
     required this.sha256Checksum,
     required this.uri,
   });

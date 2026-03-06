@@ -32,7 +32,7 @@ class ClusterArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] The resource tags.
   /// [zones] The availability zones.
-  ClusterArgs({
+  const ClusterArgs({
     this.clusterName,
     this.identity,
     this.location,

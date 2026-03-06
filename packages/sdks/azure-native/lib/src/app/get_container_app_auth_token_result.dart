@@ -30,7 +30,7 @@ class GetContainerAppAuthTokenResult {
   /// [tags] Resource tags.
   /// [token] Auth token value.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetContainerAppAuthTokenResult({
+  const GetContainerAppAuthTokenResult({
     required this.expires,
     required this.id,
     required this.location,

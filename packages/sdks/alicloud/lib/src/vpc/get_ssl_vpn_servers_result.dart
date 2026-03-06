@@ -26,7 +26,7 @@ class GetSslVpnServersResult {
   /// [outputFile] Optional.
   /// [servers] A list of SSL-VPN servers. Each element contains the following attributes:
   /// [vpnGatewayId] The ID of the VPN gateway instance.
-  GetSslVpnServersResult({
+  const GetSslVpnServersResult({
     required this.id,
     required this.ids,
     this.nameRegex,

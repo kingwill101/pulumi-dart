@@ -9,7 +9,7 @@ class PatchInstanceFilterGroupLabelResponse {
 
   /// Creates a new [PatchInstanceFilterGroupLabelResponse].
   /// [labels] Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-  PatchInstanceFilterGroupLabelResponse({
+  const PatchInstanceFilterGroupLabelResponse({
     required this.labels,
   });
 

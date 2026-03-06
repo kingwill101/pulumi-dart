@@ -9,7 +9,7 @@ class QueryOverrideCloudtasksV2beta2 {
 
   /// Creates a new [QueryOverrideCloudtasksV2beta2].
   /// [queryParams] The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
-  QueryOverrideCloudtasksV2beta2({
+  const QueryOverrideCloudtasksV2beta2({
     this.queryParams,
   });
 

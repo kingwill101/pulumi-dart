@@ -12,7 +12,7 @@ class VolumeDevice {
   /// Creates a new [VolumeDevice].
   /// [devicePath] devicePath is the path inside of the container that the device will be mapped to.
   /// [name] name must match the name of a persistentVolumeClaim in the pod
-  VolumeDevice({
+  const VolumeDevice({
     required this.devicePath,
     required this.name,
   });

@@ -33,7 +33,7 @@ class GetCommandsArgs {
   /// [nameRegex] A regex string to filter results by Command name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [type] The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
-  GetCommandsArgs({
+  const GetCommandsArgs({
     this.commandProvider,
     this.contentEncoding,
     this.description,

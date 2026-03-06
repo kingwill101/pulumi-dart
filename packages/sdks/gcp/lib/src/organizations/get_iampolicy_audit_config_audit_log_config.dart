@@ -11,7 +11,7 @@ class GetIAMPolicyAuditConfigAuditLogConfig {
   /// Creates a new [GetIAMPolicyAuditConfigAuditLogConfig].
   /// [exemptedMembers] Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
   /// [logType] Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://docs.cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
-  GetIAMPolicyAuditConfigAuditLogConfig({
+  const GetIAMPolicyAuditConfigAuditLogConfig({
     this.exemptedMembers,
     required this.logType,
   });

@@ -71,7 +71,7 @@ class GetScalingConfigurationsConfiguration {
   /// [systemDiskCategory] System disk category of the scaling configuration.
   /// [systemDiskPerformanceLevel] The performance level of the ESSD used as the system disk.
   /// [systemDiskSize] System disk size of the scaling configuration.
-  GetScalingConfigurationsConfiguration({
+  const GetScalingConfigurationsConfiguration({
     required this.creationTime,
     required this.creditSpecification,
     required this.dataDisks,

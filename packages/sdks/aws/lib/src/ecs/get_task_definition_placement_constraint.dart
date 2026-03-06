@@ -11,7 +11,7 @@ class GetTaskDefinitionPlacementConstraint {
   /// Creates a new [GetTaskDefinitionPlacementConstraint].
   /// [expression] Cluster Query Language expression to apply to the constraint. For more information, see [Cluster Query Language in the Amazon EC2 Container Service Developer Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
   /// [type] Proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
-  GetTaskDefinitionPlacementConstraint({
+  const GetTaskDefinitionPlacementConstraint({
     required this.expression,
     required this.type,
   });

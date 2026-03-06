@@ -19,7 +19,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences {
   /// [cpuOvercommitRatio] CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
   /// [hostMaintenancePolicy] Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
   /// [nodeTypes] A list of sole tenant node types. An empty list means that all possible node types will be considered.
-  PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences({
+  const PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences({
     this.commitmentPlan,
     this.cpuOvercommitRatio,
     this.hostMaintenancePolicy,

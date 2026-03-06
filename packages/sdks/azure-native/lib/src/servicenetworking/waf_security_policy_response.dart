@@ -9,7 +9,7 @@ class WafSecurityPolicyResponse {
 
   /// Creates a new [WafSecurityPolicyResponse].
   /// [id] Resource ID of the Waf Security Policy
-  WafSecurityPolicyResponse({
+  const WafSecurityPolicyResponse({
     required this.id,
   });
 

@@ -17,7 +17,7 @@ class DocumentParameter {
   /// [description] A description of what the parameter does, how to use it, the default value, and whether or not the parameter is optional.
   /// [name] The name of the document.
   /// [type] The type of parameter. Valid values: `String`, `StringList`.
-  DocumentParameter({
+  const DocumentParameter({
     this.defaultValue,
     this.description,
     this.name,

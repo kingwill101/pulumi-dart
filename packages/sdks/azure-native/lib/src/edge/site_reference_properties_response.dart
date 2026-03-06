@@ -12,7 +12,7 @@ class SiteReferencePropertiesResponse {
   /// Creates a new [SiteReferencePropertiesResponse].
   /// [provisioningState] Provisioning State
   /// [siteId] Azure Resource ID for Site
-  SiteReferencePropertiesResponse({
+  const SiteReferencePropertiesResponse({
     required this.provisioningState,
     required this.siteId,
   });

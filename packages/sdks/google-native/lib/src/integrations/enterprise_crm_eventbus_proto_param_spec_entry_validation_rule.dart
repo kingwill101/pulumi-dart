@@ -14,7 +14,7 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRule {
   /// [doubleRange] Optional.
   /// [intRange] Optional.
   /// [stringRegex] Optional.
-  EnterpriseCrmEventbusProtoParamSpecEntryValidationRule({
+  const EnterpriseCrmEventbusProtoParamSpecEntryValidationRule({
     this.doubleRange,
     this.intRange,
     this.stringRegex,

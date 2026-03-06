@@ -23,7 +23,7 @@ class ServiceCertificate {
   /// [storeName] The name of the Certificate Store where this certificate should be stored. Possible values are `CertificateAuthority` and `Root`.
   /// [subject] The subject of the certificate.
   /// [thumbprint] The thumbprint of the certificate.
-  ServiceCertificate({
+  const ServiceCertificate({
     this.certificatePassword,
     required this.encodedCertificate,
     this.expiry,

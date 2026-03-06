@@ -10,7 +10,7 @@ class PolicyControllerMonitoringConfig {
 
   /// Creates a new [PolicyControllerMonitoringConfig].
   /// [backends] Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  PolicyControllerMonitoringConfig({
+  const PolicyControllerMonitoringConfig({
     this.backends,
   });
 

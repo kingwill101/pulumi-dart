@@ -14,7 +14,7 @@ class MembershipDefaultResultConfiguration {
   /// Creates a new [MembershipDefaultResultConfiguration].
   /// [outputConfiguration] Required.
   /// [roleArn] The ARN of the IAM role which will be used to create the membership.
-  MembershipDefaultResultConfiguration({
+  const MembershipDefaultResultConfiguration({
     required this.outputConfiguration,
     this.roleArn,
   });

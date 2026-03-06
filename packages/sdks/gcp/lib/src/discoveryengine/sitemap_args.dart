@@ -23,7 +23,7 @@ class SitemapArgs {
   /// [location] The geographic location where the data store should reside. The value can
   /// [project] The ID of the project in which the resource belongs.
   /// [uri] Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
-  SitemapArgs({
+  const SitemapArgs({
     required this.dataStoreId,
     required this.location,
     this.project,

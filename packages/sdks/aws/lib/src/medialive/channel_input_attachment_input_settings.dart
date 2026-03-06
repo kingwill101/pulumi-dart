@@ -41,7 +41,7 @@ class ChannelInputAttachmentInputSettings {
   /// [smpte2038DataPreference] Specifies whether to extract applicable ancillary data from a SMPTE-2038 source in the input.
   /// [sourceEndBehavior] Loop input if it is a file.
   /// [videoSelector] Optional.
-  ChannelInputAttachmentInputSettings({
+  const ChannelInputAttachmentInputSettings({
     this.audioSelectors,
     this.captionSelectors,
     this.deblockFilter,

@@ -41,7 +41,7 @@ class AiEndpointWithModelGardenDeploymentArgs {
   /// [modelConfig] The model config to use for the deployment.
   /// [project] The ID of the project in which the resource belongs.
   /// [publisherModelName] The Model Garden model to deploy.
-  AiEndpointWithModelGardenDeploymentArgs({
+  const AiEndpointWithModelGardenDeploymentArgs({
     this.deployConfig,
     this.endpointConfig,
     this.huggingFaceModelId,

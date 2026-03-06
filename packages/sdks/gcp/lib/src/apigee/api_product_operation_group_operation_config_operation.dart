@@ -11,7 +11,7 @@ class ApiProductOperationGroupOperationConfigOperation {
   /// Creates a new [ApiProductOperationGroupOperationConfigOperation].
   /// [methods] Methods refers to the REST verbs, when none specified, all verb types are allowed.
   /// [resource] Required. REST resource path associated with the API proxy or remote service.
-  ApiProductOperationGroupOperationConfigOperation({
+  const ApiProductOperationGroupOperationConfigOperation({
     this.methods,
     this.resource,
   });

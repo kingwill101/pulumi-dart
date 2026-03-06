@@ -8,7 +8,7 @@ class GetEventBusDeadLetterConfig {
 
   /// Creates a new [GetEventBusDeadLetterConfig].
   /// [arn] The ARN of the SQS queue specified as the target for the dead-letter queue.
-  GetEventBusDeadLetterConfig({
+  const GetEventBusDeadLetterConfig({
     required this.arn,
   });
 

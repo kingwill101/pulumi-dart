@@ -17,7 +17,7 @@ class GetNodeTemplateIamPolicyComputeV1Args {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetNodeTemplateIamPolicyComputeV1Args({
+  const GetNodeTemplateIamPolicyComputeV1Args({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

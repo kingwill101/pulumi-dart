@@ -25,7 +25,7 @@ class VaultArgs {
   /// [resourceGroupName] The name of the Resource Group to which the server belongs.
   /// [tags] The tags that will be assigned to the key vault.
   /// [vaultName] Name of the vault
-  VaultArgs({
+  const VaultArgs({
     this.location,
     required this.properties,
     required this.resourceGroupName,

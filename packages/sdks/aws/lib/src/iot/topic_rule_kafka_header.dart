@@ -11,7 +11,7 @@ class TopicRuleKafkaHeader {
   /// Creates a new [TopicRuleKafkaHeader].
   /// [key] The key of the Kafka header.
   /// [value] The value of the Kafka header.
-  TopicRuleKafkaHeader({
+  const TopicRuleKafkaHeader({
     required this.key,
     required this.value,
   });

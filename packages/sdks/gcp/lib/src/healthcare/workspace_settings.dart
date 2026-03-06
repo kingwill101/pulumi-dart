@@ -8,7 +8,7 @@ class WorkspaceSettings {
 
   /// Creates a new [WorkspaceSettings].
   /// [dataProjectIds] Project IDs for data projects hosted in a workspace.
-  WorkspaceSettings({
+  const WorkspaceSettings({
     required this.dataProjectIds,
   });
 

@@ -22,7 +22,7 @@ class VscMountPointState {
   /// [fileSystemId] The ID of the HDFS file system resource associated with the VSC mount point.
   /// [instances] The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
   /// [mountPointId] VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
-  VscMountPointState({
+  const VscMountPointState({
     this.aliasPrefix,
     this.description,
     this.fileSystemId,

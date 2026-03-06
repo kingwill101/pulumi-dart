@@ -11,7 +11,7 @@ class CertifiateCertificatePolicyLifetimeActionTrigger {
   /// Creates a new [CertifiateCertificatePolicyLifetimeActionTrigger].
   /// [daysBeforeExpiry] The number of days before the Certificate expires that the action associated with this Trigger should run. Conflicts with `lifetime_percentage`.
   /// [lifetimePercentage] The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Conflicts with `days_before_expiry`.
-  CertifiateCertificatePolicyLifetimeActionTrigger({
+  const CertifiateCertificatePolicyLifetimeActionTrigger({
     this.daysBeforeExpiry,
     this.lifetimePercentage,
   });

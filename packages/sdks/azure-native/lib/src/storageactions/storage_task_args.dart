@@ -35,7 +35,7 @@ class StorageTaskArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageTaskName] The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
   /// [tags] Resource tags.
-  StorageTaskArgs({
+  const StorageTaskArgs({
     required this.action,
     required this.description,
     required this.enabled,

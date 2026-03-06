@@ -21,7 +21,7 @@ class GetParametersByPathArgs {
   /// [recursive] Whether to retrieve all parameters within the hirerachy. Defaults to `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [withDecryption] Whether to retrieve all parameters in the hierarchy, particularly those of `SecureString` type, with their value decrypted. Defaults to `true`.
-  GetParametersByPathArgs({
+  const GetParametersByPathArgs({
     required this.path,
     this.recursive,
     this.region,

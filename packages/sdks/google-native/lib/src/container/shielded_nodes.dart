@@ -9,7 +9,7 @@ class ShieldedNodes {
 
   /// Creates a new [ShieldedNodes].
   /// [enabled] Whether Shielded Nodes features are enabled on all nodes in this cluster.
-  ShieldedNodes({
+  const ShieldedNodes({
     this.enabled,
   });
 

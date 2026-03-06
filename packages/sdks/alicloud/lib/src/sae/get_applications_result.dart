@@ -32,7 +32,7 @@ class GetApplicationsResult {
   /// [outputFile] Optional.
   /// [reverse] Optional.
   /// [status] Optional.
-  GetApplicationsResult({
+  const GetApplicationsResult({
     this.appName,
     required this.applications,
     this.enableDetails,

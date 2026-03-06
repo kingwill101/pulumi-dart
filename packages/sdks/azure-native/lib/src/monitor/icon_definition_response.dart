@@ -12,7 +12,7 @@ class IconDefinitionResponse {
   /// Creates a new [IconDefinitionResponse].
   /// [customData] Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
   /// [iconName] Name of the built-in icon, or 'Custom' to use customData
-  IconDefinitionResponse({
+  const IconDefinitionResponse({
     this.customData,
     required this.iconName,
   });

@@ -93,7 +93,7 @@ class InstanceState {
   /// [storageSize] The standard storage space of the instance. Unit: GB.
   /// [tags] Instance tag.
   /// [zoneId] The zone Id. Refer to "Instructions for Use".
-  InstanceState({
+  const InstanceState({
     this.autoPay,
     this.coldStorageSize,
     this.cpu,

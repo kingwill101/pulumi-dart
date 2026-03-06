@@ -18,7 +18,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
   /// [critical] (Output)
   /// [obectIds] (Output)
   /// [value] The value of this X.509 extension. A base64-encoded string.
-  CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan({
+  const CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan({
     this.critical,
     this.obectIds,
     this.value,

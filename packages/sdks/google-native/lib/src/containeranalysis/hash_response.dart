@@ -12,7 +12,7 @@ class HashResponse {
   /// Creates a new [HashResponse].
   /// [type] The type of hash that was performed.
   /// [value] The hash value.
-  HashResponse({
+  const HashResponse({
     required this.type,
     required this.value,
   });

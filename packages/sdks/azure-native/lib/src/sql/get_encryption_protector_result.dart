@@ -41,7 +41,7 @@ class GetEncryptionProtectorResult {
   /// [thumbprint] Thumbprint of the server key.
   /// [type] Resource type.
   /// [uri] The URI of the server key.
-  GetEncryptionProtectorResult({
+  const GetEncryptionProtectorResult({
     this.autoRotationEnabled,
     required this.azureApiVersion,
     required this.id,

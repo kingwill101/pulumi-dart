@@ -42,7 +42,7 @@ class EkmConnectionServiceResolverServerCertificate {
   /// [sha256Fingerprint] (Output)
   /// [subject] (Output)
   /// [subjectAlternativeDnsNames] (Output)
-  EkmConnectionServiceResolverServerCertificate({
+  const EkmConnectionServiceResolverServerCertificate({
     this.issuer,
     this.notAfterTime,
     this.notBeforeTime,

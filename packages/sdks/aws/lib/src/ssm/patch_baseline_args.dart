@@ -56,7 +56,7 @@ class PatchBaselineArgs {
   /// [rejectedPatchesAction] Action for Patch Manager to take on patches included in the `rejected_patches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
   /// [sources] Configuration block with alternate sources for patches. Applies to Linux instances only. See `source` below.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  PatchBaselineArgs({
+  const PatchBaselineArgs({
     this.approvalRules,
     this.approvedPatches,
     this.approvedPatchesComplianceLevel,

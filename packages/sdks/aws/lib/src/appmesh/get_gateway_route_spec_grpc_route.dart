@@ -11,7 +11,7 @@ class GetGatewayRouteSpecGrpcRoute {
   /// Creates a new [GetGatewayRouteSpecGrpcRoute].
   /// [actions] Required.
   /// [matches] Required.
-  GetGatewayRouteSpecGrpcRoute({
+  const GetGatewayRouteSpecGrpcRoute({
     required this.actions,
     required this.matches,
   });

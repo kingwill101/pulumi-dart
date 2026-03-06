@@ -17,7 +17,7 @@ class GetSshPublicKeyResult {
   /// [publicKey] The SSH public key used to authenticate to a virtual machine through ssh.
   /// [resourceGroupName] Required.
   /// [tags] Optional.
-  GetSshPublicKeyResult({
+  const GetSshPublicKeyResult({
     required this.id,
     required this.name,
     required this.publicKey,

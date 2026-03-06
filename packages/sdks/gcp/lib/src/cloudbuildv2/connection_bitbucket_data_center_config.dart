@@ -33,7 +33,7 @@ class ConnectionBitbucketDataCenterConfig {
   /// [serviceDirectoryConfig] Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
   /// [sslCa] SSL certificate to use for requests to the Bitbucket Data Center.
   /// [webhookSecretSecretVersion] Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
-  ConnectionBitbucketDataCenterConfig({
+  const ConnectionBitbucketDataCenterConfig({
     required this.authorizerCredential,
     required this.hostUri,
     required this.readAuthorizerCredential,

@@ -50,7 +50,7 @@ class ReleaseArgs {
   /// [releaseId] The ID value for the new release.
   /// [releaseRequirements] Set of requirements to be fulfilled on the Unit when using this Release.
   /// [unitKind] Reference to the UnitKind this Release corresponds to (required and
-  ReleaseArgs({
+  const ReleaseArgs({
     this.annotations,
     this.blueprint,
     this.inputVariableDefaults,

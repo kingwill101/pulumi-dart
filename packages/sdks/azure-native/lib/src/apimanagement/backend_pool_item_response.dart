@@ -15,7 +15,7 @@ class BackendPoolItemResponse {
   /// [id] The unique ARM id of the backend entity. The ARM id should refer to an already existing backend entity.
   /// [priority] The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
   /// [weight] The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
-  BackendPoolItemResponse({
+  const BackendPoolItemResponse({
     required this.id,
     this.priority,
     this.weight,

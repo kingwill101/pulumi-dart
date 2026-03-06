@@ -12,7 +12,7 @@ class AppVersionSnapshotToolOpenApiToolTlsConfig {
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolTlsConfig].
   /// [caCerts] (Output)
-  AppVersionSnapshotToolOpenApiToolTlsConfig({
+  const AppVersionSnapshotToolOpenApiToolTlsConfig({
     this.caCerts,
   });
 

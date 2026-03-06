@@ -11,7 +11,7 @@ class GetClustersClusterPostInstallScript {
   /// Creates a new [GetClustersClusterPostInstallScript].
   /// [args] The parameters of the script.
   /// [url] The download path of the script.
-  GetClustersClusterPostInstallScript({
+  const GetClustersClusterPostInstallScript({
     required this.args,
     required this.url,
   });

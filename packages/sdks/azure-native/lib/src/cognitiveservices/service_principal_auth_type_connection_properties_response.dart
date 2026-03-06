@@ -39,7 +39,7 @@ class ServicePrincipalAuthTypeConnectionPropertiesResponse {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  ServicePrincipalAuthTypeConnectionPropertiesResponse({
+  const ServicePrincipalAuthTypeConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

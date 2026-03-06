@@ -21,7 +21,7 @@ class RulesSourceResponse {
   /// [rulesString] Property rulesString
   /// [statefulRules] Property statefulRules
   /// [statelessRulesAndCustomActions] Property statelessRulesAndCustomActions
-  RulesSourceResponse({
+  const RulesSourceResponse({
     this.rulesSourceList,
     this.rulesString,
     this.statefulRules,

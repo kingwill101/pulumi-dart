@@ -45,7 +45,7 @@ class GetEnvironmentResult {
   /// [properties] Optional. Key-value pairs that may be used for customizing the environment.
   /// [state] State of the environment. Values other than ACTIVE means the resource is not ready to use.
   /// [type] Optional. EnvironmentType selected for the environment.
-  GetEnvironmentResult({
+  const GetEnvironmentResult({
     required this.apiProxyType,
     required this.createdAt,
     required this.deploymentType,

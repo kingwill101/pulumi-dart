@@ -29,7 +29,7 @@ class ManagedIntegrationRuntime {
   /// [managedVirtualNetwork] Managed Virtual Network reference.
   /// [ssisProperties] SSIS properties for managed integration runtime.
   /// [type] The type of integration runtime.
-  ManagedIntegrationRuntime({
+  const ManagedIntegrationRuntime({
     this.computeProperties,
     this.customerVirtualNetwork,
     this.description,

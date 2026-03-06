@@ -23,7 +23,7 @@ class GetUserGroupResult {
   /// [region] Required.
   /// [roleArn] ARN of the IAM role to be associated with the user group.
   /// [userPoolId] Required.
-  GetUserGroupResult({
+  const GetUserGroupResult({
     required this.description,
     required this.id,
     required this.name,

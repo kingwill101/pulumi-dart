@@ -8,7 +8,7 @@ class DomainDevicesInterfaceAlias {
 
   /// Creates a new [DomainDevicesInterfaceAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesInterfaceAlias({
+  const DomainDevicesInterfaceAlias({
     required this.name,
   });
 

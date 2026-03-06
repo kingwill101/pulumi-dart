@@ -13,7 +13,7 @@ class GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout {
   /// [example] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout({
+  const GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout({
     required this.description,
     required this.example,
     required this.requiresRestart,

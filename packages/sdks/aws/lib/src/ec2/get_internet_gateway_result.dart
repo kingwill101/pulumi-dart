@@ -27,7 +27,7 @@ class GetInternetGatewayResult {
   /// [ownerId] ID of the AWS account that owns the internet gateway.
   /// [region] Required.
   /// [tags] Required.
-  GetInternetGatewayResult({
+  const GetInternetGatewayResult({
     required this.arn,
     required this.attachments,
     this.filters,

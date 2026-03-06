@@ -39,7 +39,7 @@ class GetMonitorResult {
   /// [systemData] The system metadata relating to this resource
   /// [tags] The tags of the monitor resource.
   /// [type] The type of the monitor resource.
-  GetMonitorResult({
+  const GetMonitorResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

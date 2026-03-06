@@ -13,7 +13,7 @@ class DataflowProperties {
   /// Creates a new [DataflowProperties].
   /// [mode] Mode for Dataflow. Optional; defaults to Enabled.
   /// [operations] List of operations including source and destination references as well as transformation.
-  DataflowProperties({
+  const DataflowProperties({
     this.mode,
     required this.operations,
   });

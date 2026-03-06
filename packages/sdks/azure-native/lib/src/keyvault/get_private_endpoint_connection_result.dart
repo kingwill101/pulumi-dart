@@ -37,7 +37,7 @@ class GetPrivateEndpointConnectionResult {
   /// [provisioningState] Provisioning state of the private endpoint connection.
   /// [tags] Tags assigned to the key vault resource.
   /// [type] Resource type of the key vault resource.
-  GetPrivateEndpointConnectionResult({
+  const GetPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

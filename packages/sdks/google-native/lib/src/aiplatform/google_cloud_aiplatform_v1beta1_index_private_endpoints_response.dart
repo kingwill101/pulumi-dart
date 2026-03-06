@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse].
   /// [matchGrpcAddress] The ip address used to send match gRPC requests.
   /// [serviceAttachment] The name of the service attachment resource. Populated if private service connect is enabled.
-  GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse({
+  const GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse({
     required this.matchGrpcAddress,
     required this.serviceAttachment,
   });

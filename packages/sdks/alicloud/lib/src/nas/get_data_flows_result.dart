@@ -20,7 +20,7 @@ class GetDataFlowsResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetDataFlowsResult({
+  const GetDataFlowsResult({
     required this.fileSystemId,
     required this.flows,
     required this.id,

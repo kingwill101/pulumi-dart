@@ -21,7 +21,7 @@ class OssExportSinkConfiguration {
   /// [roleArn] The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
   /// [sink] The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
   /// [toTime] The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
-  OssExportSinkConfiguration({
+  const OssExportSinkConfiguration({
     required this.fromTime,
     required this.logstore,
     required this.roleArn,

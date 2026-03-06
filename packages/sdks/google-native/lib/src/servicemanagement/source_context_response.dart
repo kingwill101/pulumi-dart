@@ -9,7 +9,7 @@ class SourceContextResponse {
 
   /// Creates a new [SourceContextResponse].
   /// [fileName] The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
-  SourceContextResponse({
+  const SourceContextResponse({
     required this.fileName,
   });
 

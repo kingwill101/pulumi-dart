@@ -13,7 +13,7 @@ class GetDefaultScraperConfigurationResult {
   /// [configuration] The configuration file.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetDefaultScraperConfigurationResult({
+  const GetDefaultScraperConfigurationResult({
     required this.configuration,
     required this.id,
     required this.region,

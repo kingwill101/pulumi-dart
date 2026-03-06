@@ -7,7 +7,7 @@ class GetOtsBackupPlansPlanOtsDetail {
 
   /// Creates a new [GetOtsBackupPlansPlanOtsDetail].
   /// [tableNames] Required.
-  GetOtsBackupPlansPlanOtsDetail({
+  const GetOtsBackupPlansPlanOtsDetail({
     required this.tableNames,
   });
 

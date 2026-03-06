@@ -18,7 +18,7 @@ class GetBackupPolicyArgs {
   /// [accountName] The name of the NetApp Account in which the NetApp Policy exists.
   /// [name] The name of the NetApp Backup Policy.
   /// [resourceGroupName] The name of the resource group where the NetApp Backup Policy exists.
-  GetBackupPolicyArgs({
+  const GetBackupPolicyArgs({
     required this.accountName,
     required this.name,
     required this.resourceGroupName,

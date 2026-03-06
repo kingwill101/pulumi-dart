@@ -11,7 +11,7 @@ class GetSpacesBucketsSort {
   /// Creates a new [GetSpacesBucketsSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
   /// [key] Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
-  GetSpacesBucketsSort({
+  const GetSpacesBucketsSort({
     this.direction,
     required this.key,
   });

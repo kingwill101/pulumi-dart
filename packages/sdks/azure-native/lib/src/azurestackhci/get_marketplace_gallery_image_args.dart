@@ -15,7 +15,7 @@ class GetMarketplaceGalleryImageArgs {
   /// Creates a new [GetMarketplaceGalleryImageArgs].
   /// [marketplaceGalleryImageName] Name of the marketplace gallery image
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMarketplaceGalleryImageArgs({
+  const GetMarketplaceGalleryImageArgs({
     required this.marketplaceGalleryImageName,
     required this.resourceGroupName,
   });

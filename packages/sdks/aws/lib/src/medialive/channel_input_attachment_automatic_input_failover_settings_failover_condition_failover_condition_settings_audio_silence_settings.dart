@@ -10,7 +10,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
   /// Creates a new [ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings].
   /// [audioSelectorName] Required.
   /// [audioSilenceThresholdMsec] The amount of time (in milliseconds) that the active input must be silent before automatic input failover occurs. Silence is defined as audio loss or audio quieter than -50 dBFS.
-  ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings({
+  const ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings({
     required this.audioSelectorName,
     this.audioSilenceThresholdMsec,
   });

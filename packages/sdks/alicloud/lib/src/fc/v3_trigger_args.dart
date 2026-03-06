@@ -33,7 +33,7 @@ class V3TriggerArgs {
   /// [triggerConfig] Trigger configuration. The configuration varies for different types of triggers.
   /// [triggerName] Trigger Name
   /// [triggerType] The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
-  V3TriggerArgs({
+  const V3TriggerArgs({
     this.description,
     required this.functionName,
     this.invocationRole,

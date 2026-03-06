@@ -9,7 +9,7 @@ class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule {
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule].
   /// [interval] Required.
   /// [intervalUnit] Required.
-  LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule({
+  const LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule({
     required this.interval,
     required this.intervalUnit,
   });

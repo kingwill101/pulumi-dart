@@ -32,7 +32,7 @@ class GetVirtualClusterResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [version] Virtual cluster version.
-  GetVirtualClusterResult({
+  const GetVirtualClusterResult({
     required this.azureApiVersion,
     required this.childResources_,
     required this.id,

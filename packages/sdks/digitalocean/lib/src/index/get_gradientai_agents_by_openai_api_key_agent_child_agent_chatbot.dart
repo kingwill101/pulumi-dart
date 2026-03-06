@@ -23,7 +23,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot {
   /// [primaryColor] Primary color for the chatbot
   /// [secondaryColor] Secondary color for the chatbot
   /// [startingMessage] Starting message for the chatbot
-  GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot({
+  const GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot({
     this.buttonBackgroundColor,
     this.logo,
     this.name,

@@ -8,7 +8,7 @@ class GetChannelFullUrlResult {
 
   /// Creates a new [GetChannelFullUrlResult].
   /// [endpointUrl] The URL that represents the endpoint of the destination of an event subscription.
-  GetChannelFullUrlResult({
+  const GetChannelFullUrlResult({
     this.endpointUrl,
   });
 

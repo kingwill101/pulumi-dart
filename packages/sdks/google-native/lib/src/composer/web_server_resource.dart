@@ -15,7 +15,7 @@ class WebServerResource {
   /// [cpu] Optional. CPU request and limit for Airflow web server.
   /// [memoryGb] Optional. Memory (GB) request and limit for Airflow web server.
   /// [storageGb] Optional. Storage (GB) request and limit for Airflow web server.
-  WebServerResource({
+  const WebServerResource({
     this.cpu,
     this.memoryGb,
     this.storageGb,

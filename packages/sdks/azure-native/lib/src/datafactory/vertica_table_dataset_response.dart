@@ -40,7 +40,7 @@ class VerticaTableDatasetResponse {
   /// [table] The table name of the Vertica. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  VerticaTableDatasetResponse({
+  const VerticaTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

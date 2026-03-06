@@ -12,7 +12,7 @@ class AuthorizationErrorResponse {
   /// Creates a new [AuthorizationErrorResponse].
   /// [code] Error code
   /// [message] Error message
-  AuthorizationErrorResponse({
+  const AuthorizationErrorResponse({
     this.code,
     this.message,
   });

@@ -39,7 +39,7 @@ class FirewallEndpointAssociationArgs {
   /// [network] The URL of the network that is being associated.
   /// [parent] The name of the parent this firewall endpoint association belongs to.
   /// [tlsInspectionPolicy] The URL of the TlsInspectionPolicy that is being associated.
-  FirewallEndpointAssociationArgs({
+  const FirewallEndpointAssociationArgs({
     this.disabled,
     required this.firewallEndpoint,
     this.labels,

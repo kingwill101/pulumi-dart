@@ -24,7 +24,7 @@ class EncryptionResponse {
   /// [mpegCenc] Configuration for MPEG Common Encryption (MPEG-CENC).
   /// [sampleAes] Configuration for SAMPLE-AES encryption.
   /// [secretManagerKeySource] Keys are stored in Google Secret Manager.
-  EncryptionResponse({
+  const EncryptionResponse({
     required this.aes128,
     required this.drmSystems,
     required this.mpegCenc,

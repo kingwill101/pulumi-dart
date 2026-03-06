@@ -45,7 +45,7 @@ class GetProducerImageShareGroupImageSharesImageShare {
   /// [tags] A list of customized tags.
   /// [totalSize] The total size of the image in all available regions.
   /// [type] How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-  GetProducerImageShareGroupImageSharesImageShare({
+  const GetProducerImageShareGroupImageSharesImageShare({
     required this.capabilities,
     required this.created,
     required this.deprecated,

@@ -12,7 +12,7 @@ class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
   /// Creates a new [RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository].
   /// [repositoryBase] A common public repository base for Yum.
   /// [repositoryPath] Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
-  RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository({
+  const RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository({
     required this.repositoryBase,
     required this.repositoryPath,
   });

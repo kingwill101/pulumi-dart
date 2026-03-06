@@ -13,7 +13,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable {
   /// Creates a new [StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable].
   /// [columns] Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable({
+  const StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable({
     this.columns,
     required this.table,
   });

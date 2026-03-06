@@ -10,7 +10,7 @@ class DiskEncryptionConfigurationResponse {
 
   /// Creates a new [DiskEncryptionConfigurationResponse].
   /// [keyVaultConfiguration] The Key Vault that contains your key to use for disk encryption. The Key Vault must be in the same region as the Managed Environment.
-  DiskEncryptionConfigurationResponse({
+  const DiskEncryptionConfigurationResponse({
     this.keyVaultConfiguration,
   });
 

@@ -14,7 +14,7 @@ class GetGatewaySmbUsersUser {
   /// [gatewayId] The Gateway ID.
   /// [id] The ID of the Gateway SMB User.
   /// [username] The username of the Gateway SMB User.
-  GetGatewaySmbUsersUser({
+  const GetGatewaySmbUsersUser({
     required this.gatewayId,
     required this.id,
     required this.username,

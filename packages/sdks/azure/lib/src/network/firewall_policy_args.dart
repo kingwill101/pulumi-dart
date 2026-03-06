@@ -67,7 +67,7 @@ class FirewallPolicyArgs {
   /// [threatIntelligenceAllowlist] A `threat_intelligence_allowlist` block as defined below.
   /// [threatIntelligenceMode] The operation mode for Threat Intelligence. Possible values are `Alert`, `Deny` and `Off`. Defaults to `Alert`.
   /// [tlsCertificate] A `tls_certificate` block as defined below.
-  FirewallPolicyArgs({
+  const FirewallPolicyArgs({
     this.autoLearnPrivateRangesEnabled,
     this.basePolicyId,
     this.dns,

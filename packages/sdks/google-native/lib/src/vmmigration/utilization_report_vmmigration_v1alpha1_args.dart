@@ -32,7 +32,7 @@ class UtilizationReportVmmigrationV1alpha1Args {
   /// [timeFrame] Time frame of the report.
   /// [utilizationReportId] Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
   /// [vms] List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
-  UtilizationReportVmmigrationV1alpha1Args({
+  const UtilizationReportVmmigrationV1alpha1Args({
     this.displayName,
     this.location,
     this.project,

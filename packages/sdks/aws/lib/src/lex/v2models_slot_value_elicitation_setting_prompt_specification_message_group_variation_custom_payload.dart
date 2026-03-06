@@ -7,7 +7,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariatio
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationCustomPayload].
   /// [value] Required.
-  V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationCustomPayload({
+  const V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationCustomPayload({
     required this.value,
   });
 

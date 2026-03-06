@@ -8,7 +8,7 @@ class LogTransformerTransformerConfigLowerCaseString {
 
   /// Creates a new [LogTransformerTransformerConfigLowerCaseString].
   /// [withKeys] Specifies the keys of the fields to convert to lowercase.
-  LogTransformerTransformerConfigLowerCaseString({
+  const LogTransformerTransformerConfigLowerCaseString({
     required this.withKeys,
   });
 

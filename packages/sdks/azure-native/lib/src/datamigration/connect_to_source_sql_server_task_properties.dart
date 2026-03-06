@@ -20,7 +20,7 @@ class ConnectToSourceSqlServerTaskProperties {
   /// [input] Task input
   /// [taskId] Task id
   /// [taskType] Task type.
-  ConnectToSourceSqlServerTaskProperties({
+  const ConnectToSourceSqlServerTaskProperties({
     this.clientData,
     this.input,
     this.taskId,

@@ -12,7 +12,7 @@ class ManagedNotificationAdditionalChannelAssociationState {
   /// Creates a new [ManagedNotificationAdditionalChannelAssociationState].
   /// [channelArn] ARN of the channel to associate with the managed notification.
   /// [managedNotificationArn] ARN of the managed notification to associate the channel with.
-  ManagedNotificationAdditionalChannelAssociationState({
+  const ManagedNotificationAdditionalChannelAssociationState({
     this.channelArn,
     this.managedNotificationArn,
   });

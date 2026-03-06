@@ -18,7 +18,7 @@ class GetDisasterRecoveryConfigArgs {
   /// [alias] The Disaster Recovery configuration name
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  GetDisasterRecoveryConfigArgs({
+  const GetDisasterRecoveryConfigArgs({
     required this.alias,
     required this.namespaceName,
     required this.resourceGroupName,

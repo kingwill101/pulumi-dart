@@ -19,7 +19,7 @@ class StepStatusResponse {
   /// [status] The value of the status of the step.
   /// [stepId] The id of the step.
   /// [stepName] The name of the step.
-  StepStatusResponse({
+  const StepStatusResponse({
     required this.branches,
     required this.status,
     required this.stepId,

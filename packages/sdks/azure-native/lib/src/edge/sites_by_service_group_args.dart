@@ -19,7 +19,7 @@ class SitesByServiceGroupArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [servicegroupName] The name of the service group
   /// [siteName] The name of the Site
-  SitesByServiceGroupArgs({
+  const SitesByServiceGroupArgs({
     this.properties,
     required this.servicegroupName,
     this.siteName,

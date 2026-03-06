@@ -18,7 +18,7 @@ class GetRegistryScopeMapArgs {
   /// [containerRegistryName] The Name of the Container Registry where the token exists.
   /// [name] The name of the Container Registry token.
   /// [resourceGroupName] The Name of the Resource Group where this Container Registry token exists.
-  GetRegistryScopeMapArgs({
+  const GetRegistryScopeMapArgs({
     required this.containerRegistryName,
     required this.name,
     required this.resourceGroupName,

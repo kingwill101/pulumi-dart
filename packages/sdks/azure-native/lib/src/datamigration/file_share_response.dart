@@ -15,7 +15,7 @@ class FileShareResponse {
   /// [password] Password credential used to connect to the share location.
   /// [path] The folder path for this share.
   /// [userName] User name credential to connect to the share location
-  FileShareResponse({
+  const FileShareResponse({
     this.password,
     required this.path,
     this.userName,

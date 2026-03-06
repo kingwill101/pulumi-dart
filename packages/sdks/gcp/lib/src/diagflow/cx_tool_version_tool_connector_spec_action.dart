@@ -21,7 +21,7 @@ class CxToolVersionToolConnectorSpecAction {
   /// [entityOperation] Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
   /// [inputFields] Entity fields to use as inputs for the operation.
   /// [outputFields] Entity fields to return from the operation.
-  CxToolVersionToolConnectorSpecAction({
+  const CxToolVersionToolConnectorSpecAction({
     this.connectionActionId,
     this.entityOperation,
     this.inputFields,

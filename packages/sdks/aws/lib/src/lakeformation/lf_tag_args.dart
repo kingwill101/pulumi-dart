@@ -21,7 +21,7 @@ class LfTagArgs {
   /// [key] Key-name for the tag.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [values] List of possible values an attribute can take.
-  LfTagArgs({
+  const LfTagArgs({
     this.catalogId,
     required this.key,
     this.region,

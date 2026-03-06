@@ -37,7 +37,7 @@ class AppFiguresLinkedService {
   /// [type] Type of linked service.
   /// [userName] The username of the Appfigures source. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  AppFiguresLinkedService({
+  const AppFiguresLinkedService({
     this.annotations,
     required this.clientKey,
     this.connectVia,

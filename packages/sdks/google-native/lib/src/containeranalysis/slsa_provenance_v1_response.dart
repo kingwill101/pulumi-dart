@@ -12,7 +12,7 @@ class SlsaProvenanceV1Response {
   /// Creates a new [SlsaProvenanceV1Response].
   /// [buildDefinition] Required.
   /// [runDetails] Required.
-  SlsaProvenanceV1Response({
+  const SlsaProvenanceV1Response({
     required this.buildDefinition,
     required this.runDetails,
   });

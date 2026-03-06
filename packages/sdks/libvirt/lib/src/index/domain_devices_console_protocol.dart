@@ -8,7 +8,7 @@ class DomainDevicesConsoleProtocol {
 
   /// Creates a new [DomainDevicesConsoleProtocol].
   /// [type] Specifies the type of protocol used for the EGD source backend.
-  DomainDevicesConsoleProtocol({
+  const DomainDevicesConsoleProtocol({
     required this.type,
   });
 

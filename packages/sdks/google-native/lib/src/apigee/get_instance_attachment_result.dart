@@ -14,7 +14,7 @@ class GetInstanceAttachmentResult {
   /// [createdAt] Time the attachment was created in milliseconds since epoch.
   /// [environment] ID of the attached environment.
   /// [name] ID of the attachment.
-  GetInstanceAttachmentResult({
+  const GetInstanceAttachmentResult({
     required this.createdAt,
     required this.environment,
     required this.name,

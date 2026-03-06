@@ -17,7 +17,7 @@ class GatewayRouteSpecHttpRouteActionRewrite {
   /// [hostname] Host name to rewrite.
   /// [path] Exact path to rewrite.
   /// [prefix] Specified beginning characters to rewrite.
-  GatewayRouteSpecHttpRouteActionRewrite({
+  const GatewayRouteSpecHttpRouteActionRewrite({
     this.hostname,
     this.path,
     this.prefix,

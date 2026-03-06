@@ -12,7 +12,7 @@ class ServiceConfigurationResponse {
   /// Creates a new [ServiceConfigurationResponse].
   /// [port] The port on which service is enabled.
   /// [serviceName] Name of the service.
-  ServiceConfigurationResponse({
+  const ServiceConfigurationResponse({
     required this.port,
     required this.serviceName,
   });

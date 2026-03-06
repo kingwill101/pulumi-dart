@@ -57,7 +57,7 @@ class InstanceFileV1beta1Args {
   /// [project] Optional.
   /// [protocol] Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
   /// [tier] The service tier of the instance.
-  InstanceFileV1beta1Args({
+  const InstanceFileV1beta1Args({
     this.capacityGb,
     this.description,
     this.directoryServices,

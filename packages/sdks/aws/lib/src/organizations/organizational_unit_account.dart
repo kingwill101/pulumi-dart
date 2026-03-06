@@ -17,7 +17,7 @@ class OrganizationalUnitAccount {
   /// [email] Email of the account
   /// [id] Identifier of the organization unit
   /// [name] The name for the organizational unit
-  OrganizationalUnitAccount({
+  const OrganizationalUnitAccount({
     this.arn,
     this.email,
     this.id,

@@ -10,7 +10,7 @@ class ManagedIdentitySettings {
 
   /// Creates a new [ManagedIdentitySettings].
   /// [resource] The Resource indicating the App ID URI of the target resource.
-  ManagedIdentitySettings({
+  const ManagedIdentitySettings({
     this.resource,
   });
 

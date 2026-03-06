@@ -48,7 +48,7 @@ class RuleState {
   /// [status] (String) State of the retention rule. Only retention rules that are in the `available` state retain resources. Valid values include `pending` and `available`.
   /// [tags] Optional.
   /// [tagsAll] Optional.
-  RuleState({
+  const RuleState({
     this.arn,
     this.description,
     this.excludeResourceTags,

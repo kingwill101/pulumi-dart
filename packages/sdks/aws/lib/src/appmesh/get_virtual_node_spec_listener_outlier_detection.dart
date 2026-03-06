@@ -15,7 +15,7 @@ class GetVirtualNodeSpecListenerOutlierDetection {
   /// [intervals] Required.
   /// [maxEjectionPercent] Required.
   /// [maxServerErrors] Required.
-  GetVirtualNodeSpecListenerOutlierDetection({
+  const GetVirtualNodeSpecListenerOutlierDetection({
     required this.baseEjectionDurations,
     required this.intervals,
     required this.maxEjectionPercent,

@@ -68,7 +68,7 @@ class AnalyticsWorkspaceArgs {
   /// [retentionInDays] The workspace data retention in days. Possible values are between `30` and `730`.
   /// [sku] Specifies the SKU of the Log Analytics Workspace. Possible values are `PerGB2018`, `PerNode`, `Premium`, `Standalone`, `Standard`, `CapacityReservation`, `LACluster` and `Unlimited`. Defaults to `PerGB2018`.
   /// [tags] A mapping of tags to assign to the resource.
-  AnalyticsWorkspaceArgs({
+  const AnalyticsWorkspaceArgs({
     this.allowResourceOnlyPermissions,
     this.cmkForQueryForced,
     this.dailyQuotaGb,

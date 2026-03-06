@@ -10,7 +10,7 @@ class ListProviderActionInUseStorageAccountsResult {
 
   /// Creates a new [ListProviderActionInUseStorageAccountsResult].
   /// [storageAccountList] The storage account list which in use in related reports.
-  ListProviderActionInUseStorageAccountsResult({
+  const ListProviderActionInUseStorageAccountsResult({
     this.storageAccountList,
   });
 

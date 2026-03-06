@@ -23,7 +23,7 @@ class GetRecordsFilter {
   /// [key] Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] A list of values to match against the `key` field. Only retrieves DNS records
-  GetRecordsFilter({
+  const GetRecordsFilter({
     this.all,
     required this.key,
     this.matchBy,

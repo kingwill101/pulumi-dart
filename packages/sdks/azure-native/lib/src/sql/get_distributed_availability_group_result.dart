@@ -52,7 +52,7 @@ class GetDistributedAvailabilityGroupResult {
   /// [replicationMode] Replication mode of the link
   /// [seedingMode] Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
   /// [type] Resource type.
-  GetDistributedAvailabilityGroupResult({
+  const GetDistributedAvailabilityGroupResult({
     required this.azureApiVersion,
     this.databases,
     required this.distributedAvailabilityGroupId,

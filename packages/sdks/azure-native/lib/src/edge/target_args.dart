@@ -29,7 +29,7 @@ class TargetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [targetName] Name of the target
-  TargetArgs({
+  const TargetArgs({
     this.extendedLocation,
     this.location,
     this.properties,

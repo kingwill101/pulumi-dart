@@ -41,7 +41,7 @@ class HttpRouteArgs {
   /// [name] Name of the HttpRoute resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] Rules that define how traffic is routed and handled.
-  HttpRouteArgs({
+  const HttpRouteArgs({
     this.description,
     this.gateways,
     required this.hostnames,

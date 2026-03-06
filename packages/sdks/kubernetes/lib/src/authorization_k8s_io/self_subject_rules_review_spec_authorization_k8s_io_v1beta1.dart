@@ -8,7 +8,7 @@ class SelfSubjectRulesReviewSpecAuthorizationK8sIoV1beta1 {
 
   /// Creates a new [SelfSubjectRulesReviewSpecAuthorizationK8sIoV1beta1].
   /// [namespace] Namespace to evaluate rules for. Required.
-  SelfSubjectRulesReviewSpecAuthorizationK8sIoV1beta1({
+  const SelfSubjectRulesReviewSpecAuthorizationK8sIoV1beta1({
     this.namespace,
   });
 

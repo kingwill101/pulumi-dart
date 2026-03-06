@@ -18,7 +18,7 @@ class AuthConfigDecryptedCredentialJwt {
   /// [jwtHeader] Identifies which algorithm is used to generate the signature.
   /// [jwtPayload] Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
   /// [secret] User's pre-shared secret to sign the token.
-  AuthConfigDecryptedCredentialJwt({
+  const AuthConfigDecryptedCredentialJwt({
     this.jwt,
     this.jwtHeader,
     this.jwtPayload,

@@ -90,7 +90,7 @@ class GetAutonomousDatabasesAutonomousDatabase {
   /// [properties] The properties of an Autonomous Database.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [sourceConfigs] The source Autonomous Database configuration for the standby Autonomous Database.
-  GetAutonomousDatabasesAutonomousDatabase({
+  const GetAutonomousDatabasesAutonomousDatabase({
     required this.adminPassword,
     required this.autonomousDatabaseId,
     required this.cidr,

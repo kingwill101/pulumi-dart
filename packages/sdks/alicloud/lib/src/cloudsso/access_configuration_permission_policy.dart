@@ -14,7 +14,7 @@ class AccessConfigurationPermissionPolicy {
   /// [permissionPolicyDocument] The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
   /// [permissionPolicyName] The name of the policy.
   /// [permissionPolicyType] The type of the policy. Valid values: `System`, `Inline`.
-  AccessConfigurationPermissionPolicy({
+  const AccessConfigurationPermissionPolicy({
     this.permissionPolicyDocument,
     required this.permissionPolicyName,
     required this.permissionPolicyType,

@@ -23,7 +23,7 @@ class ProjectState {
   /// [name] The name of the project in the space.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spaceName] The name of the space.
-  ProjectState({
+  const ProjectState({
     this.description,
     this.displayName,
     this.name,

@@ -15,7 +15,7 @@ class GetRestorableDatabaseAccountsArgs {
   /// Creates a new [GetRestorableDatabaseAccountsArgs].
   /// [location] The location where the Cosmos DB Database Account.
   /// [name] The name of this Cosmos DB Database Account.
-  GetRestorableDatabaseAccountsArgs({
+  const GetRestorableDatabaseAccountsArgs({
     required this.location,
     required this.name,
   });

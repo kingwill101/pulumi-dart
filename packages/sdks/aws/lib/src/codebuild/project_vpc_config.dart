@@ -14,7 +14,7 @@ class ProjectVpcConfig {
   /// [securityGroupIds] Security group IDs to assign to running builds.
   /// [subnets] Subnet IDs within which to run builds.
   /// [vpcId] ID of the VPC within which to run builds.
-  ProjectVpcConfig({
+  const ProjectVpcConfig({
     required this.securityGroupIds,
     required this.subnets,
     required this.vpcId,

@@ -10,7 +10,7 @@ class FleetSpotOptionsMaintenanceStrategiesCapacityRebalance {
   /// Creates a new [FleetSpotOptionsMaintenanceStrategiesCapacityRebalance].
   /// [replacementStrategy] The replacement strategy to use. Only available for fleets of `type` set to `maintain`. Valid values: `launch`.
   /// [terminationDelay] Optional.
-  FleetSpotOptionsMaintenanceStrategiesCapacityRebalance({
+  const FleetSpotOptionsMaintenanceStrategiesCapacityRebalance({
     this.replacementStrategy,
     this.terminationDelay,
   });

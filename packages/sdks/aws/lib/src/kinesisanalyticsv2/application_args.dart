@@ -44,7 +44,7 @@ class ApplicationArgs {
   /// [serviceExecutionRole] The ARN of the IAM role used by the application to access Kinesis data streams, Kinesis Data Firehose delivery streams, Amazon S3 objects, and other external resources.
   /// [startApplication] Whether to start or stop the application.
   /// [tags] A map of tags to assign to the application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  ApplicationArgs({
+  const ApplicationArgs({
     this.applicationConfiguration,
     this.applicationMode,
     this.cloudwatchLoggingOptions,

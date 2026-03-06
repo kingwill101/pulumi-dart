@@ -15,7 +15,7 @@ class ApmPropertiesResponse {
   /// [properties] Non-sensitive properties for the APM
   /// [provisioningState] State of the APM.
   /// [type] APM Type
-  ApmPropertiesResponse({
+  const ApmPropertiesResponse({
     this.properties,
     required this.provisioningState,
     required this.type,

@@ -22,7 +22,7 @@ class LocalDiskInitializeParams {
   /// [diskSizeGb] Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
   /// [diskType] Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
   /// [labels] Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
-  LocalDiskInitializeParams({
+  const LocalDiskInitializeParams({
     this.description,
     this.diskName,
     this.diskSizeGb,

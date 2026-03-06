@@ -12,7 +12,7 @@ class GetKubernetesClusterLinuxProfile {
   /// Creates a new [GetKubernetesClusterLinuxProfile].
   /// [adminUsername] The username associated with the administrator account of the Windows VMs.
   /// [sshKeys] An `ssh_key` block as defined below.
-  GetKubernetesClusterLinuxProfile({
+  const GetKubernetesClusterLinuxProfile({
     required this.adminUsername,
     required this.sshKeys,
   });

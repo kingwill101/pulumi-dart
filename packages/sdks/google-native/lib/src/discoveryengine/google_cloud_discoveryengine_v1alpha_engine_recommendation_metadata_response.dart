@@ -18,7 +18,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse {
   /// [lastTuneTime] The timestamp when the latest successful tune finished. Only applicable on Media Recommendation engines.
   /// [servingState] The serving state of the engine: `ACTIVE`, `NOT_ACTIVE`.
   /// [tuningOperation] The latest tune operation id associated with the engine. Only applicable on Media Recommendation engines. If present, this operation id can be used to determine if there is an ongoing tune for this engine. To check the operation status, send the GetOperation request with this operation id in the engine resource format. If no tuning has happened for this engine, the string is empty.
-  GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse({
+  const GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse({
     required this.dataState,
     required this.lastTuneTime,
     required this.servingState,

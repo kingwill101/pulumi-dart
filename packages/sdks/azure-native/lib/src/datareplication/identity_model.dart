@@ -21,7 +21,7 @@ class IdentityModel {
   /// [audience] Gets or sets the audience of the SPN with which fabric agent communicates to service.
   /// [objectId] Gets or sets the object Id of the SPN with which fabric agent communicates to service.
   /// [tenantId] Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
-  IdentityModel({
+  const IdentityModel({
     required this.aadAuthority,
     required this.applicationId,
     required this.audience,

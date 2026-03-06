@@ -58,7 +58,7 @@ class BlobState {
   /// [storageContainerName] The name of the storage container in which this blob should be created. Changing this forces a new resource to be created.
   /// [type] The type of the storage blob to be created. Possible values are `Append`, `Block` or `Page`. Changing this forces a new resource to be created.
   /// [url] The URL of the blob
-  BlobState({
+  const BlobState({
     this.accessTier,
     this.cacheControl,
     this.contentMd5,

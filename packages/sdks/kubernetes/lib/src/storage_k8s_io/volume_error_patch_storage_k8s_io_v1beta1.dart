@@ -12,7 +12,7 @@ class VolumeErrorPatchStorageK8sIoV1beta1 {
   /// Creates a new [VolumeErrorPatchStorageK8sIoV1beta1].
   /// [message] String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
   /// [time] Time the error was encountered.
-  VolumeErrorPatchStorageK8sIoV1beta1({
+  const VolumeErrorPatchStorageK8sIoV1beta1({
     this.message,
     this.time,
   });

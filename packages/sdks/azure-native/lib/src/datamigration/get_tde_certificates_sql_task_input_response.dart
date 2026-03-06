@@ -18,7 +18,7 @@ class GetTdeCertificatesSqlTaskInputResponse {
   /// [backupFileShare] Backup file share information for file share to be used for temporarily storing files.
   /// [connectionInfo] Connection information for SQL Server
   /// [selectedCertificates] List containing certificate names and corresponding password to use for encrypting the exported certificate.
-  GetTdeCertificatesSqlTaskInputResponse({
+  const GetTdeCertificatesSqlTaskInputResponse({
     required this.backupFileShare,
     required this.connectionInfo,
     required this.selectedCertificates,

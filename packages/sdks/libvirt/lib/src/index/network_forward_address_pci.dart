@@ -17,7 +17,7 @@ class NetworkForwardAddressPci {
   /// [domain] Sets the domain ID for the PCI forwarding address.
   /// [function] Defines the function number for the PCI forwarding address.
   /// [slot] Specifies the slot number for the PCI forwarding address.
-  NetworkForwardAddressPci({
+  const NetworkForwardAddressPci({
     this.bus,
     this.domain,
     this.function,

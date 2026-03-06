@@ -12,7 +12,7 @@ class SBOMReferenceNoteResponse {
   /// Creates a new [SBOMReferenceNoteResponse].
   /// [format] The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
   /// [version] The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
-  SBOMReferenceNoteResponse({
+  const SBOMReferenceNoteResponse({
     required this.format,
     required this.version,
   });

@@ -10,7 +10,7 @@ class GetZonesResult {
   /// Creates a new [GetZonesResult].
   /// [id] Required.
   /// [ids] A list of all the Route53 Hosted Zone IDs found.
-  GetZonesResult({
+  const GetZonesResult({
     required this.id,
     required this.ids,
   });

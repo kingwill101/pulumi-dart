@@ -9,7 +9,7 @@ class InterconnectAttachment {
 
   /// Creates a new [InterconnectAttachment].
   /// [region] Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
-  InterconnectAttachment({
+  const InterconnectAttachment({
     this.region,
   });
 

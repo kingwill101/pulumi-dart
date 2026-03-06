@@ -56,7 +56,7 @@ class WorkerPoolState {
   /// [uid] Output only. A unique identifier for the `WorkerPool`.
   /// [updateTime] Output only. Time at which the request to update the `WorkerPool` was received.
   /// [workerConfig] Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
-  WorkerPoolState({
+  const WorkerPoolState({
     this.annotations,
     this.createTime,
     this.deleteTime,

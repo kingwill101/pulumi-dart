@@ -11,7 +11,7 @@ class GetStandardSiteCredential {
   /// Creates a new [GetStandardSiteCredential].
   /// [password] The password associated with the username, which can be used to publish to this Logic App.
   /// [username] The username which can be used to publish to this Logic App.
-  GetStandardSiteCredential({
+  const GetStandardSiteCredential({
     required this.password,
     required this.username,
   });

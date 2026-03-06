@@ -18,7 +18,7 @@ class GetListenerDefaultActionRedirect {
   /// [protocol] Required.
   /// [query] Required.
   /// [statusCode] Required.
-  GetListenerDefaultActionRedirect({
+  const GetListenerDefaultActionRedirect({
     required this.host,
     required this.path,
     required this.port,

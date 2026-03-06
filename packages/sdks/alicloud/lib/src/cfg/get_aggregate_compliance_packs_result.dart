@@ -29,7 +29,7 @@ class GetAggregateCompliancePacksResult {
   /// [outputFile] Optional.
   /// [packs] A list of Config Aggregate Compliance Packs. Each element contains the following attributes:
   /// [status] The status of the resource.
-  GetAggregateCompliancePacksResult({
+  const GetAggregateCompliancePacksResult({
     required this.aggregatorId,
     this.enableDetails,
     required this.id,

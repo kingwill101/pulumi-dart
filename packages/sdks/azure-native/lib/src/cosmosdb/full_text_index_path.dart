@@ -9,7 +9,7 @@ class FullTextIndexPath {
 
   /// Creates a new [FullTextIndexPath].
   /// [path] The path to the full text field in the document.
-  FullTextIndexPath({
+  const FullTextIndexPath({
     required this.path,
   });
 

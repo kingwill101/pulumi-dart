@@ -135,7 +135,7 @@ class KubernetesClusterDefaultNodePool {
   /// [vnetSubnetId] The ID of a Subnet where the Kubernetes Node Pool should exist.
   /// [workloadRuntime] Specifies the workload runtime used by the node pool. Possible value is `OCIContainer`.
   /// [zones] Specifies a list of Availability Zones in which this Kubernetes Cluster should be located. `temporary_name_for_rotation` must be specified when changing this property.
-  KubernetesClusterDefaultNodePool({
+  const KubernetesClusterDefaultNodePool({
     this.autoScalingEnabled,
     this.capacityReservationGroupId,
     this.fipsEnabled,

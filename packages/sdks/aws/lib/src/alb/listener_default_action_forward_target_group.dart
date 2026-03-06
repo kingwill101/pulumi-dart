@@ -13,7 +13,7 @@ class ListenerDefaultActionForwardTargetGroup {
   /// Creates a new [ListenerDefaultActionForwardTargetGroup].
   /// [arn] ARN of the target group.
   /// [weight] Weight. The range is 0 to 999.
-  ListenerDefaultActionForwardTargetGroup({
+  const ListenerDefaultActionForwardTargetGroup({
     required this.arn,
     this.weight,
   });

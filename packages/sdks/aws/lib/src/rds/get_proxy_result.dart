@@ -56,7 +56,7 @@ class GetProxyResult {
   /// [vpcId] Provides the VPC ID of the DB proxy.
   /// [vpcSecurityGroupIds] Provides a list of VPC security groups that the proxy belongs to.
   /// [vpcSubnetIds] EC2 subnet IDs for the proxy.
-  GetProxyResult({
+  const GetProxyResult({
     required this.arn,
     required this.auths,
     required this.debugLogging,

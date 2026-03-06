@@ -10,7 +10,7 @@ class GoogleCloudContactcenterinsightsV1IssueMatchDataResponse {
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1IssueMatchDataResponse].
   /// [issueAssignment] Information about the issue's assignment.
-  GoogleCloudContactcenterinsightsV1IssueMatchDataResponse({
+  const GoogleCloudContactcenterinsightsV1IssueMatchDataResponse({
     required this.issueAssignment,
   });
 

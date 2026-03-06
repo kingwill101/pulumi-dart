@@ -11,7 +11,7 @@ class AwsIntegrationsAwsMediaPackageVod {
   /// Creates a new [AwsIntegrationsAwsMediaPackageVod].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsAwsMediaPackageVod({
+  const AwsIntegrationsAwsMediaPackageVod({
     this.awsRegions,
     this.metricsPollingInterval,
   });

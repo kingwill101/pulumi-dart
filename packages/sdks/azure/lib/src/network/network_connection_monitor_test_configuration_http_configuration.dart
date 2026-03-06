@@ -24,7 +24,7 @@ class NetworkConnectionMonitorTestConfigurationHttpConfiguration {
   /// [preferHttps] Should HTTPS be preferred over HTTP in cases where the choice is not explicit? Defaults to `false`.
   /// [requestHeaders] A `request_header` block as defined below.
   /// [validStatusCodeRanges] The HTTP status codes to consider successful. For instance, `2xx`, `301-304` and `418`.
-  NetworkConnectionMonitorTestConfigurationHttpConfiguration({
+  const NetworkConnectionMonitorTestConfigurationHttpConfiguration({
     this.method,
     this.path,
     this.port,

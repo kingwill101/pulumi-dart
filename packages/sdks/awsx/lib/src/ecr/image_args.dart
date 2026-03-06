@@ -43,7 +43,7 @@ class ImageArgs {
   /// [registryId] ID of the ECR registry in which to store the image.  If not provided, this will be inferred from the repository URL)
   /// [repositoryUrl] Url of the repository
   /// [target] The target of the dockerfile to build
-  ImageArgs({
+  const ImageArgs({
     this.args,
     this.builderVersion,
     this.cacheFrom,

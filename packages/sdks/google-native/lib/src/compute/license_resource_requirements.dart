@@ -11,7 +11,7 @@ class LicenseResourceRequirements {
   /// Creates a new [LicenseResourceRequirements].
   /// [minGuestCpuCount] Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and Instance start.
   /// [minMemoryMb] Minimum memory required to use the Instance. Enforced at Instance creation and Instance start.
-  LicenseResourceRequirements({
+  const LicenseResourceRequirements({
     this.minGuestCpuCount,
     this.minMemoryMb,
   });

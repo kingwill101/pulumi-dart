@@ -13,7 +13,7 @@ class LogLocationSettingsResponse {
   /// Creates a new [LogLocationSettingsResponse].
   /// [linkedServiceName] Log storage linked service reference.
   /// [path] The path to storage for storing detailed logs of activity execution. Type: string (or Expression with resultType string).
-  LogLocationSettingsResponse({
+  const LogLocationSettingsResponse({
     required this.linkedServiceName,
     this.path,
   });

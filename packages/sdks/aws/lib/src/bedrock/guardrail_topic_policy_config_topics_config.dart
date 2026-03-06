@@ -17,7 +17,7 @@ class GuardrailTopicPolicyConfigTopicsConfig {
   /// [examples] List of text examples.
   /// [name] Name of topic in topic policy.
   /// [type] Type of topic in a policy.
-  GuardrailTopicPolicyConfigTopicsConfig({
+  const GuardrailTopicPolicyConfigTopicsConfig({
     required this.definition,
     this.examples,
     required this.name,

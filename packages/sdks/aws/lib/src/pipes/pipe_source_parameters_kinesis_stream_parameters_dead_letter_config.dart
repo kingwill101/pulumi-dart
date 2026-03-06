@@ -8,7 +8,7 @@ class PipeSourceParametersKinesisStreamParametersDeadLetterConfig {
 
   /// Creates a new [PipeSourceParametersKinesisStreamParametersDeadLetterConfig].
   /// [arn] ARN of this pipe.
-  PipeSourceParametersKinesisStreamParametersDeadLetterConfig({
+  const PipeSourceParametersKinesisStreamParametersDeadLetterConfig({
     this.arn,
   });
 

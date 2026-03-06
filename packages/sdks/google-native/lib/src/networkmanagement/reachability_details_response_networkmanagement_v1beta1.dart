@@ -20,7 +20,7 @@ class ReachabilityDetailsResponseNetworkmanagementV1beta1 {
   /// [result] The overall result of the test's configuration analysis.
   /// [traces] Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends.
   /// [verifyTime] The time of the configuration analysis.
-  ReachabilityDetailsResponseNetworkmanagementV1beta1({
+  const ReachabilityDetailsResponseNetworkmanagementV1beta1({
     required this.error,
     required this.result,
     required this.traces,

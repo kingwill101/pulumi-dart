@@ -17,7 +17,7 @@ class GetNamespacesNamespace {
   /// [id] The ID of the resource.
   /// [namespaceId] The ID of the Namespace.
   /// [namespaceName] The name of the resource.
-  GetNamespacesNamespace({
+  const GetNamespacesNamespace({
     required this.description,
     required this.id,
     required this.namespaceId,

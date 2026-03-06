@@ -21,7 +21,7 @@ class GetSslVpnClientCertsArgs {
   /// [nameRegex] A regex string of SSL-VPN client certificate name.
   /// [outputFile] Save the result to the file.
   /// [sslVpnServerId] Use the SSL-VPN server ID as the search key.
-  GetSslVpnClientCertsArgs({
+  const GetSslVpnClientCertsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

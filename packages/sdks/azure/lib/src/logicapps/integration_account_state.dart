@@ -24,7 +24,7 @@ class IntegrationAccountState {
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account should exist. Changing this forces a new Logic App Integration Account to be created.
   /// [skuName] The SKU name of the Logic App Integration Account. Possible Values are `Basic`, `Free` and `Standard`.
   /// [tags] A mapping of tags which should be assigned to the Logic App Integration Account.
-  IntegrationAccountState({
+  const IntegrationAccountState({
     this.integrationServiceEnvironmentId,
     this.location,
     this.name,

@@ -28,7 +28,7 @@ class ScaleSetNetworkProfile {
   /// [name] Specifies the name of the network interface configuration.
   /// [networkSecurityGroupId] Specifies the identifier for the network security group.
   /// [primary] Indicates whether network interfaces created from the network interface configuration will be the primary NIC of the VM.
-  ScaleSetNetworkProfile({
+  const ScaleSetNetworkProfile({
     this.acceleratedNetworking,
     this.dnsSettings,
     required this.ipConfigurations,

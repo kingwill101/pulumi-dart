@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings {
 
   /// Creates a new [GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings].
   /// [engine] The full name of the Gen App Builder engine related to this agent if there is one. Format: `projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}`
-  GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings({
+  const GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings({
     required this.engine,
   });
 

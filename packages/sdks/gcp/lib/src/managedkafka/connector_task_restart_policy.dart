@@ -13,7 +13,7 @@ class ConnectorTaskRestartPolicy {
   /// Creates a new [ConnectorTaskRestartPolicy].
   /// [maximumBackoff] The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
   /// [minimumBackoff] The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
-  ConnectorTaskRestartPolicy({
+  const ConnectorTaskRestartPolicy({
     this.maximumBackoff,
     this.minimumBackoff,
   });

@@ -11,7 +11,7 @@ class GetManagedDatabasePointInTimeRestore {
   /// Creates a new [GetManagedDatabasePointInTimeRestore].
   /// [restorePointInTime] The point in time for the restore from `source_database_id`.
   /// [sourceDatabaseId] The source database ID that is used to restore from.
-  GetManagedDatabasePointInTimeRestore({
+  const GetManagedDatabasePointInTimeRestore({
     required this.restorePointInTime,
     required this.sourceDatabaseId,
   });

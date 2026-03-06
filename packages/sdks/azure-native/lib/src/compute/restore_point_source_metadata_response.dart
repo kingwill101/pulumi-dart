@@ -41,7 +41,7 @@ class RestorePointSourceMetadataResponse {
   /// [storageProfile] Gets the storage profile.
   /// [userData] UserData associated with the source VM for which restore point is captured, which is a base-64 encoded value.
   /// [vmId] Gets the virtual machine unique id.
-  RestorePointSourceMetadataResponse({
+  const RestorePointSourceMetadataResponse({
     required this.diagnosticsProfile,
     required this.hardwareProfile,
     required this.hyperVGeneration,

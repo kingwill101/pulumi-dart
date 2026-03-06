@@ -30,7 +30,7 @@ class MigrateSqlServerSqlDbSyncDatabaseInputResponse {
   /// [tableMap] Mapping of source to target tables
   /// [targetDatabaseName] Target database name
   /// [targetSetting] Target settings to tune target endpoint migration behavior
-  MigrateSqlServerSqlDbSyncDatabaseInputResponse({
+  const MigrateSqlServerSqlDbSyncDatabaseInputResponse({
     this.id,
     this.migrationSetting,
     this.name,

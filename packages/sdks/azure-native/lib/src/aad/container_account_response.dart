@@ -15,7 +15,7 @@ class ContainerAccountResponse {
   /// [accountName] The account name
   /// [password] The account password
   /// [spn] The account spn
-  ContainerAccountResponse({
+  const ContainerAccountResponse({
     this.accountName,
     this.password,
     this.spn,

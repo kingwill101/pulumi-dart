@@ -13,7 +13,7 @@ class RuleGroupRuleGroupRuleVariables {
   /// Creates a new [RuleGroupRuleGroupRuleVariables].
   /// [ipSets] Set of configuration blocks that define IP address information. See IP Sets below for details.
   /// [portSets] Set of configuration blocks that define port range information. See Port Sets below for details.
-  RuleGroupRuleGroupRuleVariables({
+  const RuleGroupRuleGroupRuleVariables({
     this.ipSets,
     this.portSets,
   });

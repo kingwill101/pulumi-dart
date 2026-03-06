@@ -29,7 +29,7 @@ class GetAccessRulesRule {
   /// [networkSegment] The NetworkSegment of the Access Rule.
   /// [priority] The priority of the Access Rule.
   /// [rwAccessType] RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
-  GetAccessRulesRule({
+  const GetAccessRulesRule({
     required this.accessGroupId,
     required this.accessRuleId,
     required this.createTime,

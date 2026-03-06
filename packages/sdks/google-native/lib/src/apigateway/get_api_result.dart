@@ -26,7 +26,7 @@ class GetApiResult {
   /// [name] Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
   /// [state] State of the API.
   /// [updateTime] Updated time.
-  GetApiResult({
+  const GetApiResult({
     required this.createTime,
     required this.displayName,
     required this.labels,

@@ -46,7 +46,7 @@ class SalesforceV2LinkedServiceResponse {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  SalesforceV2LinkedServiceResponse({
+  const SalesforceV2LinkedServiceResponse({
     this.annotations,
     this.apiVersion,
     this.authenticationType,

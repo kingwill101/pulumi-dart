@@ -15,7 +15,7 @@ class ListAppServicePlanServerFarmInstanceDetailsArgs {
   /// Creates a new [ListAppServicePlanServerFarmInstanceDetailsArgs].
   /// [name] Name of the App Service plan.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListAppServicePlanServerFarmInstanceDetailsArgs({
+  const ListAppServicePlanServerFarmInstanceDetailsArgs({
     required this.name,
     required this.resourceGroupName,
   });

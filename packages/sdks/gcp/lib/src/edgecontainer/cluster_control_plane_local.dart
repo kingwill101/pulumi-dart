@@ -22,7 +22,7 @@ class ClusterControlPlaneLocal {
   /// [nodeCount] The number of nodes to serve as replicas of the Control Plane.
   /// [nodeLocation] Name of the Google Distributed Cloud Edge zones where this node pool
   /// [sharedDeploymentPolicy] Policy configuration about how user applications are deployed.
-  ClusterControlPlaneLocal({
+  const ClusterControlPlaneLocal({
     this.machineFilter,
     this.nodeCount,
     this.nodeLocation,

@@ -24,7 +24,7 @@ class GetConnectionRaiBlocklistItemArgs {
   /// [raiBlocklistName] The name of the RaiBlocklist.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
-  GetConnectionRaiBlocklistItemArgs({
+  const GetConnectionRaiBlocklistItemArgs({
     required this.connectionName,
     required this.raiBlocklistItemName,
     required this.raiBlocklistName,

@@ -15,7 +15,7 @@ class GetPrivateLinkScopeArgs {
   /// Creates a new [GetPrivateLinkScopeArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeName] The name of the Azure Monitor PrivateLinkScope resource.
-  GetPrivateLinkScopeArgs({
+  const GetPrivateLinkScopeArgs({
     required this.resourceGroupName,
     required this.scopeName,
   });

@@ -8,7 +8,7 @@ class DomainDevicesFilesystemSourceBlock {
 
   /// Creates a new [DomainDevicesFilesystemSourceBlock].
   /// [dev] Sets the block device path for the filesystem source.
-  DomainDevicesFilesystemSourceBlock({
+  const DomainDevicesFilesystemSourceBlock({
     required this.dev,
   });
 

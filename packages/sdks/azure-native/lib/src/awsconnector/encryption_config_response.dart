@@ -13,7 +13,7 @@ class EncryptionConfigResponse {
   /// Creates a new [EncryptionConfigResponse].
   /// [provider] &lt;p&gt;Key Management Service (KMS) key. Either the ARN or the alias can be used.&lt;/p&gt;
   /// [resources] &lt;p&gt;Specifies the resources to be encrypted. The only supported value is &lt;code&gt;secrets&lt;/code&gt;.&lt;/p&gt;
-  EncryptionConfigResponse({
+  const EncryptionConfigResponse({
     this.provider,
     this.resources,
   });

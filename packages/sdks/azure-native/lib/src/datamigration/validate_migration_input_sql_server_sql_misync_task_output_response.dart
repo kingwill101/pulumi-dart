@@ -16,7 +16,7 @@ class ValidateMigrationInputSqlServerSqlMISyncTaskOutputResponse {
   /// [id] Database identifier
   /// [name] Name of database
   /// [validationErrors] Errors associated with a selected database object
-  ValidateMigrationInputSqlServerSqlMISyncTaskOutputResponse({
+  const ValidateMigrationInputSqlServerSqlMISyncTaskOutputResponse({
     required this.id,
     required this.name,
     required this.validationErrors,

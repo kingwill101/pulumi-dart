@@ -17,7 +17,7 @@ class AccountDmlAuthSetting {
   /// [allowDictionaries] List of dictionaries that require authorization. If there are more than one, separate them with commas (,).
   /// [ddlAuthority] Whether to grant the DDL permission to the database account. Value description:
   /// [dmlAuthority] Whether to grant the DML permission to the database account. The values are as follows:
-  AccountDmlAuthSetting({
+  const AccountDmlAuthSetting({
     this.allowDatabases,
     this.allowDictionaries,
     required this.ddlAuthority,

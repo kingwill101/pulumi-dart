@@ -11,7 +11,7 @@ class EndpointCustomDnsConfig {
   /// Creates a new [EndpointCustomDnsConfig].
   /// [fqdn] The fully qualified domain name to the `private_dns_zone`.
   /// [ipAddresses] A list of all IP Addresses that map to the `private_dns_zone` fqdn.
-  EndpointCustomDnsConfig({
+  const EndpointCustomDnsConfig({
     this.fqdn,
     this.ipAddresses,
   });

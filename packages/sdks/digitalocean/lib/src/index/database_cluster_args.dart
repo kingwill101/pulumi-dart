@@ -53,7 +53,7 @@ class DatabaseClusterArgs {
   /// [storageSizeMib] Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
   /// [tags] A list of tag names to be applied to the database cluster.
   /// [version] Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-  DatabaseClusterArgs({
+  const DatabaseClusterArgs({
     this.backupRestore,
     required this.engine,
     this.evictionPolicy,

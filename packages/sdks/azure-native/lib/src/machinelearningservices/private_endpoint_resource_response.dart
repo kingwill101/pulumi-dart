@@ -12,7 +12,7 @@ class PrivateEndpointResourceResponse {
   /// Creates a new [PrivateEndpointResourceResponse].
   /// [id] The ARM identifier for Private Endpoint
   /// [subnetArmId] The subnetId that the private endpoint is connected to.
-  PrivateEndpointResourceResponse({
+  const PrivateEndpointResourceResponse({
     required this.id,
     this.subnetArmId,
   });

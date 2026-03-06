@@ -11,7 +11,7 @@ class GetResolverForwardingRuleTargetDnsServer {
   /// Creates a new [GetResolverForwardingRuleTargetDnsServer].
   /// [ipAddress] The DNS server IP address.
   /// [port] The DNS server port.
-  GetResolverForwardingRuleTargetDnsServer({
+  const GetResolverForwardingRuleTargetDnsServer({
     required this.ipAddress,
     required this.port,
   });

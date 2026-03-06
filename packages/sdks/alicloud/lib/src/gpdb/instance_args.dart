@@ -142,7 +142,7 @@ class InstanceArgs {
   /// [vpcId] The vpc ID of the resource.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.availabilityZone,
     this.createSampleData,
     this.dataShareStatus,

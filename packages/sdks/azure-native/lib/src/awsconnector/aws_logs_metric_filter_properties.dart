@@ -19,7 +19,7 @@ class AwsLogsMetricFilterProperties {
   /// [filterPattern] A filter pattern for extracting metric data out of ingested log events. For more information, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
   /// [logGroupName] The name of an existing log group that you want to associate with this metric filter.
   /// [metricTransformations] The metric transformations.
-  AwsLogsMetricFilterProperties({
+  const AwsLogsMetricFilterProperties({
     this.filterName,
     this.filterPattern,
     this.logGroupName,

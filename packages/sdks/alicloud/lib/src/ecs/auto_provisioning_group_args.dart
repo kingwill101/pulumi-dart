@@ -70,7 +70,7 @@ class AutoProvisioningGroupArgs {
   /// [totalTargetCapacity] The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
   /// [validFrom] The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
   /// [validUntil] The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
-  AutoProvisioningGroupArgs({
+  const AutoProvisioningGroupArgs({
     this.autoProvisioningGroupName,
     this.autoProvisioningGroupType,
     this.defaultTargetCapacityType,

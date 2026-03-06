@@ -13,7 +13,7 @@ class GetPolicyArgs {
   /// Creates a new [GetPolicyArgs].
   /// [policyId] Required.
   /// [project] Optional.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     required this.policyId,
     this.project,
   });

@@ -43,7 +43,7 @@ class StorageAccountCredentialArgs {
   /// [sslStatus] Signifies whether SSL needs to be enabled or not.
   /// [storageAccountId] Id of the storage account.
   /// [userName] Username for the storage account.
-  StorageAccountCredentialArgs({
+  const StorageAccountCredentialArgs({
     this.accountKey,
     required this.accountType,
     required this.alias,

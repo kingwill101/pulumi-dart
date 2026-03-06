@@ -21,7 +21,7 @@ class JobStepExecutionOptionsResponse {
   /// [retryAttempts] Maximum number of times the job step will be reattempted if the first attempt fails.
   /// [retryIntervalBackoffMultiplier] The backoff multiplier for the time between retries.
   /// [timeoutSeconds] Execution timeout for the job step.
-  JobStepExecutionOptionsResponse({
+  const JobStepExecutionOptionsResponse({
     this.initialRetryIntervalSeconds,
     this.maximumRetryIntervalSeconds,
     this.retryAttempts,

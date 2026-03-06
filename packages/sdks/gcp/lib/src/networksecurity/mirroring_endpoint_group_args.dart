@@ -47,7 +47,7 @@ class MirroringEndpointGroupArgs {
   /// [mirroringEndpointGroupId] The ID to use for the endpoint group, which will become the final component
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of the endpoint group.
-  MirroringEndpointGroupArgs({
+  const MirroringEndpointGroupArgs({
     this.description,
     this.labels,
     required this.location,

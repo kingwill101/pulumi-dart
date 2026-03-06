@@ -15,7 +15,7 @@ class GetGradientaiRegionsArgs {
   /// Creates a new [GetGradientaiRegionsArgs].
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGradientaiRegionsArgs({
+  const GetGradientaiRegionsArgs({
     this.filters,
     this.sorts,
   });

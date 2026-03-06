@@ -18,7 +18,7 @@ class RequestMetadata {
   /// [approvalCallbackRoute] Route name for the approval callback
   /// [approvalStatus] Status of the approval. Uses ApprovalStatus enum.
   /// [resourceAction] Resource Action of the item being approved or declined.
-  RequestMetadata({
+  const RequestMetadata({
     this.approvalCallbackPayload,
     this.approvalCallbackRoute,
     this.approvalStatus,

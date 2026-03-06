@@ -75,7 +75,7 @@ class GetTableExternalDataConfiguration {
   /// [schema] A JSON schema for the external table. Schema is required for CSV and JSON formats and is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats when using external tables.
   /// [sourceFormat] Please see sourceFormat under ExternalDataConfiguration in Bigquery's public API documentation (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration) for supported formats. To use "GOOGLE_SHEETS" the scopes must include "googleapis.com/auth/drive.readonly".
   /// [sourceUris] A list of the fully-qualified URIs that point to your data in Google Cloud.
-  GetTableExternalDataConfiguration({
+  const GetTableExternalDataConfiguration({
     required this.autodetect,
     required this.avroOptions,
     required this.bigtableOptions,

@@ -15,7 +15,7 @@ class DataflowGraphSourceSettingsResponse {
   /// [assetRef] Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
   /// [dataSources] List of data sources.
   /// [endpointRef] The endpoint reference for the source.
-  DataflowGraphSourceSettingsResponse({
+  const DataflowGraphSourceSettingsResponse({
     this.assetRef,
     required this.dataSources,
     required this.endpointRef,

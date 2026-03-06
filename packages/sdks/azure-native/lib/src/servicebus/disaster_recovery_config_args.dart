@@ -24,7 +24,7 @@ class DisasterRecoveryConfigArgs {
   /// [namespaceName] The namespace name
   /// [partnerNamespace] ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DisasterRecoveryConfigArgs({
+  const DisasterRecoveryConfigArgs({
     this.alias,
     this.alternateName,
     required this.namespaceName,

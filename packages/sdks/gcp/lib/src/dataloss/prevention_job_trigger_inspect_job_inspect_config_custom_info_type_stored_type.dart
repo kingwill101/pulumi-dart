@@ -13,7 +13,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType {
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType].
   /// [createTime] (Output)
   /// [name] Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-  PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType({
+  const PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType({
     this.createTime,
     required this.name,
   });

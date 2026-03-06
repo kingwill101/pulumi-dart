@@ -46,7 +46,7 @@ class GetExternalAccessRuleResult {
   /// [state] The state of the resource.
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
-  GetExternalAccessRuleResult({
+  const GetExternalAccessRuleResult({
     required this.action,
     required this.createTime,
     required this.description,

@@ -20,7 +20,7 @@ class RouteSpecGrpcRouteMatch {
   /// [port] The port number to match from the request.
   /// [prefix] Optional.
   /// [serviceName] Fully qualified domain name for the service to match from the request.
-  RouteSpecGrpcRouteMatch({
+  const RouteSpecGrpcRouteMatch({
     this.metadatas,
     this.methodName,
     this.port,

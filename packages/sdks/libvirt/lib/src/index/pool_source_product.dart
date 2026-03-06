@@ -8,7 +8,7 @@ class PoolSourceProduct {
 
   /// Creates a new [PoolSourceProduct].
   /// [name] Configures the name attribute of the product related to the storage source.
-  PoolSourceProduct({
+  const PoolSourceProduct({
     required this.name,
   });
 

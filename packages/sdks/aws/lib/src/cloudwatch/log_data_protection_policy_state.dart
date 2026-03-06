@@ -15,7 +15,7 @@ class LogDataProtectionPolicyState {
   /// [logGroupName] The name of the log group under which the log stream is to be created.
   /// [policyDocument] Specifies the data protection policy in JSON. Read more at [Data protection policy syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data-start.html#mask-sensitive-log-data-policysyntax).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LogDataProtectionPolicyState({
+  const LogDataProtectionPolicyState({
     this.logGroupName,
     this.policyDocument,
     this.region,

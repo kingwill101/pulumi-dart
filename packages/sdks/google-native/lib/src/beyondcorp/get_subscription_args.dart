@@ -15,7 +15,7 @@ class GetSubscriptionArgs {
   /// [location] Required.
   /// [organizationId] Required.
   /// [subscriptionId] Required.
-  GetSubscriptionArgs({
+  const GetSubscriptionArgs({
     required this.location,
     required this.organizationId,
     required this.subscriptionId,

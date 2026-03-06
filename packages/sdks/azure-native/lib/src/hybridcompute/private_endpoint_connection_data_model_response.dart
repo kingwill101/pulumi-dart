@@ -19,7 +19,7 @@ class PrivateEndpointConnectionDataModelResponse {
   /// [name] The Name of the Private Endpoint.
   /// [properties] The Private Endpoint Connection properties.
   /// [type] Azure resource type
-  PrivateEndpointConnectionDataModelResponse({
+  const PrivateEndpointConnectionDataModelResponse({
     required this.id,
     required this.name,
     this.properties,

@@ -15,7 +15,7 @@ class DedicatedIpAssignmentState {
   /// [destinationPoolName] Dedicated IP address.
   /// [ip] Dedicated IP address.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DedicatedIpAssignmentState({
+  const DedicatedIpAssignmentState({
     this.destinationPoolName,
     this.ip,
     this.region,

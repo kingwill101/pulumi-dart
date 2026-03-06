@@ -18,7 +18,7 @@ class GetWorkloadNetworkSegmentArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [segmentId] The ID of the NSX Segment
-  GetWorkloadNetworkSegmentArgs({
+  const GetWorkloadNetworkSegmentArgs({
     required this.privateCloudName,
     required this.resourceGroupName,
     required this.segmentId,

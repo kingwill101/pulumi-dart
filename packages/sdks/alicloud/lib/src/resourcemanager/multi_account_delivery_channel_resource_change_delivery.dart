@@ -25,7 +25,7 @@ class MultiAccountDeliveryChannelResourceChangeDelivery {
   /// [slsProperties] The Simple Log Service configurations. See `sls_properties` below.
   /// [targetArn] The ARN of the delivery destination.
   /// [targetType] The type of the delivery destination.
-  MultiAccountDeliveryChannelResourceChangeDelivery({
+  const MultiAccountDeliveryChannelResourceChangeDelivery({
     this.enabled,
     this.slsProperties,
     this.targetArn,

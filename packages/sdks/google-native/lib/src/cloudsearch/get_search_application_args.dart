@@ -13,7 +13,7 @@ class GetSearchApplicationArgs {
   /// Creates a new [GetSearchApplicationArgs].
   /// [debugOptionsEnableDebugging] Optional.
   /// [searchapplicationId] Required.
-  GetSearchApplicationArgs({
+  const GetSearchApplicationArgs({
     this.debugOptionsEnableDebugging,
     required this.searchapplicationId,
   });

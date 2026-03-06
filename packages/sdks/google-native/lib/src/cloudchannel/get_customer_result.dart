@@ -47,7 +47,7 @@ class GetCustomerResult {
   /// [orgPostalAddress] The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
   /// [primaryContactInfo] Primary contact info.
   /// [updateTime] Time when the customer was updated.
-  GetCustomerResult({
+  const GetCustomerResult({
     required this.alternateEmail,
     required this.channelPartnerId,
     required this.cloudIdentityId,

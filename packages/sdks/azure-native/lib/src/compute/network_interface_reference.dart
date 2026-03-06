@@ -15,7 +15,7 @@ class NetworkInterfaceReference {
   /// [deleteOption] Specify what happens to the network interface when the VM is deleted
   /// [id] Resource Id
   /// [primary] Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-  NetworkInterfaceReference({
+  const NetworkInterfaceReference({
     this.deleteOption,
     this.id,
     this.primary,

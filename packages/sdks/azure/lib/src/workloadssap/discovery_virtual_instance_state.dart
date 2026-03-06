@@ -40,7 +40,7 @@ class DiscoveryVirtualInstanceState {
   /// [resourceGroupName] The name of the Resource Group where the SAP Discovery Virtual Instance should exist. Changing this forces a new resource to be created.
   /// [sapProduct] The SAP Product type for the SAP Discovery Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the SAP Discovery Virtual Instance.
-  DiscoveryVirtualInstanceState({
+  const DiscoveryVirtualInstanceState({
     this.centralServerVirtualMachineId,
     this.environment,
     this.identity,

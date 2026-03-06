@@ -21,7 +21,7 @@ class GetConnectorDryrunArgs {
   /// [location] The name of Azure region.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subscriptionId] The ID of the target subscription.
-  GetConnectorDryrunArgs({
+  const GetConnectorDryrunArgs({
     required this.dryrunName,
     required this.location,
     required this.resourceGroupName,

@@ -13,7 +13,7 @@ class InstanceTypeSchema {
   /// Creates a new [InstanceTypeSchema].
   /// [nodeSelector] Node Selector
   /// [resources] Resource requests/limits for this instance type
-  InstanceTypeSchema({
+  const InstanceTypeSchema({
     this.nodeSelector,
     this.resources,
   });

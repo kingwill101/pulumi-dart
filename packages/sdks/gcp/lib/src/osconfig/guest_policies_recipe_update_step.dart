@@ -40,7 +40,7 @@ class GuestPoliciesRecipeUpdateStep {
   /// [msiInstallation] Installs an MSI file.
   /// [rpmInstallation] Installs an rpm file via the rpm utility.
   /// [scriptRun] Runs commands in a shell.
-  GuestPoliciesRecipeUpdateStep({
+  const GuestPoliciesRecipeUpdateStep({
     this.archiveExtraction,
     this.dpkgInstallation,
     this.fileCopy,

@@ -19,7 +19,7 @@ class SizeConstraintSetArgs {
   /// [name] The name or description of the Size Constraint Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sizeConstraints] Specifies the parts of web requests that you want to inspect the size of.
-  SizeConstraintSetArgs({
+  const SizeConstraintSetArgs({
     this.name,
     this.region,
     this.sizeConstraints,

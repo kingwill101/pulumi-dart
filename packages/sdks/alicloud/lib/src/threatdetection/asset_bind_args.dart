@@ -15,7 +15,7 @@ class AssetBindArgs {
   /// Creates a new [AssetBindArgs].
   /// [authVersion] Bind version.
   /// [uuid] The first ID of the resource
-  AssetBindArgs({
+  const AssetBindArgs({
     this.authVersion,
     this.uuid,
   });

@@ -15,7 +15,7 @@ class CxTestCaseTestCaseConversationTurn {
   /// Creates a new [CxTestCaseTestCaseConversationTurn].
   /// [userInput] The user input.
   /// [virtualAgentOutput] The virtual agent output.
-  CxTestCaseTestCaseConversationTurn({
+  const CxTestCaseTestCaseConversationTurn({
     this.userInput,
     this.virtualAgentOutput,
   });

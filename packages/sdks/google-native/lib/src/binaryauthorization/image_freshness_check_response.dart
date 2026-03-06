@@ -9,7 +9,7 @@ class ImageFreshnessCheckResponse {
 
   /// Creates a new [ImageFreshnessCheckResponse].
   /// [maxUploadAgeDays] The max number of days that is allowed since the image was uploaded. Must be greater than zero.
-  ImageFreshnessCheckResponse({
+  const ImageFreshnessCheckResponse({
     required this.maxUploadAgeDays,
   });
 

@@ -15,7 +15,7 @@ class GetAccessLevelArgs {
   /// [accessLevelFormat] Optional.
   /// [accessLevelId] Required.
   /// [accessPolicyId] Required.
-  GetAccessLevelArgs({
+  const GetAccessLevelArgs({
     this.accessLevelFormat,
     required this.accessLevelId,
     required this.accessPolicyId,

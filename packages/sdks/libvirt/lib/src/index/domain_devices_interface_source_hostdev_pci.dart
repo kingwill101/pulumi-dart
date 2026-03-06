@@ -12,7 +12,7 @@ class DomainDevicesInterfaceSourceHostdevPci {
   /// Creates a new [DomainDevicesInterfaceSourceHostdevPci].
   /// [address] Defines the address settings for the PCI device source.
   /// [writeFiltering] Controls whether write filtering is enabled for the PCI device source.
-  DomainDevicesInterfaceSourceHostdevPci({
+  const DomainDevicesInterfaceSourceHostdevPci({
     this.address,
     this.writeFiltering,
   });

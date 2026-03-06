@@ -13,7 +13,7 @@ class NamedPartitionScheme {
   /// Creates a new [NamedPartitionScheme].
   /// [names] Array for the names of the partitions.
   /// [partitionScheme] Enumerates the ways that a service can be partitioned.
-  NamedPartitionScheme({
+  const NamedPartitionScheme({
     required this.names,
     required this.partitionScheme,
   });

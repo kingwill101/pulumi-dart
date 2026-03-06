@@ -8,7 +8,7 @@ class DomainDevicesGraphicAudio {
 
   /// Creates a new [DomainDevicesGraphicAudio].
   /// [id] Defines a unique identifier for the audio configuration of the graphics device.
-  DomainDevicesGraphicAudio({
+  const DomainDevicesGraphicAudio({
     this.id,
   });
 

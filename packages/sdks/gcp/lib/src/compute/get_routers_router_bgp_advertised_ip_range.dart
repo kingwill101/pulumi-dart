@@ -9,7 +9,7 @@ class GetRoutersRouterBgpAdvertisedIpRange {
   /// Creates a new [GetRoutersRouterBgpAdvertisedIpRange].
   /// [description] Required.
   /// [range] Required.
-  GetRoutersRouterBgpAdvertisedIpRange({
+  const GetRoutersRouterBgpAdvertisedIpRange({
     required this.description,
     required this.range,
   });

@@ -25,7 +25,7 @@ class TargetDeviceConfigurationResponse {
   /// [storage] Storage configuration.
   /// [time] Time configuration.
   /// [webProxy] Web proxy configuration.
-  TargetDeviceConfigurationResponse({
+  const TargetDeviceConfigurationResponse({
     this.hostName,
     this.network,
     this.storage,

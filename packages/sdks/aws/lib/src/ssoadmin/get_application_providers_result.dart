@@ -15,7 +15,7 @@ class GetApplicationProvidersResult {
   /// [applicationProviders] A list of application providers available in the current region. See `application_providers` below.
   /// [id] AWS region.
   /// [region] Required.
-  GetApplicationProvidersResult({
+  const GetApplicationProvidersResult({
     required this.applicationProviders,
     required this.id,
     required this.region,

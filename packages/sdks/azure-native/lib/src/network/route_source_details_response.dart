@@ -14,7 +14,7 @@ class RouteSourceDetailsResponse {
   /// [circuit] Express Route Circuit identifier
   /// [pri] Flag to indicate if the route learned from the primary device is active or passive
   /// [sec] Flag to indicate if the route learned from the secondary device is active or passive
-  RouteSourceDetailsResponse({
+  const RouteSourceDetailsResponse({
     this.circuit,
     this.pri,
     this.sec,

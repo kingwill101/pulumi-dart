@@ -24,7 +24,7 @@ class VpcEndpointZoneArgs {
   /// [eniIp] The IP address of the endpoint ENI.
   /// [vswitchId] The ID of the vSwitch in the zone.
   /// [zoneId] The zone ID.
-  VpcEndpointZoneArgs({
+  const VpcEndpointZoneArgs({
     this.dryRun,
     required this.endpointId,
     this.eniIp,

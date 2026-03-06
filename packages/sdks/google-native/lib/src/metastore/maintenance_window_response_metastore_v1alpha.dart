@@ -12,7 +12,7 @@ class MaintenanceWindowResponseMetastoreV1alpha {
   /// Creates a new [MaintenanceWindowResponseMetastoreV1alpha].
   /// [dayOfWeek] The day of week, when the window starts.
   /// [hourOfDay] The hour of day (0-23) when the window starts.
-  MaintenanceWindowResponseMetastoreV1alpha({
+  const MaintenanceWindowResponseMetastoreV1alpha({
     required this.dayOfWeek,
     required this.hourOfDay,
   });

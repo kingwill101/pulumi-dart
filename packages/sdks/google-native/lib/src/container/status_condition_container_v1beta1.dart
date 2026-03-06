@@ -17,7 +17,7 @@ class StatusConditionContainerV1beta1 {
   /// [canonicalCode] Canonical code of the condition.
   /// [code] Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   /// [message] Human-friendly representation of the condition
-  StatusConditionContainerV1beta1({
+  const StatusConditionContainerV1beta1({
     this.canonicalCode,
     this.code,
     this.message,

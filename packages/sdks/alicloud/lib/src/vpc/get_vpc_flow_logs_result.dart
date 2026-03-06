@@ -36,7 +36,7 @@ class GetVpcFlowLogsResult {
   /// [resourceType] Optional.
   /// [status] Optional.
   /// [trafficType] Optional.
-  GetVpcFlowLogsResult({
+  const GetVpcFlowLogsResult({
     this.description,
     this.flowLogName,
     required this.id,

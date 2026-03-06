@@ -16,7 +16,7 @@ class DataTransferServiceResourceCreateUpdateProperties {
   /// [instanceCount] Instance count for the service.
   /// [instanceSize] Instance type for the service.
   /// [serviceType] ServiceType for the service.
-  DataTransferServiceResourceCreateUpdateProperties({
+  const DataTransferServiceResourceCreateUpdateProperties({
     this.instanceCount,
     this.instanceSize,
     required this.serviceType,

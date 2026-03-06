@@ -42,7 +42,7 @@ class GetVolumeResult {
   /// [statusDetails] Gives additional information about the current status of the volume.
   /// [tags] Resource tags.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetVolumeResult({
+  const GetVolumeResult({
     required this.azureApiVersion,
     this.azureFileParameters,
     this.description,

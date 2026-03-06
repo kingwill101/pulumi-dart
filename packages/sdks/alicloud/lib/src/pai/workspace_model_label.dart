@@ -11,7 +11,7 @@ class WorkspaceModelLabel {
   /// Creates a new [WorkspaceModelLabel].
   /// [key] label key
   /// [value] label value
-  WorkspaceModelLabel({
+  const WorkspaceModelLabel({
     this.key,
     this.value,
   });

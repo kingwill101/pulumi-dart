@@ -29,7 +29,7 @@ class ManagementGroupDetailsResponse {
   /// [updatedBy] The identity of the principal or process that updated the object.
   /// [updatedTime] The date and time when this object was last updated.
   /// [version] The version number of the object.
-  ManagementGroupDetailsResponse({
+  const ManagementGroupDetailsResponse({
     this.managementGroupAncestors,
     this.managementGroupAncestorsChain,
     this.parent,

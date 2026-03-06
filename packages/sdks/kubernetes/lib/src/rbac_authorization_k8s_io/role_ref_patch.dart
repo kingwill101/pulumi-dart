@@ -15,7 +15,7 @@ class RoleRefPatch {
   /// [apiGroup] APIGroup is the group for the resource being referenced
   /// [kind] Kind is the type of resource being referenced
   /// [name] Name is the name of resource being referenced
-  RoleRefPatch({
+  const RoleRefPatch({
     this.apiGroup,
     this.kind,
     this.name,

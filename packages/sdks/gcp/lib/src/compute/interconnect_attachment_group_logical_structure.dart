@@ -13,7 +13,7 @@ class InterconnectAttachmentGroupLogicalStructure {
 
   /// Creates a new [InterconnectAttachmentGroupLogicalStructure].
   /// [regions] (Output)
-  InterconnectAttachmentGroupLogicalStructure({
+  const InterconnectAttachmentGroupLogicalStructure({
     this.regions,
   });
 

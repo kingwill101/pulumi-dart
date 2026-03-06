@@ -23,7 +23,7 @@ class DesiredConfigurationResponse {
   /// [defenderCspm] Desired enablement state of the Defender Cloud Security Posture Management (CSPM) service.
   /// [defenderForServers] Desired enablement state of the Defender For Servers service.
   /// [userAssignedManagedIdentityId] User assigned Managed Identity used to perform operations on machines managed by Ops360.
-  DesiredConfigurationResponse({
+  const DesiredConfigurationResponse({
     required this.azureMonitorInsights,
     required this.changeTrackingAndInventory,
     this.defenderCspm,

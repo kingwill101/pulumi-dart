@@ -12,7 +12,7 @@ class ConfigurationExtensionResponse {
   /// Creates a new [ConfigurationExtensionResponse].
   /// [publisher] Publisher of the extension.
   /// [type] Type of the extension.
-  ConfigurationExtensionResponse({
+  const ConfigurationExtensionResponse({
     required this.publisher,
     required this.type,
   });

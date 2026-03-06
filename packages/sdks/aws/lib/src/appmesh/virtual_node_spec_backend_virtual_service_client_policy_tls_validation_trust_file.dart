@@ -8,7 +8,7 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFile {
 
   /// Creates a new [VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFile].
   /// [certificateChain] Certificate trust chain for a certificate stored on the file system of the mesh endpoint that the proxy is running on. Must be between 1 and 255 characters in length.
-  VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFile({
+  const VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFile({
     required this.certificateChain,
   });
 

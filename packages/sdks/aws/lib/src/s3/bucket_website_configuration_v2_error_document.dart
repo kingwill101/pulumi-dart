@@ -8,7 +8,7 @@ class BucketWebsiteConfigurationV2ErrorDocument {
 
   /// Creates a new [BucketWebsiteConfigurationV2ErrorDocument].
   /// [key] Object key name to use when a 4XX class error occurs.
-  BucketWebsiteConfigurationV2ErrorDocument({
+  const BucketWebsiteConfigurationV2ErrorDocument({
     required this.key,
   });
 

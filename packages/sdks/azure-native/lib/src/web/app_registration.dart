@@ -12,7 +12,7 @@ class AppRegistration {
   /// Creates a new [AppRegistration].
   /// [appId] The App ID of the app used for login.
   /// [appSecretSettingName] The app setting name that contains the app secret.
-  AppRegistration({
+  const AppRegistration({
     this.appId,
     this.appSecretSettingName,
   });

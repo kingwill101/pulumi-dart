@@ -35,7 +35,7 @@ class CapacityReservationState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetDpus] Number of data processing units requested. Must be at least `24` units.
   /// [timeouts] Optional.
-  CapacityReservationState({
+  const CapacityReservationState({
     this.allocatedDpus,
     this.arn,
     this.name,

@@ -15,7 +15,7 @@ class GetPoliciesForTargetResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] List of all the policy ids found.
   /// [targetId] Required.
-  GetPoliciesForTargetResult({
+  const GetPoliciesForTargetResult({
     required this.filter,
     required this.id,
     required this.ids,

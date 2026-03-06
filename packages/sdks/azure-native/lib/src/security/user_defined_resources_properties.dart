@@ -12,7 +12,7 @@ class UserDefinedResourcesProperties {
   /// Creates a new [UserDefinedResourcesProperties].
   /// [query] Azure Resource Graph query which represents the security solution's user defined resources. Required to start with "where type != "Microsoft.Devices/IotHubs""
   /// [querySubscriptions] List of Azure subscription ids on which the user defined resources query should be executed.
-  UserDefinedResourcesProperties({
+  const UserDefinedResourcesProperties({
     required this.query,
     required this.querySubscriptions,
   });

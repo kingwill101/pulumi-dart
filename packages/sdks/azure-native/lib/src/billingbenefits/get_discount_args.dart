@@ -15,7 +15,7 @@ class GetDiscountArgs {
   /// Creates a new [GetDiscountArgs].
   /// [discountName] Name of the discount
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDiscountArgs({
+  const GetDiscountArgs({
     required this.discountName,
     required this.resourceGroupName,
   });

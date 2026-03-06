@@ -8,7 +8,7 @@ class StatefulPolicy {
 
   /// Creates a new [StatefulPolicy].
   /// [preservedState] Optional.
-  StatefulPolicy({
+  const StatefulPolicy({
     this.preservedState,
   });
 

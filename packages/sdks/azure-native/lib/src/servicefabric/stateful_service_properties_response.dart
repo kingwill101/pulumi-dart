@@ -71,7 +71,7 @@ class StatefulServicePropertiesResponse {
   /// [serviceTypeName] The name of the service type
   /// [standByReplicaKeepDuration] The definition on how long StandBy replicas should be maintained before being removed, represented in ISO 8601 format "hh:mm:ss".
   /// [targetReplicaSetSize] The target replica set size as a number.
-  StatefulServicePropertiesResponse({
+  const StatefulServicePropertiesResponse({
     this.correlationScheme,
     this.defaultMoveCost,
     this.hasPersistedState,

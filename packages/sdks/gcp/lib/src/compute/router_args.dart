@@ -52,7 +52,7 @@ class RouterArgs {
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Region where the router resides.
-  RouterArgs({
+  const RouterArgs({
     this.bgp,
     this.description,
     this.encryptedInterconnectRouter,

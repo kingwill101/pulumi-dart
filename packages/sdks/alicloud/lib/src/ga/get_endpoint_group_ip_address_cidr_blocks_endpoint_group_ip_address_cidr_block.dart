@@ -14,7 +14,7 @@ class GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock {
   /// [endpointGroupRegion] The region ID of the endpoint group.
   /// [ipAddressCidrBlocks] The CIDR blocks.
   /// [status] The status of the list of endpoint group ip address cidr blocks.
-  GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock({
+  const GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock({
     required this.endpointGroupRegion,
     required this.ipAddressCidrBlocks,
     required this.status,

@@ -41,7 +41,7 @@ class GetTopicsTopic {
   /// [tags] A map of tags assigned to the Ons instance.
   /// [topic] The name of the topic.
   /// [topicName] The name of the topic.
-  GetTopicsTopic({
+  const GetTopicsTopic({
     required this.id,
     required this.independentNaming,
     required this.instanceId,

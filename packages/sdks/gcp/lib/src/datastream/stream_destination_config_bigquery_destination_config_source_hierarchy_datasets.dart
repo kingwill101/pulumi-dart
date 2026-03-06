@@ -13,7 +13,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
   /// Creates a new [StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets].
   /// [datasetTemplate] Dataset template used for dynamic dataset creation.
   /// [projectId] Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
-  StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets({
+  const StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets({
     required this.datasetTemplate,
     this.projectId,
   });

@@ -14,7 +14,7 @@ class DeviceTaintRuleSpec {
   /// Creates a new [DeviceTaintRuleSpec].
   /// [deviceSelector] DeviceSelector defines which device(s) the taint is applied to. All selector criteria must be satisfied for a device to match. The empty selector matches all devices. Without a selector, no devices are matches.
   /// [taint] The taint that gets applied to matching devices.
-  DeviceTaintRuleSpec({
+  const DeviceTaintRuleSpec({
     this.deviceSelector,
     required this.taint,
   });

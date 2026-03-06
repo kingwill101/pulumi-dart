@@ -78,7 +78,7 @@ class GetHostResult {
   /// [type] Gets or sets the type of the resource.
   /// [uuid] Gets or sets a unique identifier for this resource.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this host resides.
-  GetHostResult({
+  const GetHostResult({
     required this.azureApiVersion,
     required this.cpuMhz,
     required this.customResourceName,

@@ -19,7 +19,7 @@ class GetGithubEnterpriseConfigArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [projectId] Optional.
-  GetGithubEnterpriseConfigArgs({
+  const GetGithubEnterpriseConfigArgs({
     this.configId,
     required this.githubEnterpriseConfigId,
     required this.location,

@@ -113,7 +113,7 @@ class BucketV2State {
   /// [websiteDomain] (**Deprecated**) Domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string. This is used to create Route 53 alias records. Use the resource `aws.s3.BucketWebsiteConfiguration` instead.
   /// [websiteEndpoint] (**Deprecated**) Website endpoint, if the bucket is configured with a website. If not, this will be an empty string. Use the resource `aws.s3.BucketWebsiteConfiguration` instead.
   /// [websites] Configuration of the [S3 bucket website](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html). See Website below for details. The provider will only perform drift detection if a configuration value is provided.
-  BucketV2State({
+  const BucketV2State({
     this.accelerationStatus,
     this.acl,
     this.arn,

@@ -29,7 +29,7 @@ class PigJob {
   /// [queryFileUri] The HCFS URI of the script that contains the Pig queries.
   /// [queryList] A list of queries.
   /// [scriptVariables] Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
-  PigJob({
+  const PigJob({
     this.continueOnFailure,
     this.jarFileUris,
     this.loggingConfig,

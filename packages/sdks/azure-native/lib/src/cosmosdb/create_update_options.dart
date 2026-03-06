@@ -13,7 +13,7 @@ class CreateUpdateOptions {
   /// Creates a new [CreateUpdateOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings. Note: Either throughput or autoscaleSettings is required, but not both.
   /// [throughput] Request Units per second. For example, "throughput": 10000.
-  CreateUpdateOptions({
+  const CreateUpdateOptions({
     this.autoscaleSettings,
     this.throughput,
   });

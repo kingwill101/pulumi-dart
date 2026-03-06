@@ -9,7 +9,7 @@ class I18nConfigResponse {
 
   /// Creates a new [I18nConfigResponse].
   /// [root] The user-supplied path where country and language specific content will be looked for within the public directory.
-  I18nConfigResponse({
+  const I18nConfigResponse({
     required this.root,
   });
 

@@ -44,7 +44,7 @@ class RuleGroupState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] Whether the rule group is stateless (containing stateless rules) or stateful (containing stateful rules). Valid values include: `STATEFUL` or `STATELESS`.
   /// [updateToken] A string token used when updating the rule group.
-  RuleGroupState({
+  const RuleGroupState({
     this.arn,
     this.capacity,
     this.description,

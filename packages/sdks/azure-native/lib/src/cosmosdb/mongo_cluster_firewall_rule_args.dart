@@ -24,7 +24,7 @@ class MongoClusterFirewallRuleArgs {
   /// [mongoClusterName] The name of the mongo cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startIpAddress] The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
-  MongoClusterFirewallRuleArgs({
+  const MongoClusterFirewallRuleArgs({
     required this.endIpAddress,
     this.firewallRuleName,
     required this.mongoClusterName,

@@ -18,7 +18,7 @@ class GetAlertRuleResourceArgs {
   /// [alertRuleResourceName] The alert rule proxy resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [watcherName] The database watcher name.
-  GetAlertRuleResourceArgs({
+  const GetAlertRuleResourceArgs({
     required this.alertRuleResourceName,
     required this.resourceGroupName,
     required this.watcherName,

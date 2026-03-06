@@ -19,7 +19,7 @@ class SnowflakeExportCopyCommand {
   /// [additionalFormatOptions] Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "OVERWRITE": "TRUE", "MAX_FILE_SIZE": "'FALSE'" }
   /// [storageIntegration] The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
   /// [type] The export setting type.
-  SnowflakeExportCopyCommand({
+  const SnowflakeExportCopyCommand({
     this.additionalCopyOptions,
     this.additionalFormatOptions,
     this.storageIntegration,

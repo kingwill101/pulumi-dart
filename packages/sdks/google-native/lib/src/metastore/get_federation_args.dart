@@ -15,7 +15,7 @@ class GetFederationArgs {
   /// [federationId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFederationArgs({
+  const GetFederationArgs({
     required this.federationId,
     required this.location,
     this.project,

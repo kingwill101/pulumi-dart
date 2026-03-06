@@ -42,7 +42,7 @@ class SqlManagedInstanceProperties {
   /// [lastUploadedDate] Last uploaded date from Kubernetes cluster. Defaults to current date time
   /// [licenseType] The license type to apply for this managed instance.
   /// [startTime] The instance start time
-  SqlManagedInstanceProperties({
+  const SqlManagedInstanceProperties({
     this.activeDirectoryInformation,
     this.admin,
     this.basicLoginInformation,

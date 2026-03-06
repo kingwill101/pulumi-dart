@@ -28,7 +28,7 @@ class GoogleCloudChannelV1RepricingConfigResponse {
   /// [effectiveInvoiceMonth] The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
   /// [entitlementGranularity] Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
   /// [rebillingBasis] The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
-  GoogleCloudChannelV1RepricingConfigResponse({
+  const GoogleCloudChannelV1RepricingConfigResponse({
     required this.adjustment,
     required this.channelPartnerGranularity,
     required this.conditionalOverrides,

@@ -11,7 +11,7 @@ class GetUserPoolSchemaAttributeNumberAttributeConstraint {
   /// Creates a new [GetUserPoolSchemaAttributeNumberAttributeConstraint].
   /// [maxValue] - Maximum allowed value.
   /// [minValue] - Minimum allowed value.
-  GetUserPoolSchemaAttributeNumberAttributeConstraint({
+  const GetUserPoolSchemaAttributeNumberAttributeConstraint({
     required this.maxValue,
     required this.minValue,
   });

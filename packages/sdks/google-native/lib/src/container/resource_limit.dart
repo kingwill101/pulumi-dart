@@ -15,7 +15,7 @@ class ResourceLimit {
   /// [maximum] Maximum amount of the resource in the cluster.
   /// [minimum] Minimum amount of the resource in the cluster.
   /// [resourceType] Resource name "cpu", "memory" or gpu-specific string.
-  ResourceLimit({
+  const ResourceLimit({
     this.maximum,
     this.minimum,
     this.resourceType,

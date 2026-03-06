@@ -16,7 +16,7 @@ class AppVersionSnapshotAgentBeforeToolCallback {
   /// [description] The description of the app version.
   /// [disabled] (Output)
   /// [pythonCode] (Output)
-  AppVersionSnapshotAgentBeforeToolCallback({
+  const AppVersionSnapshotAgentBeforeToolCallback({
     this.description,
     this.disabled,
     this.pythonCode,

@@ -30,7 +30,7 @@ class SiteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name.
   /// [tags] Optional.
-  SiteArgs({
+  const SiteArgs({
     this.eTag,
     this.location,
     this.name,

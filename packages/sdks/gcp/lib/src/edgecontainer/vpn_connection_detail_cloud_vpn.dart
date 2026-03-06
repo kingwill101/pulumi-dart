@@ -9,7 +9,7 @@ class VpnConnectionDetailCloudVpn {
 
   /// Creates a new [VpnConnectionDetailCloudVpn].
   /// [gateway] (Output)
-  VpnConnectionDetailCloudVpn({
+  const VpnConnectionDetailCloudVpn({
     this.gateway,
   });
 

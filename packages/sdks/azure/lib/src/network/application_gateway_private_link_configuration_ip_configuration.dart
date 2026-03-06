@@ -20,7 +20,7 @@ class ApplicationGatewayPrivateLinkConfigurationIpConfiguration {
   /// [privateIpAddress] The Static IP Address which should be used.
   /// [privateIpAddressAllocation] The allocation method used for the Private IP Address. Possible values are `Dynamic` and `Static`.
   /// [subnetId] The ID of the subnet the private link configuration should connect to.
-  ApplicationGatewayPrivateLinkConfigurationIpConfiguration({
+  const ApplicationGatewayPrivateLinkConfigurationIpConfiguration({
     required this.name,
     required this.primary,
     this.privateIpAddress,

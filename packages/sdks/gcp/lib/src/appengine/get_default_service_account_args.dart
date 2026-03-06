@@ -12,7 +12,7 @@ class GetDefaultServiceAccountArgs {
 
   /// Creates a new [GetDefaultServiceAccountArgs].
   /// [project] The project ID. If it is not provided, the provider project is used.
-  GetDefaultServiceAccountArgs({
+  const GetDefaultServiceAccountArgs({
     this.project,
   });
 

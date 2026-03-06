@@ -22,7 +22,7 @@ class DynamicConfigurationArgs {
   /// [dynamicConfigurationName] Name of the dynamic configuration
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DynamicConfigurationArgs({
+  const DynamicConfigurationArgs({
     required this.configurationName,
     this.dynamicConfigurationName,
     this.properties,

@@ -65,7 +65,7 @@ class AzureBlobFSLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [url] Endpoint for the Azure Data Lake Storage Gen2 service. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  AzureBlobFSLinkedServiceResponse({
+  const AzureBlobFSLinkedServiceResponse({
     this.accountKey,
     this.annotations,
     this.azureCloudType,

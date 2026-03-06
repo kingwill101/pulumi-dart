@@ -103,7 +103,7 @@ class GetComponentResult {
   /// [tenantId] Azure Tenant Id.
   /// [type] Azure resource type
   /// [workspaceResourceId] Resource Id of the log analytics workspace which the data will be ingested to. This property is required to create an application with this API version. Applications from older versions will not have this property.
-  GetComponentResult({
+  const GetComponentResult({
     required this.appId,
     required this.applicationId,
     required this.applicationType,

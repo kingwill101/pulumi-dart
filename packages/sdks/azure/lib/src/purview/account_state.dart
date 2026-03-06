@@ -57,7 +57,7 @@ class AccountState {
   /// [resourceGroupName] The name of the Resource Group where the Purview Account should exist. Changing this forces a new Purview Account to be created.
   /// [scanEndpoint] Scan endpoint.
   /// [tags] A mapping of tags which should be assigned to the Purview Account.
-  AccountState({
+  const AccountState({
     this.atlasKafkaEndpointPrimaryConnectionString,
     this.atlasKafkaEndpointSecondaryConnectionString,
     this.awsExternalId,

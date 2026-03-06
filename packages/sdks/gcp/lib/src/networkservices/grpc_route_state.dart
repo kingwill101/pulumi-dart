@@ -54,7 +54,7 @@ class GrpcRouteState {
   /// [rules] Rules that define how traffic is routed and handled.
   /// [selfLink] Server-defined URL of this resource.
   /// [updateTime] Time the GrpcRoute was updated in UTC.
-  GrpcRouteState({
+  const GrpcRouteState({
     this.createTime,
     this.description,
     this.effectiveLabels,

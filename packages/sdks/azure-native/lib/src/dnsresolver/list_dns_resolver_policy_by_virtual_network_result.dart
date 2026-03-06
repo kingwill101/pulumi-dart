@@ -13,7 +13,7 @@ class ListDnsResolverPolicyByVirtualNetworkResult {
   /// Creates a new [ListDnsResolverPolicyByVirtualNetworkResult].
   /// [nextLink] The continuation token for the next page of results.
   /// [value] Enumeration of the sub-resources.
-  ListDnsResolverPolicyByVirtualNetworkResult({
+  const ListDnsResolverPolicyByVirtualNetworkResult({
     required this.nextLink,
     this.value,
   });

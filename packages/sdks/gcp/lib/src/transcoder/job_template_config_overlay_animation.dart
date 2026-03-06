@@ -10,7 +10,7 @@ class JobTemplateConfigOverlayAnimation {
 
   /// Creates a new [JobTemplateConfigOverlayAnimation].
   /// [animationFade] Display overlay object with fade animation.
-  JobTemplateConfigOverlayAnimation({
+  const JobTemplateConfigOverlayAnimation({
     this.animationFade,
   });
 

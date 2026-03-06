@@ -18,7 +18,7 @@ class IdentityBindingManagedIdentityProfileResponse {
   /// [objectId] The object ID of the managed identity.
   /// [resourceId] The resource ID of the managed identity.
   /// [tenantId] The tenant ID of the managed identity.
-  IdentityBindingManagedIdentityProfileResponse({
+  const IdentityBindingManagedIdentityProfileResponse({
     required this.clientId,
     required this.objectId,
     required this.resourceId,

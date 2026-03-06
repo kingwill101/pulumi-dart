@@ -41,7 +41,7 @@ class OAuth2AuthTypeConnectionPropertiesResponse {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  OAuth2AuthTypeConnectionPropertiesResponse({
+  const OAuth2AuthTypeConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

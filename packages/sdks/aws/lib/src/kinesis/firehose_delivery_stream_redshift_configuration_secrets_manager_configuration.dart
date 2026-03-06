@@ -14,7 +14,7 @@ class FirehoseDeliveryStreamRedshiftConfigurationSecretsManagerConfiguration {
   /// [enabled] Enables or disables the Secrets Manager configuration.
   /// [roleArn] The ARN of the role the stream assumes.
   /// [secretArn] The ARN of the Secrets Manager secret. This value is required if `enabled` is true.
-  FirehoseDeliveryStreamRedshiftConfigurationSecretsManagerConfiguration({
+  const FirehoseDeliveryStreamRedshiftConfigurationSecretsManagerConfiguration({
     this.enabled,
     this.roleArn,
     this.secretArn,

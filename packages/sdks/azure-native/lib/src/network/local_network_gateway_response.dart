@@ -44,7 +44,7 @@ class LocalNetworkGatewayResponse {
   /// [resourceGuid] The resource GUID property of the local network gateway resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  LocalNetworkGatewayResponse({
+  const LocalNetworkGatewayResponse({
     this.bgpSettings,
     required this.etag,
     this.fqdn,

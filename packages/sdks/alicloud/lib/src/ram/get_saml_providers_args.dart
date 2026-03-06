@@ -21,7 +21,7 @@ class GetSamlProvidersArgs {
   /// [ids] A list of SAML Provider IDs.
   /// [nameRegex] A regex string to filter results by SAML Provider name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetSamlProvidersArgs({
+  const GetSamlProvidersArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

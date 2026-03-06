@@ -9,7 +9,7 @@ class ScaleSpecPatch {
 
   /// Creates a new [ScaleSpecPatch].
   /// [replicas] replicas is the desired number of instances for the scaled object.
-  ScaleSpecPatch({
+  const ScaleSpecPatch({
     this.replicas,
   });
 

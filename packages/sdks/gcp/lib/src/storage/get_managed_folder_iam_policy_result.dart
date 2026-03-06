@@ -16,7 +16,7 @@ class GetManagedFolderIamPolicyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [managedFolder] Required.
   /// [policyData] Required.
-  GetManagedFolderIamPolicyResult({
+  const GetManagedFolderIamPolicyResult({
     required this.bucket,
     required this.etag,
     required this.id,

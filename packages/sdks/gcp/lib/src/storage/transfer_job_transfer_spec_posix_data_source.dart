@@ -8,7 +8,7 @@ class TransferJobTransferSpecPosixDataSource {
 
   /// Creates a new [TransferJobTransferSpecPosixDataSource].
   /// [rootDirectory] Root directory path to the filesystem.
-  TransferJobTransferSpecPosixDataSource({
+  const TransferJobTransferSpecPosixDataSource({
     required this.rootDirectory,
   });
 

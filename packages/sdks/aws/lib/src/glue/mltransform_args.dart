@@ -50,7 +50,7 @@ class MLTransformArgs {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeout] The ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
   /// [workerType] The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `number_of_workers`.
-  MLTransformArgs({
+  const MLTransformArgs({
     this.description,
     this.glueVersion,
     required this.inputRecordTables,

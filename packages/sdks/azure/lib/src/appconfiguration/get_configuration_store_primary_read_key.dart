@@ -14,7 +14,7 @@ class GetConfigurationStorePrimaryReadKey {
   /// [connectionString] The Connection String for this Access Key - consisting of the Endpoint, ID and Secret.
   /// [id] The ID of the Access Key.
   /// [secret] The Secret of the Access Key.
-  GetConfigurationStorePrimaryReadKey({
+  const GetConfigurationStorePrimaryReadKey({
     required this.connectionString,
     required this.id,
     required this.secret,

@@ -17,7 +17,7 @@ class GetVirtualMachineManagerInventoryItemsResult {
   /// [inventoryItems] One or more `inventory_items` blocks as defined below.
   /// [inventoryType] Required.
   /// [systemCenterVirtualMachineManagerServerId] Required.
-  GetVirtualMachineManagerInventoryItemsResult({
+  const GetVirtualMachineManagerInventoryItemsResult({
     required this.id,
     required this.inventoryItems,
     required this.inventoryType,

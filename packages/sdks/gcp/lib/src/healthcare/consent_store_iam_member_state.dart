@@ -39,7 +39,7 @@ class ConsentStoreIamMemberState {
   /// [etag] (Computed) The etag of the IAM policy.
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  ConsentStoreIamMemberState({
+  const ConsentStoreIamMemberState({
     this.condition,
     this.consentStoreId,
     this.dataset,

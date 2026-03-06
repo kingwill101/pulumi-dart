@@ -31,7 +31,7 @@ class AzureInternalMonitoringPipelineSinkDescriptionResponse {
   /// [maConfigUrl] Azure Internal monitoring agent configuration.
   /// [name] Name of the sink. This value is referenced by DiagnosticsReferenceDescription
   /// [namespace] Azure Internal monitoring pipeline account namespace.
-  AzureInternalMonitoringPipelineSinkDescriptionResponse({
+  const AzureInternalMonitoringPipelineSinkDescriptionResponse({
     this.accountName,
     this.autoKeyConfigUrl,
     this.description,

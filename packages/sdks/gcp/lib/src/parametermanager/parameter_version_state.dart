@@ -33,7 +33,7 @@ class ParameterVersionState {
   /// [parameterData] The Parameter data.
   /// [parameterVersionId] Version ID of the Parameter Version Resource. This must be unique within the Parameter.
   /// [updateTime] The time at which the Parameter Version was updated.
-  ParameterVersionState({
+  const ParameterVersionState({
     this.createTime,
     this.disabled,
     this.kmsKeyVersion,

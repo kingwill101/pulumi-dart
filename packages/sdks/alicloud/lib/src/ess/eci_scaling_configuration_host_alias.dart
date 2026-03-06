@@ -11,7 +11,7 @@ class EciScalingConfigurationHostAlias {
   /// Creates a new [EciScalingConfigurationHostAlias].
   /// [hostnames] Adds a host name.
   /// [ip] Adds an IP address.
-  EciScalingConfigurationHostAlias({
+  const EciScalingConfigurationHostAlias({
     this.hostnames,
     this.ip,
   });

@@ -27,7 +27,7 @@ class GetLogDataProtectionPolicyDocumentArgs {
   /// [name] The name of the data protection policy document.
   /// [statements] Configures the data protection policy.
   /// [version] Optional.
-  GetLogDataProtectionPolicyDocumentArgs({
+  const GetLogDataProtectionPolicyDocumentArgs({
     this.configuration,
     this.description,
     required this.name,

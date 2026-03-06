@@ -15,7 +15,7 @@ class GetAutomationAccountArgs {
   /// Creates a new [GetAutomationAccountArgs].
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetAutomationAccountArgs({
+  const GetAutomationAccountArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
   });

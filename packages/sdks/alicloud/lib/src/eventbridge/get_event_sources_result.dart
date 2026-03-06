@@ -20,7 +20,7 @@ class GetEventSourcesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [sources] Required.
-  GetEventSourcesResult({
+  const GetEventSourcesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

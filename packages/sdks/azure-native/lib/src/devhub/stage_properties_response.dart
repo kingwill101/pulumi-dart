@@ -13,7 +13,7 @@ class StagePropertiesResponse {
   /// [dependencies] Optional.
   /// [gitEnvironment] Optional.
   /// [stageName] Stage Name
-  StagePropertiesResponse({
+  const StagePropertiesResponse({
     this.dependencies,
     this.gitEnvironment,
     this.stageName,

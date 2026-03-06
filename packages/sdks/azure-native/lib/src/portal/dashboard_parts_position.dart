@@ -21,7 +21,7 @@ class DashboardPartsPosition {
   /// [rowSpan] The dashboard's part row span.
   /// [x] The dashboard's part x coordinate.
   /// [y] The dashboard's part y coordinate.
-  DashboardPartsPosition({
+  const DashboardPartsPosition({
     required this.colSpan,
     this.metadata,
     required this.rowSpan,

@@ -8,7 +8,7 @@ class PatchDeploymentInstanceFilterGroupLabel {
 
   /// Creates a new [PatchDeploymentInstanceFilterGroupLabel].
   /// [labels] Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-  PatchDeploymentInstanceFilterGroupLabel({
+  const PatchDeploymentInstanceFilterGroupLabel({
     required this.labels,
   });
 

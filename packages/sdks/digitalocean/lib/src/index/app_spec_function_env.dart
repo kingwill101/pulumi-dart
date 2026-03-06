@@ -17,7 +17,7 @@ class AppSpecFunctionEnv {
   /// [scope] The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
   /// [type] The type of the environment variable, `GENERAL` or `SECRET`.
   /// [value] The value of the environment variable.
-  AppSpecFunctionEnv({
+  const AppSpecFunctionEnv({
     this.key,
     this.scope,
     this.type,

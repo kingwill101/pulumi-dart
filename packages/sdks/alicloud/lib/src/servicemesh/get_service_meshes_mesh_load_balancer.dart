@@ -17,7 +17,7 @@ class GetServiceMeshesMeshLoadBalancer {
   /// [apiServerPublicEip] Whether to use the IP address of a public network exposed the API Server.
   /// [pilotPublicEip] Whether to use the IP address of a public network exposure the Istio Pilot.
   /// [pilotPublicLoadbalancerId] The IP address of a public network exposure Istio Pilot corresponds to the Load Balance.
-  GetServiceMeshesMeshLoadBalancer({
+  const GetServiceMeshesMeshLoadBalancer({
     required this.apiServerLoadbalancerId,
     required this.apiServerPublicEip,
     required this.pilotPublicEip,

@@ -21,7 +21,7 @@ class GetPolicyArgs {
   /// [policyId] The identifier of the Policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     this.format,
     required this.policyId,
     required this.resourceGroupName,

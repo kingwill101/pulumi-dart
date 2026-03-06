@@ -14,7 +14,7 @@ class GetConfigurationInstallPatchWindow {
   /// [classificationsToIncludes] List of Classification category of patches to be patched.
   /// [kbNumbersToExcludes] List of KB numbers to be excluded from patching.
   /// [kbNumbersToIncludes] List of KB numbers to be included for patching.
-  GetConfigurationInstallPatchWindow({
+  const GetConfigurationInstallPatchWindow({
     required this.classificationsToIncludes,
     required this.kbNumbersToExcludes,
     required this.kbNumbersToIncludes,

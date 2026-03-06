@@ -9,7 +9,7 @@ class ServiceAccessPolicyEntryResponse {
 
   /// Creates a new [ServiceAccessPolicyEntryResponse].
   /// [objectId] An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
-  ServiceAccessPolicyEntryResponse({
+  const ServiceAccessPolicyEntryResponse({
     required this.objectId,
   });
 

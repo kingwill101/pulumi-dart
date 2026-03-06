@@ -14,7 +14,7 @@ class CspmMonitorAwsOffering {
   /// Creates a new [CspmMonitorAwsOffering].
   /// [nativeCloudConnection] The native cloud connection configuration
   /// [offeringType] The type of the security offering.
-  CspmMonitorAwsOffering({
+  const CspmMonitorAwsOffering({
     this.nativeCloudConnection,
     required this.offeringType,
   });

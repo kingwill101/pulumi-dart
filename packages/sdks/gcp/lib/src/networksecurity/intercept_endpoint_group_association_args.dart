@@ -36,7 +36,7 @@ class InterceptEndpointGroupAssociationArgs {
   /// [location] The cloud location of the association, currently restricted to `global`.
   /// [network] The VPC network that is associated. for example:
   /// [project] The ID of the project in which the resource belongs.
-  InterceptEndpointGroupAssociationArgs({
+  const InterceptEndpointGroupAssociationArgs({
     required this.interceptEndpointGroup,
     this.interceptEndpointGroupAssociationId,
     this.labels,

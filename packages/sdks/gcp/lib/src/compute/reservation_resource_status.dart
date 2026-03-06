@@ -27,7 +27,7 @@ class ReservationResourceStatus {
   /// [reservationBlockCount] (Output)
   /// [reservationMaintenances] (Output)
   /// [specificSkuAllocations] (Output)
-  ReservationResourceStatus({
+  const ReservationResourceStatus({
     this.healthInfos,
     this.reservationBlockCount,
     this.reservationMaintenances,
