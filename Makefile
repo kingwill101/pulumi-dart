@@ -2,7 +2,7 @@ GO := go
 PROTOC := protoc
 DART_OUT_DIR := packages/pulumi-dart/lib/src/pulumirpc
 PULUMI_REPO := https://github.com/pulumi/pulumi.git
-PULUMI_DIR := pulumi
+PULUMI_DIR := thirdparty/pulumi
 PULUMI_PROTO_DIR := $(PULUMI_DIR)/proto
 PROTOBUF_REPO := https://github.com/protocolbuffers/protobuf.git
 PROTOBUF_DIR := .protobuf
@@ -17,7 +17,7 @@ submodules::
 	git submodule update --init --recursive
 
 pin-pulumi-submodule::
-	cd pulumi && git fetch --tags && git checkout ${PULUMI_VERSION}
+	cd $(PULUMI_DIR) && git fetch --tags && git checkout ${PULUMI_VERSION}
 
 build::
 	cd pulumi-language-dart && ${GO} build .

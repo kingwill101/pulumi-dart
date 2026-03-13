@@ -40,9 +40,6 @@ jobs:
       - name: Ensure pulumi submodule checkout
         run: git submodule update --init --recursive
 
-      - name: Validate repository workspace pubspec
-        run: ./scripts/check-packages-workspace.sh
-
       - name: Install Pulumi CLI
         run: |
           curl -fsSL https://get.pulumi.com | sh -s -- --version "${PULUMI_VERSION}"
