@@ -269,6 +269,7 @@ class PrepareLanguageTestsRequest extends $pb.GeneratedMessage {
     $core.String? policyPackDirectory,
     $core.bool? local,
     $core.String? providersDirectory,
+    $core.String? converterPluginTarget,
   }) {
     final result = create();
     if (languagePluginName != null)
@@ -289,6 +290,8 @@ class PrepareLanguageTestsRequest extends $pb.GeneratedMessage {
     if (local != null) result.local = local;
     if (providersDirectory != null)
       result.providersDirectory = providersDirectory;
+    if (converterPluginTarget != null)
+      result.converterPluginTarget = converterPluginTarget;
     return result;
   }
 
@@ -328,6 +331,7 @@ class PrepareLanguageTestsRequest extends $pb.GeneratedMessage {
     ..aOS(10, _omitFieldNames ? '' : 'policyPackDirectory')
     ..aOB(11, _omitFieldNames ? '' : 'local')
     ..aOS(12, _omitFieldNames ? '' : 'providersDirectory')
+    ..aOS(13, _omitFieldNames ? '' : 'converterPluginTarget')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -461,6 +465,18 @@ class PrepareLanguageTestsRequest extends $pb.GeneratedMessage {
   $core.bool hasProvidersDirectory() => $_has(11);
   @$pb.TagNumber(12)
   void clearProvidersDirectory() => $_clearField(12);
+
+  /// If set, the address of the converter plugin.
+  ///
+  /// Convert will be tested if and only if this is set.
+  @$pb.TagNumber(13)
+  $core.String get converterPluginTarget => $_getSZ(12);
+  @$pb.TagNumber(13)
+  set converterPluginTarget($core.String value) => $_setString(12, value);
+  @$pb.TagNumber(13)
+  $core.bool hasConverterPluginTarget() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearConverterPluginTarget() => $_clearField(13);
 }
 
 class PrepareLanguageTestsResponse extends $pb.GeneratedMessage {
@@ -525,10 +541,12 @@ class RunLanguageTestRequest extends $pb.GeneratedMessage {
   factory RunLanguageTestRequest({
     $core.String? token,
     $core.String? test,
+    $core.bool? skipConvertTests,
   }) {
     final result = create();
     if (token != null) result.token = token;
     if (test != null) result.test = test;
+    if (skipConvertTests != null) result.skipConvertTests = skipConvertTests;
     return result;
   }
 
@@ -548,6 +566,7 @@ class RunLanguageTestRequest extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'token')
     ..aOS(2, _omitFieldNames ? '' : 'test')
+    ..aOB(3, _omitFieldNames ? '' : 'skipConvertTests')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -587,6 +606,16 @@ class RunLanguageTestRequest extends $pb.GeneratedMessage {
   $core.bool hasTest() => $_has(1);
   @$pb.TagNumber(2)
   void clearTest() => $_clearField(2);
+
+  /// Skip a convert test if applicable.
+  @$pb.TagNumber(3)
+  $core.bool get skipConvertTests => $_getBF(2);
+  @$pb.TagNumber(3)
+  set skipConvertTests($core.bool value) => $_setBool(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasSkipConvertTests() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSkipConvertTests() => $_clearField(3);
 }
 
 class RunLanguageTestResponse extends $pb.GeneratedMessage {

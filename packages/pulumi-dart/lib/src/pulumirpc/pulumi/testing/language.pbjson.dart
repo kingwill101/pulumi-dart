@@ -110,6 +110,13 @@ const PrepareLanguageTestsRequest$json = {
       '5': 9,
       '10': 'providersDirectory'
     },
+    {
+      '1': 'converter_plugin_target',
+      '3': 13,
+      '4': 1,
+      '5': 9,
+      '10': 'converterPluginTarget'
+    },
   ],
   '3': [
     PrepareLanguageTestsRequest_Replacement$json,
@@ -167,12 +174,13 @@ final $typed_data.Uint8List prepareLanguageTestsRequestDescriptor = $convert.bas
     'cuUHJlcGFyZUxhbmd1YWdlVGVzdHNSZXF1ZXN0LlByb2dyYW1PdmVycmlkZXNFbnRyeVIQcHJv'
     'Z3JhbU92ZXJyaWRlcxIyChVwb2xpY3lfcGFja19kaXJlY3RvcnkYCiABKAlSE3BvbGljeVBhY2'
     'tEaXJlY3RvcnkSFAoFbG9jYWwYCyABKAhSBWxvY2FsEi8KE3Byb3ZpZGVyc19kaXJlY3RvcnkY'
-    'DCABKAlSEnByb3ZpZGVyc0RpcmVjdG9yeRpdCgtSZXBsYWNlbWVudBISCgRwYXRoGAEgASgJUg'
-    'RwYXRoEhgKB3BhdHRlcm4YAiABKAlSB3BhdHRlcm4SIAoLcmVwbGFjZW1lbnQYAyABKAlSC3Jl'
-    'cGxhY2VtZW50GicKD1Byb2dyYW1PdmVycmlkZRIUCgVwYXRocxgBIAMoCVIFcGF0aHMagwEKFV'
-    'Byb2dyYW1PdmVycmlkZXNFbnRyeRIQCgNrZXkYASABKAlSA2tleRJUCgV2YWx1ZRgCIAEoCzI+'
-    'LnB1bHVtaXJwYy50ZXN0aW5nLlByZXBhcmVMYW5ndWFnZVRlc3RzUmVxdWVzdC5Qcm9ncmFtT3'
-    'ZlcnJpZGVSBXZhbHVlOgI4AQ==');
+    'DCABKAlSEnByb3ZpZGVyc0RpcmVjdG9yeRI2Chdjb252ZXJ0ZXJfcGx1Z2luX3RhcmdldBgNIA'
+    'EoCVIVY29udmVydGVyUGx1Z2luVGFyZ2V0Gl0KC1JlcGxhY2VtZW50EhIKBHBhdGgYASABKAlS'
+    'BHBhdGgSGAoHcGF0dGVybhgCIAEoCVIHcGF0dGVybhIgCgtyZXBsYWNlbWVudBgDIAEoCVILcm'
+    'VwbGFjZW1lbnQaJwoPUHJvZ3JhbU92ZXJyaWRlEhQKBXBhdGhzGAEgAygJUgVwYXRocxqDAQoV'
+    'UHJvZ3JhbU92ZXJyaWRlc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5ElQKBXZhbHVlGAIgASgLMj'
+    '4ucHVsdW1pcnBjLnRlc3RpbmcuUHJlcGFyZUxhbmd1YWdlVGVzdHNSZXF1ZXN0LlByb2dyYW1P'
+    'dmVycmlkZVIFdmFsdWU6AjgB');
 
 @$core.Deprecated('Use prepareLanguageTestsResponseDescriptor instead')
 const PrepareLanguageTestsResponse$json = {
@@ -193,14 +201,21 @@ const RunLanguageTestRequest$json = {
   '2': [
     {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
     {'1': 'test', '3': 2, '4': 1, '5': 9, '10': 'test'},
+    {
+      '1': 'skip_convert_tests',
+      '3': 3,
+      '4': 1,
+      '5': 8,
+      '10': 'skipConvertTests'
+    },
   ],
 };
 
 /// Descriptor for `RunLanguageTestRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List runLanguageTestRequestDescriptor =
-    $convert.base64Decode(
-        'ChZSdW5MYW5ndWFnZVRlc3RSZXF1ZXN0EhQKBXRva2VuGAEgASgJUgV0b2tlbhISCgR0ZXN0GA'
-        'IgASgJUgR0ZXN0');
+final $typed_data.Uint8List runLanguageTestRequestDescriptor = $convert.base64Decode(
+    'ChZSdW5MYW5ndWFnZVRlc3RSZXF1ZXN0EhQKBXRva2VuGAEgASgJUgV0b2tlbhISCgR0ZXN0GA'
+    'IgASgJUgR0ZXN0EiwKEnNraXBfY29udmVydF90ZXN0cxgDIAEoCFIQc2tpcENvbnZlcnRUZXN0'
+    'cw==');
 
 @$core.Deprecated('Use runLanguageTestResponseDescriptor instead')
 const RunLanguageTestResponse$json = {
