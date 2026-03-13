@@ -217,8 +217,8 @@ jobs:
             --mode core \
             --shards 4 \
             --shard-index "${{ matrix.shard-index }}" \
-            --batch-size 4 \
-            --parallel 4
+            --batch-size 1 \
+            --parallel 1
 
   dart-integration-tests-cloud:
     name: Dart integration tests (cloud-only)
@@ -315,8 +315,8 @@ jobs:
           set -euo pipefail
           ./scripts/run-dart-integration-batches.sh \
             --mode cloud \
-            --batch-size 2 \
-            --parallel 2
+            --batch-size 1 \
+            --parallel 1
 
   check-pr:
     needs: [dart-unit-tests, proto-regeneration, website-docs, dart-integration-tests, dart-integration-tests-cloud]
