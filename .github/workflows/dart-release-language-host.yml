@@ -122,10 +122,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ./scripts/run-dart-integration-batches.sh \
-            --mode all \
-            --batch-size 1 \
-            --parallel 1
+          cd integration_tests
+          go test -count=1 -timeout 60m -json ./... | gotestsum --format testname
 
       - name: Build release snapshot
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'snapshot'
