@@ -33,20 +33,20 @@ jobs:
 
       - name: Build integration tooling
         run: |
-          mkdir -p .ci-bin
+          mkdir -p ci-bin
           cd pulumi-language-dart
           go install .
           cd ..
           go install gotest.tools/gotestsum@latest
           GOBIN="$(go env GOPATH)/bin"
-          cp "$GOBIN/pulumi-language-dart" .ci-bin/
-          cp "$GOBIN/gotestsum" .ci-bin/
+          cp "$GOBIN/pulumi-language-dart" ci-bin/
+          cp "$GOBIN/gotestsum" ci-bin/
 
       - name: Upload integration tooling
         uses: actions/upload-artifact@v4
         with:
           name: dart-integration-tools
-          path: .ci-bin
+          path: ci-bin
           if-no-files-found: error
 
   dart-integration-test-matrix:
@@ -68,12 +68,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dart-integration-tools
-          path: .ci-bin
+          path: ci-bin
 
       - name: Add integration tooling to PATH
         run: |
-          chmod +x .ci-bin/*
-          echo "$PWD/.ci-bin" >> "$GITHUB_PATH"
+          chmod +x ci-bin/*
+          echo "$PWD/ci-bin" >> "$GITHUB_PATH"
 
       - name: Build integration test matrix
         id: matrix
@@ -117,12 +117,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dart-integration-tools
-          path: .ci-bin
+          path: ci-bin
 
       - name: Add integration tooling to PATH
         run: |
-          chmod +x .ci-bin/*
-          echo "$PWD/.ci-bin" >> "$GITHUB_PATH"
+          chmod +x ci-bin/*
+          echo "$PWD/ci-bin" >> "$GITHUB_PATH"
 
       - name: Checkout required Pulumi submodule
         run: git submodule update --init --depth 1 thirdparty/pulumi
@@ -208,13 +208,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dart-integration-tools
-          path: .ci-bin
+          path: ci-bin
 
       - name: Add integration tooling to PATH
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
         run: |
-          chmod +x .ci-bin/*
-          echo "$PWD/.ci-bin" >> "$GITHUB_PATH"
+          chmod +x ci-bin/*
+          echo "$PWD/ci-bin" >> "$GITHUB_PATH"
 
       - name: Checkout required Pulumi submodule
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
