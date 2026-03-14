@@ -96,11 +96,58 @@ def emit_matrix(partitions: list[list[str]]) -> int:
             "name": f"{index + 1}/{len(partitions)}",
             "run": run_regex(bucket),
             "count": len(bucket),
+            "tests": bucket,
         }
         for index, bucket in enumerate(partitions)
     ]
     print(json.dumps({"include": include}, separators=(",", ":")))
     return 0
+
+
+def run_single_test(
+    package_dir: pathlib.Path,
+    test_name: str,
+    timeout: str,
+    parallel: int,
+) -> int:
+    gotestsum = shutil.which("gotestsum")
+    regex = "^" + re.escape(test_name) + "$"
+    print(f"Running integration test {test_name}", flush=True)
+    cmd = [
+        "go",
+        "test",
+        "-count=1",
+        "-timeout",
+        timeout,
+        "-parallel",
+        str(parallel),
+        "-run",
+        regex,
+        "-json",
+        ".",
+    ]
+
+    if gotestsum is None:
+        return sp.run(cmd, cwd=package_dir).returncode
+
+    go_proc = sp.Popen(
+        cmd,
+        cwd=package_dir,
+        stdout=sp.PIPE,
+        text=True,
+    )
+    assert go_proc.stdout is not None
+    gotestsum_proc = sp.Popen(
+        [gotestsum, "--format", "testname"],
+        stdin=go_proc.stdout,
+        text=True,
+    )
+    go_proc.stdout.close()
+    go_status = go_proc.wait()
+    gotestsum_status = gotestsum_proc.wait()
+    if go_status != 0:
+        return go_status
+    return gotestsum_status
 
 
 def run_partitions(
@@ -109,59 +156,23 @@ def run_partitions(
     timeout: str,
     parallel: int,
 ) -> int:
-    gotestsum = shutil.which("gotestsum")
-
     for index, bucket in enumerate(partitions, start=1):
-        regex = run_regex(bucket)
         print(
             f"Running integration partition {index}/{len(partitions)} "
             f"with {len(bucket)} tests",
             flush=True,
         )
-        cmd = [
-            "go",
-            "test",
-            "-count=1",
-            "-timeout",
-            timeout,
-            "-parallel",
-            str(parallel),
-            "-run",
-            regex,
-            "-json",
-            ".",
-        ]
-
-        if gotestsum is None:
-            sp.run(cmd, cwd=package_dir, check=True)
-            continue
-
-        go_proc = sp.Popen(
-            cmd,
-            cwd=package_dir,
-            stdout=sp.PIPE,
-            text=True,
-        )
-        assert go_proc.stdout is not None
-        gotestsum_proc = sp.Popen(
-            [gotestsum, "--format", "testname"],
-            stdin=go_proc.stdout,
-            text=True,
-        )
-        go_proc.stdout.close()
-        go_status = go_proc.wait()
-        gotestsum_status = gotestsum_proc.wait()
-        if go_status != 0:
-            return go_status
-        if gotestsum_status != 0:
-            return gotestsum_status
+        for test_name in bucket:
+            status = run_single_test(package_dir, test_name, timeout, parallel)
+            if status != 0:
+                return status
 
     return 0
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["matrix", "run"])
+    parser.add_argument("command", choices=["matrix", "run", "run-tests"])
     parser.add_argument("--package-dir", default="integration_tests")
     parser.add_argument(
         "--package",
@@ -170,6 +181,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--partitions", type=int, default=8)
     parser.add_argument("--timeout", default="60m")
     parser.add_argument("--parallel", type=int, default=1)
+    parser.add_argument("--tests-json")
     return parser.parse_args()
 
 
@@ -182,6 +194,16 @@ def main() -> int:
 
     if args.command == "matrix":
         return emit_matrix(partitions)
+
+    if args.command == "run-tests":
+        if args.tests_json is None:
+            raise ValueError("--tests-json is required for run-tests")
+        tests = json.loads(args.tests_json)
+        for test_name in tests:
+            status = run_single_test(package_dir, test_name, args.timeout, args.parallel)
+            if status != 0:
+                return status
+        return 0
 
     return run_partitions(package_dir, partitions, args.timeout, args.parallel)
 

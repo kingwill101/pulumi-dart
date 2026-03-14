@@ -1,0 +1,272 @@
+name: Dart Integration
+
+on:
+  workflow_dispatch:
+  merge_group:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PULUMI_VERSION: 3.225.1
+
+jobs:
+  dart-integration-tools:
+    name: Dart integration test tools
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.25.x
+
+      - name: Build integration tooling
+        run: |
+          mkdir -p .ci-bin
+          cd pulumi-language-dart
+          go install .
+          cd ..
+          go install gotest.tools/gotestsum@latest
+          GOBIN="$(go env GOPATH)/bin"
+          cp "$GOBIN/pulumi-language-dart" .ci-bin/
+          cp "$GOBIN/gotestsum" .ci-bin/
+
+      - name: Upload integration tooling
+        uses: actions/upload-artifact@v4
+        with:
+          name: dart-integration-tools
+          path: .ci-bin
+          if-no-files-found: error
+
+  dart-integration-test-matrix:
+    name: Dart integration test matrix
+    runs-on: ubuntu-latest
+    needs: dart-integration-tools
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.25.x
+
+      - name: Download integration tooling
+        uses: actions/download-artifact@v4
+        with:
+          name: dart-integration-tools
+          path: .ci-bin
+
+      - name: Add integration tooling to PATH
+        run: |
+          chmod +x .ci-bin/*
+          echo "$PWD/.ci-bin" >> "$GITHUB_PATH"
+
+      - name: Build integration test matrix
+        id: matrix
+        run: |
+          echo 'matrix<<EOF' >> "$GITHUB_OUTPUT"
+          python3 scripts/dart_integration_partitions.py matrix >> "$GITHUB_OUTPUT"
+          echo 'EOF' >> "$GITHUB_OUTPUT"
+
+  dart-integration-tests:
+    name: Dart integration tests (core ${{ matrix.name }})
+    runs-on: ubuntu-latest
+    needs: [dart-integration-test-matrix, dart-integration-tools]
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.dart-integration-test-matrix.outputs.matrix) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.25.x
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.11.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Download integration tooling
+        uses: actions/download-artifact@v4
+        with:
+          name: dart-integration-tools
+          path: .ci-bin
+
+      - name: Add integration tooling to PATH
+        run: |
+          chmod +x .ci-bin/*
+          echo "$PWD/.ci-bin" >> "$GITHUB_PATH"
+
+      - name: Checkout required Pulumi submodule
+        run: git submodule update --init --depth 1 thirdparty/pulumi
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Install Pulumi CLI
+        run: |
+          curl -fsSL https://get.pulumi.com | sh -s -- --version "${PULUMI_VERSION}"
+          echo "$HOME/.pulumi/bin" >> "$GITHUB_PATH"
+
+      - name: Check toolchain versions
+        run: |
+          go version
+          dart --version
+          node --version
+          npm --version
+          python --version
+          uv --version
+          pulumi version
+
+      - name: Run Dart integration tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd integration_tests
+          RUN_REGEX='${{ matrix.run }}'
+          go test -count=1 -timeout 60m -parallel 1 -run "$RUN_REGEX" -json . | gotestsum --format testname
+
+  dart-integration-tests-cloud:
+    name: Dart integration tests (cloud-only)
+    runs-on: ubuntu-latest
+    needs: dart-integration-tools
+    env:
+      OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+    steps:
+      - name: Skip cloud-only tests when 1Password token is unavailable
+        if: env.OP_SERVICE_ACCOUNT_TOKEN == ''
+        run: echo "Skipping cloud-only integration tests because OP_SERVICE_ACCOUNT_TOKEN is not configured."
+
+      - name: Load cloud test secrets from 1Password
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        uses: 1password/load-secrets-action@v2
+        with:
+          export-env: true
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ env.OP_SERVICE_ACCOUNT_TOKEN }}
+          PULUMI_ACCESS_TOKEN: "op://devops/pulumi token/credential"
+
+      - name: Checkout code
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.25.x
+
+      - name: Set up Dart
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.11.0
+
+      - name: Set up Node.js
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up Python
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Download integration tooling
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: dart-integration-tools
+          path: .ci-bin
+
+      - name: Add integration tooling to PATH
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        run: |
+          chmod +x .ci-bin/*
+          echo "$PWD/.ci-bin" >> "$GITHUB_PATH"
+
+      - name: Checkout required Pulumi submodule
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        run: git submodule update --init --depth 1 thirdparty/pulumi
+
+      - name: Install uv
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Install Pulumi CLI
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        run: |
+          curl -fsSL https://get.pulumi.com | sh -s -- --version "${PULUMI_VERSION}"
+          echo "$HOME/.pulumi/bin" >> "$GITHUB_PATH"
+
+      - name: Check toolchain versions
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        run: |
+          go version
+          dart --version
+          node --version
+          npm --version
+          python --version
+          uv --version
+          pulumi version
+
+      - name: Run cloud-only integration tests
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd integration_tests
+          go test -count=1 -timeout 60m -parallel 1 -run '^(TestEnvironmentsBasicDart|TestEnvironmentsMergeDart|TestTracePropagationDart|TestAutomationEnvironmentManagementDart|TestAutomationRemoteWorkspaceLifecycleDart|TestPolicyPublishEnableDisableDart)$' -json . | gotestsum --format testname
+
+  check-integration:
+    if: always()
+    runs-on: ubuntu-latest
+    needs: [dart-integration-test-matrix, dart-integration-tests, dart-integration-tests-cloud]
+    steps:
+      - name: Integration test matrix failed
+        if: needs.dart-integration-test-matrix.result != 'success'
+        run: exit 1
+
+      - name: Dart integration tests failed
+        if: needs.dart-integration-tests.result != 'success'
+        run: exit 1
+
+      - name: Cloud integration tests failed
+        if: needs.dart-integration-tests-cloud.result != 'success'
+        run: exit 1
+
+      - name: Integration CI succeeded
+        run: echo "Dart integration CI succeeded."
