@@ -38,7 +38,6 @@ jobs:
         with:
           ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.release_tag || github.ref }}
           fetch-depth: 0
-          submodules: recursive
 
       - name: Validate release inputs
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'release'
@@ -68,8 +67,8 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Ensure pulumi submodule checkout
-        run: git submodule update --init --recursive
+      - name: Checkout required Pulumi submodule
+        run: git submodule update --init --depth 1 thirdparty/pulumi
 
       - name: Install uv
         run: |
