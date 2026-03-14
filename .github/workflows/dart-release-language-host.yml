@@ -119,11 +119,8 @@ jobs:
           dart test
 
       - name: Run integration tests
-        shell: bash
         run: |
-          set -euo pipefail
-          cd integration_tests
-          go test -count=1 -timeout 60m -json ./... | gotestsum --format testname
+          python3 scripts/dart_integration_partitions.py run --parallel 1
 
       - name: Build release snapshot
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'snapshot'

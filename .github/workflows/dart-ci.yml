@@ -143,9 +143,41 @@ jobs:
           npm ci
           npm run build
 
-  dart-integration-tests:
-    name: Dart integration tests (core)
+  dart-integration-test-matrix:
+    name: Dart integration test matrix
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.25.x
+
+      - name: Install gotestsum
+        run: |
+          go install gotest.tools/gotestsum@latest
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+
+      - name: Build integration test matrix
+        id: matrix
+        run: |
+          echo 'matrix<<EOF' >> "$GITHUB_OUTPUT"
+          python3 scripts/dart_integration_partitions.py matrix >> "$GITHUB_OUTPUT"
+          echo 'EOF' >> "$GITHUB_OUTPUT"
+
+  dart-integration-tests:
+    name: Dart integration tests (core ${{ matrix.name }})
+    runs-on: ubuntu-latest
+    needs: dart-integration-test-matrix
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.dart-integration-test-matrix.outputs.matrix) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -210,7 +242,8 @@ jobs:
         run: |
           set -euo pipefail
           cd integration_tests
-          go test -count=1 -timeout 60m -json ./... | gotestsum --format testname
+          RUN_REGEX='${{ matrix.run }}'
+          go test -count=1 -timeout 60m -parallel 1 -run "$RUN_REGEX" -json . | gotestsum --format testname
 
   dart-integration-tests-cloud:
     name: Dart integration tests (cloud-only)
@@ -309,7 +342,7 @@ jobs:
           go test -count=1 -timeout 60m -run '^(TestEnvironmentsBasicDart|TestEnvironmentsMergeDart|TestTracePropagationDart|TestAutomationEnvironmentManagementDart|TestAutomationRemoteWorkspaceLifecycleDart|TestPolicyPublishEnableDisableDart)$' -json . | gotestsum --format testname
 
   check-pr:
-    needs: [dart-unit-tests, proto-regeneration, website-docs, dart-integration-tests, dart-integration-tests-cloud]
+    needs: [dart-unit-tests, proto-regeneration, website-docs, dart-integration-test-matrix, dart-integration-tests, dart-integration-tests-cloud]
     runs-on: ubuntu-latest
     if: always()
     steps:
