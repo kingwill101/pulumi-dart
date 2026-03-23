@@ -22,8 +22,22 @@ pulumi version
 
 ### 2) Install `pulumi-language-dart`
 
+> [!NOTE]
+> The install script is currently under development. Please use the `go install` approach below temporarily.
+
+```bash
+go install github.com/kingwill101/pulumi-dart/pulumi-language-dart@latest
+```
+
+Alternatively, if the script is available:
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | bash
+```
+
+Verify installation:
+
+```bash
 which pulumi-language-dart
 pulumi-language-dart -help
 ```
