@@ -61,7 +61,10 @@ void main(List<String> args) async {
     'PULUMI_DART_WORKSPACE_RESOLUTION': 'true',
     'PULUMI_DART_PULUMI_DEPENDENCY_PATH': '',
     'PULUMI_DART_PULUMI_DEPENDENCY_VERSION': pulumiVersion,
-    'PATH': _mergePathPrefix(languageHostPath, Platform.environment['PATH'] ?? ''),
+    'PATH': _mergePathPrefix(
+      languageHostPath,
+      Platform.environment['PATH'] ?? '',
+    ),
   };
 
   stdout.writeln(
@@ -123,11 +126,15 @@ void main(List<String> args) async {
     final destinationDir = Directory(
       _resolveGeneratedPackageDir(repoRoot.path, provider),
     );
-    if (destinationDir.existsSync()) {
-      destinationDir.deleteSync(recursive: true);
+
+    // Remove the lib/ directory so stale generated source files are cleaned
+    // up, but preserve manually maintained root-level files such as LICENSE.
+    final libDir = Directory(_joinPath([destinationDir.path, 'lib']));
+    if (libDir.existsSync()) {
+      libDir.deleteSync(recursive: true);
     }
 
-    generatedDartDir.renameSync(destinationDir.path);
+    _mergeDirectory(generatedDartDir, destinationDir);
   }
 
   if (!parsed.keepSdks) {
@@ -402,6 +409,26 @@ bool _isAbsolutePath(String value) {
   return value.startsWith('/') ||
       RegExp(r'^[A-Za-z]:[\\\\/]').hasMatch(value) ||
       value.startsWith('\\\\');
+}
+
+/// Copies all files from [source] into [destination], overwriting files that
+/// exist in [source] but preserving any files in [destination] that are not
+/// part of the generated output (e.g. LICENSE, manually maintained READMEs).
+void _mergeDirectory(Directory source, Directory destination) {
+  if (!destination.existsSync()) {
+    destination.createSync(recursive: true);
+  }
+  for (final entity in source.listSync()) {
+    final name = entity.uri.pathSegments.lastWhere(
+      (segment) => segment.isNotEmpty,
+    );
+    final destPath = _joinPath([destination.path, name]);
+    if (entity is Directory) {
+      _mergeDirectory(entity, Directory(destPath));
+    } else if (entity is File) {
+      entity.copySync(destPath);
+    }
+  }
 }
 
 String _joinPath(List<String> segments) {
