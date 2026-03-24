@@ -325,7 +325,7 @@ packages:
 }
 
 func TestTemplateRewritesPulumiVersionDependencyByDefault(t *testing.T) {
-	t.Parallel()
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV", "false")
 
 	programDir := t.TempDir()
 	pubspecPath := filepath.Join(programDir, "pubspec.yaml")
@@ -477,7 +477,7 @@ dependencies:
 }
 
 func TestTemplatePreservesExistingPulumiOverride(t *testing.T) {
-	t.Parallel()
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV", "false")
 
 	programDir := t.TempDir()
 	pubspecPath := filepath.Join(programDir, "pubspec.yaml")
@@ -512,6 +512,7 @@ dependency_overrides:
 
 func TestTemplateCanForcePulumiOverrideViaEnv(t *testing.T) {
 	t.Setenv("PULUMI_DART_FORCE_PULUMI_DEPENDENCY_OVERRIDE", "true")
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV", "false")
 
 	programDir := t.TempDir()
 	pubspecPath := filepath.Join(programDir, "pubspec.yaml")
