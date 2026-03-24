@@ -36,9 +36,12 @@ func dartAuthoredProviderPath(t *testing.T) string {
 func providerAuthoringDependency(t *testing.T) integration.LocalDependency {
 	t.Helper()
 
+	path := dartAuthoredProviderPath(t)
+	require.NoError(t, rewritePulumiDependency(path),
+		"rewrite pulumi dependency in provider_authoring fixture")
 	return integration.LocalDependency{
 		Package: "testprovider",
-		Path:    dartAuthoredProviderPath(t),
+		Path:    path,
 	}
 }
 

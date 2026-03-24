@@ -1,6 +1,4 @@
 import 'package:pulumi/provider.dart';
-import 'package:pulumi/src/input.dart';
-import 'package:pulumi/src/resource/component_resource.dart';
 
 class IntegrationProvider extends Provider {
   IntegrationProvider() : super(version: '1.2.3', schema: _schema);

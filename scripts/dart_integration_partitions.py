@@ -138,8 +138,9 @@ def run_single_test(
     )
     assert go_proc.stdout is not None
     gotestsum_proc = sp.Popen(
-        [gotestsum, "--format", "testname"],
+        [gotestsum, "--raw-command", "--format", "testname", "--", "cat"],
         stdin=go_proc.stdout,
+        cwd=package_dir,
         text=True,
     )
     go_proc.stdout.close()
@@ -180,7 +181,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--partitions", type=int, default=8)
     parser.add_argument("--timeout", default="60m")
-    parser.add_argument("--parallel", type=int, default=1)
+    parser.add_argument("--parallel", type=int, default=4)
     parser.add_argument("--tests-json")
     return parser.parse_args()
 
