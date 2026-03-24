@@ -35,6 +35,8 @@
 /// consuming them from Pulumi programs.
 library provider;
 
+export 'src/input.dart' show Input, Inputs;
 export 'src/provider/internals.dart';
 export 'src/provider/provider.dart';
 export 'src/provider/server.dart';
+export 'src/resource/component_resource.dart' show ComponentResourceOptions;
