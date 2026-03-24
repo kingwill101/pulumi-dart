@@ -153,9 +153,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          cd integration_tests
-          RUN_REGEX='${{ matrix.run }}'
-          go test -count=1 -timeout 60m -parallel 4 -run "$RUN_REGEX" -json . | gotestsum --format testname
+          python3 scripts/dart_integration_partitions.py run-tests \
+            --tests-json '${{ toJson(matrix.tests) }}' \
+            --timeout 60m \
+            --parallel 4
 
   dart-integration-tests-cloud:
     name: Dart integration tests (cloud-only)
@@ -248,10 +249,14 @@ jobs:
       - name: Run cloud-only integration tests
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
         shell: bash
+        env:
+          CLOUD_TESTS: '["TestEnvironmentsBasicDart","TestEnvironmentsMergeDart","TestTracePropagationDart","TestAutomationEnvironmentManagementDart","TestAutomationRemoteWorkspaceLifecycleDart","TestPolicyPublishEnableDisableDart"]'
         run: |
           set -euo pipefail
-          cd integration_tests
-          go test -count=1 -timeout 60m -parallel 4 -run '^(TestEnvironmentsBasicDart|TestEnvironmentsMergeDart|TestTracePropagationDart|TestAutomationEnvironmentManagementDart|TestAutomationRemoteWorkspaceLifecycleDart|TestPolicyPublishEnableDisableDart)$' -json . | gotestsum --format testname
+          python3 scripts/dart_integration_partitions.py run-tests \
+            --tests-json "$CLOUD_TESTS" \
+            --timeout 60m \
+            --parallel 4
 
   check-integration:
     if: always()
