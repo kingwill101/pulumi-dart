@@ -1,42 +1,9 @@
 # Pulumi for Dart
 
-`pulumi` is the core Dart SDK for building infrastructure with Pulumi.
+`pulumi` is the core SDK for building infrastructure with Pulumi and Dart.
 
 This package provides the runtime primitives used by Pulumi programs and by
-generated provider SDKs such as `pulumi_aws`, `pulumi_gcp`, and
-`pulumi_random`.
-
-## What this package contains
-
-- deployment entrypoints:
-  - `Deployment.run`
-  - `Deployment.runOrThrow`
-- stack and resource base types:
-  - `Stack`
-  - `Resource`
-  - `CustomResource`
-  - `ComponentResource`
-  - `ProviderResource`
-- value flow primitives:
-  - `Input`
-  - `Output`
-  - input collections and unions
-- runtime helpers:
-  - `Config`
-  - invoke helpers
-  - resource options
-  - stack references
-  - assets and archives
-
-## What this package does not contain
-
-This package is the core runtime only. To manage real cloud resources, add one
-or more provider SDK packages alongside `pulumi`, for example:
-
-- `pulumi_random`
-- `pulumi_aws`
-- `pulumi_gcp`
-- `pulumi_kubernetes`
+generated provider SDKs.
 
 ## Requirements
 

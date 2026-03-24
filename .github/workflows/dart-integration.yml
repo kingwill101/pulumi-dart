@@ -86,9 +86,11 @@ jobs:
     name: Dart integration tests (core ${{ matrix.name }})
     runs-on: ubuntu-latest
     needs: [dart-integration-test-matrix, dart-integration-tools]
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.dart-integration-test-matrix.outputs.matrix) }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -153,7 +155,7 @@ jobs:
           set -euo pipefail
           cd integration_tests
           RUN_REGEX='${{ matrix.run }}'
-          go test -count=1 -timeout 60m -parallel 1 -run "$RUN_REGEX" -json . | gotestsum --format testname
+          go test -count=1 -timeout 60m -parallel 4 -run "$RUN_REGEX" -json . | gotestsum --format testname
 
   dart-integration-tests-cloud:
     name: Dart integration tests (cloud-only)
@@ -249,7 +251,7 @@ jobs:
         run: |
           set -euo pipefail
           cd integration_tests
-          go test -count=1 -timeout 60m -parallel 1 -run '^(TestEnvironmentsBasicDart|TestEnvironmentsMergeDart|TestTracePropagationDart|TestAutomationEnvironmentManagementDart|TestAutomationRemoteWorkspaceLifecycleDart|TestPolicyPublishEnableDisableDart)$' -json . | gotestsum --format testname
+          go test -count=1 -timeout 60m -parallel 4 -run '^(TestEnvironmentsBasicDart|TestEnvironmentsMergeDart|TestTracePropagationDart|TestAutomationEnvironmentManagementDart|TestAutomationRemoteWorkspaceLifecycleDart|TestPolicyPublishEnableDisableDart)$' -json . | gotestsum --format testname
 
   check-integration:
     if: always()
