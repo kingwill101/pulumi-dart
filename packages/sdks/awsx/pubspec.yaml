@@ -1,7 +1,7 @@
 name: pulumi_awsx
 description: Pulumi Amazon Web Services (AWS) AWSX Components.
 version: 3.2.1
-license: Apache-2.0
+license: MIT
 homepage: https://www.pulumi.com
 repository: https://github.com/pulumi/pulumi-awsx
 topics:
@@ -14,7 +14,7 @@ environment:
     sdk: '>=3.11.0 <4.0.0'
 resolution: workspace
 dependencies:
-    pulumi: 3.0.0
+    pulumi: ^3.0.0
     pulumi_aws: ^7.15.0
     pulumi_docker: ^4.6.0
     pulumi_docker_build: ^0.0.14
