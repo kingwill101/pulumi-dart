@@ -65,7 +65,7 @@ jobs:
           go-version: 1.25.x
 
       - name: Download integration tooling
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: dart-integration-tools
           path: ci-bin
@@ -116,7 +116,7 @@ jobs:
           python-version: "3.11"
 
       - name: Download integration tooling
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: dart-integration-tools
           path: ci-bin
@@ -208,7 +208,7 @@ jobs:
 
       - name: Download integration tooling
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: dart-integration-tools
           path: ci-bin
