@@ -613,7 +613,7 @@ func TestGeneratePackageRequiresSchema(t *testing.T) {
 }
 
 func TestGeneratePackageWritesPulumiDependency(t *testing.T) {
-	t.Parallel()
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV", "false")
 
 	host := &dartLanguageHost{}
 	targetDir := t.TempDir()
@@ -962,7 +962,7 @@ dependencies:
 }
 
 func TestGeneratePackageReadsLocalDependencyRegistry(t *testing.T) {
-	t.Parallel()
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV", "false")
 
 	host := &dartLanguageHost{}
 	workspaceDir := t.TempDir()
@@ -1349,7 +1349,7 @@ func TestGeneratePackageNormalizesPulumiHomepageMetadata(t *testing.T) {
 }
 
 func TestGeneratePackageWritesDartLanguageDependenciesToPubspec(t *testing.T) {
-	t.Parallel()
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV", "false")
 
 	host := &dartLanguageHost{}
 	targetDir := t.TempDir()
@@ -1381,7 +1381,7 @@ func TestGeneratePackageWritesDartLanguageDependenciesToPubspec(t *testing.T) {
 }
 
 func TestGeneratePackageInfersDependenciesFromExternalSchemaRefs(t *testing.T) {
-	t.Parallel()
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV", "false")
 
 	host := &dartLanguageHost{}
 	targetDir := t.TempDir()
@@ -1416,7 +1416,7 @@ func TestGeneratePackageInfersDependenciesFromExternalSchemaRefs(t *testing.T) {
 }
 
 func TestGeneratePackageIgnoresSelfExternalSchemaRefDependency(t *testing.T) {
-	t.Parallel()
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV", "false")
 
 	host := &dartLanguageHost{}
 	targetDir := t.TempDir()
