@@ -106,7 +106,7 @@ jobs:
           sdk: 3.11.0
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
 
@@ -196,7 +196,7 @@ jobs:
 
       - name: Set up Node.js
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
 
