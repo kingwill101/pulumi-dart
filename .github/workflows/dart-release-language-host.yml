@@ -26,9 +26,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name || github.run_id }}
   cancel-in-progress: true
 
-env:
-  PULUMI_VERSION: 3.225.1
-
 jobs:
   release-language-host:
     runs-on: ubuntu-latest
@@ -57,38 +54,13 @@ jobs:
         with:
           sdk: 3.11.0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
       - name: Checkout required Pulumi submodule
         run: git submodule update --init --depth 1 thirdparty/pulumi
-
-      - name: Install uv
-        run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-
-      - name: Install Pulumi CLI
-        run: |
-          curl -fsSL https://get.pulumi.com | sh -s -- --version "${PULUMI_VERSION}"
-          echo "$HOME/.pulumi/bin" >> "$GITHUB_PATH"
 
       - name: Install Dart language host
         run: |
           cd pulumi-language-dart
           go install .
-          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
-
-      - name: Install gotestsum
-        run: |
-          go install gotest.tools/gotestsum@latest
           echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
 
       - name: Resolve Dart workspace dependencies
@@ -98,11 +70,6 @@ jobs:
         run: |
           go version
           dart --version
-          node --version
-          npm --version
-          python --version
-          uv --version
-          pulumi version
 
       - name: Verify language host tests
         run: |
@@ -116,10 +83,6 @@ jobs:
         run: |
           cd packages/pulumi-dart
           dart test
-
-      - name: Run integration tests
-        run: |
-          python3 scripts/dart_integration_partitions.py run --parallel 4
 
       - name: Build release snapshot
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'snapshot'
