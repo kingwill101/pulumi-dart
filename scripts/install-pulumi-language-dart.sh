@@ -145,6 +145,7 @@ echo "Downloading ${ASSET_NAME} ..."
 curl -fL "$ASSET_URL" -o "$ARCHIVE_PATH"
 
 mkdir -p "$INSTALL_DIR"
+mkdir -p "$TMP_DIR/extracted"
 
 if [ "$ARCHIVE_EXT" = "zip" ]; then
   if ! command -v unzip >/dev/null 2>&1; then
