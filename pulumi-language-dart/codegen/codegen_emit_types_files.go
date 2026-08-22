@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 )
 
 func generatedObjectClassFile(
@@ -50,7 +53,14 @@ func generatedObjectClassFile(
 }
 
 func generatedEnumFile(enumSpec packageEnumSpec) []byte {
-	var b strings.Builder
-	writeGeneratedEnumClass(&b, enumSpec)
-	return []byte(b.String())
+	values := make([]dartir.EnumValue, len(enumSpec.Values))
+	for index, value := range enumSpec.Values {
+		values[index] = dartir.EnumValue{Name: value.Name, Docs: value.Comment, Literal: value.Literal}
+	}
+	return render.Enum(dartir.Enum{
+		Name:           enumSpec.EnumName,
+		Docs:           enumSpec.Comment,
+		UnderlyingType: enumSpec.UnderlyingType,
+		Values:         values,
+	})
 }

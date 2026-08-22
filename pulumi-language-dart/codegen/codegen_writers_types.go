@@ -53,33 +53,6 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 	b.WriteString(fmt.Sprintf("const config = %s();\n\n", configSpec.ClassName))
 }
 
-// writeGeneratedEnumClass emits a generated enum type with wire-value mapping
-// and fromValue conversion.
-func writeGeneratedEnumClass(b *strings.Builder, enumSpec packageEnumSpec) {
-	writeDartDocComment(b, "", enumSpec.Comment)
-	fmt.Fprintf(b, "enum %s {\n", enumSpec.EnumName)
-	for i, enumValue := range enumSpec.Values {
-		suffix := ","
-		if i == len(enumSpec.Values)-1 {
-			suffix = ";"
-		}
-		writeDartDocComment(b, "  ", enumValue.Comment)
-		fmt.Fprintf(b, "  %s(%s)%s\n", enumValue.Name, enumValue.Literal, suffix)
-	}
-	b.WriteString("\n")
-	fmt.Fprintf(b, "  const %s(this.wireValue);\n", enumSpec.EnumName)
-	fmt.Fprintf(b, "  final %s wireValue;\n\n", enumSpec.UnderlyingType)
-	fmt.Fprintf(
-		b,
-		"  static %s fromValue(%s value) {\n    for (final item in %s.values) {\n      if (item.wireValue == value) {\n        return item;\n      }\n    }\n    throw ArgumentError('Unknown %s value: $value');\n  }\n",
-		enumSpec.EnumName,
-		enumSpec.UnderlyingType,
-		enumSpec.EnumName,
-		enumSpec.EnumName,
-	)
-	b.WriteString("}\n\n")
-}
-
 // writeGeneratedObjectClass emits generated object/args/result classes with
 // constructor docs plus toMap/fromMap conversion helpers.
 func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClassSpec) {
