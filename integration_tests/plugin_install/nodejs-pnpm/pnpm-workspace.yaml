@@ -1,5 +1,10 @@
 packages:
   - "."
 
+# pnpm 10 uses onlyBuiltDependencies; pnpm 11 uses allowBuilds and defaults
+# strictDepBuilds to true. Keep both forms so this fixture remains portable
+# across the package-manager versions installed by supported environments.
 onlyBuiltDependencies:
   - protobufjs
+allowBuilds:
+  protobufjs: true
