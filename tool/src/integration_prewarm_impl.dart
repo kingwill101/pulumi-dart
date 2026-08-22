@@ -655,7 +655,7 @@ bool _isEditVariantName(String name) {
     return true;
   }
   return RegExp(
-    r'^(?:step|edit)[-_]?\d*$',
+    r'^(?:step|edit)(?:[-_]?\d+)?(?:[-_].*)?$',
     caseSensitive: false,
   ).hasMatch(name);
 }

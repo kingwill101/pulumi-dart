@@ -27,6 +27,23 @@ void main() {
     expect(candidates.single.safeToOverride, isFalse);
   });
 
+  test('named step project with sibling edits is not safe to override', () {
+    _writeProject(
+      root,
+      'component_resource_hooks/step1-create',
+      'component_resource_hooks_dart',
+    );
+    _writeDartFile(
+      root,
+      'component_resource_hooks/step2-update/bin/component_resource_hooks_dart.dart',
+    );
+
+    final candidates = discoverPrewarmCandidates(root);
+
+    expect(candidates, hasLength(1));
+    expect(candidates.single.safeToOverride, isFalse);
+  });
+
   test('ordinary project remains safe to override', () {
     _writeProject(root, 'empty', 'emptydart');
 
