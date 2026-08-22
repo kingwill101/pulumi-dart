@@ -1,17 +1,18 @@
 { pkgs, lib, ... }:
 
 let
-  goPackage =
-    if pkgs ? go_1_26 then pkgs.go_1_26
-    else throw "pulumi-dart integration tooling requires Go 1.26.x";
   platformArchives = {
     "aarch64-darwin" = {
+      go = "go1.26.5.darwin-arm64.tar.gz";
+      goHash = "sha256-77h/8or5oYjQU2711C5j3VK6gmPNc0Spk8xI3RHe22o=";
       dart = "dartsdk-macos-arm64-release.zip";
       dartHash = "sha256-IjJFpC6rG4EeUC4VYluGcHX/4BLenrU3Skzd4u4IdTQ=";
       pulumi = "pulumi-v3.225.1-darwin-arm64.tar.gz";
       pulumiHash = "sha256-2scwrh9uJZd7S9nKIv+2YI3e0V+21fEr15L/HaXtJlE=";
     };
     "x86_64-linux" = {
+      go = "go1.26.5.linux-amd64.tar.gz";
+      goHash = "sha256-XCw7FsrvodloqUwdrKBKfKMBpJbZsIbhetd7uBOT8FM=";
       dart = "dartsdk-linux-x64-release.zip";
       dartHash = "sha256-8xcptWe+MYx8wjva/muamX+n3b+CnfUBbwZiJ7aqDJk=";
       pulumi = "pulumi-v3.225.1-linux-x64.tar.gz";
@@ -20,6 +21,21 @@ let
   };
   platform = platformArchives.${pkgs.stdenv.hostPlatform.system}
     or (throw "pulumi-dart devenv does not support ${pkgs.stdenv.hostPlatform.system}");
+  goPackage = pkgs.stdenvNoCC.mkDerivation {
+    pname = "go";
+    version = "1.26.5";
+    src = pkgs.fetchurl {
+      url = "https://go.dev/dl/${platform.go}";
+      hash = platform.goHash;
+    };
+    sourceRoot = "go";
+    installPhase = ''
+      runHook preInstall
+      mkdir -p "$out"
+      cp -R . "$out/"
+      runHook postInstall
+    '';
+  };
   dartPackage = pkgs.stdenvNoCC.mkDerivation {
     pname = "dart-sdk";
     version = "3.11.0";
