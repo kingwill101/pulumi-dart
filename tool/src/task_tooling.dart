@@ -2,21 +2,28 @@ import 'dart:io';
 
 Directory findRepoRoot({
   Directory? start,
-  List<String> markers = const ['Taskfile.yml'],
+  List<String> markers = const [
+    'pubspec.yaml',
+    'tool',
+    'pulumi-language-dart',
+  ],
 }) {
   var current = (start ?? Directory.current).absolute;
   while (true) {
-    final hasMarker = markers.any(
-      (marker) => File(joinPath([current.path, marker])).existsSync(),
-    );
-    if (hasMarker) {
+    final hasMarkers = markers.every((marker) {
+      final markerPath = joinPath([current.path, marker]);
+      return FileSystemEntity.typeSync(markerPath) !=
+          FileSystemEntityType.notFound;
+    });
+    if (hasMarkers) {
       return current;
     }
 
     final parent = current.parent;
     if (parent.path == current.path) {
       stderr.writeln(
-        'Unable to locate repository root from ${(start ?? Directory.current).absolute.path}.',
+        'Unable to locate repository root from '
+        '${(start ?? Directory.current).absolute.path}.',
       );
       exit(66);
     }
