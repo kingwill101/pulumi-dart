@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math' as math;
 
+import 'src/integration_prewarm.dart';
+
 const _isolatedIntegrationTests = <String>{
   // This test intentionally verifies shutdown behavior and relies on a fresh
   // Go test process. Reuse the precompiled binary, but do not share its process
@@ -37,6 +39,8 @@ Pulumi Dart repository tooling
 Usage:
   pulumi-dart-tool integration matrix [options]
   pulumi-dart-tool integration run [options]
+  pulumi-dart-tool integration prewarm [options]
+  pulumi-dart-tool integration apply-prewarm [options]
 
 Integration matrix options:
   --package-dir <path>   Go integration package directory.
@@ -50,6 +54,18 @@ Integration run options:
   --tests <csv>          Test names for this partition; an alternative to --run.
   --timeout <duration>   Go test timeout. Defaults to 60m.
   --parallel <count>     Go test parallelism. Defaults to 4.
+
+Integration prewarm options:
+  --root <path>              Integration fixture root.
+  --output <path>            Kernel and manifest output directory.
+  --launcher-template <path> Precompiled generic launcher executable.
+  --dart-sdk-version <value> Dart SDK version recorded in the manifest.
+  --jobs <count>             Concurrent compile jobs. Defaults to 4.
+
+Integration apply-prewarm options:
+  --root <path>          Integration fixture root to rewrite.
+  --manifest <path>      Prewarm manifest path.
+  --artifact-root <path> Mounted prewarm artifact root.
 ''';
 
   Future<int> run(List<String> arguments) async {
@@ -82,6 +98,10 @@ Integration run options:
         return _writeIntegrationMatrix(options);
       case 'run':
         return _runIntegrationPartition(options);
+      case 'prewarm':
+        return _prewarmIntegrationPrograms(options);
+      case 'apply-prewarm':
+        return _applyPrewarmOverrides(options);
       default:
         throw ToolUsageException(
           'Unknown integration subcommand: $subcommand',
@@ -203,6 +223,38 @@ Integration run options:
     }
 
     return 0;
+  }
+
+  Future<int> _prewarmIntegrationPrograms(CommandOptions options) {
+    final root = Directory(options.path('root', 'integration_tests'));
+    final output = Directory(
+      options.path('output', '.dart_tool/pulumi/prewarm'),
+    );
+    final launcherTemplate = File(options.requiredPath('launcher-template'));
+    final dartSdkVersion = options.value('dart-sdk-version', 'unknown');
+    final jobs = options.integer('jobs', 4, minimum: 1);
+    options.assertNoPositionals();
+
+    return IntegrationPrewarmer(
+      root: root,
+      output: output,
+      launcherTemplate: launcherTemplate,
+      dartSdkVersion: dartSdkVersion,
+      jobs: jobs,
+    ).run();
+  }
+
+  Future<int> _applyPrewarmOverrides(CommandOptions options) {
+    final root = Directory(options.path('root', 'integration_tests'));
+    final manifestFile = File(options.requiredPath('manifest'));
+    final artifactRoot = Directory(options.requiredPath('artifact-root'));
+    options.assertNoPositionals();
+
+    return IntegrationPrewarmApplier(
+      root: root,
+      manifestFile: manifestFile,
+      artifactRoot: artifactRoot,
+    ).run();
   }
 
   Future<int> _runTestBinary({
@@ -360,6 +412,8 @@ class CommandOptions {
     }
     return result;
   }
+
+  String requiredPath(String name) => File(required(name)).absolute.path;
 
   String? optional(String name) => _values.remove(name);
 

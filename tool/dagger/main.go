@@ -79,9 +79,14 @@ func (p *pipeline) prepare(ctx context.Context, args []string) error {
 	prepared := p.repositoryContainer(*source).
 		WithExec([]string{"mkdir", "-p", "/out/bin"}).
 		WithWorkdir("/src").
+		WithExec([]string{"dart", "pub", "get"}).
 		WithExec([]string{
 			"dart", "compile", "exe", "tool/pulumi_dart.dart",
 			"-o", "/out/bin/pulumi-dart-tool",
+		}).
+		WithExec([]string{
+			"dart", "compile", "exe", "tool/kernel_launcher.dart",
+			"-o", "/out/bin/pulumi-dart-kernel-launcher",
 		}).
 		WithWorkdir("/src/pulumi-language-dart").
 		WithExec([]string{"go", "build", "-o", "/out/bin/pulumi-language-dart", "."}).
@@ -90,6 +95,16 @@ func (p *pipeline) prepare(ctx context.Context, args []string) error {
 			"go", "test", "-c",
 			"-o", "/out/bin/pulumi-dart-integration-tests",
 			"github.com/pulumi-dart/integration_tests",
+		}).
+		WithWorkdir("/src").
+		WithExec([]string{
+			"/out/bin/pulumi-dart-tool",
+			"integration", "prewarm",
+			"--root", "/src/integration_tests",
+			"--output", "/out/prewarm",
+			"--launcher-template", "/out/bin/pulumi-dart-kernel-launcher",
+			"--dart-sdk-version", dartVersion,
+			"--jobs", "4",
 		})
 
 	matrix, err := prepared.
@@ -122,6 +137,7 @@ func (p *pipeline) prepare(ctx context.Context, args []string) error {
 			"bin/pulumi-dart-integration-tests",
 			prepared.File("/out/bin/pulumi-dart-integration-tests"),
 		).
+		WithDirectory("prewarm", prepared.Directory("/out/prewarm")).
 		WithNewFile("matrix.json", matrix+"\n")
 
 	outputPath, err := filepath.Abs(*output)
@@ -170,6 +186,17 @@ func (p *pipeline) integration(ctx context.Context, args []string) error {
 			"/artifacts/bin/pulumi-dart-tool",
 			"/artifacts/bin/pulumi-language-dart",
 			"/artifacts/bin/pulumi-dart-integration-tests",
+		}).
+		WithExec([]string{
+			"find", "/artifacts/prewarm/bin", "-type", "f",
+			"-exec", "chmod", "+x", "{}", "+",
+		}).
+		WithExec([]string{
+			"/artifacts/bin/pulumi-dart-tool",
+			"integration", "apply-prewarm",
+			"--root", "/src/integration_tests",
+			"--manifest", "/artifacts/prewarm/manifest.json",
+			"--artifact-root", "/artifacts/prewarm",
 		})
 
 	if token := strings.TrimSpace(os.Getenv("PULUMI_ACCESS_TOKEN")); token != "" {
