@@ -89,7 +89,7 @@ func (p *pipeline) prepare(ctx context.Context, args []string) error {
 		WithExec([]string{
 			"go", "test", "-c",
 			"-o", "/out/bin/pulumi-dart-integration-tests",
-			".",
+			"github.com/pulumi-dart/integration_tests",
 		})
 
 	matrix, err := prepared.
