@@ -201,7 +201,7 @@ func (p *pipeline) integration(ctx context.Context, args []string) error {
 			"-exec", "chmod", "+x", "{}", "+",
 		}).
 		WithExec([]string{
-			"/out/artifacts/bin/pulumi-dart-tool",
+			"/artifacts/bin/pulumi-dart-tool",
 			"integration", "apply-prewarm",
 			"--root", "/src/integration_tests",
 			"--manifest", "/artifacts/prewarm/manifest.json",
@@ -297,7 +297,8 @@ func (p *pipeline) repositoryContainer(source string) *dagger.Container {
 		WithFile(
 			"/tmp/pulumi.tar.gz",
 			p.client.HTTP(
-				"https://get.pulumi.com/releases/sdkŠpulumiVersion+"-linux-x64.tar.gz",
+				"https://get.pulumi.com/releases/sdk/pulumi-v"+
+					pulumiVersion+"-linux-x64.tar.gz",
 			),
 		).
 		WithExec([]string{"mkdir", "-p", "/opt"}).
@@ -354,7 +355,7 @@ func pathContains(parent, child string) bool {
 func runStatus(args []string) error {
 	flags := flag.NewFlagSet("status", flag.ContinueOnError)
 	flags.SetOutput(os.Stderr)
-	prepare := flags.String(prepare", "", "prepare job result")
+	prepare := flags.String("prepare", "", "prepare job result")
 	core := flags.String("core", "", "core matrix job result")
 	cloud := flags.String("cloud", "", "cloud job result")
 	if err := flags.Parse(args); err != nil {
