@@ -81,22 +81,6 @@ jobs:
           cd packages/pulumi-dart
           dart test
 
-  dagger-client-compile:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: 1.26.x
-          cache-dependency-path: tool/dagger/go.sum
-
-      - name: Compile Dagger client
-        working-directory: tool/dagger
-        run: go test -count=1 ./...
-
   proto-regeneration:
     runs-on: ubuntu-latest
     steps:
@@ -160,16 +144,11 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - dart-unit-tests
-      - dagger-client-compile
       - proto-regeneration
       - website-docs
     steps:
       - name: Dart unit tests failed
         if: needs.dart-unit-tests.result != 'success'
-        run: exit 1
-
-      - name: Dagger client compilation failed
-        if: needs.dagger-client-compile.result != 'success'
         run: exit 1
 
       - name: Proto regeneration check failed

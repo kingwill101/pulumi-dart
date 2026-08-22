@@ -638,14 +638,26 @@ bool _hasPubspec(Directory directory) {
 }
 
 bool _hasEditVariants(Directory projectDirectory) {
-  final editName = RegExp(r'^(?:step|edit)[-_]?\d*$', caseSensitive: false);
+  if (_isEditVariantName(_basename(projectDirectory.path))) {
+    return true;
+  }
   return projectDirectory
       .listSync(recursive: true, followLinks: false)
       .whereType<Directory>()
       .any((directory) {
         final name = _basename(directory.path);
-        return name == 'edits' || editName.hasMatch(name);
+        return _isEditVariantName(name);
       });
+}
+
+bool _isEditVariantName(String name) {
+  if (name.toLowerCase() == 'edits') {
+    return true;
+  }
+  return RegExp(
+    r'^(?:step|edit)[-_]?\d*$',
+    caseSensitive: false,
+  ).hasMatch(name);
 }
 
 String? _resolveDefaultEntrypoint(

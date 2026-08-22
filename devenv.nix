@@ -1,0 +1,177 @@
+{ pkgs, lib, ... }:
+
+let
+  goPackage =
+    if pkgs ? go_1_26 then pkgs.go_1_26
+    else throw "pulumi-dart integration tooling requires Go 1.26.x";
+  platformArchives = {
+    "aarch64-darwin" = {
+      dart = "dartsdk-macos-arm64-release.zip";
+      dartHash = "sha256-IjJFpC6rG4EeUC4VYluGcHX/4BLenrU3Skzd4u4IdTQ=";
+      pulumi = "pulumi-v3.225.1-darwin-arm64.tar.gz";
+      pulumiHash = "sha256-2scwrh9uJZd7S9nKIv+2YI3e0V+21fEr15L/HaXtJlE=";
+    };
+    "x86_64-linux" = {
+      dart = "dartsdk-linux-x64-release.zip";
+      dartHash = "sha256-8xcptWe+MYx8wjva/muamX+n3b+CnfUBbwZiJ7aqDJk=";
+      pulumi = "pulumi-v3.225.1-linux-x64.tar.gz";
+      pulumiHash = "sha256-Y3zaZLkUYERVvtSzN07kOZfiu/pux6w8xJ5oM1mSq3k=";
+    };
+  };
+  platform = platformArchives.${pkgs.stdenv.hostPlatform.system}
+    or (throw "pulumi-dart devenv does not support ${pkgs.stdenv.hostPlatform.system}");
+  dartPackage = pkgs.stdenvNoCC.mkDerivation {
+    pname = "dart-sdk";
+    version = "3.11.0";
+    src = pkgs.fetchurl {
+      url = "https://storage.googleapis.com/dart-archive/channels/stable/release/3.11.0/sdk/${platform.dart}";
+      hash = platform.dartHash;
+    };
+    nativeBuildInputs = [ pkgs.unzip ];
+    sourceRoot = "dart-sdk";
+    installPhase = ''
+      runHook preInstall
+      mkdir -p "$out"
+      cp -R . "$out/"
+      runHook postInstall
+    '';
+  };
+  # Keep the lightweight binary packaging from nixpkgs, but pin the CLI to the
+  # version used by this branch instead of pulling pulumi-bin's current CLI and
+  # full provider-plugin bundle.
+  pulumiPackage = pkgs.pulumi-bin.overrideAttrs (_: {
+    version = "3.225.1";
+    postUnpack = "";
+    srcs = [
+      (pkgs.fetchurl {
+        url = "https://github.com/pulumi/pulumi/releases/download/v3.225.1/${platform.pulumi}";
+        hash = platform.pulumiHash;
+      })
+    ];
+  });
+in
+{
+  packages = [
+    goPackage
+    dartPackage
+    pulumiPackage
+    pkgs.git
+    pkgs.nodejs_22
+    pkgs.pnpm
+    pkgs.uv
+  ];
+
+  scripts.integration-check.exec = ''
+    set -eu
+    echo "Go: $(go version)"
+    echo "Dart: $(dart --version 2>&1)"
+    echo "Pulumi: $(pulumi version)"
+    echo "Node: $(node --version)"
+    echo "pnpm: $(pnpm --version)"
+    echo "uv: $(uv --version)"
+  '';
+
+  scripts.integration-build-host.exec = ''
+    set -eu
+    cd pulumi-language-dart
+    go build -buildvcs=false -o pulumi-language-dart .
+  '';
+
+  scripts.integration-test-empty.exec = ''
+    set -eu
+    cd integration_tests
+    export GOFLAGS="''${GOFLAGS:+$GOFLAGS }-buildvcs=false"
+    export PULUMI_SKIP_UPDATE_CHECK=true
+    export PULUMI_CONFIG_PASSPHRASE=pulumi-dart-test-passphrase
+    go test -count=1 -run '^TestEmptyDart$' -v -timeout=10m .
+  '';
+
+  scripts.integration-test.exec = ''
+    set -eu
+    if [ ! -d thirdparty/pulumi/tests/testprovider ]; then
+      echo "Missing thirdparty/pulumi/tests/testprovider." >&2
+      echo "Initialize it before running the full suite:" >&2
+      echo "  git submodule update --init --depth 1 thirdparty/pulumi" >&2
+      exit 1
+    fi
+
+    integration-build-host
+    export PATH="$PWD/pulumi-language-dart:$PATH"
+    cd integration_tests
+    export GOFLAGS="''${GOFLAGS:+$GOFLAGS }-buildvcs=false"
+    export PULUMI_SKIP_UPDATE_CHECK=true
+    export PULUMI_CONFIG_PASSPHRASE="''${PULUMI_CONFIG_PASSPHRASE:-pulumi-dart-test-passphrase}"
+
+    test_pattern="''${INTEGRATION_TESTS:-.}"
+    test_timeout="''${INTEGRATION_TIMEOUT:-60m}"
+    test_parallel="''${INTEGRATION_PARALLEL:-4}"
+    go test -count=1 -run "$test_pattern" -v \
+      -timeout="$test_timeout" -parallel="$test_parallel" .
+  '';
+
+  scripts.integration-prewarm.exec = ''
+    set -eu
+    prewarm_tmp="$(mktemp -d)"
+    trap 'rm -rf "$prewarm_tmp"' EXIT
+
+    dart pub get
+    dart compile exe tool/kernel_launcher.dart \
+      -o "$prewarm_tmp/pulumi-dart-kernel-launcher"
+    dart run tool/pulumi_dart.dart integration prewarm \
+      --root integration_tests \
+      --output .local-prewarm \
+      --launcher-template "$prewarm_tmp/pulumi-dart-kernel-launcher" \
+      --dart-sdk-version 3.11.0 \
+      --jobs "''${PREWARM_JOBS:-4}"
+
+    echo "Prewarm artifacts: $PWD/.local-prewarm"
+  '';
+
+  scripts.integration-ci-prepare.exec = ''
+    set -eu
+    artifact_root="$PWD/.integration-ci"
+    rm -rf "$artifact_root"
+    mkdir -p "$artifact_root/bin"
+
+    dart pub get
+    dart compile exe tool/pulumi_dart.dart -o "$artifact_root/bin/pulumi-dart-tool"
+    dart compile exe tool/kernel_launcher.dart -o "$artifact_root/bin/pulumi-dart-kernel-launcher"
+    (cd pulumi-language-dart && go build -buildvcs=false -o "$artifact_root/bin/pulumi-language-dart" .)
+    (cd integration_tests && GOFLAGS=-buildvcs=false go test -c \
+      -o "$artifact_root/bin/pulumi-dart-integration-tests" .)
+
+    "$artifact_root/bin/pulumi-dart-tool" integration prewarm \
+      --root integration_tests \
+      --output "$artifact_root/prewarm" \
+      --launcher-template "$artifact_root/bin/pulumi-dart-kernel-launcher" \
+      --dart-sdk-version 3.11.0 \
+      --jobs "''${PREWARM_JOBS:-4}"
+    "$artifact_root/bin/pulumi-dart-tool" integration matrix \
+      --package-dir integration_tests \
+      --binary "$artifact_root/bin/pulumi-dart-integration-tests" \
+      --partitions "''${INTEGRATION_PARTITIONS:-8}" > "$artifact_root/matrix.json"
+  '';
+
+  scripts.integration-ci-run.exec = ''
+    set -eu
+    artifact_root="$PWD/.integration-ci"
+    test -n "''${INTEGRATION_TESTS:-}" || {
+      echo "INTEGRATION_TESTS is required" >&2
+      exit 1
+    }
+    chmod +x "$artifact_root/bin/"* "$artifact_root/prewarm/bin/"*
+    export PATH="$artifact_root/bin:$PATH"
+    export PULUMI_SKIP_UPDATE_CHECK=true
+    export PULUMI_CONFIG_PASSPHRASE="''${PULUMI_CONFIG_PASSPHRASE:-pulumi-dart-test-passphrase}"
+    "$artifact_root/bin/pulumi-dart-tool" integration apply-prewarm \
+      --root integration_tests \
+      --manifest "$artifact_root/prewarm/manifest.json" \
+      --artifact-root "$artifact_root/prewarm"
+    "$artifact_root/bin/pulumi-dart-tool" integration run \
+      --package-dir integration_tests \
+      --binary "$artifact_root/bin/pulumi-dart-integration-tests" \
+      --tests "$INTEGRATION_TESTS" \
+      --timeout "''${INTEGRATION_TIMEOUT:-60m}" \
+      --parallel "''${INTEGRATION_PARALLEL:-4}"
+  '';
+}
