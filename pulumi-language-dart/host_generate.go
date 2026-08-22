@@ -15,6 +15,7 @@ import (
 
 	semver "github.com/blang/semver"
 	codegen "github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/packagegen"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/encoding"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
@@ -306,54 +307,27 @@ func (host *dartLanguageHost) GeneratePackage(
 	if err := os.MkdirAll(sdkDir, 0o700); err != nil {
 		return nil, fmt.Errorf("failed to create generated SDK source directory: %w", err)
 	}
-	sdkLibraryName := packageName + "_sdk"
-
-	sdkSources, moduleSymbols := codegen.GeneratedPackageSources(spec, packageName, sdkLibraryName)
-	sdkPaths := make([]string, 0, len(sdkSources))
-	for relativePath := range sdkSources {
-		sdkPaths = append(sdkPaths, relativePath)
+	generatedPackage, err := packagegen.Generate(packagegen.Input{
+		Schema:         spec,
+		PackageName:    packageName,
+		SDKLibraryName: packageName + "_sdk",
+	})
+	if err != nil {
+		return nil, fmt.Errorf("failed to generate Dart package: %w", err)
 	}
-	sort.Strings(sdkPaths)
-	for _, relativePath := range sdkPaths {
-		outputPath, err := codegen.SafeOutputPath(sdkDir, filepath.FromSlash(relativePath))
+	for _, generatedFile := range generatedPackage.Files {
+		outputPath, err := codegen.SafeOutputPath(libDir, filepath.FromSlash(generatedFile.Path))
 		if err != nil {
-			return nil, fmt.Errorf("invalid generated SDK source path %q: %w", relativePath, err)
+			return nil, fmt.Errorf("invalid generated Dart source path %q: %w", generatedFile.Path, err)
 		}
 		if err := os.MkdirAll(filepath.Dir(outputPath), 0o700); err != nil {
-			return nil, fmt.Errorf("failed to create generated SDK source directory for %s: %w", relativePath, err)
+			return nil, fmt.Errorf("failed to create generated Dart source directory for %s: %w", generatedFile.Path, err)
 		}
-		if err := os.WriteFile(outputPath, sdkSources[relativePath], 0o600); err != nil {
-			return nil, fmt.Errorf("failed to write generated SDK source file %s: %w", relativePath, err)
+		if err := os.WriteFile(outputPath, generatedFile.Contents, 0o600); err != nil {
+			return nil, fmt.Errorf("failed to write generated Dart source file %s: %w", generatedFile.Path, err)
 		}
 		recordGeneratedOutput(outputPath)
 	}
-
-	publicModuleSources := codegen.GeneratedPublicModuleEntryPoints(packageName, sdkSources)
-	publicModulePaths := make([]string, 0, len(publicModuleSources))
-	for relativePath := range publicModuleSources {
-		publicModulePaths = append(publicModulePaths, relativePath)
-	}
-	sort.Strings(publicModulePaths)
-	for _, relativePath := range publicModulePaths {
-		outputPath, err := codegen.SafeOutputPath(libDir, filepath.FromSlash(relativePath))
-		if err != nil {
-			return nil, fmt.Errorf("invalid generated module entrypoint path %q: %w", relativePath, err)
-		}
-		if err := os.MkdirAll(filepath.Dir(outputPath), 0o700); err != nil {
-			return nil, fmt.Errorf("failed to create generated module directory for %s: %w", relativePath, err)
-		}
-		if err := os.WriteFile(outputPath, publicModuleSources[relativePath], 0o600); err != nil {
-			return nil, fmt.Errorf("failed to write generated module entrypoint %s: %w", relativePath, err)
-		}
-		recordGeneratedOutput(outputPath)
-	}
-
-	publicLibraryFile := filepath.Join(libDir, packageName+".dart")
-	publicLibraryContent := codegen.GeneratedPackageRootLibrary(packageName, spec, moduleSymbols)
-	if err := os.WriteFile(publicLibraryFile, publicLibraryContent, 0o600); err != nil {
-		return nil, fmt.Errorf("failed to write generated public library file: %w", err)
-	}
-	recordGeneratedOutput(publicLibraryFile)
 
 	extraFiles := map[string][]byte{}
 	for filename, contents := range req.GetExtraFiles() {
