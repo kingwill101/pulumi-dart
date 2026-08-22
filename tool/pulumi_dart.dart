@@ -49,7 +49,7 @@ Integration matrix options:
 
 Integration run options:
   --package-dir <path>   Go integration package directory.
-  --binary <path>        Precompiled Go test binary to execute.
+  --binary <path>        Trusted precompiled Go test binary to execute.
   --run <regexp>         Go test regexp for this partition.
   --tests <csv>          Test names for this partition; an alternative to --run.
   --timeout <duration>   Go test timeout. Defaults to 60m.
@@ -148,7 +148,8 @@ Integration apply-prewarm options:
 
   Future<int> _runIntegrationPartition(CommandOptions options) async {
     final packageDirectory = options.path('package-dir', 'integration_tests');
-    final binary = options.optionalPath('binary') ??
+    final explicitBinary = options.optionalPath('binary');
+    final binary = explicitBinary ??
         _join(packageDirectory, '.dart_tool/pulumi/integration-tests');
     final explicitRunPattern = options.optional('run');
     final testsCsv = options.optional('tests');
@@ -163,7 +164,10 @@ Integration apply-prewarm options:
     }
 
     final binaryFile = File(binary);
-    if (!binaryFile.existsSync()) {
+    // A caller-supplied binary is an immutable CI artifact. The implicit local
+    // binary is rebuilt on every invocation so source changes can never be
+    // hidden behind an existence-only cache entry.
+    if (explicitBinary == null || !binaryFile.existsSync()) {
       binaryFile.parent.createSync(recursive: true);
       final compile = await _runProcess(
         'go',
@@ -175,18 +179,26 @@ Integration apply-prewarm options:
       }
     }
 
+    final List<String> tests;
+    var subtestSuffix = '';
     if (explicitRunPattern != null) {
-      return _runTestBinary(
-        binaryFile: binaryFile,
+      final splitPattern = _splitGoTestPattern(explicitRunPattern);
+      subtestSuffix = splitPattern.subtestSuffix;
+      tests = await _listIntegrationTests(
         packageDirectory: packageDirectory,
-        runPattern: explicitRunPattern,
-        timeout: timeout,
-        parallel: parallel,
-        description: 'explicit integration test pattern',
+        binary: binaryFile.absolute.path,
+        pattern: splitPattern.topLevelPattern,
       );
+      if (tests.isEmpty) {
+        throw ToolUsageException(
+          '--run did not match any top-level integration tests: '
+          '$explicitRunPattern',
+        );
+      }
+    } else {
+      tests = _parseTests(testsCsv!);
     }
 
-    final tests = _parseTests(testsCsv!);
     final sharedTests = tests
         .where((test) => !_isolatedIntegrationTests.contains(test))
         .toList(growable: false);
@@ -198,7 +210,7 @@ Integration apply-prewarm options:
       final exitCode = await _runTestBinary(
         binaryFile: binaryFile,
         packageDirectory: packageDirectory,
-        runPattern: _testRegexp(sharedTests),
+        runPattern: '${_testRegexp(sharedTests)}$subtestSuffix',
         timeout: timeout,
         parallel: parallel,
         description: '${sharedTests.length} shared-process integration tests',
@@ -212,7 +224,7 @@ Integration apply-prewarm options:
       final exitCode = await _runTestBinary(
         binaryFile: binaryFile,
         packageDirectory: packageDirectory,
-        runPattern: _testRegexp([test]),
+        runPattern: '${_testRegexp([test])}$subtestSuffix',
         timeout: timeout,
         parallel: 1,
         description: 'isolated integration test $test',
@@ -282,33 +294,31 @@ Integration apply-prewarm options:
   Future<List<String>> _listIntegrationTests({
     required String packageDirectory,
     required String? binary,
+    String pattern = '^Test',
   }) async {
     late final ProcessResult result;
+    late final String executable;
+    late final List<String> arguments;
     if (binary != null && File(binary).existsSync()) {
-      result = await Process.run(
-        File(binary).absolute.path,
-        ['-test.list=^Test'],
-        workingDirectory: packageDirectory,
-        stdoutEncoding: utf8,
-        stderrEncoding: utf8,
-      );
+      executable = File(binary).absolute.path;
+      arguments = ['-test.list=$pattern'];
     } else {
-      result = await Process.run(
-        'go',
-        ['test', '--list', '.'],
-        workingDirectory: packageDirectory,
-        stdoutEncoding: utf8,
-        stderrEncoding: utf8,
-      );
+      executable = 'go';
+      arguments = ['test', '--list', pattern, '.'];
     }
+    result = await Process.run(
+      executable,
+      arguments,
+      workingDirectory: packageDirectory,
+      stdoutEncoding: utf8,
+      stderrEncoding: utf8,
+    );
 
     if (result.exitCode != 0) {
       stderr.write(result.stderr);
       throw ProcessException(
-        binary ?? 'go',
-        binary == null
-            ? const ['test', '--list', '.']
-            : const ['-test.list=^Test'],
+        executable,
+        arguments,
         'Unable to list integration tests.',
         result.exitCode,
       );
@@ -323,6 +333,39 @@ Integration apply-prewarm options:
         .toList(growable: false)
       ..sort();
     return tests;
+  }
+
+  ({String topLevelPattern, String subtestSuffix}) _splitGoTestPattern(
+    String pattern,
+  ) {
+    var escaped = false;
+    var inCharacterClass = false;
+    for (var index = 0; index < pattern.length; index++) {
+      final character = pattern[index];
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+      if (character == r'\') {
+        escaped = true;
+        continue;
+      }
+      if (character == '[') {
+        inCharacterClass = true;
+        continue;
+      }
+      if (character == ']' && inCharacterClass) {
+        inCharacterClass = false;
+        continue;
+      }
+      if (character == '/' && !inCharacterClass) {
+        return (
+          topLevelPattern: pattern.substring(0, index),
+          subtestSuffix: pattern.substring(index),
+        );
+      }
+    }
+    return (topLevelPattern: pattern, subtestSuffix: '');
   }
 
   List<String> _parseTests(String csv) {
