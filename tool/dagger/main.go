@@ -14,13 +14,14 @@ import (
 )
 
 const (
-	daggerVersion = "v0.21.8"
-	dartVersion   = "3.11.0"
-	goVersion     = "1.25.6"
-	nodeVersion   = "22"
-	pulumiVersion = "3.225.1"
-	uvVersion     = "0.12.5"
-	containerPath = "/opt/pulumi:/usr/lib/dart/bin:/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin"
+	daggerVersion                     = "v0.21.8"
+	dartVersion                       = "3.11.0"
+	goVersion                         = "1.25.6"
+	nodeVersion                       = "22"
+	pulumiVersion                     = "3.225.1"
+	uvVersion                         = "0.12.5"
+	containerPath                     = "/opt/pulumi:/usr/lib/dart/bin:/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin"
+	containerPlatform dagger.Platform = "linux/amd64"
 )
 
 func main() {
@@ -76,7 +77,19 @@ func (p *pipeline) prepare(ctx context.Context, args []string) error {
 		return usageError("--partitions must be at least 1")
 	}
 
-	prepared := p.repositoryContainer(*source).
+	sourcePath, err := filepath.Abs(*source)
+	if err != nil {
+		return fmt.Errorf("resolve source path: %w", err)
+	}
+	outputPath, err := filepath.Abs(*output)
+	if err != nil {
+		return fmt.Errorf("resolve output path: %w", err)
+	}
+	if err := validateArtifactOutputPath(sourcePath, outputPath); err != nil {
+		return err
+	}
+
+	prepared := p.repositoryContainer(sourcePath).
 		WithExec([]string{"mkdir", "-p", "/out/bin"}).
 		WithWorkdir("/src").
 		WithExec([]string{
@@ -124,10 +137,6 @@ func (p *pipeline) prepare(ctx context.Context, args []string) error {
 		).
 		WithNewFile("matrix.json", matrix+"\n")
 
-	outputPath, err := filepath.Abs(*output)
-	if err != nil {
-		return fmt.Errorf("resolve output path: %w", err)
-	}
 	if err := os.RemoveAll(outputPath); err != nil {
 		return fmt.Errorf("remove stale output directory: %w", err)
 	}
@@ -209,11 +218,11 @@ func (p *pipeline) repositoryContainer(source string) *dagger.Container {
 			"thirdparty/pulumi",
 		},
 	})
-	dartImage := p.client.Container().From("dart:" + dartVersion + "-sdk")
-	nodeImage := p.client.Container().From("node:" + nodeVersion + "-bookworm-slim")
-	uvImage := p.client.Container().From("ghcr.io/astral-sh/uv:" + uvVersion)
+	dartImage := p.container().From("dart:" + dartVersion + "-sdk")
+	nodeImage := p.container().From("node:" + nodeVersion + "-bookworm-slim")
+	uvImage := p.container().From("ghcr.io/astral-sh/uv:" + uvVersion)
 
-	container := p.client.Container().
+	container := p.container().
 		From("golang:"+goVersion+"-bookworm").
 		WithDirectory("/usr/lib/dart", dartImage.Directory("/usr/lib/dart")).
 		WithFile("/usr/local/bin/node", nodeImage.File("/usr/local/bin/node")).
@@ -277,6 +286,43 @@ func (p *pipeline) repositoryContainer(source string) *dagger.Container {
 		})
 
 	return container
+}
+
+func (p *pipeline) container() *dagger.Container {
+	return p.client.Container(dagger.ContainerOpts{Platform: containerPlatform})
+}
+
+func validateArtifactOutputPath(sourcePath, outputPath string) error {
+	sourcePath = filepath.Clean(sourcePath)
+	outputPath = filepath.Clean(outputPath)
+
+	sourceContainsOutput := pathContains(sourcePath, outputPath)
+	outputContainsSource := pathContains(outputPath, sourcePath)
+	if !sourceContainsOutput && !outputContainsSource {
+		return nil
+	}
+
+	// The repository-owned artifact directory is intentionally colocated with
+	// the checkout and excluded from the Dagger source snapshot. Other overlap
+	// would make the cleanup below capable of deleting source files.
+	if sourceContainsOutput && outputPath != sourcePath && filepath.Base(outputPath) == ".dagger-ci" {
+		return nil
+	}
+
+	return usageError(
+		"--output %q overlaps --source %q; use a path outside the source tree or a .dagger-ci directory inside it",
+		outputPath,
+		sourcePath,
+	)
+}
+
+func pathContains(parent, child string) bool {
+	relative, err := filepath.Rel(parent, child)
+	if err != nil {
+		return false
+	}
+	return relative == "." ||
+		(relative != ".." && !strings.HasPrefix(relative, ".."+string(filepath.Separator)))
 }
 
 func runStatus(args []string) error {
