@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'integration_prewarm_impl.dart' as implementation;
+import 'integration_kernel_prewarmer.dart' as implementation;
 
 export 'integration_prewarm_impl.dart' hide IntegrationPrewarmer;
 
