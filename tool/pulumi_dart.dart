@@ -40,7 +40,6 @@ Usage:
   pulumi-dart-tool integration matrix [options]
   pulumi-dart-tool integration run [options]
   pulumi-dart-tool integration prewarm [options]
-  pulumi-dart-tool integration apply-prewarm [options]
 
 Integration matrix options:
   --package-dir <path>   Go integration package directory.
@@ -58,14 +57,10 @@ Integration run options:
 Integration prewarm options:
   --root <path>              Integration fixture root.
   --output <path>            Kernel and manifest output directory.
-  --launcher-template <path> Precompiled generic launcher executable.
+  --language-host <path>     Local pulumi-language-dart executable.
   --dart-sdk-version <value> Dart SDK version recorded in the manifest.
   --jobs <count>             Concurrent compile jobs. Defaults to 4.
 
-Integration apply-prewarm options:
-  --root <path>          Integration fixture root to rewrite.
-  --manifest <path>      Prewarm manifest path.
-  --artifact-root <path> Mounted prewarm artifact root.
 ''';
 
   Future<int> run(List<String> arguments) async {
@@ -100,23 +95,15 @@ Integration apply-prewarm options:
         return _runIntegrationPartition(options);
       case 'prewarm':
         return _prewarmIntegrationPrograms(options);
-      case 'apply-prewarm':
-        return _applyPrewarmOverrides(options);
       default:
-        throw ToolUsageException(
-          'Unknown integration subcommand: $subcommand',
-        );
+        throw ToolUsageException('Unknown integration subcommand: $subcommand');
     }
   }
 
   Future<int> _writeIntegrationMatrix(CommandOptions options) async {
     final packageDirectory = options.path('package-dir', 'integration_tests');
     final binary = options.optionalPath('binary');
-    final requestedPartitions = options.integer(
-      'partitions',
-      8,
-      minimum: 1,
-    );
+    final requestedPartitions = options.integer('partitions', 8, minimum: 1);
     options.assertNoPositionals();
 
     final tests = await _listIntegrationTests(
@@ -149,7 +136,8 @@ Integration apply-prewarm options:
   Future<int> _runIntegrationPartition(CommandOptions options) async {
     final packageDirectory = options.path('package-dir', 'integration_tests');
     final explicitBinary = options.optionalPath('binary');
-    final binary = explicitBinary ??
+    final binary =
+        explicitBinary ??
         _join(packageDirectory, '.dart_tool/pulumi/integration-tests');
     final explicitRunPattern = options.optional('run');
     final testsCsv = options.optional('tests');
@@ -169,11 +157,13 @@ Integration apply-prewarm options:
     // hidden behind an existence-only cache entry.
     if (explicitBinary == null || !binaryFile.existsSync()) {
       binaryFile.parent.createSync(recursive: true);
-      final compile = await _runProcess(
-        'go',
-        ['test', '-c', '-o', binaryFile.absolute.path, '.'],
-        workingDirectory: packageDirectory,
-      );
+      final compile = await _runProcess('go', [
+        'test',
+        '-c',
+        '-o',
+        binaryFile.absolute.path,
+        '.',
+      ], workingDirectory: packageDirectory);
       if (compile != 0) {
         return compile;
       }
@@ -242,7 +232,7 @@ Integration apply-prewarm options:
     final output = Directory(
       options.path('output', '.dart_tool/pulumi/prewarm'),
     );
-    final launcherTemplate = File(options.requiredPath('launcher-template'));
+    final languageHost = File(options.requiredPath('language-host'));
     final dartSdkVersion = options.value('dart-sdk-version', 'unknown');
     final jobs = options.integer('jobs', 4, minimum: 1);
     options.assertNoPositionals();
@@ -250,22 +240,9 @@ Integration apply-prewarm options:
     return IntegrationPrewarmer(
       root: root,
       output: output,
-      launcherTemplate: launcherTemplate,
+      languageHost: languageHost,
       dartSdkVersion: dartSdkVersion,
       jobs: jobs,
-    ).run();
-  }
-
-  Future<int> _applyPrewarmOverrides(CommandOptions options) {
-    final root = Directory(options.path('root', 'integration_tests'));
-    final manifestFile = File(options.requiredPath('manifest'));
-    final artifactRoot = Directory(options.requiredPath('artifact-root'));
-    options.assertNoPositionals();
-
-    return IntegrationPrewarmApplier(
-      root: root,
-      manifestFile: manifestFile,
-      artifactRoot: artifactRoot,
     ).run();
   }
 
@@ -278,17 +255,13 @@ Integration apply-prewarm options:
     required String description,
   }) {
     stdout.writeln('Running $description with pattern $runPattern');
-    return _runProcess(
-      binaryFile.absolute.path,
-      [
-        '-test.count=1',
-        '-test.timeout=$timeout',
-        '-test.parallel=$parallel',
-        '-test.run=$runPattern',
-        '-test.v',
-      ],
-      workingDirectory: packageDirectory,
-    );
+    return _runProcess(binaryFile.absolute.path, [
+      '-test.count=1',
+      '-test.timeout=$timeout',
+      '-test.parallel=$parallel',
+      '-test.run=$runPattern',
+      '-test.v',
+    ], workingDirectory: packageDirectory);
   }
 
   Future<List<String>> _listIntegrationTests({
@@ -325,13 +298,14 @@ Integration apply-prewarm options:
     }
 
     final testPattern = RegExp(r'^Test[A-Za-z0-9_]+$');
-    final tests = const LineSplitter()
-        .convert(result.stdout as String)
-        .map((line) => line.trim())
-        .where(testPattern.hasMatch)
-        .toSet()
-        .toList(growable: false)
-      ..sort();
+    final tests =
+        const LineSplitter()
+            .convert(result.stdout as String)
+            .map((line) => line.trim())
+            .where(testPattern.hasMatch)
+            .toSet()
+            .toList(growable: false)
+          ..sort();
     return tests;
   }
 
@@ -434,8 +408,9 @@ class CommandOptions {
       final option = item.substring(2);
       final equalsIndex = option.indexOf('=');
       if (equalsIndex >= 0) {
-        values[option.substring(0, equalsIndex)] =
-            option.substring(equalsIndex + 1);
+        values[option.substring(0, equalsIndex)] = option.substring(
+          equalsIndex + 1,
+        );
         continue;
       }
 

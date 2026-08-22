@@ -9,12 +9,14 @@ GitHub Actions. The environment pins Go 1.26.x, Dart 3.11.0, and Pulumi CLI
 The `prepare` job builds the Dart language host, compiles the Go integration
 test binary, discovers the eight test shards, and prewarms eligible Dart kernel
 snapshots. It uploads `.integration-ci` once. Each core shard downloads that
-artifact, applies the prewarm manifest to its checkout, and runs its assigned
-tests with a four-test parallel limit.
+artifact and runs its assigned tests with a four-test parallel limit.
 
-Fixtures with edit steps, generated packages, unresolved dependencies, or
-ambiguous entrypoints remain in source mode. These fallbacks are recorded in
-the prewarm manifest.
+The language host fingerprints the live program, its local Pulumi package
+dependencies, and the Dart SDK before every run. An exact match uses the
+content-addressed kernel prepared by CI. Any source edit, dependency change, or
+SDK mismatch is a cache miss and follows the normal source compilation path.
+Generated packages and unresolved dependencies also remain in source mode;
+prewarm outcomes are recorded in the manifest for telemetry.
 
 Cloud-only tests use the same prepared artifact but run only when the
 1Password service-account secret is available.
@@ -60,7 +62,7 @@ Artifacts are written to `.local-prewarm`.
 
 ## Reproducing the CI artifact path
 
-The following commands exercise the same compiled binary and prewarm manifest
+The following commands exercise the same compiled binaries and kernel cache
 used by the GitHub matrix:
 
 ```console

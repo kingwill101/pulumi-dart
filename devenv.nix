@@ -111,16 +111,12 @@ in
 
   scripts.integration-prewarm.exec = ''
     set -eu
-    prewarm_tmp="$(mktemp -d)"
-    trap 'rm -rf "$prewarm_tmp"' EXIT
-
+    integration-build-host
     dart pub get
-    dart compile exe tool/kernel_launcher.dart \
-      -o "$prewarm_tmp/pulumi-dart-kernel-launcher"
     dart run tool/pulumi_dart.dart integration prewarm \
       --root integration_tests \
       --output .local-prewarm \
-      --launcher-template "$prewarm_tmp/pulumi-dart-kernel-launcher" \
+      --language-host "$PWD/pulumi-language-dart/pulumi-language-dart" \
       --dart-sdk-version 3.11.0 \
       --jobs "''${PREWARM_JOBS:-4}"
 
@@ -135,7 +131,6 @@ in
 
     dart pub get
     dart compile exe tool/pulumi_dart.dart -o "$artifact_root/bin/pulumi-dart-tool"
-    dart compile exe tool/kernel_launcher.dart -o "$artifact_root/bin/pulumi-dart-kernel-launcher"
     (cd pulumi-language-dart && go build -buildvcs=false -o "$artifact_root/bin/pulumi-language-dart" .)
     (cd integration_tests && GOFLAGS=-buildvcs=false go test -c \
       -o "$artifact_root/bin/pulumi-dart-integration-tests" .)
@@ -143,7 +138,7 @@ in
     "$artifact_root/bin/pulumi-dart-tool" integration prewarm \
       --root integration_tests \
       --output "$artifact_root/prewarm" \
-      --launcher-template "$artifact_root/bin/pulumi-dart-kernel-launcher" \
+      --language-host "$artifact_root/bin/pulumi-language-dart" \
       --dart-sdk-version 3.11.0 \
       --jobs "''${PREWARM_JOBS:-4}"
     "$artifact_root/bin/pulumi-dart-tool" integration matrix \
@@ -159,14 +154,11 @@ in
       echo "INTEGRATION_TESTS is required" >&2
       exit 1
     }
-    chmod +x "$artifact_root/bin/"* "$artifact_root/prewarm/bin/"*
+    chmod +x "$artifact_root/bin/"*
     export PATH="$artifact_root/bin:$PATH"
+    export PULUMI_DART_PREWARM_CACHE="$artifact_root/prewarm"
     export PULUMI_SKIP_UPDATE_CHECK=true
     export PULUMI_CONFIG_PASSPHRASE="''${PULUMI_CONFIG_PASSPHRASE:-pulumi-dart-test-passphrase}"
-    "$artifact_root/bin/pulumi-dart-tool" integration apply-prewarm \
-      --root integration_tests \
-      --manifest "$artifact_root/prewarm/manifest.json" \
-      --artifact-root "$artifact_root/prewarm"
     "$artifact_root/bin/pulumi-dart-tool" integration run \
       --package-dir integration_tests \
       --binary "$artifact_root/bin/pulumi-dart-integration-tests" \

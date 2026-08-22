@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'integration_kernel_prewarmer.dart' as implementation;
 
-export 'integration_prewarm_impl.dart' hide IntegrationPrewarmer;
+export 'integration_prewarm_impl.dart';
 
 /// Prepares integration packages against the repository SDK before delegating
 /// to the kernel prewarming implementation.
@@ -16,14 +16,14 @@ class IntegrationPrewarmer {
   IntegrationPrewarmer({
     required this.root,
     required this.output,
-    required this.launcherTemplate,
+    required this.languageHost,
     required this.dartSdkVersion,
     required this.jobs,
   });
 
   final Directory root;
   final Directory output;
-  final File launcherTemplate;
+  final File languageHost;
   final String dartSdkVersion;
   final int jobs;
 
@@ -34,7 +34,7 @@ class IntegrationPrewarmer {
       return await implementation.IntegrationPrewarmer(
         root: root,
         output: output,
-        launcherTemplate: launcherTemplate,
+        languageHost: languageHost,
         dartSdkVersion: dartSdkVersion,
         jobs: jobs,
       ).run();
@@ -78,30 +78,29 @@ Directory _resolvePulumiSdk(Directory fixtureRoot) {
   );
 }
 
-List<File> _writeLocalSdkOverrides(
-  Directory fixtureRoot,
-  Directory pulumiSdk,
-) {
+List<File> _writeLocalSdkOverrides(Directory fixtureRoot, Directory pulumiSdk) {
   if (!fixtureRoot.existsSync()) {
     throw StateError(
       'Integration fixture root does not exist: ${fixtureRoot.path}',
     );
   }
 
-  final pubspecs = fixtureRoot
-      .listSync(recursive: true, followLinks: false)
-      .whereType<File>()
-      .where((file) => _basename(file.path) == 'pubspec.yaml')
-      .where((file) {
-        final relative = _toSlash(_relativeTo(fixtureRoot.path, file.path));
-        final segments = relative.split('/');
-        return !segments.contains('.dart_tool') &&
-            !segments.contains('build');
-      })
-      .toList()
-    ..sort((left, right) => left.path.compareTo(right.path));
+  final pubspecs =
+      fixtureRoot
+          .listSync(recursive: true, followLinks: false)
+          .whereType<File>()
+          .where((file) => _basename(file.path) == 'pubspec.yaml')
+          .where((file) {
+            final relative = _toSlash(_relativeTo(fixtureRoot.path, file.path));
+            final segments = relative.split('/');
+            return !segments.contains('.dart_tool') &&
+                !segments.contains('build');
+          })
+          .toList()
+        ..sort((left, right) => left.path.compareTo(right.path));
 
-  final content = 'dependency_overrides:\n'
+  final content =
+      'dependency_overrides:\n'
       '  pulumi:\n'
       '    path: ${jsonEncode(_toSlash(pulumiSdk.path))}\n';
   final targets = <File>[];

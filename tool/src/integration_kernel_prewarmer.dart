@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math' as math;
 
-import 'package:crypto/crypto.dart';
-
 import 'integration_prewarm_impl.dart' as support;
 
 /// Compiles integration programs to content-addressed Dart kernel snapshots.
@@ -15,27 +13,26 @@ class IntegrationPrewarmer {
   IntegrationPrewarmer({
     required this.root,
     required this.output,
-    required this.launcherTemplate,
+    required this.languageHost,
     required this.dartSdkVersion,
     required this.jobs,
   });
 
   final Directory root;
   final Directory output;
-  final File launcherTemplate;
+  final File languageHost;
   final String dartSdkVersion;
   final int jobs;
 
   final Map<String, Future<_PackagePreparation>> _packagePreparations = {};
-  final Map<String, List<String>> _dependencyFingerprintCache = {};
 
   Future<int> run() async {
     if (!root.existsSync()) {
       throw StateError('Integration fixture root does not exist: ${root.path}');
     }
-    if (!launcherTemplate.existsSync()) {
+    if (!languageHost.existsSync()) {
       throw StateError(
-        'Kernel launcher template does not exist: ${launcherTemplate.path}',
+        'Dart language host does not exist: ${languageHost.path}',
       );
     }
 
@@ -43,14 +40,7 @@ class IntegrationPrewarmer {
       output.deleteSync(recursive: true);
     }
     output.createSync(recursive: true);
-    final kernelsDirectory = Directory(_join(output.path, 'kernels'))
-      ..createSync(recursive: true);
-    final binDirectory = Directory(_join(output.path, 'bin'))
-      ..createSync(recursive: true);
-    final launcher = File(
-      _join(binDirectory.path, 'pulumi-dart-kernel-launcher'),
-    );
-    launcherTemplate.copySync(launcher.path);
+    Directory(_join(output.path, 'kernels')).createSync(recursive: true);
 
     final candidates = support.discoverPrewarmCandidates(root);
     stderr.writeln(
@@ -82,9 +72,9 @@ class IntegrationPrewarmer {
         : math.min(jobs, candidates.length);
     await Future.wait(List.generate(workerCount, (_) => worker()));
 
-    final completed = results
-        .whereType<support.PrewarmResult>()
-        .toList(growable: false);
+    final completed = results.whereType<support.PrewarmResult>().toList(
+      growable: false,
+    );
     final successful = completed.where((result) => result.success).toList();
     final skipped = completed.where((result) => !result.success).toList();
 
@@ -92,7 +82,6 @@ class IntegrationPrewarmer {
       'schemaVersion': 1,
       'dartSdkVersion': dartSdkVersion,
       'compiler': 'dart-compile-kernel',
-      'launcher': 'bin/pulumi-dart-kernel-launcher',
       'generatedAt': DateTime.now().toUtc().toIso8601String(),
       'root': root.absolute.path,
       'programs': successful.map((result) => result.toJson()).toList(),
@@ -133,43 +122,42 @@ class IntegrationPrewarmer {
       );
     }
 
-    final fingerprint = _portableProgramFingerprint(candidate);
-    final artifactRelative = 'kernels/$fingerprint.dill';
-    final artifact = File(_join(output.path, artifactRelative));
-
-    if (!artifact.existsSync()) {
-      final temporaryArtifact = File('${artifact.path}.$index.tmp');
-      final compile = await Process.run(
-        'dart',
-        [
-          'compile',
-          'kernel',
-          candidate.entryPoint,
-          '-o',
-          temporaryArtifact.path,
-        ],
-        workingDirectory: candidate.programDirectory.path,
-        stdoutEncoding: utf8,
-        stderrEncoding: utf8,
+    final compile = await Process.run(
+      languageHost.absolute.path,
+      [
+        '--prewarm-program',
+        candidate.programDirectory.absolute.path,
+        '--prewarm-entrypoint',
+        candidate.entryPoint,
+        '--prewarm-cache',
+        output.absolute.path,
+      ],
+      stdoutEncoding: utf8,
+      stderrEncoding: utf8,
+    );
+    if (compile.exitCode != 0) {
+      return support.PrewarmResult.skipped(
+        candidate,
+        source,
+        'language host prewarm failed: ${support.summarizeProcessOutput(compile)}',
       );
-      if (compile.exitCode != 0) {
-        if (temporaryArtifact.existsSync()) {
-          temporaryArtifact.deleteSync();
-        }
-        return support.PrewarmResult.skipped(
-          candidate,
-          source,
-          'dart compile kernel failed: '
-              '${support.summarizeProcessOutput(compile)}',
-        );
-      }
-
-      if (artifact.existsSync()) {
-        temporaryArtifact.deleteSync();
-      } else {
-        temporaryArtifact.renameSync(artifact.path);
-      }
     }
+    final outputLines = const LineSplitter()
+        .convert(compile.stdout as String)
+        .where((line) => line.trim().isNotEmpty)
+        .toList();
+    final response = outputLines.isEmpty ? null : jsonDecode(outputLines.last);
+    if (response is! Map ||
+        response['fingerprint'] is! String ||
+        response['kernel'] is! String) {
+      return support.PrewarmResult.skipped(
+        candidate,
+        source,
+        'language host returned an invalid prewarm response',
+      );
+    }
+    final fingerprint = response['fingerprint'] as String;
+    final artifactRelative = 'kernels/$fingerprint.dill';
 
     return support.PrewarmResult.success(
       candidate: candidate,
@@ -179,10 +167,7 @@ class IntegrationPrewarmer {
       projectFile: candidate.projectFile == null
           ? null
           : _relativeTo(root.path, candidate.projectFile!.path),
-      programDirectory: _relativeTo(
-        root.path,
-        candidate.programDirectory.path,
-      ),
+      programDirectory: _relativeTo(root.path, candidate.programDirectory.path),
     );
   }
 
@@ -204,90 +189,6 @@ class IntegrationPrewarmer {
       return const _PackagePreparation.success();
     });
   }
-
-  String _portableProgramFingerprint(support.PrewarmCandidate candidate) {
-    final entries = <String>{
-      'compiler=dart-compile-kernel',
-      'dartSdkVersion=$dartSdkVersion',
-      'entryPoint=${_toSlash(candidate.entryPoint)}',
-    };
-    final programDirectory = candidate.programDirectory.absolute;
-
-    _appendPubspecFingerprint(
-      entries,
-      'project/pubspec.yaml',
-      File(_join(programDirectory.path, 'pubspec.yaml')),
-    );
-    _appendDirectoryFingerprints(
-      entries,
-      programDirectory,
-      labelPrefix: 'project',
-    );
-    entries.addAll(_localDependencyFingerprints(programDirectory));
-
-    final sortedEntries = entries.toList()..sort();
-    return sha256
-        .convert(utf8.encode('${sortedEntries.join('\n')}\n'))
-        .toString();
-  }
-
-  List<String> _localDependencyFingerprints(Directory programDirectory) {
-    final packageConfig = File(
-      _join(programDirectory.path, '.dart_tool/package_config.json'),
-    );
-    if (!packageConfig.existsSync()) {
-      return const [];
-    }
-
-    final decoded = jsonDecode(packageConfig.readAsStringSync());
-    if (decoded is! Map<String, dynamic> || decoded['packages'] is! List) {
-      return const [];
-    }
-
-    final entries = <String>[];
-    for (final rawPackage in decoded['packages'] as List) {
-      if (rawPackage is! Map) {
-        continue;
-      }
-      final package = rawPackage.cast<String, dynamic>();
-      final name = package['name'];
-      final rootUriValue = package['rootUri'];
-      if (name is! String || rootUriValue is! String) {
-        continue;
-      }
-      if (name != 'pulumi' && !name.startsWith('pulumi_')) {
-        continue;
-      }
-
-      final resolvedUri = packageConfig.uri.resolve(rootUriValue);
-      if (resolvedUri.scheme != 'file') {
-        continue;
-      }
-      final packageRoot = Directory.fromUri(resolvedUri).absolute;
-      if (!packageRoot.existsSync()) {
-        continue;
-      }
-
-      final cacheKey = '$name|${packageRoot.path}';
-      final cached = _dependencyFingerprintCache.putIfAbsent(cacheKey, () {
-        final packageEntries = <String>{};
-        _appendPubspecFingerprint(
-          packageEntries,
-          'package:$name/pubspec.yaml',
-          File(_join(packageRoot.path, 'pubspec.yaml')),
-        );
-        _appendDirectoryFingerprints(
-          packageEntries,
-          packageRoot,
-          labelPrefix: 'package:$name',
-        );
-        final sorted = packageEntries.toList()..sort();
-        return sorted;
-      });
-      entries.addAll(cached);
-    }
-    return entries;
-  }
 }
 
 class _PackagePreparation {
@@ -301,56 +202,6 @@ class _PackagePreparation {
 
   final bool success;
   final String? reason;
-}
-
-void _appendPubspecFingerprint(
-  Set<String> entries,
-  String label,
-  File file,
-) {
-  if (!file.existsSync()) {
-    return;
-  }
-  final canonical = _canonicalizePubspec(file.readAsStringSync());
-  final contentHash = sha256.convert(utf8.encode(canonical)).toString();
-  entries.add('$label|$contentHash');
-}
-
-void _appendDirectoryFingerprints(
-  Set<String> entries,
-  Directory root, {
-  required String labelPrefix,
-}) {
-  for (final relativeDirectory in const ['bin', 'lib', 'tool']) {
-    final directory = Directory(_join(root.path, relativeDirectory));
-    if (!directory.existsSync()) {
-      continue;
-    }
-    final files = directory
-        .listSync(recursive: true, followLinks: false)
-        .whereType<File>()
-        .where((file) => file.path.endsWith('.dart'))
-        .toList()
-      ..sort((left, right) => left.path.compareTo(right.path));
-    for (final file in files) {
-      final relative = _toSlash(_relativeTo(root.path, file.path));
-      final contentHash = sha256.convert(file.readAsBytesSync()).toString();
-      entries.add('$labelPrefix/$relative|$contentHash');
-    }
-  }
-}
-
-String _canonicalizePubspec(String content) {
-  var canonical = content.replaceAll('\r\n', '\n').replaceAll('\r', '\n');
-  canonical = canonical.replaceAllMapped(
-    RegExp(r'^(\s*path\s*:\s*).*$', multiLine: true),
-    (match) => '${match.group(1)}<local>',
-  );
-  canonical = canonical.replaceAllMapped(
-    RegExp(r'path\s*:\s*[^,}\n]+'),
-    (_) => 'path: <local>',
-  );
-  return canonical;
 }
 
 String _join(String left, String right) {
@@ -381,5 +232,3 @@ String _relativeTo(String root, String path) {
   }
   return absolutePath;
 }
-
-String _toSlash(String path) => path.replaceAll('\\', '/');
