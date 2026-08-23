@@ -1,80 +1,8 @@
 package codegen
 
 import (
-	"path/filepath"
 	"strings"
 )
-
-func rewriteModulePath(module string) string {
-	module = strings.TrimSpace(filepath.ToSlash(module))
-	if module == "" {
-		return "index"
-	}
-
-	parts := strings.Split(module, "/")
-	cleanParts := make([]string, 0, len(parts)+1)
-	for _, part := range parts {
-		part = strings.TrimSpace(part)
-		if part == "" {
-			continue
-		}
-		cleanParts = append(cleanParts, part)
-	}
-	if len(cleanParts) == 0 {
-		return "index"
-	}
-
-	rewrittenRoot := rewriteModuleRootSegment(cleanParts[0])
-	rewrittenParts := make([]string, 0, len(cleanParts)+1)
-	for _, rootPart := range strings.Split(rewrittenRoot, "/") {
-		rootPart = strings.TrimSpace(rootPart)
-		if rootPart == "" {
-			continue
-		}
-		rewrittenParts = append(rewrittenParts, rootPart)
-	}
-	if len(cleanParts) > 1 {
-		rewrittenParts = append(rewrittenParts, cleanParts[1:]...)
-	}
-	if len(rewrittenParts) == 0 {
-		return "index"
-	}
-
-	return strings.Join(rewrittenParts, "/")
-}
-
-// rewriteModuleRootSegment applies provider-specific root-module rewrites.
-func rewriteModuleRootSegment(module string) string {
-	switch module {
-	case "s3control":
-		return "s3/control"
-	case "s3outposts":
-		return "s3/outposts"
-	case "s3tables":
-		return "s3/tables"
-	case "route53domains":
-		return "route53/domains"
-	case "route53recoverycontrol":
-		return "route53/recovery_control"
-	case "route53recoveryreadiness":
-		return "route53/recovery_readiness"
-	}
-
-	if strings.HasPrefix(module, "s3") && module != "s3" {
-		suffix := strings.TrimPrefix(module, "s3")
-		if suffix != "" {
-			return "s3/" + suffix
-		}
-	}
-	if strings.HasPrefix(module, "route53") && module != "route53" {
-		suffix := strings.TrimPrefix(module, "route53")
-		if suffix != "" {
-			return "route53/" + suffix
-		}
-	}
-
-	return module
-}
 
 // resourceClassNameFromToken returns a unique Dart class name for a resource
 // token within the current module/type namespace.
