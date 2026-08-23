@@ -82,6 +82,23 @@ import 'user_password_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     mysql = {
+///       source = "pulumi/mysql"
+///     }
+///   }
+/// }
+///
+/// resource "mysql_user" "jdoe" {
+///   user = "jdoe"
+/// }
+/// resource "mysql_userpassword" "jdoe" {
+///   user    = mysql_user.jdoe.user
+///   pgp_key = "keybase:joestump"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +109,8 @@ import 'user_password_state.dart';
 /// import com.pulumi.mysql.UserArgs;
 /// import com.pulumi.mysql.UserPassword;
 /// import com.pulumi.mysql.UserPasswordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

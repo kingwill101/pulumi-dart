@@ -8,7 +8,7 @@ import 'database_state.dart';
 /// &gt; **Caution:** The ``mysql.Database`` resource can completely delete your
 /// database just as easily as it can create it. To avoid costly accidents,
 /// consider setting
-/// [``prevent_destroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
+/// [``preventDestroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
 /// on your database resources as an extra safety measure.
 ///
 /// ## Example Usage
@@ -61,6 +61,19 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     mysql = {
+///       source = "pulumi/mysql"
+///     }
+///   }
+/// }
+///
+/// resource "mysql_database" "app" {
+///   name = "my_awesome_app"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +82,8 @@ import 'database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.mysql.Database;
 /// import com.pulumi.mysql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -112,15 +125,15 @@ class Database extends pulumi.CustomResource {
   late final pulumi.Output<String?> defaultCharacterSet;
   /// The default collation to use when a table
   /// is created without specifying an explicit collation. Defaults to
-  /// ``utf8_general_ci``. Each character set has its own set of collations, so
+  /// ``utf8GeneralCi``. Each character set has its own set of collations, so
   /// changing the character set requires also changing the collation.
   ///
   /// Note that the defaults for character set and collation above do not respect
   /// any defaults set on the MySQL server, so that the configuration can be set
   /// appropriately even though Terraform cannot see the server-level defaults. If
   /// you wish to use the server's defaults you must consult the server's
-  /// configuration and then set the ``default_character_set`` and
-  /// ``default_collation`` to match.
+  /// configuration and then set the ``defaultCharacterSet`` and
+  /// ``defaultCollation`` to match.
   late final pulumi.Output<String?> defaultCollation;
   /// The name of the database. This must be unique within
   /// a given MySQL server and may or may not be case-sensitive depending on

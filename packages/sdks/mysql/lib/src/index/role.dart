@@ -57,6 +57,19 @@ import 'role_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     mysql = {
+///       source = "pulumi/mysql"
+///     }
+///   }
+/// }
+///
+/// resource "mysql_role" "developer" {
+///   name = "developer"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'role_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.mysql.Role;
 /// import com.pulumi.mysql.RoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
