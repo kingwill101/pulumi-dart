@@ -31,6 +31,8 @@ type dartProgramStatement struct {
 	Hook                  *dartProgramHook
 	Resource              *dartProgramResource
 	Component             *dartProgramComponentInstance
+	DeferredOutput        *dartProgramDeferredOutput
+	DeferredResolution    *dartProgramDeferredResolution
 	RequiredPulumiVersion string
 }
 
@@ -50,6 +52,7 @@ type dartProgramComponentInstance struct {
 	PrefixLogicalName        bool
 	Inputs                   []dartProgramResourceInput
 	Options                  []dartProgramResourceOption
+	Range                    *dartProgramResourceRange
 }
 
 type dartProgramHook struct {

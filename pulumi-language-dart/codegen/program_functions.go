@@ -48,6 +48,9 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 		if len(arguments) != 2 {
 			return "", fmt.Errorf("join expects two arguments")
 		}
+		if model.ContainsOutputs(expression.Args[0].Type()) || model.ContainsOutputs(expression.Args[1].Type()) {
+			return "pulumi.output([" + arguments[0] + ", " + arguments[1] + "]).apply<String>((values) => (values[1] as Iterable).join(values[0].toString()))", nil
+		}
 		return "(" + arguments[1] + ").join(" + arguments[0] + ")", nil
 	case "element":
 		if len(arguments) != 2 {

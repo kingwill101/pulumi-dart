@@ -38,19 +38,51 @@ func lowerComponents(program *pcl.Program) ([]dartProgramComponent, error) {
 	return result, nil
 }
 
-func (lowerer programLowerer) componentInstance(component *pcl.Component) (dartProgramComponentInstance, error) {
+func (lowerer programLowerer) componentInstance(
+	component *pcl.Component,
+) (dartProgramComponentInstance, []dartProgramDeferredOutput, error) {
+	rangeSpec, restoreRange, err := lowerer.componentRange(component)
+	if err != nil {
+		return dartProgramComponentInstance{}, nil, err
+	}
+	defer restoreRange()
 	configTypes := map[string]model.Type{}
 	for _, variable := range component.Program.ConfigVariables() {
 		configTypes[variable.Name()] = variable.Type()
 	}
 	inputs := make([]dartProgramResourceInput, len(component.Inputs))
+	declarations := []dartProgramDeferredOutput{}
 	for index, input := range component.Inputs {
-		expression, err := lowerer.expression(input.Value)
+		value, deferred := pcl.ExtractDeferredOutputVariables(lowerer.program, component, input.Value)
+		restores := make([]func(), 0, len(deferred))
+		for _, output := range deferred {
+			name := propertyFieldName(component.Name()+"_"+output.Name, lowerer.usedNames)
+			old, existed := lowerer.names[output.Name]
+			lowerer.names[output.Name] = name
+			restores = append(restores, func() { restoreProgramName(lowerer.names, output.Name, old, existed) })
+			resolved, resolveErr := lowerer.expression(output.Expr)
+			if resolveErr != nil {
+				return dartProgramComponentInstance{}, nil, fmt.Errorf("deferred output %q: %w", output.Name, resolveErr)
+			}
+			declarations = append(declarations, dartProgramDeferredOutput{
+				Name: name, DartType: dartComponentInputType(output.Expr.Type()),
+			})
+			lowerer.deferredResolutions[output.SourceComponent.Name()] = append(
+				lowerer.deferredResolutions[output.SourceComponent.Name()],
+				dartProgramDeferredResolution{
+					Name: name, DartType: dartComponentInputType(output.Expr.Type()), Expression: resolved,
+				},
+			)
+		}
+		expression, err := lowerer.expression(value)
+		for _, restore := range restores {
+			restore()
+		}
 		if err == nil {
 			expression = componentInputConversion(input.Value.Type(), configTypes[input.Name], expression)
 		}
 		if err != nil {
-			return dartProgramComponentInstance{}, fmt.Errorf("input %q: %w", input.Name, err)
+			return dartProgramComponentInstance{}, nil, fmt.Errorf("input %q: %w", input.Name, err)
 		}
 		inputs[index] = dartProgramResourceInput{
 			Name: propertyFieldName(input.Name, map[string]int{}), Expression: expression,
@@ -58,7 +90,7 @@ func (lowerer programLowerer) componentInstance(component *pcl.Component) (dartP
 	}
 	options, err := lowerer.resourceOptions(component.Options)
 	if err != nil {
-		return dartProgramComponentInstance{}, err
+		return dartProgramComponentInstance{}, nil, err
 	}
 	if lowerer.componentMode && !hasProgramOption(options, "parent") {
 		options = append(options, dartProgramResourceOption{Name: "parent", Expression: "this"})
@@ -67,38 +99,6 @@ func (lowerer programLowerer) componentInstance(component *pcl.Component) (dartP
 		Name: lowerer.names[component.Name()], LogicalName: component.LogicalName(),
 		Class: component.DeclarationName(), Inputs: inputs, Options: options,
 		PrefixLogicalName: lowerer.componentMode,
-	}, nil
-}
-
-func dartComponentInputType(typ model.Type) string {
-	typ = model.ResolveOutputs(typ)
-	switch typ {
-	case model.BoolType:
-		return "bool"
-	case model.IntType:
-		return "int"
-	case model.NumberType:
-		return "double"
-	case model.StringType:
-		return "String"
-	}
-	switch value := typ.(type) {
-	case *model.ListType:
-		return "List<" + dartComponentInputType(value.ElementType) + ">"
-	case *model.SetType:
-		return "Set<" + dartComponentInputType(value.ElementType) + ">"
-	case *model.MapType:
-		return "Map<String, " + dartComponentInputType(value.ElementType) + ">"
-	default:
-		return "dynamic"
-	}
-}
-
-func hasProgramOption(options []dartProgramResourceOption, name string) bool {
-	for _, option := range options {
-		if option.Name == name {
-			return true
-		}
-	}
-	return false
+		Range:             rangeSpec,
+	}, declarations, nil
 }

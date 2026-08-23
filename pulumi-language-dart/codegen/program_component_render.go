@@ -39,11 +39,7 @@ func renderDartComponent(component dartProgramComponent) string {
 	}
 	body.WriteString("pulumi.ComponentResourceOptions? options})\n      : super(")
 	fmt.Fprintf(&body, "%s, name, ", dartStringLiteral("components:index:"+component.Name))
-	if len(component.Args) > 0 {
-		body.WriteString("pulumi.Input.mapToInputs(args.toMap()), ")
-	} else {
-		body.WriteString("const {}, ")
-	}
+	body.WriteString("const {}, ")
 	body.WriteString("options) {\n")
 	body.WriteString(renderDartComponentStatements(component.Program))
 	for _, output := range component.Program.Outputs {
@@ -76,20 +72,27 @@ func renderDartComponentStatements(program dartProgram) string {
 }
 
 func renderDartComponentInstance(component dartProgramComponentInstance) string {
+	if component.Range != nil {
+		return renderRangedDartComponentInstance(component)
+	}
 	name := dartStringLiteral(component.LogicalName)
 	if component.PrefixLogicalName {
 		name = "name + " + dartStringLiteral("-"+component.LogicalName)
 	}
+	return "    final " + component.Name + " = " + renderDartComponentInstanceValue(component, name) + ";\n"
+}
+
+func renderDartComponentInstanceValue(component dartProgramComponentInstance, name string) string {
 	var fields strings.Builder
 	for _, input := range component.Inputs {
-		fmt.Fprintf(&fields, "%s: (%s).input(), ", input.Name, input.Expression)
+		fmt.Fprintf(&fields, "%s: pulumi.Input.asInput(%s), ", input.Name, input.Expression)
 	}
 	args := ""
 	if len(component.Inputs) > 0 {
 		args = fmt.Sprintf(", args: %sArgs(%s)", component.Class, fields.String())
 	}
 	options := renderDartComponentOptions(component.Options)
-	return fmt.Sprintf("    final %s = %s(%s%s%s);\n", component.Name, component.Class, name, args, options)
+	return fmt.Sprintf("%s(%s%s%s)", component.Class, name, args, options)
 }
 
 func renderDartComponentOptions(options []dartProgramResourceOption) string {

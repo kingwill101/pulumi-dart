@@ -11,6 +11,15 @@ func collectionElementIsTypedObject(typ model.Type) bool {
 	return ok
 }
 
+func collectionContainsComponents(expression model.Expression) bool {
+	traversal, ok := expression.(*model.ScopeTraversalExpression)
+	if !ok || len(traversal.Parts) == 0 {
+		return false
+	}
+	_, ok = traversal.Parts[0].(*pcl.Component)
+	return ok
+}
+
 func collectionElementSchemaType(typ model.Type) (schema.Type, bool) {
 	typ = model.ResolveOutputs(typ)
 	switch collection := typ.(type) {

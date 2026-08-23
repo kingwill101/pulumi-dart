@@ -203,6 +203,7 @@ var passingConformanceTests = []string{
 	"l3-component-invoke",
 	"l3-component-provider",
 	"l3-component-provider-inheritance",
+	"l3-deferred-outputs",
 	"l2-invoke-simple",
 	"l2-invoke-variants",
 	"l2-invoke-output-only",

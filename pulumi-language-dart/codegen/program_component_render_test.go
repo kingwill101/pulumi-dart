@@ -25,9 +25,38 @@ func TestRenderDartComponentPreservesParentingAndOutputs(t *testing.T) {
 	rendered := renderDartComponent(component)
 	assert.Contains(t, rendered, "class ExampleArgs")
 	assert.Contains(t, rendered, "super('components:index:Example', name")
+	assert.Contains(t, rendered, "super('components:index:Example', name, const {}, options)")
 	assert.Contains(t, rendered, "Child(name + '-child'")
 	assert.Contains(t, rendered, "parent: this")
 	assert.Contains(t, rendered, "registerOutputs({'result': result, })")
+}
+
+func TestRenderRangedDartComponent(t *testing.T) {
+	t.Parallel()
+
+	component := dartProgramComponentInstance{
+		Name: "items", LogicalName: "items", Class: "Example",
+		Range: &dartProgramResourceRange{Expression: "2", Kind: "number"},
+	}
+	assert.Equal(t,
+		"    final items = [for (final range in pulumi.rangeEntries(2)) Example('items' + '-' + range.key.toString())];\n",
+		renderDartComponentInstance(component),
+	)
+}
+
+func TestRenderDeferredOutputLifecycle(t *testing.T) {
+	t.Parallel()
+
+	declaration := dartProgramDeferredOutput{Name: "later", DartType: "bool"}
+	resolution := dartProgramDeferredResolution{Name: "later", DartType: "bool", Expression: "source.value"}
+	assert.Equal(t,
+		"    final (later, laterResolve) = pulumi.deferredOutput<bool>();\n",
+		renderDartDeferredStatement(dartProgramStatement{DeferredOutput: &declaration}),
+	)
+	assert.Equal(t,
+		"    laterResolve(pulumi.Input.asInput<bool>(source.value).toOutput());\n",
+		renderDartDeferredStatement(dartProgramStatement{DeferredResolution: &resolution}),
+	)
 }
 
 func TestTypedInvokeInputUsesGeneratedArgumentType(t *testing.T) {

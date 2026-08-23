@@ -14,7 +14,7 @@ func (lowerer programLowerer) forExpression(expression *model.ForExpression) (st
 	keyName, valueName, restore := lowerer.bindForVariables(expression)
 	defer restore()
 
-	isOutput := model.ContainsOutputs(expression.Collection.Type())
+	isOutput := isTopLevelOutputType(expression.Collection.Type())
 	collectionValue := collection
 	if isOutput {
 		collectionValue = "collection"
@@ -36,7 +36,9 @@ func (lowerer programLowerer) forExpression(expression *model.ForExpression) (st
 	if expression.Key == nil {
 		result := "[" + loop + condition + " " + value + "]"
 		if isOutput {
-			result = "pulumi.output(" + collection + ").apply((collection) => " + result + ")"
+			result = "pulumi.output(" + collection + ").apply<" + dartConfigValueType(expression.Type()) + ">((collection) => " + result + ")"
+		} else if model.ContainsOutputs(expression.Value.Type()) || model.ContainsOutputs(expression.Collection.Type()) {
+			result = liftForExpressionResult(result, expression.Type())
 		}
 		return result, nil
 	}
@@ -46,7 +48,9 @@ func (lowerer programLowerer) forExpression(expression *model.ForExpression) (st
 	}
 	result := "{" + loop + condition + " " + key + ": " + value + "}"
 	if isOutput {
-		result = "pulumi.output(" + collection + ").apply((collection) => " + result + ")"
+		result = "pulumi.output(" + collection + ").apply<" + dartConfigValueType(expression.Type()) + ">((collection) => " + result + ")"
+	} else if model.ContainsOutputs(expression.Value.Type()) || model.ContainsOutputs(expression.Key.Type()) || model.ContainsOutputs(expression.Collection.Type()) {
+		result = liftForExpressionResult(result, expression.Type())
 	}
 	return result, nil
 }
@@ -56,8 +60,13 @@ func (lowerer programLowerer) bindForVariables(expression *model.ForExpression) 
 	oldValue, hadValue := lowerer.names[expression.ValueVariable.Name]
 	lowerer.names[expression.ValueVariable.Name] = valueName
 	oldTyped, hadTyped := lowerer.typedObjectNames[valueName]
-	if collectionElementIsTypedObject(expression.Collection.Type()) {
+	components := collectionContainsComponents(expression.Collection)
+	if collectionElementIsTypedObject(expression.Collection.Type()) || components {
 		lowerer.typedObjectNames[valueName] = true
+	}
+	oldDirect, hadDirect := lowerer.directObjectNames[valueName]
+	if components {
+		lowerer.directObjectNames[valueName] = true
 	}
 	keyName := ""
 	oldKey, hadKey := "", false
@@ -75,6 +84,11 @@ func (lowerer programLowerer) bindForVariables(expression *model.ForExpression) 
 			lowerer.typedObjectNames[valueName] = oldTyped
 		} else {
 			delete(lowerer.typedObjectNames, valueName)
+		}
+		if hadDirect {
+			lowerer.directObjectNames[valueName] = oldDirect
+		} else {
+			delete(lowerer.directObjectNames, valueName)
 		}
 	}
 }
@@ -94,17 +108,4 @@ func isDartMapType(typ model.Type) bool {
 	default:
 		return false
 	}
-}
-
-func dartForLoop(collection, key, value string, mapCollection bool) string {
-	if mapCollection {
-		if key == "" {
-			return "for (final " + value + " in (" + collection + ").values)"
-		}
-		return "for (final MapEntry(key: " + key + ", value: " + value + ") in (" + collection + ").entries)"
-	}
-	if key == "" {
-		return "for (final " + value + " in (" + collection + " as Iterable))"
-	}
-	return "for (final (" + key + ", " + value + ") in (" + collection + " as Iterable).indexed)"
 }

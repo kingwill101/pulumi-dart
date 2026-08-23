@@ -76,6 +76,7 @@ func renderDartProgram(program dartProgram) []byte {
 		if statement.Component != nil {
 			body.WriteString(renderDartComponentInstance(*statement.Component))
 		}
+		body.WriteString(renderDartDeferredStatement(statement))
 		if statement.RequiredPulumiVersion != "" {
 			fmt.Fprintf(
 				&body,

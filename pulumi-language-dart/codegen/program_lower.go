@@ -83,11 +83,19 @@ func (lowerer programLowerer) lowerProgram(program *pcl.Program) (dartProgram, e
 			result.Resources = append(result.Resources, resource)
 			result.Statements = append(result.Statements, dartProgramStatement{Resource: &resource})
 		case *pcl.Component:
-			component, err := lowerer.componentInstance(node)
+			component, deferred, err := lowerer.componentInstance(node)
 			if err != nil {
 				return dartProgram{}, fmt.Errorf("component %q: %w", node.LogicalName(), err)
 			}
+			for _, output := range deferred {
+				declaration := output
+				result.Statements = append(result.Statements, dartProgramStatement{DeferredOutput: &declaration})
+			}
 			result.Statements = append(result.Statements, dartProgramStatement{Component: &component})
+			for _, output := range lowerer.deferredResolutions[node.Name()] {
+				resolution := output
+				result.Statements = append(result.Statements, dartProgramStatement{DeferredResolution: &resolution})
+			}
 		case *pcl.OutputVariable:
 			expression, err := lowerer.expression(node.Value)
 			if err != nil {
