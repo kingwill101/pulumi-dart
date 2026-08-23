@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'template_source_args.dart';
 import 'template_source_destination.dart';
 
-/// A source for Pulumi templates
+/// A source for Pulumi templates.
 class TemplateSource extends pulumi.CustomResource {
   /// The default destination for projects using templates from this source.
   late final pulumi.Output<TemplateSourceDestination?> destination;

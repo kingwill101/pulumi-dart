@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrgAccessTokenArgs {
   /// Optional. True if this is an admin token.
   final pulumi.Input<bool>? admin;
-  /// Optional. Team description.
+  /// Optional. Description for the token.
   final pulumi.Input<String>? description;
   /// The name for the token.
   final pulumi.Input<String> name;
@@ -18,7 +18,7 @@ class OrgAccessTokenArgs {
 
   /// Creates a new [OrgAccessTokenArgs].
   /// [admin] Optional. True if this is an admin token.
-  /// [description] Optional. Team description.
+  /// [description] Optional. Description for the token.
   /// [name] The name for the token.
   /// [organizationName] The organization's name.
   const OrgAccessTokenArgs({
@@ -46,4 +46,3 @@ class OrgAccessTokenArgs {
     );
   }
 }
-

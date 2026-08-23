@@ -5,6 +5,7 @@ import 'deployment_settings_executor_context.dart';
 import 'deployment_settings_github.dart';
 import 'deployment_settings_operation_context.dart';
 import 'deployment_settings_source_context.dart';
+import 'deployment_settings_vcs.dart';
 
 /// Deployment settings configure Pulumi Deployments for a stack.
 ///
@@ -34,6 +35,8 @@ class DeploymentSettings extends pulumi.CustomResource {
   late final pulumi.Output<DeploymentSettingsSourceContext?> sourceContext;
   /// Stack name.
   late final pulumi.Output<String> stack;
+  /// VCS settings for the deployment. Supports Azure DevOps and GitHub via the 'provider' discriminator field.
+  late final pulumi.Output<DeploymentSettingsVcs?> vcs;
 
   /// Creates a new [DeploymentSettings].
   /// [name] The Pulumi resource name.
@@ -58,5 +61,6 @@ class DeploymentSettings extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     sourceContext = registerOutput<DeploymentSettingsSourceContext?>('sourceContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentSettingsSourceContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stack = registerOutput<String>('stack');
+    vcs = registerOutput<DeploymentSettingsVcs?>('vcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentSettingsVcs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

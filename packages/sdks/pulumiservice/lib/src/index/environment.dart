@@ -3,6 +3,8 @@ import 'environment_args.dart';
 
 /// An ESC Environment.
 class Environment extends pulumi.CustomResource {
+  /// The environment's UUID. Use this as the `identity` value when pinning a custom RBAC role to this environment via a `PermissionLiteralExpressionEnvironment` in `OrganizationRole.permissions`, or pass it directly to the `buildEnvironmentScopedPermissions` helper.
+  late final pulumi.Output<String?> environmentId;
   /// Environment name.
   late final pulumi.Output<String> name;
   /// Organization name.
@@ -28,6 +30,7 @@ class Environment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    environmentId = registerOutput<String?>('environmentId');
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');

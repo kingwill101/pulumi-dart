@@ -35,4 +35,3 @@ class PulumiserviceConfig {
 }
 
 const config = PulumiserviceConfig();
-

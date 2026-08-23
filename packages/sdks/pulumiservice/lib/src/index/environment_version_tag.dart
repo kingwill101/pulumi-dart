@@ -8,7 +8,7 @@ class EnvironmentVersionTag extends pulumi.CustomResource {
   /// Organization name.
   late final pulumi.Output<String> organization;
   /// Project name.
-  late final pulumi.Output<String> project;
+  late final pulumi.Output<String?> project;
   /// Revision number.
   late final pulumi.Output<int> revision;
   /// Tag name.
@@ -30,7 +30,7 @@ class EnvironmentVersionTag extends pulumi.CustomResource {
         ) {
     environment = registerOutput<String>('environment');
     organization = registerOutput<String>('organization');
-    project = registerOutput<String>('project');
+    project = registerOutput<String?>('project');
     revision = registerOutput<int>('revision');
     tagName = registerOutput<String>('tagName');
   }

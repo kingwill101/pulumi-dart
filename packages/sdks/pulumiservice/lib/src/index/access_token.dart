@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_token_args.dart';
 
-/// Access tokens allow a user to authenticate against the Pulumi Cloud
+/// Access tokens allow a user to authenticate against the Pulumi Cloud.
 class AccessToken extends pulumi.CustomResource {
   /// Description of the access token.
   late final pulumi.Output<String> description;

@@ -12,7 +12,7 @@ class ApprovalRule extends pulumi.CustomResource {
   late final pulumi.Output<bool> enabled;
   /// The environment this rule applies to.
   late final pulumi.Output<EnvironmentIdentifier> environmentIdentifier;
-  /// Name of the approval rule.
+  /// The name of the approval rule.
   late final pulumi.Output<String> name;
   /// The type of action this rule applies to.
   late final pulumi.Output<List<TargetActionType>> targetActionTypes;

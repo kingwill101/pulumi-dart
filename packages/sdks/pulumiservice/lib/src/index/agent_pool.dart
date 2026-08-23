@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_pool_args.dart';
 
-/// Agent Pool for customer managed deployments
+/// Agent Pool for customer managed deployments.
 class AgentPool extends pulumi.CustomResource {
   /// The agent pool identifier.
   late final pulumi.Output<String> agentPoolId;
@@ -9,7 +9,7 @@ class AgentPool extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Optional. Flag indicating whether to delete the agent pool even if stacks are configured to use it.
   late final pulumi.Output<bool?> forceDestroy;
-  /// The name of the agent pool.
+  /// Name of the agent pool.
   late final pulumi.Output<String> name;
   /// The organization's name.
   late final pulumi.Output<String> organizationName;

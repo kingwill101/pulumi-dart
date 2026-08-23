@@ -8,7 +8,7 @@ class DeploymentSchedule extends pulumi.CustomResource {
   late final pulumi.Output<String> organization;
   /// Project name.
   late final pulumi.Output<String> project;
-  /// Which operation to run.
+  /// Which command to run.
   late final pulumi.Output<PulumiOperation> pulumiOperation;
   /// Cron expression for recurring scheduled runs. If you are supplying this, do not supply timestamp.
   late final pulumi.Output<String?> scheduleCron;

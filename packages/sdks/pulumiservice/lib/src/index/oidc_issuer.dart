@@ -9,7 +9,7 @@ class OidcIssuer extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Organization name.
   late final pulumi.Output<String> organization;
-  /// The authorization policies for this Oidc Issuer.
+  /// The auth policies for this Oidc Issuer.
   late final pulumi.Output<List<Map<String, dynamic>>> policies;
   /// The thumbprints of issuer's TLS certificates. By default, Pulumi will store the thumbprint of the certificate used to serve the OpenID configuration. If the provider uses multiple certificates to serve content, it is required to manually configure these.
   late final pulumi.Output<List<String>> thumbprints;

@@ -18,7 +18,7 @@ class WebhookArgs {
   final pulumi.Input<String>? environmentName;
   /// Optional set of filters to apply to the webhook. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#filters) for more information.
   final pulumi.Input<List<WebhookFilters>>? filters;
-  /// Format of the webhook payload. Can be either `raw` or `slack`. Defaults to `raw`.
+  /// Format of the webhook payload. Can be either `raw`, `slack`, `ms_teams` or `pulumi_deployments`. Defaults to `raw`.
   final pulumi.Input<WebhookFormat>? format;
   /// Optional set of filter groups to apply to the webhook. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#groups) for more information.
   final pulumi.Input<List<WebhookGroup>>? groups;
@@ -38,7 +38,7 @@ class WebhookArgs {
   /// [displayName] The friendly name displayed in the Pulumi Cloud.
   /// [environmentName] Name of the environment. Only specified if this is an environment webhook.
   /// [filters] Optional set of filters to apply to the webhook. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#filters) for more information.
-  /// [format] Format of the webhook payload. Can be either `raw` or `slack`. Defaults to `raw`.
+  /// [format] Format of the webhook payload. Can be either `raw`, `slack`, `ms_teams` or `pulumi_deployments`. Defaults to `raw`.
   /// [groups] Optional set of filter groups to apply to the webhook. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#groups) for more information.
   /// [organizationName] Name of the organization.
   /// [payloadUrl] URL to send request to.
@@ -91,4 +91,3 @@ class WebhookArgs {
     );
   }
 }
-

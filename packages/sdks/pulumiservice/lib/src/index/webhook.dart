@@ -36,7 +36,7 @@ class Webhook extends pulumi.CustomResource {
   late final pulumi.Output<String?> projectName;
   /// Optional. secret used as the HMAC key. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#headers) for more information.
   late final pulumi.Output<String?> secret;
-  /// Name of the stack. Only specified if this is a stack webhook.
+  /// Name of the stack. Only needed if this is a stack webhook.
   late final pulumi.Output<String?> stackName;
 
   /// Creates a new [Webhook].
