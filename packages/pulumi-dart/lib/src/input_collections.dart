@@ -3,6 +3,13 @@ import 'dart:collection';
 import 'input.dart';
 import 'output.dart';
 
+/// Creates a strongly typed list input whose elements may be values or outputs.
+InputList<T> inputList<T>(Iterable<Input<T>> values) => InputList<T>(values);
+
+/// Creates a strongly typed string-keyed map input whose values may be values
+/// or outputs.
+InputMap<T> inputMap<T>(Map<String, Input<T>> values) => InputMap<T>(values);
+
 /// {@template pulumi.input_list.summary}
 /// A list of [Input] values that is itself an [Input] list.
 ///
