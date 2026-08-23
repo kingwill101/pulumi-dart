@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
 	"github.com/stretchr/testify/require"
 )
 
@@ -28,10 +29,11 @@ func TestLocalPathDependencyPluginReadsProviderIdentity(t *testing.T) {
 
 func TestGeneratedExtraFilesIncludeProviderMetadata(t *testing.T) {
 	t.Parallel()
-	files := defaultGeneratedExtraFiles("pulumi_camelnames", "camelNames", "19.0.0")
+	spec, err := codegen.ParsePackageSchema(`{"name":"camelNames","version":"19.0.0"}`, nil)
+	require.NoError(t, err)
+	files := defaultGeneratedExtraFiles("pulumi_camelnames", "camelNames", "19.0.0", spec)
 	require.JSONEq(t, `{
 		"resource": true,
-		"name": "camelNames",
-		"version": "19.0.0"
+		"name": "camelNames"
 	}`, string(files["pulumi-plugin.json"]))
 }
