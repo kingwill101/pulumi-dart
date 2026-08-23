@@ -16,4 +16,3 @@ enum Logging {
     throw ArgumentError('Unknown Logging value: $value');
   }
 }
-
