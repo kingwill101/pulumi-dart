@@ -71,6 +71,7 @@ func buildObjectClassSpec(
 			FieldName:         propertyFieldName(property.Name, usedFieldNames),
 			Comment:           strings.TrimSpace(property.Comment),
 			Required:          property.IsRequired(),
+			DefaultExpression: schemaDefaultInputExpression(property.DefaultValue),
 			TypeSpec:          typeSpec,
 			DartType:          typeSpec.DartType,
 			ReferenceKind:     referenceKind,
@@ -86,4 +87,13 @@ func buildObjectClassSpec(
 		UsesInputTypes: usesInputTypes,
 		Properties:     fields,
 	}
+}
+
+func objectClassHasDefaults(object packageObjectClassSpec) bool {
+	for _, property := range object.Properties {
+		if property.DefaultExpression != "" {
+			return true
+		}
+	}
+	return false
 }

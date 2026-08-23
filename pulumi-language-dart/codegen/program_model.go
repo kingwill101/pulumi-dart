@@ -5,7 +5,13 @@ type dartProgram struct {
 	RequiredPulumiVersions []string
 	Locals                 []dartProgramLocal
 	Resources              []dartProgramResource
+	Statements             []dartProgramStatement
 	Outputs                []dartProgramOutput
+}
+
+type dartProgramStatement struct {
+	Local    *dartProgramLocal
+	Resource *dartProgramResource
 }
 
 type dartProgramResource struct {

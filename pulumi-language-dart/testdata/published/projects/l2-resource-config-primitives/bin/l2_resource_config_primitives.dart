@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_primitive/pulumi_primitive.dart' as primitive;
+import 'package:pulumi_primitive/index.dart' as primitive_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
@@ -16,8 +16,8 @@ class GeneratedStack extends pulumi.Stack {
     final secretInteger = pulumi.secret((config.requireNumber('secretInteger')).toInt()).apply<int>((value) => value as int);
     final secretString = pulumi.secret(config.require('secretString')).apply<String>((value) => value as String);
 
-    final plain = primitive.index.ResourceType('plain', args: primitive.index.ResourceArgs(boolean: (plainBool).input(), float: ((plainNumber).toDouble()).input(), integer: (plainInteger).input(), string_: (plainString).input(), numberArray: ([(-1).toDouble(), (0).toDouble(), (1).toDouble()]).input(), booleanMap: ({'t': true, 'f': false}).input(), ));
-    final secret = primitive.index.ResourceType('secret', args: primitive.index.ResourceArgs(boolean: (secretBool).input(), float: (secretNumber).input(), integer: (secretInteger).input(), string_: (secretString).input(), numberArray: ([(-2).toDouble(), (0).toDouble(), (2).toDouble()]).input(), booleanMap: ({'t': true, 'f': false}).input(), ));
+    final plain = primitive_index.ResourceType('plain', args: primitive_index.ResourceArgs(boolean: (plainBool).input(), float: ((plainNumber).toDouble()).input(), integer: (plainInteger).input(), string_: (plainString).input(), numberArray: ([(-1).toDouble(), (0).toDouble(), (1).toDouble()]).input(), booleanMap: ({'t': true, 'f': false}).input(), ));
+    final secret = primitive_index.ResourceType('secret', args: primitive_index.ResourceArgs(boolean: (secretBool).input(), float: (secretNumber).input(), integer: (secretInteger).input(), string_: (secretString).input(), numberArray: ([(-2).toDouble(), (0).toDouble(), (2).toDouble()]).input(), booleanMap: ({'t': true, 'f': false}).input(), ));
 
     _outputProperties = [
     ];

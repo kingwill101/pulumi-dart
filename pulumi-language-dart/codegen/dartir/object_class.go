@@ -15,6 +15,7 @@ type ObjectProperty struct {
 	FieldType         string
 	ConstructorDocs   string
 	Required          bool
+	DefaultExpression string
 	ToMapExpression   string
 	FromMapExpression string
 }

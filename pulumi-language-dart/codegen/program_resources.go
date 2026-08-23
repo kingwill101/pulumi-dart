@@ -43,8 +43,13 @@ func (lowerer programLowerer) providerResource(
 	if strings.HasPrefix(token, "pulumi:providers:") {
 		pkg = strings.TrimPrefix(token, "pulumi:providers:")
 		module = "providers"
-		className = sanitizeTypeName(toDartClassName(pkg) + "Type")
-		argsClass = sanitizeTypeName(toDartClassName(pkg) + "Args")
+		className = "ProviderProvider"
+		argsClass = "ProviderArgs"
+	} else if resource.Schema != nil && resource.Schema.PackageReference != nil {
+		module, className, argsClass = programProviderResourceName(resource.Schema)
+		if module == "" {
+			module = "index"
+		}
 	}
 	inputs := make([]dartProgramResourceInput, len(resource.Inputs))
 	for index, input := range resource.Inputs {

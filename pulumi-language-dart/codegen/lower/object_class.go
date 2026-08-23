@@ -16,6 +16,7 @@ func ObjectClass(spec schemair.ObjectClass, imports []dartir.Import, docsMacro s
 			FieldType:         ObjectPropertyType(spec, property),
 			ConstructorDocs:   ConstructorParameterDocs(property),
 			Required:          property.Required,
+			DefaultExpression: property.DefaultExpression,
 			ToMapExpression:   ObjectToMapExpression(spec, property),
 			FromMapExpression: ObjectFromMapExpression(spec, property),
 		}

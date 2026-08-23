@@ -52,6 +52,7 @@ func ResourceClass(resource Resource) dartir.ResourceClass {
 		Kind:                           resource.Kind,
 		Imports:                        append([]dartir.Import(nil), resource.Imports...),
 		ArgsClass:                      resource.Schema.ArgsClass,
+		HasDefaultArgs:                 resource.Schema.HasDefaultArgs,
 		ArgsDocs:                       resource.ArgsDocs,
 		TokenLiteral:                   darttext.StringLiteral(resource.RegistrationToken),
 		HasPackageRegistration:         resource.HasPackageRegistration,

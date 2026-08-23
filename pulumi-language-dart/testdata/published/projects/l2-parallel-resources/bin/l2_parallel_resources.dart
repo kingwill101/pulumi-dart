@@ -1,14 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_sync/pulumi_sync.dart' as sync;
+import 'package:pulumi_sync/index.dart' as sync_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final block1 = sync.index.Block('block-1');
-    final block2 = sync.index.Block('block-2');
-    final block3 = sync.index.Block('block-3');
+    final block1 = sync_index.Block('block-1');
+    final block2 = sync_index.Block('block-2');
+    final block3 = sync_index.Block('block-3');
 
     _outputProperties = [
     ];

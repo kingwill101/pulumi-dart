@@ -1,12 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_constant/pulumi_constant.dart' as constant;
+import 'package:pulumi_constant/index.dart' as constant_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final first = constant.index.ResourceType('first', args: constant.index.ResourceArgs(kind: ('Constant').input(), ));
+    final first = constant_index.ResourceType('first', args: constant_index.ResourceArgs(kind: ('Constant').input(), ));
 
     _outputProperties = [
       pulumi.OutputProperty('kind', pulumi.output(first.kind).apply<Object?>((value) => value)),

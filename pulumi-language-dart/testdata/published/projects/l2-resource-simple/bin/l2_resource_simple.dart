@@ -1,12 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_simple/pulumi_simple.dart' as simple;
+import 'package:pulumi_simple/index.dart' as simple_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final res = simple.index.ResourceType('res', args: simple.index.ResourceArgs(value: (true).input(), ));
+    final res = simple_index.ResourceType('res', args: simple_index.ResourceArgs(value: (true).input(), ));
 
     _outputProperties = [
     ];

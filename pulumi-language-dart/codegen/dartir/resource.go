@@ -14,6 +14,7 @@ type ResourceClass struct {
 	Kind                           ResourceKind
 	Imports                        []Import
 	ArgsClass                      string
+	HasDefaultArgs                 bool
 	ArgsDocs                       string
 	TokenLiteral                   string
 	HasPackageRegistration         bool

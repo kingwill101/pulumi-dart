@@ -8,7 +8,7 @@ import (
 func renderDartProgramResource(resource dartProgramResource) string {
 	switch resource.Type {
 	case "provider":
-		qualifier := resource.Package + "." + sanitizeCallableIdentifier(strings.ReplaceAll(resource.Module, "/", "_"))
+		qualifier := programModuleAlias(resource.Package, resource.Module)
 		if len(resource.Inputs) == 0 {
 			return fmt.Sprintf(
 				"    final %s = %s.%s(%s);\n",
@@ -39,4 +39,13 @@ func renderDartProgramResource(resource dartProgramResource) string {
 			resource.Input,
 		)
 	}
+}
+
+func programPackageAlias(name string) string {
+	return sanitizeCallableIdentifier(strings.ReplaceAll(name, "-", "_"))
+}
+
+func programModuleAlias(pkg, module string) string {
+	module = sanitizeCallableIdentifier(strings.ReplaceAll(module, "/", "_"))
+	return programPackageAlias(pkg) + "_" + module
 }

@@ -90,3 +90,17 @@ func TestResourceForwardsSchemaSecretOutputs(t *testing.T) {
 
 	require.Contains(t, actual, "additionalSecretOutputs: const ['password', 'token']")
 }
+
+func TestResourceConstructsDefaultArgsWhenOmitted(t *testing.T) {
+	t.Parallel()
+
+	actual := string(Resource(dartir.ResourceClass{
+		Name:           "Widget",
+		Kind:           dartir.CustomResource,
+		ArgsClass:      "WidgetArgs",
+		HasDefaultArgs: true,
+		TokenLiteral:   "'example:index:Widget'",
+	}))
+
+	require.Contains(t, actual, "pulumi.Input.mapToInputs((args ?? WidgetArgs()).toMap())")
+}

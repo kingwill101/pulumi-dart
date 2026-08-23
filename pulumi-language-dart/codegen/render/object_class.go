@@ -54,15 +54,36 @@ func writeObjectConstructor(b *strings.Builder, declaration dartir.ObjectClass) 
 	for _, property := range declaration.Properties {
 		fmt.Fprintf(b, "  /// [%s] %s\n", property.FieldName, property.ConstructorDocs)
 	}
-	fmt.Fprintf(b, "  const %s({\n", declaration.Name)
+	hasDefaults := false
 	for _, property := range declaration.Properties {
-		if property.Required {
+		hasDefaults = hasDefaults || property.DefaultExpression != ""
+	}
+	constructorModifier := "const "
+	if hasDefaults {
+		constructorModifier = ""
+	}
+	fmt.Fprintf(b, "  %s%s({\n", constructorModifier, declaration.Name)
+	for _, property := range declaration.Properties {
+		if property.DefaultExpression != "" {
+			fmt.Fprintf(b, "    %s %s,\n", property.FieldType, property.FieldName)
+		} else if property.Required {
 			fmt.Fprintf(b, "    required this.%s,\n", property.FieldName)
 		} else {
 			fmt.Fprintf(b, "    this.%s,\n", property.FieldName)
 		}
 	}
-	b.WriteString("  });\n\n")
+	b.WriteString("  })")
+	if hasDefaults {
+		separator := " :"
+		for _, property := range declaration.Properties {
+			if property.DefaultExpression == "" {
+				continue
+			}
+			fmt.Fprintf(b, "%s %s = %s ?? %s", separator, property.FieldName, property.FieldName, property.DefaultExpression)
+			separator = ","
+		}
+	}
+	b.WriteString(";\n\n")
 }
 
 func writeObjectToMap(b *strings.Builder, properties []dartir.ObjectProperty) {

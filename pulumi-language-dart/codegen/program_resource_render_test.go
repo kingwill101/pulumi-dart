@@ -16,7 +16,7 @@ func TestRenderDartProgramProviderResource(t *testing.T) {
 	}
 
 	assert.Equal(t,
-		"    final res = simple.index.ResourceType('res', args: simple.index.ResourceArgs(value: (true).input(), ));\n",
+		"    final res = simple_index.ResourceType('res', args: simple_index.ResourceArgs(value: (true).input(), ));\n",
 		renderDartProgramResource(resource),
 	)
 }
@@ -29,5 +29,5 @@ func TestRenderDartProgramProviderResourceWithoutArgs(t *testing.T) {
 		Package: "sync", Module: "index", Class: "Block", ArgsClass: "BlockArgs",
 	}
 
-	assert.Equal(t, "    final block = sync.index.Block('block');\n", renderDartProgramResource(resource))
+	assert.Equal(t, "    final block = sync_index.Block('block');\n", renderDartProgramResource(resource))
 }

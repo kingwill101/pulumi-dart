@@ -33,6 +33,7 @@ type Resource struct {
 	Comment          string
 	StateClass       string
 	ArgsClass        string
+	HasDefaultArgs   bool
 	OutputProperties []Property
 	Methods          []ResourceMethod
 }
@@ -70,6 +71,7 @@ type Property struct {
 	Comment           string
 	Required          bool
 	Secret            bool
+	DefaultExpression string
 	TypeSpec          Type
 	DartType          string
 	ReferenceKind     string

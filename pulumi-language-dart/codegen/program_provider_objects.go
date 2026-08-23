@@ -16,7 +16,7 @@ func (lowerer programLowerer) providerObjectExpression(
 	if !ok {
 		return lowerer.expression(expression)
 	}
-	pkg, module, className := providerObjectTypeName(defaultPackage, objectType.Token)
+	pkg, module, className := providerObjectTypeName(defaultPackage, objectType)
 	fields := make([]string, len(object.Items))
 	for index, item := range object.Items {
 		name, err := staticProviderObjectKey(item.Key)
@@ -33,11 +33,15 @@ func (lowerer programLowerer) providerObjectExpression(
 		}
 		fields[index] = propertyFieldName(name, map[string]int{}) + ": (" + value + ").input()"
 	}
-	qualifier := pkg + "." + sanitizeCallableIdentifier(strings.ReplaceAll(module, "/", "_"))
-	return qualifier + "." + className + "Args(" + strings.Join(fields, ", ") + ")", nil
+	qualifier := programModuleAlias(pkg, module)
+	return qualifier + "." + className + "(" + strings.Join(fields, ", ") + ")", nil
 }
 
-func providerObjectTypeName(defaultPackage, token string) (string, string, string) {
+func providerObjectTypeName(defaultPackage string, objectType *schema.ObjectType) (string, string, string) {
+	token := objectType.Token
+	if objectType.IsInputShape() && objectType.PlainShape.Token != "" {
+		token = objectType.PlainShape.Token
+	}
 	parts := strings.Split(token, ":")
 	if len(parts) != 3 {
 		return defaultPackage, "index", "GeneratedType"

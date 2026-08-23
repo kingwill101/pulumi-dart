@@ -9,22 +9,25 @@ import (
 func renderDartProgram(program dartProgram) []byte {
 	var body strings.Builder
 	body.WriteString("import 'package:pulumi/pulumi.dart' as pulumi;\n\n")
-	packages := map[string]struct{}{}
+	imports := map[string]dartProgramResource{}
 	for _, resource := range program.Resources {
 		if resource.Package != "" {
-			packages[resource.Package] = struct{}{}
+			key := resource.Package + "\x00" + resource.Module
+			imports[key] = resource
 		}
 	}
-	packageNames := make([]string, 0, len(packages))
-	for name := range packages {
-		packageNames = append(packageNames, name)
+	importKeys := make([]string, 0, len(imports))
+	for key := range imports {
+		importKeys = append(importKeys, key)
 	}
-	sort.Strings(packageNames)
-	for _, name := range packageNames {
-		packageName := "pulumi_" + strings.ReplaceAll(name, "-", "_")
-		fmt.Fprintf(&body, "import 'package:%s/%s.dart' as %s;\n", packageName, packageName, name)
+	sort.Strings(importKeys)
+	for _, key := range importKeys {
+		resource := imports[key]
+		packageName := "pulumi_" + strings.ReplaceAll(resource.Package, "-", "_")
+		fmt.Fprintf(&body, "import 'package:%s/%s.dart' as %s;\n",
+			packageName, resource.Module, programModuleAlias(resource.Package, resource.Module))
 	}
-	if len(packageNames) > 0 {
+	if len(importKeys) > 0 {
 		body.WriteString("\n")
 	}
 	body.WriteString("class GeneratedStack extends pulumi.Stack {\n")
@@ -43,16 +46,15 @@ func renderDartProgram(program dartProgram) []byte {
 	if len(program.RequiredPulumiVersions) > 0 {
 		body.WriteString("\n")
 	}
-	for _, local := range program.Locals {
-		fmt.Fprintf(&body, "    final %s = %s;\n", local.Name, local.Expression)
+	for _, statement := range program.Statements {
+		if statement.Local != nil {
+			fmt.Fprintf(&body, "    final %s = %s;\n", statement.Local.Name, statement.Local.Expression)
+		}
+		if statement.Resource != nil {
+			body.WriteString(renderDartProgramResource(*statement.Resource))
+		}
 	}
-	if len(program.Locals) > 0 {
-		body.WriteString("\n")
-	}
-	for _, resource := range program.Resources {
-		body.WriteString(renderDartProgramResource(resource))
-	}
-	if len(program.Resources) > 0 {
+	if len(program.Statements) > 0 {
 		body.WriteString("\n")
 	}
 	body.WriteString("    _outputProperties = [\n")
