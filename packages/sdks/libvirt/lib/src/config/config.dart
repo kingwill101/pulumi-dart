@@ -27,4 +27,3 @@ class LibvirtConfig {
 }
 
 const config = LibvirtConfig();
-

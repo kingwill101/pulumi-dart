@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkVlanTag {
   /// Sets the identifier for the VLAN tag within the port group.
-  final pulumi.Input<double>? id;
+  final pulumi.Input<double> id;
   /// Indicates whether the VLAN tag operates in native mode for the port group.
   final pulumi.Input<String>? nativeMode;
 
@@ -12,22 +12,21 @@ class NetworkVlanTag {
   /// [id] Sets the identifier for the VLAN tag within the port group.
   /// [nativeMode] Indicates whether the VLAN tag operates in native mode for the port group.
   const NetworkVlanTag({
-    this.id,
+    required this.id,
     this.nativeMode,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': ?id,
+      'id': id,
       'nativeMode': ?nativeMode,
     };
   }
 
   factory NetworkVlanTag.fromMap(Map<String, dynamic> map) {
     return NetworkVlanTag(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      id: pulumi.Input.fromValue(map['id'] as double),
       nativeMode: (() { final guardedValue = map['nativeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

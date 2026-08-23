@@ -7,7 +7,7 @@ import 'domain_devices_smartcard_passthrough_file.dart';
 import 'domain_devices_smartcard_passthrough_nmdm.dart';
 import 'domain_devices_smartcard_passthrough_pipe.dart';
 import 'domain_devices_smartcard_passthrough_pty.dart';
-import 'domain_devices_smartcard_passthrough_qemuvd_agent.dart';
+import 'domain_devices_smartcard_passthrough_qemu_vd_agent.dart';
 import 'domain_devices_smartcard_passthrough_spice_port.dart';
 import 'domain_devices_smartcard_passthrough_tcp.dart';
 import 'domain_devices_smartcard_passthrough_udp.dart';
@@ -28,8 +28,7 @@ class DomainDevicesSmartcardPassthrough {
   final pulumi.Input<DomainDevicesSmartcardPassthroughPipe>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
   final pulumi.Input<DomainDevicesSmartcardPassthroughPty>? pty;
-  /// Configures the QEMU guest agent for the random number generator backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughQemuvdAgent>? qemuvdAgent;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughQemuVdAgent>? qemuVdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
   final pulumi.Input<DomainDevicesSmartcardPassthroughSpicePort>? spicePort;
   /// Configures the SPICE VMC settings for the random number generator backend.
@@ -53,7 +52,7 @@ class DomainDevicesSmartcardPassthrough {
   /// [null_] Configures a null source for the EGD backend.
   /// [pipe] Defines a pipe source for the EGD backend.
   /// [pty] Defines a pseudo-terminal (PTY) source for the EGD backend.
-  /// [qemuvdAgent] Configures the QEMU guest agent for the random number generator backend.
+  /// [qemuVdAgent] Optional.
   /// [spicePort] Configures the SPICE port settings for the random number generator backend.
   /// [spiceVmc] Configures the SPICE VMC settings for the random number generator backend.
   /// [stdIo] Configures standard input/output settings for the random number generator backend.
@@ -69,7 +68,7 @@ class DomainDevicesSmartcardPassthrough {
     this.null_,
     this.pipe,
     this.pty,
-    this.qemuvdAgent,
+    this.qemuVdAgent,
     this.spicePort,
     this.spiceVmc,
     this.stdIo,
@@ -88,7 +87,7 @@ class DomainDevicesSmartcardPassthrough {
       'null': ?null_,
       'pipe': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSmartcardPassthroughPipe, Map<String, dynamic>>(pipe, (value) => value.toMap()),
       'pty': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSmartcardPassthroughPty, Map<String, dynamic>>(pty, (value) => value.toMap()),
-      'qemuvdAgent': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSmartcardPassthroughQemuvdAgent, Map<String, dynamic>>(qemuvdAgent, (value) => value.toMap()),
+      'qemuVdAgent': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSmartcardPassthroughQemuVdAgent, Map<String, dynamic>>(qemuVdAgent, (value) => value.toMap()),
       'spicePort': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSmartcardPassthroughSpicePort, Map<String, dynamic>>(spicePort, (value) => value.toMap()),
       'spiceVmc': ?spiceVmc,
       'stdIo': ?stdIo,
@@ -108,7 +107,7 @@ class DomainDevicesSmartcardPassthrough {
       null_: (() { final guardedValue = map['null']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       pipe: (() { final guardedValue = map['pipe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesSmartcardPassthroughPipe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pty: (() { final guardedValue = map['pty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesSmartcardPassthroughPty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      qemuvdAgent: (() { final guardedValue = map['qemuvdAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesSmartcardPassthroughQemuvdAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      qemuVdAgent: (() { final guardedValue = map['qemuVdAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesSmartcardPassthroughQemuVdAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spicePort: (() { final guardedValue = map['spicePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesSmartcardPassthroughSpicePort.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spiceVmc: (() { final guardedValue = map['spiceVmc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stdIo: (() { final guardedValue = map['stdIo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -119,4 +118,3 @@ class DomainDevicesSmartcardPassthrough {
     );
   }
 }
-

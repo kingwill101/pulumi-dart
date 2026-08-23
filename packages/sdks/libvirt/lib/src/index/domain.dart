@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
+import 'domain_bhyve_commandline.dart';
 import 'domain_block_io_tune.dart';
 import 'domain_clock.dart';
 import 'domain_cpu.dart';
@@ -13,6 +14,7 @@ import 'domain_id_map.dart';
 import 'domain_io_thread_ids.dart';
 import 'domain_key_wrap.dart';
 import 'domain_launch_security.dart';
+import 'domain_lxc_namespace.dart';
 import 'domain_memory_backing.dart';
 import 'domain_memory_tune.dart';
 import 'domain_metadata.dart';
@@ -20,10 +22,16 @@ import 'domain_numa_tune.dart';
 import 'domain_os.dart';
 import 'domain_perf.dart';
 import 'domain_pm.dart';
+import 'domain_qemu_capabilities.dart';
+import 'domain_qemu_commandline.dart';
+import 'domain_qemu_deprecation.dart';
+import 'domain_qemu_override.dart';
 import 'domain_resource.dart';
 import 'domain_state.dart';
 import 'domain_throttle_groups.dart';
+import 'domain_update.dart';
 import 'domain_vcpus.dart';
+import 'domain_xen_commandline.dart';
 import '../internal/package_registration.dart' as package_registration;
 
 /// Manages a libvirt domain (virtual machine).
@@ -109,6 +117,8 @@ import '../internal/package_registration.dart' as package_registration;
 class Domain extends pulumi.CustomResource {
   /// Whether the domain should be started automatically when the host boots.
   late final pulumi.Output<bool?> autostart;
+  /// Configures bhyve-specific command-line passthrough for a domain, allowing extra arguments and environment variables to be appended through the bhyve XML namespace.
+  late final pulumi.Output<DomainBhyveCommandline?> bhyveCommandline;
   /// Configures block I/O tuning parameters for the domain, allowing control over I/O performance settings.
   late final pulumi.Output<DomainBlockIoTune?> blockIoTune;
   /// Specifies the bootloader that the domain uses to boot the operating system.
@@ -154,6 +164,8 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<DomainKeyWrap?> keyWrap;
   /// Configures launch security features for the domain to protect sensitive information.
   late final pulumi.Output<DomainLaunchSecurity?> launchSecurity;
+  /// Configures inherited Linux namespaces for LXC guests, allowing selected namespaces to be shared with another process or namespace provider.
+  late final pulumi.Output<DomainLxcNamespace?> lxcNamespace;
   /// Configures the maximum memory allocation for the domain at boot time.
   late final pulumi.Output<double?> maximumMemory;
   /// Configures the total number of memory slots that can be used in the domain.
@@ -198,6 +210,14 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<DomainPerf?> perf;
   /// Configures power management behavior advertised to the guest, such as support for suspend-to-RAM and suspend-to-disk.
   late final pulumi.Output<DomainPm?> pm;
+  /// Configures QEMU capability toggles through the QEMU namespace, allowing named capabilities to be explicitly added to or removed from the launched device model.
+  late final pulumi.Output<DomainQemuCapabilities?> qemuCapabilities;
+  /// Configures QEMU-specific command-line passthrough for a domain, allowing explicit extra arguments and environment variables to be passed through the dedicated QEMU XML namespace.
+  late final pulumi.Output<DomainQemuCommandline?> qemuCommandline;
+  /// Configures the QEMU namespace deprecation behavior for the domain.
+  late final pulumi.Output<DomainQemuDeprecation?> qemuDeprecation;
+  /// Configures QEMU frontend property overrides in the QEMU namespace, targeting specific devices by alias and setting named frontend properties.
+  late final pulumi.Output<DomainQemuOverride?> qemuOverride;
   /// Groups resource-partitioning settings that associate the domain with hypervisor-specific resource partitions or classes.
   late final pulumi.Output<DomainResource?> resource;
   /// Whether the domain should be started after creation.
@@ -218,6 +238,7 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String?> title;
   /// Sets the type of domain, specifying which hypervisor is to be used for running the virtual machine.
   late final pulumi.Output<String> type;
+  late final pulumi.Output<DomainUpdate?> update;
   /// Sets the domain’s UUID; if omitted libvirt generates one, and any provided value must be a valid RFC‑4122‑style UUID string.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#general-metadata&gt;
@@ -240,6 +261,12 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String?> vcpuPlacement;
   /// Enables per‑vCPU configuration; when present, it contains one or more vcpu entries that can individually control online state and pinning.
   late final pulumi.Output<DomainVcpus?> vcpus;
+  /// Sets the VMware datacenter path associated with the domain when using the VMware driver, matching the datacenter-oriented path conventions used by libvirt `vpx://` connections.
+  ///
+  /// See: &lt;https://libvirt.org/drvesx.html&gt;
+  late final pulumi.Output<String?> vmwareDataCenterPath;
+  /// Configures Xen-specific command-line passthrough to the qemu device model, using the Xen XML namespace for additional arguments.
+  late final pulumi.Output<DomainXenCommandline?> xenCommandline;
 
   /// Creates a new [Domain].
   /// [name] The Pulumi resource name.
@@ -257,6 +284,7 @@ class Domain extends pulumi.CustomResource {
           registerPackageRequest: package_registration.registerPackageRequest,
         ) {
     autostart = registerOutput<bool?>('autostart');
+    bhyveCommandline = registerOutput<DomainBhyveCommandline?>('bhyveCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainBhyveCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     blockIoTune = registerOutput<DomainBlockIoTune?>('blockIoTune', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainBlockIoTune.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bootloader = registerOutput<String?>('bootloader');
     bootloaderArgs = registerOutput<String?>('bootloaderArgs');
@@ -279,6 +307,7 @@ class Domain extends pulumi.CustomResource {
     ioThreads = registerOutput<double?>('ioThreads');
     keyWrap = registerOutput<DomainKeyWrap?>('keyWrap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainKeyWrap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchSecurity = registerOutput<DomainLaunchSecurity?>('launchSecurity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainLaunchSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lxcNamespace = registerOutput<DomainLxcNamespace?>('lxcNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainLxcNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maximumMemory = registerOutput<double?>('maximumMemory');
     maximumMemorySlots = registerOutput<double?>('maximumMemorySlots');
     maximumMemoryUnit = registerOutput<String?>('maximumMemoryUnit');
@@ -296,6 +325,10 @@ class Domain extends pulumi.CustomResource {
     os = registerOutput<DomainOs?>('os', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainOs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     perf = registerOutput<DomainPerf?>('perf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainPerf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pm = registerOutput<DomainPm?>('pm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainPm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuCapabilities = registerOutput<DomainQemuCapabilities?>('qemuCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuCommandline = registerOutput<DomainQemuCommandline?>('qemuCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuDeprecation = registerOutput<DomainQemuDeprecation?>('qemuDeprecation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuDeprecation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuOverride = registerOutput<DomainQemuOverride?>('qemuOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resource = registerOutput<DomainResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     running = registerOutput<bool?>('running');
     secLabels = registerOutput<List<Map<String, dynamic>>?>('secLabels');
@@ -303,12 +336,15 @@ class Domain extends pulumi.CustomResource {
     throttleGroups = registerOutput<DomainThrottleGroups?>('throttleGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainThrottleGroups.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');
+    update = registerOutput<DomainUpdate?>('update', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uuid = registerOutput<String>('uuid');
     vcpu = registerOutput<double?>('vcpu');
     vcpuCpuset = registerOutput<String?>('vcpuCpuset');
     vcpuCurrent = registerOutput<double?>('vcpuCurrent');
     vcpuPlacement = registerOutput<String?>('vcpuPlacement');
     vcpus = registerOutput<DomainVcpus?>('vcpus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainVcpus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vmwareDataCenterPath = registerOutput<String?>('vmwareDataCenterPath');
+    xenCommandline = registerOutput<DomainXenCommandline?>('xenCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainXenCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -335,6 +371,7 @@ class Domain extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autostart = registerOutput<bool?>('autostart');
+    bhyveCommandline = registerOutput<DomainBhyveCommandline?>('bhyveCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainBhyveCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     blockIoTune = registerOutput<DomainBlockIoTune?>('blockIoTune', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainBlockIoTune.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bootloader = registerOutput<String?>('bootloader');
     bootloaderArgs = registerOutput<String?>('bootloaderArgs');
@@ -357,6 +394,7 @@ class Domain extends pulumi.CustomResource {
     ioThreads = registerOutput<double?>('ioThreads');
     keyWrap = registerOutput<DomainKeyWrap?>('keyWrap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainKeyWrap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchSecurity = registerOutput<DomainLaunchSecurity?>('launchSecurity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainLaunchSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lxcNamespace = registerOutput<DomainLxcNamespace?>('lxcNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainLxcNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maximumMemory = registerOutput<double?>('maximumMemory');
     maximumMemorySlots = registerOutput<double?>('maximumMemorySlots');
     maximumMemoryUnit = registerOutput<String?>('maximumMemoryUnit');
@@ -374,6 +412,10 @@ class Domain extends pulumi.CustomResource {
     os = registerOutput<DomainOs?>('os', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainOs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     perf = registerOutput<DomainPerf?>('perf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainPerf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pm = registerOutput<DomainPm?>('pm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainPm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuCapabilities = registerOutput<DomainQemuCapabilities?>('qemuCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuCommandline = registerOutput<DomainQemuCommandline?>('qemuCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuDeprecation = registerOutput<DomainQemuDeprecation?>('qemuDeprecation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuDeprecation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuOverride = registerOutput<DomainQemuOverride?>('qemuOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resource = registerOutput<DomainResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     running = registerOutput<bool?>('running');
     secLabels = registerOutput<List<Map<String, dynamic>>?>('secLabels');
@@ -381,11 +423,14 @@ class Domain extends pulumi.CustomResource {
     throttleGroups = registerOutput<DomainThrottleGroups?>('throttleGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainThrottleGroups.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');
+    update = registerOutput<DomainUpdate?>('update', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uuid = registerOutput<String>('uuid');
     vcpu = registerOutput<double?>('vcpu');
     vcpuCpuset = registerOutput<String?>('vcpuCpuset');
     vcpuCurrent = registerOutput<double?>('vcpuCurrent');
     vcpuPlacement = registerOutput<String?>('vcpuPlacement');
     vcpus = registerOutput<DomainVcpus?>('vcpus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainVcpus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vmwareDataCenterPath = registerOutput<String?>('vmwareDataCenterPath');
+    xenCommandline = registerOutput<DomainXenCommandline?>('xenCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainXenCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

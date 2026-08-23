@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'domain_bhyve_commandline.dart';
 import 'domain_block_io_tune.dart';
 import 'domain_clock.dart';
 import 'domain_cpu.dart';
@@ -14,6 +15,7 @@ import 'domain_id_map.dart';
 import 'domain_io_thread_ids.dart';
 import 'domain_key_wrap.dart';
 import 'domain_launch_security.dart';
+import 'domain_lxc_namespace.dart';
 import 'domain_memory_backing.dart';
 import 'domain_memory_tune.dart';
 import 'domain_metadata.dart';
@@ -21,16 +23,24 @@ import 'domain_numa_tune.dart';
 import 'domain_os.dart';
 import 'domain_perf.dart';
 import 'domain_pm.dart';
+import 'domain_qemu_capabilities.dart';
+import 'domain_qemu_commandline.dart';
+import 'domain_qemu_deprecation.dart';
+import 'domain_qemu_override.dart';
 import 'domain_resource.dart';
 import 'domain_sec_label.dart';
 import 'domain_sys_info.dart';
 import 'domain_throttle_groups.dart';
+import 'domain_update.dart';
 import 'domain_vcpus.dart';
+import 'domain_xen_commandline.dart';
 
 /// Input properties used for looking up and filtering Domain resources.
 class DomainState {
   /// Whether the domain should be started automatically when the host boots.
   final pulumi.Input<bool>? autostart;
+  /// Configures bhyve-specific command-line passthrough for a domain, allowing extra arguments and environment variables to be appended through the bhyve XML namespace.
+  final pulumi.Input<DomainBhyveCommandline>? bhyveCommandline;
   /// Configures block I/O tuning parameters for the domain, allowing control over I/O performance settings.
   final pulumi.Input<DomainBlockIoTune>? blockIoTune;
   /// Specifies the bootloader that the domain uses to boot the operating system.
@@ -76,6 +86,8 @@ class DomainState {
   final pulumi.Input<DomainKeyWrap>? keyWrap;
   /// Configures launch security features for the domain to protect sensitive information.
   final pulumi.Input<DomainLaunchSecurity>? launchSecurity;
+  /// Configures inherited Linux namespaces for LXC guests, allowing selected namespaces to be shared with another process or namespace provider.
+  final pulumi.Input<DomainLxcNamespace>? lxcNamespace;
   /// Configures the maximum memory allocation for the domain at boot time.
   final pulumi.Input<double>? maximumMemory;
   /// Configures the total number of memory slots that can be used in the domain.
@@ -120,6 +132,14 @@ class DomainState {
   final pulumi.Input<DomainPerf>? perf;
   /// Configures power management behavior advertised to the guest, such as support for suspend-to-RAM and suspend-to-disk.
   final pulumi.Input<DomainPm>? pm;
+  /// Configures QEMU capability toggles through the QEMU namespace, allowing named capabilities to be explicitly added to or removed from the launched device model.
+  final pulumi.Input<DomainQemuCapabilities>? qemuCapabilities;
+  /// Configures QEMU-specific command-line passthrough for a domain, allowing explicit extra arguments and environment variables to be passed through the dedicated QEMU XML namespace.
+  final pulumi.Input<DomainQemuCommandline>? qemuCommandline;
+  /// Configures the QEMU namespace deprecation behavior for the domain.
+  final pulumi.Input<DomainQemuDeprecation>? qemuDeprecation;
+  /// Configures QEMU frontend property overrides in the QEMU namespace, targeting specific devices by alias and setting named frontend properties.
+  final pulumi.Input<DomainQemuOverride>? qemuOverride;
   /// Groups resource-partitioning settings that associate the domain with hypervisor-specific resource partitions or classes.
   final pulumi.Input<DomainResource>? resource;
   /// Whether the domain should be started after creation.
@@ -140,6 +160,7 @@ class DomainState {
   final pulumi.Input<String>? title;
   /// Sets the type of domain, specifying which hypervisor is to be used for running the virtual machine.
   final pulumi.Input<String>? type;
+  final pulumi.Input<DomainUpdate>? update;
   /// Sets the domain’s UUID; if omitted libvirt generates one, and any provided value must be a valid RFC‑4122‑style UUID string.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#general-metadata&gt;
@@ -162,9 +183,16 @@ class DomainState {
   final pulumi.Input<String>? vcpuPlacement;
   /// Enables per‑vCPU configuration; when present, it contains one or more vcpu entries that can individually control online state and pinning.
   final pulumi.Input<DomainVcpus>? vcpus;
+  /// Sets the VMware datacenter path associated with the domain when using the VMware driver, matching the datacenter-oriented path conventions used by libvirt `vpx://` connections.
+  ///
+  /// See: &lt;https://libvirt.org/drvesx.html&gt;
+  final pulumi.Input<String>? vmwareDataCenterPath;
+  /// Configures Xen-specific command-line passthrough to the qemu device model, using the Xen XML namespace for additional arguments.
+  final pulumi.Input<DomainXenCommandline>? xenCommandline;
 
   /// Creates a new [DomainState].
   /// [autostart] Whether the domain should be started automatically when the host boots.
+  /// [bhyveCommandline] Configures bhyve-specific command-line passthrough for a domain, allowing extra arguments and environment variables to be appended through the bhyve XML namespace.
   /// [blockIoTune] Configures block I/O tuning parameters for the domain, allowing control over I/O performance settings.
   /// [bootloader] Specifies the bootloader that the domain uses to boot the operating system.
   /// [bootloaderArgs] Defines arguments passed to the bootloader during the boot process.
@@ -187,6 +215,7 @@ class DomainState {
   /// [ioThreads] Sets the number of I/O threads allocated to the domain for processing.
   /// [keyWrap] Configures key wrapping for cryptographic operations in the domain.
   /// [launchSecurity] Configures launch security features for the domain to protect sensitive information.
+  /// [lxcNamespace] Configures inherited Linux namespaces for LXC guests, allowing selected namespaces to be shared with another process or namespace provider.
   /// [maximumMemory] Configures the maximum memory allocation for the domain at boot time.
   /// [maximumMemorySlots] Configures the total number of memory slots that can be used in the domain.
   /// [maximumMemoryUnit] Sets the unit for maximum memory allocation in the domain configuration.
@@ -204,6 +233,10 @@ class DomainState {
   /// [os] Groups configuration of how the guest operating system is booted, including firmware, BIOS, boot devices, kernel parameters, and related options. All sub-attributes are optional and user-provided.
   /// [perf] Enables configuration of performance monitoring events exposed to the guest and collected by the hypervisor.
   /// [pm] Configures power management behavior advertised to the guest, such as support for suspend-to-RAM and suspend-to-disk.
+  /// [qemuCapabilities] Configures QEMU capability toggles through the QEMU namespace, allowing named capabilities to be explicitly added to or removed from the launched device model.
+  /// [qemuCommandline] Configures QEMU-specific command-line passthrough for a domain, allowing explicit extra arguments and environment variables to be passed through the dedicated QEMU XML namespace.
+  /// [qemuDeprecation] Configures the QEMU namespace deprecation behavior for the domain.
+  /// [qemuOverride] Configures QEMU frontend property overrides in the QEMU namespace, targeting specific devices by alias and setting named frontend properties.
   /// [resource] Groups resource-partitioning settings that associate the domain with hypervisor-specific resource partitions or classes.
   /// [running] Whether the domain should be started after creation.
   /// [secLabels] Configures one security label configuration for the domain, controlling how a security driver (such as SELinux or DAC) labels and isolates the domain and its resources.
@@ -211,14 +244,18 @@ class DomainState {
   /// [throttleGroups] Enables configuration of one or more named disk I/O throttle groups that can be referenced by disk `throttlefilters` to apply shared I/O rate limits.
   /// [title] Sets a human‑readable title for the domain, which is user‑provided free text and may be used by management tools but has no functional effect on the guest.
   /// [type] Sets the type of domain, specifying which hypervisor is to be used for running the virtual machine.
+  /// [update] Optional.
   /// [uuid] Sets the domain’s UUID; if omitted libvirt generates one, and any provided value must be a valid RFC‑4122‑style UUID string.
   /// [vcpu] Sets the maximum number of virtual CPUs configured for the guest, as a positive integer within the hypervisor’s supported range (for example 1–255).
   /// [vcpuCpuset] Sets the optional CPU affinity for all vCPUs using a cpuset expression (for example "0-3,8"), corresponding to the vcpu element’s cpuset attribute.
   /// [vcpuCurrent] Sets the number of vCPUs that are initially online at boot via the vcpu element’s current attribute, as a positive integer not exceeding domain.vcpu.
   /// [vcpuPlacement] Sets the vCPU placement policy via the vcpu element’s placement attribute, typically "static" or "auto", controlling whether libvirt chooses NUMA/CPU placement automatically.
   /// [vcpus] Enables per‑vCPU configuration; when present, it contains one or more vcpu entries that can individually control online state and pinning.
+  /// [vmwareDataCenterPath] Sets the VMware datacenter path associated with the domain when using the VMware driver, matching the datacenter-oriented path conventions used by libvirt `vpx://` connections.
+  /// [xenCommandline] Configures Xen-specific command-line passthrough to the qemu device model, using the Xen XML namespace for additional arguments.
   const DomainState({
     this.autostart,
+    this.bhyveCommandline,
     this.blockIoTune,
     this.bootloader,
     this.bootloaderArgs,
@@ -241,6 +278,7 @@ class DomainState {
     this.ioThreads,
     this.keyWrap,
     this.launchSecurity,
+    this.lxcNamespace,
     this.maximumMemory,
     this.maximumMemorySlots,
     this.maximumMemoryUnit,
@@ -258,6 +296,10 @@ class DomainState {
     this.os,
     this.perf,
     this.pm,
+    this.qemuCapabilities,
+    this.qemuCommandline,
+    this.qemuDeprecation,
+    this.qemuOverride,
     this.resource,
     this.running,
     this.secLabels,
@@ -265,17 +307,21 @@ class DomainState {
     this.throttleGroups,
     this.title,
     this.type,
+    this.update,
     this.uuid,
     this.vcpu,
     this.vcpuCpuset,
     this.vcpuCurrent,
     this.vcpuPlacement,
     this.vcpus,
+    this.vmwareDataCenterPath,
+    this.xenCommandline,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autostart': ?autostart,
+      'bhyveCommandline': ?pulumi.Input.mapOptionalInputValue<DomainBhyveCommandline, Map<String, dynamic>>(bhyveCommandline, (value) => value.toMap()),
       'blockIoTune': ?pulumi.Input.mapOptionalInputValue<DomainBlockIoTune, Map<String, dynamic>>(blockIoTune, (value) => value.toMap()),
       'bootloader': ?bootloader,
       'bootloaderArgs': ?bootloaderArgs,
@@ -298,6 +344,7 @@ class DomainState {
       'ioThreads': ?ioThreads,
       'keyWrap': ?pulumi.Input.mapOptionalInputValue<DomainKeyWrap, Map<String, dynamic>>(keyWrap, (value) => value.toMap()),
       'launchSecurity': ?pulumi.Input.mapOptionalInputValue<DomainLaunchSecurity, Map<String, dynamic>>(launchSecurity, (value) => value.toMap()),
+      'lxcNamespace': ?pulumi.Input.mapOptionalInputValue<DomainLxcNamespace, Map<String, dynamic>>(lxcNamespace, (value) => value.toMap()),
       'maximumMemory': ?maximumMemory,
       'maximumMemorySlots': ?maximumMemorySlots,
       'maximumMemoryUnit': ?maximumMemoryUnit,
@@ -315,6 +362,10 @@ class DomainState {
       'os': ?pulumi.Input.mapOptionalInputValue<DomainOs, Map<String, dynamic>>(os, (value) => value.toMap()),
       'perf': ?pulumi.Input.mapOptionalInputValue<DomainPerf, Map<String, dynamic>>(perf, (value) => value.toMap()),
       'pm': ?pulumi.Input.mapOptionalInputValue<DomainPm, Map<String, dynamic>>(pm, (value) => value.toMap()),
+      'qemuCapabilities': ?pulumi.Input.mapOptionalInputValue<DomainQemuCapabilities, Map<String, dynamic>>(qemuCapabilities, (value) => value.toMap()),
+      'qemuCommandline': ?pulumi.Input.mapOptionalInputValue<DomainQemuCommandline, Map<String, dynamic>>(qemuCommandline, (value) => value.toMap()),
+      'qemuDeprecation': ?pulumi.Input.mapOptionalInputValue<DomainQemuDeprecation, Map<String, dynamic>>(qemuDeprecation, (value) => value.toMap()),
+      'qemuOverride': ?pulumi.Input.mapOptionalInputValue<DomainQemuOverride, Map<String, dynamic>>(qemuOverride, (value) => value.toMap()),
       'resource': ?pulumi.Input.mapOptionalInputValue<DomainResource, Map<String, dynamic>>(resource, (value) => value.toMap()),
       'running': ?running,
       'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -322,18 +373,22 @@ class DomainState {
       'throttleGroups': ?pulumi.Input.mapOptionalInputValue<DomainThrottleGroups, Map<String, dynamic>>(throttleGroups, (value) => value.toMap()),
       'title': ?title,
       'type': ?type,
+      'update': ?pulumi.Input.mapOptionalInputValue<DomainUpdate, Map<String, dynamic>>(update, (value) => value.toMap()),
       'uuid': ?uuid,
       'vcpu': ?vcpu,
       'vcpuCpuset': ?vcpuCpuset,
       'vcpuCurrent': ?vcpuCurrent,
       'vcpuPlacement': ?vcpuPlacement,
       'vcpus': ?pulumi.Input.mapOptionalInputValue<DomainVcpus, Map<String, dynamic>>(vcpus, (value) => value.toMap()),
+      'vmwareDataCenterPath': ?vmwareDataCenterPath,
+      'xenCommandline': ?pulumi.Input.mapOptionalInputValue<DomainXenCommandline, Map<String, dynamic>>(xenCommandline, (value) => value.toMap()),
     };
   }
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
       autostart: (() { final guardedValue = map['autostart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      bhyveCommandline: (() { final guardedValue = map['bhyveCommandline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainBhyveCommandline.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       blockIoTune: (() { final guardedValue = map['blockIoTune']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainBlockIoTune.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       bootloader: (() { final guardedValue = map['bootloader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bootloaderArgs: (() { final guardedValue = map['bootloaderArgs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -356,6 +411,7 @@ class DomainState {
       ioThreads: (() { final guardedValue = map['ioThreads']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       keyWrap: (() { final guardedValue = map['keyWrap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainKeyWrap.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       launchSecurity: (() { final guardedValue = map['launchSecurity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainLaunchSecurity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      lxcNamespace: (() { final guardedValue = map['lxcNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainLxcNamespace.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maximumMemory: (() { final guardedValue = map['maximumMemory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       maximumMemorySlots: (() { final guardedValue = map['maximumMemorySlots']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       maximumMemoryUnit: (() { final guardedValue = map['maximumMemoryUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -373,6 +429,10 @@ class DomainState {
       os: (() { final guardedValue = map['os']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       perf: (() { final guardedValue = map['perf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainPerf.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pm: (() { final guardedValue = map['pm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainPm.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      qemuCapabilities: (() { final guardedValue = map['qemuCapabilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainQemuCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      qemuCommandline: (() { final guardedValue = map['qemuCommandline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainQemuCommandline.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      qemuDeprecation: (() { final guardedValue = map['qemuDeprecation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainQemuDeprecation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      qemuOverride: (() { final guardedValue = map['qemuOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainQemuOverride.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       running: (() { final guardedValue = map['running']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       secLabels: (() { final guardedValue = map['secLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainSecLabel>(guardedValue, (value) => DomainSecLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -380,13 +440,15 @@ class DomainState {
       throttleGroups: (() { final guardedValue = map['throttleGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainThrottleGroups.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      update: (() { final guardedValue = map['update']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainUpdate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vcpu: (() { final guardedValue = map['vcpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       vcpuCpuset: (() { final guardedValue = map['vcpuCpuset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vcpuCurrent: (() { final guardedValue = map['vcpuCurrent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       vcpuPlacement: (() { final guardedValue = map['vcpuPlacement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vcpus: (() { final guardedValue = map['vcpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainVcpus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vmwareDataCenterPath: (() { final guardedValue = map['vmwareDataCenterPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      xenCommandline: (() { final guardedValue = map['xenCommandline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainXenCommandline.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

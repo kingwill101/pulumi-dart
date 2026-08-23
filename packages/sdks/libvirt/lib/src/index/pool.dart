@@ -1,6 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pool_args.dart';
+import 'pool_create.dart';
+import 'pool_destroy.dart';
 import 'pool_features.dart';
+import 'pool_fs_commandline.dart';
+import 'pool_rbd_commandline.dart';
 import 'pool_refresh.dart';
 import 'pool_source.dart';
 import 'pool_state.dart';
@@ -21,10 +25,16 @@ class Pool extends pulumi.CustomResource {
   late final pulumi.Output<double> capacity;
   /// Specifies the unit type for measuring the total capacity of the storage pool.
   late final pulumi.Output<String?> capacityUnit;
+  /// Experimental: provider-specific lifecycle controls for create-time operations after pool definition. Subject to change in future releases.
+  late final pulumi.Output<PoolCreate?> create;
+  /// Experimental: provider-specific lifecycle controls for delete-time operations beyond undefine. Subject to change in future releases.
+  late final pulumi.Output<PoolDestroy?> destroy;
   /// Defines optional features supported by the storage pool, enhancing functional capabilities.
   late final pulumi.Output<PoolFeatures?> features;
+  late final pulumi.Output<PoolFsCommandline?> fsCommandline;
   /// Sets the unique name for the storage pool, required for identification on the host.
   late final pulumi.Output<String> name;
+  late final pulumi.Output<PoolRbdCommandline?> rbdCommandline;
   /// Controls the refresh behavior of the storage pool and associated volumes.
   late final pulumi.Output<PoolRefresh?> refresh;
   /// Source location for the storage pool
@@ -57,8 +67,12 @@ class Pool extends pulumi.CustomResource {
     availableUnit = registerOutput<String?>('availableUnit');
     capacity = registerOutput<double>('capacity');
     capacityUnit = registerOutput<String?>('capacityUnit');
+    create = registerOutput<PoolCreate?>('create', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolCreate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destroy = registerOutput<PoolDestroy?>('destroy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolDestroy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     features = registerOutput<PoolFeatures?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolFeatures.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fsCommandline = registerOutput<PoolFsCommandline?>('fsCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolFsCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    rbdCommandline = registerOutput<PoolRbdCommandline?>('rbdCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolRbdCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     refresh = registerOutput<PoolRefresh?>('refresh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolRefresh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     source = registerOutput<PoolSource?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     target = registerOutput<PoolTarget?>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -95,8 +109,12 @@ class Pool extends pulumi.CustomResource {
     availableUnit = registerOutput<String?>('availableUnit');
     capacity = registerOutput<double>('capacity');
     capacityUnit = registerOutput<String?>('capacityUnit');
+    create = registerOutput<PoolCreate?>('create', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolCreate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destroy = registerOutput<PoolDestroy?>('destroy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolDestroy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     features = registerOutput<PoolFeatures?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolFeatures.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fsCommandline = registerOutput<PoolFsCommandline?>('fsCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolFsCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    rbdCommandline = registerOutput<PoolRbdCommandline?>('rbdCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolRbdCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     refresh = registerOutput<PoolRefresh?>('refresh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolRefresh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     source = registerOutput<PoolSource?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     target = registerOutput<PoolTarget?>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -7,7 +7,7 @@ import 'domain_devices_disk_mirror_backing_store_source_vhost_user_file.dart';
 import 'domain_devices_disk_mirror_backing_store_source_vhost_user_nmdm.dart';
 import 'domain_devices_disk_mirror_backing_store_source_vhost_user_pipe.dart';
 import 'domain_devices_disk_mirror_backing_store_source_vhost_user_pty.dart';
-import 'domain_devices_disk_mirror_backing_store_source_vhost_user_qemuvd_agent.dart';
+import 'domain_devices_disk_mirror_backing_store_source_vhost_user_qemu_vd_agent.dart';
 import 'domain_devices_disk_mirror_backing_store_source_vhost_user_spice_port.dart';
 import 'domain_devices_disk_mirror_backing_store_source_vhost_user_tcp.dart';
 import 'domain_devices_disk_mirror_backing_store_source_vhost_user_udp.dart';
@@ -28,8 +28,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUser {
   final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
   final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty>? pty;
-  /// Configures the QEMU guest agent for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent>? qemuvdAgent;
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuVdAgent>? qemuVdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
   final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort>? spicePort;
   /// Configures the Spice VMC settings in the VHostUser source configuration for the mirrored disk.
@@ -53,7 +52,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUser {
   /// [null_] Configures a null device type in the VHostUser source configuration for the mirrored disk.
   /// [pipe] Defines a pipe source for the EGD backend.
   /// [pty] Defines a pseudo-terminal (PTY) source for the EGD backend.
-  /// [qemuvdAgent] Configures the QEMU guest agent for the random number generator backend.
+  /// [qemuVdAgent] Optional.
   /// [spicePort] Configures the SPICE port settings for the random number generator backend.
   /// [spiceVmc] Configures the Spice VMC settings in the VHostUser source configuration for the mirrored disk.
   /// [stdIo] Configures standard I/O settings for the VHostUser interface associated with the mirrored disk.
@@ -69,7 +68,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUser {
     this.null_,
     this.pipe,
     this.pty,
-    this.qemuvdAgent,
+    this.qemuVdAgent,
     this.spicePort,
     this.spiceVmc,
     this.stdIo,
@@ -88,7 +87,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUser {
       'null': ?null_,
       'pipe': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe, Map<String, dynamic>>(pipe, (value) => value.toMap()),
       'pty': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty, Map<String, dynamic>>(pty, (value) => value.toMap()),
-      'qemuvdAgent': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent, Map<String, dynamic>>(qemuvdAgent, (value) => value.toMap()),
+      'qemuVdAgent': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuVdAgent, Map<String, dynamic>>(qemuVdAgent, (value) => value.toMap()),
       'spicePort': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort, Map<String, dynamic>>(spicePort, (value) => value.toMap()),
       'spiceVmc': ?spiceVmc,
       'stdIo': ?stdIo,
@@ -108,7 +107,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUser {
       null_: (() { final guardedValue = map['null']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       pipe: (() { final guardedValue = map['pipe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pty: (() { final guardedValue = map['pty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      qemuvdAgent: (() { final guardedValue = map['qemuvdAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      qemuVdAgent: (() { final guardedValue = map['qemuVdAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuVdAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spicePort: (() { final guardedValue = map['spicePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spiceVmc: (() { final guardedValue = map['spiceVmc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stdIo: (() { final guardedValue = map['stdIo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -119,4 +118,3 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUser {
     );
   }
 }
-

@@ -24,4 +24,3 @@ class DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh {
     );
   }
 }
-

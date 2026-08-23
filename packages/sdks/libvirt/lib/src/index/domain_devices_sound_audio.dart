@@ -4,24 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesSoundAudio {
   /// This field sets the identifier for the audio configuration in the sound device of the domain.
-  final pulumi.Input<double>? id;
+  final pulumi.Input<double> id;
 
   /// Creates a new [DomainDevicesSoundAudio].
   /// [id] This field sets the identifier for the audio configuration in the sound device of the domain.
   const DomainDevicesSoundAudio({
-    this.id,
+    required this.id,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': ?id,
+      'id': id,
     };
   }
 
   factory DomainDevicesSoundAudio.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSoundAudio(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      id: pulumi.Input.fromValue(map['id'] as double),
     );
   }
 }
-

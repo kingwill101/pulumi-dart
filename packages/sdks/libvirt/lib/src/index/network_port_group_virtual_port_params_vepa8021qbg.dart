@@ -42,4 +42,3 @@ class NetworkPortGroupVirtualPortParamsVepa8021qbg {
     );
   }
 }
-

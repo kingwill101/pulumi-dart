@@ -4,24 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesControllerDriverIoThreadsIoThreadQueue {
   /// Assigns a unique identifier to the queue associated with the specific I/O thread of the controller driver.
-  final pulumi.Input<double>? id;
+  final pulumi.Input<double> id;
 
   /// Creates a new [DomainDevicesControllerDriverIoThreadsIoThreadQueue].
   /// [id] Assigns a unique identifier to the queue associated with the specific I/O thread of the controller driver.
   const DomainDevicesControllerDriverIoThreadsIoThreadQueue({
-    this.id,
+    required this.id,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': ?id,
+      'id': id,
     };
   }
 
   factory DomainDevicesControllerDriverIoThreadsIoThreadQueue.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerDriverIoThreadsIoThreadQueue(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      id: pulumi.Input.fromValue(map['id'] as double),
     );
   }
 }
-

@@ -23,7 +23,7 @@ class DomainDevicesAudio {
   /// Configures the file-based audio device for the guest.
   final pulumi.Input<DomainDevicesAudioFile>? file;
   /// Assigns a unique identifier to the audio device.
-  final pulumi.Input<double>? id;
+  final pulumi.Input<double> id;
   /// Configures the Jack audio device for the guest.
   final pulumi.Input<DomainDevicesAudioJack>? jack;
   /// Configures the None audio device for the guest.
@@ -60,7 +60,7 @@ class DomainDevicesAudio {
     this.coreAudio,
     this.dbus,
     this.file,
-    this.id,
+    required this.id,
     this.jack,
     this.none,
     this.oss,
@@ -77,7 +77,7 @@ class DomainDevicesAudio {
       'coreAudio': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioCoreAudio, Map<String, dynamic>>(coreAudio, (value) => value.toMap()),
       'dbus': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioDbus, Map<String, dynamic>>(dbus, (value) => value.toMap()),
       'file': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioFile, Map<String, dynamic>>(file, (value) => value.toMap()),
-      'id': ?id,
+      'id': id,
       'jack': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioJack, Map<String, dynamic>>(jack, (value) => value.toMap()),
       'none': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioNone, Map<String, dynamic>>(none, (value) => value.toMap()),
       'oss': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioOss, Map<String, dynamic>>(oss, (value) => value.toMap()),
@@ -95,7 +95,7 @@ class DomainDevicesAudio {
       coreAudio: (() { final guardedValue = map['coreAudio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioCoreAudio.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dbus: (() { final guardedValue = map['dbus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioDbus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      id: pulumi.Input.fromValue(map['id'] as double),
       jack: (() { final guardedValue = map['jack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioJack.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       none: (() { final guardedValue = map['none']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioNone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       oss: (() { final guardedValue = map['oss']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioOss.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -107,4 +107,3 @@ class DomainDevicesAudio {
     );
   }
 }
-
