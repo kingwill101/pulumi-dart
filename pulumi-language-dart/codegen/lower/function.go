@@ -3,7 +3,6 @@ package lower
 import (
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/darttext"
-	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/schemair"
 )
 
@@ -15,8 +14,7 @@ type Invoke struct {
 	Function      schemair.Function
 }
 
-// FunctionsLibrary lowers schema functions into a rendered Dart library.
-func FunctionsLibrary(invokes []Invoke, imports []dartir.Import, hasPackageRegistration bool) []byte {
+func FunctionsLibrary(invokes []Invoke, imports []dartir.Import, hasPackageRegistration bool) dartir.FunctionsLibrary {
 	declarations := make([]dartir.InvokeFunction, len(invokes))
 	for index, invoke := range invokes {
 		declarations[index] = dartir.InvokeFunction{
@@ -31,8 +29,8 @@ func FunctionsLibrary(invokes []Invoke, imports []dartir.Import, hasPackageRegis
 		}
 	}
 
-	return render.FunctionsLibrary(dartir.FunctionsLibrary{
+	return dartir.FunctionsLibrary{
 		Imports:   append([]dartir.Import(nil), imports...),
 		Functions: declarations,
-	})
+	}
 }

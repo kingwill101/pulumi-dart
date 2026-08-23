@@ -10,17 +10,19 @@ import (
 func TestEnumLowersSemanticValues(t *testing.T) {
 	t.Parallel()
 
-	actual := string(Enum(schemair.Enum{
+	actual := Enum(schemair.Enum{
 		EnumName:       "Mode",
 		UnderlyingType: "String",
 		Values: []schemair.EnumValue{
 			{Name: "enabled", Comment: "Enabled mode.", Literal: `"enabled"`},
 		},
-	}))
+	})
 
-	require.Contains(t, actual, "enum Mode")
-	require.Contains(t, actual, "/// Enabled mode.")
-	require.Contains(t, actual, `enabled("enabled");`)
+	require.Equal(t, "Mode", actual.Name)
+	require.Equal(t, "String", actual.UnderlyingType)
+	require.Equal(t, "enabled", actual.Values[0].Name)
+	require.Equal(t, "Enabled mode.", actual.Values[0].Docs)
+	require.Equal(t, `"enabled"`, actual.Values[0].Literal)
 }
 
 func TestPackageRegistrationRejectsIncompleteParameters(t *testing.T) {

@@ -11,7 +11,7 @@ import (
 func TestConfigLowersPropertiesAndRequiredAccessors(t *testing.T) {
 	t.Parallel()
 
-	actual := string(Config(schemair.Config{
+	actual := Config(schemair.Config{
 		ClassName: "ExampleConfig",
 		Properties: []schemair.Property{
 			{
@@ -23,9 +23,11 @@ func TestConfigLowersPropertiesAndRequiredAccessors(t *testing.T) {
 		},
 	}, []dartir.Import{
 		{URI: "package:pulumi/pulumi.dart", Prefix: "pulumi"},
-	}, map[string]string{"region": "requireRegion"}))
+	}, map[string]string{"region": "requireRegion"})
 
-	require.Contains(t, actual, "String? get region")
-	require.Contains(t, actual, "final raw = _raw('region');")
-	require.Contains(t, actual, "String requireRegion()")
+	require.Equal(t, "ExampleConfig", actual.ClassName)
+	require.Equal(t, "String?", actual.Properties[0].GetterType)
+	require.Equal(t, `'region'`, actual.Properties[0].NameLiteral)
+	require.Equal(t, "requireRegion", actual.Properties[0].Required.MethodName)
+	require.Equal(t, "String", actual.Properties[0].Required.ReturnType)
 }

@@ -3,7 +3,6 @@ package lower
 import (
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/darttext"
-	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/schemair"
 )
 
@@ -11,17 +10,17 @@ func Config(
 	spec schemair.Config,
 	imports []dartir.Import,
 	requiredMethodNames map[string]string,
-) []byte {
+) dartir.Config {
 	properties := make([]dartir.ConfigProperty, len(spec.Properties))
 	for index, property := range spec.Properties {
 		properties[index] = configProperty(property, requiredMethodNames[property.FieldName])
 	}
-	return render.Config(dartir.Config{
+	return dartir.Config{
 		ClassName:  spec.ClassName,
 		Docs:       spec.Comment,
 		Imports:    append([]dartir.Import(nil), imports...),
 		Properties: properties,
-	})
+	}
 }
 
 func configProperty(property schemair.Property, requiredMethodName string) dartir.ConfigProperty {

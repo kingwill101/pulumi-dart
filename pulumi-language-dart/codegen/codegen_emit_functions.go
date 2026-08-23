@@ -5,6 +5,7 @@ import (
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 )
 
 func generatedFunctionsFile(
@@ -54,5 +55,5 @@ func generatedFunctionsFile(
 			Function:      function.Function,
 		}
 	}
-	return lower.FunctionsLibrary(invokes, imports, hasPackageRegistration)
+	return render.FunctionsLibrary(lower.FunctionsLibrary(invokes, imports, hasPackageRegistration))
 }

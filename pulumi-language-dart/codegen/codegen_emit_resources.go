@@ -7,6 +7,7 @@ import (
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 )
 
 func generatedResourceFile(
@@ -49,7 +50,7 @@ func generatedResourceFile(
 	} else if kind == dartir.CustomResource {
 		argsDocs = "The raw input arguments for this resource."
 	}
-	return lower.ResourceLibrary(lower.Resource{
+	return render.Resource(lower.ResourceClass(lower.Resource{
 		Token:                  token,
 		RegistrationToken:      tokenValue,
 		ClassName:              className,
@@ -59,7 +60,7 @@ func generatedResourceFile(
 		Methods:                planResourceMethods(token, resource.Methods),
 		HasPackageRegistration: hasPackageRegistration,
 		Schema:                 resource,
-	})
+	}))
 }
 
 func lowerResourceImports(

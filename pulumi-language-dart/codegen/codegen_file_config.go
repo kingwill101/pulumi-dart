@@ -5,6 +5,7 @@ import (
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 )
 
 // generatedConfigFile renders the generated config accessors file for provider
@@ -66,5 +67,5 @@ func generatedConfigFile(
 			requiredMethodNames[property.FieldName] = "require" + toDartClassName(property.FieldName)
 		}
 	}
-	return lower.Config(*spec.Config, imports, requiredMethodNames)
+	return render.Config(lower.Config(*spec.Config, imports, requiredMethodNames))
 }

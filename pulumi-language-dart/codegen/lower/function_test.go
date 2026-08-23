@@ -11,7 +11,7 @@ import (
 func TestFunctionsLibraryLowersInvokeMetadata(t *testing.T) {
 	t.Parallel()
 
-	actual := string(FunctionsLibrary([]Invoke{{
+	actual := FunctionsLibrary([]Invoke{{
 		Token:         "example:index:getThing",
 		Name:          "getThing",
 		ArgsDocsMacro: "example.GetThingArgs",
@@ -24,11 +24,12 @@ func TestFunctionsLibraryLowersInvokeMetadata(t *testing.T) {
 	}}, []dartir.Import{
 		{URI: "package:pulumi/pulumi.dart", Prefix: "pulumi"},
 		{URI: "get_thing_args.dart"},
-	}, true))
+	}, true)
 
-	require.Contains(t, actual, "Future<GetThingResult> getThing(")
-	require.Contains(t, actual, "GetThingArgs args")
-	require.Contains(t, actual, "'example:index:getThing'")
-	require.Contains(t, actual, "{@macro example.GetThingArgs}")
-	require.Contains(t, actual, "registerPackageRequest: package_registration.registerPackageRequest")
+	require.Len(t, actual.Imports, 2)
+	require.Equal(t, "getThing", actual.Functions[0].Name)
+	require.Equal(t, "GetThingArgs", actual.Functions[0].ArgsClass)
+	require.Equal(t, `'example:index:getThing'`, actual.Functions[0].TokenLiteral)
+	require.Equal(t, "example.GetThingArgs", actual.Functions[0].ArgsDocsMacro)
+	require.True(t, actual.Functions[0].HasPackageRegistration)
 }

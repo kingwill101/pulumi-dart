@@ -18,7 +18,7 @@ var allowedInternalImports = map[string]map[string]bool{
 	"darttext": {},
 	"schemair": {},
 	"render":   {"dartir": true, "darttext": true},
-	"lower":    {"dartir": true, "darttext": true, "render": true, "schemair": true},
+	"lower":    {"dartir": true, "darttext": true, "schemair": true},
 }
 
 func TestCorePackageDependencyDirection(t *testing.T) {

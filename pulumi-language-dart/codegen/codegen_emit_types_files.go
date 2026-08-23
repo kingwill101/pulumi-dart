@@ -6,6 +6,7 @@ import (
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 )
 
 func generatedObjectClassFile(
@@ -49,9 +50,9 @@ func generatedObjectClassFile(
 	if strings.HasSuffix(objectClass.ClassName, "Args") {
 		docsMacro = argsClassDocMacroName(objectClass.ModulePath, objectClass.ClassName)
 	}
-	return lower.ObjectClass(objectClass, imports, docsMacro)
+	return render.ObjectClass(lower.ObjectClass(objectClass, imports, docsMacro))
 }
 
 func generatedEnumFile(enumSpec packageEnumSpec) []byte {
-	return lower.Enum(enumSpec)
+	return render.Enum(lower.Enum(enumSpec))
 }

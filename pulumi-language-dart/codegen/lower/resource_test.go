@@ -8,10 +8,10 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestResourceLibraryLowersOutputsMethodsAndGet(t *testing.T) {
+func TestResourceClassLowersOutputsMethodsAndGet(t *testing.T) {
 	t.Parallel()
 
-	actual := string(ResourceLibrary(Resource{
+	actual := ResourceClass(Resource{
 		Token:             "example:index:Thing",
 		RegistrationToken: "example:index:Thing",
 		ClassName:         "Thing",
@@ -43,12 +43,13 @@ func TestResourceLibraryLowersOutputsMethodsAndGet(t *testing.T) {
 				TypeSpec:  schemair.Type{Kind: "scalar", DartType: "String"},
 			}},
 		},
-	}))
+	})
 
-	require.Contains(t, actual, "class Thing extends pulumi.CustomResource")
-	require.Contains(t, actual, "late final pulumi.Output<String?> value;")
-	require.Contains(t, actual, "Future<LookupResult> lookup")
-	require.Contains(t, actual, "'example:index:Thing/lookup'")
-	require.Contains(t, actual, "static Thing get(")
-	require.Contains(t, actual, "registerPackageRequest: package_registration.registerPackageRequest")
+	require.Equal(t, "Thing", actual.Name)
+	require.Equal(t, dartir.CustomResource, actual.Kind)
+	require.Equal(t, "String?", actual.Outputs[0].Type)
+	require.Equal(t, "lookup", actual.Members.Methods[0].Name)
+	require.Equal(t, `'example:index:Thing/lookup'`, actual.Members.Methods[0].TokenLiteral)
+	require.NotNil(t, actual.Members.Get)
+	require.True(t, actual.HasPackageRegistration)
 }

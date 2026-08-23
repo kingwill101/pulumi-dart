@@ -2,11 +2,10 @@ package lower
 
 import (
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
-	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/schemair"
 )
 
-func Enum(spec schemair.Enum) []byte {
+func Enum(spec schemair.Enum) dartir.Enum {
 	values := make([]dartir.EnumValue, len(spec.Values))
 	for index, value := range spec.Values {
 		values[index] = dartir.EnumValue{
@@ -15,10 +14,10 @@ func Enum(spec schemair.Enum) []byte {
 			Literal: value.Literal,
 		}
 	}
-	return render.Enum(dartir.Enum{
+	return dartir.Enum{
 		Name:           spec.EnumName,
 		Docs:           spec.Comment,
 		UnderlyingType: spec.UnderlyingType,
 		Values:         values,
-	})
+	}
 }

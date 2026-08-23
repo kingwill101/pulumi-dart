@@ -3,7 +3,6 @@ package lower
 import (
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/darttext"
-	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/schemair"
 )
 
@@ -27,8 +26,7 @@ type Resource struct {
 	Schema                 schemair.Resource
 }
 
-// ResourceLibrary lowers a schema resource into a rendered Dart library.
-func ResourceLibrary(resource Resource) []byte {
+func ResourceClass(resource Resource) dartir.ResourceClass {
 	outputs := make([]dartir.ResourceOutput, len(resource.Schema.OutputProperties))
 	assignments := make([]dartir.Assignment, len(resource.Schema.OutputProperties))
 	constructorNames := resourceConstructorParameterNames(resource.Kind, resource.Schema.ArgsClass != "")
@@ -44,7 +42,7 @@ func ResourceLibrary(resource Resource) []byte {
 		}
 	}
 
-	return render.Resource(dartir.ResourceClass{
+	return dartir.ResourceClass{
 		Name:                   resource.ClassName,
 		Docs:                   resource.Schema.Comment,
 		Kind:                   resource.Kind,
@@ -56,7 +54,7 @@ func ResourceLibrary(resource Resource) []byte {
 		Outputs:                outputs,
 		ConstructorAssignments: assignments,
 		Members:                resourceMembers(resource),
-	})
+	}
 }
 
 func resourceMembers(resource Resource) dartir.ResourceMembers {
