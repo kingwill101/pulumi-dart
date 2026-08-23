@@ -188,7 +188,7 @@ environment:
 	pubspecData, err := os.ReadFile(filepath.Join(generatedDir, "pubspec.yaml"))
 	require.NoError(t, err)
 	pubspec := string(pubspecData)
-	assert.Contains(t, pubspec, "pulumi: 9.8.7")
+	assert.Contains(t, pubspec, "pulumi: ^9.8.7")
 	assert.NotContains(t, pubspec, "git:")
 	assert.NotContains(t, pubspec, "path:")
 }

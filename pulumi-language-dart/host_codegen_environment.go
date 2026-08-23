@@ -19,6 +19,9 @@ func configuredPulumiDependency() interface{} {
 	if path := strings.TrimSpace(os.Getenv("PULUMI_DART_PULUMI_DEPENDENCY_PATH")); path != "" {
 		return map[string]string{"path": filepath.ToSlash(path)}
 	}
+	if constraint := strings.TrimSpace(os.Getenv("PULUMI_DART_PULUMI_DEPENDENCY_CONSTRAINT")); constraint != "" {
+		return constraint
+	}
 	if version := strings.TrimSpace(os.Getenv("PULUMI_DART_PULUMI_DEPENDENCY_VERSION")); version != "" {
 		return version
 	}

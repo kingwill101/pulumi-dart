@@ -39,6 +39,22 @@ func TestDefaultPulumiPubspecDependencyVersionOverride(t *testing.T) {
 	assert.Equal(t, "^0.1.0", dep)
 }
 
+func TestDefaultPulumiPubspecDependencyConstraintOverride(t *testing.T) {
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_PATH", "")
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_CONSTRAINT", ">=3.1.0 <3.2.0")
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_VERSION", "3.0.0")
+
+	dep, ok := configuredPulumiDependency().(string)
+	require.True(t, ok)
+	assert.Equal(t, ">=3.1.0 <3.2.0", dep)
+}
+
+func TestCompatiblePulumiConstraint(t *testing.T) {
+	assert.Equal(t, "^3.0.0", compatiblePulumiConstraint("3.0.0"))
+	assert.Equal(t, "^3.1.0-dev.1", compatiblePulumiConstraint("v3.1.0-dev.1"))
+	assert.Empty(t, compatiblePulumiConstraint("  "))
+}
+
 func TestDefaultPulumiPubspecDependencyGitDefault(t *testing.T) {
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_PATH", "")
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_VERSION", "")
