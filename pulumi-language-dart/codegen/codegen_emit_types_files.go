@@ -1,7 +1,6 @@
 package codegen
 
 import (
-	"fmt"
 	"sort"
 	"strings"
 
@@ -14,28 +13,27 @@ func generatedObjectClassFile(
 	filePath string,
 	typeFilesByName map[string][]generatedTypeFile,
 ) []byte {
-	var b strings.Builder
-	b.WriteString("// ignore_for_file: unused_element, unnecessary_cast\n\n")
+	imports := []dartir.Import{}
 	if objectClass.UsesInputTypes || objectClassNeedsObjectHelpers(objectClass) {
-		b.WriteString("import 'package:pulumi/pulumi.dart' as pulumi;\n")
+		imports = append(imports, dartir.Import{URI: "package:pulumi/pulumi.dart", Prefix: "pulumi"})
 	}
 
-	imports := map[string]struct{}{}
+	internalImports := map[string]struct{}{}
 	for _, ref := range referencedTypesFromProperties(objectClass.Properties) {
 		if ref == objectClass.ClassName {
 			continue
 		}
 		if path, ok := resolveTypeFilePath(typeFilesByName, ref, objectClass.ModulePath); ok {
-			imports[relativeDartImportPath(filePath, path)] = struct{}{}
+			internalImports[relativeDartImportPath(filePath, path)] = struct{}{}
 		}
 	}
-	importPaths := make([]string, 0, len(imports))
-	for path := range imports {
+	importPaths := make([]string, 0, len(internalImports))
+	for path := range internalImports {
 		importPaths = append(importPaths, path)
 	}
 	sort.Strings(importPaths)
 	for _, path := range importPaths {
-		fmt.Fprintf(&b, "import '%s';\n", path)
+		imports = append(imports, dartir.Import{URI: path})
 	}
 	externalImports := externalImportsFromProperties(objectClass.Properties)
 	externalImportPaths := make([]string, 0, len(externalImports))
@@ -44,12 +42,33 @@ func generatedObjectClassFile(
 	}
 	sort.Strings(externalImportPaths)
 	for _, path := range externalImportPaths {
-		fmt.Fprintf(&b, "import '%s' as %s;\n", path, externalImports[path])
+		imports = append(imports, dartir.Import{URI: path, Prefix: externalImports[path]})
 	}
-	b.WriteString("\n")
 
-	writeGeneratedObjectClass(&b, objectClass)
-	return []byte(b.String())
+	properties := make([]dartir.ObjectProperty, len(objectClass.Properties))
+	for index, property := range objectClass.Properties {
+		properties[index] = dartir.ObjectProperty{
+			NameLiteral:       dartStringLiteral(property.Name),
+			FieldName:         property.FieldName,
+			Docs:              property.Comment,
+			FieldType:         objectClassPropertyDartType(objectClass, property),
+			ConstructorDocs:   constructorParameterDoc(property),
+			Required:          property.Required,
+			ToMapExpression:   objectClassToMapExpression(objectClass, property),
+			FromMapExpression: objectClassFromMapExpression(objectClass, property),
+		}
+	}
+	docsMacro := ""
+	if strings.HasSuffix(objectClass.ClassName, "Args") {
+		docsMacro = argsClassDocMacroName(objectClass.ModulePath, objectClass.ClassName)
+	}
+	return render.ObjectClass(dartir.ObjectClass{
+		Name:       objectClass.ClassName,
+		Docs:       objectClass.Comment,
+		DocsMacro:  docsMacro,
+		Imports:    imports,
+		Properties: properties,
+	})
 }
 
 func generatedEnumFile(enumSpec packageEnumSpec) []byte {
