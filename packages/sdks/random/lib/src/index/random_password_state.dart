@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering RandomPassword resources.
 class RandomPasswordState {
-  /// A bcrypt hash of the generated random string. **NOTE**: If the generated random string is greater than 72 bytes in length, `bcrypt_hash` will contain a hash of the first 72 bytes.
+  /// A bcrypt hash of the generated random string. **NOTE**: If the generated random string is greater than 72 bytes in length, `bcryptHash` will contain a hash of the first 72 bytes.
   final pulumi.Input<String>? bcryptHash;
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   final pulumi.Input<Map<String, String>>? keepers;
-  /// The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`min_upper` + `min_lower` + `min_numeric` + `min_special`).
+  /// The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`minUpper` + `minLower` + `minNumeric` + `minSpecial`).
   final pulumi.Input<int>? length;
   /// Include lowercase alphabet characters in the result. Default value is `true`.
   final pulumi.Input<bool>? lower;
@@ -34,9 +34,9 @@ class RandomPasswordState {
   final pulumi.Input<bool>? upper;
 
   /// Creates a new [RandomPasswordState].
-  /// [bcryptHash] A bcrypt hash of the generated random string. **NOTE**: If the generated random string is greater than 72 bytes in length, `bcrypt_hash` will contain a hash of the first 72 bytes.
+  /// [bcryptHash] A bcrypt hash of the generated random string. **NOTE**: If the generated random string is greater than 72 bytes in length, `bcryptHash` will contain a hash of the first 72 bytes.
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  /// [length] The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`min_upper` + `min_lower` + `min_numeric` + `min_special`).
+  /// [length] The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`minUpper` + `minLower` + `minNumeric` + `minSpecial`).
   /// [lower] Include lowercase alphabet characters in the result. Default value is `true`.
   /// [minLower] Minimum number of lowercase alphabet characters in the result. Default value is `0`.
   /// [minNumeric] Minimum number of numeric characters in the result. Default value is `0`.
@@ -103,4 +103,3 @@ class RandomPasswordState {
     );
   }
 }
-

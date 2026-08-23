@@ -4,7 +4,7 @@ import 'random_integer_state.dart';
 
 /// The resource `random.RandomInteger` generates random values from a given range, described by the `min` and `max` attributes of a given resource.
 ///
-/// This resource can be used in conjunction with resources that have the `create_before_destroy` lifecycle flag set, to avoid conflicts with unique names during the brief period where both the old and new resources exist concurrently.
+/// This resource can be used in conjunction with resources that have the `createBeforeDestroy` lifecycle flag set, to avoid conflicts with unique names during the brief period where both the old and new resources exist concurrently.
 ///
 /// ## Example Usage
 ///
@@ -45,7 +45,7 @@ import 'random_integer_state.dart';
 ///     keepers={
 ///         "listener_arn": listener_arn,
 ///     })
-/// main = aws.index.AlbListenerRule("main",
+/// main = aws.AlbListenerRule("main",
 ///     listener_arn=priority.keepers.listener_arn,
 ///     priority=priority.result,
 ///     action=[{
@@ -74,7 +74,7 @@ import 'random_integer_state.dart';
 ///         },
 ///     });
 ///
-///     var main = new Aws.Index.AlbListenerRule("main", new()
+///     var main = new Aws.AlbListenerRule("main", new()
 ///     {
 ///         ListenerArn = priority.Keepers?.ListenerArn,
 ///         Priority = priority.Result,
@@ -130,6 +130,36 @@ import 'random_integer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// # The following example shows how to generate a random priority
+/// # between 1 and 50000 for a aws_alb_listener_rule resource:
+/// resource "random_randominteger" "priority" {
+///   min = 1
+///   max = 50000
+///   keepers = {
+///     "listener_arn" = listenerArn
+///   }
+/// }
+/// resource "aws_alblistenerrule" "main" {
+///   listener_arn = random_randominteger.priority.keepers.listenerArn
+///   priority     = random_randominteger.priority.result
+///   action = [{
+///     "type"           = "forward"
+///     "targetGroupArn" = targetGroupArn
+///   }]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +170,8 @@ import 'random_integer_state.dart';
 /// import com.pulumi.random.RandomIntegerArgs;
 /// import com.pulumi.aws.AlbListenerRule;
 /// import com.pulumi.aws.AlbListenerRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,7 +194,7 @@ import 'random_integer_state.dart';
 ///         var main = new AlbListenerRule("main", AlbListenerRuleArgs.builder()
 ///             .listenerArn(priority.keepers().listenerArn())
 ///             .priority(priority.result())
-///             .action(List.of(Map.ofEntries(
+///             .action(Arrays.asList(Map.ofEntries(
 ///                 Map.entry("type", "forward"),
 ///                 Map.entry("targetGroupArn", targetGroupArn)
 ///             )))
@@ -200,9 +230,7 @@ import 'random_integer_state.dart';
 /// The `pulumi import` command can be used, for example:
 ///
 /// Random integers can be imported using the result, min, and max, with an
-///
 /// optional seed. This can be used to replace a config value with a value
-///
 /// interpolated from the random provider without experiencing diffs.
 ///
 /// Example (values are separated by a ,):

@@ -15,7 +15,7 @@ import 'random_string_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as random from "@pulumi/random";
 ///
-/// const random = new random.RandomString("random", {
+/// const random2 = new random.RandomString("random", {
 ///     length: 16,
 ///     special: true,
 ///     overrideSpecial: "/@£$",
@@ -25,7 +25,7 @@ import 'random_string_state.dart';
 /// import pulumi
 /// import pulumi_random as random
 ///
-/// random = random.RandomString("random",
+/// random_1 = random.RandomString("random",
 ///     length=16,
 ///     special=True,
 ///     override_special="/@£$")
@@ -69,6 +69,21 @@ import 'random_string_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_randomstring" "random" {
+///   length           = 16
+///   special          = true
+///   override_special = "/@£$"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +92,8 @@ import 'random_string_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.random.RandomString;
 /// import com.pulumi.random.RandomStringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,7 +145,7 @@ import 'random_string_state.dart';
 class RandomString extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   late final pulumi.Output<Map<String, String>?> keepers;
-  /// The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`min_upper` + `min_lower` + `min_numeric` + `min_special`).
+  /// The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`minUpper` + `minLower` + `minNumeric` + `minSpecial`).
   late final pulumi.Output<int> length;
   /// Include lowercase alphabet characters in the result. Default value is `true`.
   late final pulumi.Output<bool> lower;

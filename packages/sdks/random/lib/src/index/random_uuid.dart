@@ -2,6 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'random_uuid_args.dart';
 import 'random_uuid_state.dart';
 
+/// The resource `random.RandomUuid` generates a random uuid string that is intended to be used as a unique identifier for other resources.
+///
+/// This resource uses [hashicorp/go-uuid](https://github.com/hashicorp/go-uuid) to generate a UUID-formatted string for use with services needing a unique string identifier.
+///
 /// ## Example Usage
 ///
 ///
@@ -24,7 +28,7 @@ import 'random_uuid_state.dart';
 ///
 /// # The following example shows how to generate a unique name for an Azure Resource Group.
 /// test = random.RandomUuid("test")
-/// test_resource_group = azurerm.index.ResourceGroup("test",
+/// test_resource_group = azurerm.ResourceGroup("test",
 ///     name=f{test.result}-rg,
 ///     location=Central US)
 /// ```
@@ -40,7 +44,7 @@ import 'random_uuid_state.dart';
 ///     // The following example shows how to generate a unique name for an Azure Resource Group.
 ///     var test = new Random.RandomUuid("test");
 ///
-///     var testResourceGroup = new Azurerm.Index.ResourceGroup("test", new()
+///     var testResourceGroup = new Azurerm.ResourceGroup("test", new()
 ///     {
 ///         Name = $"{test.Result}-rg",
 ///         Location = "Central US",
@@ -52,8 +56,6 @@ import 'random_uuid_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-azurerm/sdk/go/azurerm"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -77,6 +79,23 @@ import 'random_uuid_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// # The following example shows how to generate a unique name for an Azure Resource Group.
+/// resource "random_randomuuid" "test" {
+/// }
+/// resource "azurerm_resourcegroup" "test" {
+///   name     ="${random_randomuuid.test.result}-rg"
+///   location = "Central US"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +105,8 @@ import 'random_uuid_state.dart';
 /// import com.pulumi.random.RandomUuid;
 /// import com.pulumi.azurerm.ResourceGroup;
 /// import com.pulumi.azurerm.ResourceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -129,9 +148,7 @@ import 'random_uuid_state.dart';
 /// The `pulumi import` command can be used, for example:
 ///
 /// Random UUID's can be imported. This can be used to replace a config
-///
 /// value with a value interpolated from the random provider without
-///
 /// experiencing diffs.
 ///
 /// ```sh

@@ -31,4 +31,3 @@ class RandomUuid4State {
     );
   }
 }
-
