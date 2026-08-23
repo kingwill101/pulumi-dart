@@ -118,7 +118,12 @@ final class PackageUpdater {
     try {
       _updateExactDependencies(plan);
       exitCode = 0;
-      await generator.main(['--provider', plan.provider]);
+      await generator.main([
+        '--provider',
+        plan.provider,
+        '--sdk-version',
+        plan.upstreamVersion,
+      ]);
       if (exitCode != 0) throw StateError('Generation failed ($exitCode).');
 
       final analyze = await Process.start(

@@ -61,6 +61,8 @@ Future<void> main(List<String> args) async {
     'PULUMI_DART_WORKSPACE_RESOLUTION': 'true',
     'PULUMI_DART_PULUMI_DEPENDENCY_PATH': '',
     'PULUMI_DART_PULUMI_DEPENDENCY_VERSION': pulumiVersion,
+    if (parsed.sdkVersion.isNotEmpty)
+      'PULUMI_DART_SDK_VERSION': parsed.sdkVersion,
     'PATH': _mergePathPrefix(
       languageHostPath,
       Platform.environment['PATH'] ?? '',
@@ -517,17 +519,20 @@ final class _ParsedArgs {
   _ParsedArgs({
     required this.providers,
     required this.keepSdks,
+    required this.sdkVersion,
     required this.workingDirectory,
   });
 
   final Set<String> providers;
   final bool keepSdks;
+  final String sdkVersion;
   final String workingDirectory;
 }
 
 _ParsedArgs _parseArgs(List<String> args) {
   final providers = <String>{};
   var keepSdks = false;
+  var sdkVersion = '';
 
   void addProvidersCsv(String value) {
     for (final raw in value.split(',')) {
@@ -549,6 +554,19 @@ _ParsedArgs _parseArgs(List<String> args) {
       continue;
     }
     if (arg == '--all') {
+      continue;
+    }
+    if (arg == '--sdk-version') {
+      if (i + 1 >= args.length) {
+        stderr.writeln('Missing value for --sdk-version');
+        _printUsage();
+        exit(64);
+      }
+      sdkVersion = args[++i].trim();
+      continue;
+    }
+    if (arg.startsWith('--sdk-version=')) {
+      sdkVersion = arg.substring('--sdk-version='.length).trim();
       continue;
     }
     if (arg == '--provider') {
@@ -574,6 +592,7 @@ _ParsedArgs _parseArgs(List<String> args) {
   return _ParsedArgs(
     providers: providers,
     keepSdks: keepSdks,
+    sdkVersion: sdkVersion,
     workingDirectory: Directory.current.path,
   );
 }
@@ -588,6 +607,7 @@ Usage:
 Options:
   --all                       Generate all providers in packages/sdks/schema_sources.json (default)
   --provider <name[,name...]> Generate only selected providers (repeatable)
+  --sdk-version <version>     Override the generated package version
   --keep-sdks                 Keep temporary generation output under .gen/sdk-gen
   -h, --help                  Show this help
 ''');

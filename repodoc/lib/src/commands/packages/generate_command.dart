@@ -13,6 +13,10 @@ final class PackagesGenerateCommand extends Command<int> {
         help: 'Provider to generate; repeat or comma-separate values.',
         splitCommas: true,
       )
+      ..addOption(
+        'sdk-version',
+        help: 'Override the generated package version.',
+      )
       ..addFlag('keep-sdks', help: 'Keep temporary output under .gen/sdk-gen.');
   }
 
@@ -25,6 +29,10 @@ final class PackagesGenerateCommand extends Command<int> {
     return [
       if (providers.isEmpty) '--all',
       for (final provider in providers) ...['--provider', provider],
+      if ((option('sdk-version') as String?) case final version?) ...[
+        '--sdk-version',
+        version,
+      ],
       if (option('keep-sdks') as bool) '--keep-sdks',
     ];
   }
