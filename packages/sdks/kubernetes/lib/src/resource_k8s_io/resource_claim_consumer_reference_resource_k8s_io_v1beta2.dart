@@ -43,4 +43,3 @@ class ResourceClaimConsumerReferenceResourceK8sIoV1beta2 {
     );
   }
 }
-

@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// UserInfo holds the information about the user needed to implement the user.Info interface.
 class UserInfoPatch {
-  /// Any additional information provided by the authenticator.
+  /// extra is any additional information provided by the authenticator.
   final pulumi.Input<Map<String, List<String>>>? extra;
-  /// The names of groups this user is a part of.
+  /// groups is the names of groups this user is a part of.
   final pulumi.Input<List<String>>? groups;
-  /// A unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs.
+  /// uid is a unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs.
   final pulumi.Input<String>? uid;
-  /// The name that uniquely identifies this user among all active users.
+  /// username is the name that uniquely identifies this user among all active users.
   final pulumi.Input<String>? username;
 
   /// Creates a new [UserInfoPatch].
-  /// [extra] Any additional information provided by the authenticator.
-  /// [groups] The names of groups this user is a part of.
-  /// [uid] A unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs.
-  /// [username] The name that uniquely identifies this user among all active users.
+  /// [extra] extra is any additional information provided by the authenticator.
+  /// [groups] groups is the names of groups this user is a part of.
+  /// [uid] uid is a unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs.
+  /// [username] username is the name that uniquely identifies this user among all active users.
   const UserInfoPatch({
     this.extra,
     this.groups,
@@ -43,4 +43,3 @@ class UserInfoPatch {
     );
   }
 }
-

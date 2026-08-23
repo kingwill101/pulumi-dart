@@ -85,4 +85,3 @@ class CSIDriverSpecPatchStorageK8sIoV1beta1 {
     );
   }
 }
-

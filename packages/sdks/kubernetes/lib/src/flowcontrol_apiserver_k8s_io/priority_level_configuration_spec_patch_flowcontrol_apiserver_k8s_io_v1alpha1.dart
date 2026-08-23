@@ -32,4 +32,3 @@ class PriorityLevelConfigurationSpecPatchFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

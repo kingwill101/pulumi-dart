@@ -8,9 +8,9 @@ class MutatingWebhookConfigurationAdmissionregistrationK8sIoV1 extends pulumi.Cu
   late final pulumi.Output<String> apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
-  /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
+  /// metadata is the standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   late final pulumi.Output<ObjectMeta> metadata;
-  /// Webhooks is a list of webhooks and the affected resources and operations.
+  /// webhooks is a list of webhooks and the affected resources and operations.
   late final pulumi.Output<List<Map<String, dynamic>>> webhooks;
 
   /// Creates a new [MutatingWebhookConfigurationAdmissionregistrationK8sIoV1].

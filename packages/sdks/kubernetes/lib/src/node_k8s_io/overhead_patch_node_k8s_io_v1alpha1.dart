@@ -25,4 +25,3 @@ class OverheadPatchNodeK8sIoV1alpha1 {
     );
   }
 }
-

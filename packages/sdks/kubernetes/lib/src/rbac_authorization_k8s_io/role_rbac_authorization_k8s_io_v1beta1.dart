@@ -45,4 +45,3 @@ class RoleRbacAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

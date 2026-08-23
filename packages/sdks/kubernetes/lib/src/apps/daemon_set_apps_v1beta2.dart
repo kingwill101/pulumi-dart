@@ -52,4 +52,3 @@ class DaemonSetAppsV1beta2 {
     );
   }
 }
-

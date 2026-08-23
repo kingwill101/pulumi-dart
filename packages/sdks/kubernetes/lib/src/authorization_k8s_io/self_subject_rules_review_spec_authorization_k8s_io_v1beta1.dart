@@ -24,4 +24,3 @@ class SelfSubjectRulesReviewSpecAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

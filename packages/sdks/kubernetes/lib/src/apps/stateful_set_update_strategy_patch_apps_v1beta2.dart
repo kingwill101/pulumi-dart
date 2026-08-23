@@ -32,4 +32,3 @@ class StatefulSetUpdateStrategyPatchAppsV1beta2 {
     );
   }
 }
-

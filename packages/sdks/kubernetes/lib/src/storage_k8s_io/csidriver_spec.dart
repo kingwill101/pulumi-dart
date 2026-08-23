@@ -17,7 +17,7 @@ class CSIDriverSpec {
   final pulumi.Input<String>? fsGroupPolicy;
   /// nodeAllocatableUpdatePeriodSeconds specifies the interval between periodic updates of the CSINode allocatable capacity for this driver. When set, both periodic updates and updates triggered by capacity-related failures are enabled. If not set, no updates occur (neither periodic nor upon detecting capacity-related failures), and the allocatable.count remains static. The minimum allowed value for this field is 10 seconds.
   ///
-  /// This is a beta feature and requires the MutableCSINodeAllocatableCount feature gate to be enabled.
+  /// This feature requires the MutableCSINodeAllocatableCount feature gate to be enabled.
   ///
   /// This field is mutable.
   final pulumi.Input<int>? nodeAllocatableUpdatePeriodSeconds;
@@ -32,6 +32,14 @@ class CSIDriverSpec {
   ///
   /// This field was immutable in Kubernetes &lt; 1.29 and now is mutable.
   final pulumi.Input<bool>? podInfoOnMount;
+  /// PreventPodSchedulingIfMissing indicates that the CSI driver wants to prevent pod scheduling if the CSI driver on the node is missing.
+  ///
+  /// Enabling this option will prevent the scheduler (or any other component which embeds default scheduler such as cluster-autoscaler) from scheduling pods to nodes where CSI driver is not installed.
+  ///
+  /// For components(such as cluster-autoscaler) that embed the scheduler and run pod placement simulations using scheduler plugins, they MUST be aware of CSI driver registration information via CSINode object. They must create simulated CSINode objects in addition to Node objects during scheduling simulation, otherwise if PreventPodSchedulingIfMissing is enabled globally for CSIDriver object, any newly created node may be rejected by the scheduler because of missing CSI driver information from the node.
+  ///
+  /// This is an alpha feature and requires the VolumeLimitScaling feature gate to be enabled. Default is "false".
+  final pulumi.Input<bool>? preventPodSchedulingIfMissing;
   /// requiresRepublish indicates the CSI driver wants `NodePublishVolume` being periodically called to reflect any possible change in the mounted volume. This field defaults to false.
   ///
   /// Note: After a successful initial NodePublishVolume call, subsequent calls to NodePublishVolume should only update the contents of the volume. New mount points will not be seen by a running container.
@@ -86,6 +94,7 @@ class CSIDriverSpec {
   /// [fsGroupPolicy] fsGroupPolicy defines if the underlying volume supports changing ownership and permission of the volume before being mounted. Refer to the specific FSGroupPolicy values for additional details.
   /// [nodeAllocatableUpdatePeriodSeconds] nodeAllocatableUpdatePeriodSeconds specifies the interval between periodic updates of the CSINode allocatable capacity for this driver. When set, both periodic updates and updates triggered by capacity-related failures are enabled. If not set, no updates occur (neither periodic nor upon detecting capacity-related failures), and the allocatable.count remains static. The minimum allowed value for this field is 10 seconds.
   /// [podInfoOnMount] podInfoOnMount indicates this CSI volume driver requires additional pod information (like podName, podUID, etc.) during mount operations, if set to true. If set to false, pod information will not be passed on mount. Default is false.
+  /// [preventPodSchedulingIfMissing] PreventPodSchedulingIfMissing indicates that the CSI driver wants to prevent pod scheduling if the CSI driver on the node is missing.
   /// [requiresRepublish] requiresRepublish indicates the CSI driver wants `NodePublishVolume` being periodically called to reflect any possible change in the mounted volume. This field defaults to false.
   /// [seLinuxMount] seLinuxMount specifies if the CSI driver supports "-o context" mount option.
   /// [serviceAccountTokenInSecrets] serviceAccountTokenInSecrets is an opt-in for CSI drivers to indicate that service account tokens should be passed via the Secrets field in NodePublishVolumeRequest instead of the VolumeContext field. The CSI specification provides a dedicated Secrets field for sensitive information like tokens, which is the appropriate mechanism for handling credentials. This addresses security concerns where sensitive tokens were being logged as part of volume context.
@@ -97,6 +106,7 @@ class CSIDriverSpec {
     this.fsGroupPolicy,
     this.nodeAllocatableUpdatePeriodSeconds,
     this.podInfoOnMount,
+    this.preventPodSchedulingIfMissing,
     this.requiresRepublish,
     this.seLinuxMount,
     this.serviceAccountTokenInSecrets,
@@ -111,6 +121,7 @@ class CSIDriverSpec {
       'fsGroupPolicy': ?fsGroupPolicy,
       'nodeAllocatableUpdatePeriodSeconds': ?nodeAllocatableUpdatePeriodSeconds,
       'podInfoOnMount': ?podInfoOnMount,
+      'preventPodSchedulingIfMissing': ?preventPodSchedulingIfMissing,
       'requiresRepublish': ?requiresRepublish,
       'seLinuxMount': ?seLinuxMount,
       'serviceAccountTokenInSecrets': ?serviceAccountTokenInSecrets,
@@ -126,6 +137,7 @@ class CSIDriverSpec {
       fsGroupPolicy: (() { final guardedValue = map['fsGroupPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeAllocatableUpdatePeriodSeconds: (() { final guardedValue = map['nodeAllocatableUpdatePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       podInfoOnMount: (() { final guardedValue = map['podInfoOnMount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      preventPodSchedulingIfMissing: (() { final guardedValue = map['preventPodSchedulingIfMissing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requiresRepublish: (() { final guardedValue = map['requiresRepublish']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       seLinuxMount: (() { final guardedValue = map['seLinuxMount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       serviceAccountTokenInSecrets: (() { final guardedValue = map['serviceAccountTokenInSecrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -135,4 +147,3 @@ class CSIDriverSpec {
     );
   }
 }
-

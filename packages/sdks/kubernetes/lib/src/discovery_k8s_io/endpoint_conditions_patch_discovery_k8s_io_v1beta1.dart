@@ -37,4 +37,3 @@ class EndpointConditionsPatchDiscoveryK8sIoV1beta1 {
     );
   }
 }
-

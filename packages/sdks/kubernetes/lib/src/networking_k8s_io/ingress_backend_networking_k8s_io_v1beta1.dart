@@ -38,4 +38,3 @@ class IngressBackendNetworkingK8sIoV1beta1 {
     );
   }
 }
-

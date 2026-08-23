@@ -55,4 +55,3 @@ class LeaseCandidateSpecPatchCoordinationK8sIoV1beta1 {
     );
   }
 }
-

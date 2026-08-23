@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'mutating_admission_policy_binding_resource.dart';
+import 'mutating_admission_policy_binding_admissionregistration_k8s_io_v1beta1_resource.dart';
 
 /// {@template pulumi_admissionregistration_k8s_io_v1beta1_mutating_admission_policy_binding_list_admissionregistration_k8s_io_v1beta1_args_doc}
 /// The set of arguments for MutatingAdmissionPolicyBindingList.
@@ -12,17 +12,17 @@ class MutatingAdmissionPolicyBindingListAdmissionregistrationK8sIoV1beta1Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
   /// List of PolicyBinding.
-  final pulumi.Input<List<MutatingAdmissionPolicyBindingResource>> items;
+  final pulumi.Input<List<MutatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1beta1Resource>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
-  /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<ListMeta>? metadata;
 
   /// Creates a new [MutatingAdmissionPolicyBindingListAdmissionregistrationK8sIoV1beta1Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   /// [items] List of PolicyBinding.
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// [metadata] Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// [metadata] metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   const MutatingAdmissionPolicyBindingListAdmissionregistrationK8sIoV1beta1Args({
     this.apiVersion,
     required this.items,
@@ -42,10 +42,9 @@ class MutatingAdmissionPolicyBindingListAdmissionregistrationK8sIoV1beta1Args {
   factory MutatingAdmissionPolicyBindingListAdmissionregistrationK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return MutatingAdmissionPolicyBindingListAdmissionregistrationK8sIoV1beta1Args(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<MutatingAdmissionPolicyBindingResource>()),
+      items: pulumi.Input.fromValue((map['items'] as List).cast<MutatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1beta1Resource>()),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

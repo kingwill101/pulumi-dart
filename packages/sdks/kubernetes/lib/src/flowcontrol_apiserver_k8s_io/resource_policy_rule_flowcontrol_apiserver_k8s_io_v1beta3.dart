@@ -49,4 +49,3 @@ class ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta3 {
     );
   }
 }
-

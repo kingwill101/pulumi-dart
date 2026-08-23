@@ -32,4 +32,3 @@ class DeviceClaimConfigurationPatchResourceK8sIoV1alpha3 {
     );
   }
 }
-

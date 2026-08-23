@@ -38,4 +38,3 @@ class LimitedPriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

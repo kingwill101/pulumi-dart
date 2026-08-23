@@ -26,4 +26,3 @@ class ServiceCIDRStatusNetworkingK8sIoV1alpha1 {
     );
   }
 }
-

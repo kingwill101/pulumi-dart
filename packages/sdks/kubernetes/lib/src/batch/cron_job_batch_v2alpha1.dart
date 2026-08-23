@@ -52,4 +52,3 @@ class CronJobBatchV2alpha1 {
     );
   }
 }
-

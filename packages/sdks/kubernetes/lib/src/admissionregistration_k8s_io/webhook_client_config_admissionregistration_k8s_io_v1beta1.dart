@@ -50,4 +50,3 @@ class WebhookClientConfigAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

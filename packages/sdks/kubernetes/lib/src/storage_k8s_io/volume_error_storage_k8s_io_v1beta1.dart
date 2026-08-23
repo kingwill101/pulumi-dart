@@ -31,4 +31,3 @@ class VolumeErrorStorageK8sIoV1beta1 {
     );
   }
 }
-

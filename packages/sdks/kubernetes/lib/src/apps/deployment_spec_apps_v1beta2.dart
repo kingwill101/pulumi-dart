@@ -70,4 +70,3 @@ class DeploymentSpecAppsV1beta2 {
     );
   }
 }
-

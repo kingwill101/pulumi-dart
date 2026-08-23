@@ -26,4 +26,3 @@ class IngressStatusPatchNetworkingK8sIoV1beta1 {
     );
   }
 }
-

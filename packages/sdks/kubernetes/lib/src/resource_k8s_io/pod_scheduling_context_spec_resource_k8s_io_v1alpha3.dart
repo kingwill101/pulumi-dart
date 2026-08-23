@@ -33,4 +33,3 @@ class PodSchedulingContextSpecResourceK8sIoV1alpha3 {
     );
   }
 }
-

@@ -33,4 +33,3 @@ class ResourceClaimTemplateSpecResourceK8sIoV1beta1 {
     );
   }
 }
-

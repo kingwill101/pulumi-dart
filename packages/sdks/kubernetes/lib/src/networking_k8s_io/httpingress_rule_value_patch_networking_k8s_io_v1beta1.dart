@@ -26,4 +26,3 @@ class HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1 {
     );
   }
 }
-

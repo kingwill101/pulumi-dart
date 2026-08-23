@@ -49,4 +49,3 @@ class PolicyRulePatchRbacAuthorizationK8sIoV1alpha1 {
     );
   }
 }
-

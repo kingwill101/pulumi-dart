@@ -40,4 +40,3 @@ class DeviceClaimResourceK8sIoV1alpha3 {
     );
   }
 }
-

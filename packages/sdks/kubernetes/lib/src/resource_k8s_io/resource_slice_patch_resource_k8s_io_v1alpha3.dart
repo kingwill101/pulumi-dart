@@ -57,4 +57,3 @@ class ResourceSlicePatchResourceK8sIoV1alpha3 {
     );
   }
 }
-

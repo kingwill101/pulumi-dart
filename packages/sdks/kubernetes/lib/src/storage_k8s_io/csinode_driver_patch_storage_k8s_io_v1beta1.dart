@@ -44,4 +44,3 @@ class CSINodeDriverPatchStorageK8sIoV1beta1 {
     );
   }
 }
-

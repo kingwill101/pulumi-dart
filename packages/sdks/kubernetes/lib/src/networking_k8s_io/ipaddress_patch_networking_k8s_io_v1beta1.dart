@@ -45,4 +45,3 @@ class IPAddressPatchNetworkingK8sIoV1beta1 {
     );
   }
 }
-

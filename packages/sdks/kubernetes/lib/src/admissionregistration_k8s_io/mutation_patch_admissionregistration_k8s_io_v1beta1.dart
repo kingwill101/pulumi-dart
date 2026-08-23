@@ -39,4 +39,3 @@ class MutationPatchAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

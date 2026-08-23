@@ -49,4 +49,3 @@ class FlowSchemaConditionFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

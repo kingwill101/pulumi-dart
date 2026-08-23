@@ -9,7 +9,7 @@ import 'device_toleration.dart';
 class ExactDeviceRequest {
   /// AdminAccess indicates that this is a claim for administrative access to the device(s). Claims with AdminAccess are expected to be used for monitoring or other management services for a device.  They ignore all ordinary claims to the device with respect to access modes and any resource allocations.
   ///
-  /// This is an alpha field and requires enabling the DRAAdminAccess feature gate. Admin access is disabled if this field is unset or set to false, otherwise it is enabled.
+  /// Admin access is disabled if this field is unset or set to false, otherwise it is enabled.
   final pulumi.Input<bool>? adminAccess;
   /// AllocationMode and its related fields define how devices are allocated to satisfy this request. Supported values are:
   ///
@@ -50,7 +50,7 @@ class ExactDeviceRequest {
   ///
   /// The maximum number of tolerations is 16.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceTaints feature gate.
+  /// This is a beta field and requires enabling the DRADeviceTaints feature gate.
   final pulumi.Input<List<DeviceToleration>>? tolerations;
 
   /// Creates a new [ExactDeviceRequest].
@@ -95,4 +95,3 @@ class ExactDeviceRequest {
     );
   }
 }
-

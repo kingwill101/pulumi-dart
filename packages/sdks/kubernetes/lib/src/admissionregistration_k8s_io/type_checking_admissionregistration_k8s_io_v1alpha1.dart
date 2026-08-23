@@ -26,4 +26,3 @@ class TypeCheckingAdmissionregistrationK8sIoV1alpha1 {
     );
   }
 }
-

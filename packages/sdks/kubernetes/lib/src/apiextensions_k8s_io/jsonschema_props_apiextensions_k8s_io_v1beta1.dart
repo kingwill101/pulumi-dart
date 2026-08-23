@@ -276,4 +276,3 @@ class JSONSchemaPropsApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

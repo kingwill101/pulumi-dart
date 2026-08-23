@@ -70,4 +70,3 @@ class ResourceClassResourceK8sIoV1alpha2 {
     );
   }
 }
-

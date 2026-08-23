@@ -130,4 +130,3 @@ class MutatingWebhookAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

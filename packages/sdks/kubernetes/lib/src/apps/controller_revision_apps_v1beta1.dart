@@ -50,4 +50,3 @@ class ControllerRevisionAppsV1beta1 {
     );
   }
 }
-

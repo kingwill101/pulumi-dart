@@ -37,4 +37,3 @@ class NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta1 {
     );
   }
 }
-

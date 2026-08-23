@@ -43,4 +43,3 @@ class SubjectPatchFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

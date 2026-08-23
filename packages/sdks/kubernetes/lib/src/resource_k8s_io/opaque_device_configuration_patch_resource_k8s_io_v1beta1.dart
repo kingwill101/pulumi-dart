@@ -37,4 +37,3 @@ class OpaqueDeviceConfigurationPatchResourceK8sIoV1beta1 {
     );
   }
 }
-

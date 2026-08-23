@@ -49,4 +49,3 @@ class PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

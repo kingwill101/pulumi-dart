@@ -10,7 +10,9 @@ class DeviceTaintPatchResourceK8sIoV1beta2 {
   final pulumi.Input<String>? effect;
   /// The taint key to be applied to a device. Must be a label name.
   final pulumi.Input<String>? key;
-  /// TimeAdded represents the time at which the taint was added. Added automatically during create or update if not set.
+  /// TimeAdded represents the time at which the taint was added or (only in a DeviceTaintRule) the effect was modified. Added automatically during create or update if not set.
+  ///
+  /// In addition, in a DeviceTaintRule a value provided during an update gets replaced with the current time if the provided value is the same as the old one and the new effect is different. Changing the key and/or value while keeping the effect unchanged is possible and does not update the time stamp because the eviction which uses it is either already started (NoExecute) or not started yet (NoEffect, NoSchedule).
   final pulumi.Input<String>? timeAdded;
   /// The taint value corresponding to the taint key. Must be a label value.
   final pulumi.Input<String>? value;
@@ -18,7 +20,7 @@ class DeviceTaintPatchResourceK8sIoV1beta2 {
   /// Creates a new [DeviceTaintPatchResourceK8sIoV1beta2].
   /// [effect] The effect of the taint on claims that do not tolerate the taint and through such claims on the pods using them.
   /// [key] The taint key to be applied to a device. Must be a label name.
-  /// [timeAdded] TimeAdded represents the time at which the taint was added. Added automatically during create or update if not set.
+  /// [timeAdded] TimeAdded represents the time at which the taint was added or (only in a DeviceTaintRule) the effect was modified. Added automatically during create or update if not set.
   /// [value] The taint value corresponding to the taint key. Must be a label value.
   const DeviceTaintPatchResourceK8sIoV1beta2({
     this.effect,
@@ -45,4 +47,3 @@ class DeviceTaintPatchResourceK8sIoV1beta2 {
     );
   }
 }
-

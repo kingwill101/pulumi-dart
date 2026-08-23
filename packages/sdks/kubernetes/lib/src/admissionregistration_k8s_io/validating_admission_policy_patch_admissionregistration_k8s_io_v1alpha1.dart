@@ -52,4 +52,3 @@ class ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1alpha1 {
     );
   }
 }
-

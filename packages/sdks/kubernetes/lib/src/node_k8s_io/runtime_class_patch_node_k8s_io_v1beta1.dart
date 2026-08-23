@@ -58,4 +58,3 @@ class RuntimeClassPatchNodeK8sIoV1beta1 {
     );
   }
 }
-

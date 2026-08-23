@@ -48,4 +48,3 @@ class IngressClassListNetworkingK8sIoV1beta1Args {
     );
   }
 }
-

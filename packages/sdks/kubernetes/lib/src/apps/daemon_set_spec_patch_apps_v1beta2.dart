@@ -52,4 +52,3 @@ class DaemonSetSpecPatchAppsV1beta2 {
     );
   }
 }
-

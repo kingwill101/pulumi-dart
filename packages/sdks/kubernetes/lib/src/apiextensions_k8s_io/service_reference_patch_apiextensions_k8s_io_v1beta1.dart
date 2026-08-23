@@ -43,4 +43,3 @@ class ServiceReferencePatchApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

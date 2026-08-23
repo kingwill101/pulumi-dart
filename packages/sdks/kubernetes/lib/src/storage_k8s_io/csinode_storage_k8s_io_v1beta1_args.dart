@@ -48,4 +48,3 @@ class CSINodeStorageK8sIoV1beta1Args {
     );
   }
 }
-

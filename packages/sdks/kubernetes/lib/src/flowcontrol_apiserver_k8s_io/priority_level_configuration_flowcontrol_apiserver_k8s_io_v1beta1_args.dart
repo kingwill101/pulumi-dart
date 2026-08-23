@@ -48,4 +48,3 @@ class PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta1Args {
     );
   }
 }
-

@@ -54,4 +54,3 @@ class CertificateSigningRequestConditionCertificatesK8sIoV1beta1 {
     );
   }
 }
-

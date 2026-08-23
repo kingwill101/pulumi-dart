@@ -29,4 +29,3 @@ class ExternalDocumentationPatchApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

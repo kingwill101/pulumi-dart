@@ -32,4 +32,3 @@ class LimitResponsePatchFlowcontrolApiserverK8sIoV1beta3 {
     );
   }
 }
-

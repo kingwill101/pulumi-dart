@@ -25,4 +25,3 @@ class CounterPatchResourceK8sIoV1beta1 {
     );
   }
 }
-

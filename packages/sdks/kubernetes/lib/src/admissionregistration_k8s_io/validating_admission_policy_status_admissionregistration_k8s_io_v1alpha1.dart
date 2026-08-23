@@ -39,4 +39,3 @@ class ValidatingAdmissionPolicyStatusAdmissionregistrationK8sIoV1alpha1 {
     );
   }
 }
-

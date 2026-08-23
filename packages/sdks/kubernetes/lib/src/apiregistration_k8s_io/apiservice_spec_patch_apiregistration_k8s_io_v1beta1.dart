@@ -62,4 +62,3 @@ class APIServiceSpecPatchApiregistrationK8sIoV1beta1 {
     );
   }
 }
-

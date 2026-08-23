@@ -48,4 +48,3 @@ class DeploymentPatchAppsV1beta1Args {
     );
   }
 }
-

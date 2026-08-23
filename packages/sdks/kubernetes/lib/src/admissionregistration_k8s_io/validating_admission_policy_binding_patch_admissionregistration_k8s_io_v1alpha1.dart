@@ -45,4 +45,3 @@ class ValidatingAdmissionPolicyBindingPatchAdmissionregistrationK8sIoV1alpha1 {
     );
   }
 }
-

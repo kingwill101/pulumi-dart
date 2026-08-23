@@ -48,4 +48,3 @@ class PriorityClassListSchedulingK8sIoV1alpha1Args {
     );
   }
 }
-

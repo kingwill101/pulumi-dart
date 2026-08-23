@@ -55,4 +55,3 @@ class PodDisruptionBudgetStatusPatchPolicyV1beta1 {
     );
   }
 }
-

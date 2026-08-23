@@ -52,4 +52,3 @@ class VolumeAttributesClassPatchStorageK8sIoV1beta1 {
     );
   }
 }
-

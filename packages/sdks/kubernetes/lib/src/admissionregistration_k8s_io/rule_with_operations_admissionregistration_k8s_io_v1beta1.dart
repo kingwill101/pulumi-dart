@@ -55,4 +55,3 @@ class RuleWithOperationsAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

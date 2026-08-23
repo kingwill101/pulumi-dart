@@ -38,4 +38,3 @@ class PodsMetricSourceAutoscalingV2beta1 {
     );
   }
 }
-

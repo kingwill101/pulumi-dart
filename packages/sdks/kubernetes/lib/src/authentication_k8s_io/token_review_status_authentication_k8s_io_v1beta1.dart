@@ -44,4 +44,3 @@ class TokenReviewStatusAuthenticationK8sIoV1beta1 {
     );
   }
 }
-

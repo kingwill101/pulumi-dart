@@ -45,4 +45,3 @@ class DaemonSetListAppsV1beta2 {
     );
   }
 }
-

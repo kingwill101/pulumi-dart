@@ -43,4 +43,3 @@ class ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1 {
     );
   }
 }
-

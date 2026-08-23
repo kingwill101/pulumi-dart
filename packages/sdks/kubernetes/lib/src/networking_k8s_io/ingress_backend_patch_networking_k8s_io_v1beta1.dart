@@ -38,4 +38,3 @@ class IngressBackendPatchNetworkingK8sIoV1beta1 {
     );
   }
 }
-

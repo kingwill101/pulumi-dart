@@ -50,4 +50,3 @@ class ResourceSlicePatchResourceK8sIoV1beta1Args {
     );
   }
 }
-

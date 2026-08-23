@@ -1,0 +1,81 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// PoolStatus contains status information for a single resource pool.
+class PoolStatusPatch {
+  /// AllocatedDevices is the number of devices currently allocated to claims. A value of 0 means no devices are allocated. May be unset when validationError is set.
+  final pulumi.Input<int>? allocatedDevices;
+  /// AvailableDevices is the number of devices available for allocation. This equals TotalDevices - AllocatedDevices - UnavailableDevices. A value of 0 means no devices are currently available. May be unset when validationError is set.
+  final pulumi.Input<int>? availableDevices;
+  /// Driver is the DRA driver name for this pool. Must be a DNS subdomain (e.g., "gpu.example.com").
+  final pulumi.Input<String>? driver;
+  /// Generation is the pool generation observed across all ResourceSlices in this pool. Only the latest generation is reported. During a generation rollout, if not all slices at the latest generation have been published, the pool is included with a validationError and device counts unset.
+  final pulumi.Input<int>? generation;
+  /// NodeName is the node this pool is associated with. When omitted, the pool is not associated with a specific node. Must be a valid DNS subdomain name (RFC1123).
+  final pulumi.Input<String>? nodeName;
+  /// PoolName is the name of the pool. Must be a valid resource pool name (DNS subdomains separated by "/").
+  final pulumi.Input<String>? poolName;
+  /// ResourceSliceCount is the number of ResourceSlices that make up this pool. May be unset when validationError is set.
+  final pulumi.Input<int>? resourceSliceCount;
+  /// TotalDevices is the total number of devices in the pool across all slices. A value of 0 means the pool has no devices. May be unset when validationError is set.
+  final pulumi.Input<int>? totalDevices;
+  /// UnavailableDevices is the number of devices that are not available due to taints or other conditions, but are not allocated. A value of 0 means all unallocated devices are available. May be unset when validationError is set.
+  final pulumi.Input<int>? unavailableDevices;
+  /// ValidationError is set when the pool's data could not be fully validated (e.g., incomplete slice publication). When set, device count fields and ResourceSliceCount may be unset.
+  final pulumi.Input<String>? validationError;
+
+  /// Creates a new [PoolStatusPatch].
+  /// [allocatedDevices] AllocatedDevices is the number of devices currently allocated to claims. A value of 0 means no devices are allocated. May be unset when validationError is set.
+  /// [availableDevices] AvailableDevices is the number of devices available for allocation. This equals TotalDevices - AllocatedDevices - UnavailableDevices. A value of 0 means no devices are currently available. May be unset when validationError is set.
+  /// [driver] Driver is the DRA driver name for this pool. Must be a DNS subdomain (e.g., "gpu.example.com").
+  /// [generation] Generation is the pool generation observed across all ResourceSlices in this pool. Only the latest generation is reported. During a generation rollout, if not all slices at the latest generation have been published, the pool is included with a validationError and device counts unset.
+  /// [nodeName] NodeName is the node this pool is associated with. When omitted, the pool is not associated with a specific node. Must be a valid DNS subdomain name (RFC1123).
+  /// [poolName] PoolName is the name of the pool. Must be a valid resource pool name (DNS subdomains separated by "/").
+  /// [resourceSliceCount] ResourceSliceCount is the number of ResourceSlices that make up this pool. May be unset when validationError is set.
+  /// [totalDevices] TotalDevices is the total number of devices in the pool across all slices. A value of 0 means the pool has no devices. May be unset when validationError is set.
+  /// [unavailableDevices] UnavailableDevices is the number of devices that are not available due to taints or other conditions, but are not allocated. A value of 0 means all unallocated devices are available. May be unset when validationError is set.
+  /// [validationError] ValidationError is set when the pool's data could not be fully validated (e.g., incomplete slice publication). When set, device count fields and ResourceSliceCount may be unset.
+  const PoolStatusPatch({
+    this.allocatedDevices,
+    this.availableDevices,
+    this.driver,
+    this.generation,
+    this.nodeName,
+    this.poolName,
+    this.resourceSliceCount,
+    this.totalDevices,
+    this.unavailableDevices,
+    this.validationError,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'allocatedDevices': ?allocatedDevices,
+      'availableDevices': ?availableDevices,
+      'driver': ?driver,
+      'generation': ?generation,
+      'nodeName': ?nodeName,
+      'poolName': ?poolName,
+      'resourceSliceCount': ?resourceSliceCount,
+      'totalDevices': ?totalDevices,
+      'unavailableDevices': ?unavailableDevices,
+      'validationError': ?validationError,
+    };
+  }
+
+  factory PoolStatusPatch.fromMap(Map<String, dynamic> map) {
+    return PoolStatusPatch(
+      allocatedDevices: (() { final guardedValue = map['allocatedDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      availableDevices: (() { final guardedValue = map['availableDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeName: (() { final guardedValue = map['nodeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      poolName: (() { final guardedValue = map['poolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceSliceCount: (() { final guardedValue = map['resourceSliceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalDevices: (() { final guardedValue = map['totalDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      unavailableDevices: (() { final guardedValue = map['unavailableDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      validationError: (() { final guardedValue = map['validationError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+    );
+  }
+}

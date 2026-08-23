@@ -26,4 +26,3 @@ class DeviceClassConfigurationResourceK8sIoV1alpha3 {
     );
   }
 }
-

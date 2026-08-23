@@ -26,4 +26,3 @@ class DeviceSelectorPatchResourceK8sIoV1beta1 {
     );
   }
 }
-

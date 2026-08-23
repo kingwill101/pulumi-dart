@@ -751,6 +751,86 @@ import 'repository_opts.dart';
 /// }
 /// ```
 /// {{% /example %}}
+/// {{% example %}}
+/// ### Take Ownership of Existing Resources
+///
+/// ```typescript
+/// import * as k8s from "@pulumi/kubernetes";
+///
+/// const nginxIngress = new k8s.helm.v3.Release("nginx-ingress", {
+///     chart: "nginx-ingress",
+///     version: "1.24.4",
+///     repositoryOpts: {
+///         repo: "https://charts.helm.sh/stable",
+///     },
+///     takeOwnership: true,
+/// });
+/// ```
+/// ```python
+/// from pulumi_kubernetes.helm.v3 import Release, ReleaseArgs, RepositoryOptsArgs
+///
+/// nginx_ingress = Release(
+///     "nginx-ingress",
+///     ReleaseArgs(
+///         chart="nginx-ingress",
+///         version="1.24.4",
+///         repository_opts=RepositoryOptsArgs(
+///             repo="https://charts.helm.sh/stable",
+///         ),
+///         take_ownership=True,
+///     ),
+/// )
+/// ```
+/// ```csharp
+/// using Pulumi;
+/// using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
+/// using Pulumi.Kubernetes.Helm.V3;
+///
+/// class HelmStack : Stack
+/// {
+///     public HelmStack()
+///     {
+///         var nginx = new Release("nginx-ingress", new ReleaseArgs
+///         {
+///             Chart = "nginx-ingress",
+///             Version = "1.24.4",
+///             RepositoryOpts = new RepositoryOptsArgs
+///             {
+///                 Repo = "https://charts.helm.sh/stable"
+///             },
+///             TakeOwnership = true,
+///         });
+///
+///     }
+/// }
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/helm/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := helm.NewRelease(ctx, "nginx-ingress", &helm.ReleaseArgs{
+/// 			Chart:   pulumi.String("nginx-ingress"),
+/// 			Version: pulumi.String("1.24.4"),
+/// 			RepositoryOpts: helm.RepositoryOptsArgs{
+/// 				Repo: pulumi.String("https://charts.helm.sh/stable"),
+/// 			},
+/// 			TakeOwnership: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+///
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// {{% /example %}}
 /// {{% /examples %}}
 ///
 /// ## Import
@@ -819,6 +899,8 @@ class Release extends pulumi.CustomResource {
   late final pulumi.Output<bool?> skipCrds;
   /// Status of the deployed release.
   late final pulumi.Output<ReleaseStatus> status;
+  /// If set, install/upgrade will skip the check for existing resource conflicts and take ownership of the matching resources, adopting any that are not already managed by this release. This mirrors the Helm `--take-ownership` flag.
+  late final pulumi.Output<bool?> takeOwnership;
   /// Time in seconds to wait for any individual kubernetes operation.
   late final pulumi.Output<int?> timeout;
   /// List of assets (raw yaml files). Content is read and merged with values (with values taking precedence).
@@ -875,6 +957,7 @@ class Release extends pulumi.CustomResource {
     skipAwait = registerOutput<bool?>('skipAwait');
     skipCrds = registerOutput<bool?>('skipCrds');
     status = registerOutput<ReleaseStatus>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReleaseStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    takeOwnership = registerOutput<bool?>('takeOwnership');
     timeout = registerOutput<int?>('timeout');
     valueYamlFiles = registerOutput<List<Map<String, dynamic>>?>('valueYamlFiles');
     values = registerOutput<Map<String, dynamic>?>('values');

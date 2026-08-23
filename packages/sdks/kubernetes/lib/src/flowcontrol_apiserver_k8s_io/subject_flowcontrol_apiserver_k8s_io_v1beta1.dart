@@ -43,4 +43,3 @@ class SubjectFlowcontrolApiserverK8sIoV1beta1 {
     );
   }
 }
-

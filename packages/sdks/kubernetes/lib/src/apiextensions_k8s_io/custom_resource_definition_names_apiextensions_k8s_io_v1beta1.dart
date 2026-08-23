@@ -55,4 +55,3 @@ class CustomResourceDefinitionNamesApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

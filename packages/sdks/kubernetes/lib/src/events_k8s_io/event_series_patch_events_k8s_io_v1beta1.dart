@@ -37,4 +37,3 @@ class EventSeriesPatchEventsK8sIoV1beta1 {
     );
   }
 }
-

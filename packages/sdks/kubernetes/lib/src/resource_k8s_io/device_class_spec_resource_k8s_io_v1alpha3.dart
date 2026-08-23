@@ -46,4 +46,3 @@ class DeviceClassSpecResourceK8sIoV1alpha3 {
     );
   }
 }
-

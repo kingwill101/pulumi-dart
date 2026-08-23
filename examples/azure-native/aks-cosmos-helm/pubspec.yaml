@@ -10,7 +10,7 @@ dependencies:
   pulumi: 3.0.0
   pulumi_azure_native: 3.26.0
   pulumi_azuread: 6.10.0
-  pulumi_kubernetes: 4.26.0
+  pulumi_kubernetes: 4.33.0
   pulumi_random: 4.19.1
   pulumi_tls: 5.3.0
 

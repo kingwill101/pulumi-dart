@@ -73,6 +73,20 @@ class KubernetesConfig {
 
   bool get enableConfigMapMutableIsSecret => _isSecret('enableConfigMapMutable');
 
+  /// If present and set to true, enable patch force on all Server-Side Apply operations, overriding any field conflicts.
+  /// See https://github.com/pulumi/pulumi-kubernetes/issues/2280 for additional details.
+  ///
+  /// This config can be specified in the following ways using this precedence:
+  /// 1. The `pulumi.com/patchForce` annotation on the resource.
+  /// 2. This `enablePatchForce` parameter.
+  /// 3. The `PULUMI_K8S_ENABLE_PATCH_FORCE` environment variable.
+  bool? get enablePatchForce {
+    final raw = _raw('enablePatchForce');
+    return (raw).toBool();
+  }
+
+  bool get enablePatchForceIsSecret => _isSecret('enablePatchForce');
+
   /// Obsolete. This option has no effect.
   bool? get enableReplaceCRD {
     final raw = _raw('enableReplaceCRD');
@@ -128,6 +142,11 @@ class KubernetesConfig {
   /// be created on a Kubernetes cluster, but the rendered manifests will be kept in sync with changes
   /// to the Pulumi program. This feature is in developer preview, and is disabled by default.
   ///
+  /// Render mode attempts to connect to the cluster identified by your kubeconfig to determine whether
+  /// custom resources are namespaced or cluster-scoped. When no cluster is reachable, rendering proceeds
+  /// anyway. Affected resources are written without a namespace scope, falling back to kubectl's default
+  /// namespace behavior on apply, and a warning naming each unresolved kind is emitted.
+  ///
   /// Note that some computed Outputs such as status fields will not be populated
   /// since the resources are not created on a Kubernetes cluster. These Output values will remain undefined,
   /// and may result in an error if they are referenced by other resources. Also note that any secret values
@@ -179,7 +198,20 @@ class KubernetesConfig {
 
   bool get suppressHelmHookWarningsIsSecret => _isSecret('suppressHelmHookWarnings');
 
+  /// If present and set to true, allow Pulumi to create resources that already exist in the cluster by updating them instead of returning an error.
+  /// By default, Pulumi will error if a resource already exists in the cluster to prevent accidental data loss. When a Pulumi resource is renamed without using aliases, the engine plans a create followed by a delete targeting the same cluster object. With server-side apply, the create silently updates the existing object, and the subsequent delete removes it — resulting in unexpected resource deletion.
+  /// Enabling this option restores the previous upsert behavior for users who intentionally adopt existing cluster resources into Pulumi.
+  ///
+  /// This config can be specified in the following ways using this precedence:
+  /// 1. This `upsertExistingObjects` parameter.
+  /// 2. The `PULUMI_K8S_UPSERT_EXISTING_OBJECTS` environment variable.
+  bool? get upsertExistingObjects {
+    final raw = _raw('upsertExistingObjects');
+    return (raw).toBool();
+  }
+
+  bool get upsertExistingObjectsIsSecret => _isSecret('upsertExistingObjects');
+
 }
 
 const config = KubernetesConfig();
-

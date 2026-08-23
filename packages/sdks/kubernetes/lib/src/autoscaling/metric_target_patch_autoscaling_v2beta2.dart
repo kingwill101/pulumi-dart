@@ -43,4 +43,3 @@ class MetricTargetPatchAutoscalingV2beta2 {
     );
   }
 }
-

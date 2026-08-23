@@ -52,4 +52,3 @@ class RoleBindingPatchRbacAuthorizationK8sIoV1alpha1 {
     );
   }
 }
-

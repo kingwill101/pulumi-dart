@@ -40,4 +40,3 @@ class PolicyRulesWithSubjectsFlowcontrolApiserverK8sIoV1beta3 {
     );
   }
 }
-

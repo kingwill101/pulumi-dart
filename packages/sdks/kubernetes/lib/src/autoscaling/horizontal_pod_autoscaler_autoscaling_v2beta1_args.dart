@@ -48,4 +48,3 @@ class HorizontalPodAutoscalerAutoscalingV2beta1Args {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class ServiceCIDRNetworkingK8sIoV1alpha1 {
     );
   }
 }
-

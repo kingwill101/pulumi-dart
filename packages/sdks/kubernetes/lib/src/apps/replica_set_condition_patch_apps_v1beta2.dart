@@ -49,4 +49,3 @@ class ReplicaSetConditionPatchAppsV1beta2 {
     );
   }
 }
-

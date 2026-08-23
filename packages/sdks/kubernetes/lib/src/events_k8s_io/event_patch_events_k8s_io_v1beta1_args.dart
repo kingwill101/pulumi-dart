@@ -127,4 +127,3 @@ class EventPatchEventsK8sIoV1beta1Args {
     );
   }
 }
-

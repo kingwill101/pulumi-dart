@@ -26,4 +26,3 @@ class IPAddressSpecPatchNetworkingK8sIoV1alpha1 {
     );
   }
 }
-

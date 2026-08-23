@@ -37,4 +37,3 @@ class ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2 {
     );
   }
 }
-

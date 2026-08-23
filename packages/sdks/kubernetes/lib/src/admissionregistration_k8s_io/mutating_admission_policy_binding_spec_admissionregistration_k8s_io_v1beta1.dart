@@ -39,4 +39,3 @@ class MutatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

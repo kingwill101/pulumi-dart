@@ -55,4 +55,3 @@ class CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

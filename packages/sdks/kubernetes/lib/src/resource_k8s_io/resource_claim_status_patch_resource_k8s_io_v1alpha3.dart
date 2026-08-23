@@ -49,4 +49,3 @@ class ResourceClaimStatusPatchResourceK8sIoV1alpha3 {
     );
   }
 }
-

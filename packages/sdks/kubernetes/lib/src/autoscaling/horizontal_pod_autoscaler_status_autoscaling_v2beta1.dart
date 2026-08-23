@@ -57,4 +57,3 @@ class HorizontalPodAutoscalerStatusAutoscalingV2beta1 {
     );
   }
 }
-

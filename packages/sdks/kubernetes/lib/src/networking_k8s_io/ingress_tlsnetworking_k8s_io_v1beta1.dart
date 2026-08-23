@@ -31,4 +31,3 @@ class IngressTLSNetworkingK8sIoV1beta1 {
     );
   }
 }
-

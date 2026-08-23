@@ -52,4 +52,3 @@ class ScaleAppsV1beta2 {
     );
   }
 }
-

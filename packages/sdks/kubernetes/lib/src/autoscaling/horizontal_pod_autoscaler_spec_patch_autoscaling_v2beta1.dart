@@ -45,4 +45,3 @@ class HorizontalPodAutoscalerSpecPatchAutoscalingV2beta1 {
     );
   }
 }
-

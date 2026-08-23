@@ -48,4 +48,3 @@ class CronJobPatchBatchV2alpha1Args {
     );
   }
 }
-

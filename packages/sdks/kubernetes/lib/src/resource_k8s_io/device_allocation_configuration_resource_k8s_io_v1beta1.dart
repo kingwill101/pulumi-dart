@@ -40,4 +40,3 @@ class DeviceAllocationConfigurationResourceK8sIoV1beta1 {
     );
   }
 }
-

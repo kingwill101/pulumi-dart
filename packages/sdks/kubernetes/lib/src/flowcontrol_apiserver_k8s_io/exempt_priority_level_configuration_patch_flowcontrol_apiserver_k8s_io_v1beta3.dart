@@ -37,4 +37,3 @@ class ExemptPriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1beta3 {
     );
   }
 }
-

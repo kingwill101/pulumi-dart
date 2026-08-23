@@ -31,4 +31,3 @@ class ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1 {
     );
   }
 }
-

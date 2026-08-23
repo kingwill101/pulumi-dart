@@ -6,6 +6,7 @@ import 'device_attribute_resource_k8s_io_v1beta1.dart';
 import 'device_capacity_resource_k8s_io_v1beta1.dart';
 import 'device_counter_consumption_resource_k8s_io_v1beta1.dart';
 import 'device_taint_resource_k8s_io_v1beta1.dart';
+import 'node_allocatable_resource_mapping_resource_k8s_io_v1beta1.dart';
 
 /// BasicDevice defines one device instance.
 class BasicDeviceResourceK8sIoV1beta1 {
@@ -27,7 +28,7 @@ class BasicDeviceResourceK8sIoV1beta1 {
   ///
   /// The conditions must be a valid condition type string.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
+  /// This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
   final pulumi.Input<List<String>>? bindingConditions;
   /// BindingFailureConditions defines the conditions for binding failure. They may be set in the per-device status conditions. If any is true, a binding failure occurred.
   ///
@@ -35,11 +36,11 @@ class BasicDeviceResourceK8sIoV1beta1 {
   ///
   /// The conditions must be a valid condition type string.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
+  /// This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
   final pulumi.Input<List<String>>? bindingFailureConditions;
   /// BindsToNode indicates if the usage of an allocation involving this device has to be limited to exactly the node that was chosen when allocating the claim. If set to true, the scheduler will set the ResourceClaim.Status.Allocation.NodeSelector to match the node where the allocation was made.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
+  /// This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
   final pulumi.Input<bool>? bindsToNode;
   /// Capacity defines the set of capacities for this device. The name of each capacity must be unique in that set.
   ///
@@ -51,6 +52,8 @@ class BasicDeviceResourceK8sIoV1beta1 {
   ///
   /// The maximum number of device counter consumptions per device is 2.
   final pulumi.Input<List<DeviceCounterConsumptionResourceK8sIoV1beta1>>? consumesCounters;
+  /// NodeAllocatableResourceMappings defines the mapping of node resources that are managed by the DRA driver exposing this device. This includes resources currently reported in v1.Node `status.allocatable` that are not extended resources (see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#extended-resources). Examples include "cpu", "memory", "ephemeral-storage", and hugepages. In addition to standard requests made through the Pod `spec`, these resources can also be requested through claims and allocated by the DRA driver. For example, a CPU DRA driver might allocate exclusive CPUs or auxiliary node memory dependencies of an accelerator device. The keys of this map are the node-allocatable resource names (e.g., "cpu", "memory"). Extended resource names are not permitted as keys.
+  final pulumi.Input<Map<String, NodeAllocatableResourceMappingResourceK8sIoV1beta1>>? nodeAllocatableResourceMappings;
   /// NodeName identifies the node where the device is available.
   ///
   /// Must only be set if Spec.PerDeviceNodeSelection is set to true. At most one of NodeName, NodeSelector and AllNodes can be set.
@@ -65,7 +68,7 @@ class BasicDeviceResourceK8sIoV1beta1 {
   ///
   /// The maximum number of taints is 16. If taints are set for any device in a ResourceSlice, then the maximum number of allowed devices per ResourceSlice is 64 instead of 128.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceTaints feature gate.
+  /// This is a beta field and requires enabling the DRADeviceTaints feature gate.
   final pulumi.Input<List<DeviceTaintResourceK8sIoV1beta1>>? taints;
 
   /// Creates a new [BasicDeviceResourceK8sIoV1beta1].
@@ -77,6 +80,7 @@ class BasicDeviceResourceK8sIoV1beta1 {
   /// [bindsToNode] BindsToNode indicates if the usage of an allocation involving this device has to be limited to exactly the node that was chosen when allocating the claim. If set to true, the scheduler will set the ResourceClaim.Status.Allocation.NodeSelector to match the node where the allocation was made.
   /// [capacity] Capacity defines the set of capacities for this device. The name of each capacity must be unique in that set.
   /// [consumesCounters] ConsumesCounters defines a list of references to sharedCounters and the set of counters that the device will consume from those counter sets.
+  /// [nodeAllocatableResourceMappings] NodeAllocatableResourceMappings defines the mapping of node resources that are managed by the DRA driver exposing this device. This includes resources currently reported in v1.Node `status.allocatable` that are not extended resources (see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#extended-resources). Examples include "cpu", "memory", "ephemeral-storage", and hugepages. In addition to standard requests made through the Pod `spec`, these resources can also be requested through claims and allocated by the DRA driver. For example, a CPU DRA driver might allocate exclusive CPUs or auxiliary node memory dependencies of an accelerator device. The keys of this map are the node-allocatable resource names (e.g., "cpu", "memory"). Extended resource names are not permitted as keys.
   /// [nodeName] NodeName identifies the node where the device is available.
   /// [nodeSelector] NodeSelector defines the nodes where the device is available.
   /// [taints] If specified, these are the driver-defined taints.
@@ -89,6 +93,7 @@ class BasicDeviceResourceK8sIoV1beta1 {
     this.bindsToNode,
     this.capacity,
     this.consumesCounters,
+    this.nodeAllocatableResourceMappings,
     this.nodeName,
     this.nodeSelector,
     this.taints,
@@ -104,6 +109,7 @@ class BasicDeviceResourceK8sIoV1beta1 {
       'bindsToNode': ?bindsToNode,
       'capacity': ?pulumi.Input.mapOptionalInputValue<Map<String, DeviceCapacityResourceK8sIoV1beta1>, Map<String, Map<String, dynamic>>>(capacity, (value) => pulumi.Input.encodeMapValues<DeviceCapacityResourceK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'consumesCounters': ?pulumi.Input.mapOptionalInputValue<List<DeviceCounterConsumptionResourceK8sIoV1beta1>, List<Map<String, dynamic>>>(consumesCounters, (value) => pulumi.Input.encodeList<DeviceCounterConsumptionResourceK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeAllocatableResourceMappings': ?pulumi.Input.mapOptionalInputValue<Map<String, NodeAllocatableResourceMappingResourceK8sIoV1beta1>, Map<String, Map<String, dynamic>>>(nodeAllocatableResourceMappings, (value) => pulumi.Input.encodeMapValues<NodeAllocatableResourceMappingResourceK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nodeName': ?nodeName,
       'nodeSelector': ?pulumi.Input.mapOptionalInputValue<NodeSelector, Map<String, dynamic>>(nodeSelector, (value) => value.toMap()),
       'taints': ?pulumi.Input.mapOptionalInputValue<List<DeviceTaintResourceK8sIoV1beta1>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<DeviceTaintResourceK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -120,10 +126,10 @@ class BasicDeviceResourceK8sIoV1beta1 {
       bindsToNode: (() { final guardedValue = map['bindsToNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<DeviceCapacityResourceK8sIoV1beta1>(guardedValue, (value) => DeviceCapacityResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
       consumesCounters: (() { final guardedValue = map['consumesCounters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeviceCounterConsumptionResourceK8sIoV1beta1>(guardedValue, (value) => DeviceCounterConsumptionResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      nodeAllocatableResourceMappings: (() { final guardedValue = map['nodeAllocatableResourceMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<NodeAllocatableResourceMappingResourceK8sIoV1beta1>(guardedValue, (value) => NodeAllocatableResourceMappingResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
       nodeName: (() { final guardedValue = map['nodeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeSelector: (() { final guardedValue = map['nodeSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       taints: (() { final guardedValue = map['taints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeviceTaintResourceK8sIoV1beta1>(guardedValue, (value) => DeviceTaintResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

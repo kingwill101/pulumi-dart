@@ -25,4 +25,3 @@ class RollingUpdateDaemonSetAppsV1beta2 {
     );
   }
 }
-

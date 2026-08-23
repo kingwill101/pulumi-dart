@@ -46,4 +46,3 @@ class APIServiceListApiregistrationK8sIoV1beta1Args {
     );
   }
 }
-

@@ -14,20 +14,25 @@ class ResourceHealth {
   ///
   /// In future we may want to introduce the PermanentlyUnhealthy Status.
   final pulumi.Input<String>? health;
+  /// Message provides human-readable context for Health (e.g. "ECC error count exceeded threshold"). This field is populated by the kubelet when ResourceHealthStatusMessage is enabled if the DRA plugin returns a message, and is null otherwise.
+  final pulumi.Input<String>? message;
   /// ResourceID is the unique identifier of the resource. See the ResourceID type for more information.
   final pulumi.Input<String> resourceID;
 
   /// Creates a new [ResourceHealth].
   /// [health] Health of the resource. can be one of:
+  /// [message] Message provides human-readable context for Health (e.g. "ECC error count exceeded threshold"). This field is populated by the kubelet when ResourceHealthStatusMessage is enabled if the DRA plugin returns a message, and is null otherwise.
   /// [resourceID] ResourceID is the unique identifier of the resource. See the ResourceID type for more information.
   const ResourceHealth({
     this.health,
+    this.message,
     required this.resourceID,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'health': ?health,
+      'message': ?message,
       'resourceID': resourceID,
     };
   }
@@ -35,8 +40,8 @@ class ResourceHealth {
   factory ResourceHealth.fromMap(Map<String, dynamic> map) {
     return ResourceHealth(
       health: (() { final guardedValue = map['health']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceID: pulumi.Input.fromValue(map['resourceID'] as String),
     );
   }
 }
-

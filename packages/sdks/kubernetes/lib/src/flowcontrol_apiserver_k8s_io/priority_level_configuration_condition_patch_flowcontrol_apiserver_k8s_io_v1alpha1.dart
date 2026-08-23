@@ -49,4 +49,3 @@ class PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1alpha1 
     );
   }
 }
-

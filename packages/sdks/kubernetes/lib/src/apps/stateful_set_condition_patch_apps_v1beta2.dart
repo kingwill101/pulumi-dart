@@ -49,4 +49,3 @@ class StatefulSetConditionPatchAppsV1beta2 {
     );
   }
 }
-

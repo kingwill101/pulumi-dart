@@ -10,7 +10,7 @@ class ValidatingWebhookConfigurationListAdmissionregistrationK8sIoV1 extends pul
   late final pulumi.Output<List<Map<String, dynamic>>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
-  /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<ListMeta> metadata;
 
   /// Creates a new [ValidatingWebhookConfigurationListAdmissionregistrationK8sIoV1].

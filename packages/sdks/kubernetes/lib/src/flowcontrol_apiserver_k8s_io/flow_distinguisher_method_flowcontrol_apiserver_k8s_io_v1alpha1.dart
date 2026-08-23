@@ -25,4 +25,3 @@ class FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

@@ -45,4 +45,3 @@ class SubjectRulesReviewStatusAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

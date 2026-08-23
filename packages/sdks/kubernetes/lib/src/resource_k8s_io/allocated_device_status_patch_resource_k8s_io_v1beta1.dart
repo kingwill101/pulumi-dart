@@ -73,4 +73,3 @@ class AllocatedDeviceStatusPatchResourceK8sIoV1beta1 {
     );
   }
 }
-

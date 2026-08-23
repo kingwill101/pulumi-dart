@@ -25,4 +25,3 @@ class GroupSubjectFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

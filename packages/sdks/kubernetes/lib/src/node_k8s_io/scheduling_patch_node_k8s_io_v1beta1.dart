@@ -32,4 +32,3 @@ class SchedulingPatchNodeK8sIoV1beta1 {
     );
   }
 }
-

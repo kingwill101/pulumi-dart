@@ -49,4 +49,3 @@ class LeaseSpecCoordinationK8sIoV1beta1 {
     );
   }
 }
-

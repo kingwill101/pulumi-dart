@@ -43,4 +43,3 @@ class ParentReferencePatchNetworkingK8sIoV1beta1 {
     );
   }
 }
-

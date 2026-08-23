@@ -16,11 +16,11 @@ class ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1 extends pulumi.
   late final pulumi.Output<String?> apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-  /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
+  /// metadata is the standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-  /// Specification of the desired behavior of the ValidatingAdmissionPolicy.
+  /// spec defines the desired behavior of the ValidatingAdmissionPolicy.
   late final pulumi.Output<ValidatingAdmissionPolicySpecPatch?> spec;
-  /// The status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only.
+  /// status represents the current status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only.
   late final pulumi.Output<ValidatingAdmissionPolicyStatusPatch?> status;
 
   /// Creates a new [ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1].

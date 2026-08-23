@@ -46,4 +46,3 @@ class FlowSchemaSpecFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

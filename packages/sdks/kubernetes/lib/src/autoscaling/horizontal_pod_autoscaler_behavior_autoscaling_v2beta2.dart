@@ -35,4 +35,3 @@ class HorizontalPodAutoscalerBehaviorAutoscalingV2beta2 {
     );
   }
 }
-

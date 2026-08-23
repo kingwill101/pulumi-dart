@@ -32,4 +32,3 @@ class LimitResponseFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

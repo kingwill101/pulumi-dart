@@ -43,4 +43,3 @@ class ServiceReferenceApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

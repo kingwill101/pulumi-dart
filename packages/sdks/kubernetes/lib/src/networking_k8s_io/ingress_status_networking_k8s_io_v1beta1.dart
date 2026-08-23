@@ -26,4 +26,3 @@ class IngressStatusNetworkingK8sIoV1beta1 {
     );
   }
 }
-

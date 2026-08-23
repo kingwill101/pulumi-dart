@@ -37,4 +37,3 @@ class HPAScalingPolicyPatchAutoscalingV2beta2 {
     );
   }
 }
-

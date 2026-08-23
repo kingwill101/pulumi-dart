@@ -48,4 +48,3 @@ class CSIStorageCapacityListStorageK8sIoV1beta1Args {
     );
   }
 }
-

@@ -45,4 +45,3 @@ class ValidatingAdmissionPolicyListAdmissionregistrationK8sIoV1alpha1 {
     );
   }
 }
-

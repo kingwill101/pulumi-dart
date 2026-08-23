@@ -32,4 +32,3 @@ class IngressClassSpecPatchNetworkingK8sIoV1beta1 {
     );
   }
 }
-

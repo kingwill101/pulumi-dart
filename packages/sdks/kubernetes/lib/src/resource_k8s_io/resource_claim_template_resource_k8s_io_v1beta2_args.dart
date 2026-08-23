@@ -50,4 +50,3 @@ class ResourceClaimTemplateResourceK8sIoV1beta2Args {
     );
   }
 }
-

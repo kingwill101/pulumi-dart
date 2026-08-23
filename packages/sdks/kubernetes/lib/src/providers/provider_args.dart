@@ -30,6 +30,14 @@ class ProviderArgs {
   /// 1. This `enableConfigMapMutable` parameter.
   /// 2. The `PULUMI_K8S_ENABLE_CONFIGMAP_MUTABLE` environment variable.
   final pulumi.Input<bool>? enableConfigMapMutable;
+  /// If present and set to true, enable patch force on all Server-Side Apply operations, overriding any field conflicts.
+  /// See https://github.com/pulumi/pulumi-kubernetes/issues/2280 for additional details.
+  ///
+  /// This config can be specified in the following ways using this precedence:
+  /// 1. The `pulumi.com/patchForce` annotation on the resource.
+  /// 2. This `enablePatchForce` parameter.
+  /// 3. The `PULUMI_K8S_ENABLE_PATCH_FORCE` environment variable.
+  final pulumi.Input<bool>? enablePatchForce;
   /// BETA FEATURE - If present and set to true, allow Secrets to be mutated.
   /// This feature is in developer preview, and is disabled by default.
   ///
@@ -57,6 +65,11 @@ class ProviderArgs {
   /// be created on a Kubernetes cluster, but the rendered manifests will be kept in sync with changes
   /// to the Pulumi program. This feature is in developer preview, and is disabled by default.
   ///
+  /// Render mode attempts to connect to the cluster identified by your kubeconfig to determine whether
+  /// custom resources are namespaced or cluster-scoped. When no cluster is reachable, rendering proceeds
+  /// anyway. Affected resources are written without a namespace scope, falling back to kubectl's default
+  /// namespace behavior on apply, and a warning naming each unresolved kind is emitted.
+  ///
   /// Note that some computed Outputs such as status fields will not be populated
   /// since the resources are not created on a Kubernetes cluster. These Output values will remain undefined,
   /// and may result in an error if they are referenced by other resources. Also note that any secret values
@@ -68,6 +81,14 @@ class ProviderArgs {
   final pulumi.Input<bool>? suppressDeprecationWarnings;
   /// If present and set to true, suppress unsupported Helm hook warnings from the CLI.
   final pulumi.Input<bool>? suppressHelmHookWarnings;
+  /// If present and set to true, allow Pulumi to create resources that already exist in the cluster by updating them instead of returning an error.
+  /// By default, Pulumi will error if a resource already exists in the cluster to prevent accidental data loss. When a Pulumi resource is renamed without using aliases, the engine plans a create followed by a delete targeting the same cluster object. With server-side apply, the create silently updates the existing object, and the subsequent delete removes it — resulting in unexpected resource deletion.
+  /// Enabling this option restores the previous upsert behavior for users who intentionally adopt existing cluster resources into Pulumi.
+  ///
+  /// This config can be specified in the following ways using this precedence:
+  /// 1. This `upsertExistingObjects` parameter.
+  /// 2. The `PULUMI_K8S_UPSERT_EXISTING_OBJECTS` environment variable.
+  final pulumi.Input<bool>? upsertExistingObjects;
 
   /// Creates a new [ProviderArgs].
   /// [alwaysRender] If present and set to true, all resources will be rendered to the directory specified by renderYamlToDirectory on every update, even if the resource has not changed. This is useful for tools like ArgoCD Config Management Plugin that require all manifests to be regenerated on each run. Only valid when renderYamlToDirectory is set.
@@ -76,6 +97,7 @@ class ProviderArgs {
   /// [context] If present, the name of the kubeconfig context to use.
   /// [deleteUnreachable] If present and set to true, the provider will delete resources associated with an unreachable Kubernetes cluster from Pulumi state
   /// [enableConfigMapMutable] BETA FEATURE - If present and set to true, allow ConfigMaps to be mutated.
+  /// [enablePatchForce] If present and set to true, enable patch force on all Server-Side Apply operations, overriding any field conflicts.
   /// [enableSecretMutable] BETA FEATURE - If present and set to true, allow Secrets to be mutated.
   /// [enableServerSideApply] If present and set to false, disable Server-Side Apply mode.
   /// [helmReleaseSettings] Options to configure the Helm Release resource.
@@ -86,6 +108,7 @@ class ProviderArgs {
   /// [skipUpdateUnreachable] If present and set to true, the provider will skip resources update associated with an unreachable Kubernetes cluster from Pulumi state
   /// [suppressDeprecationWarnings] If present and set to true, suppress apiVersion deprecation warnings from the CLI.
   /// [suppressHelmHookWarnings] If present and set to true, suppress unsupported Helm hook warnings from the CLI.
+  /// [upsertExistingObjects] If present and set to true, allow Pulumi to create resources that already exist in the cluster by updating them instead of returning an error.
   const ProviderArgs({
     this.alwaysRender,
     this.cluster,
@@ -93,6 +116,7 @@ class ProviderArgs {
     this.context,
     this.deleteUnreachable,
     this.enableConfigMapMutable,
+    this.enablePatchForce,
     this.enableSecretMutable,
     this.enableServerSideApply,
     this.helmReleaseSettings,
@@ -103,6 +127,7 @@ class ProviderArgs {
     this.skipUpdateUnreachable,
     this.suppressDeprecationWarnings,
     this.suppressHelmHookWarnings,
+    this.upsertExistingObjects,
   });
 
   Map<String, dynamic> toMap() {
@@ -113,6 +138,7 @@ class ProviderArgs {
       'context': ?context,
       'deleteUnreachable': ?deleteUnreachable,
       'enableConfigMapMutable': ?enableConfigMapMutable,
+      'enablePatchForce': ?enablePatchForce,
       'enableSecretMutable': ?enableSecretMutable,
       'enableServerSideApply': ?enableServerSideApply,
       'helmReleaseSettings': ?pulumi.Input.mapOptionalInputValue<HelmReleaseSettings, Map<String, dynamic>>(helmReleaseSettings, (value) => value.toMap()),
@@ -123,6 +149,7 @@ class ProviderArgs {
       'skipUpdateUnreachable': ?skipUpdateUnreachable,
       'suppressDeprecationWarnings': ?suppressDeprecationWarnings,
       'suppressHelmHookWarnings': ?suppressHelmHookWarnings,
+      'upsertExistingObjects': ?upsertExistingObjects,
     };
   }
 
@@ -134,6 +161,7 @@ class ProviderArgs {
       context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteUnreachable: (() { final guardedValue = map['deleteUnreachable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableConfigMapMutable: (() { final guardedValue = map['enableConfigMapMutable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enablePatchForce: (() { final guardedValue = map['enablePatchForce']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableSecretMutable: (() { final guardedValue = map['enableSecretMutable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableServerSideApply: (() { final guardedValue = map['enableServerSideApply']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       helmReleaseSettings: (() { final guardedValue = map['helmReleaseSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HelmReleaseSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -144,7 +172,7 @@ class ProviderArgs {
       skipUpdateUnreachable: (() { final guardedValue = map['skipUpdateUnreachable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       suppressDeprecationWarnings: (() { final guardedValue = map['suppressDeprecationWarnings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       suppressHelmHookWarnings: (() { final guardedValue = map['suppressHelmHookWarnings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      upsertExistingObjects: (() { final guardedValue = map['upsertExistingObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

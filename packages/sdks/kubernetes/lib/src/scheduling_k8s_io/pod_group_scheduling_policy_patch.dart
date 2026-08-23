@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gang_scheduling_policy_patch.dart';
 
-/// PodGroupPolicy defines the scheduling configuration for a PodGroup.
-class PodGroupPolicyPatch {
+/// PodGroupSchedulingPolicy defines the scheduling configuration for a PodGroup. Exactly one policy must be set.
+class PodGroupSchedulingPolicyPatch {
   /// Basic specifies that the pods in this group should be scheduled using standard Kubernetes scheduling behavior.
   final pulumi.Input<Map<String, dynamic>>? basic;
   /// Gang specifies that the pods in this group should be scheduled using all-or-nothing semantics.
   final pulumi.Input<GangSchedulingPolicyPatch>? gang;
 
-  /// Creates a new [PodGroupPolicyPatch].
+  /// Creates a new [PodGroupSchedulingPolicyPatch].
   /// [basic] Basic specifies that the pods in this group should be scheduled using standard Kubernetes scheduling behavior.
   /// [gang] Gang specifies that the pods in this group should be scheduled using all-or-nothing semantics.
-  const PodGroupPolicyPatch({
+  const PodGroupSchedulingPolicyPatch({
     this.basic,
     this.gang,
   });
@@ -25,11 +25,10 @@ class PodGroupPolicyPatch {
     };
   }
 
-  factory PodGroupPolicyPatch.fromMap(Map<String, dynamic> map) {
-    return PodGroupPolicyPatch(
+  factory PodGroupSchedulingPolicyPatch.fromMap(Map<String, dynamic> map) {
+    return PodGroupSchedulingPolicyPatch(
       basic: (() { final guardedValue = map['basic']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       gang: (() { final guardedValue = map['gang']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GangSchedulingPolicyPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

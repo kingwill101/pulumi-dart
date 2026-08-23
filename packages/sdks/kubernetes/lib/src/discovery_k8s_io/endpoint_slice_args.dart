@@ -15,7 +15,7 @@ class EndpointSliceArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
   /// endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
-  final pulumi.Input<List<Endpoint>> endpoints;
+  final pulumi.Input<List<Endpoint>>? endpoints;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
   /// Standard object's metadata.
@@ -33,7 +33,7 @@ class EndpointSliceArgs {
   const EndpointSliceArgs({
     required this.addressType,
     this.apiVersion,
-    required this.endpoints,
+    this.endpoints,
     this.kind,
     this.metadata,
     this.ports,
@@ -43,7 +43,7 @@ class EndpointSliceArgs {
     return <String, dynamic>{
       'addressType': addressType,
       'apiVersion': ?apiVersion,
-      'endpoints': pulumi.Input.mapInputValue<List<Endpoint>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<Endpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'endpoints': ?pulumi.Input.mapOptionalInputValue<List<Endpoint>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<Endpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'ports': ?pulumi.Input.mapOptionalInputValue<List<EndpointPort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<EndpointPort, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -54,11 +54,10 @@ class EndpointSliceArgs {
     return EndpointSliceArgs(
       addressType: pulumi.Input.fromValue(map['addressType'] as String),
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      endpoints: pulumi.Input.fromValue(pulumi.Input.decodeList<Endpoint>(map['endpoints']!, (value) => Endpoint.fromMap((value as Map).cast<String, dynamic>()))),
+      endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Endpoint>(guardedValue, (value) => Endpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointPort>(guardedValue, (value) => EndpointPort.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

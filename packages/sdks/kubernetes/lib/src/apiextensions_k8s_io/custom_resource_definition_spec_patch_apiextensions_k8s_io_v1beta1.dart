@@ -85,4 +85,3 @@ class CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

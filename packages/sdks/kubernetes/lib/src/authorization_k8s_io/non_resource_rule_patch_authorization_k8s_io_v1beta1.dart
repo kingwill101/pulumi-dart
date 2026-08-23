@@ -31,4 +31,3 @@ class NonResourceRulePatchAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

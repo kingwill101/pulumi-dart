@@ -37,4 +37,3 @@ class EventSeriesEventsK8sIoV1beta1 {
     );
   }
 }
-

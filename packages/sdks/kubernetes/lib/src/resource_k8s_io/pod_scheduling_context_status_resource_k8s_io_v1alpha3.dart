@@ -26,4 +26,3 @@ class PodSchedulingContextStatusResourceK8sIoV1alpha3 {
     );
   }
 }
-

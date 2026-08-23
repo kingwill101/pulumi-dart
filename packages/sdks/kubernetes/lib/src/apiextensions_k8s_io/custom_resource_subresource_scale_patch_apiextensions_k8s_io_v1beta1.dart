@@ -37,4 +37,3 @@ class CustomResourceSubresourceScalePatchApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

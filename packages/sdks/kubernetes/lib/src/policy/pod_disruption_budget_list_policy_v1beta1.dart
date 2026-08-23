@@ -43,4 +43,3 @@ class PodDisruptionBudgetListPolicyV1beta1 {
     );
   }
 }
-

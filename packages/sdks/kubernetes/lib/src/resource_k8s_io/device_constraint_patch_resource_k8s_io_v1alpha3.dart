@@ -35,4 +35,3 @@ class DeviceConstraintPatchResourceK8sIoV1alpha3 {
     );
   }
 }
-

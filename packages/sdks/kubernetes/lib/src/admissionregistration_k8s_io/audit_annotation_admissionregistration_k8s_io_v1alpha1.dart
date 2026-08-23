@@ -41,4 +41,3 @@ class AuditAnnotationAdmissionregistrationK8sIoV1alpha1 {
     );
   }
 }
-

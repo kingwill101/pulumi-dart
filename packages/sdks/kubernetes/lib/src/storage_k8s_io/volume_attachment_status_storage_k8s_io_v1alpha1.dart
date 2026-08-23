@@ -44,4 +44,3 @@ class VolumeAttachmentStatusStorageK8sIoV1alpha1 {
     );
   }
 }
-

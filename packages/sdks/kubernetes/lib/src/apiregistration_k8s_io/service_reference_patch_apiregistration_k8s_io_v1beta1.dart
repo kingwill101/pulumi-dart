@@ -37,4 +37,3 @@ class ServiceReferencePatchApiregistrationK8sIoV1beta1 {
     );
   }
 }
-

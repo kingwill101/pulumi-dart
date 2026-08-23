@@ -29,4 +29,3 @@ class ExternalDocumentationApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

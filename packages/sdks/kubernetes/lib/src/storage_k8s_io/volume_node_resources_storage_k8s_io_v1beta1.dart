@@ -25,4 +25,3 @@ class VolumeNodeResourcesStorageK8sIoV1beta1 {
     );
   }
 }
-

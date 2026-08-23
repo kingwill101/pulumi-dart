@@ -43,4 +43,3 @@ class ResourceClassParametersReferenceResourceK8sIoV1alpha2 {
     );
   }
 }
-

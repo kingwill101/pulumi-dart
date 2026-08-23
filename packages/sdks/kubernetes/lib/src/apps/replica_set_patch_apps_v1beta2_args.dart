@@ -48,4 +48,3 @@ class ReplicaSetPatchAppsV1beta2Args {
     );
   }
 }
-

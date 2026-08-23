@@ -48,4 +48,3 @@ class RuntimeClassNodeK8sIoV1alpha1Args {
     );
   }
 }
-

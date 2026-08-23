@@ -25,4 +25,3 @@ class RollingUpdateStatefulSetStrategyAppsV1beta1 {
     );
   }
 }
-

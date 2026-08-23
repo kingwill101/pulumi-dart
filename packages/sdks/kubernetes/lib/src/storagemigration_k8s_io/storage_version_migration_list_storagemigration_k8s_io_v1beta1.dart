@@ -45,4 +45,3 @@ class StorageVersionMigrationListStoragemigrationK8sIoV1beta1 {
     );
   }
 }
-

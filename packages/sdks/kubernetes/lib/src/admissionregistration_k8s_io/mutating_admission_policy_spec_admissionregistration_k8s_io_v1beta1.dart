@@ -87,4 +87,3 @@ class MutatingAdmissionPolicySpecAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

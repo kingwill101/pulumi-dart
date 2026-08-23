@@ -61,4 +61,3 @@ class EndpointSlicePatchDiscoveryK8sIoV1beta1Args {
     );
   }
 }
-

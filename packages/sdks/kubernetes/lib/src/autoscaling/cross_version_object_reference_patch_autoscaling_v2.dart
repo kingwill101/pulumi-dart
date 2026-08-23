@@ -37,4 +37,3 @@ class CrossVersionObjectReferencePatchAutoscalingV2 {
     );
   }
 }
-

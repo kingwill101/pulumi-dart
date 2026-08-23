@@ -62,4 +62,3 @@ class CronJobSpecPatchBatchV2alpha1 {
     );
   }
 }
-

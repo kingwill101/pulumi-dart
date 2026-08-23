@@ -48,4 +48,3 @@ class DaemonSetPatchAppsV1beta2Args {
     );
   }
 }
-

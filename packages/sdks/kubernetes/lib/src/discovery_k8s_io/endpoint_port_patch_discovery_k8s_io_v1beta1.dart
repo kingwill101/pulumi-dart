@@ -43,4 +43,3 @@ class EndpointPortPatchDiscoveryK8sIoV1beta1 {
     );
   }
 }
-

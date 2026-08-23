@@ -52,4 +52,3 @@ class CronJobPatchBatchV1beta1 {
     );
   }
 }
-

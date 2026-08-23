@@ -68,4 +68,3 @@ class DeploymentStatusAppsV1beta2 {
     );
   }
 }
-

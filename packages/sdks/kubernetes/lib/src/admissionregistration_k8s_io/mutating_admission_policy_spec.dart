@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'match_condition_admissionregistration_k8s_io_v1alpha1.dart';
-import 'match_resources_admissionregistration_k8s_io_v1alpha1.dart';
+import 'match_condition.dart';
+import 'match_resources.dart';
 import 'mutation.dart';
-import 'param_kind_admissionregistration_k8s_io_v1alpha1.dart';
-import 'variable_admissionregistration_k8s_io_v1alpha1.dart';
+import 'param_kind.dart';
+import 'variable.dart';
 
-/// MutatingAdmissionPolicySpec is the specification of the desired behavior of the admission policy.
+/// MutatingAdmissionPolicySpec defines the desired behavior of the admission policy.
 class MutatingAdmissionPolicySpec {
   /// failurePolicy defines how to handle failures for the admission policy. Failures can occur from CEL expression parse errors, type check errors, runtime errors and invalid or mis-configured policy definitions or bindings.
   ///
@@ -27,13 +27,13 @@ class MutatingAdmissionPolicySpec {
   /// 3. If any matchCondition evaluates to an error (but none are FALSE):
   /// - If failurePolicy=Fail, reject the request
   /// - If failurePolicy=Ignore, the policy is skipped
-  final pulumi.Input<List<MatchConditionAdmissionregistrationK8sIoV1alpha1>>? matchConditions;
+  final pulumi.Input<List<MatchCondition>>? matchConditions;
   /// matchConstraints specifies what resources this policy is designed to validate. The MutatingAdmissionPolicy cares about a request if it matches _all_ Constraints. However, in order to prevent clusters from being put into an unstable state that cannot be recovered from via the API MutatingAdmissionPolicy cannot match MutatingAdmissionPolicy and MutatingAdmissionPolicyBinding. The CREATE, UPDATE and CONNECT operations are allowed.  The DELETE operation may not be matched. '*' matches CREATE, UPDATE and CONNECT. Required.
-  final pulumi.Input<MatchResourcesAdmissionregistrationK8sIoV1alpha1>? matchConstraints;
+  final pulumi.Input<MatchResources>? matchConstraints;
   /// mutations contain operations to perform on matching objects. mutations may not be empty; a minimum of one mutation is required. mutations are evaluated in order, and are reinvoked according to the reinvocationPolicy. The mutations of a policy are invoked for each binding of this policy and reinvocation of mutations occurs on a per binding basis.
   final pulumi.Input<List<Mutation>>? mutations;
   /// paramKind specifies the kind of resources used to parameterize this policy. If absent, there are no parameters for this policy and the param CEL variable will not be provided to validation expressions. If paramKind refers to a non-existent kind, this policy definition is mis-configured and the FailurePolicy is applied. If paramKind is specified but paramRef is unset in MutatingAdmissionPolicyBinding, the params variable will be null.
-  final pulumi.Input<ParamKindAdmissionregistrationK8sIoV1alpha1>? paramKind;
+  final pulumi.Input<ParamKind>? paramKind;
   /// reinvocationPolicy indicates whether mutations may be called multiple times per MutatingAdmissionPolicyBinding as part of a single admission evaluation. Allowed values are "Never" and "IfNeeded".
   ///
   /// Never: These mutations will not be called more than once per binding in a single admission evaluation.
@@ -43,7 +43,7 @@ class MutatingAdmissionPolicySpec {
   /// variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy.
   ///
   /// The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic.
-  final pulumi.Input<List<VariableAdmissionregistrationK8sIoV1alpha1>>? variables;
+  final pulumi.Input<List<Variable>>? variables;
 
   /// Creates a new [MutatingAdmissionPolicySpec].
   /// [failurePolicy] failurePolicy defines how to handle failures for the admission policy. Failures can occur from CEL expression parse errors, type check errors, runtime errors and invalid or mis-configured policy definitions or bindings.
@@ -66,25 +66,24 @@ class MutatingAdmissionPolicySpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'failurePolicy': ?failurePolicy,
-      'matchConditions': ?pulumi.Input.mapOptionalInputValue<List<MatchConditionAdmissionregistrationK8sIoV1alpha1>, List<Map<String, dynamic>>>(matchConditions, (value) => pulumi.Input.encodeList<MatchConditionAdmissionregistrationK8sIoV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'matchConstraints': ?pulumi.Input.mapOptionalInputValue<MatchResourcesAdmissionregistrationK8sIoV1alpha1, Map<String, dynamic>>(matchConstraints, (value) => value.toMap()),
+      'matchConditions': ?pulumi.Input.mapOptionalInputValue<List<MatchCondition>, List<Map<String, dynamic>>>(matchConditions, (value) => pulumi.Input.encodeList<MatchCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'matchConstraints': ?pulumi.Input.mapOptionalInputValue<MatchResources, Map<String, dynamic>>(matchConstraints, (value) => value.toMap()),
       'mutations': ?pulumi.Input.mapOptionalInputValue<List<Mutation>, List<Map<String, dynamic>>>(mutations, (value) => pulumi.Input.encodeList<Mutation, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'paramKind': ?pulumi.Input.mapOptionalInputValue<ParamKindAdmissionregistrationK8sIoV1alpha1, Map<String, dynamic>>(paramKind, (value) => value.toMap()),
+      'paramKind': ?pulumi.Input.mapOptionalInputValue<ParamKind, Map<String, dynamic>>(paramKind, (value) => value.toMap()),
       'reinvocationPolicy': ?reinvocationPolicy,
-      'variables': ?pulumi.Input.mapOptionalInputValue<List<VariableAdmissionregistrationK8sIoV1alpha1>, List<Map<String, dynamic>>>(variables, (value) => pulumi.Input.encodeList<VariableAdmissionregistrationK8sIoV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'variables': ?pulumi.Input.mapOptionalInputValue<List<Variable>, List<Map<String, dynamic>>>(variables, (value) => pulumi.Input.encodeList<Variable, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MutatingAdmissionPolicySpec.fromMap(Map<String, dynamic> map) {
     return MutatingAdmissionPolicySpec(
       failurePolicy: (() { final guardedValue = map['failurePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      matchConditions: (() { final guardedValue = map['matchConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MatchConditionAdmissionregistrationK8sIoV1alpha1>(guardedValue, (value) => MatchConditionAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      matchConstraints: (() { final guardedValue = map['matchConstraints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MatchResourcesAdmissionregistrationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      matchConditions: (() { final guardedValue = map['matchConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MatchCondition>(guardedValue, (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      matchConstraints: (() { final guardedValue = map['matchConstraints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MatchResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mutations: (() { final guardedValue = map['mutations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Mutation>(guardedValue, (value) => Mutation.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      paramKind: (() { final guardedValue = map['paramKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ParamKindAdmissionregistrationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      paramKind: (() { final guardedValue = map['paramKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ParamKind.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       reinvocationPolicy: (() { final guardedValue = map['reinvocationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      variables: (() { final guardedValue = map['variables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VariableAdmissionregistrationK8sIoV1alpha1>(guardedValue, (value) => VariableAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      variables: (() { final guardedValue = map['variables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Variable>(guardedValue, (value) => Variable.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

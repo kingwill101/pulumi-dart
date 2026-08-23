@@ -26,4 +26,3 @@ class DeviceClassConfigurationPatchResourceK8sIoV1beta2 {
     );
   }
 }
-

@@ -26,4 +26,3 @@ class FlowSchemaStatusFlowcontrolApiserverK8sIoV1beta3 {
     );
   }
 }
-

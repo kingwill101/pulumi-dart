@@ -55,4 +55,3 @@ class LeaseCandidateSpecCoordinationK8sIoV1alpha2 {
     );
   }
 }
-

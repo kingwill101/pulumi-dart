@@ -118,4 +118,3 @@ class ValidatingWebhookPatchAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

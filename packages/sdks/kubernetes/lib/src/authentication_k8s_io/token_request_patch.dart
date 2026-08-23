@@ -11,19 +11,19 @@ class TokenRequestPatch {
   final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
-  /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMetaPatch>? metadata;
-  /// Spec holds information about the request being evaluated
+  /// spec holds information about the request being evaluated
   final pulumi.Input<TokenRequestSpecPatch>? spec;
-  /// Status is filled in by the server and indicates whether the token can be authenticated.
+  /// status is filled in by the server and indicates whether the token can be authenticated.
   final pulumi.Input<TokenRequestStatusPatch>? status;
 
   /// Creates a new [TokenRequestPatch].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  /// [spec] Spec holds information about the request being evaluated
-  /// [status] Status is filled in by the server and indicates whether the token can be authenticated.
+  /// [metadata] metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// [spec] spec holds information about the request being evaluated
+  /// [status] status is filled in by the server and indicates whether the token can be authenticated.
   const TokenRequestPatch({
     this.apiVersion,
     this.kind,
@@ -52,4 +52,3 @@ class TokenRequestPatch {
     );
   }
 }
-

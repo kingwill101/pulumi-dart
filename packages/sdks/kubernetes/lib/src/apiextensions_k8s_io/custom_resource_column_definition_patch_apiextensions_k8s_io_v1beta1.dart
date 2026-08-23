@@ -55,4 +55,3 @@ class CustomResourceColumnDefinitionPatchApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

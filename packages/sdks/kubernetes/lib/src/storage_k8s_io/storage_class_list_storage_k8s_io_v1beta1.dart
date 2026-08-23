@@ -45,4 +45,3 @@ class StorageClassListStorageK8sIoV1beta1 {
     );
   }
 }
-

@@ -50,4 +50,3 @@ class ResourceSliceResourceK8sIoV1alpha3Args {
     );
   }
 }
-

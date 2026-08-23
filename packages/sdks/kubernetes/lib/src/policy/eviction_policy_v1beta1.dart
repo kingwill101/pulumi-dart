@@ -45,4 +45,3 @@ class EvictionPolicyV1beta1 {
     );
   }
 }
-

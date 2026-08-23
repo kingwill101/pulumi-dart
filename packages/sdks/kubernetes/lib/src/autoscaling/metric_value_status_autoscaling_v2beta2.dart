@@ -37,4 +37,3 @@ class MetricValueStatusAutoscalingV2beta2 {
     );
   }
 }
-

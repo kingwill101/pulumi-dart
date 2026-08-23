@@ -45,4 +45,3 @@ class IPAddressNetworkingK8sIoV1alpha1 {
     );
   }
 }
-

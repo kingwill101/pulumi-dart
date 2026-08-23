@@ -45,4 +45,3 @@ class DeploymentListAppsV1beta1 {
     );
   }
 }
-

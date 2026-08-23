@@ -33,4 +33,3 @@ class ExternalMetricStatusAutoscalingV2beta2 {
     );
   }
 }
-

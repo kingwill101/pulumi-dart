@@ -43,4 +43,3 @@ class ResourcePoolPatchResourceK8sIoV1beta1 {
     );
   }
 }
-

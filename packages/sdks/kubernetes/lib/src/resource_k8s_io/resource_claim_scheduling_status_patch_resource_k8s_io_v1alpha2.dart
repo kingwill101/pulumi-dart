@@ -33,4 +33,3 @@ class ResourceClaimSchedulingStatusPatchResourceK8sIoV1alpha2 {
     );
   }
 }
-

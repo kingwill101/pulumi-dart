@@ -257,6 +257,41 @@ import 'ingress_status.dart';
 ///         type: kubernetes:networking.k8s.io/v1:Ingress
 /// runtime: yaml
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     kubernetes = {
+///       source = "pulumi/kubernetes"
+///     }
+///   }
+/// }
+///
+/// resource "kubernetes_networking.k8s.io_v1_ingress" "ingress" {
+///   metadata = {
+///     annotations = {
+///       "nginx.ingress.kubernetes.io/rewrite-target" = "/"
+///     }
+///   }
+///   spec = {
+///     rules = [{
+///       http = {
+///         paths = [{
+///           backend = {
+///             service = {
+///               name = "test"
+///               port = {
+///                 number = 80
+///               }
+///             }
+///           }
+///           path      = "/testpath"
+///           path_type = "Prefix"
+///         }]
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// {{% /example %}}
 /// {{% example %}}
 /// ### Create an Ingress with a user-specified name
@@ -498,6 +533,42 @@ import 'ingress_status.dart';
 ///                               pathType: Prefix
 ///         type: kubernetes:networking.k8s.io/v1:Ingress
 /// runtime: yaml
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     kubernetes = {
+///       source = "pulumi/kubernetes"
+///     }
+///   }
+/// }
+///
+/// resource "kubernetes_networking.k8s.io_v1_ingress" "ingress" {
+///   metadata = {
+///     annotations = {
+///       "nginx.ingress.kubernetes.io/rewrite-target" = "/"
+///     }
+///     name = "minimal-ingress"
+///   }
+///   spec = {
+///     rules = [{
+///       http = {
+///         paths = [{
+///           backend = {
+///             service = {
+///               name = "test"
+///               port = {
+///                 number = 80
+///               }
+///             }
+///           }
+///           path      = "/testpath"
+///           path_type = "Prefix"
+///         }]
+///       }
+///     }]
+///   }
+/// }
 /// ```
 /// {{% /example %}}
 /// {{% /examples %}}

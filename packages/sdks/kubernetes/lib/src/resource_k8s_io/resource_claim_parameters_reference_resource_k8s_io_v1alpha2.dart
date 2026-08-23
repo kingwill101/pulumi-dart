@@ -37,4 +37,3 @@ class ResourceClaimParametersReferenceResourceK8sIoV1alpha2 {
     );
   }
 }
-

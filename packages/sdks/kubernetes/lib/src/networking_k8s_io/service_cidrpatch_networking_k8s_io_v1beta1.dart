@@ -52,4 +52,3 @@ class ServiceCIDRPatchNetworkingK8sIoV1beta1 {
     );
   }
 }
-

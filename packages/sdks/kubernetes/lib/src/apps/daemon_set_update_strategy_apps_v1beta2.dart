@@ -32,4 +32,3 @@ class DaemonSetUpdateStrategyAppsV1beta2 {
     );
   }
 }
-

@@ -45,4 +45,3 @@ class LeaseCandidateListCoordinationK8sIoV1alpha2 {
     );
   }
 }
-

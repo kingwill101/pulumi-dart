@@ -71,4 +71,3 @@ class ResourceClassPatchResourceK8sIoV1alpha2Args {
     );
   }
 }
-

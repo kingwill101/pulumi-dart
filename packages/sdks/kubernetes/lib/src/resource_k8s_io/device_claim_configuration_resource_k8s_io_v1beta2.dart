@@ -34,4 +34,3 @@ class DeviceClaimConfigurationResourceK8sIoV1beta2 {
     );
   }
 }
-

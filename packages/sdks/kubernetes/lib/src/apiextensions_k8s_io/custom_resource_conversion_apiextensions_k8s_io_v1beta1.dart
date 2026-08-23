@@ -39,4 +39,3 @@ class CustomResourceConversionApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

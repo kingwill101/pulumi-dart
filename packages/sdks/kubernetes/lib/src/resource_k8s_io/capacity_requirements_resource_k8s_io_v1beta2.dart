@@ -35,4 +35,3 @@ class CapacityRequirementsResourceK8sIoV1beta2 {
     );
   }
 }
-

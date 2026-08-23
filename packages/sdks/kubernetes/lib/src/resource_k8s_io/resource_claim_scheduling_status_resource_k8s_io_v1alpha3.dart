@@ -33,4 +33,3 @@ class ResourceClaimSchedulingStatusResourceK8sIoV1alpha3 {
     );
   }
 }
-

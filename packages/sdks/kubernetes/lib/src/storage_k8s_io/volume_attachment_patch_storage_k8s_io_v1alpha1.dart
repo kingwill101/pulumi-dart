@@ -54,4 +54,3 @@ class VolumeAttachmentPatchStorageK8sIoV1alpha1 {
     );
   }
 }
-

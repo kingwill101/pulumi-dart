@@ -48,4 +48,3 @@ class ResourceSliceListResourceK8sIoV1beta2Args {
     );
   }
 }
-

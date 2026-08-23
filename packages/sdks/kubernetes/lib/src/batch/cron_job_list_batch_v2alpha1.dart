@@ -45,4 +45,3 @@ class CronJobListBatchV2alpha1 {
     );
   }
 }
-

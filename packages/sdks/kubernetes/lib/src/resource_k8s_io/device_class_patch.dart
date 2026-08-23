@@ -5,8 +5,6 @@ import '../meta/object_meta_patch.dart';
 import 'device_class_spec_patch.dart';
 
 /// DeviceClass is a vendor- or admin-provided resource that contains device configuration and selectors. It can be referenced in the device requests of a claim to apply these presets. Cluster scoped.
-///
-/// This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
 class DeviceClassPatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
@@ -51,4 +49,3 @@ class DeviceClassPatch {
     );
   }
 }
-

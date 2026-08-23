@@ -51,4 +51,3 @@ class TokenReviewPatchAuthenticationK8sIoV1beta1 {
     );
   }
 }
-

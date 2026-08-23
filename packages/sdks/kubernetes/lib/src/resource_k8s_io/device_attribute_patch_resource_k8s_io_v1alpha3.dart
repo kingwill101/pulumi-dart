@@ -43,4 +43,3 @@ class DeviceAttributePatchResourceK8sIoV1alpha3 {
     );
   }
 }
-

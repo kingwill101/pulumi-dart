@@ -45,4 +45,3 @@ class EventListEventsK8sIoV1beta1 {
     );
   }
 }
-

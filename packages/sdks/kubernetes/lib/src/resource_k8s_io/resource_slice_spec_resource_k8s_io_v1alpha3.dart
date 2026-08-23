@@ -72,4 +72,3 @@ class ResourceSliceSpecResourceK8sIoV1alpha3 {
     );
   }
 }
-

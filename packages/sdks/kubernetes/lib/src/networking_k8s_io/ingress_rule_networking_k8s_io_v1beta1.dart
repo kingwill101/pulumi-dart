@@ -36,4 +36,3 @@ class IngressRuleNetworkingK8sIoV1beta1 {
     );
   }
 }
-

@@ -43,4 +43,3 @@ class UserInfoPatchAuthenticationK8sIoV1beta1 {
     );
   }
 }
-

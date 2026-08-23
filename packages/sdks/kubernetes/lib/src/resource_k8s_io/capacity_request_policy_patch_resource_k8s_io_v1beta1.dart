@@ -54,4 +54,3 @@ class CapacityRequestPolicyPatchResourceK8sIoV1beta1 {
     );
   }
 }
-

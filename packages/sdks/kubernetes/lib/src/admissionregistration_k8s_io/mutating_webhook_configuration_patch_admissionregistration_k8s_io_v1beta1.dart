@@ -45,4 +45,3 @@ class MutatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

@@ -48,4 +48,3 @@ class VolumeAttachmentStorageK8sIoV1beta1Args {
     );
   }
 }
-

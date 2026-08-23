@@ -84,4 +84,3 @@ class StorageClassPatchStorageK8sIoV1beta1Args {
     );
   }
 }
-

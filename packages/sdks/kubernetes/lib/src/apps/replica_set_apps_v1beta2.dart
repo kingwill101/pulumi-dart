@@ -52,4 +52,3 @@ class ReplicaSetAppsV1beta2 {
     );
   }
 }
-
