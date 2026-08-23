@@ -28,7 +28,7 @@ class ApplicationLoadBalancerArgs {
   final pulumi.Input<int>? defaultTargetGroupPort;
   /// How the load balancer handles requests that might pose a security risk to an application due to HTTP desync. Valid values are `monitor`, `defensive` (default), `strictest`.
   final pulumi.Input<String>? desyncMitigationMode;
-  /// How traffic is distributed among the load balancer Availability Zones. Possible values are `any_availability_zone` (default), `availability_zone_affinity`, or `partial_availability_zone_affinity`. See   [Availability Zone DNS affinity](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#zonal-dns-affinity) for additional details. Only valid for `network` type load balancers.
+  /// How traffic is distributed among the load balancer Availability Zones. Possible values are `anyAvailabilityZone` (default), `availabilityZoneAffinity`, or `partialAvailabilityZoneAffinity`. See   [Availability Zone DNS affinity](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#zonal-dns-affinity) for additional details. Only valid for `network` type load balancers.
   final pulumi.Input<String>? dnsRecordClientRoutingPolicy;
   /// Whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). The default is false. Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens. Only valid for Load Balancers of type `application`.
   final pulumi.Input<bool>? dropInvalidHeaderFields;
@@ -36,6 +36,8 @@ class ApplicationLoadBalancerArgs {
   final pulumi.Input<bool>? enableDeletionProtection;
   /// Whether HTTP/2 is enabled in `application` load balancers. Defaults to `true`.
   final pulumi.Input<bool>? enableHttp2;
+  /// Whether to use an IPv6 prefix from each subnet for source NAT. `ipAddressType` must be `dualstack`. Valid values: `on`, `off`.
+  final pulumi.Input<String>? enablePrefixForIpv6SourceNat;
   /// Whether the two headers (`x-amzn-tls-version` and `x-amzn-tls-cipher-suite`), which contain information about the negotiated TLS version and cipher suite, are added to the client request before sending it to the target. Only valid for Load Balancers of type `application`. Defaults to `false`
   final pulumi.Input<bool>? enableTlsVersionAndCipherSuiteHeaders;
   /// Whether to allow a WAF-enabled load balancer to route requests to targets if it is unable to forward the request to AWS WAF. Defaults to `false`.
@@ -54,7 +56,7 @@ class ApplicationLoadBalancerArgs {
   final pulumi.Input<bool>? internal;
   /// Type of IP addresses used by the subnets for your load balancer. The possible values depend upon the load balancer type: `ipv4` (all load balancer types), `dualstack` (all load balancer types), and `dualstack-without-public-ipv4` (type `application` only).
   final pulumi.Input<String>? ipAddressType;
-  /// . The IPAM pools to use with the load balancer.  Only valid for Load Balancers of type `application`. See ipam_pools for more information.
+  /// . The IPAM pools to use with the load balancer.  Only valid for Load Balancers of type `application`. See ipamPools for more information.
   final pulumi.Input<pulumi_aws_lb.LoadBalancerIpamPools>? ipamPools;
   /// A listener to create. Only one of [listener] and [listeners] can be specified.
   final pulumi.Input<Listener>? listener;
@@ -80,13 +82,13 @@ class ApplicationLoadBalancerArgs {
   final pulumi.Input<List<pulumi_aws_lb.LoadBalancerSubnetMapping>>? subnetMappings;
   /// A list of subnets to attach to the LB. Only one of [subnets], [subnetIds] or [subnetMappings] can be specified
   final pulumi.Input<List<pulumi_aws_ec2.Subnet>>? subnets;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Determines how the load balancer modifies the `X-Forwarded-For` header in the HTTP request before sending the request to the target. The possible values are `append`, `preserve`, and `remove`. Only valid for Load Balancers of type `application`. The default is `append`.
   ///
-  /// &gt; **NOTE:** Please note that internal LBs can only use `ipv4` as the `ip_address_type`. You can only change to `dualstack` `ip_address_type` if the selected subnets are IPv6 enabled.
+  /// &gt; **NOTE:** Please note that internal LBs can only use `ipv4` as the `ipAddressType`. You can only change to `dualstack` `ipAddressType` if the selected subnets are IPv6 enabled.
   ///
-  /// &gt; **NOTE:** Please note that one of either `subnets` or `subnet_mapping` is required.
+  /// &gt; **NOTE:** Please note that one of either `subnets` or `subnetMapping` is required.
   final pulumi.Input<String>? xffHeaderProcessingMode;
 
   /// Creates a new [ApplicationLoadBalancerArgs].
@@ -98,10 +100,11 @@ class ApplicationLoadBalancerArgs {
   /// [defaultTargetGroup] Options creating a default target group.
   /// [defaultTargetGroupPort] Port to use to connect with the target. Valid values are ports 1-65535. Defaults to 80.
   /// [desyncMitigationMode] How the load balancer handles requests that might pose a security risk to an application due to HTTP desync. Valid values are `monitor`, `defensive` (default), `strictest`.
-  /// [dnsRecordClientRoutingPolicy] How traffic is distributed among the load balancer Availability Zones. Possible values are `any_availability_zone` (default), `availability_zone_affinity`, or `partial_availability_zone_affinity`. See   [Availability Zone DNS affinity](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#zonal-dns-affinity) for additional details. Only valid for `network` type load balancers.
+  /// [dnsRecordClientRoutingPolicy] How traffic is distributed among the load balancer Availability Zones. Possible values are `anyAvailabilityZone` (default), `availabilityZoneAffinity`, or `partialAvailabilityZoneAffinity`. See   [Availability Zone DNS affinity](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#zonal-dns-affinity) for additional details. Only valid for `network` type load balancers.
   /// [dropInvalidHeaderFields] Whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). The default is false. Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens. Only valid for Load Balancers of type `application`.
   /// [enableDeletionProtection] If true, deletion of the load balancer will be disabled via the AWS API. This will prevent this provider from deleting the load balancer. Defaults to `false`.
   /// [enableHttp2] Whether HTTP/2 is enabled in `application` load balancers. Defaults to `true`.
+  /// [enablePrefixForIpv6SourceNat] Whether to use an IPv6 prefix from each subnet for source NAT. `ipAddressType` must be `dualstack`. Valid values: `on`, `off`.
   /// [enableTlsVersionAndCipherSuiteHeaders] Whether the two headers (`x-amzn-tls-version` and `x-amzn-tls-cipher-suite`), which contain information about the negotiated TLS version and cipher suite, are added to the client request before sending it to the target. Only valid for Load Balancers of type `application`. Defaults to `false`
   /// [enableWafFailOpen] Whether to allow a WAF-enabled load balancer to route requests to targets if it is unable to forward the request to AWS WAF. Defaults to `false`.
   /// [enableXffClientPort] Whether the X-Forwarded-For header should preserve the source port that the client used to connect to the load balancer in `application` load balancers. Defaults to `false`.
@@ -111,7 +114,7 @@ class ApplicationLoadBalancerArgs {
   /// [idleTimeout] Time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`. Default: 60.
   /// [internal] If true, the LB will be internal. Defaults to `false`.
   /// [ipAddressType] Type of IP addresses used by the subnets for your load balancer. The possible values depend upon the load balancer type: `ipv4` (all load balancer types), `dualstack` (all load balancer types), and `dualstack-without-public-ipv4` (type `application` only).
-  /// [ipamPools] . The IPAM pools to use with the load balancer.  Only valid for Load Balancers of type `application`. See ipam_pools for more information.
+  /// [ipamPools] . The IPAM pools to use with the load balancer.  Only valid for Load Balancers of type `application`. See ipamPools for more information.
   /// [listener] A listener to create. Only one of [listener] and [listeners] can be specified.
   /// [listeners] List of listeners to create. Only one of [listener] and [listeners] can be specified.
   /// [minimumLoadBalancerCapacity] Minimum capacity for a load balancer. Only valid for Load Balancers of type `application` or `network`.
@@ -124,7 +127,7 @@ class ApplicationLoadBalancerArgs {
   /// [subnetIds] List of subnet IDs to attach to the LB. For Load Balancers of type `network` subnets can only be added (see [Availability Zones](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#availability-zones)), deleting a subnet for load balancers of type `network` will force a recreation of the resource.
   /// [subnetMappings] Subnet mapping block. See below. For Load Balancers of type `network` subnet mappings can only be added.
   /// [subnets] A list of subnets to attach to the LB. Only one of [subnets], [subnetIds] or [subnetMappings] can be specified
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [xffHeaderProcessingMode] Determines how the load balancer modifies the `X-Forwarded-For` header in the HTTP request before sending the request to the target. The possible values are `append`, `preserve`, and `remove`. Only valid for Load Balancers of type `application`. The default is `append`.
   const ApplicationLoadBalancerArgs({
     this.accessLogs,
@@ -139,6 +142,7 @@ class ApplicationLoadBalancerArgs {
     this.dropInvalidHeaderFields,
     this.enableDeletionProtection,
     this.enableHttp2,
+    this.enablePrefixForIpv6SourceNat,
     this.enableTlsVersionAndCipherSuiteHeaders,
     this.enableWafFailOpen,
     this.enableXffClientPort,
@@ -179,6 +183,7 @@ class ApplicationLoadBalancerArgs {
       'dropInvalidHeaderFields': ?dropInvalidHeaderFields,
       'enableDeletionProtection': ?enableDeletionProtection,
       'enableHttp2': ?enableHttp2,
+      'enablePrefixForIpv6SourceNat': ?enablePrefixForIpv6SourceNat,
       'enableTlsVersionAndCipherSuiteHeaders': ?enableTlsVersionAndCipherSuiteHeaders,
       'enableWafFailOpen': ?enableWafFailOpen,
       'enableXffClientPort': ?enableXffClientPort,
@@ -220,6 +225,7 @@ class ApplicationLoadBalancerArgs {
       dropInvalidHeaderFields: (() { final guardedValue = map['dropInvalidHeaderFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableDeletionProtection: (() { final guardedValue = map['enableDeletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableHttp2: (() { final guardedValue = map['enableHttp2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enablePrefixForIpv6SourceNat: (() { final guardedValue = map['enablePrefixForIpv6SourceNat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableTlsVersionAndCipherSuiteHeaders: (() { final guardedValue = map['enableTlsVersionAndCipherSuiteHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableWafFailOpen: (() { final guardedValue = map['enableWafFailOpen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableXffClientPort: (() { final guardedValue = map['enableXffClientPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -247,4 +253,3 @@ class ApplicationLoadBalancerArgs {
     );
   }
 }
-

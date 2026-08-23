@@ -2,6 +2,7 @@
 enum SubnetAllocationStrategy {
   valueLegacy("Legacy"),
   valueAuto("Auto"),
+  valueAutoMerge("AutoMerge"),
   valueExact("Exact");
 
   const SubnetAllocationStrategy(this.wireValue);
@@ -16,4 +17,3 @@ enum SubnetAllocationStrategy {
     throw ArgumentError('Unknown SubnetAllocationStrategy value: $value');
   }
 }
-

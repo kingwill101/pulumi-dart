@@ -16,4 +16,3 @@ enum NatGatewayStrategy {
     throw ArgumentError('Unknown NatGatewayStrategy value: $value');
   }
 }
-
